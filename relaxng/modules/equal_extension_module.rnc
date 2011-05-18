@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Equations" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, equals, equality, equations" ]
 dc:description [ "The auxiliary module for equations." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -38,7 +38,7 @@ leftSide-edge.choice |= lhs.edge.def
 lhs.edge.def =
     
     ## The left-hand side of an equation (<Equal>).
-    ##        See http://www.ruleml.org/0.91/glossary/#gloss-left
+    ##        See http://www.ruleml.org/1.0/glossary/#gloss-left
     element lhs { lhs.content }
 
 ## The left-hand side role in an equation is filled by a term.

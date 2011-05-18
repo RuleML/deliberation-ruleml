@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML meta-logic Components" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The auxiliary module for the meta-logic components." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -22,7 +22,7 @@ Entails.Node.def =
     
     ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
     ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Entails 
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Entails 
     element Entails { Entails.attlist, Entails.header, Entails.main }
 # The attribute list of the entailment element is initialized empty, but may be over-ridden by optional modules.
 Entails.attlist &= empty
@@ -44,7 +44,7 @@ body_Entails.edge.def =
     
     ## The body of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" or "if" part of the rule. 
     ## Also used as the "antecedent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-body
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-body
     ##  Within Entails...
     element body { body_Entails.content }
 
@@ -57,7 +57,7 @@ head_Entails.edge.def =
     
     ## The head of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
     ## Also used as the "consequent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-head
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-head
     ##  within Entails
     element head { head_Entails.content }
 

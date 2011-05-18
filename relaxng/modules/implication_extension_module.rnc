@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Implications" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The auxiliary module for implications." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -26,7 +26,7 @@ Implies.Node.def =
     
     ## An implication rule. It consists of a conclusion role (<head>) followed by a Premise role (<body>), or, equivalently (since roles constitute unordered elements), a Premise role followed by a conclusion role.
     ## Alternatively, the roles may be skipped, in which case the Premise comes first followed by the conclusion as suggested by the element name 'Implies' (since the if of a rule implies the 'then', not vice versa).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Implies
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Implies
     ## The children of the implication element are divided into two sections, a header section for modifiers, and a main section for the premises and conclusion. 
     element Implies { Implies.attlist, Implies.header, Implies.main }
 
@@ -52,7 +52,7 @@ body_Implies.edge.def =
     
     ## The body of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" or "if" part of the rule. 
     ## Also used as the "antecedent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-body
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-body
     ## Within Implies...
     element body { body_Implies.content }
 
@@ -82,7 +82,7 @@ head_Implies.edge.def =
     
     ## The head of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
     ## Also used as the "consequent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-head
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-head
     ## Within Implies...
     element head { head_Implies.content }
 

@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML material implication attribute" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, material, implication" ]
 dc:description [ "The auxiliary module for the material implication attribute." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -23,7 +23,7 @@ material-att.choice |= material.attrib.def
 material.attrib.def =
     
     ##  An attribute indicating the kind of an implication rule (<Implies>). Allowed values are "yes" (the default) and "no".
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-@material
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-@material
     attribute material { material.value }
 material.value |= material_default.value | material_non-default.value
 material_default.value |= notAllowed
@@ -35,7 +35,7 @@ mapMaterial.attrib.def =
     
     ##  An attribute indicating the kind of all implication rules (<Implies>) falling within its scope (i.e. child elements). 
     ##  Allowed values are "yes" (the default) and "no".
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-@mapMaterial
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapMaterial
     attribute mapMaterial { material.value }
 #
 material.edge.def = element material { material.value }

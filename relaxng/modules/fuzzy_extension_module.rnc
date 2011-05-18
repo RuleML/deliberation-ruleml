@@ -3,11 +3,11 @@ namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dc:title [ "RuleML degree of uncertainty" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, uncertainty, fuzzy, degree" ]
 dc:description [ "The auxiliary module for degree of uncertainty." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -18,7 +18,7 @@ degree-edge.choice |= degree.edge.def
 degree.edge.def =
     
     ## An optional uncertainty value (between 0.0 and 1.0) that may be assigned to facts and rules.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-degree
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-degree
     element degree { degree.content }
 
 ## The degree role contains a single data term. 

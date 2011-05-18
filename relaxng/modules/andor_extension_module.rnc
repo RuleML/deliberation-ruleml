@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Conjunctions and Disjunctions" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, conjunction, disjunction" ]
 dc:description [ "The auxiliary module for conjunctions and disjunctions." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -25,7 +25,7 @@ And-node.choice |= And.Node.def
 And.Node.def =
     
     ## A conjunctive expression, where <And>Atom</And> is equivalent to Atom.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-And
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-And
     ## Within anything other than Query...
     element And { And.attlist, And.header, And.main }
 # The attribute list of the conjunction element is initialized empty , but may be over-ridden by extension modules.
@@ -36,7 +36,7 @@ And-Query-node.choice |= And-Query.Node.def
 And-Query.Node.def =
     
     ## A conjunctive expression, where <And>Atom</And> is equivalent to Atom.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-And
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-And
     ## Within Query...
     element And { And-Query.attlist, And.header, And.main }
 
@@ -61,7 +61,7 @@ formula_And.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-formula
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within And ...
     element formula { formula_And.content }
 
@@ -93,7 +93,7 @@ Or-node.choice |= Or.Node.def
 Or.Node.def =
     
     ## A disjunctive expression, where <Or>Atom</Or> is equivalent to Atom.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Or
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Or
     element Or { Or.attlist, Or.header, Or.main }
 # The attribute list of the disjunction element is initialized empty , but may be over-ridden by optional modules.
 Or.attlist &= empty
@@ -118,7 +118,7 @@ formula_Or.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-formula
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Or ...
     element formula { formula_Or.content }
 

@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML slotted rest variables" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, rest, slot" ]
 dc:description [ "The auxiliary module for slotted rest variables." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -20,7 +20,7 @@ resl.edge.def =
     
     ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
     ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-resl
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-resl
     element resl { resl.content }
 
 ## The content model of a slotted rest variable is a single term.

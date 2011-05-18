@@ -1,19 +1,19 @@
 <?php
-//Assembler of RNC schema for RuleML 0.91
-// Last Modified 2011/05/15
+//Assembler of RNC schema for RuleML 1.0
+// Last Modified 2011/05/17
 // Step 000. Initialize some parameters
 $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
-$base_url = "http://www.ruleml.org/0.91/relaxng/schema_rnc.php";
+$base_url = "http://www.ruleml.org/1.0/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
-namespace ruleml = "http://www.ruleml.org/0.91/xsd"
+namespace ruleml = "http://www.ruleml.org/spec"
 
 dc:title [ "RuleML Custom-Built Schema" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
 dc:subject [ "RuleML, custom-built" ]
 dc:description [

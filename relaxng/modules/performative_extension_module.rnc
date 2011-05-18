@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Performative Components" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, performative, assert, retract, query" ]
 dc:description [ "The auxiliary module for performative components." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -25,7 +25,7 @@ performative.edge.defs |= formula_AssertRetract.edge.def | formula_Query.edge.de
 RuleML.def =
     
     ## The polyadic top_level of a RuleML document.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-RuleML
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-RuleML
     element RuleML { RuleML.attlist, RuleML.header, RuleML.main }
 # The attribute list of the RuleML root element is initialized empty, but may be over-ridden by optional modules.
 RuleML.attlist &= empty
@@ -47,7 +47,7 @@ Assert.Node.def =
     
     ## A KQML-like performative acting as a wrapper specifying that its content is 
     ## asserted, making an 'implicit <Rulebase>' assumption.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Assert
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Assert
     element Assert { AssertRetract.attlist, AssertRetract.header, AssertRetract.main }
 
 ## an extension point for alternate spellings and internationalization of the retraction tag name.  
@@ -56,7 +56,7 @@ Retract.Node.def =
     
     ## A performative similar to KQML's 'untell' that acts as a wrapper specifying that its
     ## content is to be deleted, making an 'implicit <Rulebase>' assumption.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Retract
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Retract
     element Retract { AssertRetract.attlist, AssertRetract.header, AssertRetract.main }
 
 ## Assertions and retractions may have an optional scope closure attribute.
@@ -77,7 +77,7 @@ formula_AssertRetract.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-formula
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Assert or Retract...
     element formula { formula_AssertRetract.content }
 
@@ -117,7 +117,7 @@ Query.Node.def =
     
     ## A KQML-like performative acting as a wrapper specifying that its content is
     ## queried, making an 'implicit <Rulebase>' assumption.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Query
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Query
     element Query { Query.attlist, Query.header, Query.main }
 
 ## Queries may have an optional map closure attribute.
@@ -138,7 +138,7 @@ formula_Query.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-formula
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Query ...
     element formula { formula_Query.content }
 

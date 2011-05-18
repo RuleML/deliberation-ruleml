@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Variables" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, variables, interpretable names" ]
 dc:description [ "The auxiliary module for variables." ]
-dc:date [ "2011-04-21" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -21,7 +21,7 @@ Variable-node.choice |= Var.Node.def
 Var.Node.def =
     
     ## A logical variable, as in logic programming.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Var
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Var
     element Var { Var.attlist, Var.content }
 
 ## Variables optionally accept the attribute pattern of objects with user-defined types.

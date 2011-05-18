@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Basic Terms" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, term, individual" ]
 dc:description [ "The auxiliary module for basic terms." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -20,7 +20,7 @@ positionalArgument-edge.choice |= arg.edge.def
 arg.edge.def =
     
     ## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog sublanguages).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-arg
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-arg
     element arg {
         
         ## The attribute @index is required for the positional argument role (property).
@@ -34,7 +34,7 @@ arg.attlist.opt.interleave &= empty
 index.attrib.def =
     
     ## A required attribute for specifying the position of a positional argument (<arg>) within a logical atom (<Atom>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-index
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-index
     attribute index { index.value }
 index.value |= xsd:positiveInteger
 
@@ -83,7 +83,7 @@ Individual-node.choice |= Ind.Node.def
 Ind.Node.def =
     
     ## An individual constant, as in Predicate logic, which can also be considered to be a fixed argument like RDF resources.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Ind
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Ind
     element Ind { Ind.attlist, Ind.content }
 
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.

@@ -1,15 +1,15 @@
-default namespace = "http://www.ruleml.org/0.91/xsd"
+default namespace = "http://www.ruleml.org/spec"
 namespace dc = "http://purl.org/dc/elements/1.1/"
 datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 
 dc:title [ "RuleML Data Element" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Data, Simple Content" ]
 dc:description [
     "The auxiliary module for the simple-type Data element, a Type (Object) for literal constants."
 ]
-dc:date [ "2011-04-25" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -26,7 +26,7 @@ Data_simple-node.choice |= Data_simple.Node.def
 Data_simple.Node.def =
     
     ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Data
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Data
     ## Data representing a complex datatype that includes xml elements can be represented by escaping for example <element/> becomes &lt;element/&gt;
     element Data { anySimpleTypeForElements.datatype.choice }
 Node.choice |= Data_simple.Node.def

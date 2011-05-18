@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Rulebase" ]
-dc:version [ "0.91.01" ]
+dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, rulebase" ]
 dc:description [ "The auxiliary module for the rulebase component." ]
-dc:date [ "2011-04-18" ]
+dc:date [ "2011-05-18" ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -19,7 +19,7 @@ Rulebase-node.choice |= Rulebase.Node.def
 Rulebase.Node.def =
     
     ## A collection of rules that can be ordered or unordered, without or with duplicates. 
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-Rulebase
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-Rulebase
     element Rulebase { Rulebase.attlist, Rulebase.header, Rulebase.main }
 
 ## Rulebases may have an optional scope quantification closure attribute.
@@ -41,7 +41,7 @@ formula_Rulebase.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/0.91/glossary/#gloss-formula
+    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Rulebase ...
     element formula { formula_Rulebase.content }
 formula_Rulebase.content |= RulebaseFormula.choice
