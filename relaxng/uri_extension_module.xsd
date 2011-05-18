@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module declares the following RuleML attribute:
+       * @uri
+  -->
+  <xs:attributeGroup name="Resource.attlist">
+    <xs:annotation>
+      <xs:documentation>attribute list for resources includes and optional uri attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="uri" type="ruleml:uri.value">
+      <xs:annotation>
+        <xs:documentation>An attribute for referring to a IRI.    
+See http://www.ruleml.org/0.91/glossary/#gloss-@uri</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="uri-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the oriented equation attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:uri.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="uri.attrib.def">
+    <xs:attribute name="uri" use="required" type="ruleml:uri.value">
+      <xs:annotation>
+        <xs:documentation>An attribute for referring to a IRI.    
+See http://www.ruleml.org/0.91/glossary/#gloss-@uri</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="uri.value">
+    <xs:restriction base="xs:anyURI"/>
+  </xs:simpleType>
+  <!---->
+  <xs:element name="uri" type="ruleml:uri.content"/>
+  <xs:simpleType name="uri.content">
+    <xs:restriction base="ruleml:uri.value"/>
+  </xs:simpleType>
+</xs:schema>

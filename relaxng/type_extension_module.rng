@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <dc:title>RuleML type attribute</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, type</dc:subject>
+  <dc:description>The auxiliary module for the optional type attribute.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="type.edge.def"/>
+  </start>
+  <!--
+    This module declares the following RuleML attributes:
+               * @type
+  -->
+  <define name="Type.attlist" combine="interleave">
+    <a:documentation>attribute list for objects that can have user-defined types, includes an optional type attribute.</a:documentation>
+    <optional>
+      <ref name="type-att.choice"/>
+    </optional>
+  </define>
+  <define name="type-att.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the oriented equation attribute name.  </a:documentation>
+    <ref name="type.attrib.def"/>
+  </define>
+  <define name="type.attrib.def">
+    <attribute name="type">
+      <a:documentation>A role for optionally specifying a term's (user-defined) type.
+See http://www.ruleml.org/0.91/glossary/#gloss-type</a:documentation>
+      <ref name="type.value"/>
+    </attribute>
+  </define>
+  <define name="type.value" combine="choice">
+    <data type="string"/>
+  </define>
+  <!---->
+  <define name="type.edge.def">
+    <element name="type">
+      <ref name="type.content"/>
+    </element>
+  </define>
+  <define name="type.content" combine="choice">
+    <ref name="type.value"/>
+  </define>
+</grammar>

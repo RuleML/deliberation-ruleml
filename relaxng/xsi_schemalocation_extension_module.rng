@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML xsi:schemaLocation attribute</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, schema location</dc:subject>
+  <dc:description>The auxiliary module for allowing the xsi:schemaLocation attribute for the complete-form serialization.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <notAllowed/>
+  </start>
+  <define name="RuleML.attlist" combine="interleave">
+    <optional>
+      <attribute name="xsi:schemaLocation"/>
+    </optional>
+  </define>
+</grammar>

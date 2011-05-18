@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module extends the following RuleML elements, attributes and patterns:
+               * <arg>
+  -->
+  <xs:group name="DataTerm.choice">
+    <xs:annotation>
+      <xs:documentation>Data terms may have simple content.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Data_simple-node.choice"/>
+      <xs:group ref="ruleml:Data_any-node.choice"/>
+    </xs:choice>
+  </xs:group>
+</xs:schema>
+<!--
+  For the declaration of simple data terms, see the simple data modules (data_simple_extension_module).
+  
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

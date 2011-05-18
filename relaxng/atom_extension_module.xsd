@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <Atom>
+               * <Rel>
+               * <op>
+  -->
+  <xs:group name="atom.Node.defs">
+    <xs:choice>
+      <xs:element ref="ruleml:Atom"/>
+      <xs:element ref="ruleml:Rel"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="atom.edge.defs">
+    <xs:sequence>
+      <xs:element ref="ruleml:op"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="SimpleFormula-node.choice">
+    <xs:annotation>
+      <xs:documentation>atomic formulas are a kind of simple formula</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Atom-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Atom-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the atomic formula tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Atom"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Atom">
+    <xs:annotation>
+      <xs:documentation>A logical atom, i.e. an expression formed from a Predicate (or relation) applied to a collection of its (logical) arguments.
+The relation (&lt;Rel&gt;) is followed by a sequence of zero or more arguments (&lt;arg&gt;). 
+Optional user-defined slots (&lt;slot&gt;) are also permitted before and/or after the arguments. 
+Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted. 
+See http://www.ruleml.org/0.91/glossary/#gloss-Atom
+Atomic formulas are divided into two sections, a header section for modifiers, and a main section for the operator and its arguments.
+The definitinon of the main section of an atomic formula is syntax-dependent.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="ruleml:Atom.header"/>
+        <xs:group ref="ruleml:Atom.main"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="ruleml:Atom.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="Atom.attlist">
+    <xs:annotation>
+      <xs:documentation>Atomic formulas may have an optional closure attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  <!-- For the declaration of the closure attribute pattern, see the quantification closure module (closure_extension_module) -->
+  <xs:group name="Atom.header">
+    <xs:annotation>
+      <xs:documentation>Atomic formulas accept the header pattern of simple formulas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:SimpleFormula.header"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="SimpleFormula.header">
+    <xs:annotation>
+      <xs:documentation>Simple formulas are fuzzifiable.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:FuzzyFormula-header.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="operatorForAtoms-edge.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in atomic formulas.  </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="ruleml:op"/>
+      <xs:group ref="ruleml:op_Atom.content"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="op">
+    <xs:annotation>
+      <xs:documentation>(context sensitive: see also expr_module and holog_module)
+An operator expression including a relation (&lt;Rel&gt;) of an atom (&lt;Atom&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-op</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group ref="ruleml:op_Atom.content"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="op_Atom.content">
+    <xs:annotation>
+      <xs:documentation>The operator role in the context of an atomic formula is filled by a predicate.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Relation-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Relation-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the relation tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Rel"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Rel">
+    <xs:annotation>
+      <xs:documentation>A relation, i.e. a logical Predicate, of an atom (&lt;Atom&gt;). It is optionally surrounded by an operator (&lt;op&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-Rel</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="ruleml:Rel.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="Rel.attlist">
+    <xs:annotation>
+      <xs:documentation>Relations accept the attribute pattern of resources.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+  </xs:attributeGroup>
+  <!---->
+</xs:schema>
+<!--
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <Data>
+  -->
+  <xs:group name="Data_any-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the data tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Data_any.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Data_any.Node.def">
+    <xs:sequence>
+      <xs:element name="Data">
+        <xs:annotation>
+          <xs:documentation>A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
+See http://www.ruleml.org/0.91/glossary/#gloss-Data
+Data may have mixed content with any elements, and any attributes except in the namespace xsi.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:anyElement"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="anyElement">
+    <xs:sequence>
+      <xs:any processContents="strict"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

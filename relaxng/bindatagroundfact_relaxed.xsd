@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:include schemaLocation="performative_extension_module.xsd"/>
+  <xs:include schemaLocation="atom_extension_module.xsd"/>
+  <xs:include schemaLocation="andor_extension_module.xsd"/>
+  <xs:include schemaLocation="default_optional_extension_module.xsd"/>
+  <xs:include schemaLocation="termseq_bin_extension_module.xsd"/>
+  <xs:include schemaLocation="unordered_groups_extension_module.xsd"/>
+  <xs:include schemaLocation="stripe_skipping_extension_module.xsd"/>
+  <xs:include schemaLocation="dataterm_simple_extension_module.xsd"/>
+  <xs:include schemaLocation="data_simple_content_extension_module.xsd"/>
+  <xs:include schemaLocation="xsi_schemalocation_extension_module.xsd"/>
+  <xs:include schemaLocation="header_extension_module.xsd"/>
+  <xs:include schemaLocation="uri_extension_module.xsd"/>
+  <xs:include schemaLocation="rulebase_extension_module.xsd"/>
+  <xs:include schemaLocation="meta_extension_module.xsd"/>
+  <xs:include schemaLocation="fuzzy_extension_module.xsd"/>
+  <xs:include schemaLocation="direction_attrib_extension_module.xsd"/>
+  <xs:include schemaLocation="direction_non-default_extension_module.xsd"/>
+  <xs:include schemaLocation="direction_default_extension_module.xsd"/>
+  <xs:include schemaLocation="material_attrib_extension_module.xsd"/>
+  <xs:include schemaLocation="material_non-default_extension_module.xsd"/>
+  <xs:include schemaLocation="material_default_extension_module.xsd"/>
+  <xs:include schemaLocation="desc_extension_module.xsd"/>
+  <xs:include schemaLocation="slot_extension_module.xsd"/>
+  <xs:include schemaLocation="card_extension_module.xsd"/>
+  <xs:include schemaLocation="weight_extension_module.xsd"/>
+  <xs:include schemaLocation="type_extension_module.xsd"/>
+  <xs:include schemaLocation="dataterm_any_extension_module.xsd"/>
+  <xs:include schemaLocation="data_any_content_extension_module.xsd"/>
+  <xs:include schemaLocation="skolem_extension_module.xsd"/>
+  <xs:include schemaLocation="reify_extension_module.xsd"/>
+  <xs:include schemaLocation="individual_extension_module.xsd"/>
+  <xs:include schemaLocation="variable_extension_module.xsd"/>
+  <xs:include schemaLocation="closure_extension_module.xsd"/>
+  <xs:include schemaLocation="val_absence_extension_module.xsd"/>
+  <xs:include schemaLocation="init_extension_module.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    Call parameters
+    Base URL = http://www.ruleml.org/0.91/relaxng/schema_rnc.php 
+    GET parameter: backbone=x1
+    GET parameter: default=x3
+    GET parameter: termseq=x2
+    GET parameter: lng=x1
+    GET parameter: propo=xf
+    GET parameter: implies=x6
+    GET parameter: terms=xf0f
+    GET parameter: quant=x1
+    GET parameter: expr=x1
+    GET parameter: serial=xf
+    Complete URL = 
+        http://www.ruleml.org/0.91/relaxng/schema_rnc.php?backbone=x1&default=x3&termseq=x2&lng=x1&propo=xf&implies=x6&terms=xf0f&quant=x1&expr=x1&serial=xf&
+  -->
+  <!--
+    
+    ROOT NODE AND PERFORMATIVES INCLUDED
+    
+  -->
+  <!--
+    
+    ATOMIC FORMULAS INCLUDED
+    
+  -->
+  <!--
+    
+    CONJUNCTIONS AND DISJUNCTIONS INCLUDED
+    
+  -->
+  <!--
+    
+    ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
+    
+  -->
+  <!--
+    
+    BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED
+    
+  -->
+  <!--
+    
+    ORDER MODE - UNORDERED GROUPS ENABLED
+    
+  -->
+  <!--
+    
+    STRIPE-SKIPPING MODE ENABLED
+    
+  -->
+  <!--
+    
+    EXPLICIT DATATYPING ENABLED
+    
+  -->
+  <!--
+    
+    xsi:schemaLocation ALLOWED IN RuleML
+    
+  -->
+  <!--
+    
+    ABSTRACT HEADERS INCLUDED
+    
+  -->
+  <!--
+    
+    UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
+    
+  -->
+  <!--
+    
+    RULEBASES INCLUDED
+    
+  -->
+  <!--
+    
+    ENTAILMENTS (PROVES) INCLUDED
+    
+  -->
+  <!--
+    
+    DEGREE OF UNCERTAINTY INCLUDED
+    
+  -->
+  <!--
+    
+    INFERENCE DIRECTION ATTRIBUTE IS INCLUDED
+    
+  -->
+  <!--
+    
+    NON-DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED
+    
+  -->
+  <!--
+    
+    DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED
+    
+  -->
+  <!--
+    
+    MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED
+    
+  -->
+  <!--
+    
+    NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <!--
+    
+    DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <!--
+    
+    OBJECT IDENTIFIERS INCLUDED
+    
+  -->
+  <!--
+    
+    SLOTS INCLUDED
+    
+  -->
+  <!--
+    
+    SLOT CARDINALITY INCLUDED
+    
+  -->
+  <!--
+    
+    SLOT WEIGHTS INCLUDED
+    
+  -->
+  <!--
+    
+    EXPLICIT TYPING OF TERMS INCLUDED
+    
+  -->
+  <!--
+    
+    DATA TERMS INCLUDED
+    
+  -->
+  <!--
+    
+    DATA ELEMENTS INCLUDED
+    
+  -->
+  <!--
+    
+    SKOLEM CONSTANTS INCLUDED
+    
+  -->
+  <!--
+    
+    REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
+    
+  -->
+  <!--
+    
+    INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
+    
+  -->
+  <!--
+    
+    VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
+    
+  -->
+  <!--
+    
+    IMPLICIT CLOSURE INCLUDED
+    
+  -->
+  <!--
+    
+    SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
+    
+  -->
+  <!--
+    
+    INITIALIZATION MODULES INCLUDED
+    
+  -->
+</xs:schema>

@@ -1,0 +1,19 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+
+dc:title [ "RuleML Performative Components" ]
+dc:version [ "0.91.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, query" ]
+dc:description [ "The auxiliary module for RuleML restricted to have only Query children." ]
+dc:date [ "2011-05-16" ]
+dc:language [ "en" ]
+dc:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+RuleML-Query.def = element RuleML { RuleML.attlist, RuleML.header, RuleML-Query.main }
+
+## This restricted RuleML root element contains zero or more Queries.
+RuleML-Query.main |= Query-node.choice*
+# 
+# Optional initialization module allows this module to be independently validated
+# include "init_extension_module.rnc"

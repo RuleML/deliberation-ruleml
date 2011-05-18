@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <arg>
+               * <Ind>
+               * @index
+  -->
+  <xs:element name="arg">
+    <xs:annotation>
+      <xs:documentation>A role used for the positional arguments of a logical atom (&lt;Atom&gt;), i.e. any of the following: &lt;Ind&gt;, &lt;Data&gt;, &lt;Var&gt;, &lt;Skolem&gt; or &lt;Reify&gt; (also &lt;Expr&gt; and &lt;Plex&gt; in non-Datalog sublanguages).
+See http://www.ruleml.org/0.91/glossary/#gloss-arg</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group ref="ruleml:arg.content"/>
+      <xs:attributeGroup ref="ruleml:arg.attlist.choice"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="arg.attlist.choice">
+    <xs:attributeGroup ref="ruleml:arg.attlist.req.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="arg.attlist.req.def">
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="index.attrib.def">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attribute name="index" use="required" type="ruleml:index.value">
+      <xs:annotation>
+        <xs:documentation>A required attribute for specifying the position of a positional argument (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-index</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="index.value">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+  <xs:group name="arg.content">
+    <xs:annotation>
+      <xs:documentation>The content model of positional arguments for atomic formulas consists of any single term.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:AnyTerm.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="AnyTerm.choice">
+    <xs:annotation>
+      <xs:documentation>Terms may be simple or compound.
+Simple terms are either constant or quantifiable (variable).</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:SimpleConstantTerm.choice"/>
+      <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!-- For the declaration of the quantifiable term pattern, see the quantification module (quantifier_module) -->
+  <xs:group name="SimpleConstantTerm.choice">
+    <xs:annotation>
+      <xs:documentation>Skolem constants are simple constant terms, but are not used in keys. </xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Skolem-node.choice"/>
+      <xs:group ref="ruleml:Reify-node.choice"/>
+      <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!-- For the declaration of skolem constants, see the skolem module (skolem_module). -->
+  <!-- For the declaration of reification terms, see the reification module (reify_module). -->
+  <xs:group name="SimpleKeyTerm.choice">
+    <xs:annotation>
+      <xs:documentation>Individuals and literals (data) are simple, constant terms, and may be used in slot keys.</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="ruleml:Individual-node.choice"/>
+      <xs:group ref="ruleml:DataTerm.choice"/>
+    </xs:choice>
+  </xs:group>
+  <!-- For the declaration of expressions terms, see the expression module (expr_module). -->
+  <!-- For the declaration of generalized list terms, see the generalized list module (plex_module). -->
+  <!-- For the declaration of data terms, see the data modules (data_module and complexdata_module). -->
+  <xs:group name="Individual-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the individual tag name. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Ind"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Ind">
+    <xs:annotation>
+      <xs:documentation>An individual constant, as in Predicate logic, which can also be considered to be a fixed argument like RDF resources.
+See http://www.ruleml.org/0.91/glossary/#gloss-Ind</xs:documentation>
+    </xs:annotation>
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="ruleml:Ind.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="Ind.attlist">
+    <xs:annotation>
+      <xs:documentation>Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+    <xs:attributeGroup ref="ruleml:Type.attlist"/>
+  </xs:attributeGroup>
+  <!--
+    For the declaration of the attribute list for resources, see the uri modules (uri_module).
+    For the declaration of the attribute list for objects with user-defined types, see the type module (type_module). 
+  -->
+</xs:schema>
+<!--
+  
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ruleml="http://www.ruleml.org/0.91/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML Custom-Built Schema</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com)</dc:creator>
+  <dc:subject>RuleML, custom-built</dc:subject>
+  <dc:description>custom-built main module for a RuleML sublanguage.</dc:description>
+  <dc:date>2011-05-16T13:44:33-0300</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <!--
+    Call parameters
+    Base URL = http://www.ruleml.org/0.91/relaxng/schema_rnc.php 
+    GET parameter: backbone=x1
+    GET parameter: default=x3
+    GET parameter: termseq=x2
+    GET parameter: lng=x1
+    GET parameter: propo=xf
+    GET parameter: implies=x6
+    GET parameter: terms=xf0f
+    GET parameter: quant=x1
+    GET parameter: expr=x1
+    GET parameter: serial=xf
+    Complete URL = 
+        http://www.ruleml.org/0.91/relaxng/schema_rnc.php?backbone=x1&default=x3&termseq=x2&lng=x1&propo=xf&implies=x6&terms=xf0f&quant=x1&expr=x1&serial=xf&
+  -->
+  <start>
+    <choice>
+      <ref name="Node.choice"/>
+      <ref name="edge.choice"/>
+    </choice>
+  </start>
+  <!--
+    
+    ROOT NODE AND PERFORMATIVES INCLUDED
+    
+  -->
+  <include href="performative_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    ATOMIC FORMULAS INCLUDED
+    
+  -->
+  <include href="atom_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    CONJUNCTIONS AND DISJUNCTIONS INCLUDED
+    
+  -->
+  <include href="andor_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
+    
+  -->
+  <include href="default_optional_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED
+    
+  -->
+  <include href="termseq_bin_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    ORDER MODE - UNORDERED GROUPS ENABLED
+    
+  -->
+  <include href="unordered_groups_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    STRIPE-SKIPPING MODE ENABLED
+    
+  -->
+  <include href="stripe_skipping_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    EXPLICIT DATATYPING ENABLED
+    
+  -->
+  <include href="explicit_datatyping_extension_module.rng">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <include href="dataterm_simple_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <include href="data_simple_content_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    xsi:schemaLocation ALLOWED IN RuleML
+    
+  -->
+  <include href="xsi_schemalocation_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    ABSTRACT HEADERS INCLUDED
+    
+  -->
+  <include href="header_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
+    
+  -->
+  <include href="uri_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    RULEBASES INCLUDED
+    
+  -->
+  <include href="rulebase_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    ENTAILMENTS (PROVES) INCLUDED
+    
+  -->
+  <include href="meta_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    DEGREE OF UNCERTAINTY INCLUDED
+    
+  -->
+  <include href="fuzzy_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    INFERENCE DIRECTION ATTRIBUTE IS INCLUDED
+    
+  -->
+  <include href="direction_attrib_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    NON-DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED
+    
+  -->
+  <include href="direction_non-default_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED
+    
+  -->
+  <include href="direction_default_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED
+    
+  -->
+  <include href="material_attrib_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <include href="material_non-default_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+    
+  -->
+  <include href="material_default_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    OBJECT IDENTIFIERS INCLUDED
+    
+  -->
+  <include href="desc_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    SLOTS INCLUDED
+    
+  -->
+  <include href="slot_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    SLOT CARDINALITY INCLUDED
+    
+  -->
+  <include href="card_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    SLOT WEIGHTS INCLUDED
+    
+  -->
+  <include href="weight_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    EXPLICIT TYPING OF TERMS INCLUDED
+    
+  -->
+  <include href="type_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    DATA TERMS INCLUDED
+    
+  -->
+  <include href="dataterm_any_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    DATA ELEMENTS INCLUDED
+    
+  -->
+  <include href="data_any_content_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    SKOLEM CONSTANTS INCLUDED
+    
+  -->
+  <include href="skolem_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
+    
+  -->
+  <include href="reify_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
+    
+  -->
+  <include href="individual_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
+    
+  -->
+  <include href="variable_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    IMPLICIT CLOSURE INCLUDED
+    
+  -->
+  <include href="closure_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
+    
+  -->
+  <include href="val_absence_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+  <!--
+    
+    INITIALIZATION MODULES INCLUDED
+    
+  -->
+  <include href="init_extension_module.rng" ns="http://www.ruleml.org/0.91/xsd">
+    <start combine="choice">
+      <notAllowed/>
+    </start>
+  </include>
+</grammar>

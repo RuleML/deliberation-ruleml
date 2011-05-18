@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <Data>
+  -->
+  <!--
+    Note: the Relax NG format does not allow explicit type-checking.
+    Use data_explicit_module.rnc for direct validation of explicit type-checking from the Relax NG format.
+    Two versions are needed because of a bug in Trang, the Relax NG schema translator.
+  -->
+  <xs:group name="Data_simple-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the data tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Data_simple.Node.def"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Data_simple.Node.def">
+    <xs:sequence>
+      <xs:element name="Data" type="xsi:anySimpleTypeForElements.datatype.choice">
+        <xs:annotation>
+          <xs:documentation>A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
+See http://www.ruleml.org/0.91/glossary/#gloss-Data
+Data representing a complex datatype that includes xml elements can be represented by escaping for example &lt;element/&gt; becomes &amp;lt;element/&amp;gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

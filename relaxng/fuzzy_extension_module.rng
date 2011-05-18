@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML degree of uncertainty</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, uncertainty, fuzzy, degree</dc:subject>
+  <dc:description>The auxiliary module for degree of uncertainty.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="degree.edge.def"/>
+  </start>
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * <degree>
+  -->
+  <define name="degree-edge.choice" combine="choice">
+    <ref name="degree.edge.def"/>
+  </define>
+  <define name="degree.edge.def">
+    <element name="degree">
+      <a:documentation>An optional uncertainty value (between 0.0 and 1.0) that may be assigned to facts and rules.
+See http://www.ruleml.org/0.91/glossary/#gloss-degree</a:documentation>
+      <ref name="degree.content"/>
+    </element>
+  </define>
+  <define name="degree.content" combine="choice">
+    <a:documentation>The degree role contains a single data term. </a:documentation>
+    <ref name="Data_degree-node.choice"/>
+  </define>
+  <define name="Data_degree-node.choice" combine="choice">
+    <choice>
+      <ref name="Data_any-node.choice"/>
+      <ref name="Data_simple-node.choice"/>
+    </choice>
+  </define>
+  <!---->
+  <define name="edge.choice" combine="choice">
+    <ref name="degree.edge.def"/>
+  </define>
+</grammar>
+<!--
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

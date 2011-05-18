@@ -1,0 +1,736 @@
+<?php
+//Assembler of RNC schema for RuleML 0.91
+// Step 000. Initialize some parameters
+$schemaLocation='';
+$modulesLocation = $schemaLocation . 'modules/';
+$start = ' start = Node.choice | edge.choice'."\n";
+$end = ' inherit = ruleml {start |= notAllowed}';
+$base_url = "http://www.ruleml.org/0.91/relaxng/schema_rnc.php";
+$now =  date(DATE_ATOM,time());
+//Step 00. Write the header
+echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace ruleml = "http://www.ruleml.org/0.91/xsd"
+
+dc:title [ "RuleML Custom-Built Schema" ]
+dc:version [ "0.91.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
+dc:subject [ "RuleML, custom-built" ]
+dc:description [
+    "custom-built main module for a RuleML sublanguage."
+]
+dc:date [ "';
+echo($now);
+echo '" ]
+dc:language [ "en" ]
+dc:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]';
+echo "\n";
+echo "# Call parameters\n";
+$this_url = $base_url;
+$this_url = $this_url . "?";
+echo "# Base URL = $base_url \n";
+//
+//Step 0. Extract all GET parameters
+$backbone = "backbone";
+$backbone_andor = 0;
+$backbone_implies = 1;
+$backbone_quant = 2;
+$backbone_expr = 3;
+$backbone_dis = 4;
+$backbone_fo = 5;
+$backboneParam = $_GET[$backbone];
+$bbackbone = processGETParameter ($backbone);
+$call_fragment = $backbone."=".$backboneParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$default = "default";
+$default_absent = 0;
+$default_present = 1;
+$default_present_fo = 2;
+$defaultParam = $_GET[$default];
+$bdefault = processGETParameter ($default);
+$call_fragment = $default."=".$defaultParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$termseq = "termseq";
+$termseqParam = $_GET[$termseq];
+$btermseq = processGETParameter ($termseq);
+$call_fragment = $termseq."=".$termseqParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$lng = "lng";
+$lng_abbrev_en = 0;
+$lng_long_en = 1;
+//$lng_long_fr = 2;
+$lngParam = $_GET[$lng];
+$blng = processGETParameter ($lng);
+$call_fragment = $lng."=".$lngParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$propo = "propo";
+$propo_uri = 0;
+$propo_rulebase = 1;
+$propo_entails = 2;
+$propo_degree = 3;
+$propo_neg = 4;
+$propo_naf = 5;
+$propoParam = $_GET[$propo];
+$bpropo = processGETParameter ($propo);
+$call_fragment = $propo."=".$propoParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$implies = "implies";
+$implies_equivalent = 0;
+$implies_direction = 1;
+$implies_material = 2;
+$impliesParam = $_GET[$implies];
+$bimplies = processGETParameter ($implies);
+$call_fragment = $implies."=".$impliesParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$terms = "terms";
+$terms_oid = 0;
+$terms_slot = 1;
+$terms_card = 2;
+$terms_weight = 3;
+$terms_equal = 4;
+$terms_oriented = 5;
+$terms_type = 8;
+$terms_data = 9;
+$terms_skolem = 10;
+$terms_reify = 11;
+$termsParam = $_GET[$terms];
+$bterms = processGETParameter ($terms);
+$call_fragment = $terms."=".$termsParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$quant = "quant";
+$quant_closure = 0;
+$quant_resl = 1;
+$quant_repo = 2;
+$quantParam = $_GET[$quant];
+$bquant = processGETParameter ($quant);
+$call_fragment = $quant."=".$quantParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+//
+$expr = "expr";
+$expr_val_absent = 0;
+$expr_plex = 1;
+$expr_val_nondefault = 2;
+$expr_in = 3;
+$exprParam = $_GET[$expr];
+$bexpr = processGETParameter ($expr);
+$call_fragment = $expr."=".$exprParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+
+$serialization = "serial";
+$serialization_unordered = 0;
+$serialization_stripeskip = 1;
+$serialization_datatyping = 2;
+$serialization_schemaLocation = 3;
+$serializationParam = $_GET[$serialization];
+$bserialization = processGETParameter ($serialization);
+$call_fragment = $serialization."=".$serializationParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+
+
+echo "# Complete URL = \n";
+echo "#     " . $this_url . "\n";
+
+//FIXME: add a step here to check that passed parameters are valid -
+//       the dashboard has disabled several options
+
+// FIXME: add a step here to transform the passed parameter bits
+// into a bit for each module.
+// REQUIREMENT: for a fixed syntax base parameter, the extension module
+//              bits must be a monotonic function of syntax extension bits
+//              (grammar lattice code is monotonic function
+//               of syntax lattice code)
+// BASE PARAMETERS ARE:
+//   in $default: 3 possibilities (default absent, default present
+//                  restricted (<fo), default present unrestricted (fo))
+//   in $lng: 2 possibilities
+//   these options are independent, so we have 6 roots
+//   Each represents a particular combination of base modules
+//   a. no base default modules
+//   b. default_required included
+//   c. default_required and default_required_folog included
+//   abbrev-en. no long_name modules
+//   long-en. all long_name modules present (except we drop repo and resl
+//      if not needed because of Trang bug)   
+//Step 1A. Check the parameter for default attribute handling
+if (!(($bdefault==1)|($bdefault==10)|
+        ($bdefault==11)|($bdefault==110)|($bdefault==111))){
+    echo "#\n# Error: The ".$default." parameter value ".$defaultParam." is not allowed.\n";
+
+} else {
+  //Step 1. Assemble the propositional language 
+  // Add the start statement
+  echo $start;
+  // Include the modules for all languages
+  echo "#\n# ROOT NODE AND PERFORMATIVES INCLUDED\n";
+  echo "#\n".'include "' . $modulesLocation .
+      'performative_extension_module.rnc"'."$end\n";
+  echo "#\n# ATOMIC FORMULAS INCLUDED\n";
+  echo "#\n".'include "' . $modulesLocation .
+      'atom_extension_module.rnc"'."$end\n";
+  echo "#\n# INITIALIZATION MODULES INCLUDED\n";
+  echo "#\n".'include "' . $modulesLocation .
+      'init_extension_module.rnc"'."$end\n";
+  // Include abstract patterns if needed
+  $needHeader = extractBit($bpropo, $propo_degree) +
+    extractBit($bterms, $terms_oid);
+  if ($needHeader>0){    
+  echo "#\n# ABSTRACT HEADERS INCLUDED\n";
+  echo "#\n".'include "' . $modulesLocation .
+      'header_extension_module.rnc"'."$end\n";
+  }      
+  // Include individuals if needed
+  $needInd = $btermseq;
+  $needInd = $needInd + extractBit($bterms, $terms_oid);
+  $needInd = $needInd + extractBit($bterms, $terms_slot);
+  $needInd = $needInd + extractBit($bterms, $terms_equal);
+  $needInd = $needInd + extractBit($bterms, $terms_type);
+  if ($needInd>0){
+    echo "#\n# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'individual_extension_module.rnc"'."$end\n";      
+  }
+  // Include variables if needed
+  $needQuant = extractBit($bbackbone, $backbone_quant);
+  $needVar = $needQuant + $bquant;   
+  if ($needVar > 0){
+    echo "#\n# VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'variable_extension_module.rnc"'."$end\n";      
+  }
+  // Include inference direction attributes if needed
+  $needDefault =  
+    extractBit($bdefault, $default_present);
+  $needDir = $needDefault + 
+    extractBit($bimplies, $implies_direction);
+  if ($needDir > 0){
+    echo "#\n# INFERENCE DIRECTION ATTRIBUTE IS INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'direction_attrib_extension_module.rnc"'."$end\n";      
+  }
+  // Include material implication attributes if needed
+  $needMat = $needDefault + 
+    extractBit($bimplies, $implies_material);
+  if ($needMat > 0){
+    echo "#\n# MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'material_attrib_extension_module.rnc"'."$end\n";      
+  }
+  // Include oriented equality attribute if needed
+  $needOriented = $needDefault*
+    extractBit($bterms, $terms_equal) + 
+    extractBit($bterms, $terms_oriented);
+  if ($needOriented > 0){
+    echo "#\n# ORIENTED EQUALITY ATTRIBUTE IS INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'oriented_attrib_extension_module.rnc"'."$end\n";      
+  }
+  // Include set-valued expression attribute if needed
+  // In 0.91: must have expressions and equality to use the val attrib
+  // otherwise, the choice pattern for the val attrib is set to empty
+  // in hornlog and up
+  if (extractBit($bexpr, $expr_val_nondefault)+
+        extractBit($bexpr, $expr_val_absent)==0){
+    echo "#\n# Error: The ".$expr." parameter value ".
+             $exprParam." is not allowed.\n";  
+        }
+  $needVal = ($needDefault + extractBit($bexpr, $expr_val_nondefault))*
+    extractBit($bbackbone, $backbone_expr)* 
+    extractBit($bterms, $terms_equal);
+  $needVal_absent = extractBit($bexpr, $expr_val_absent)*
+    extractBit($bbackbone, $backbone_expr);
+  if ($needVal > 0){
+    echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'val_attrib_extension_module.rnc"'."$end\n";      
+  }
+  if ( $needVal_absent ){
+      echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'val_absence_extension_module.rnc"'."$end\n";
+  }  
+  // Include interpreted expression attribute if needed
+  $needIn = $needDefault*
+    extractBit($bbackbone, $backbone_expr) +
+    extractBit($bexpr, $expr_in);
+  if ($needIn > 0){
+    echo "#\n# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'in_attrib_extension_module.rnc"'."$end\n";      
+  }
+
+  // Include default values of attributes if needed
+  if ($needDefault){
+    echo "#\n# DEFAULT ATTRIBUTE VALUES INCLUDED\n";
+    echo "#\n".'include "' . $modulesLocation .
+      'direction_default_extension_module.rnc"'."$end\n";
+    if ($needIn > 0){
+      echo "#\n".'include "' . $modulesLocation .
+        'in_default_extension_module.rnc"'."$end\n";
+    }
+    echo "#\n".'include "' . $modulesLocation .
+      'material_default_extension_module.rnc"'."$end\n";
+    if ($needOriented>0){
+      echo "#\n".'include "' . $modulesLocation .
+        'oriented_default_extension_module.rnc"'."$end\n";
+    }
+    if ($needVal > 0){
+      echo "#\n".'include "' . $modulesLocation .
+        'val_default_extension_module.rnc"'."$end\n";
+    }
+  }
+  //Step 2. Assemble the backbone language 
+  //Step 2A. Determine which module to include for positional arguments
+  // As long as translation to XSD is required, we are not able to
+  // orthogonalize these modules, so a selection of one module must be made. 
+  // Allowed values of $bparam are
+  // 0($param = x0 or 0 or absent): no positional arguments, 
+  //         for propositional and pure frame languages
+  // FIXME (activate in 1.0) 1($param = x1): zero or one positional argument, 
+  //         for taxonomies
+  // 10 ($param = x2): zero or two positional arguments, 
+  // for binary languages with object id
+  //         or explicit typing of individuals
+  // FIXME (activate in 1.0) 11 ($param = x3): 
+  //         zero, one or two positional arguments, 
+  //         for binary languages w/o object id
+  // 111 ($param = x7): zero or more positional arguments, 
+  //         for polyadic languages 
+  // Check that the value is allowed.
+  // DOCUMENTME: apparent violation of monotonicity 
+  //             but  termseq_bin is superfluous if termseq_poly is included
+  if (!(
+        $btermseq == 0|
+        $btermseq == 10|
+        $btermseq == 111
+        )){
+    echo "#\n# Error: The ".$termseq." parameter ".
+                    $termseqParam." is not allowed.\n";
+  } else {
+    if ($btermseq == 10){
+      echo "#\n# BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+        'termseq_bin_extension_module.rnc"'."$end\n";
+    }
+    if ($btermseq == 111){
+      echo "#\n# POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'termseq_poly_extension_module.rnc"'."$end\n";
+    }
+  }
+  //Step 2B. Assemble the backbone expressivity from extension modules 
+  if ($bbackbone > 0){
+    // Check the bit for conjunctions and disjunctions
+    if (extractBit($bbackbone, $backbone_andor)){
+      echo "#\n# CONJUNCTIONS AND DISJUNCTIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'andor_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for implications
+    if (extractBit($bbackbone, $backbone_implies)){
+      echo "#\n# IMPLICATIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'implication_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for quantifications
+    if (extractBit($bbackbone, $backbone_quant)){
+      echo "#\n# QUANTIFICATION OVER VARIABLES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'quantification_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for expressions
+    if (extractBit($bbackbone, $backbone_expr)){
+      echo "#\n# EXPRESSIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'expr_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for disjunctive logic
+    if (extractBit($bbackbone, $backbone_dis)){
+      echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'dis_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for full first-order logic
+    if (extractBit($bbackbone, $backbone_fo)){
+      echo "#\n# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED \n";
+      if (extractBit($bpropo,$propo_neg)){
+        echo "#\n# FULL FIRST-ORDER EXPRESSIVITY IS AVAILABLE \n";
+      }
+      echo "#\n".'include "' . $modulesLocation .
+          'folog_cl_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$backbone." parameter is zero or not provided.\n";
+    echo "# The smallest ".$backbone." language ".
+        "(propositional atoms) is assumed.\n";
+  }
+  //Step 2C. Include the appropriate module(s) for default values present
+  //         absent, or optional
+  // DOCUMENTME: apparent violation of monotonicity with else clause
+  //             but is actually OK because the $default_required... module
+  //             is redundant (causes duplicate attributes) 
+  //             if default_optional is included.
+  //  BETTER: refactor with a choice parameter, 
+  //          so both can be included to get optional
+  if (extractBit($bdefault, $default_absent)){
+    echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL\n";
+    echo "#\n".'include "' . $modulesLocation .
+        'default_optional_extension_module.rnc"'."$end\n";
+    if (extractBit($bbackbone, $backbone_fo)){
+      echo "#\n".'include "' . $modulesLocation .
+          'default_optional_folog_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    if (extractBit($bdefault, $default_present)) {
+      echo "#\n# ATTRIBUTES WITH DEFAULT VALUES REQUIRED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'default_required_base_module.rnc"'."$end\n";
+      if (extractBit($bbackbone, $backbone_fo) &
+          extractBit($bdefault, $default_present_fo)){
+          echo "#\n".'include "' . $modulesLocation .
+              'default_required_folog_base_module.rnc"'."$end\n";
+      }
+    } 
+  }
+  //Step 3. Mix-in optional extension modules
+  //Step 3A. Include proposition-related modules 
+  $paramName = $propo;
+  if ($bpropo > 0){
+    // Check the bit for universal resource identifiers (URIs)
+    if (extractBit($bpropo, $propo_uri)){
+      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'uri_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for rulebases
+    if (extractBit($bpropo, $propo_rulebase)){
+      echo "#\n# RULEBASES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'rulebase_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for entailments
+    if (extractBit($bpropo, $propo_entails)){
+      echo "#\n# ENTAILMENTS (PROVES) INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'meta_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for degree of uncertainty
+    if (extractBit($bpropo, $propo_degree)){
+      echo "#\n# DEGREE OF UNCERTAINTY INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'fuzzy_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for strong negations
+    if (extractBit($bpropo, $propo_neg)){
+      echo "#\n# STRONG NEGATION INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'neg_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for weak negations
+    if (extractBit($bpropo, $propo_naf)){
+      echo "#\n# WEAK NEGATIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'naf_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# Classical propositions are assumed,".
+            " formulas are crisp,\n";
+            " neither URIs,rulebases, meta-logic, nor negation is available.\n";
+  }
+  //Step 3B. Include implication-related modules 
+  $paramName = $implies;
+  if ($bimplies > 0){
+    // Check the bit for non-default inference direction
+    if (extractBit($bimplies, $implies_direction)>0){
+      echo "#\n# NON-DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+            'direction_non-default_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for non-material implication
+    if (extractBit($bimplies, $implies_material)>0){
+      echo "#\n# NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+            'material_non-default_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for equivalences
+    if (extractBit($bimplies, $implies_equivalent)){
+      echo "#\n# EQUIVALENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'equivalent_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# No equivalence connective is available.\n";
+  }
+  //Step 3C. Include term-related modules 
+  $paramName = $terms;
+  if ($bterms > 0){
+    // Check the bit for object identifiers
+    if (extractBit($bterms, $terms_oid)){
+      echo "#\n# OBJECT IDENTIFIERS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'desc_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for slots
+    if (extractBit($bterms, $terms_slot)){
+      echo "#\n# SLOTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'slot_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for slot cardinality
+    if (extractBit($bterms, $terms_card)){
+      echo "#\n# SLOT CARDINALITY INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'card_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for slot weights
+    if (extractBit($bterms, $terms_weight)){
+      echo "#\n# SLOT WEIGHTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'weight_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for equations
+    if (extractBit($bterms, $terms_equal)){
+      echo "#\n# EQUATIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'equal_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for oriented equations
+    if (extractBit($bterms, $terms_oriented)){
+      echo "#\n# ORIENTED EQUATIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'oriented_non-default_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for explicit typing of terms
+    if (extractBit($bterms, $terms_type)){
+      echo "#\n# EXPLICIT TYPING OF TERMS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'type_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for data terms
+    if (extractBit($bterms, $terms_data)){
+      echo "#\n# DATA TERMS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'dataterm_any_extension_module.rnc"'."$end\n";
+    }
+    // Include data element if needed 
+    // for example, for either terms or degree of uncertainty
+    $needData = extractBit($bterms, $terms_data) +
+                extractBit($bpropo, $propo_fuzzy);
+    if ($needData){
+      echo "#\n# DATA ELEMENTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'data_any_content_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for skolem constants
+    if (extractBit($bterms, $terms_skolem)){
+      echo "#\n# SKOLEM CONSTANTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'skolem_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for reified terms
+    // DOCUMENTME: apparent violation of monotonicity with else clause
+    //             needed for conversion to XSD with process strict
+    //             In that case, monotonicity is preserved.
+      if (extractBit($bterms, $terms_reify)){
+      if ($bserialization>0){    
+        echo "#\n# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT\n";
+        echo "#\n".'include "' . $modulesLocation .
+            'reify_extension_module.rnc"'."$end\n";
+      } else {
+        echo "#\n# REIFICATION TERMS INCLUDED, ANY CONTENT\n";
+        echo "#\n".'include "' . $modulesLocation .
+            'reify_any_extension_module.rnc"'."$end\n";      
+      }      
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# Classical terms are assumed,".
+               " no data, skolem or reified terms are available,\n";
+               " slots are not allowed, no built-in equation operator".
+               " is available.\n";
+  }
+  //Step 3D. Include quantification-related modules 
+  $paramName = $quant;
+  if ($bquant > 0){
+    // Check the bit for implicit closure
+    if (extractBit($bquant, $quant_closure)){
+      echo "#\n# IMPLICIT CLOSURE INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'closure_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for slotted rest variables
+    if (extractBit($bquant, $quant_resl)){
+      echo "#\n# SLOTTED REST VARIABLES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'resl_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for positional rest variables
+    if (extractBit($bquant, $quant_repo)){
+      echo "#\n# POSITIONAL REST VARIABLES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'repo_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# No rest variables are available.\n";
+  }
+  //Step 3E. Include expression-related modules 
+  $paramName = $expr;
+  if ($bexpr > 0){
+    // Check the bit for generalized lists
+    if (extractBit($bexpr, $expr_plex)){
+      echo "#\n# GENERALIZED LISTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'plex_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for set-valued expressions
+    if (extractBit($bexpr, $expr_val_nondefault)){
+      echo "#\n# NON-DEFAULT VALUES OF THE SET-VALUED ATTRIBUTE INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'val_non-default_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for interpretation of expressions
+    if (extractBit($bexpr, $expr_in)){
+      echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'in_non-default_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# Classical expressions (if any) are assumed,".
+               " and no built-in list function is available.\n";
+  }
+  //Step 3F. Include serialization modules 
+  $paramName = $serialization;
+  if ($bserialization > 0){
+    // DOCUMENTME: apparent violation of monotonicity with else clause
+    //       However, ordered groups is contained in unorder groups
+    //       so it is redundant.
+    // Check the bit for unordered groups
+    if (extractBit($bserialization, $serialization_unordered)){
+      echo "#\n# ORDER MODE - UNORDERED GROUPS ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'unordered_groups_extension_module.rnc"'."$end\n";
+    }
+    
+    // Check the bit for stripe-skipping
+    if (extractBit($bserialization, $serialization_stripeskip)){
+      echo "#\n# STRIPE-SKIPPING MODE ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'stripe_skipping_extension_module.rnc"'."$end\n";
+    }
+    
+    // Check the bit for explicit datatyping
+    if (extractBit($bserialization, $serialization_datatyping)){
+      echo "#\n# EXPLICIT DATATYPING ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'explicit_datatyping_extension_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'dataterm_simple_extension_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'data_simple_content_extension_module.rnc"'."$end\n";
+    }
+    // Check the bit for xsi:schemaLocation
+  if (extractBit($bserialization, $serialization_schemaLocation)){
+      echo "#\n# xsi:schemaLocation ALLOWED IN RuleML\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'xsi_schemalocation_extension_module.rnc"'."$end\n";
+    }
+  } else {
+    echo "#\n# The ".$paramName." parameter is zero or not provided.\n";
+    echo "# Normal-form ".$paramName." is assumed.\n";
+    echo "#\n# ORDER MODE - UNORDERED GROUPS DISABLED\n";
+    echo "#\n".'include "' . $modulesLocation .
+          'ordered_groups_extension_module.rnc"'."$end\n";    
+  }
+  //Step 4. Translate to requested xs:lang
+  // FIXME: need to handle differently when more than one alternate available
+  //        or simulataneous alternate element names allowed
+    $paramName = $lng;
+  if ($blng > 0){
+    // Check the bit for long English element names
+    if (extractBit($blng, $lng_long_en)){
+      echo "#\n# LONG ENGLISH ELEMENT NAMES\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'long_name_base_module.rnc"'."$end\n";
+      // this second module is separated out because of a short-coming in trang
+      // where element xyz{notAllowed} is not simplified to notAllowed
+      // with the result that we cannot rename abstract elements if
+      // we want to be able to generate XSD or monolithic content-models    
+      if (extractBit($bquant, $quant_repo)){
+        echo "#\n".'include "' . $modulesLocation .
+            'long_name_repo_base_module.rnc"'."$end\n";      
+      }
+      if (extractBit($bquant, $quant_resl)){
+        echo "#\n".'include "' . $modulesLocation .
+            'long_name_resl_base_module.rnc"'."$end\n";
+      }
+    }
+  }
+}
+
+
+//Functions
+function processGETParameter ($paramName){
+  $param = $_GET[$paramName];
+  //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
+  if (strlen($param)>0){
+    $param_base = substr($param,0,1);
+  } else {
+    $param_base = 0;
+  }
+  if (preg_match('/x|0/',$param_base)){
+    //echo("#  The ".$paramName." parameter base is ".$param_base."\n");
+    if (strcmp($param_base, 'x')==0){
+      $xparam = substr($param,1);
+      //echo("# The ".$paramName." parameter was provided in hexadecimal");
+      //echo(" as ".$xparam);
+      //echo(".\n");
+      if (ctype_xdigit($xparam)) {
+        $bparam = decbin(hexdec($xparam));
+      } else {
+        echo "#\n# Error: The string $xparam does not consist of all".
+             "hexadecimal digits.\n";
+        echo "# Zero ".$paramName." parameter is assumed.\n";
+        $bparam = 0;
+      }
+    } elseif (strcmp($param_base, '0')==0){
+      $bparam = 0;
+    }
+  } else {
+    echo "<#\n# Error: The ".$paramName." parameter ".$param." is not a".
+         " hexidecimal or blank string.\n";
+    echo "# Zero ".$paramName." parameter is assumed.\n";
+    $bparam = 0;
+  }
+  //echo("#\n# The ".$paramName." parameter is ".$bparam." in binary.\n");
+  return $bparam;
+}
+
+function extractBit ($bparam, $bitIndex) {
+  if (strlen($bparam)>$bitIndex) {
+    $bparamBit =  (boolean) (substr($bparam, -1-$bitIndex, 1)==1);
+  } else {
+    $bparamBit = false;
+  }
+  return $bparamBit;
+}
+?>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML Skolems</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, skolem</dc:subject>
+  <dc:description>The auxiliary module for skolems.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="Skolem.Node.def"/>
+  </start>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <Skolem>
+  -->
+  <define name="Skolem-node.choice" combine="choice">
+    <a:documentation>an extension point to allow alternate names and internationalization for Skolem constants</a:documentation>
+    <ref name="Skolem.Node.def"/>
+  </define>
+  <define name="Skolem.Node.def">
+    <element name="Skolem">
+      <a:documentation>A Skolem individual constant, like RDF's blank nodes.
+See http://www.ruleml.org/0.91/glossary/#gloss-Skolem</a:documentation>
+      <ref name="Skolem.attlist"/>
+      <ref name="Skolem.content"/>
+    </element>
+  </define>
+  <define name="Skolem.attlist" combine="interleave">
+    <a:documentation>Skolems optionally accept the attribute pattern of objects with user-defined types.</a:documentation>
+    <optional>
+      <ref name="Type.attlist"/>
+    </optional>
+  </define>
+  <define name="Skolem.content" combine="choice">
+    <a:documentation>The content model for skolems is text.</a:documentation>
+    <text/>
+  </define>
+  <define name="Node.choice" combine="choice">
+    <ref name="Skolem.Node.def"/>
+  </define>
+</grammar>
+<!-- include "init_extension_module.rnc" -->

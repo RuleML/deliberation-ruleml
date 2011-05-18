@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <xs:attributeGroup name="cardinality-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the cardinality attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="card" type="ruleml:cardinality.value">
+      <xs:annotation>
+        <xs:documentation>the cardinality of a slot.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="card.attrib.def">
+    <xs:annotation>
+      <xs:documentation>An attribute optionally specifying a &lt;slot&gt;'s cardinality. See http://www.ruleml.org/0.91/glossary/#gloss-card</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="card" use="required" type="ruleml:cardinality.value">
+      <xs:annotation>
+        <xs:documentation>the cardinality of a slot.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="cardinality.value">
+    <xs:restriction base="xs:nonNegativeInteger"/>
+  </xs:simpleType>
+  <xs:element name="card" type="ruleml:cardinality.value"/>
+</xs:schema>

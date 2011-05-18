@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:ruleml="http://www.ruleml.org/0.91/xsd" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML Reification</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, reify, reification</dc:subject>
+  <dc:description>The auxiliary module for reification of RuleML objects.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="Reify.Node.def"/>
+  </start>
+  <!-- for modules -->
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+              * <Reify>
+  -->
+  <define name="Reify-node.choice" combine="choice">
+    <a:documentation>an extension point to allow alternate names and internationalization for reification</a:documentation>
+    <ref name="Reify.Node.def"/>
+  </define>
+  <define name="Reify.Node.def">
+    <element name="Reify">
+      <a:documentation>Supports reification (a kind of instantiation or quasi-quotation) as needed by SWSL. 
+It allows any RuleML tag available within the current sublanguage as content, treating 
+it as a term for performing reasoning on, e.g.
+&lt;Reify&gt;&lt;Ind&gt;John Doe&lt;/Ind&gt;&lt;/Reify&gt;
+See http://www.ruleml.org/0.91/glossary/#gloss-Reify</a:documentation>
+      <ref name="Reify.content"/>
+    </element>
+  </define>
+  <define name="Reify.content" combine="choice">
+    <optional>
+      <choice>
+        <ref name="Node.choice"/>
+        <ref name="edge.choice"/>
+      </choice>
+    </optional>
+  </define>
+  <!--
+    FIXME This is still not right - RuleML can allow children from other namespaces within Data (Structure in 1.0).
+    Better to accumulate the patterns for all defined elements, and use that as the content model for Reify.
+    Reify.content |= Node.choice | edge.choice
+    AnyRML =
+       element ruleml:* {
+           (attribute * { text }
+            | AnyRML
+            | text)*
+       }
+  -->
+  <define name="Node.choice" combine="choice">
+    <ref name="Reify.Node.def"/>
+  </define>
+</grammar>
+<!--
+  Optional initialization modules allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

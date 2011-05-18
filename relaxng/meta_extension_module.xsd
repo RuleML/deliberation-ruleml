@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.ruleml.org/0.91/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ruleml="http://www.ruleml.org/0.91/xsd">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="explicit_datatyping_extension_module.xsd"/>
+  <!--
+    Initialize patterns to allow the declaration of abstract elements while maintaining validity.
+    This module declares or extends the following RuleML elements and attributes:
+               * <Entails>
+               * <body>
+               * <head>
+  -->
+  <xs:group name="Entails-node.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the entailment tag name.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:Entails"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Entails">
+    <xs:annotation>
+      <xs:documentation>Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
+	Kowalski/Bowen's object/meta-level-amalgamated logic).
+See http://www.ruleml.org/0.91/glossary/#gloss-Entails </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="ruleml:Entails.header"/>
+        <xs:group ref="ruleml:Entails.main"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- The attribute list of the entailment element is initialized empty, but may be over-ridden by optional modules. -->
+  <xs:group name="Entails.header">
+    <xs:annotation>
+      <xs:documentation>Logical entailments optionally accept the header pattern of general formulas.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:Object.header"/>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    The object header may be positionally-dependent, 
+    see the position-(in)dependence serialization modules (orderstrict_module, orderlax_module).
+    
+    Entails.main |= notAllowed is declared in the initialization module.
+    This pattern must be over-ridden to allow the Entails element to be used.
+    The pattern of the main content of an entailment is serialization dependent,
+    but it will contain exactly one body (if) and one head (then).
+    For the declaration of the main content if entailments, see the serialization modules (orderstrict_module or orderlax_module)
+  -->
+  <xs:group name="body_Entails.name.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the body tag name in entailments.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:body"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="body">
+    <xs:annotation>
+      <xs:documentation>The body of an implication rule (&lt;Implies&gt;) containing the Premise(s), also known as the "antecedent" or "if" part of the rule. 
+Also used as the "antecedent" part of an entailment (&lt;Entails&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-body
+ Within Entails...</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group ref="ruleml:body_Entails.content"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="body_Entails.content">
+    <xs:annotation>
+      <xs:documentation>The body of an entailment contains a single rulebase.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Rulebase-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="head_Entails.name.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the head tag name in entailments.  </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="ruleml:head"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="head">
+    <xs:annotation>
+      <xs:documentation>The head of an implication rule (&lt;Implies&gt;) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
+Also used as the "consequent" part of an entailment (&lt;Entails&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-head
+ within Entails</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group ref="ruleml:head_Entails.content"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="head_Entails.content">
+    <xs:annotation>
+      <xs:documentation>The head of an entailment contains a single rulebase.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:group ref="ruleml:Rulebase-node.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <!---->
+</xs:schema>
+<!--
+  
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

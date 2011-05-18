@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!--
+    This module declares the following RuleML elements and attributes:
+               * @oriented
+    API
+    oriented-att.choice
+    oriented.value
+  -->
+  <xs:attributeGroup name="oriented-att.choice">
+    <xs:annotation>
+      <xs:documentation>an extension point for alternate spellings and internationalization of the oriented equation attribute name.  </xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="oriented">
+      <xs:annotation>
+        <xs:documentation>An attribute indicating whether an equation (&lt;Equal&gt;) is oriented (directed) or unoriented (symmetric).    
+   See http://www.ruleml.org/1.0/glossary/#gloss-@oriented</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="oriented.attrib.def">
+    <xs:attribute name="oriented" use="required">
+      <xs:annotation>
+        <xs:documentation>An attribute indicating whether an equation (&lt;Equal&gt;) is oriented (directed) or unoriented (symmetric).    
+   See http://www.ruleml.org/1.0/glossary/#gloss-@oriented</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="oriented" abstract="true"/>
+</xs:schema>

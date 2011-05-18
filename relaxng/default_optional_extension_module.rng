@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML Optional Default-Valued Attributes</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, optional default-valued attributes</dc:subject>
+  <dc:description>The auxiliary module to allow attributes with default values to be optional.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <notAllowed/>
+  </start>
+  <!---->
+  <define name="Expr.attlist" combine="interleave">
+    <a:documentation>expressionss may have interpretation as an optional attribute.</a:documentation>
+    <optional>
+      <ref name="interpretation-att.choice"/>
+    </optional>
+  </define>
+  <define name="Fun.attlist" combine="interleave">
+    <a:documentation>functors may have interpretation and single-valuedness as optional attributes.</a:documentation>
+    <optional>
+      <ref name="interpretation-att.choice"/>
+    </optional>
+  </define>
+  <define name="Fun.attlist" combine="interleave">
+    <optional>
+      <ref name="singlevalued-att.choice"/>
+    </optional>
+  </define>
+  <define name="Implies.attlist" combine="interleave">
+    <a:documentation>implications may have inference direction and material implication as optional attributes. </a:documentation>
+    <optional>
+      <ref name="direction-att.choice"/>
+    </optional>
+  </define>
+  <define name="Implies.attlist" combine="interleave">
+    <optional>
+      <ref name="material-att.choice"/>
+    </optional>
+  </define>
+  <define name="Rulebase.attlist" combine="interleave">
+    <a:documentation>rulebases may have scope inference direction  and scope material implication as optional attributes. </a:documentation>
+    <optional>
+      <ref name="mapDirection-att.choice"/>
+    </optional>
+  </define>
+  <define name="Rulebase.attlist" combine="interleave">
+    <optional>
+      <ref name="mapMaterial-att.choice"/>
+    </optional>
+  </define>
+  <define name="AssertRetract.attlist" combine="interleave">
+    <a:documentation>assertions and retractions may have scope inference direction  and scope material implication as optional attributes. </a:documentation>
+    <optional>
+      <ref name="mapDirection-att.choice"/>
+    </optional>
+  </define>
+  <define name="AssertRetract.attlist" combine="interleave">
+    <optional>
+      <ref name="mapMaterial-att.choice"/>
+    </optional>
+  </define>
+  <define name="Equal.attlist" combine="interleave">
+    <a:documentation>equations have orientation as an optional attribute.</a:documentation>
+    <optional>
+      <ref name="oriented-att.choice"/>
+    </optional>
+  </define>
+</grammar>
+<!--
+  
+  include "init_extension_module.rnc"
+-->

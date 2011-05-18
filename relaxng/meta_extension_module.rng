@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML meta-logic Components</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, Meta-logic, entails</dc:subject>
+  <dc:description>The auxiliary module for the meta-logic components.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <choice>
+      <ref name="Entails.Node.def"/>
+      <ref name="head_Entails.edge.def"/>
+      <ref name="body_Entails.edge.def"/>
+    </choice>
+  </start>
+  <!--
+    Initialize patterns to allow the declaration of abstract elements while maintaining validity.
+    This module declares or extends the following RuleML elements and attributes:
+               * <Entails>
+               * <body>
+               * <head>
+  -->
+  <define name="Entails-node.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the entailment tag name.  </a:documentation>
+    <ref name="Entails.Node.def"/>
+  </define>
+  <define name="Entails.Node.def">
+    <element name="Entails">
+      <a:documentation>Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
+	Kowalski/Bowen's object/meta-level-amalgamated logic).
+See http://www.ruleml.org/0.91/glossary/#gloss-Entails </a:documentation>
+      <ref name="Entails.attlist"/>
+      <ref name="Entails.header"/>
+      <ref name="Entails.main"/>
+    </element>
+  </define>
+  <!-- The attribute list of the entailment element is initialized empty, but may be over-ridden by optional modules. -->
+  <define name="Entails.attlist" combine="interleave">
+    <empty/>
+  </define>
+  <define name="Entails.header" combine="interleave">
+    <a:documentation>Logical entailments optionally accept the header pattern of general formulas.</a:documentation>
+    <optional>
+      <ref name="Object.header"/>
+    </optional>
+  </define>
+  <!--
+    The object header may be positionally-dependent, 
+    see the position-(in)dependence serialization modules (orderstrict_module, orderlax_module).
+    
+    Entails.main |= notAllowed is declared in the initialization module.
+    This pattern must be over-ridden to allow the Entails element to be used.
+    The pattern of the main content of an entailment is serialization dependent,
+    but it will contain exactly one body (if) and one head (then).
+    For the declaration of the main content if entailments, see the serialization modules (orderstrict_module or orderlax_module)
+  -->
+  <define name="body_Entails.name.choice" combine="choice">
+    <a:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the body tag name in entailments.  </a:documentation>
+    <ref name="body_Entails.edge.def"/>
+  </define>
+  <define name="body_Entails.edge.def">
+    <element name="body">
+      <a:documentation>The body of an implication rule (&lt;Implies&gt;) containing the Premise(s), also known as the "antecedent" or "if" part of the rule. 
+Also used as the "antecedent" part of an entailment (&lt;Entails&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-body
+ Within Entails...</a:documentation>
+      <ref name="body_Entails.content"/>
+    </element>
+  </define>
+  <define name="body_Entails.content" combine="choice">
+    <a:documentation>The body of an entailment contains a single rulebase.</a:documentation>
+    <ref name="Rulebase-node.choice"/>
+  </define>
+  <define name="head_Entails.name.choice" combine="choice">
+    <a:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the head tag name in entailments.  </a:documentation>
+    <ref name="head_Entails.edge.def"/>
+  </define>
+  <define name="head_Entails.edge.def">
+    <element name="head">
+      <a:documentation>The head of an implication rule (&lt;Implies&gt;) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
+Also used as the "consequent" part of an entailment (&lt;Entails&gt;).
+See http://www.ruleml.org/0.91/glossary/#gloss-head
+ within Entails</a:documentation>
+      <ref name="head_Entails.content"/>
+    </element>
+  </define>
+  <define name="head_Entails.content" combine="choice">
+    <a:documentation>The head of an entailment contains a single rulebase.</a:documentation>
+    <ref name="Rulebase-node.choice"/>
+  </define>
+  <!---->
+  <define name="Node.choice" combine="choice">
+    <ref name="Entails.Node.def"/>
+  </define>
+  <define name="edge.choice" combine="choice">
+    <choice>
+      <ref name="head_Entails.edge.def"/>
+      <ref name="body_Entails.edge.def"/>
+    </choice>
+  </define>
+</grammar>
+<!--
+  
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

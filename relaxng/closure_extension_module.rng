@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML closure attribute</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, closure</dc:subject>
+  <dc:description>The auxiliary module for the optional closure attribute.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <choice>
+      <ref name="closure.edge.def"/>
+      <ref name="mapClosure.edge.def"/>
+    </choice>
+  </start>
+  <!--
+    This module declares the following RuleML attribute:
+       * @closure
+       * @mapClosure
+  -->
+  <define name="closure-att.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the implicit closure attribute name.  </a:documentation>
+    <ref name="closure.attrib.def"/>
+  </define>
+  <define name="closure.attrib.def">
+    <attribute name="closure">
+      <a:documentation>An attribute indicating how the contained free variables are quantified. 
+Allowed values are "universal" and "existential".
+See http://www.ruleml.org/0.91/glossary/#gloss-@closure</a:documentation>
+      <ref name="closure.value"/>
+    </attribute>
+  </define>
+  <define name="closure.value" combine="choice">
+    <choice>
+      <value>universal</value>
+      <value>existential</value>
+    </choice>
+  </define>
+  <define name="mapClosure-att.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the scope  implicit closure attribute name.  </a:documentation>
+    <ref name="mapClosure.attrib.def"/>
+  </define>
+  <define name="mapClosure.attrib.def">
+    <attribute name="mapClosure">
+      <a:documentation>An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified. 
+Allowed values are "universal" and "existential".
+See http://www.ruleml.org/0.91/glossary/#gloss-@mapClosure</a:documentation>
+      <ref name="mapClosure.value"/>
+    </attribute>
+  </define>
+  <define name="mapClosure.value" combine="choice">
+    <ref name="closure.value"/>
+  </define>
+  <!---->
+  <define name="closure.edge.def">
+    <element name="closure">
+      <ref name="closure.content"/>
+    </element>
+  </define>
+  <define name="closure.content" combine="choice">
+    <ref name="closure.value"/>
+  </define>
+  <define name="mapClosure.edge.def">
+    <element name="mapClosure">
+      <ref name="mapClosure.content"/>
+    </element>
+  </define>
+  <define name="mapClosure.content" combine="choice">
+    <ref name="mapClosure.value"/>
+  </define>
+</grammar>

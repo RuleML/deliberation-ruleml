@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML material implication attribute</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, material, implication</dc:subject>
+  <dc:description>The auxiliary module for the material implication attribute.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <choice>
+      <ref name="material.edge.def"/>
+      <ref name="mapMaterial.edge.def"/>
+    </choice>
+  </start>
+  <!--
+    This module declares the following RuleML attributes:
+       * @material
+       * @mapMaterial
+    API
+    material-att.choice
+    mapMaterial-att.choice
+    material.value
+  -->
+  <define name="material-att.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the material implication attribute name.  </a:documentation>
+    <ref name="material.attrib.def"/>
+  </define>
+  <define name="material.attrib.def">
+    <attribute name="material">
+      <a:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;). Allowed values are "yes" (the default) and "no".
+See http://www.ruleml.org/0.91/glossary/#gloss-@material</a:documentation>
+      <ref name="material.value"/>
+    </attribute>
+  </define>
+  <define name="material.value" combine="choice">
+    <choice>
+      <ref name="material_default.value"/>
+      <ref name="material_non-default.value"/>
+    </choice>
+  </define>
+  <define name="material_default.value" combine="choice">
+    <notAllowed/>
+  </define>
+  <define name="material_non-default.value" combine="choice">
+    <notAllowed/>
+  </define>
+  <define name="mapMaterial-att.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the scope material implication attribute name.  </a:documentation>
+    <ref name="mapMaterial.attrib.def"/>
+  </define>
+  <define name="mapMaterial.attrib.def">
+    <attribute name="mapMaterial">
+      <a:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;) falling within its scope (i.e. child elements). 
+ Allowed values are "yes" (the default) and "no".
+See http://www.ruleml.org/0.91/glossary/#gloss-@mapMaterial</a:documentation>
+      <ref name="material.value"/>
+    </attribute>
+  </define>
+  <!---->
+  <define name="material.edge.def">
+    <element name="material">
+      <ref name="material.value"/>
+    </element>
+  </define>
+  <define name="mapMaterial.edge.def">
+    <element name="mapMaterial">
+      <ref name="material.value"/>
+    </element>
+  </define>
+</grammar>

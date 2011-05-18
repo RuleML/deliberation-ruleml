@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>RuleML Stripe-Skipping Module</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, stripe-skipping</dc:subject>
+  <dc:description>auxiliary module for stripe-skipping.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <notAllowed/>
+  </start>
+  <!--
+    This module extends the following RuleML choice patterns:
+               * arg
+               * op_Atom
+               * op_Expr
+               * body_Implies
+               * body_Entails
+               * head_Implies
+               * head_Entails
+               * torso
+               * formula_And
+               * formula_Or
+               * formula_Forall
+               * formula_Exists
+               * formula_AssertRetract
+               * formula_Query
+               * formula_Rulebase
+               * left
+               * right
+               * declare
+               * weak
+               * strong
+  -->
+  <!--
+    All the RuleML roles below are made collapsible by allowing
+    substitution of their content model for the role pattern.
+  -->
+  <define name="positionalArgument-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for positional arguments in atomic formulas and expressions.</a:documentation>
+    <ref name="arg.content"/>
+  </define>
+  <define name="operatorForAtoms-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for operators in atomic formulas.</a:documentation>
+    <ref name="op_Atom.content"/>
+  </define>
+  <define name="operatorForExpressions-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for operators in expressions.</a:documentation>
+    <ref name="op_Expr.content"/>
+  </define>
+  <!--
+    
+           *** <body> , <head> ***
+  -->
+  <define name="Implies.main" combine="choice">
+    <a:documentation>In implications, both stripes may be skipped at the same time.</a:documentation>
+    <ref name="body_Implies-ss.content"/>
+    <ref name="head_Implies.content"/>
+  </define>
+  <define name="body_Implies-ss.content" combine="choice">
+    <ref name="body_Implies.content"/>
+  </define>
+  <define name="head_Implies-ss.content" combine="choice">
+    <ref name="head_Implies.content"/>
+  </define>
+  <!--
+    Implies.main |= body_Implies-ss.content, head_Implies.name.choice
+    Implies.main |= body_Implies.name.choice, head_Implies-ss.content
+  -->
+  <include href="asynchronous_stripe_skipping_implication_extension_module.rng">
+    <a:documentation>In implications, stripes may also be skipped asynchronously.</a:documentation>
+  </include>
+  <define name="Entails.main" combine="choice">
+    <a:documentation>In entailments, both stripes may be skipped at the same time.</a:documentation>
+    <ref name="body_Entails-ss.content"/>
+    <ref name="head_Entails-ss.content"/>
+  </define>
+  <define name="body_Entails-ss.content" combine="choice">
+    <ref name="body_Entails.content"/>
+  </define>
+  <define name="head_Entails-ss.content" combine="choice">
+    <ref name="head_Entails.content"/>
+  </define>
+  <!--
+    Entails.main |= body_Entails-ss.content, head_Entails.name.choice
+    Entails.main |= body_Entails.name.choice, head_Entails-ss.content
+  -->
+  <include href="asynchronous_stripe_skipping_entailment_extension_module.rng">
+    <a:documentation>In entailments, stripes may also be skipped asynchronously.</a:documentation>
+  </include>
+  <define name="torso-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously in equivalences.</a:documentation>
+    <ref name="torso.content"/>
+  </define>
+  <define name="leftSide-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously in equations.</a:documentation>
+    <ref name="lhs.content"/>
+  </define>
+  <define name="rightSide-edge.choice" combine="choice">
+    <ref name="rhs.content"/>
+  </define>
+  <define name="formula_And-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously for formulas in conjunctions.</a:documentation>
+    <ref name="formula_And.content"/>
+  </define>
+  <define name="formula_Or-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously for formulas in disjunctions.</a:documentation>
+    <ref name="formula_Or.content"/>
+  </define>
+  <define name="formula_Forall-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for formulas in universal quantifications.</a:documentation>
+    <ref name="formula_Forall.content"/>
+  </define>
+  <define name="formula_Exists-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for formulas in existential quantifications.</a:documentation>
+    <ref name="formula_Exists.content"/>
+  </define>
+  <define name="formula_AssertRetract-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.</a:documentation>
+    <ref name="formula_AssertRetract.content"/>
+  </define>
+  <define name="formula_Query-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.</a:documentation>
+    <ref name="formula_Query.content"/>
+  </define>
+  <define name="formula_Rulebase-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.</a:documentation>
+    <ref name="formula_Rulebase.content"/>
+  </define>
+  <define name="declare-edge.choice" combine="choice">
+    <ref name="declare.content"/>
+  </define>
+  <define name="weak-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for weak negations.</a:documentation>
+    <ref name="weak.content"/>
+  </define>
+  <define name="strong-edge.choice" combine="choice">
+    <a:documentation>Stripe-skipping is allowed for strong negations.</a:documentation>
+    <ref name="strong.content"/>
+  </define>
+</grammar>
+<!--
+  
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->

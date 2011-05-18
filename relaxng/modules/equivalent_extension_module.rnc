@@ -1,0 +1,57 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+
+dc:title [ "RuleML Equivalences" ]
+dc:version [ "0.91.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, equivalence" ]
+dc:description [ "The auxiliary module for equivalances." ]
+dc:date [ "2011-04-18" ]
+dc:language [ "en" ]
+dc:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= Equivalent.Node.def | torso.edge.def
+# This module declares the following RuleML elements and attributes:
+#           * <Equivalent>
+#           * <torso>
+
+## an extension point for alternate spellings and internationalization of the equivalence tag name.  
+Equivalent-node.choice |= Equivalent.Node.def
+Equivalent.Node.def =
+    
+    ## An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
+    ## It consists of a pair of (optionally skipped) <torso> roles. 
+    ## For example, "A person owning an object is equivalent to an object belonging to a person":
+    ## See http://www.ruleml.org/0.91/glossary/#gloss-Equivalent 
+    element Equivalent { Equivalent.attlist, Equivalent.header, Equivalent.main }
+
+## Equivalences may have an optional closure attribute.
+Equivalent.attlist &= closure-att.choice?
+# For the declaration of the closure attribute pattern, see the quantification closure module (closure_extension_module)
+
+## Equivalences optionally accept the header pattern of general formulas.
+Equivalent.header &= CompoundFormula.header?
+# For the declaration of the compound formula header, see the con/disjunction module (andor_module).
+
+## the main content model of equivalances consists of two "torso" formulas
+Equivalent.main |= torso-edge.choice, torso-edge.choice
+
+## an extension point for stripe skipping as well as alternate spellings and internationalization of the torso tag name in equivalences.  
+torso-edge.choice |= torso.edge.def
+torso.edge.def =
+    
+    ##  A symmetric role used in an equivalence expression (<Equivalent>) combining the asymmetric <head> and <body>.
+    ## See http://www.ruleml.org/0.91/glossary/#gloss-torso 
+    element torso { torso.content }
+
+## An equivalance is syntactic sugar for two implications.
+## In all RuleML languages, formulas allowed as premises are the same or more general than those allowed as conclusions,
+## because this is a requirement for the statement "P implies P" to be syntactically valid whenever P is a valid conclusion.
+## Therefore, formulas allowed in equivalences are the same as those allowed in conclusions.
+torso.content |= ConclusionFormula.choice
+# For the declaration of the conclusion pattern, see the implication module (implication_module).
+Node.choice |= Equivalent.Node.def
+edge.choice |= torso.edge.def
+# 
+# Optional initialization module allows this module to be independently validated
+# include "init_extension_module.rnc"
+

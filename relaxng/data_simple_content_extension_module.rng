@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.ruleml.org/0.91/xsd" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <dc:title>RuleML Data Element</dc:title>
+  <dc:version>0.91.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, Data, Simple Content</dc:subject>
+  <dc:description>The auxiliary module for the simple-type Data element, a Type (Object) for literal constants.</dc:description>
+  <dc:date>2011-04-25</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="Data_simple.Node.def"/>
+  </start>
+  <!--
+    This module declares the following RuleML elements, attributes and patterns:
+               * <Data>
+  -->
+  <!--
+    Note: the Relax NG format does not allow explicit type-checking.
+    Use data_explicit_module.rnc for direct validation of explicit type-checking from the Relax NG format.
+    Two versions are needed because of a bug in Trang, the Relax NG schema translator.
+  -->
+  <define name="Data_simple-node.choice" combine="choice">
+    <a:documentation>an extension point for alternate spellings and internationalization of the data tag name.  </a:documentation>
+    <ref name="Data_simple.Node.def"/>
+  </define>
+  <define name="Data_simple.Node.def">
+    <element name="Data">
+      <a:documentation>A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
+See http://www.ruleml.org/0.91/glossary/#gloss-Data
+Data representing a complex datatype that includes xml elements can be represented by escaping for example &lt;element/&gt; becomes &amp;lt;element/&amp;gt;</a:documentation>
+      <ref name="anySimpleTypeForElements.datatype.choice"/>
+    </element>
+  </define>
+  <define name="Node.choice" combine="choice">
+    <ref name="Data_simple.Node.def"/>
+  </define>
+  <define name="anySimpleTypeForElements.datatype.choice" combine="choice">
+    <a:documentation>an extension point for explicit datatyping</a:documentation>
+    <choice>
+      <data type="duration"/>
+      <data type="dateTime"/>
+      <data type="time"/>
+      <data type="date"/>
+      <data type="gYearMonth"/>
+      <data type="gYear"/>
+      <data type="gMonthDay"/>
+      <data type="gDay"/>
+      <data type="gMonth"/>
+      <data type="boolean"/>
+      <data type="base64Binary"/>
+      <data type="hexBinary"/>
+      <data type="float"/>
+      <data type="decimal"/>
+      <data type="double"/>
+      <data type="anyURI"/>
+      <data type="QName"/>
+      <data type="NOTATION"/>
+      <data type="string"/>
+    </choice>
+  </define>
+</grammar>

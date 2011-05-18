@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <dc:title>The RuleML object identifier element</dc:title>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, object identifier</dc:subject>
+  <dc:description>This is the Core Schema module for object identifiers in RuleML.</dc:description>
+  <dc:date>2011-04-18</dc:date>
+  <dc:language>en</dc:language>
+  <dc:rights>TBD</dc:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <ref name="oid.edge.def"/>
+  </start>
+  <define name="objectIdentifier-edge.choice" combine="choice">
+    <a:documentation>an extension point for stripe skipping as well as alternate spellings and internationalization of the object identifier tag name.  </a:documentation>
+    <ref name="oid.edge.def"/>
+  </define>
+  <define name="oid.edge.def">
+    <element name="oid">
+      <a:documentation>An optional label for a clause, creating accessibility within the knowledge representation. 
+This can help for representing prioritization between rules, for example. 
+All type tags (i.e. those that begin with an uppercase letter) of RuleML can begin with 
+such a label except those that permit only character data (e.g. &lt;Ind&gt;, &lt;Rel&gt;, etc.). 
+Note that oids are not required to be unique within a rulebase.
+See http://www.ruleml.org/0.91/glossary/#gloss-oid</a:documentation>
+      <ref name="oid.content"/>
+    </element>
+  </define>
+  <define name="oid.content" combine="choice">
+    <a:documentation>The object descriptor content model consists of any single term.
+Note: this corrects an error in the oid content model of RuleML 0.91,
+where Var is allowed in oid in bindatagroundlog and bindatagroundfact.</a:documentation>
+    <ref name="AnyTerm.choice"/>
+  </define>
+  <!--
+    For the declaration of the term patterns, see the term module (individual_extension_module)
+    
+  -->
+  <define name="edge.choice" combine="choice">
+    <ref name="oid.edge.def"/>
+  </define>
+</grammar>
+<!--
+  Optional initialization module allows this module to be independently validated
+  include "init_extension_module.rnc"
+-->
