@@ -14,9 +14,9 @@ http://www.ruleml.org/1.0/xsd/bindatalog.xsd">
 
   <Atom>
     <op>
-      <Rel uri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
+      <Rel iri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
     </op>
-    <Ind uri="http://www.w3.org/Home/Lassila"/>
+    <Ind iri="http://www.w3.org/Home/Lassila"/>
     <Ind>Ora Lassila</Ind>
   </Atom>
 
@@ -27,9 +27,9 @@ http://www.ruleml.org/1.0/xsd/bindatalog.xsd">
 <Query>
   <Atom>
     <op>
-      <Rel uri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
+      <Rel iri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
     </op>
-    <Ind uri="http://www.w3.org/Home/Lassila"/>
+    <Ind iri="http://www.w3.org/Home/Lassila"/>
     <Ind>Ora Lassila</Ind>
   </Atom>
 </Query>
@@ -39,7 +39,7 @@ http://www.ruleml.org/1.0/xsd/bindatalog.xsd">
 <Query>
   <Atom>
     <op>
-      <Rel uri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
+      <Rel iri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/>
     </op>
     <Var>home page</Var>
     <Var>person</Var>

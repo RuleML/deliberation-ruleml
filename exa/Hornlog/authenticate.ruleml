@@ -5,7 +5,7 @@ xmlns="http://www.ruleml.org/1.0/xsd"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlog.xsd">
 
-<!-- Tim Berners-Lee's authentication rule (without URI inspection):
+<!-- Tim Berners-Lee's authentication rule (without IRI inspection):
 Any person who was some time in the last 2 months an employee of
 an organization which was some time in the last 2 months a W3C member
 may register -->

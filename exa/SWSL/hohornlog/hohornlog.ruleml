@@ -92,7 +92,7 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 
 
 					<Uniterm>
-						<Const uri="test">unequal</Const>
+						<Const iri="test">unequal</Const>
       					<slot><Const>label</Const><Const>an example fact</Const></slot>
 						<resl><Var>test</Var></resl>
 					</Uniterm>
