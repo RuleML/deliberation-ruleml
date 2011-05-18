@@ -89,7 +89,7 @@ Ind.Node.def =
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.
 Ind.attlist &= Resource.attlist?
 Ind.attlist &= Type.attlist?
-# For the declaration of the attribute list for resources, see the uri modules (uri_module).
+# For the declaration of the attribute list for resources, see the iri modules (iri_module).
 # For the declaration of the attribute list for objects with user-defined types, see the type module (type_module). 
 
 ## The content model for individuals is text.

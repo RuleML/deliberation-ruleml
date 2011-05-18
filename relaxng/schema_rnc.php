@@ -75,7 +75,7 @@ echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
 //
 $propo = "propo";
-$propo_uri = 0;
+$propo_iri = 0;
 $propo_rulebase = 1;
 $propo_entails = 2;
 $propo_degree = 3;
@@ -189,7 +189,7 @@ if ($bdefault==0){
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
 
-  $needURI = extractBit($bpropo, $propo_uri);
+  $needIRI = extractBit($bpropo, $propo_iri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
   $needEntails = extractBit($bpropo, $propo_entails);
   $needFuzzy = extractBit($bpropo, $propo_degree);
@@ -365,11 +365,11 @@ if ($bdefault==0){
     echo "#\n".'include "' . $modulesLocation .
       'header_extension_module.rnc"'."$end\n";
   }      
-    // Include universal resource identifiers (URIs) if needed
-    if ($needURI){
-      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
+    // Include universal resource identifiers (IRIs) if needed
+    if ($needIRI){
+      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (IRIs) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'uri_extension_module.rnc"'."$end\n";
+          'iri_extension_module.rnc"'."$end\n";
     }
     // Include rulebases if needed
     if ($needRulebase){
