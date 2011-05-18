@@ -1,6 +1,6 @@
 <?php
 //Assembler of RNC schema for RuleML 1.0
-// Last Modified 2011/05/17
+// Last Modified 2011/05/18
 // Step 000. Initialize some parameters
 $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
@@ -159,32 +159,30 @@ if ($bdefault==0){
   $needExpr = extractBit($bbackbone, $backbone_expr);
   $needDis = extractBit($bbackbone, $backbone_dis);
   $needFO = extractBit($bbackbone, $backbone_fo);
-  // Apparent violation of monotonicity below is caused by lack of complete orthogonalizaiton
-  // Orthogonalization is possible and is perhaps worthwhile, but not implemented in 0.91 .
-  // The default_required  modules are syntactictally subsumed by default_optional modules
+  // Apparent lack of monotonicity caused by incomplete orthogonalization
+  // of modules for treatment of attributes with default values.
+  // Orthogonalization is possible and is perhaps worthwhile, but not implemented in yet.
   $needDefaultAbsentRes = extractBit($bdefault, $default_absent);
   $bdefault_present = extractBit($bdefault, $default_present);
   $needDefaultRes =  $bdefault_present * (1-$needDefaultAbsentRes);    
   $needDefaultAbsentUnRes = $needDefaultAbsentRes * $needFO;
   $bdefault_present_fo =  $bdefault_present *  $needFO;
   $needDefaultUnRes =  $bdefault_present_fo * (1-$needDefaultAbsentUnRes);  
-  // As long as translation to XSD is required, we are not able to
-  // orthogonalize these modules, so a selection of one module must be made.
-  // It is possible to orthogonalize the modules, but the result is ugly,
-  // difficult to understand, and not translatable into XSD.
+
   $btermseq_unary = extractBit($btermseq, $unary);
   $btermseq_binary = extractBit($btermseq, $binary);
   $btermseq_ternary_plus = extractBit($btermseq, $ternary_plus);
   $needPoly = $btermseq_ternary_plus * $btermseq_binary * $btermseq_unary;
-  // This looks like a violation of monotonicity 
-  // but  termseq_bin is superfluous if termseq_poly is included
-  // (termseq_poly syntactically syntactically contains termseq_bin
+  // Apparent lack of monotonicity caused by incomplete orthogonalization
+  // of modules for binary and polyadic positional term sequences.
+  // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
   $needBin = extractBit($btermseq, $termseq_binary) * (1-$needPoly);
   
   $needLongNames = extractBit($blng, $lng_long_en);
 
   // Apparent lack of monotonicity caused by incomplete orthogonalization
-  // of ordered and unordered modules, this being impossible within the Relax NG grammar.
+  // of modules for ordered and unordered groups.
+  // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
   $needUnordered = extractBit($bserialization, $serialization_unordered);
   $needOrdered = (1-$needUnordered);
   $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
@@ -221,7 +219,7 @@ if ($bdefault==0){
   $needReify = extractBit($bterms, $terms_reify);
   $needInd = $btermseq + $needOid + $needSlot + $needEqual;
 
-  $needVar = $needQuant + $bquant;   
+  $needVar = $needQuant;   
   $needClosure = extractBit($bquant, $quant_closure);
   $needResl = extractBit($bquant, $quant_resl);
   $needRepo = extractBit($bquant, $quant_repo);
@@ -484,17 +482,17 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
            'oriented_attrib_extension_module.rnc"'."$end\n";      
     }
-    // Include symmetric equality attribute values if needed
-    if ($needOrientedD){
-      echo "#\n# DEFAULT VALUE OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
-        echo "#\n".'include "' . $modulesLocation .
-          'oriented_default_extension_module.rnc"'."$end\n";
-      }
     // Include non-symmetric equality attribute values if needed
     if ($needOrientedND){
       echo "#\n# NON-DEFAULT VALUES OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
         echo "#\n".'include "' . $modulesLocation .
             'oriented_non-default_extension_module.rnc"'."$end\n";
+      }
+    // Include symmetric equality attribute values if needed
+    if ($needOrientedD){
+      echo "#\n# DEFAULT VALUE OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
+        echo "#\n".'include "' . $modulesLocation .
+          'oriented_default_extension_module.rnc"'."$end\n";
       }
     // Include explicit typing of terms if needed
     if ($needType){
