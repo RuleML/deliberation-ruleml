@@ -282,7 +282,7 @@ if ($bdefault==0){
     if ($needFO){
       echo "#\n# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED \n";
       if ($needNeg){
-        echo "#\n# FULL FIRST-ORDER EXPRESSIVITY IS AVAILABLE \n";
+        echo "#   FULL FIRST-ORDER EXPRESSIVITY IS AVAILABLE \n";
       }
       echo "#\n".'include "' . $modulesLocation .
           'folog_cl_extension_module.rnc"'."$end\n";
