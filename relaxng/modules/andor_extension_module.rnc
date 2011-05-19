@@ -48,7 +48,7 @@ And-Query.attlist &= closure-att.choice?
 And.header &= CompoundFormula.header?
 
 ## Compound formulas are crisp (not fuzzifiable) and therefore contain only the pattern for general formulas
-CompoundFormula.header &= Formula.header?
+CompoundFormula.header &= FuzzyFormula-header.choice?
 # The formula header may be serialization-dependent, 
 # see the serialization modules (orderlax_module, orderstrict_module, ordermix_module).
 
