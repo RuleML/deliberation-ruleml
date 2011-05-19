@@ -23,7 +23,7 @@ in.attrib.def =
     
     ##    An attribute for specifying interpretation properties of functions. 
     ##    See http://www.ruleml.org/1.0/glossary/#gloss-@per
-    attribute in { interpretation.value }
+    attribute per { interpretation.value }
 interpretation.value |= interpretation_default.value | interpretation_non-default.value
 interpretation_default.value |= notAllowed
 interpretation_non-default.value |= notAllowed

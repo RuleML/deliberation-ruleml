@@ -229,9 +229,9 @@ if ($bdefault==0){
   $needValND = extractBit($bexpr, $expr_val_nondefault);
   $needValD = $bdefault_present * $needExpr * $needEqual;
   $needValAtt = $needValD + $needValND;
-  $needInND = extractBit($bexpr, $expr_in);
-  $needInD = $bdefault_present * $needExpr;
-  $needInAtt = $needInD + $needInND;
+  $needPerND = extractBit($bexpr, $expr_in);
+  $needPerD = $bdefault_present * $needExpr;
+  $needPerAtt = $needPerD + $needPerND;
 
   $needPerformatives = 1;
   $needAtom = 1;
@@ -598,22 +598,22 @@ if ($bdefault==0){
       'val_default_extension_module.rnc"'."$end\n";
   }
   // Include interpreted expression attribute if needed
-  if ($needInAtt){
+  if ($needPerAtt){
     echo "#\n# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'in_attrib_extension_module.rnc"'."$end\n";      
+        'interpretation_attrib_extension_module.rnc"'."$end\n";      
   }  
   // Include non-default values of interpretation of expressions if needed
-  if ($needInND){
+  if ($needPerND){
     echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'in_non-default_extension_module.rnc"'."$end\n";
+        'interpretation_non-default_extension_module.rnc"'."$end\n";
   }
   // Include default values of interpretation of expressions if needed
-  if ($needInD){
+  if ($needPerD){
     echo "#\n# DEFAULT VALUE OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-      'in_default_extension_module.rnc"'."$end\n";
+      'interpretation_default_extension_module.rnc"'."$end\n";
   }
   //Step 4A. Translate to requested xs:lang
   // FIXME: need to handle differently when more than one alternate available
@@ -649,7 +649,11 @@ if ($bdefault==0){
 //Functions
 function processGETParameter ($paramName){
   $param_base_default = "x";
-  $bparam_default = decbin(hexdec(fff));
+  if ($paramName == "lng") {
+    $bparam_default = decbin(hexdec(0));
+  } else {
+    $bparam_default = decbin(hexdec(fff));
+  }
   $param = $_GET[$paramName];
   //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
   if (strlen($param)>0){
