@@ -54,7 +54,7 @@ body_Implies.edge.def =
     ## Also used as the "antecedent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-body
     ## Within Implies...
-    element body { body_Implies.content }
+    element if { body_Implies.content }
 
 ## The premise of an implication consists of a single formula
 body_Implies.content |= PremiseFormula.choice
@@ -84,7 +84,7 @@ head_Implies.edge.def =
     ## Also used as the "consequent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-head
     ## Within Implies...
-    element head { head_Implies.content }
+    element then { head_Implies.content }
 
 ## The conclusion of an implication consists of a single formula.
 head_Implies.content |= ConclusionFormula.choice

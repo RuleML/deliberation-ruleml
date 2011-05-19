@@ -46,7 +46,7 @@ body_Entails.edge.def =
     ## Also used as the "antecedent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-body
     ##  Within Entails...
-    element body { body_Entails.content }
+    element if { body_Entails.content }
 
 ## The body of an entailment contains a single rulebase.
 body_Entails.content |= Rulebase-node.choice
@@ -59,7 +59,7 @@ head_Entails.edge.def =
     ## Also used as the "consequent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-head
     ##  within Entails
-    element head { head_Entails.content }
+    element then { head_Entails.content }
 
 ## The head of an entailment contains a single rulebase.
 head_Entails.content |= Rulebase-node.choice
