@@ -93,7 +93,7 @@ Ind.attlist &= Type.attlist?
 # For the declaration of the attribute list for objects with user-defined types, see the type module (type_module). 
 
 ## The content model for individuals is text.
-Ind.content |= text
+Ind.content |= xsd:token
 Node.choice |= Ind.Node.def
 edge.choice |= arg.edge.def
 # 

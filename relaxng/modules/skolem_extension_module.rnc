@@ -25,7 +25,7 @@ Skolem.Node.def =
 Skolem.attlist &= Type.attlist?
 
 ## The content model for skolems is text.
-Skolem.content |= text
+Skolem.content |= xsd:token
 Node.choice |= Skolem.Node.def
 # include "init_extension_module.rnc"
 

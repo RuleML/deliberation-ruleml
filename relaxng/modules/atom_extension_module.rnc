@@ -67,7 +67,7 @@ Rel.Node.def =
 Rel.attlist &= Resource.attlist?
 
 ## The content model for relations is text.
-Rel.content |= text
+Rel.content |= xsd:token
 #
 Node.choice |= atom.Node.defs
 edge.choice |= atom.edge.defs

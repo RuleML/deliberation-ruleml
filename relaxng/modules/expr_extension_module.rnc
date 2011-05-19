@@ -57,7 +57,7 @@ Fun.attlist &= Resource.attlist?
 #Fun.attlist = interpretation-att.option & singlevalued-att.option & Resource.attlist?
 
 ## A functor contains text.
-Fun.content |= text
+Fun.content |= xsd:token
 #
 Node.choice |= Expr.Node.def | Fun.Node.def
 edge.choice |= op_Expr.edge.def

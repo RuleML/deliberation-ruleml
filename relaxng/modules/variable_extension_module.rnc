@@ -28,7 +28,7 @@ Var.Node.def =
 Var.attlist &= Type.attlist?
 
 ## The content model for variables is text.
-Var.content |= text
+Var.content |= xsd:token
 Node.choice |= Var.Node.def
 # 
 # Optional initialization module allows this module to be independently validated

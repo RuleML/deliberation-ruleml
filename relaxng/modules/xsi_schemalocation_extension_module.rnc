@@ -13,5 +13,5 @@ dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
-RuleML.attlist &= attribute xsi:schemaLocation { text }?
-Data.attlist &= attribute xsi:schemaLocation { text }?
+RuleML.attlist &= attribute xsi:schemaLocation { xsd:token }?
+Data.attlist &= attribute xsi:schemaLocation { xsd:token }?
