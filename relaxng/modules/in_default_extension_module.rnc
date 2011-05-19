@@ -12,4 +12,4 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 # This module extends the following RuleML attribute:
 #    * @in
-interpretation_default.value |= "no"
+interpretation_default.value |= "copy"

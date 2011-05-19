@@ -39,7 +39,7 @@ lhs.edge.def =
     
     ## The left-hand side of an equation (<Equal>).
     ##        See http://www.ruleml.org/1.0/glossary/#gloss-left
-    element lhs { lhs.content }
+    element left { lhs.content }
 
 ## The left-hand side role in an equation is filled by a term.
 lhs.content |= leftTerm.choice
@@ -50,7 +50,7 @@ rhs.edge.def =
     
     ## The right-hand side of an equation (<Equal>).
     ##        See http://www.ruleml.org/1.0/glossary/#gloss-right
-    element rhs { rhs.content }
+    element right { rhs.content }
 
 ## The right-hand side role in an equation is filled by a term.
 rhs.content |= rightTerm.choice

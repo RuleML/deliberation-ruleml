@@ -13,4 +13,4 @@ start |= notAllowed
 # This module extends the following RuleML pattern:
 #    * interpretation_non-default.value
 #
-interpretation_non-default.value |= "yes" | "semi"
+interpretation_non-default.value |= "open" | "value" 
