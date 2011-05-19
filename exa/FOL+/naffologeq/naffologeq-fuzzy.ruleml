@@ -14,7 +14,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				      <Var>d</Var>
 				    </Equal>
 
-				<Forall>
+				<Forall><degree><Data>0.5</Data></degree>
 					<Var>d</Var>
 					<Equal>
 				      <Ind>some constant</Ind>
@@ -22,7 +22,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				    </Equal>
 				</Forall>
 
-				<Exists>
+		<Exists><degree><Data>0.2</Data></degree>
 					<Var>d</Var>
 					<Equal>
 				      <Ind>some constant</Ind>
@@ -30,7 +30,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				    </Equal>
 				</Exists>
 
-		<Equivalent>
+		<Equivalent><degree><Data>1.0</Data></degree>
 			<torso>
 				    <Equal>
 				      <Ind>some constant</Ind>
@@ -45,7 +45,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			</torso>
 		</Equivalent>
 
-		<Neg>
+		<Neg><degree><Data>0.5</Data></degree>
 				    <Equal>
 				      <Ind>some constant</Ind>
 				      <Var>d</Var>
@@ -53,13 +53,13 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</Neg>
 
 		<Implies>
-			<Naf>
+			<Naf><degree><Data>0.5</Data></degree>
 					    <Equal>
 					      <Ind>some constant</Ind>
 					      <Var>d</Var>
 					    </Equal>
 			</Naf>
-			<Atom>
+			<Atom><degree><Data>0.0</Data></degree>
 				<Rel>own</Rel>
 				<Var>person</Var>
 				<Var>object</Var>

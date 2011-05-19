@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/nafdatalog.xsd">
-
+<RuleML xmlns="http://www.ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  >
+  
 <!--A personX has multiple addresses if the personX lives at more than one address, 
    and we fail to prove (using the builtin stringEqualIgnoreCase) that the addresses are the same -->
 

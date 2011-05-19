@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
+xmlns="http://www.ruleml.org/spec"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatalog.xsd">
+>
                                                    
                                                  
 <!-- A Simple example to test bindatalog -->
@@ -42,13 +42,13 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 
   </Assert>
  
-  <oid>
-    <Ind>
-      Can retract a fact which doesnot exist.The fact that goldwatch17 
-      is precious which doesnot exist is retracted.                                                         
-    </Ind>
-  </oid>
   <Retract>
+    <oid>
+      <Ind>
+        Can retract a fact which doesnot exist.The fact that goldwatch17 
+        is precious which doesnot exist is retracted.                                                         
+      </Ind>
+    </oid>
     <Atom>
       <Rel>precious</Rel>
       <Ind>goldwatch17</Ind>

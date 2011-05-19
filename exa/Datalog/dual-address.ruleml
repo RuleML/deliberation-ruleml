@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd">
+<RuleML xmlns="http://www.ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  >
+  
 
 <!--A personX is dually-addressed if the personX lives at address1 and address2, and the two addresses are not the same -->
 
