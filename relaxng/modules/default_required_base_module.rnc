@@ -25,6 +25,5 @@ AssertRetract.attlist &= mapDirection-att.choice & mapMaterial-att.choice
 ## equations have orientation as a required attribute.
 Equal.attlist &= oriented-att.choice
 #
-include "oriented_attrib_extension_module.rnc"
- include "init_extension_module.rnc"
+# include "init_extension_module.rnc"
 
