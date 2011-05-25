@@ -140,6 +140,7 @@ $serialization_unordered = 0;
 $serialization_stripeskip = 1;
 $serialization_datatyping = 2;
 $serialization_schemaLocation = 3;
+$serialization_mixed = 4;
 $serializationParam = $_GET[$serialization];
 $bserialization = processGETParameter ($serialization);
 $call_fragment = $serialization."=".$serializationParam;
@@ -181,13 +182,15 @@ if ($bdefault==0){
   $needLongNames = extractBit($blng, $lng_long_en);
 
   // Apparent lack of monotonicity caused by incomplete orthogonalization
-  // of modules for ordered and unordered groups.
+  // of modules for ordered, mixed and unordered groups.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
   $needUnordered = extractBit($bserialization, $serialization_unordered);
   $needOrdered = (1-$needUnordered);
   $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
+  $needMixed = extractBit($bserialization, $serialization_mixed)*
+                 (1 - $needUnordered * $needStripeSkip);
 
   $needIRI = extractBit($bpropo, $propo_iri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
@@ -356,6 +359,12 @@ if ($bdefault==0){
       echo "#\n# xsi:schemaLocation ALLOWED IN RuleML\n";
       echo "#\n".'include "' . $modulesLocation .
           'xsi_schemalocation_extension_module.rnc"'."$end\n";
+  }
+    // Include mixed-form serialization
+  if ($needMixed){
+      echo "#\n# Mixed-form serialization ALLOWED IN RuleML\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'mixed_expansion_module.rnc"'."$end\n";
   }
   //Step 4. Mix-in optional extension modules
   //Step 4A. Include proposition-related modules 
