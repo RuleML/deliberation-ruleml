@@ -23,10 +23,10 @@ Data_any.Node.def =
     ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
     ## See http://www.ruleml.org/1.0/glossary/#gloss-Data
     ## Data may have mixed content with any elements, and any attributes except in the namespace xsi.
-    element Data { Data.attlist, (text & anyElement*) }
+    element Data { Data.attlist, (text & anyElement.def*) }
 Data.attlist &= empty
-anyElement =
+anyElement.def =
     element * {
         attribute * { text }*,
-        (text & anyElement*)
+        (text & anyElement.def*)
     }
