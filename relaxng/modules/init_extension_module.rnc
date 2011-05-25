@@ -188,6 +188,7 @@ Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
 Skolem-node.choice |= notAllowed
 Individual-node.choice |= notAllowed
+Relation-node.choice |= notAllowed
 #
 NegationAsFailure-node.notallowed &= notAllowed
 # 
@@ -200,6 +201,7 @@ ForallFormula.choice |= notAllowed
 ExistsFormula.choice |= notAllowed
 RulebaseFormula.choice |= notAllowed
 AssertRetractFormula.choice |= notAllowed
+KnowledgeBaseFormula.choice |= notAllowed
 QueryFormula.choice |= notAllowed
 NegFormula.choice |= notAllowed
 NafFormula.choice |= notAllowed
