@@ -278,6 +278,9 @@
             serial = serial + Math.pow(2, i);
           }
         }
+        if ( (eval("LanguageForm.serial" + 0 + ".checked"))*(eval("LanguageForm.serial" + 1 + ".checked"))){
+          serial = serial + Math.pow(2, 4);
+        }
         params = params+"&serial=x"+serial.toString(16);
         return params;
       }
