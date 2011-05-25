@@ -49,7 +49,7 @@ body_Entails.edge.def =
     element if { body_Entails.content }
 
 ## The body of an entailment contains a single rulebase.
-body_Entails.content |= Rulebase-node.choice
+body_Entails.content |= MetaFormula.choice
 
 ## an extension point for stripe skipping as well as alternate spellings and internationalization of the head tag name in entailments.  
 head_Entails.name.choice |= head_Entails.edge.def
@@ -62,7 +62,9 @@ head_Entails.edge.def =
     element then { head_Entails.content }
 
 ## The head of an entailment contains a single rulebase.
-head_Entails.content |= Rulebase-node.choice
+head_Entails.content |= MetaFormula.choice
+#
+MetaFormula.choice |= Rulebase-node.choice | KnowledgeBaseFormula.choice
 #
 Node.choice |= Entails.Node.def
 edge.choice |= head_Entails.edge.def | body_Entails.edge.def

@@ -33,10 +33,33 @@ RuleML.attlist &= empty
 RuleML.header &= Performative.header?
 
 ## The RuleML root element contains zero or more performatives.
-RuleML.main |= Performative.choice*
+RuleML.main |= (KnowledgeBaseFormula.choice | Performative.choice)*
+Performative.choice |= notAllowed
 
-## Performatives include assertions, retractions and queries.
-Performative.choice |= AssertRetract-node.choice | Query-node.choice
+## Simple formulas are allowed in knowledge bases in all sub-languages.
+## Conjunctions and disjunctions are allowed in knowledge bases in sub-languages that contain these components.
+## Implications and universal quantifications is allowed in knowledge bases for all quantified sub-languages.
+## Strong and weak negation are allowed in knowledge bases for all sub-languages that contain these components.
+## Existential quantification is added to knowledge bases for full first-order sub-languages.
+KnowledgeBaseFormula.choice |=
+    SimpleFormula-node.choice
+    | And-fo-node.choice
+    | Or-fo-node.choice
+    | Negation-node.choice
+    | NegationAsFailure-node.notallowed
+    | Implication-node.choice
+    | Forall-node.choice
+    | Exists-fo-node.choice
+# For the declaration of the simple formula pattern, see the atomic formula and equation modules ( atom_backbone_module and equal_module) 
+# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
+# For the declaration of the strong negation formula pattern, see the strong negation module ( neg_extension_module) 
+# For the declaration of the weak negation formula pattern, see the weak negation module ( naf_extension_module) 
+# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+# For patterns containing "fo" see the first-order logic module (folog_base_module)
+
+## Performatives include assertions and retractions and queries.
+Performative.choice |= AssertRetract-node.choice
 
 ## a convenience pattern combining assertions and retractions
 AssertRetract-node.choice |= Assert-node.choice | Retract-node.choice
@@ -61,7 +84,6 @@ Retract.Node.def =
 
 ## Assertions and retractions may have an optional scope closure attribute.
 AssertRetract.attlist &= mapClosure-att.choice?
-#AssertRetract.attlist = mapDirection-att.option & mapMaterial-att.option & mapClosure-att.choice?
 # For the declaration of the scope closure attribute pattern, see the quantification closure module (closure_extension_module)
 
 ## Assertions and retractions accept the performative header pattern.
@@ -85,31 +107,14 @@ formula_AssertRetract.edge.def =
 formula_AssertRetract.content |= AssertRetractFormula.choice
 
 ## Formulas allowed in assertions and retractions:
-## Simple formulas are allowed in assertions and retractions in all sub-languages.
-## Conjunctions and disjunctions are allowed in assertions and retractions in sub-languages that contain these components.
-## Implications and universal quantifications is allowed in assertions and retractions for all quantified sub-languages.
-## Strong and weak negation are allowed in assertions and retractions for all sub-languages that contain these components.
-## Existential quantification is added to assertions and retractions for full first-order sub-languages.
-AssertRetractFormula.choice |=
-    SimpleFormula-node.choice
-    | And-fo-node.choice
-    | Or-fo-node.choice
-    | Negation-node.choice
-    | NegationAsFailure-node.notallowed
-    | Implication-node.choice
-    | Forall-node.choice
-    | Exists-fo-node.choice
-# For the declaration of the simple formula pattern, see the atomic formula and equation modules ( atom_backbone_module and equal_module) 
-# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
-# For the declaration of the strong negation formula pattern, see the strong negation module ( neg_extension_module) 
-# For the declaration of the weak negation formula pattern, see the weak negation module ( naf_extension_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
-# For the declaration of the quantification patterns, see the quantification module (quantifier_module)
-# For patterns containing "fo" see the first-order logic module (folog_base_module)
+AssertRetractFormula.choice |= KnowledgeBaseFormula.choice
 
 ## Also meta-logic statements of proof-theoretic entailment and rulebase declaration may be allowed in assertions and retractions. 
 AssertRetractFormula.choice |= Entails-node.choice | Rulebase-node.choice
 # For the declaration of the entailment and rulebase patterns, see the meta-logic module (meta_module)
+
+## Performatives include queries.
+Performative.choice |= Query-node.choice
 
 ## an extension point for alternate spellings and internationalization of the query tag name.  
 Query-node.choice |= Query.Node.def
@@ -175,4 +180,3 @@ edge.choice |= performative.edge.defs
 # 
 # Optional initialization module allows this module to be independently validated
 # include "init_extension_module.rnc"
-

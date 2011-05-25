@@ -48,21 +48,8 @@ formula_Rulebase.content |= RulebaseFormula.choice
 
 ## formulas allowed to belong to a Rulebase: 
 ## Atomic formulas are allowed in rulebases.
-RulebaseFormula.choice |=
-    SimpleFormula-node.choice
-    | And-fo-node.choice
-    | Or-fo-node.choice
-    | Negation-node.choice
-    | NegationAsFailure-node.notallowed
-    | Implication-node.choice
-    | Forall-node.choice
-    | Exists-fo-node.choice
-# For the declaration of the simple formula pattern, see the atomic formula and equation modules ( atom_backbone_module and equal_module) 
-# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
-# For the declaration of the strong negation formula pattern, see the strong negation module ( neg_extension_module) 
-# For the declaration of the weak negation formula pattern, see the weak negation module ( naf_extension_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
-# For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+RulebaseFormula.choice |= KnowledgeBaseFormula.choice
+#
 Node.choice |= Rulebase.Node.def
 edge.choice |= formula_Rulebase.edge.def
 # 
