@@ -1,4 +1,4 @@
-default namespace = "http://www.ruleml.org/spec"
+default namespace this = inherit
 namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
@@ -11,7 +11,7 @@ dc:subject [ "RuleML, explicit datatype" ]
 dc:description [
     "The auxiliary module for explicit datatyping for the complete-form serialization."
 ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]

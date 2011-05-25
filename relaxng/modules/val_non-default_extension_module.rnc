@@ -1,3 +1,4 @@
+default namespace this = inherit
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML set-valued Function non-default values." ]
@@ -5,7 +6,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, set-valued, non-default" ]
 dc:description [ "The auxiliary module for the set-valued non-default values." ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]

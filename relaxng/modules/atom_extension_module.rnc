@@ -1,3 +1,4 @@
+default namespace this = inherit
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Atomic Formulas" ]
@@ -5,7 +6,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
 dc:description [ "The auxiliary module for atomic formulas." ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -66,7 +67,7 @@ Rel.Node.def =
 ## Relations accept the attribute pattern of resources.
 Rel.attlist &= Resource.attlist?
 
-## The content model for relations is text.
+## The content model for relations is tokens.
 Rel.content |= xsd:token
 #
 Node.choice |= atom.Node.defs

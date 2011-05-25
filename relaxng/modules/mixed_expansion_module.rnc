@@ -1,3 +1,4 @@
+default namespace this = inherit
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
@@ -6,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, positional independence" ]
 dc:description [ "The auxiliary module for positional independence." ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]

@@ -1,10 +1,11 @@
+default namespace this = inherit
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "The RuleML object identifier element" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, object identifier" ]
 dc:description [ "This is the Core Schema module for object identifiers in RuleML." ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]

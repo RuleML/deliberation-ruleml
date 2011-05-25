@@ -1,3 +1,4 @@
+default namespace this = inherit
 namespace dc = "http://purl.org/dc/elements/1.1/"
 
 dc:title [ "RuleML Disjunctive Logic Schema" ]
@@ -7,7 +8,7 @@ dc:subject [ "RuleML, disjunctive logic" ]
 dc:description [
     "The auxiliary module for extending the conclusion pattern to include disjunctions."
 ]
-dc:date [ "2011-05-18" ]
+dc:date ["2011-05-24"]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
