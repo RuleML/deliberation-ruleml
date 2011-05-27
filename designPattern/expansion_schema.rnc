@@ -22,7 +22,7 @@ pattern =
   | element group { common-atts, open-patterns }
   | element interleave { common-atts, open-patterns }
   | element choice { common-atts, open-patterns }
-  | element optional { common-atts, open-patterns }
+  | optional-element
   | element zeroOrMore { common-atts, open-patterns }
   | element oneOrMore { common-atts, open-patterns }
   | element list { common-atts, open-patterns }
@@ -37,7 +37,7 @@ pattern =
       common-atts,
       other
     }
-  | element empty { common-atts, other }
+  | empty-element
   | element text { common-atts, other }
   | element value {
       attribute type { xsd:NCName }?,
@@ -93,16 +93,17 @@ define-element.interleave =
 define-element.noCombine =  
   element define { nameNCName.noCombine, common-atts, open-patterns }
 
-nameNCName.choice = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-]+\.(choice|main|content|value|datatype|sequence|defs)"}}  
-nameNCName.interleave = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-]+\.(attlist|header|notallowed)"}}  
-nameNCName.noCombine = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-]+\.(def)"}}  
+nameNCName.choice = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-_]+\.(choice|main|content|value|datatype|sequence|defs)"}}  
+nameNCName.interleave = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-_]+\.(attlist|header|notallowed)"}}  
+nameNCName.noCombine = attribute name {xsd:NCName {pattern = "[a-zA-Z\.\-_]+\.(def)"}}  
 
 combine-att = attribute combine { "choice" | "interleave" }?
 combine-att.choice = attribute combine { "choice" }
 combine-att.interleave = attribute combine { "interleave" }
 
 optional-element = element optional { common-atts, open-patterns }
-open-optional = other & optional-element
+empty-element = element empty { common-atts, other }
+open-optional = other & (optional-element | empty-element)
 open-patterns = other & pattern+
 open-pattern = other & pattern
 name-class =
