@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+targetNamespace="http://www.ruleml.org/1.0/xsd" 
+xmlns="http://www.ruleml.org/1.0/xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified"
+>
+
+<!-- note that elementFormDefault is qualified because of the local declaration of Const -->
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			XML Schema for a Higher-Order Logic RuleML sublanguage
+			File: hohornlog.xsd
+			Version: 1.0
+			Last Modification: 2010-08-26
+		</xs:documentation>
+	</xs:annotation>
+	
+	<!-- hilog includes the 'holog' module -->
+	<xs:include schemaLocation="modules/holog_module.xsd"/>
+
+	<!--
+		note the replacement of Atom and Expr by Uniterm, the neutralization of
+		Ind, Rel and Ctor into Const, and the addition of Neg
+	-->
+	<xs:redefine schemaLocation="_nafhornlog-to-hohornlog.xsd">
+
+		<!-- add Uniterm and Neg to formula-assert -->
+		<xs:group name="formula-assert.content">
+			<xs:choice>
+				<xs:group ref="formula-assert.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>
+			</xs:choice>
+		</xs:group>	
+		<!--
+			note that the above indirectly adds Uniterm and Neg to Assert so that its content model is:
+			( oid?, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall)* )
+		-->	
+
+		<!-- add Uniterm to formula-rulebase -->
+		<xs:group name="formula-rulebase.content">
+			<xs:choice>
+				<xs:group ref="formula-rulebase.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>
+			</xs:choice>
+		</xs:group>	
+		<!--
+			note that the above indirectly adds Uniterm and Neg to Rulebase so that its content model is:
+			( oid?, (formula | Uniterm | Neg | Implies | Equivalent | Forall)* )
+		-->	
+
+		<!-- add Uniterm to strong -->
+		<!--
+			And is also added to strong; this is only necessary for integrity constraints in SWSL,
+			but limiting it to the second Rulebase of an Entails would require a lot of context
+			sensitivity. Therefore these SWSL XSDs are extra permissive in this respect.
+		-->
+		<xs:group name="strong.content">
+			<xs:choice>
+				<xs:group ref="strong.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element name="And" type="And-inner.type"/>
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm to Neg so that its content model is:
+			( oid?, (strong | Uniterm | And) )
+		-->
+
+		<!-- add Uniterm to weak -->
+		<xs:group name="weak.content">
+			<xs:choice>
+				<xs:group ref="weak.content"/>
+				<xs:element ref="Uniterm"/>
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm to Naf so that its content model is:
+			( oid?, (strong | Uniterm) )
+		-->
+
+		<!-- add Uniterm and Const to arg -->
+		<xs:group name="arg.content">
+			<xs:choice>
+				<xs:group ref="arg.content"/>
+				<xs:element ref="Const"/>
+				<xs:element ref="Uniterm"/>
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm to slot fillers:
+			( (), (Const | Uniterm | Skolem | Var | Reify) )
+		-->
+		
+		<!--
+			add Uniterm and Const to slot names:
+			( (Const | Uniterm), (Const | Uniterm | Skolem | Var | Reify) )
+		-->
+		<xs:group name="slot-name.extend">
+			<xs:choice>
+				<xs:group ref="slot-name.extend"/>
+				<xs:element ref="Const"/>
+				<xs:element ref="Uniterm"/>
+			</xs:choice>
+		</xs:group>
+
+		<!--
+			add Const and Uniterm to oid so that its Content model is:
+			(Const | Uniterm | Skolem | Var | Reify)
+		-->		
+		<xs:group name="oid.content">
+			<xs:choice>
+				<xs:group ref="oid.content"/>
+				<xs:element ref="Const"/>				
+				<xs:element ref="Uniterm"/>
+			</xs:choice>
+		</xs:group>		
+
+		<!-- add Uniterm and Neg to if -->
+		<xs:group name="if.content">
+			<xs:choice>
+				<xs:group ref="if.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>				
+			</xs:choice>
+		</xs:group>	
+		
+		<!-- add Uniterm and Neg to then -->
+		<xs:group name="then.content">
+			<xs:choice>
+				<xs:group ref="then.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>				
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm and Neg to Implies so that its content model is:
+			( oid?, (then, if) | (if, then) | ( (Uniterm | And | Or | Neg | Naf), (Uniterm | Neg) ) )
+		-->	
+		
+		<!-- add Uniterm to torso -->
+		<xs:group name="torso.content">
+			<xs:choice>
+				<xs:group ref="torso.content"/>
+				<xs:element ref="Uniterm"/>				
+			</xs:choice>
+		</xs:group>	
+		<!--
+			note that the above indirectly adds Uniterm to Equivalent so that its content model is:
+			( oid?, ( (torso, torso) | (Uniterm, Uniterm) ) )	
+		-->			
+
+		<!-- add Uniterm and Neg to formula-and-or -->
+		<xs:group name="formula-and-or.content">
+			<xs:choice>
+				<xs:group ref="formula-and-or.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>	
+			</xs:choice>
+		</xs:group>	
+		<!--
+			note that the above indirectly adds Uniterm and Neg to And/Or so that their content model is:
+			( oid?, (formula | Uniterm | And | Or | Neg | Naf)* )
+		-->
+
+		<!-- add Uniterm and Neg to formula-query -->		
+		<xs:group name="formula-query.content">
+			<xs:choice>
+				<xs:group ref="formula-query.content"/>
+				<xs:element ref="Uniterm"/>
+				<xs:element ref="Neg"/>
+			</xs:choice>
+		</xs:group>	
+		<!--
+			note that the above indirectly adds Uniterm to Query so that its content model is:
+			( oid?, (formula | Uniterm | Rulebase | And | Or | Entails | Exists | Neg | Naf)* )
+		-->
+		
+		<!-- add Uniterm to formula-forall -->	
+		<xs:group name="formula-forall.content">
+			<xs:choice>
+				<xs:group ref="formula-forall.content"/>
+				<xs:element ref="Uniterm"/>			
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm to Forall so that its content model is:
+			( oid?, (declare | Var)+, (formula | Uniterm | Implies | Equivalent | Forall) )
+		-->
+		
+		<!-- add Uniterm to formula-exists -->
+		<xs:group name="formula-exists.content">
+			<xs:choice>
+				<xs:group ref="formula-exists.content"/>
+				<xs:element ref="Uniterm"/>	
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Uniterm to Exists so that its content model is:
+			( oid?, (declare | Var)+, (formula | Uniterm | And | Or | Exists) )
+		-->							
+
+	</xs:redefine>
+
+</xs:schema>

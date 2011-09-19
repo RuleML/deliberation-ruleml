@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/negdatalog.xsd">
+
+
+
+
+
+
+
+<!-- a trivial example rulebase for testing the Datalog RuleML sublanguage, with strong/classical negation --><content><Assert mapClosure="universal">
+
+
+
+
+
+    
+
+
+    
+
+<formula><Implies>
+  
+  
+<if>
+   
+  
+   <Neg>
+    
+   <strong><Atom>
+      
+      
+      
+      
+      
+      
+    <op><Rel>friend</Rel></op><arg index="1"><Ind>Jane</Ind></arg><arg index="2"><Ind>Joan</Ind></arg><arg index="3"><Ind>Jack</Ind></arg><arg index="4"><Var>y</Var></arg><arg index="5"><Ind>Frank</Ind></arg></Atom></strong></Neg>
+  </if><then>
+    
+  
+    <Neg>
+     
+    <strong><Atom>
+      
+      
+      
+      
+      
+     <op><Rel>friend</Rel></op><slot><Ind>t</Ind><Ind>b</Ind></slot><arg index="1"><Var>x</Var></arg><arg index="2"><Var>y</Var></arg><arg index="3"><Ind>Steph</Ind></arg></Atom></strong></Neg>
+  </then></Implies></formula><formula><Implies>
+  
+  
+<if>
+   
+  
+   <Or>
+    
+   <formula><Neg>
+     
+    <strong><Atom>
+      
+      
+      
+      
+      
+      
+     <op><Rel>friend</Rel></op><arg index="1"><Ind>Jane</Ind></arg><arg index="2"><Ind>Joan</Ind></arg><arg index="3"><Ind>Jack</Ind></arg><arg index="4"><Var>y</Var></arg><arg index="5"><Ind>Frank</Ind></arg></Atom></strong></Neg></formula></Or>
+  </if><then>
+     
+  
+     <Atom>
+      
+      
+      
+      
+      
+     <op><Rel>friend</Rel></op><slot><Ind>t</Ind><Ind>b</Ind></slot><arg index="1"><Var>x</Var></arg><arg index="2"><Var>y</Var></arg><arg index="3"><Ind>Steph</Ind></arg></Atom>
+  </then></Implies></formula><formula><Forall>
+	
+	
+	
+	
+           
+   <declare><Var type="Person">x1</Var></declare><declare><Var type="Person">x2</Var></declare><declare><Var type="Person">x3</Var></declare><declare><Var type="Person">x4</Var></declare><formula><Atom>
+               
+               
+               
+               
+               
+           <op><Rel>rel2</Rel></op><arg index="1"><Ind>4</Ind></arg><arg index="2"><Ind>5</Ind></arg><arg index="3"><Var>x6</Var></arg><arg index="4"><Ind>6</Ind></arg></Atom></formula></Forall></formula><formula><Atom>
+      
+      
+      
+      
+    <op><Rel>yet another relation</Rel></op><arg index="1"><Ind>constant e</Ind></arg><arg index="2"><Ind>constant b</Ind></arg><slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot></Atom></formula></Assert></content></RuleML>

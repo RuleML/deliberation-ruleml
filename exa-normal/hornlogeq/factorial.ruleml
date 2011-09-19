@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlogeq.xsd">
+
+
+
+
+
+
+
+<!-- a flattened factorial definition --><content><Assert mapClosure="universal">
+
+    
+
+
+
+
+
+<formula><Equal>
+      
+      
+    <Expr>
+        <op>
+          
+        
+          <Fun per="value">fac</Fun>
+        </op>
+        <Ind>0</Ind>
+      </Expr><right><Ind>1</Ind></right></Equal></formula><formula><Implies>
+  
+  
+<if>
+    
+  
+    <And>
+      
+      
+      
+      
+    <formula><Atom>
+        
+        
+        
+      <op>
+          <Rel>greater</Rel>
+        </op><arg index="1"><Var>n</Var></arg><arg index="2"><Ind>0</Ind></arg></Atom></formula><formula><Equal>
+        
+        
+      <left><Var>m</Var></left><Expr>
+          <op>
+            
+          
+            <Fun per="value">-</Fun>
+          </op>
+          <Var>n</Var>
+          <Ind>1</Ind>
+        </Expr></Equal></formula><formula><Equal>
+        
+        
+      <left><Var>f</Var></left><Expr>
+          <op>
+            
+          
+            <Fun per="value">fac</Fun>
+          </op>
+          <Var>m</Var>
+        </Expr></Equal></formula><formula><Equal>
+        
+        
+      <left><Var>r</Var></left><Expr>
+          <op>
+            
+          
+            <Fun per="value">*</Fun>
+          </op>
+          <Var>n</Var>
+          <Var>f</Var>
+        </Expr></Equal></formula></And>
+  </if><then>
+    
+  
+    <Equal>
+      
+      
+    <Expr>
+        <op>
+          
+        
+          <Fun per="value">fac</Fun>
+        </op>
+        <Var>n</Var>
+      </Expr><right><Var>r</Var></right></Equal>
+  </then></Implies></formula></Assert></content></RuleML>

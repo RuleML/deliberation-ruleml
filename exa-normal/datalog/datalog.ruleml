@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd">
+
+
+
+
+
+
+
+
+
+
+
+<!-- note the addition of the XML Schema namespace because a built-in datatype is used --><!-- a trivial example rulebase for testing the Datalog RuleML sublanguage --><content><Assert mapClosure="universal">
+
+
+
+
+
+<formula><Implies>
+  
+  
+  
+<oid><Ind>(implication) rule label</Ind></oid><if>
+    
+  
+    <And>
+    
+    <formula><Atom>
+      
+      
+        
+
+
+
+
+
+
+
+      
+      
+      
+    <op><Rel>friend</Rel></op><arg index="1"><Ind>Jane</Ind></arg><arg index="2"><Skolem>constant b</Skolem></arg><arg index="3"><Data xsi:type="xs:string">test</Data></arg><arg index="4"><Data xsi:type="xs:integer">12</Data></arg><arg index="5"><Data>tomorrow</Data></arg><arg index="6"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg><arg index="7"><Data>test12</Data></arg><arg index="8"><Ind>Jack</Ind></arg><arg index="9"><Var>y</Var></arg><arg index="10"><Ind>Frank</Ind></arg></Atom></formula></And>
+  </if><then>
+     
+  
+     <Atom>
+      
+      
+      
+      
+      
+  
+     <op><Rel>friend</Rel></op><slot><Ind>t</Ind><Data>1</Data></slot><arg index="1"><Var>x</Var></arg><arg index="2"><Var>y</Var></arg><arg index="3"><Ind>Steph</Ind></arg><arg index="4"><Reify>
+   
+  
+   <Reify>
+    
+   
+    <Implies>
+      
+      
+    <if><And>
+        
+        
+      <formula><Atom>
+          
+          
+          
+          
+        <op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula><Atom>
+          
+          
+          
+        <op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom>
+        
+        
+        
+      <op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies>
+   </Reify>
+  </Reify></arg></Atom>
+  </then></Implies></formula></Assert></content></RuleML>

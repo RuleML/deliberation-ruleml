@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+targetNamespace="http://www.ruleml.org/1.0/xsd" 
+xmlns="http://www.ruleml.org/1.0/xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			Behind-the-scenes XML Schema for the transition from hohornlog to hohornlogeq
+			File: _hohornlog-to-hohornlogeq.xsd
+			Version: 1.0
+			Last Modification: 2010-08-27
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:redefine schemaLocation="hohornlog.xsd">
+
+		<!--
+			Remove @in, to be re-added (slightly changed) in hohornlogeq
+			
+			This would be more intuitive if done by restricting Expr.attlist,
+			but this type of attribute restriction apparently isn't recognized by XSV.
+		-->
+		<xs:attributeGroup name="per.attrib"/>
+
+	</xs:redefine>
+	
+</xs:schema>

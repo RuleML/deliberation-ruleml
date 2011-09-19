@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd">
+
+
+
+
+
+
+
+
+
+  <!-- a trivial example rulebase for testing the 'UR'-Centered Binary Ground-Datalog RuleML sublanguage -->
+  <content>
+    <Assert mapClosure="universal">
+
+
+
+
+
+      <formula>
+        <Implies>
+
+
+          <if>
+
+
+            <And>
+
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>friend</Rel>
+                  </op>
+                  <arg index="1">
+                    <Ind>Bob</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind iri="some_URI">Frank</Ind>
+                  </arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+
+
+            <Atom>
+
+
+
+              <op>
+                <Rel>friend</Rel>
+              </op>
+              <arg index="1">
+                <Ind>John</Ind>
+              </arg>
+              <arg index="2">
+                <Ind>Bob</Ind>
+              </arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Atom>
+
+
+
+
+          <op>
+            <Rel>yet another relation</Rel>
+          </op>
+          <arg index="1">
+            <Ind iri="URI">constant e</Ind>
+          </arg>
+          <arg index="2">
+            <Ind>constant b</Ind>
+          </arg>
+          <slot>
+            <Ind>role_name3</Ind>
+            <Ind>role 3</Ind>
+          </slot>
+        </Atom>
+      </formula>
+    </Assert>
+  </content>
+  <content>
+    <Query>
+
+      <content>
+        <And>
+
+
+          <formula>
+            <Atom>
+
+
+
+
+
+              <op>
+                <Rel iri="some_URI">some relation</Rel>
+              </op>
+              <slot>
+                <Ind>role_name1</Ind>
+                <Ind>role 1</Ind>
+              </slot>
+              <arg index="1">
+                <Ind>constant a</Ind>
+              </arg>
+              <arg index="2">
+                <Ind iri="another_URI">constant b</Ind>
+              </arg>
+              <slot>
+                <Ind>role_name2</Ind>
+                <Ind>role 2</Ind>
+              </slot>
+            </Atom>
+          </formula>
+          <formula>
+            <Atom>
+
+
+
+              <op>
+                <Rel iri="some_URI">another relation</Rel>
+              </op>
+              <arg index="1">
+                <Ind>constant c</Ind>
+              </arg>
+              <arg index="2">
+                <Ind>constant d</Ind>
+              </arg>
+            </Atom>
+          </formula>
+        </And>
+      </content>
+    </Query>
+  </content>
+</RuleML>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffolog.xsd">
+
+
+
+
+
+
+  <!--A personX has multi-addresses if the personX lives at address1 and address2,only if we fail to prove( using builtins like stringEqualIgnoreCase and lessThan) that the two addresses are the same -->
+  <content>
+    <Assert mapClosure="universal">
+
+
+
+
+
+
+
+
+
+
+
+
+      <formula>
+        <Implies>
+
+
+          <if>
+
+
+            <And>
+
+
+
+
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>address</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>personX</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var type="String">address1</Var>
+                  </arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>address</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>personX</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var type="String">address2</Var>
+                  </arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Naf>
+
+                  <weak>
+                    <Atom>
+
+
+
+                      <op>
+                        <Rel>stringEqualIgnoreCase</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var type="String">address1</Var>
+                      </arg>
+                      <arg index="2">
+                        <Var type="String">address2</Var>
+                      </arg>
+                    </Atom>
+                  </weak>
+                </Naf>
+              </formula>
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>lessThan</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var type="String">address1</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var type="String">address2</Var>
+                  </arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+
+
+            <Atom>
+
+
+              <op>
+                <Rel>multi-address</Rel>
+              </op>
+              <arg index="1">
+                <Var>personX</Var>
+              </arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <!--Jack lives at 655 Graham Avenue -->
+      <formula>
+        <Atom>
+
+
+
+          <op>
+            <Rel>address</Rel>
+          </op>
+          <arg index="1">
+            <Ind>Jack</Ind>
+          </arg>
+          <arg index="2">
+            <Ind type="String">655 Graham Avenue</Ind>
+          </arg>
+        </Atom>
+      </formula>
+      <!--Jack lives at 552 Windsor -->
+      <formula>
+        <Atom>
+
+
+
+          <op>
+            <Rel>address</Rel>
+          </op>
+          <arg index="1">
+            <Ind>Jack</Ind>
+          </arg>
+          <arg index="2">
+            <Ind type="String">552 Windsor</Ind>
+          </arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

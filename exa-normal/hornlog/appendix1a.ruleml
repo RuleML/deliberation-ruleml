@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+
+
+
+
+
+	
+<!-- 'own' example as universal 'Assert' (changed from not-currently-supported 'Consider') --><content><Assert mapClosure="universal">
+		
+		
+		
+	<formula><Implies>
+			
+			
+		<if><And>
+				
+				
+			<formula><Atom>
+					
+					
+					
+					
+				<op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula><Atom>
+					
+					
+					
+				<op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom>
+				
+				
+				
+			<op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></formula><formula><Atom>
+			
+			
+			
+			
+		<op><Rel>buy</Rel></op><arg index="1"><Ind>Mary</Ind></arg><arg index="2"><Ind>John</Ind></arg><Expr>
+				<Fun per="copy">book</Fun>
+				<Ind>Elliotte Rusty Harold</Ind>
+				<Ind>XML Bible</Ind>
+				<Ind>2001</Ind>
+			</Expr></Atom></formula><formula><Atom>
+			
+			
+			
+		<op><Rel>keep</Rel></op><arg index="1"><Ind>Mary</Ind></arg><arg index="2"><Var>object</Var></arg></Atom></formula></Assert></content></RuleML>

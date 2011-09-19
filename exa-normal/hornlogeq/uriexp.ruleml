@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlogeq.xsd">
+
+
+
+
+
+
+
+<!-- a uri expander --><content><Assert mapClosure="universal">
+
+  
+
+  
+
+  
+
+
+<formula><Equal>
+    
+    
+  <Expr>
+      <op>
+        
+      
+        <Fun per="value">uriexp</Fun>
+      </op>
+      <Ind>daml</Ind>
+    </Expr><right><Ind iri="http://www.daml.org/"/></right></Equal></formula><formula><Equal>
+    
+    
+  <Expr>
+      <op>
+        
+      
+        <Fun per="value">uriexp</Fun>
+      </op>
+      <Ind>oil</Ind>
+    </Expr><right><Ind iri="http://www.ontoknowledge.org/oil/"/></right></Equal></formula><formula><Equal>
+    
+    
+  <Expr>
+      <op>
+        
+      
+        <Fun per="value">uriexp</Fun>
+      </op>
+      <Ind>w3c</Ind>
+    </Expr><right><Ind iri="http://www.w3.org/"/></right></Equal></formula></Assert></content></RuleML>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/fologeq.xsd">
+
+
+
+
+
+
+
+  <!--
+
+  Here are serialization examples from the SWSL Report
+  (http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous):
+
+-->
+  <content>
+    <Assert>
+
+
+      <formula>
+        <oid>
+          <Ind
+            iri="http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous"
+          />
+        </oid>
+      </formula>
+      <formula>
+        <Entails>
+
+
+
+
+
+
+          <Rulebase>
+
+
+
+
+
+            <Atom>
+
+
+              <op>
+                <Rel>gold</Rel>
+              </op>
+              <arg index="1">
+                <Ind>watch17</Ind>
+              </arg>
+            </Atom>
+
+          </Rulebase>
+          <Rulebase>
+
+
+
+
+
+
+
+            <Neg>
+
+              <strong>
+                <And>
+
+
+                  <formula>
+                    <Atom>
+
+
+
+                      <op>
+                        <Rel>pricediscount</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>CUST</Var>
+                      </arg>
+                      <arg index="2">
+                        <Ind>fivepercent</Ind>
+                      </arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+
+
+
+                      <op>
+                        <Rel>pricediscount</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>CUST</Var>
+                      </arg>
+                      <arg index="2">
+                        <Ind>tenpercent</Ind>
+                      </arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </strong>
+            </Neg>
+
+            <Implies material="yes">
+
+
+              <if>
+
+
+                <Neg>
+
+                  <strong>
+                    <Equal>
+
+
+                      <Var>Y</Var>
+                      <Var>Z</Var>
+                    </Equal>
+                  </strong>
+                </Neg>
+              </if>
+              <then>
+
+
+                <Neg>
+
+                  <strong>
+                    <And>
+
+
+                      <formula>
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>pricediscount</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>CUST</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>Y</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>pricediscount</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>CUST</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>Z</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                    </And>
+                  </strong>
+                </Neg>
+              </then>
+            </Implies>
+
+          </Rulebase>
+
+        </Entails>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

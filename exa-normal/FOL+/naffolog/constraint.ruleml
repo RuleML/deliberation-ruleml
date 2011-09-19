@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffolog.xsd">
+
+
+
+  <content>
+    <Assert>
+
+
+
+      <formula>
+        <Entails>
+
+
+
+
+
+
+
+          <Rulebase>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- a particular watch is gold -->
+
+            <Atom>
+
+
+              <op>
+                <Rel>gold</Rel>
+              </op>
+              <arg index="1">
+                <Ind>watch17</Ind>
+              </arg>
+            </Atom>
+
+
+            <!-- inconsistent -->
+
+            <Atom>
+
+
+              <op>
+                <Rel>rusty</Rel>
+              </op>
+              <arg index="1">
+                <Ind>watch17</Ind>
+              </arg>
+            </Atom>
+
+            <Atom>
+
+
+              <op>
+                <Rel>rusty</Rel>
+              </op>
+              <arg index="1">
+                <Reify>
+
+
+                  <Implies material="yes">
+
+
+                    <if>
+
+
+                      <And>
+
+
+                        <formula>
+                          <Atom>
+                            <op>
+                              <Rel>wet</Rel>
+                            </op>
+                            <arg index="1">
+                              <Var>object</Var>
+                            </arg>
+                          </Atom>
+                        </formula>
+                        <formula>
+                          <Atom>
+                            <op>
+                              <Rel>metal</Rel>
+                            </op>
+                            <arg index="1">
+                              <Var>object</Var>
+                            </arg>
+                          </Atom>
+                        </formula>
+                      </And>
+                    </if>
+                    <then>
+
+
+                      <Atom>
+                        <op>
+                          <Rel>rusty</Rel>
+                        </op>
+                        <arg index="1">
+                          <Var>object</Var>
+                        </arg>
+                      </Atom>
+                    </then>
+                  </Implies>
+                </Reify>
+              </arg>
+            </Atom>
+
+            <Atom>
+
+
+              <op>
+                <Rel>rusty</Rel>
+              </op>
+              <arg index="1">
+                <Ind>car4</Ind>
+              </arg>
+            </Atom>
+          </Rulebase>
+
+          <Rulebase>
+
+
+            <Neg>
+
+              <strong>
+                <And>
+
+
+                  <formula>
+                    <Atom>
+
+
+                      <op>
+                        <Rel>gold</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>object</Var>
+                      </arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+
+
+                      <op>
+                        <Rel>rusty</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>object</Var>
+                      </arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </strong>
+            </Neg>
+          </Rulebase>
+
+        </Entails>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

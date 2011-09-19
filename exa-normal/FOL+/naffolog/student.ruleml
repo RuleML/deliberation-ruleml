@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffolog.xsd">
+
+
+  <content>
+    <Assert>
+
+
+
+      <formula>
+        <Entails>
+
+
+
+
+
+
+
+
+
+
+
+          <Rulebase>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- a particular person is a student -->
+
+            <Atom>
+
+
+              <op>
+                <Rel>student</Rel>
+              </op>
+              <arg index="1">
+                <Ind>personA</Ind>
+              </arg>
+            </Atom>
+
+
+            <!--a particular person is an employee -->
+
+
+            <!-- 
+		     <Atom>
+		       <Rel>employee</Rel>
+		       <Ind>personA</Ind>
+		       <Ind>companyB</Ind>
+		     </Atom>
+		     -->
+
+
+
+            <!--a student is a fulltime-student if the student cannot be proved as a parttime-student -->
+
+
+            <Implies material="yes">
+
+
+              <if>
+
+
+                <And>
+
+
+                  <formula>
+                    <Atom>
+                      <op>
+                        <Rel>student</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>person</Var>
+                      </arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Naf>
+                      <weak>
+                        <Atom>
+                          <op>
+                            <Rel>parttime-student</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>person</Var>
+                          </arg>
+                        </Atom>
+                      </weak>
+                    </Naf>
+                  </formula>
+                </And>
+              </if>
+              <then>
+
+
+                <Atom>
+                  <op>
+                    <Rel>fulltime-student</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>person</Var>
+                  </arg>
+                </Atom>
+              </then>
+            </Implies>
+
+          </Rulebase>
+
+
+          <!--An integrity constraint that a fulltime-student cannot also be an employee of a company-->
+
+
+          <Rulebase>
+
+
+            <Neg>
+
+              <strong>
+                <And>
+
+
+                  <formula>
+                    <Atom>
+
+
+                      <op>
+                        <Rel>fulltime-student</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>person</Var>
+                      </arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+
+
+
+                      <op>
+                        <Rel>employee</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>person</Var>
+                      </arg>
+                      <arg index="2">
+                        <Var>company</Var>
+                      </arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </strong>
+            </Neg>
+          </Rulebase>
+
+        </Entails>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

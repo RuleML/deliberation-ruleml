@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/folog.xsd">
+
+
+
+
+
+
+
+  <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
+  <content>
+    <Assert mapClosure="universal" mapDirection="bidirectional">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <formula>
+        <Forall>
+
+
+
+          <declare>
+            <Var>person</Var>
+          </declare>
+          <declare>
+            <Var>object</Var>
+          </declare>
+          <formula>
+            <Implies>
+
+
+              <if>
+
+
+                <Exists>
+
+
+                  <declare>
+                    <Var>merchant</Var>
+                  </declare>
+                  <formula>
+                    <And>
+
+
+                      <formula>
+                        <Atom>
+
+
+
+
+                          <op>
+                            <Rel>buy</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>person</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>merchant</Var>
+                          </arg>
+                          <arg index="3">
+                            <Var>object</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>keep</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>person</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>object</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                    </And>
+                  </formula>
+                </Exists>
+              </if>
+              <then>
+
+
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>own</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>person</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>object</Var>
+                  </arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Equivalent>
+
+
+          <torso>
+            <Atom>
+
+
+
+
+              <op>
+                <Rel>own</Rel>
+              </op>
+              <arg index="1">
+                <Skolem>test</Skolem>
+              </arg>
+              <arg index="2">
+                <Var>person</Var>
+              </arg>
+              <arg index="3">
+                <Var>object</Var>
+              </arg>
+            </Atom>
+          </torso>
+          <torso>
+            <Atom>
+
+
+
+
+
+              <op>
+                <Rel>belongs</Rel>
+              </op>
+              <arg index="1">
+                <Var>object</Var>
+              </arg>
+              <arg index="2">
+                <Var>person</Var>
+              </arg>
+              <repo>
+                <Var>x</Var>
+              </repo>
+              <resl>
+                <Var>y</Var>
+              </resl>
+            </Atom>
+          </torso>
+        </Equivalent>
+      </formula>
+      <formula>
+        <Implies>
+
+
+
+          <oid>
+
+
+            <Ind>claiming-through-disclaimers</Ind>
+          </oid>
+          <if>
+
+
+            <And>
+
+
+              <formula>
+                <Forall>
+
+
+                  <declare>
+                    <Var>x</Var>
+                  </declare>
+                  <formula>
+                    <Implies>
+
+
+
+                      <oid>
+
+
+                        <Ind>disclaiming-of-other-persons</Ind>
+                      </oid>
+                      <if>
+
+
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>unequal</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>x</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>person</Var>
+                          </arg>
+                        </Atom>
+                      </if>
+                      <then>
+
+
+                        <Atom>
+
+
+
+
+                          <op>
+                            <Rel>disclaim</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>x</Var>
+                          </arg>
+                          <arg index="2">
+                            <Skolem>test</Skolem>
+                          </arg>
+                          <arg index="3">
+                            <Var>object</Var>
+                          </arg>
+                        </Atom>
+                      </then>
+                    </Implies>
+                  </formula>
+                </Forall>
+              </formula>
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>keep</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>person</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>object</Var>
+                  </arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+
+
+            <Atom>
+
+
+
+              <op>
+                <Rel>claim</Rel>
+              </op>
+              <arg index="1">
+                <Var>person</Var>
+              </arg>
+              <arg index="2">
+                <Var>object</Var>
+              </arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies>
+
+
+
+          <oid>
+
+
+            <Ind>claiming-or-relinquishing-through-disclaimers</Ind>
+          </oid>
+          <if>
+
+
+            <Forall>
+
+
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Implies>
+
+
+
+                  <oid>
+
+
+                    <Ind>disclaiming-of-other-persons</Ind>
+                  </oid>
+                  <if>
+
+
+                    <Atom>
+
+
+
+                      <op>
+                        <Rel>unequal</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>x</Var>
+                      </arg>
+                      <arg index="2">
+                        <Var>person</Var>
+                      </arg>
+                    </Atom>
+                  </if>
+                  <then>
+
+
+                    <Atom>
+
+
+
+
+                      <op>
+                        <Rel>disclaim</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>x</Var>
+                      </arg>
+                      <arg index="2">
+                        <Var>object</Var>
+                      </arg>
+                      <repo>
+                        <Var>x</Var>
+                      </repo>
+                    </Atom>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </if>
+          <then>
+
+
+            <Or>
+
+
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>claim</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>person</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>object</Var>
+                  </arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+
+
+
+                  <op>
+                    <Rel>relinquish</Rel>
+                  </op>
+                  <arg index="1">
+                    <Var>person</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>object</Var>
+                  </arg>
+                </Atom>
+              </formula>
+            </Or>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies>
+
+
+          <if>
+
+
+            <And>
+
+              <formula>
+                <Atom>
+
+
+
+
+
+
+
+
+
+
+
+                  <op>
+                    <Rel>friend</Rel>
+                  </op>
+                  <arg index="1">
+                    <Ind>Jane</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>Joan</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Skolem/>
+                  </arg>
+                  <arg index="4">
+                    <Ind>Jack</Ind>
+                  </arg>
+                  <arg index="5">
+                    <Var>y</Var>
+                  </arg>
+                  <arg index="6">
+                    <Ind>Frank</Ind>
+                  </arg>
+                  <arg index="7">
+                    <Plex>
+
+
+                      <Ind/>
+                    </Plex>
+                  </arg>
+                  <repo>
+                    <Plex>
+
+
+
+                      <Ind/>
+                      <Var/>
+                    </Plex>
+                  </repo>
+                  <slot>
+                    <Ind>yar</Ind>
+                    <Expr>
+
+
+                      <op>
+                        <Fun>constructor</Fun>
+                      </op>
+                      <arg index="1">
+                        <Plex>
+
+
+
+                          <Var>z</Var>
+                          <slot>
+
+
+
+                            <Ind>yar2</Ind>
+                            <Ind>c</Ind>
+                          </slot>
+                        </Plex>
+                      </arg>
+                    </Expr>
+                  </slot>
+                  <resl>
+                    <Plex>
+
+
+                      <slot>
+
+
+
+                        <Ind/>
+                        <Ind/>
+                      </slot>
+                    </Plex>
+                  </resl>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+
+
+            <Or>
+
+
+              <formula>
+                <Atom>
+
+
+
+
+
+                  <op>
+                    <Rel>friend</Rel>
+                  </op>
+                  <slot>
+                    <Ind>t</Ind>
+                    <Ind>b</Ind>
+                  </slot>
+                  <arg index="1">
+                    <Var>x</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>y</Var>
+                  </arg>
+                  <arg index="3">
+                    <Ind>Steph</Ind>
+                  </arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+
+
+
+
+
+                  <op>
+                    <Rel>friend</Rel>
+                  </op>
+                  <slot>
+                    <Ind>t</Ind>
+                    <Ind>b</Ind>
+                  </slot>
+                  <arg index="1">
+                    <Var>x</Var>
+                  </arg>
+                  <arg index="2">
+                    <Var>y</Var>
+                  </arg>
+                  <arg index="3">
+                    <Ind>Jill</Ind>
+                  </arg>
+                </Atom>
+              </formula>
+            </Or>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Atom>
+
+
+
+
+
+          <op>
+            <Rel>some relation</Rel>
+          </op>
+          <slot>
+            <Ind>role_name1</Ind>
+            <Ind>role 1</Ind>
+          </slot>
+          <arg index="1">
+            <Ind>constant a</Ind>
+          </arg>
+          <arg index="2">
+            <Ind>constant b</Ind>
+          </arg>
+          <slot>
+            <Ind>role_name2</Ind>
+            <Ind>role 2</Ind>
+          </slot>
+        </Atom>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

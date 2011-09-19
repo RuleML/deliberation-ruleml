@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffolog.xsd">
+
+
+
+  <content>
+    <Assert>
+
+
+
+
+
+      <formula>
+        <Entails>
+
+
+
+
+
+
+
+          <Rulebase>
+
+
+
+
+
+
+            <!--
+   KB1 of http://www.dbis.informatik.uni-goettingen.de/PPSWR06/Slides/boley-RuleML-Family-PPSWR06-Slides.pdf,
+   slide 34
+   -->
+
+            <Atom>
+
+
+              <op>
+                <Rel>emp</Rel>
+              </op>
+              <arg index="1">
+                <Ind>Mary</Ind>
+              </arg>
+            </Atom>
+          </Rulebase>
+
+          <Rulebase>
+
+
+            <Forall>
+
+
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Implies>
+
+
+                  <if>
+                    <Atom>
+
+
+                      <op>
+                        <Rel>emp</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>x</Var>
+                      </arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Exists>
+
+
+                      <declare>
+                        <Var>y</Var>
+                      </declare>
+                      <formula>
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>ssn</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>x</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>y</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                    </Exists>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </Rulebase>
+
+        </Entails>
+      </formula>
+      <formula>
+        <Entails>
+
+
+
+
+
+
+
+          <Rulebase>
+
+
+
+
+
+
+
+            <!--
+   KB2 of http://www.dbis.informatik.uni-goettingen.de/PPSWR06/Slides/boley-RuleML-Family-PPSWR06-Slides.pdf,
+   slide 34
+   -->
+
+            <Atom>
+
+
+              <op>
+                <Rel>emp</Rel>
+              </op>
+              <arg index="1">
+                <Ind>Mary</Ind>
+              </arg>
+            </Atom>
+            <Atom>
+
+
+
+              <op>
+                <Rel>ssn</Rel>
+              </op>
+              <arg index="1">
+                <Ind>Mary</Ind>
+              </arg>
+              <arg index="2">
+                <Data>1223</Data>
+              </arg>
+            </Atom>
+          </Rulebase>
+
+          <Rulebase>
+
+
+            <Forall>
+
+
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Implies>
+
+
+                  <if>
+                    <Atom>
+
+
+                      <op>
+                        <Rel>emp</Rel>
+                      </op>
+                      <arg index="1">
+                        <Var>x</Var>
+                      </arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Exists>
+
+
+                      <declare>
+                        <Var>y</Var>
+                      </declare>
+                      <formula>
+                        <Atom>
+
+
+
+                          <op>
+                            <Rel>ssn</Rel>
+                          </op>
+                          <arg index="1">
+                            <Var>x</Var>
+                          </arg>
+                          <arg index="2">
+                            <Var>y</Var>
+                          </arg>
+                        </Atom>
+                      </formula>
+                    </Exists>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </Rulebase>
+
+        </Entails>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

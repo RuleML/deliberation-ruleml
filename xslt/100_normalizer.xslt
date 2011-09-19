@@ -221,8 +221,8 @@ In several 'otherwise' cases, the following is used:
 				they are removed from this section and given their own xsl:when condition, similar to Equals-->
 				<xsl:variable name="role">
 					<xsl:choose>
-						<xsl:when test="name(.)='Assert' or name(.)='And' or name(.)='Or' or name(.)='Retract'">formula</xsl:when>
-						<xsl:when test="name(.)='RuleML' or name(.)='Query'">content</xsl:when>
+						<xsl:when test="name(.)='Assert' or name(.)='And' or name(.)='Or' or name(.)='Retract' or name(.)='Query'">formula</xsl:when>
+						<!-- <xsl:when test="name(.)='RuleML' ">content</xsl:when> -->
 						<xsl:when test="name(.)='Neg'">strong</xsl:when>										
 						<xsl:when test="name(.)='Naf'">weak</xsl:when>
 						<xsl:when test="name(.)='Equivalent'">torso</xsl:when>	
