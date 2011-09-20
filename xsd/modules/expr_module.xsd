@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML expressions.
 			File: expr_module.xsd
 			Version: 1.0
-			Last Modification: 2010-08-17
+			Last Modification: 2011-09-19 [Tara Athan]
 			
 			This module declares the following RuleML elements and attributes:
 			* Expr
@@ -99,21 +99,21 @@ elementFormDefault="qualified"
 		<xs:annotation>
 			<xs:appinfo>
 				<sch:pattern name="Uninterpreted functions">
-					<sch:rule context="r:Expr/r:Fun[@in='no']">
+					<sch:rule context="r:Expr/r:Fun[@per='no']">
 						<sch:assert test=
-								"not(../r:Expr/r:Fun[@in='yes'] or
-									 ../r:arg/r:Expr/r:Fun[@in='yes'] or
-									 ../r:Expr/r:op/r:Fun[@in='yes'] or 
-									 ../r:arg/r:Expr/r:op/r:Fun[@in='yes'])">
+								"not(../r:Expr/r:Fun[@per='yes'] or
+									 ../r:arg/r:Expr/r:Fun[@per='yes'] or
+									 ../r:Expr/r:op/r:Fun[@per='yes'] or 
+									 ../r:arg/r:Expr/r:op/r:Fun[@per='yes'])">
 								Functions nested within an uninterpreted function must also be uninterpreted.
 						</sch:assert>
 					</sch:rule>
-					<sch:rule context="r:Expr/r:op/r:Fun[@in='no']">
+					<sch:rule context="r:Expr/r:op/r:Fun[@per='no']">
 						<sch:assert test=
-								"not(../../r:Expr/r:Fun[@in='yes'] or
-									 ../../r:arg/r:Expr/r:Fun[@in='yes'] or
-									 ../../r:Expr/r:op/r:Fun[@in='yes'] or 
-									 ../../r:arg/r:Expr/r:op/r:Fun[@in='yes'])">
+								"not(../../r:Expr/r:Fun[@per='yes'] or
+									 ../../r:arg/r:Expr/r:Fun[@per='yes'] or
+									 ../../r:Expr/r:op/r:Fun[@per='yes'] or 
+									 ../../r:arg/r:Expr/r:op/r:Fun[@per='yes'])">
 								Functions nested within an uninterpreted function must also be uninterpreted.
 						</sch:assert>
 					</sch:rule>

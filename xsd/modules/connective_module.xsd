@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML connectives.
 			File: connective_module.xsd
 			Version: 1.0
-			Last Modification: 2010-07-16
+			Last Modification: 2011-09-19 [Tara Athan]
 			
 			This module declares the following RuleML elements and attributes:
 			* Implies
@@ -211,13 +211,13 @@ elementFormDefault="qualified"
 		<xs:annotation>
 			<xs:appinfo>
 				<pattern name="Equivalent">
-					<rule context="r:Equivalent[count( descendant::r:Equal/r:Expr | descendant::r:Equal/r:lhs/r:Expr )=2]">
+					<rule context="r:Equivalent[count( descendant::r:Equal/r:Expr | descendant::r:Equal/r:left/r:Expr )=2]">
 						<assert test=
-							"( descendant::r:Equal[1]/descendant::r:Fun[@in = 'no']
-							   and descendant::r:Equal[2]/descendant::r:Fun[@in = 'no'] )
+							"( descendant::r:Equal[1]/descendant::r:Fun[@per = 'copy']
+							   and descendant::r:Equal[2]/descendant::r:Fun[@per = 'copy'] )
 							 or
-							 ( descendant::r:Equal[1]/descendant::r:Fun[@in = 'yes']
-							   and descendant::r:Equal[2]/descendant::r:Fun[@in = 'yes'] )">
+							 ( descendant::r:Equal[1]/descendant::r:Fun[@per = 'open']
+							   and descendant::r:Equal[2]/descendant::r:Fun[@per = 'open'] )">
 						  Equalities within an equivalence expression must either both be interpreted or both uninterpreted.
 						</assert>
 					</rule>

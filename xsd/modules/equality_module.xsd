@@ -11,7 +11,7 @@ xmlns="http://www.ruleml.org/1.0/xsd"
 			This is the XML Schema module for equality in RuleML.
 			File: equality_module.xsd
 			Version: 1.0
-			Last Modification: 2010-08-17
+			Last Modification: 2011-09-19 [Tara Athan]
 			
 			This module declares the following RuleML elements and attributes:
 			* Equal
@@ -74,11 +74,11 @@ xmlns="http://www.ruleml.org/1.0/xsd"
 			<xs:appinfo>
 				<sch:pattern name="Defining equality">
 					<sch:rule context=
-						"r:Implies/r:head/r:Equal/r:lhs/r:Expr/r:Fun |
-						 r:Implies/r:Equal[2]/r:lhs/r:Expr/r:Fun |
-						 r:Implies/r:head/r:Equal/r:Expr[1]/r:Fun |
+						"r:Implies/r:then/r:Equal/r:left/r:Expr/r:Fun |
+						 r:Implies/r:Equal[2]/r:left/r:Expr/r:Fun |
+						 r:Implies/r:then/r:Equal/r:Expr[1]/r:Fun |
 						 r:Implies/r:Equal[2]/r:Expr[1]/r:Fun">
-						<sch:assert test="@in='yes'">
+						<sch:assert test="@per='yes'">
 							A defining equality must have an interpreted left-hand side.
 						</sch:assert>
 					</sch:rule>
