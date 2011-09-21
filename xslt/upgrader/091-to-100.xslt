@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="2.0"
+<xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.ruleml.org/1.0/xsd"
   xmlns:ruleml091="http://www.ruleml.org/0.91/xsd"
@@ -79,12 +79,26 @@
      was changed to
       
        <... iri="...">
+  5. The name of the unified term in SWSL languages was changed from "Hterm" to "Uniterm".
+	   - <Hterm>
+        
+     was changed to
+      
+       <Uniterm>
 
+  6. The name of the constant term in SWSL languages was changed from "Con" to "Const".
+	   - <Con>
+        
+     was changed to
+      
+       <Const>
+       
+   Note: the output from this stylesheet will have RuleML Version 1.0 as the default namespace,
+   no matter what if any prefix is given to the RuleML Version 0.91 namespace in the original instance. 
 
  	-->
 
   <xsl:output method="xml" version="1.0" />
-  <xsl:namespace-alias stylesheet-prefix="ruleml091" result-prefix="#default"/>
   <xsl:template match="/" priority="3">
     <xsl:text>&#xa;</xsl:text>
     <!--newline-->
@@ -160,9 +174,24 @@
     </xsl:attribute>
   </xsl:template>
 
+	<!-- Ad. 5. change Hterm to Uniterm -->
+	<xsl:template match="ruleml091:Hterm" priority="3">	
+		<xsl:element name="Uniterm" >			
+			<xsl:apply-templates select="node()|@*"/>			
+		</xsl:element>		
+	</xsl:template>
+	
+	<!-- Ad. 6. change Con to Const -->
+	<xsl:template match="ruleml091:Con" priority="3">	
+		<xsl:element name="Const" >			
+			<xsl:apply-templates select="node()|@*"/>			
+		</xsl:element>		
+	</xsl:template>
+
   <!-- copy any element whose namespace matches the old namespace to the new namespace -->
   <xsl:template match="*[namespace-uri()='http://www.ruleml.org/0.91/xsd']" priority="2">
     <xsl:element name="{local-name()}">
+      <!-- copy any namespace declaration for xsd datatypes, if present -->
       <xsl:copy-of select="namespace::xs"/>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>

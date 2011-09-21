@@ -3,7 +3,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>RuleML 1.0 Relax NG Meta-Schema: Dashboard</title>
+    <title>RuleML 1.0 Relax NG Parameterized Schema</title>
     <script type="text/javascript">
       /* <![CDATA[ */
       var php_path = "/1.0/relaxng/schema_rnc.php";
@@ -178,6 +178,9 @@
           LanguageForm.expr2.checked = false;  
           LanguageForm.expr2.disabled = "disabled";
         }
+        document.getElementById('schema_link').innerHTML = "";
+        document.getElementById('schema_link').href = "";
+      	document.getElementById('schema_text').innerHTML = "";
       }
       function constructParams(LanguageForm){
         // various obscure encoding formulas
@@ -193,13 +196,18 @@
         //
         var df = 0;
           if(LanguageForm.deflt[0].checked){
-            df = 1;
+            df = 5;
           }
           if(LanguageForm.deflt[1].checked){
+            if(LanguageForm.backbone[6].checked){
             df = 2;
           }
-          if(LanguageForm.deflt[2].checked){
-            df = 3;
+          else {
+            df = 6;
+          }
+        }
+        if(LanguageForm.deflt[2].checked){
+            df = 7;
           }
         params = params+"&default=x"+df.toString(16);
         //
@@ -278,9 +286,6 @@
             serial = serial + Math.pow(2, i);
           }
         }
-        if ( (eval("LanguageForm.serial" + 0 + ".checked"))*(eval("LanguageForm.serial" + 1 + ".checked"))){
-          serial = serial + Math.pow(2, 4);
-        }
         params = params+"&serial=x"+serial.toString(16);
         return params;
       }
@@ -308,6 +313,7 @@
     </script>
   </head>
   <body>
+    <h1>Selection Form</h1>
     <div>
       Instructions: Make a selection from the form below, then click "Refresh Schema" to update the Schema URL. 
       The main module is displayed below the form, and may be copied into a file for local use.
@@ -608,6 +614,7 @@
         </tr>
       </table>
       </div>
+      <h1>Main Module</h1>
       <pre id="schema_text" />
       <script type="text/javascript">
         /* <![CDATA[ */

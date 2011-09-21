@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML performatives.
 			File: performative_module.xsd
 			Version: 1.0
-			Last Modification: 2011-09-20
+			Last Modification: 2010-07-17
 						
 			This module declares the following RuleML elements:
 			* RuleML
@@ -35,16 +35,15 @@ elementFormDefault="qualified"
 		See http://www.ruleml.org/1.0/glossary/#gloss-RuleML
 
 		content model:
-		( oid?, (transaction | Assert | Retract | Query)* )
+		( oid?, (Assert | Retract | Query)* )
 	-->
 	<xs:attributeGroup name="RuleML.attlist"/>
 	<xs:group name="RuleML.content">
 		<xs:sequence>
 			<xs:element ref="oid" minOccurs="0"/>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-			  <xs:element ref="transaction"/>
-			  <xs:element ref="Assert"/>
-			  <xs:element ref="Retract"/>
+				<xs:element ref="Assert"/>
+				<xs:element ref="Retract"/>
 				<xs:element ref="Query"/>
 			</xs:choice>
 		</xs:sequence>		
@@ -54,30 +53,7 @@ elementFormDefault="qualified"
 		<xs:attributeGroup ref="RuleML.attlist"/>
 	</xs:complexType>
 	<xs:element name="RuleML" type="RuleML.type"/>
-  <!--
-    *** transaction ***
-    The transaction role of the root element (<RuleML>).
-    
-    See http://www.ruleml.org/1.0/glossary/#gloss-transaction
-    
-    content model  (Assert|Retract|Query)
-    
-  -->
-  <xs:group name="transaction.content">
-    <xs:choice>
-      <xs:element ref="Assert"/>
-      <xs:element ref="Retract"/>
-      <xs:element ref="Query"/>
-    </xs:choice>
-  </xs:group>
-  <xs:attributeGroup name="transaction.attlist">
-    <xs:attributeGroup ref="index.attrib"/>
-  </xs:attributeGroup>
-  <xs:complexType name="transaction.type">
-    <xs:group ref="transaction.content"/>
-    <xs:attributeGroup ref="transaction.attlist"/>
-  </xs:complexType>
-  <xs:element name="transaction" type="transaction.type"/>
+	
 	<!--
 		*** Assert ***
 		A KQML-like performative acting as a wrapper specifying that its content is

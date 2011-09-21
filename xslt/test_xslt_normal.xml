@@ -1,14 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><RuleML>
-    
-<content xmlns="http://www.ruleml.org/1.0/xsd"><Assert xmlns="">
-        
-        
-    <formula xmlns="http://www.ruleml.org/1.0/xsd"><oid xmlns=""><Atom><op xmlns="http://www.ruleml.org/1.0/xsd"><Rel xmlns="">R</Rel></op></Atom></oid></formula><formula xmlns="http://www.ruleml.org/1.0/xsd"><Implies xmlns="">
-            
-        <if>
-                <Atom>
-                    
-                <op>
-                        <Rel>R</Rel>
-                    </op></Atom>
-            </if></Implies></formula></Assert></content></RuleML>
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML>
+
+  <content xmlns="http://www.ruleml.org/1.0/xsd">
+    <Assert xmlns="">
+
+
+      <formula xmlns="http://www.ruleml.org/1.0/xsd">
+        <oid xmlns="">
+          <Atom>
+            <op xmlns="http://www.ruleml.org/1.0/xsd">
+              <Rel xmlns="">R</Rel>
+            </op>
+          </Atom>
+        </oid>
+      </formula>
+      <formula xmlns="http://www.ruleml.org/1.0/xsd">
+        <Implies xmlns="">
+
+          <if>
+            <Atom>
+
+              <op>
+                <Rel>R</Rel>
+              </op>
+            </Atom>
+          </if>
+        </Implies>
+      </formula>
+    </Assert>
+  </content>
+</RuleML>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RuleML
+xmlns="http://www.ruleml.org/0.91/xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xsd/hohornlogeq.xsd">
+
+<oid>
+	<Con>
+		This is a simple test file for testing 0.91 - 1.0 RuleML transformations (for SWSL module).
+	</Con>
+</oid>
+
+<Assert>
+	<Hterm>
+		<Con/>
+		<Hterm>
+			<Con>hasBook</Con>
+			<Con>John</Con>
+			<Con uri="www.harrypotter.com">Harry Potter</Con>
+		</Hterm>
+	</Hterm>	
+</Assert>
+
+</RuleML>
