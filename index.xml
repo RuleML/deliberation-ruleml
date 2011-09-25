@@ -39,7 +39,7 @@
 			<tr><td align="right">2006-08-24 - </td><td><a href="http://www.ruleml.org/0.91/">Version 0.91</a></td></tr>
 			<tr><td align="right">2010-11-26 - </td><td><a href="http://www.ruleml.org/1.0/">Version 1.0 Sliding Release</a></td></tr>
 			<tr><td align="right">2011-05-14 - </td><td><a href="http://www.ruleml.org/0.91/">Version 0.91 Patched</a></td></tr>
-			<tr><td align="right"><h3>2011-??-?? - </h3></td><td><h3><a href="http://www.ruleml.org/0.91/">Version 1.0</a></h3></td></tr>
+			<tr><td align="right"><h3>2011-11-?? - </h3></td><td><h3><a href="http://www.ruleml.org/1.0/">Version 1.0 Code Complete Release Candidate</a></h3></td></tr>
 			</table>			
 
 			<h2>Latest version: <a href="http://www.ruleml.org/spec/">www.ruleml.org/spec</a></h2>
@@ -56,8 +56,43 @@
 		</center>
 		<br/>
 		
-		<p>This is the XML Schema specification (excluding Schematron annotations) for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>
-		<p>Each XML Schema Definition (XSD) in the evolving hierarchy corresponds to a specific RuleML	sublanguage. The implementation uses a content-model based <a href="http://www.ruleml.org/modularization">modularization approach</a> in order to offer appropriate flexibility and accommodate different implementations and approaches. Note that the Document Type Definition (DTD) specification of RuleML is no longer being maintained, but will continue to be <a href="http://www.ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between XML Schema and DTDs such as <a href="http://www.altova.com/products_ide.html">XMLSpy</a> are always available.</p>
+		<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>
+	  <p>The scope of the specification includes 
+	    <ul>
+	      <li>syntax, including
+	        <ul>
+	          <!-- <li>abstract syntax</li> -->
+	          <li>XML syntax, categorized as
+	          <ul>
+	            <!-- <li>@@@the normative informal syntax as given in <a href="??">??</a>@@@</li> -->
+	            <li>@@@informative@@@ formal syntax as
+	              <ul>
+	                <li><a href="http://www.ruleml.org/1.0/xsd/">schemas in XML Schema Definition Language (XSD) with Schematron annotation</a></li>
+	                <li><a href="http://www.ruleml.org/1.0/relaxng/">schemas in Relax NG</a></li>
+	              </ul>
+	            </li> 
+	            
+	          </ul>
+	          </li>
+	          <li>presentation syntax</li>
+	        </ul>
+	      </li>
+	      <li>semantics, categorized as
+	        <ul>
+	      <li>an informal semantics as given in the <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a></li>
+	          <!-- <li>formal model-theoretic semantics</li> -->
+	          <!-- <li>formal proof-theoretic semantics</li> -->
+	          
+	        </ul>
+	      </li>
+	    </ul>
+	  </p>
+	  <p>RuleML Version 1.0 is a "Rosetta Stone" release where two schema languages, XSD and Relax NG, are employed to formalize the normative syntax, to the extent possible within each language. </p>
+		<p>The XSD schemas are a minor modification of the patched XSD schemas of RuleML Version 0.91, which follow the tree-based <a href="http://www.ruleml.org/modularization">modularization approach</a>. The XSD schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations, and are also conservative in that certain permutations of elements are allowed in the abstract syntax which are invalid according to the XSD schemas.
+		</p>
+	  <p>The Relax NG schemas for the relaxed-form serialization are permissive for certain invalid syntactic constructs. </p>
+	  <p>The normalized form of any syntactically-valid instance is valid relative to the XSD schemas and the Relax NG schemas for the normal-form serialization. </p>
+		  <p>Note that the Document Type Definition (DTD) specification of RuleML is no longer being maintained, but will continue to be <a href="http://www.ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between XML Schema and DTDs such as <a href="http://www.altova.com/products_ide.html">XMLSpy</a> are always available.</p>
 		
 	</opening>
 
@@ -165,8 +200,11 @@ having exactly the same spelling (incl. spaces)
 	<p>The stylesheet has also been tested
 	  using <a href="http://www.oxygenxml.com">oXygen version 12.2</a>, 
 	  whereby it was confirmed that all examples in the directory <a href="http://ruleml.org/1.0/exa">http://ruleml.org/1.0/exa</a> are properly upgraded.
+	  However, the upgraded instances documents will have the RuleML namespace as the default namespace, 
+	  independent of the choice of prefix for the RuleML namespace in the original instance.
+	  A similar <a href="xslt/upgrader/091-to-ruleml100.xslt">091-to-ruleml100.xslt</a> has been developed that uses the prefix "ruleml" for the RuleML namespace.
 	  <!--and <a href="http://www.altova.com/products_ide.html">XML Spy</a>-->
-	  .</p>
+	  </p>
 	
 	<p>An XSLT processor which may be used to perform these transformations on a whole directory at once is 
 	<a href="http://www.saxonica.com/">Saxon</a>, using the following command:</p>
@@ -195,7 +233,7 @@ The following is a list of the operations the XSLT Normalizer performs whenever 
 	<itemize>
 		<!-- <item>Makes sure, 'if'-'then' (or 'then'-'if') structure exists.</item>-->
 	  <item>When 'if'-'then' role tags are both missing, wraps 'if' role tag on the first child, and 'then' tag on the second child.</item>
-	  <item>If exactly one of 'if'-'then' role tags are missing, wraps the missing tag on the naked formula.</item>
+	  <item>If exactly one of 'if'-'then' role tags are missing, wraps the missing tag on the naked Node.</item>
 	  <item>Switches 'then'-'if' children so that it is in 'if'-'then' format. </item>
 	</itemize>
 </item>
@@ -203,68 +241,71 @@ The following is a list of the operations the XSLT Normalizer performs whenever 
 <item>
 	Expr
 	<itemize>
-	  <item>Wraps 'Fun' tag with 'op' role tag if it does not already exist.</item>
-	  <item>Adds 'arg' role tag (with an index attribute) to all the arguments that are the following tags: 'Ind','Var','Fun','Plex','Reify','Data', or 'Skolem'.</item>
-	  <item>Moves the 'op' child to the position preceding all args and slots. </item>
+	  <item>If there is no 'op' tag, wrap 'Fun' tag with 'op' role tag if it does not already exist.</item>
+	  <item>Adds 'arg' role tag (with an index attribute) to all the naked Nodes, including: 'Ind','Var','Fun','Plex','Reify','Data', or 'Skolem'.</item>
+	  <item>Moves the 'op' child to the position immediately preceding all args and slots. </item>
 	</itemize>
 </item>
 
 <item>
 Atom
 	<itemize>
-		<item>Adds 'arg' role tag (with an index attribute) to all the arguments that are the following: 'Ind','Var','Fun','Plex','Reify','Data', or 'Skolem'.</item>
-		<item>Wraps 'Fun' tag with 'op' role tag if it does not already exist.</item> 
+	  <item>If there is no 'op' tag, wrap 'Rel' tag with 'op' role tag if it does not already exist.</item> 
+	  <item>Adds 'arg' role tag (with an index attribute) to all the naked Nodes, including: 'Ind','Var','Fun','Plex','Reify','Data', or 'Skolem'.</item>
+	  <item>Moves the 'op' child to the position immediately preceding all args and slots. </item>
 	</itemize>
 </item>
 
 <item>
 Uniterm
 	<itemize>
-		<item>Adds 'arg' role tag (with an index attribute) to all the arguments that are the following: 'Const','Var','Reify','Uniterm','Skolem'.</item>
-		<item>Wraps first child that is not 'oid' with the 'op' tag.</item>
+	  <item>If there is no 'op' tag, wrap the first child that is not 'oid' or 'degree' with the 'op' tag.</item>
+	  <item>Adds 'arg' role tag (with an index attribute) to all the remaining naked Nodes, including: 'Const','Var','Reify','Uniterm','Skolem'.</item>
+	  <item>Moves the 'op' child to the position immediately preceding all args and slots. </item>
 	</itemize>
 </item>
 
 <item>
-Assert, And, and Retract
+Assert, Retract, Query, And, Or
 	<itemize>
-		<item>Wraps children with 'formula' role tag if the role tag does not already exist.</item>
+		<item>Wraps naked Nodes with 'formula' role tag.</item>
 	</itemize>
 </item>
 
 <item>
-RuleML and Query
+RuleML
 	<itemize>
-		<item>Wraps children with 'content' role tag if the role tag does not already exist.</item>
+	  <item>Wraps naked Nodes with 'transaction' role tag.</item>
 	</itemize>
 </item>
 
 <item>
 Neg
 	<itemize>
-		<item>Wraps children with 'strong' role tag if the role tag does not already exist.</item>
+	  <item>Wraps a naked Node with 'strong' role tag.</item>
 	</itemize>
 </item>
 
 <item>
 Naf
 	<itemize>
-		<item>Wraps children with 'weak' role tag if the role tag does not already exist.</item>
+	  <item>Wraps a naked Node with 'weak' role tag.</item>
 	</itemize>
 </item>
 
 <item>
 Equivalent
 	<itemize>
-		<item>Wraps the two children with 'torso' role tag if the role tags does not already exist.</item>
+	  <item>Wraps any naked Node with 'torso' role tag.</item>
 	</itemize>	
 </item>
 
 <item>
 Equal
 	<itemize>
+	  <item>If there are two naked Nodes, wraps first child with 'left' tag and second child with 'right' tag.  </item>
 		<item>
-		Wraps first child with 'left' tag and second child with 'right' tag. Partial completion is also accepted. Example: if the first child has a 'right' role tag, and the second child has no 'left' or 'right' role tag, the XSLT will wrap the second child with the 'left' role tag.
+		 Partial completion is also accepted. Example: if the first child has a 'right' role tag, and the second child has no 'left' or 'right' role tag, the XSLT will wrap the second child with the 'left' role tag.
 		</item>
 	</itemize>
 </item>
@@ -273,7 +314,8 @@ Equal
 
 <p>For example, <a href="http://www.ruleml.org/1.0/xslt/normalizer/own_compact.ruleml">the compact version of the 'own' example</a>:</p>
 <p><pre><![CDATA[
-<Assert mapClosure="universal">
+<RuleML>
+  <Assert mapClosure="universal">
     <Implies>
       <And>
         <Atom>
@@ -283,30 +325,33 @@ Equal
           <Var>object</Var>
         </Atom>
         <Atom>
-          <Rel>keep</Rel>
           <Var>person</Var>
+          <Rel>keep</Rel>
           <Var>object</Var>
         </Atom>
       </And>
       <Atom>
-        <Rel>own</Rel>
         <Var>person</Var>
+        <Rel>own</Rel>
         <Var>object</Var>
       </Atom>
     </Implies>
     ...
     <Atom>
-      <Rel>keep</Rel>
       <Ind>Mary</Ind>
+      <Rel>keep</Rel>
       <Ind>XMLBible</Ind>
     </Atom>
-</Assert>]]></pre></p>
+  </Assert>
+</RuleML>
+  ]]></pre></p>
 
 <p>is normalized to the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a>:</p>
 
 <p><pre><![CDATA[
-<Assert mapClosure="universal">
-  <content>
+<RuleML>
+  <transaction index="1">
+  <Assert mapClosure="universal">
       <formula>
         <Implies>
           <if>
@@ -345,8 +390,9 @@ Equal
           <arg index="2"><Ind>XMLBible</Ind></arg>
         </Atom>
       </formula>
-  </content>
-</Assert>]]></pre></p>
+  </Assert>
+  </transaction>
+</RuleML>]]></pre></p>
 
 <p>(See a <a href="xslt/normalizer/own_compare.htm">comparison of these two files</a> generated using
 <a href="http://www.componentsoftware.com/products/htmldiff/">HTML Diff</a>.)</p>

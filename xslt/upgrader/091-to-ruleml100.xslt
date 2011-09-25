@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:ruleml="http://www.ruleml.org/1.0/xsd"
   xmlns:ruleml091="http://www.ruleml.org/0.91/xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   exclude-result-prefixes="ruleml091">
@@ -79,12 +79,27 @@
      was changed to
       
        <... iri="...">
+  5. The name of the unified term in SWSL languages was changed from "Hterm" to "Uniterm".
+	   - <Hterm>
+        
+     was changed to
+      
+       <Uniterm>
 
+  6. The name of the constant term in SWSL languages was changed from "Con" to "Const".
+	   - <Con>
+        
+     was changed to
+      
+       <Const>
+       
+   Note: the output from this stylesheet will have RuleML Version 1.0 as the default namespace,
+   no matter what if any prefix is given to the RuleML Version 0.91 namespace in the original instance. 
 
  	-->
 
   <xsl:output method="xml" version="1.0" />
-  <xsl:template match="/">
+  <xsl:template match="/" priority="3">
     <xsl:text>&#xa;</xsl:text>
     <!--newline-->
     <xsl:text>&#xa;</xsl:text>
@@ -93,15 +108,8 @@
   </xsl:template>
 
   <!-- A/B. change references to 0.91 xsd to 1.0 xsd in the root node attributes -->
-  <xsl:template match="/*">
-    <!--matches the root element -->
-    <xsl:element name="{name()}">
-      <xsl:copy-of select="namespace::xs"/>
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:element>
-  </xsl:template>
   
-  <xsl:template match="@xsi:schemaLocation">
+  <xsl:template match="@xsi:schemaLocation[starts-with(.,'http://www.ruleml.org/0.91/xsd')]" priority="3"> 
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:variable name="ns"
           >http://www.ruleml.org/1.0/xsd</xsl:variable>
@@ -117,77 +125,81 @@
   </xsl:template>
 
   <!-- Ad. 1a. change < in="no">.. to < per="copy">.. -->
-  <xsl:template match="@in[.='no']">
+  <xsl:template match="@in[.='no']" priority="3">
     <xsl:attribute name="per">copy</xsl:attribute>
   </xsl:template>
 
   <!-- Ad. 1b. change < in="yes">.. to < per="value">.. -->
-  <xsl:template match="@in[.='yes']">
+  <xsl:template match="@in[.='yes']" priority="3">
     <xsl:attribute name="per">value</xsl:attribute>
   </xsl:template>
 
   <!-- Ad. 1c. change < in="semi">.. to < per="open">.. -->
-  <xsl:template match="@in[.='semi']">
+  <xsl:template match="@in[.='semi']" priority="3">
     <xsl:attribute name="per">open</xsl:attribute>
   </xsl:template>
 
   <!-- Ad. 2a. change <lhs>.. to <left>.. -->
-  <xsl:template match="ruleml091:lhs">
-    <xsl:element name="left">
+  <xsl:template match="ruleml091:lhs" priority="3">
+    <xsl:element name="ruleml:left">
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
 
   <!-- Ad. 2b. change <rhs>.. to <right>.. -->
-  <xsl:template match="ruleml091:rhs">
-    <xsl:element name="right">
+  <xsl:template match="ruleml091:rhs" priority="3">
+    <xsl:element name="ruleml:right">
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
 
   <!-- Ad. 3a. change <body>.. to <if>.. -->
-  <xsl:template match="ruleml091:body">
-    <xsl:element name="if">
+  <xsl:template match="ruleml091:body" priority="3">
+    <xsl:element name="ruleml:if">
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
 
   <!-- Ad. 3b. change <head>.. to <then>.. -->
-  <xsl:template match="ruleml091:head">
-    <xsl:element name="then">
+  <xsl:template match="ruleml091:head" priority="3">
+    <xsl:element name="ruleml:then">
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
 
   <!-- Ad. 4. change < uri="...">.. to < iri="...">.. -->
-  <xsl:template match="@uri">
+  <xsl:template match="@uri" priority="3">
     <xsl:attribute name="iri">
       <xsl:value-of select="."/>
     </xsl:attribute>
   </xsl:template>
 
+	<!-- Ad. 5. change Hterm to Uniterm -->
+	<xsl:template match="ruleml091:Hterm" priority="3">	
+		<xsl:element name="ruleml:Uniterm" >			
+			<xsl:apply-templates select="node()|@*"/>			
+		</xsl:element>		
+	</xsl:template>
+	
+	<!-- Ad. 6. change Con to Const -->
+	<xsl:template match="ruleml091:Con" priority="3">	
+		<xsl:element name="ruleml:Const" >			
+			<xsl:apply-templates select="node()|@*"/>			
+		</xsl:element>		
+	</xsl:template>
 
-  <!-- copy all attributes, except as above -->
-  <xsl:template match="@*">
-    <xsl:copy-of select="."/>
-  </xsl:template>
-
-  <!-- copy everything in old ruleml namespace except the old namespace -->
-  <xsl:template match="ruleml091:*">
-    <xsl:element name="{name()}">
+  <!-- copy any element whose namespace matches the old namespace to the new namespace -->
+  <xsl:template match="*[namespace-uri()='http://www.ruleml.org/0.91/xsd']" priority="2">
+    <xsl:element name="ruleml:{local-name()}">
+      <!-- copy any namespace declaration for xsd datatypes, if present -->
+      <xsl:copy-of select="namespace::xs"/>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
 
-  <!-- copy everything in old ruleml namespace except the old namespace -->
-  <xsl:template match="*">
-    <xsl:copy>
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:copy>
-  </xsl:template>
 
   <!-- preserve comments -->
-  <xsl:template match="comment()">
+  <xsl:template match="comment()" priority="2">
     <xsl:text>&#xa;</xsl:text>
     <!--newline-->
     <!-- prevent commented-out code from being escaped -->
@@ -196,6 +208,13 @@
     <xsl:text disable-output-escaping="yes">--></xsl:text>
     <xsl:text>&#xa;</xsl:text>
     <!--newline-->
+  </xsl:template>
+
+  <!-- copy any element or attribute not matched above -->
+  <xsl:template match="node()|@*" priority="1">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
   </xsl:template>
 
 </xsl:stylesheet>

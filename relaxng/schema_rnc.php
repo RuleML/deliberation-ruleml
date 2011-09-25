@@ -1,6 +1,6 @@
 <?php
 //Assembler of RNC schema for RuleML 1.0
-// Last Modified 2011/05/18
+// Last Modified 2011/09/21
 // Step 000. Initialize some parameters
 $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
@@ -10,7 +10,8 @@ $base_url = "http://www.ruleml.org/1.0/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
-namespace ruleml = "http://www.ruleml.org/spec"
+namespace dcterms = "http://purl.org/dc/terms/"
+namespace ruleml = "http://www.ruleml.org/1.0/xsd"
 
 dc:title [ "RuleML Custom-Built Schema" ]
 dc:version [ "1.0.01" ]
@@ -23,7 +24,7 @@ dc:date [ "';
 echo($now);
 echo '" ]
 dc:language [ "en" ]
-dc:rights [ "TBD" ]
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]';
 echo "\n";
 echo "# Call parameters\n";
@@ -39,8 +40,8 @@ $backbone_quant = 2;
 $backbone_expr = 3;
 $backbone_dis = 4;
 $backbone_fo = 5;
-$backboneParam = $_GET[$backbone];
 $bbackbone = processGETParameter ($backbone);
+$backboneParam = "x".dechex(bindec($bbackbone));
 $call_fragment = $backbone."=".$backboneParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -48,8 +49,9 @@ $this_url = $this_url . $call_fragment."&";
 $default = "default";
 $default_absent = 0;
 $default_present = 1;
-$defaultParam = $_GET[$default];
+$default_absent_fo = 2;
 $bdefault = processGETParameter ($default);
+$defaultParam = "x".dechex(bindec($bdefault));
 $call_fragment = $default."=".$defaultParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -58,8 +60,8 @@ $termseq = "termseq";
 $termseq_unary = 0;
 $termseq_binary = 1;
 $termseq_ternary_plus = 2;
-$termseqParam = $_GET[$termseq];
 $btermseq = processGETParameter ($termseq);
+$termseqParam = "x".dechex(bindec($btermseq));
 $call_fragment = $termseq."=".$termseqParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -68,21 +70,21 @@ $lng = "lng";
 $lng_abbrev_en = 0;
 $lng_long_en = 1;
 //$lng_long_fr = 2;
-$lngParam = $_GET[$lng];
 $blng = processGETParameter ($lng);
+$lngParam = "x".dechex(bindec($blng));
 $call_fragment = $lng."=".$lngParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
 //
 $propo = "propo";
-$propo_iri = 0;
+$propo_uri = 0;
 $propo_rulebase = 1;
 $propo_entails = 2;
 $propo_degree = 3;
 $propo_neg = 4;
 $propo_naf = 5;
-$propoParam = $_GET[$propo];
 $bpropo = processGETParameter ($propo);
+$propoParam = "x".dechex(bindec($bpropo));
 $call_fragment = $propo."=".$propoParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -91,8 +93,8 @@ $implies = "implies";
 $implies_equivalent = 0;
 $implies_direction = 1;
 $implies_material = 2;
-$impliesParam = $_GET[$implies];
 $bimplies = processGETParameter ($implies);
+$impliesParam = "x".dechex(bindec($bimplies));
 $call_fragment = $implies."=".$impliesParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -108,8 +110,8 @@ $terms_type = 8;
 $terms_data = 9;
 $terms_skolem = 10;
 $terms_reify = 11;
-$termsParam = $_GET[$terms];
 $bterms = processGETParameter ($terms);
+$termsParam = "x".dechex(bindec($bterms));
 $call_fragment = $terms."=".$termsParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -118,8 +120,8 @@ $quant = "quant";
 $quant_closure = 0;
 $quant_resl = 1;
 $quant_repo = 2;
-$quantParam = $_GET[$quant];
 $bquant = processGETParameter ($quant);
+$quantParam = "x".dechex(bindec($bquant));
 $call_fragment = $quant."=".$quantParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -129,8 +131,8 @@ $expr_val_absent = 0;
 $expr_plex = 1;
 $expr_val_nondefault = 2;
 $expr_in = 3;
-$exprParam = $_GET[$expr];
 $bexpr = processGETParameter ($expr);
+$exprParam = "x".dechex(bindec($bexpr));
 $call_fragment = $expr."=".$exprParam;
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
@@ -140,12 +142,11 @@ $serialization_unordered = 0;
 $serialization_stripeskip = 1;
 $serialization_datatyping = 2;
 $serialization_schemaLocation = 3;
-$serialization_mixed = 4;
-$serializationParam = $_GET[$serialization];
 $bserialization = processGETParameter ($serialization);
+$serializationParam = "x".dechex(bindec($bserialization));
 $call_fragment = $serialization."=".$serializationParam;
 echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
+$this_url = $this_url . $call_fragment;
 
 
 echo "# Complete URL = \n";
@@ -160,15 +161,10 @@ if ($bdefault==0){
   $needExpr = extractBit($bbackbone, $backbone_expr);
   $needDis = extractBit($bbackbone, $backbone_dis);
   $needFO = extractBit($bbackbone, $backbone_fo);
-  // Apparent lack of monotonicity caused by incomplete orthogonalization
-  // of modules for treatment of attributes with default values.
-  // Orthogonalization is possible and is perhaps worthwhile, but not implemented in yet.
-  $needDefaultAbsentRes = extractBit($bdefault, $default_absent);
+
+  $needDefaultAbsent = extractBit($bdefault, $default_absent);
   $bdefault_present = extractBit($bdefault, $default_present);
-  $needDefaultRes =  $bdefault_present * (1-$needDefaultAbsentRes);    
-  $needDefaultAbsentUnRes = $needDefaultAbsentRes * $needFO;
-  $bdefault_present_fo =  $bdefault_present *  $needFO;
-  $needDefaultUnRes =  $bdefault_present_fo * (1-$needDefaultAbsentUnRes);  
+  $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);  
 
   $btermseq_unary = extractBit($btermseq, $unary);
   $btermseq_binary = extractBit($btermseq, $binary);
@@ -182,17 +178,14 @@ if ($bdefault==0){
   $needLongNames = extractBit($blng, $lng_long_en);
 
   // Apparent lack of monotonicity caused by incomplete orthogonalization
-  // of modules for ordered, mixed and unordered groups.
+  // of modules for ordered and unordered groups.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
   $needUnordered = extractBit($bserialization, $serialization_unordered);
   $needOrdered = (1-$needUnordered);
   $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
-  $needMixed = extractBit($bserialization, $serialization_mixed)*
-                 (1 - $needUnordered * $needStripeSkip);
-
-  $needIRI = extractBit($bpropo, $propo_iri);
+  $needURI = extractBit($bpropo, $propo_uri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
   $needEntails = extractBit($bpropo, $propo_entails);
   $needFuzzy = extractBit($bpropo, $propo_degree);
@@ -232,14 +225,17 @@ if ($bdefault==0){
   $needValND = extractBit($bexpr, $expr_val_nondefault);
   $needValD = $bdefault_present * $needExpr * $needEqual;
   $needValAtt = $needValD + $needValND;
-  $needPerND = extractBit($bexpr, $expr_in);
-  $needPerD = $bdefault_present * $needExpr;
-  $needPerAtt = $needPerD + $needPerND;
+  $needInND = extractBit($bexpr, $expr_in);
+  $needInD = $bdefault_present * $needExpr;
+  $needInAtt = $needInD + $needInND;
 
   $needPerformatives = 1;
   $needAtom = 1;
   $needInit = 1;
   $needHeader = $needFuzzy + $needOid;
+
+  $needDefaultPresent =  $bdefault_present + $needDirND + $needMatND + $needInND + $needValND + $needOrientedND;    
+  $needDefaultPresentFO = $needDefaultPresent * $needFO;
 
   //Step 1. Assemble the language foundation
   //Step 1A. Assemble the propositional language 
@@ -249,78 +245,81 @@ if ($bdefault==0){
     if ($needPerformatives){    
       echo "#\n# ROOT NODE AND PERFORMATIVES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'performative_extension_module.rnc"'."$end\n";
+          'performative_expansion_module.rnc"'."$end\n";
     }
-  //Step 1B. Assemble the backbone expressivity from extension modules 
+  //Step 1B. Assemble the backbone expressivity from expansion modules 
     if ($needAtom){    
       echo "#\n# ATOMIC FORMULAS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-        'atom_extension_module.rnc"'."$end\n";
+        'atom_expansion_module.rnc"'."$end\n";
     }
     if ($needAndOr){
       echo "#\n# CONJUNCTIONS AND DISJUNCTIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'andor_extension_module.rnc"'."$end\n";
+          'andor_expansion_module.rnc"'."$end\n";
     }
     if ($needImp){
       echo "#\n# IMPLICATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'implication_extension_module.rnc"'."$end\n";
+          'implication_expansion_module.rnc"'."$end\n";
     }
     if ($needQuant){
       echo "#\n# QUANTIFICATION OVER VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'quantification_extension_module.rnc"'."$end\n";
+          'quantification_expansion_module.rnc"'."$end\n";
     }
     if ($needExpr){
       echo "#\n# EXPRESSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'expr_extension_module.rnc"'."$end\n";
+          'expr_expansion_module.rnc"'."$end\n";
     }
     if ($needDis){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'dis_extension_module.rnc"'."$end\n";
+          'dis_expansion_module.rnc"'."$end\n";
     }
     if ($needFO){
       echo "#\n# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED \n";
       if ($needNeg){
-        echo "#   FULL FIRST-ORDER EXPRESSIVITY IS AVAILABLE \n";
+        echo "#   FULL FIRST-ORDER EXPRESSIVITY (INCLUDING NEGATION) IS AVAILABLE \n";
       }
       echo "#\n".'include "' . $modulesLocation .
-          'folog_cl_extension_module.rnc"'."$end\n";
+          'folog_cl_expansion_module.rnc"'."$end\n";
     }
 
   //Step 1C. Include the appropriate module(s) for default values present
   //         absent, or optional
-  if ($needDefaultAbsentRes){
+  echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED\n";
+  echo "#\n".'include "' . $modulesLocation .
+      'default_inf_expansion_module.rnc"'."$end\n";
+  if ($needDefaultAbsent){
     echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL\n";
     echo "#\n".'include "' . $modulesLocation .
-        'default_optional_extension_module.rnc"'."$end\n";
+        'default_absent_expansion_module.rnc"'."$end\n";
   }
-  if ($needDefaultAbsentUnRes){
+  if ($needDefaultAbsentFO){
       echo 'include "' . $modulesLocation .
-          'default_optional_folog_extension_module.rnc"'."$end\n";
+          'default_absent_folog_expansion_module.rnc"'."$end\n";
   } 
-  if ($needDefaultRes) {
+  if ($needDefaultPresent) {
       echo "#\n# ATTRIBUTES WITH DEFAULT VALUES REQUIRED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'default_required_base_module.rnc"'."$end\n";
+          'default_present_expansion_module.rnc"'."$end\n";
   }
-  if ($needDefaultUnRes){
+  if ($needDefaultPresentFO){
           echo 'include "' . $modulesLocation .
-              'default_required_folog_base_module.rnc"'."$end\n";
+              'default_present_folog_expansion_module.rnc"'."$end\n";
   }
   //Step 1D. Determine which module to include for positional arguments
   if ($needBin){
       echo "#\n# BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-        'termseq_bin_extension_module.rnc"'."$end\n";
+        'termseq_bin_expansion_module.rnc"'."$end\n";
   }
   if ($needPoly){
       echo "#\n# POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'termseq_poly_extension_module.rnc"'."$end\n";
+          'termseq_poly_expansion_module.rnc"'."$end\n";
   }
   //Step 3F. Include serialization modules 
     // DOCUMENTME: apparent violation of monotonicity with else clause
@@ -330,128 +329,126 @@ if ($bdefault==0){
     if ($needUnordered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'unordered_groups_extension_module.rnc"'."$end\n";
+          'unordered_groups_expansion_module.rnc"'."$end\n";
     }
     if ($needOrdered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS DISABLED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'ordered_groups_extension_module.rnc"'."$end\n";
+          'ordered_groups_expansion_module.rnc"'."$end\n";
     }
     // Include stripe-skipping
     if ($needStripeSkip){
       echo "#\n# STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'stripe_skipping_extension_module.rnc"'."$end\n";
+          'stripe_skipping_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'asynchronous_stripe_skipping_entailment_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'asynchronous_stripe_skipping_implication_expansion_module.rnc"'."$end\n";
     }
     
     // Include explicit datatyping
     if ($needDatatyping){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'explicit_datatyping_extension_module.rnc"'."$end\n";
+          'explicit_datatyping_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .
-          'dataterm_simple_extension_module.rnc"'."$end\n";
+          'dataterm_simple_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .
-          'data_simple_content_extension_module.rnc"'."$end\n";
+          'data_simple_content_expansion_module.rnc"'."$end\n";
     }
     // Include xsi:schemaLocation
   if ($needSchemaLocation){
       echo "#\n# xsi:schemaLocation ALLOWED IN RuleML\n";
       echo "#\n".'include "' . $modulesLocation .
-          'xsi_schemalocation_extension_module.rnc"'."$end\n";
+          'xsi_schemalocation_expansion_module.rnc"'."$end\n";
   }
-    // Include mixed-form serialization
-  if ($needMixed){
-      echo "#\n# Mixed-form serialization ALLOWED IN RuleML\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'mixed_expansion_module.rnc"'."$end\n";
-  }
-  //Step 4. Mix-in optional extension modules
+  //Step 4. Mix-in optional expansion modules
   //Step 4A. Include proposition-related modules 
   // Include abstract header patterns if needed
   if ($needHeader){    
     echo "#\n# ABSTRACT HEADERS INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-      'header_extension_module.rnc"'."$end\n";
+      'header_expansion_module.rnc"'."$end\n";
   }      
-    // Include universal resource identifiers (IRIs) if needed
-    if ($needIRI){
-      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (IRIs) INCLUDED\n";
+    // Include universal resource identifiers (URIs) if needed
+    if ($needURI){
+      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'iri_extension_module.rnc"'."$end\n";
+          'uri_expansion_module.rnc"'."$end\n";
     }
     // Include rulebases if needed
     if ($needRulebase){
       echo "#\n# RULEBASES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'rulebase_extension_module.rnc"'."$end\n";
+          'rulebase_expansion_module.rnc"'."$end\n";
     }
     // Include entailments if needed
     if ($needEntails){
       echo "#\n# ENTAILMENTS (PROVES) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'meta_extension_module.rnc"'."$end\n";
+          'meta_expansion_module.rnc"'."$end\n";
     }
     // Include degree of uncertainty if needed
     if ($needFuzzy){
       echo "#\n# DEGREE OF UNCERTAINTY INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'fuzzy_extension_module.rnc"'."$end\n";
+          'fuzzy_expansion_module.rnc"'."$end\n";
     }
     // Include strong negations if needed
     if ($needNeg){
       echo "#\n# STRONG NEGATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'neg_extension_module.rnc"'."$end\n";
+          'neg_expansion_module.rnc"'."$end\n";
     }
     // Include weak negations if needed
     if ($needNaf){
       echo "#\n# WEAK NEGATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'naf_extension_module.rnc"'."$end\n";
+          'naf_expansion_module.rnc"'."$end\n";
     }
   //Step 4B. Include implication-related modules 
     // Include equivalences
     if ($needEquiv){
       echo "#\n# EQUIVALENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'equivalent_extension_module.rnc"'."$end\n";
+          'equivalent_expansion_module.rnc"'."$end\n";
     }
     // Include inference direction attribute if needed
     if ($needDirAtt){
       echo "#\n# INFERENCE DIRECTION ATTRIBUTE IS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'direction_attrib_extension_module.rnc"'."$end\n";      
+          'direction_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-symmetric inference direction attribute value if needed
     if ($needDirND){
       echo "#\n# NON-DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-            'direction_non-default_extension_module.rnc"'."$end\n";
+            'direction_non-default_expansion_module.rnc"'."$end\n";
     }
     // Include symmetric inference direction attribute value if needed
     if ($needDirD){
       echo "#\n# DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-        'direction_default_extension_module.rnc"'."$end\n";
+        'direction_default_expansion_module.rnc"'."$end\n";
     }
     // Include material implication attributes if needed
     if ($needMatAtt){
       echo "#\n# MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'material_attrib_extension_module.rnc"'."$end\n";      
+          'material_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-material implication if needed
     if ($needMatND){
       echo "#\n# NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-            'material_non-default_extension_module.rnc"'."$end\n";
+            'material_non-default_expansion_module.rnc"'."$end\n";
     }
     // Include material implication if needed
     if ($needMatD){
       echo "#\n# DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-        'material_default_extension_module.rnc"'."$end\n";
+        'material_default_expansion_module.rnc"'."$end\n";
     }
     
   //Step 3C. Include term-related modules 
@@ -459,74 +456,74 @@ if ($bdefault==0){
     if ($needOid){
       echo "#\n# OBJECT IDENTIFIERS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'desc_extension_module.rnc"'."$end\n";
+          'desc_expansion_module.rnc"'."$end\n";
     }
     // Include slots
     if ($needSlot){
       echo "#\n# SLOTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'slot_extension_module.rnc"'."$end\n";
+          'slot_expansion_module.rnc"'."$end\n";
     }
     // Include slot cardinality
     if ($needCard){
       echo "#\n# SLOT CARDINALITY INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'card_extension_module.rnc"'."$end\n";
+          'card_expansion_module.rnc"'."$end\n";
     }
     // Include slot weights
     if ($needWeight){
       echo "#\n# SLOT WEIGHTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'weight_extension_module.rnc"'."$end\n";
+          'weight_expansion_module.rnc"'."$end\n";
     }
     // Include equations
     if ($needEqual){
       echo "#\n# EQUATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'equal_extension_module.rnc"'."$end\n";
+          'equal_expansion_module.rnc"'."$end\n";
     }
     // Include oriented equality attribute if needed
     if ($needOrientedAtt){
       echo "#\n# ORIENTED EQUALITY ATTRIBUTE IS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-           'oriented_attrib_extension_module.rnc"'."$end\n";      
+           'oriented_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-symmetric equality attribute values if needed
     if ($needOrientedND){
       echo "#\n# NON-DEFAULT VALUES OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
         echo "#\n".'include "' . $modulesLocation .
-            'oriented_non-default_extension_module.rnc"'."$end\n";
+            'oriented_non-default_expansion_module.rnc"'."$end\n";
       }
     // Include symmetric equality attribute values if needed
     if ($needOrientedD){
       echo "#\n# DEFAULT VALUE OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
         echo "#\n".'include "' . $modulesLocation .
-          'oriented_default_extension_module.rnc"'."$end\n";
+          'oriented_default_expansion_module.rnc"'."$end\n";
       }
     // Include explicit typing of terms if needed
     if ($needType){
       echo "#\n# EXPLICIT TYPING OF TERMS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'type_extension_module.rnc"'."$end\n";
+          'type_expansion_module.rnc"'."$end\n";
     }
     // Include data terms if needed
     if ($needDataTerms){
       echo "#\n# DATA TERMS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'dataterm_any_extension_module.rnc"'."$end\n";
+          'dataterm_any_expansion_module.rnc"'."$end\n";
     }
     // Include data element if needed 
     // for example, for either terms or degree of uncertainty
     if ($needData){
       echo "#\n# DATA ELEMENTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'data_any_content_extension_module.rnc"'."$end\n";
+          'data_any_content_expansion_module.rnc"'."$end\n";
     }
     // Include skolem constants if needed
     if ($needSkolem){
       echo "#\n# SKOLEM CONSTANTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'skolem_extension_module.rnc"'."$end\n";
+          'skolem_expansion_module.rnc"'."$end\n";
     }
     // Include reified terms if needed
     // DOCUMENTME: apparent violation of monotonicity with else clause
@@ -536,93 +533,93 @@ if ($bdefault==0){
       if ($needUnordered){    
         echo "#\n# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
-            'reify_extension_module.rnc"'."$end\n";
+            'reify_expansion_module.rnc"'."$end\n";
       } else {
         echo "#\n# REIFICATION TERMS INCLUDED, ANY CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
-            'reify_any_extension_module.rnc"'."$end\n";      
+            'reify_any_expansion_module.rnc"'."$end\n";      
       }      
     }
     // Include individuals if needed
     if ($needInd){
       echo "#\n# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'individual_extension_module.rnc"'."$end\n";      
+          'individual_expansion_module.rnc"'."$end\n";      
     }
     // Include variables if needed
     if ($needVar){
       echo "#\n# VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'variable_extension_module.rnc"'."$end\n";      
+          'variable_expansion_module.rnc"'."$end\n";      
     }
   //Step 3D. Include quantification-related modules if needed
     // Include implicit closure if needed
     if ($needClosure){
       echo "#\n# IMPLICIT CLOSURE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'closure_extension_module.rnc"'."$end\n";
+          'closure_expansion_module.rnc"'."$end\n";
     }
     // Include slotted rest variables if needed
     if ($needResl){
       echo "#\n# SLOTTED REST VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'resl_extension_module.rnc"'."$end\n";
+          'resl_expansion_module.rnc"'."$end\n";
     }
     // Include positional rest variables if needed
     if ($needRepo){
       echo "#\n# POSITIONAL REST VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'repo_extension_module.rnc"'."$end\n";
+          'repo_expansion_module.rnc"'."$end\n";
     }
   //Step 3E. Include expression-related modules 
     // Include generalized lists
     if ($needPlex){
       echo "#\n# GENERALIZED LISTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'plex_extension_module.rnc"'."$end\n";
+          'plex_expansion_module.rnc"'."$end\n";
     }
 
   // Include empty initialization of set-valued attribute if needed
   if ( $needValAbsent ){
       echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
       echo "#\n".'include "' . $modulesLocation .
-          'val_absence_extension_module.rnc"'."$end\n";
+          'val_absence_expansion_module.rnc"'."$end\n";
   }  
   // Include set-valued expression attribute if needed
  if ($needValAtt){
     echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'val_attrib_extension_module.rnc"'."$end\n";      
+        'val_attrib_expansion_module.rnc"'."$end\n";      
   }
   // Include non-default values of set-valued expression attribute if needed
   if ($needValND){
     echo "#\n# NON-DEFAULT VALUES OF THE SET-VALUED ATTRIBUTE INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'val_non-default_extension_module.rnc"'."$end\n";
+        'val_non-default_expansion_module.rnc"'."$end\n";
   }
   // Include default values of set-valued expression attribute if needed
   if ($needValD){
     echo "#\n# DEFAULT VALUE OF THE SET-VALUED ATTRIBUTE INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-      'val_default_extension_module.rnc"'."$end\n";
+      'val_default_expansion_module.rnc"'."$end\n";
   }
   // Include interpreted expression attribute if needed
-  if ($needPerAtt){
+  if ($needInAtt){
     echo "#\n# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'interpretation_attrib_extension_module.rnc"'."$end\n";      
+        'in_attrib_expansion_module.rnc"'."$end\n";      
   }  
   // Include non-default values of interpretation of expressions if needed
-  if ($needPerND){
+  if ($needInND){
     echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'interpretation_non-default_extension_module.rnc"'."$end\n";
+        'in_non-default_expansion_module.rnc"'."$end\n";
   }
   // Include default values of interpretation of expressions if needed
-  if ($needPerD){
+  if ($needInD){
     echo "#\n# DEFAULT VALUE OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-      'interpretation_default_extension_module.rnc"'."$end\n";
+      'in_default_expansion_module.rnc"'."$end\n";
   }
   //Step 4A. Translate to requested xs:lang
   // FIXME: need to handle differently when more than one alternate available
@@ -651,18 +648,14 @@ if ($bdefault==0){
     if ($needInit){
       echo "#\n# INITIALIZATION MODULES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'init_extension_module.rnc"'."$end\n";
+          'init_expansion_module.rnc"'."$end\n";
     }
 
 }
 //Functions
 function processGETParameter ($paramName){
   $param_base_default = "x";
-  if ($paramName == "lng") {
-    $bparam_default = decbin(hexdec(0));
-  } else {
-    $bparam_default = decbin(hexdec(fff));
-  }
+  $bparam_default = decbin(hexdec(fff));
   $param = $_GET[$paramName];
   //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
   if (strlen($param)>0){
