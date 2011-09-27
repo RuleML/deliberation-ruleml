@@ -42,7 +42,7 @@
 			<tr><td align="right"><h3>2011-11-?? - </h3></td><td><h3><a href="http://www.ruleml.org/1.0/">Version 1.0 Code Complete Release Candidate</a></h3></td></tr>
 			</table>			
 
-			<h2>Latest version: <a href="http://www.ruleml.org/spec/">www.ruleml.org/spec</a></h2>
+			<h2>Latest version: <a href="http://www.ruleml.org/spec/">www.ruleml.org/spec/</a></h2>
 			<p/>
 			<h2>Quick links:</h2>
 			<h2><a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Models</a>,
@@ -57,27 +57,30 @@
 		<br/>
 		
 		<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>
-	  <p>The scope of the specification includes 
+	  <p>The scope of this specification covers 
 	    <ul>
 	      <li>syntax, including
 	        <ul>
 	          <!-- <li>abstract syntax</li> -->
-	          <li>XML syntax, categorized as
+	          <li>XML syntax, including
 	          <ul>
-	            <!-- <li>@@@the normative informal syntax as given in <a href="??">??</a>@@@</li> -->
-	            <li>@@@informative@@@ formal syntax as
+	            <li>the normative informal syntax as given in the <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a>@@@</li>
+	            <li>informative formal syntax as
 	              <ul>
 	                <li><a href="http://www.ruleml.org/1.0/xsd/">schemas in XML Schema Definition Language (XSD) with Schematron annotation</a></li>
 	                <li><a href="http://www.ruleml.org/1.0/relaxng/">schemas in Relax NG</a></li>
 	              </ul>
 	            </li> 
+	            <!--<li>a mapping from the RuleML Version 1.0 syntax to the "normalized" RuleML Version 1.0 syntax as given in the XSLT Normalizer stylesheet</li>-->
+	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the XSLT Upgrader stylesheet</li>
 	            
 	          </ul>
 	          </li>
 	          <li>presentation syntax</li>
+	          
 	        </ul>
 	      </li>
-	      <li>semantics, categorized as
+	      <li>semantics, including
 	        <ul>
 	      <li>an informal semantics as given in the <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a></li>
 	          <!-- <li>formal model-theoretic semantics</li> -->
@@ -87,11 +90,12 @@
 	      </li>
 	    </ul>
 	  </p>
-	  <p>RuleML Version 1.0 is a "Rosetta Stone" release where two schema languages, XSD and Relax NG, are employed to formalize the normative syntax, to the extent possible within each language. </p>
-		<p>The XSD schemas are a minor modification of the patched XSD schemas of RuleML Version 0.91, which follow the tree-based <a href="http://www.ruleml.org/modularization">modularization approach</a>. The XSD schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations, and are also conservative in that certain permutations of elements are allowed in the abstract syntax which are invalid according to the XSD schemas.
+	  <p>The scope of this specification does not cover applications that make use of RuleML languages, such as inference engines, editors or @@@. For a listing of such applications, see the RuleML <a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a> wiki page.</p>
+	  <p>RuleML Version 1.0 is a "Rosetta Stone" release where two schema languages, XSD and Relax NG, are independently employed to formalize the normative syntax, to the extent possible within each language. See <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG</a> and the RuleML <a href="http://wiki.ruleml.org/index.php/Relax_NG">Relax NG</a> wiki page for the details of this re-engineering effort. </p>
+		<p>The RuleML Version 1.0 XSD schemas are a minor modification of the patched XSD schemas of RuleML Version 0.91, which follow the tree-based <a href="http://www.ruleml.org/modularization">modularization approach</a>. The XSD schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations, and are also conservative in that certain permutations of elements are allowed in the normative syntax but are not implemented in the XSD schemas.
 		</p>
-	  <p>The Relax NG schemas for the relaxed-form serialization are permissive for certain invalid syntactic constructs. </p>
-	  <p>The normalized form of any syntactically-valid instance is valid relative to the XSD schemas and the Relax NG schemas for the normal-form serialization. </p>
+	  <p>The RuleML Version 1.0 Relax NG schemas for the relaxed-form serialization are permissive for certain invalid syntactic constructs @@@details where?@@@. </p>
+	  <p>The normalized form of any syntactically-valid instance is valid relative to both the XSD schemas, and the Relax NG schemas for the normal-form serialization. </p>
 		  <p>Note that the Document Type Definition (DTD) specification of RuleML is no longer being maintained, but will continue to be <a href="http://www.ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between XML Schema and DTDs such as <a href="http://www.altova.com/products_ide.html">XMLSpy</a> are always available.</p>
 		
 	</opening>
@@ -711,6 +715,12 @@ Compact examples for the normalizer can be found <a href="http://ruleml.org/1.0/
 
 4.Once both URI's have been entered, click transform. To see the result, in some browsers you need to do "View | Page Source".
 </pre></box>
+</section>
+
+<section label="Appendix 5">
+  <header>Appendix 5:  Validating an Instance with a Relax NG schema</header>
+  <box><pre>
+  </pre></box>
 </section>
 
 	<closing>

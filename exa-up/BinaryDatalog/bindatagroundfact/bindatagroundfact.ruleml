@@ -3,7 +3,7 @@
 <RuleML xmlns="http://www.ruleml.org/1.0/xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd">
-  <transaction index="1">
+  <act index="1">
     <Query>
 
       <!-- a trivial example rulebase for testing the 'UR'-Centered Binary Ground-Datalog-Fact RuleML sublanguage -->
@@ -32,8 +32,8 @@
         <Ind>constant d</Ind>
       </Atom>
     </Query>
-  </transaction>
-  <transaction index="2">
+  </act>
+  <act index="2">
     <Assert>
       <oid>
         <Ind>rule (fact) label</Ind>
@@ -51,5 +51,5 @@
         </slot>
       </Atom>
     </Assert>
-  </transaction>
+  </act>
 </RuleML>
