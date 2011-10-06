@@ -1,13 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- RELAX NG for RELAX NG -->
 <!-- $Id: relaxng.rng,v 1.31 2002/05/30 06:07:43 jjc Exp $ -->
-<grammar datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://relaxng.org/ns/structure/1.0"
-         xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar ns="http://relaxng.org/ns/structure/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <start>
     <ref name="pattern"/>
   </start>
-
   <define name="pattern">
     <choice>
       <element name="element">
@@ -23,9 +20,9 @@
       <element name="attribute">
         <ref name="common-atts"/>
         <choice>
-	  <attribute name="name">
-	    <data type="QName"/>
-	  </attribute>
+          <attribute name="name">
+            <data type="QName"/>
+          </attribute>
           <ref name="open-name-class"/>
         </choice>
         <interleave>
@@ -106,19 +103,19 @@
         <interleave>
           <ref name="other"/>
           <group>
-	    <zeroOrMore>
-	      <element name="param">
-		<attribute name="name">
-		  <data type="NCName"/>
-		</attribute>
+            <zeroOrMore>
+              <element name="param">
+                <attribute name="name">
+                  <data type="NCName"/>
+                </attribute>
                 <ref name="common-atts"/>
-		<text/>
-	      </element>
-	    </zeroOrMore>
+                <text/>
+              </element>
+            </zeroOrMore>
             <optional>
               <element name="except">
-		<ref name="common-atts"/>
-		<ref name="open-patterns"/>
+                <ref name="common-atts"/>
+                <ref name="open-patterns"/>
               </element>
             </optional>
           </group>
@@ -141,7 +138,6 @@
       </element>
     </choice>
   </define>
-
   <define name="grammar-content">
     <interleave>
       <ref name="other"/>
@@ -164,7 +160,6 @@
       </zeroOrMore>
     </interleave>
   </define>
-
   <define name="include-content">
     <interleave>
       <ref name="other"/>
@@ -180,7 +175,6 @@
       </zeroOrMore>
     </interleave>
   </define>
-
   <define name="start-element">
     <element name="start">
       <ref name="combine-att"/>
@@ -188,7 +182,6 @@
       <ref name="open-pattern"/>
     </element>
   </define>
-
   <define name="define-element">
     <element name="define">
       <attribute name="name">
@@ -199,7 +192,6 @@
       <ref name="open-patterns"/>
     </element>
   </define>
-
   <define name="combine-att">
     <optional>
       <attribute name="combine">
@@ -210,7 +202,6 @@
       </attribute>
     </optional>
   </define>
-  
   <define name="open-patterns">
     <interleave>
       <ref name="other"/>
@@ -219,14 +210,12 @@
       </oneOrMore>
     </interleave>
   </define>
-
   <define name="open-pattern">
     <interleave>
       <ref name="other"/>
       <ref name="pattern"/>
     </interleave>
   </define>
-
   <define name="name-class">
     <choice>
       <element name="name">
@@ -247,7 +236,6 @@
       </element>
     </choice>
   </define>
-
   <define name="except-name-class">
     <interleave>
       <ref name="other"/>
@@ -258,7 +246,6 @@
       </optional>
     </interleave>
   </define>
-
   <define name="open-name-classes">
     <interleave>
       <ref name="other"/>
@@ -267,14 +254,12 @@
       </oneOrMore>
     </interleave>
   </define>
-
   <define name="open-name-class">
     <interleave>
       <ref name="other"/>
       <ref name="name-class"/>
     </interleave>
   </define>
-
   <define name="common-atts">
     <optional>
       <attribute name="ns"/>
@@ -295,7 +280,6 @@
       </attribute>
     </zeroOrMore>
   </define>
-
   <define name="other">
     <zeroOrMore>
       <element>
@@ -316,7 +300,6 @@
       </element>
     </zeroOrMore>
   </define>
-
   <define name="any">
     <element>
       <anyName/>
@@ -331,5 +314,4 @@
       </zeroOrMore>
     </element>
   </define>
-
 </grammar>

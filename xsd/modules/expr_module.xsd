@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML expressions.
 			File: expr_module.xsd
 			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
+			Last Modification: 2011-10-05 [Tara Athan]
 			
 			This module declares the following RuleML elements and attributes:
 			* Expr
@@ -43,22 +43,22 @@ elementFormDefault="qualified"
 
 		content model:
 		( 
-		  (op|Fun), (slot)*, (resl)?,
-		  (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)*,
+		  (op|Fun), (slot)*, 
+      (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)*,
 		  (repo)?, (slot)*, (resl)?
 		)
 
 		however, this is non-deterministic, so it is (equivalently) restructured as follows:
 		(
-			oid?, (op | Fun), (slot)*, (resl)?,
+			oid?, (op | Fun), (slot)*,
 			( 
 				( 
 					( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (repo)? )
 					|
 					(repo)
 				),
-				(slot)*, (resl)?
-			)?
+				(slot)*)? , 
+			(resl)?
 		)
 		
 		Note the 'positionalized' normal form where the op role is only
@@ -76,7 +76,6 @@ elementFormDefault="qualified"
 				<xs:group ref="op-Expr.content"/>
 			</xs:choice>
 			<xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="resl" minOccurs="0"/>
 			<xs:sequence minOccurs="0">
 				<xs:choice>
 					<xs:sequence>
@@ -89,10 +88,10 @@ elementFormDefault="qualified"
 					<xs:element ref="repo"/>
 				</xs:choice>
 				<xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="resl" minOccurs="0"/>
 			</xs:sequence>
-		</xs:sequence>
-	</xs:group>
+		  <xs:element ref="resl" minOccurs="0"/>
+			</xs:sequence>
+		</xs:group>
 	<xs:complexType name="Expr.type">
 		
 		<!--
@@ -190,8 +189,8 @@ elementFormDefault="qualified"
 		     )
 		)
 
-		content model (within repo): ( (arg | Ind | Skolem | Var | Expr | Plex | repo)* )
-		content model (within resl): ( (slot | resl)* )
+		content model (within repo): ( (arg | Ind | Skolem | Var | Expr | Plex )*, repo? )
+		content model (within resl): (slot*, resl? )
 	-->
 	<xs:attributeGroup name="Plex.attlist"/>
 	<xs:group name="Plex.content">
@@ -224,17 +223,15 @@ elementFormDefault="qualified"
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="arg"/>
 				<xs:group ref="arg.content"/>
-				<xs:element ref="repo"/>
 			</xs:choice>
-		</xs:sequence>
+			<xs:element ref="repo" minOccurs="0"/>
+			</xs:sequence>
 	</xs:group>
 	<xs:group name="Plex-resl.content">
 		<xs:sequence>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element name="slot" type="slot.type"/>
-				<xs:element ref="resl"/>
-			</xs:choice>
-		</xs:sequence>
+			<xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="resl" minOccurs="0"/>
+			</xs:sequence>
 	</xs:group>
 	<xs:complexType name="Plex.type">
 		<xs:group ref="Plex.content"/>

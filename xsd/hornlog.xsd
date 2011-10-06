@@ -13,7 +13,7 @@ elementFormDefault="qualified">
 			XML Schema for a Horn-Logic RuleML sublanguage
 			File: hornlog.xsd
 			Version: 1.0
-			Last Modification: 2010-08-17
+			Last Modification: 2011-10-06
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -72,15 +72,15 @@ elementFormDefault="qualified">
 		<!--
 			add repo and resl so that Atom's content model is:
 			(
-				(oid)?, (op | Rel), (slot)*, (resl)?,
+				(oid)?, (op | Rel), (slot)*,
 				( 
 					( 
 						((arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (repo)?)
 						|
 						(repo)
 					),
-					(slot)*, (resl)?
-				)?
+					(slot)*)?, 
+				(resl)?
 			)			
 		-->
 		<xs:group name="Atom-repo.extend">
@@ -95,9 +95,9 @@ elementFormDefault="qualified">
 				<xs:element ref="repo" minOccurs="0"/>
 			</xs:sequence>
 		</xs:group>
-		<xs:group name="Atom-slots.extend">
+		<xs:group name="Atom-slots.extend2">
 			<xs:sequence>
-				<xs:group ref="Atom-slots.extend"/>
+				<xs:group ref="Atom-slots.extend2"/>
 				<xs:element ref="resl" minOccurs="0"/>
 			</xs:sequence>
 		</xs:group>

@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   torso
-  | transaction
   | Query
   | Implies
   | Assert
@@ -32,15 +31,11 @@ start =
   | then
   | Skolem
   | RuleML
+  | act
   | Var
   | And
   | Entails
 torso = element torso { Atom }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
-  }
 Query =
   element Query {
     attribute closure {
@@ -125,11 +120,10 @@ Atom =
     degree?,
     (op | Rel),
     slot*,
-    resl?,
     ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 if = element if { Atom | And | Or }
 repo = element repo { Var | Plex_2 }
@@ -146,7 +140,7 @@ Rulebase =
       xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
     }?,
     oid?,
-    (formula_3 | Atom | Implies_2 | Equivalent_2 | Forall_2)*
+    (formula_3 | Atom | Implies | Equivalent | Forall)*
   }
 slot =
   element slot {
@@ -164,16 +158,14 @@ Expr =
     oid?,
     (op_2 | Fun),
     slot*,
-    resl?,
     ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 Reify =
   element Reify {
     (torso
-     | transaction
      | Query
      | Implies
      | Assert
@@ -203,6 +195,7 @@ Reify =
      | then
      | Skolem
      | RuleML
+     | act
      | Var
      | And
      | Entails)?
@@ -264,8 +257,12 @@ Skolem =
     text
     & attribute type { xsd:string }?
   }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
+  }
 Var =
   element Var {
     text
@@ -304,30 +301,11 @@ _1 =
   }
 Plex_2 =
   element Plex {
-    (arg | Ind | Data | Var | Skolem | Reify | Expr | Plex | repo)*
+    (arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)*, repo?
   }
-formula_3 =
-  element formula { Atom | Implies_2 | Equivalent_2 | Forall_2 }
-Implies_2 =
-  element Implies {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Equivalent_2 =
-  element Equivalent {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Forall_2 =
-  element Forall {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
+formula_3 = element formula { Atom | Implies | Equivalent | Forall }
 op_2 = element op { Fun }
-Plex_3 = element Plex { (slot | resl)* }
+Plex_3 = element Plex { slot*, resl? }
 formula_4 = element formula { Atom | Implies | Equivalent | Forall }
 formula_5 = element formula { Atom | And | Or | Exists }
 formula_6 = element formula { Atom | And | Or }

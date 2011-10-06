@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   InstanceOf
-  | transaction
   | Implies
   | Assert
   | Naf
@@ -50,15 +49,11 @@ start =
   | Get
   | RuleML
   | Var
+  | act
 InstanceOf =
   element InstanceOf {
     (Var | Skolem | Reify | Const | Uniterm | Get | Set),
     (Var | Skolem | Reify | Const | Uniterm | Get | Set)
-  }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
   }
 Implies =
   element Implies {
@@ -143,12 +138,11 @@ Expr =
     oid?,
     (op_2 | Fun),
     slot*,
-    resl?,
     ((((arg | Var | Skolem | Reify | Const | Uniterm | Get | Set)+,
        repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 right =
   element right { Var | Skolem | Reify | Const | Uniterm | Get | Set }
@@ -323,12 +317,11 @@ Atom =
     degree?,
     (op | Rel),
     slot*,
-    resl?,
     ((((arg | Var | Skolem | Reify | Const | Uniterm | Get | Set)+,
        repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 oid = element oid { Var | Skolem | Reify | Const | Uniterm }
 if =
@@ -401,7 +394,6 @@ SlotProd =
 Reify =
   element Reify {
     (InstanceOf
-     | transaction
      | Implies
      | Assert
      | Naf
@@ -448,7 +440,8 @@ Reify =
      | weak
      | Get
      | RuleML
-     | Var)?
+     | Var
+     | act)?
   }
 Equivalent =
   element Equivalent {
@@ -489,12 +482,16 @@ Skolem =
   }
 weak = element weak { Uniterm }
 Get = element Get { oid, SlotProd }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
 Var =
   element Var {
     text
     & attribute type { xsd:string }?
+  }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
   }
 Atom_2 =
   element Atom {
@@ -528,10 +525,10 @@ _1 =
   }
 Plex_2 =
   element Plex {
-    (arg | Var | Skolem | Reify | Const | Uniterm | Get | Set | repo)*
+    (arg | Var | Skolem | Reify | Const | Uniterm | Get | Set)*, repo?
   }
 op_2 = element op { Fun }
-Plex_3 = element Plex { (slot | resl)* }
+Plex_3 = element Plex { slot*, resl? }
 op_3 = element op { Const | Skolem | Var | Reify | Uniterm }
 formula_2 =
   element formula {

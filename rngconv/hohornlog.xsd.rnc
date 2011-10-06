@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   torso
-  | transaction
   | Query
   | Implies
   | Assert
@@ -39,14 +38,10 @@ start =
   | weak
   | RuleML
   | Var
+  | act
   | And
   | Entails
 torso = element torso { Uniterm }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
-  }
 Query =
   element Query {
     attribute closure {
@@ -142,11 +137,10 @@ Atom =
     degree?,
     (op | Rel),
     slot*,
-    resl?,
     ((((arg | Var | Skolem | Reify | Const | Uniterm)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 if = element if { And | Or | Naf | Uniterm | Neg }
 repo = element repo { Var | Plex_2 }
@@ -188,16 +182,14 @@ Expr =
     oid?,
     (op_2 | Fun),
     slot*,
-    resl?,
     ((((arg | Var | Skolem | Reify | Const | Uniterm)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 Reify =
   element Reify {
     (torso
-     | transaction
      | Query
      | Implies
      | Assert
@@ -234,6 +226,7 @@ Reify =
      | weak
      | RuleML
      | Var
+     | act
      | And
      | Entails)?
   }
@@ -307,12 +300,16 @@ Skolem =
     & attribute type { xsd:string }?
   }
 weak = element weak { Uniterm }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
 Var =
   element Var {
     text
     & attribute type { xsd:string }?
+  }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
   }
 And =
   element And { oid?, (formula_6 | And | Or | Naf | Uniterm | Neg)* }
@@ -350,12 +347,12 @@ _1 =
   }
 Plex_2 =
   element Plex {
-    (arg | Var | Skolem | Reify | Const | Uniterm | repo)*
+    (arg | Var | Skolem | Reify | Const | Uniterm)*, repo?
   }
 formula_3 =
   element formula { Implies | Equivalent | Forall | Uniterm | Neg }
 op_2 = element op { Fun }
-Plex_3 = element Plex { (slot | resl)* }
+Plex_3 = element Plex { slot*, resl? }
 op_3 = element op { Const | Skolem | Var | Reify | Uniterm }
 formula_4 = element formula { Implies | Equivalent | Forall | Uniterm }
 formula_5 = element formula { And | Or | Exists | Uniterm }

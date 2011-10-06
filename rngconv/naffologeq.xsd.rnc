@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   torso
-  | transaction
   | Implies
   | Query
   | Assert
@@ -40,6 +39,7 @@ start =
   | weak
   | RuleML
   | Var
+  | act
   | And
   | Entails
 torso =
@@ -53,11 +53,6 @@ torso =
     | Forall
     | Exists
     | Equal
-  }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
   }
 Implies =
   element Implies {
@@ -224,11 +219,10 @@ Atom =
     degree?,
     (op | Rel),
     slot*,
-    resl?,
     ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 if =
   element if {
@@ -282,13 +276,14 @@ Rulebase =
     oid?,
     (formula_3
      | Atom
-     | Implies_2
-     | Equivalent_2
-     | Forall_2
+     | Implies
+     | Equivalent
+     | Forall
      | And
      | Or
      | Neg
-     | Exists)*
+     | Exists
+     | Equal)*
   }
 Equal =
   element Equal {
@@ -320,16 +315,14 @@ Expr =
     oid?,
     (op_2 | Fun),
     slot*,
-    resl?,
     ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
       | repo),
-     slot*,
-     resl?)?
+     slot*)?,
+    resl?
   }
 Reify =
   element Reify {
     (torso
-     | transaction
      | Implies
      | Query
      | Assert
@@ -367,6 +360,7 @@ Reify =
      | weak
      | RuleML
      | Var
+     | act
      | And
      | Entails)?
   }
@@ -553,12 +547,16 @@ weak =
     | Exists
     | Equal
   }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
 Var =
   element Var {
     text
     & attribute type { xsd:string }?
+  }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
   }
 And =
   element And {
@@ -677,32 +675,22 @@ _1 =
   }
 Plex_2 =
   element Plex {
-    (arg | Ind | Data | Var | Skolem | Reify | Expr | Plex | repo)*
+    (arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)*, repo?
   }
 formula_3 =
   element formula {
-    Atom | Implies_2 | Equivalent_2 | Forall_2 | And | Or | Neg | Exists
-  }
-Implies_2 =
-  element Implies {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Equivalent_2 =
-  element Equivalent {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Forall_2 =
-  element Forall {
-    text
-    & (attribute * { text }
-       | _1)*
+    Atom
+    | Implies
+    | Equivalent
+    | Forall
+    | And
+    | Or
+    | Neg
+    | Exists
+    | Equal
   }
 op_2 = element op { Fun }
-Plex_3 = element Plex { (slot | resl)* }
+Plex_3 = element Plex { slot*, resl? }
 formula_4 =
   element formula {
     Atom

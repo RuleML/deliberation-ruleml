@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   torso
-  | transaction
   | Implies
   | Query
   | Assert
@@ -27,15 +26,11 @@ start =
   | Or
   | Skolem
   | RuleML
+  | act
   | Var
   | Entails
   | And
 torso = element torso { Atom }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
-  }
 Implies =
   element Implies {
     attribute material { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
@@ -136,7 +131,7 @@ Rulebase =
       xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
     }?,
     oid?,
-    (formula_3 | Atom | Implies_2 | Equivalent_2 | Forall_2)*
+    (formula_3 | Atom | Implies | Equivalent | Forall)*
   }
 slot =
   element slot {
@@ -150,7 +145,6 @@ slot =
 Reify =
   element Reify {
     (torso
-     | transaction
      | Implies
      | Query
      | Assert
@@ -175,6 +169,7 @@ Reify =
      | Or
      | Skolem
      | RuleML
+     | act
      | Var
      | Entails
      | And)?
@@ -218,8 +213,12 @@ Skolem =
     text
     & attribute type { xsd:string }?
   }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
+  }
 Var =
   element Var {
     text
@@ -256,26 +255,7 @@ _1 =
     & (attribute * { text }
        | _1)*
   }
-formula_3 =
-  element formula { Atom | Implies_2 | Equivalent_2 | Forall_2 }
-Implies_2 =
-  element Implies {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Equivalent_2 =
-  element Equivalent {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
-Forall_2 =
-  element Forall {
-    text
-    & (attribute * { text }
-       | _1)*
-  }
+formula_3 = element formula { Atom | Implies | Equivalent | Forall }
 formula_4 = element formula { Atom | Implies | Equivalent | Forall }
 formula_5 = element formula { Atom | And | Or | Exists }
 formula_6 = element formula { Atom | And | Or }

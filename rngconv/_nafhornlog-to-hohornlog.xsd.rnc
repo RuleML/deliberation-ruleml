@@ -2,7 +2,6 @@ default namespace = "http://www.ruleml.org/1.0/xsd"
 
 start =
   _1
-  | transaction
   | Query
   | Implies
   | Assert
@@ -36,15 +35,11 @@ start =
   | Skolem
   | _5
   | RuleML
+  | act
   | Var
   | And
   | Entails
 _1 = element * { notAllowed }
-transaction =
-  element transaction {
-    attribute index { xsd:positiveInteger },
-    (Assert | Retract | Query)
-  }
 Query =
   element Query {
     attribute closure {
@@ -116,11 +111,10 @@ Atom =
     degree?,
     (op | Rel),
     _2*,
-    resl?,
     ((((arg | Var | Skolem | Reify)+, repo?)
       | repo),
-     _2*,
-     resl?)?
+     _2*)?,
+    resl?
   }
 if = element if { And | Or | Naf }
 repo = element repo { Var | Plex_2 }
@@ -148,16 +142,14 @@ Expr =
     oid?,
     (op_2 | Fun),
     _2*,
-    resl?,
     ((((arg | Var | Skolem | Reify)+, repo?)
       | repo),
-     _2*,
-     resl?)?
+     _2*)?,
+    resl?
   }
 Reify =
   element Reify {
     (_1
-     | transaction
      | Query
      | Implies
      | Assert
@@ -191,6 +183,7 @@ Reify =
      | Skolem
      | _5
      | RuleML
+     | act
      | Var
      | And
      | Entails)?
@@ -250,8 +243,12 @@ Skolem =
     & attribute type { xsd:string }?
   }
 _5 = element * { notAllowed }
-RuleML =
-  element RuleML { oid?, (transaction | Assert | Retract | Query)* }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
+  }
 Var =
   element Var {
     text
@@ -285,10 +282,10 @@ _6 =
     & (attribute * { text }
        | _6)*
   }
-Plex_2 = element Plex { (arg | Var | Skolem | Reify | repo)* }
+Plex_2 = element Plex { (arg | Var | Skolem | Reify)*, repo? }
 formula_3 = element formula { Implies | Equivalent | Forall }
 op_2 = element op { Fun }
-Plex_3 = element Plex { (_2 | resl)* }
+Plex_3 = element Plex { _2*, resl? }
 formula_4 = element formula { Implies | Equivalent | Forall }
 formula_5 = element formula { And | Or | Exists }
 formula_6 = element formula { And | Or | Naf }

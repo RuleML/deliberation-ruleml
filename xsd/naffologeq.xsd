@@ -12,7 +12,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			negation as failure (NAF) and equational logic
 			File: naffologeq.xsd
 			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
+			Last Modification: 2011-10-06 [Tara Athan]
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -55,6 +55,17 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>	
 		</xs:group>
+	  
+	  <!--
+	    add Equal so that Rulebase's content model is:
+	    ( oid?, (formula | Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)* )
+	  -->
+	  <xs:group name="formula-rulebase.content">
+	    <xs:choice>
+	      <xs:group ref="formula-rulebase.content"/>
+	      <xs:element ref="Equal"/>
+	    </xs:choice>	
+	  </xs:group>
 
 		<!--
 			add Equal so that then's content model is:

@@ -1,369 +1,393 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ruleml:RuleML xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ruleml="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffologeq.xsd">
+<ruleml:RuleML xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ruleml="http://www.ruleml.org/1.0/xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffologeq.xsd">
 
-	
-<!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
+
+  <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
 
 
-	<ruleml:Assert mapClosure="universal" mapDirection="bidirectional">
+  <ruleml:Assert mapClosure="universal"
+    mapDirection="bidirectional">
+    <ruleml:Rulebase>
+      <ruleml:Equal oriented="yes">
+        <ruleml:Ind>some constant</ruleml:Ind>
+        <ruleml:Var type="Q">d</ruleml:Var>
+      </ruleml:Equal>
 
-				    <ruleml:Equal oriented="yes">
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var type="Q">d</ruleml:Var>
-				    </ruleml:Equal>
+      <ruleml:Forall mapClosure="existential"
+        mapDirection="forward" mapMaterial="yes">
+        <ruleml:Var>d</ruleml:Var>
+        <ruleml:Equal>
+          <ruleml:Ind>some constant</ruleml:Ind>
+          <ruleml:Var>d</ruleml:Var>
+        </ruleml:Equal>
+      </ruleml:Forall>
 
-				<ruleml:Forall mapClosure="existential" mapDirection="forward" mapMaterial="yes">
-					<ruleml:Var>d</ruleml:Var>
-					<ruleml:Equal>
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var>d</ruleml:Var>
-				    </ruleml:Equal>
-				</ruleml:Forall>
+      <ruleml:Exists mapClosure="existential"
+        mapDirection="backward" mapMaterial="yes">
+        <ruleml:Var>d</ruleml:Var>
+        <ruleml:Equal>
+          <ruleml:Ind>some constant</ruleml:Ind>
+          <ruleml:Var>d</ruleml:Var>
+        </ruleml:Equal>
+      </ruleml:Exists>
 
-		<ruleml:Exists mapClosure="existential" mapDirection="backward" mapMaterial="yes">
-					<ruleml:Var>d</ruleml:Var>
-					<ruleml:Equal>
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var>d</ruleml:Var>
-				    </ruleml:Equal>
-				</ruleml:Exists>
+      <ruleml:Equivalent>
+        <ruleml:torso>
+          <ruleml:Equal>
+            <ruleml:Ind>some constant</ruleml:Ind>
+            <ruleml:Var>d</ruleml:Var>
+          </ruleml:Equal>
+        </ruleml:torso>
+        <ruleml:torso>
+          <ruleml:Equal>
+            <ruleml:Ind>some constant</ruleml:Ind>
+            <ruleml:Var>d</ruleml:Var>
+          </ruleml:Equal>
+        </ruleml:torso>
+      </ruleml:Equivalent>
 
-		<ruleml:Equivalent>
-			<ruleml:torso>
-				    <ruleml:Equal>
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var>d</ruleml:Var>
-				    </ruleml:Equal>
-			</ruleml:torso>
-			<ruleml:torso>
-				    <ruleml:Equal>
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var>d</ruleml:Var>
-				    </ruleml:Equal>
-			</ruleml:torso>
-		</ruleml:Equivalent>
+      <ruleml:Neg mapClosure="existential"
+        mapDirection="bidirectional" mapMaterial="yes">
+        <ruleml:strong>
+          <ruleml:Equal>
+            <ruleml:Ind>some constant</ruleml:Ind>
+            <ruleml:Var>d</ruleml:Var>
+          </ruleml:Equal>
+        </ruleml:strong>
+      </ruleml:Neg>
 
-		<ruleml:Neg mapClosure="existential" mapDirection="bidirectional" mapMaterial="yes">
-				    <ruleml:strong><ruleml:Equal>
-				      <ruleml:Ind>some constant</ruleml:Ind>
-				      <ruleml:Var>d</ruleml:Var>
-				    </ruleml:Equal></ruleml:strong>
-		</ruleml:Neg>
+      <ruleml:Implies material="no" closure="existential">
+        <ruleml:Naf>
+          <ruleml:Equal>
+            <ruleml:Ind>some constant</ruleml:Ind>
+            <ruleml:Var>d</ruleml:Var>
+          </ruleml:Equal>
+        </ruleml:Naf>
+        <ruleml:Atom>
+          <ruleml:Rel>own</ruleml:Rel>
+          <ruleml:Var>person</ruleml:Var>
+          <ruleml:Var>object</ruleml:Var>
+        </ruleml:Atom>
+      </ruleml:Implies>
 
-		<ruleml:Implies material="no" closure="existential">
-			<ruleml:Naf>
-					    <ruleml:Equal>
-					      <ruleml:Ind>some constant</ruleml:Ind>
-					      <ruleml:Var>d</ruleml:Var>
-					    </ruleml:Equal>
-			</ruleml:Naf>
-			<ruleml:Atom>
-				<ruleml:Rel>own</ruleml:Rel>
-				<ruleml:Var>person</ruleml:Var>
-				<ruleml:Var>object</ruleml:Var>
-			</ruleml:Atom>
-		</ruleml:Implies>
+      <ruleml:Forall>
+        <ruleml:Var>person</ruleml:Var>
+        <ruleml:Var>object</ruleml:Var>
+        <ruleml:Implies>
+          <ruleml:then>
+            <ruleml:Atom>
+              <ruleml:Rel>own</ruleml:Rel>
+              <ruleml:Var>person</ruleml:Var>
+              <ruleml:Var>object</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:then>
+          <ruleml:if>
+            <ruleml:Naf mapDirection="bidirectional">
+              <ruleml:weak>
+                <ruleml:Implies>
+                  <ruleml:oid>
+                    <ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
+                  </ruleml:oid>
+                  <ruleml:if>
+                    <ruleml:Equal>
+                      <ruleml:Ind>some constant</ruleml:Ind>
+                      <ruleml:Var>d</ruleml:Var>
+                    </ruleml:Equal>
+                  </ruleml:if>
+                  <ruleml:then>
+                    <ruleml:Equal>
+                      <ruleml:Ind>some constant</ruleml:Ind>
+                      <ruleml:Var>d</ruleml:Var>
+                    </ruleml:Equal>
+                  </ruleml:then>
+                </ruleml:Implies>
+              </ruleml:weak>
+            </ruleml:Naf>
+          </ruleml:if>
+        </ruleml:Implies>
+      </ruleml:Forall>
 
-		<ruleml:Forall>
-			<ruleml:Var>person</ruleml:Var>
-			<ruleml:Var>object</ruleml:Var>
-			<ruleml:Implies>
-				<ruleml:then>
-					<ruleml:Atom>
-						<ruleml:Rel>own</ruleml:Rel>
-						<ruleml:Var>person</ruleml:Var>
-						<ruleml:Var>object</ruleml:Var>
-					</ruleml:Atom>
-				</ruleml:then>
-				<ruleml:if>
-					<ruleml:Naf mapDirection="bidirectional">
-						<ruleml:weak>
-						<ruleml:Implies>
-							<ruleml:oid>
-								<ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
-							</ruleml:oid>
-							<ruleml:if>
-							    <ruleml:Equal>
-							      <ruleml:Ind>some constant</ruleml:Ind>
-							      <ruleml:Var>d</ruleml:Var>
-							    </ruleml:Equal>
-							</ruleml:if>
-							<ruleml:then>
-							    <ruleml:Equal>
-							      <ruleml:Ind>some constant</ruleml:Ind>
-							      <ruleml:Var>d</ruleml:Var>
-							    </ruleml:Equal>
-							</ruleml:then>
-						</ruleml:Implies>
-						</ruleml:weak>
-					</ruleml:Naf>
-				</ruleml:if>
-			</ruleml:Implies>
-		</ruleml:Forall>
+      <ruleml:Equivalent>
+        <ruleml:torso>
+          <ruleml:Atom>
+            <ruleml:Rel>own</ruleml:Rel>
+            <ruleml:Skolem>test</ruleml:Skolem>
+            <ruleml:Var>person</ruleml:Var>
+            <ruleml:Var>object</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:torso>
+        <ruleml:torso>
+          <ruleml:Atom>
+            <ruleml:degree>
+              <ruleml:Data xsi:type="xs:float">0.2</ruleml:Data>
+            </ruleml:degree>
+            <ruleml:Rel>belongs</ruleml:Rel>
+            <ruleml:Var>object</ruleml:Var>
+            <ruleml:Var>person</ruleml:Var>
+            <ruleml:repo>
+              <ruleml:Var>x</ruleml:Var>
+            </ruleml:repo>
+            <ruleml:resl>
+              <ruleml:Var>y</ruleml:Var>
+            </ruleml:resl>
+          </ruleml:Atom>
+        </ruleml:torso>
+      </ruleml:Equivalent>
 
-		<ruleml:Equivalent>
-			<ruleml:torso>
-				<ruleml:Atom>
-					<ruleml:Rel>own</ruleml:Rel>
-					<ruleml:Skolem>test</ruleml:Skolem>
-					<ruleml:Var>person</ruleml:Var>
-					<ruleml:Var>object</ruleml:Var>
-				</ruleml:Atom>
-			</ruleml:torso>
-			<ruleml:torso>
-				<ruleml:Atom>
-					<ruleml:degree>
-						<ruleml:Data xsi:type="xs:float">0.2</ruleml:Data>
-					</ruleml:degree>
-					<ruleml:Rel>belongs</ruleml:Rel>
-					<ruleml:Var>object</ruleml:Var>
-					<ruleml:Var>person</ruleml:Var>
-					<ruleml:repo>
-						<ruleml:Var>x</ruleml:Var>
-					</ruleml:repo>
-					<ruleml:resl>
-						<ruleml:Var>y</ruleml:Var>
-					</ruleml:resl>
-				</ruleml:Atom>
-			</ruleml:torso>
-		</ruleml:Equivalent>
+      <ruleml:Implies>
+        <ruleml:oid>
+          <ruleml:Ind>claiming-through-disclaimers</ruleml:Ind>
+        </ruleml:oid>
+        <ruleml:then>
+          <ruleml:Atom>
+            <ruleml:Rel>claim</ruleml:Rel>
+            <ruleml:Var>person</ruleml:Var>
+            <ruleml:Var>object</ruleml:Var>
+          </ruleml:Atom>
+        </ruleml:then>
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Equal>
+              <ruleml:Ind>some constant</ruleml:Ind>
+              <ruleml:Var>d</ruleml:Var>
+            </ruleml:Equal>
+            <ruleml:Naf mapClosure="existential">
+              <ruleml:Exists>
+                <ruleml:Var>merchant</ruleml:Var>
+                <ruleml:And>
+                  <ruleml:Atom>
+                    <ruleml:degree>
+                      <ruleml:Data xsi:type="xs:float"
+                        >1.0</ruleml:Data>
+                    </ruleml:degree>
+                    <ruleml:Rel>buy</ruleml:Rel>
+                    <ruleml:Var>person</ruleml:Var>
+                    <ruleml:Var>merchant</ruleml:Var>
+                    <ruleml:Var>object</ruleml:Var>
+                  </ruleml:Atom>
+                  <ruleml:Atom>
+                    <ruleml:Rel>keep</ruleml:Rel>
+                    <ruleml:Var>person</ruleml:Var>
+                    <ruleml:Var>object</ruleml:Var>
+                  </ruleml:Atom>
+                </ruleml:And>
+              </ruleml:Exists>
+            </ruleml:Naf>
+            <ruleml:Forall>
+              <ruleml:Var>x</ruleml:Var>
+              <ruleml:Implies>
+                <ruleml:oid>
+                  <ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
+                </ruleml:oid>
+                <ruleml:if>
+                  <ruleml:Atom>
+                    <ruleml:degree>
+                      <ruleml:Data xsi:type="xs:float"
+                        >0.5</ruleml:Data>
+                    </ruleml:degree>
+                    <ruleml:Rel>unequal</ruleml:Rel>
+                    <ruleml:Var>x</ruleml:Var>
+                    <ruleml:Var>person</ruleml:Var>
+                  </ruleml:Atom>
+                </ruleml:if>
+                <ruleml:then>
+                  <ruleml:Atom>
+                    <ruleml:degree>
+                      <ruleml:Data xsi:type="xs:float"
+                        >0.5</ruleml:Data>
+                    </ruleml:degree>
+                    <ruleml:Rel>disclaim</ruleml:Rel>
+                    <ruleml:Var>x</ruleml:Var>
+                    <ruleml:Skolem>test</ruleml:Skolem>
+                    <ruleml:Var>object</ruleml:Var>
+                  </ruleml:Atom>
+                </ruleml:then>
+              </ruleml:Implies>
+            </ruleml:Forall>
+            <ruleml:Atom>
+              <ruleml:Rel>keep</ruleml:Rel>
+              <ruleml:Var>person</ruleml:Var>
+              <ruleml:Var>object</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+      </ruleml:Implies>
 
-		<ruleml:Implies>
-			<ruleml:oid>
-				<ruleml:Ind>claiming-through-disclaimers</ruleml:Ind>
-			</ruleml:oid>
-			<ruleml:then>
-				<ruleml:Atom>
-					<ruleml:Rel>claim</ruleml:Rel>
-					<ruleml:Var>person</ruleml:Var>
-					<ruleml:Var>object</ruleml:Var>
-				</ruleml:Atom>
-			</ruleml:then>
-			<ruleml:if>
-				<ruleml:And>
-					  <ruleml:Equal>
-					      <ruleml:Ind>some constant</ruleml:Ind>
-					      <ruleml:Var>d</ruleml:Var>
-				       </ruleml:Equal>
-					<ruleml:Naf mapClosure="existential">
-						<ruleml:Exists>
-							<ruleml:Var>merchant</ruleml:Var>
-							<ruleml:And>
-								<ruleml:Atom>
-									<ruleml:degree>
-										<ruleml:Data xsi:type="xs:float">1.0</ruleml:Data>
-									</ruleml:degree>								
-									<ruleml:Rel>buy</ruleml:Rel>
-									<ruleml:Var>person</ruleml:Var>
-									<ruleml:Var>merchant</ruleml:Var>
-									<ruleml:Var>object</ruleml:Var>
-								</ruleml:Atom>
-								<ruleml:Atom>
-									<ruleml:Rel>keep</ruleml:Rel>
-									<ruleml:Var>person</ruleml:Var>
-									<ruleml:Var>object</ruleml:Var>
-								</ruleml:Atom>
-							</ruleml:And>
-						</ruleml:Exists>					
-					</ruleml:Naf>
-					<ruleml:Forall>
-						<ruleml:Var>x</ruleml:Var>
-						<ruleml:Implies>
-							<ruleml:oid>
-								<ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
-							</ruleml:oid>
-							<ruleml:if>
-								<ruleml:Atom>
-									<ruleml:degree>
-										<ruleml:Data xsi:type="xs:float">0.5</ruleml:Data>
-									</ruleml:degree>									
-									<ruleml:Rel>unequal</ruleml:Rel>
-									<ruleml:Var>x</ruleml:Var>
-									<ruleml:Var>person</ruleml:Var>
-								</ruleml:Atom>
-							</ruleml:if>
-							<ruleml:then>
-								<ruleml:Atom>
-									<ruleml:degree>
-										<ruleml:Data xsi:type="xs:float">0.5</ruleml:Data>
-									</ruleml:degree>									
-									<ruleml:Rel>disclaim</ruleml:Rel>
-									<ruleml:Var>x</ruleml:Var>
-									<ruleml:Skolem>test</ruleml:Skolem>
-									<ruleml:Var>object</ruleml:Var>
-								</ruleml:Atom>
-							</ruleml:then>
-						</ruleml:Implies>
-					</ruleml:Forall>
-					<ruleml:Atom>
-						<ruleml:Rel>keep</ruleml:Rel>
-						<ruleml:Var>person</ruleml:Var>
-						<ruleml:Var>object</ruleml:Var>
-					</ruleml:Atom>
-				</ruleml:And>
-			</ruleml:if>
-		</ruleml:Implies>
+      <ruleml:Implies>
+        <ruleml:oid>
+          <ruleml:Ind>claiming-or-relinquishing-through-disclaimers</ruleml:Ind>
+        </ruleml:oid>
+        <ruleml:then>
+          <ruleml:Or>
+            <ruleml:Atom>
+              <ruleml:Rel>claim</ruleml:Rel>
+              <ruleml:Var>person</ruleml:Var>
+              <ruleml:Var>object</ruleml:Var>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:Rel>relinquish</ruleml:Rel>
+              <ruleml:Var>person</ruleml:Var>
+              <ruleml:Var>object</ruleml:Var>
+            </ruleml:Atom>
+          </ruleml:Or>
+        </ruleml:then>
+        <ruleml:if>
+          <ruleml:Forall>
+            <ruleml:Var>x</ruleml:Var>
+            <ruleml:Implies>
+              <ruleml:oid>
+                <ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
+              </ruleml:oid>
+              <ruleml:if>
+                <ruleml:Atom>
+                  <ruleml:Rel>unequal</ruleml:Rel>
+                  <ruleml:Var>x</ruleml:Var>
+                  <ruleml:Var>person</ruleml:Var>
+                </ruleml:Atom>
+              </ruleml:if>
+              <ruleml:then>
+                <ruleml:Atom>
+                  <ruleml:Rel>disclaim</ruleml:Rel>
+                  <ruleml:Var>x</ruleml:Var>
+                  <ruleml:Var>object</ruleml:Var>
+                  <ruleml:repo>
+                    <ruleml:Var>x</ruleml:Var>
+                  </ruleml:repo>
+                </ruleml:Atom>
+              </ruleml:then>
+            </ruleml:Implies>
+          </ruleml:Forall>
+        </ruleml:if>
+      </ruleml:Implies>
+      <ruleml:Implies>
+        <ruleml:then>
+          <ruleml:Or>
+            <ruleml:Atom>
+              <ruleml:op>
+                <ruleml:Rel>friend</ruleml:Rel>
+              </ruleml:op>
+              <ruleml:slot card="2" weight="0.5">
+                <ruleml:Ind type="Time" iri="http:www.example.org"
+                  >t</ruleml:Ind>
+                <ruleml:Ind>b</ruleml:Ind>
+              </ruleml:slot>
+              <ruleml:Var>x</ruleml:Var>
+              <ruleml:Var>y</ruleml:Var>
+              <ruleml:Ind>Steph</ruleml:Ind>
+            </ruleml:Atom>
+            <ruleml:Atom>
+              <ruleml:op>
+                <ruleml:Rel>friend</ruleml:Rel>
+              </ruleml:op>
+              <ruleml:slot>
+                <ruleml:Ind>t</ruleml:Ind>
+                <ruleml:Ind>b</ruleml:Ind>
+              </ruleml:slot>
+              <ruleml:Var>x</ruleml:Var>
+              <ruleml:Var>y</ruleml:Var>
+              <ruleml:Ind>Jill</ruleml:Ind>
+            </ruleml:Atom>
+          </ruleml:Or>
+        </ruleml:then>
+        <ruleml:if>
+          <ruleml:And>
+            <ruleml:Atom>
+              <ruleml:degree>
+                <ruleml:Data xsi:type="xs:float">0</ruleml:Data>
+              </ruleml:degree>
+              <ruleml:op>
+                <ruleml:Rel>friend</ruleml:Rel>
+              </ruleml:op>
+              <ruleml:Ind>Jane</ruleml:Ind>
+              <ruleml:Ind>Joan</ruleml:Ind>
+              <ruleml:Skolem/>
+              <ruleml:Ind>Jack</ruleml:Ind>
+              <ruleml:Var>y</ruleml:Var>
+              <ruleml:Ind>Frank</ruleml:Ind>
+              <ruleml:Plex>
+                <ruleml:Ind/>
+              </ruleml:Plex>
+              <ruleml:repo>
+                <ruleml:Plex>
+                  <ruleml:Ind/>
+                  <ruleml:Var/>
+                </ruleml:Plex>
+              </ruleml:repo>
+              <ruleml:slot>
+                <ruleml:Ind>yar</ruleml:Ind>
+                <ruleml:Expr per="copy">
+                  <ruleml:op>
+                    <ruleml:Fun val="1">constructor</ruleml:Fun>
+                  </ruleml:op>
+                  <ruleml:Plex>
+                    <ruleml:Var>z</ruleml:Var>
+                    <ruleml:slot>
+                      <ruleml:Ind>yar2</ruleml:Ind>
+                      <ruleml:Ind>c</ruleml:Ind>
+                    </ruleml:slot>
+                  </ruleml:Plex>
+                </ruleml:Expr>
+              </ruleml:slot>
+              <ruleml:resl>
+                <ruleml:Plex>
+                  <ruleml:slot>
+                    <ruleml:Ind/>
+                    <ruleml:Ind/>
+                  </ruleml:slot>
+                </ruleml:Plex>
+              </ruleml:resl>
+            </ruleml:Atom>
+          </ruleml:And>
+        </ruleml:if>
+      </ruleml:Implies>
 
-		<ruleml:Implies>
-			<ruleml:oid>
-				<ruleml:Ind>claiming-or-relinquishing-through-disclaimers</ruleml:Ind>
-			</ruleml:oid>
-			<ruleml:then>
-				<ruleml:Or>
-					<ruleml:Atom>
-						<ruleml:Rel>claim</ruleml:Rel>
-						<ruleml:Var>person</ruleml:Var>
-						<ruleml:Var>object</ruleml:Var>
-					</ruleml:Atom>
-					<ruleml:Atom>
-						<ruleml:Rel>relinquish</ruleml:Rel>
-						<ruleml:Var>person</ruleml:Var>
-						<ruleml:Var>object</ruleml:Var>
-					</ruleml:Atom>
-				</ruleml:Or>
-			</ruleml:then>
-			<ruleml:if>
-				<ruleml:Forall>
-					<ruleml:Var>x</ruleml:Var>
-					<ruleml:Implies>
-						<ruleml:oid>
-							<ruleml:Ind>disclaiming-of-other-persons</ruleml:Ind>
-						</ruleml:oid>
-						<ruleml:if>
-							<ruleml:Atom>
-								<ruleml:Rel>unequal</ruleml:Rel>
-								<ruleml:Var>x</ruleml:Var>
-								<ruleml:Var>person</ruleml:Var>
-							</ruleml:Atom>
-						</ruleml:if>
-						<ruleml:then>
-							<ruleml:Atom>
-								<ruleml:Rel>disclaim</ruleml:Rel>
-								<ruleml:Var>x</ruleml:Var>
-								<ruleml:Var>object</ruleml:Var>
-								<ruleml:repo>
-									<ruleml:Var>x</ruleml:Var>
-								</ruleml:repo>
-							</ruleml:Atom>
-						</ruleml:then>
-					</ruleml:Implies>
-				</ruleml:Forall>
-			</ruleml:if>
-		</ruleml:Implies>
-		<ruleml:Implies>
-			<ruleml:then>
-				<ruleml:Or>
-					<ruleml:Atom>
-						<ruleml:op>
-							<ruleml:Rel>friend</ruleml:Rel>
-						</ruleml:op>
-						<ruleml:slot card="2" weight="0.5">
-							<ruleml:Ind type="Time" iri="http:www.example.org">t</ruleml:Ind>
-							<ruleml:Ind>b</ruleml:Ind>
-						</ruleml:slot>
-						<ruleml:Var>x</ruleml:Var>
-						<ruleml:Var>y</ruleml:Var>
-						<ruleml:Ind>Steph</ruleml:Ind>
-					</ruleml:Atom>
-					<ruleml:Atom>
-						<ruleml:op>
-							<ruleml:Rel>friend</ruleml:Rel>
-						</ruleml:op>
-						<ruleml:slot>
-							<ruleml:Ind>t</ruleml:Ind>
-							<ruleml:Ind>b</ruleml:Ind>
-						</ruleml:slot>
-						<ruleml:Var>x</ruleml:Var>
-						<ruleml:Var>y</ruleml:Var>
-						<ruleml:Ind>Jill</ruleml:Ind>
-					</ruleml:Atom>
-				</ruleml:Or>
-			</ruleml:then>
-			<ruleml:if>
-				<ruleml:And>
-					<ruleml:Atom>
-						<ruleml:degree>
-							<ruleml:Data xsi:type="xs:float">0</ruleml:Data>
-						</ruleml:degree>					
-						<ruleml:op>
-							<ruleml:Rel>friend</ruleml:Rel>
-						</ruleml:op>
-						<ruleml:Ind>Jane</ruleml:Ind>
-						<ruleml:Ind>Joan</ruleml:Ind>
-						<ruleml:Skolem/>
-						<ruleml:Ind>Jack</ruleml:Ind>
-						<ruleml:Var>y</ruleml:Var>
-						<ruleml:Ind>Frank</ruleml:Ind>
-						<ruleml:Plex>
-							<ruleml:Ind/>
-						</ruleml:Plex>
-						<ruleml:repo>
-							<ruleml:Plex>
-								<ruleml:Ind/>
-								<ruleml:Var/>
-							</ruleml:Plex>
-						</ruleml:repo>
-						<ruleml:slot>
-							<ruleml:Ind>yar</ruleml:Ind>
-							<ruleml:Expr per="copy">
-								<ruleml:op>
-									<ruleml:Fun val="1">constructor</ruleml:Fun>
-								</ruleml:op>
-								<ruleml:Plex>
-									<ruleml:Var>z</ruleml:Var>
-									<ruleml:slot>
-										<ruleml:Ind>yar2</ruleml:Ind>
-										<ruleml:Ind>c</ruleml:Ind>
-									</ruleml:slot>
-								</ruleml:Plex>
-							</ruleml:Expr>
-						</ruleml:slot>
-						<ruleml:resl>
-							<ruleml:Plex>
-								<ruleml:slot>
-									<ruleml:Ind/>
-									<ruleml:Ind/>
-								</ruleml:slot>
-							</ruleml:Plex>
-						</ruleml:resl>
-					</ruleml:Atom>
-				</ruleml:And>
-			</ruleml:if>
-		</ruleml:Implies>
+      <ruleml:Atom>
+        <ruleml:op>
+          <ruleml:Rel>some relation</ruleml:Rel>
+        </ruleml:op>
+        <ruleml:slot>
+          <ruleml:Ind>role_name1</ruleml:Ind>
+          <ruleml:Ind>role 1</ruleml:Ind>
+        </ruleml:slot>
+        <ruleml:Ind>constant a</ruleml:Ind>
+        <ruleml:Ind>constant b</ruleml:Ind>
+        <ruleml:slot>
+          <ruleml:Ind>role_name2</ruleml:Ind>
+          <ruleml:Ind>role 2</ruleml:Ind>
+        </ruleml:slot>
+      </ruleml:Atom>
 
-		<ruleml:Atom>
-			<ruleml:op>
-				<ruleml:Rel>some relation</ruleml:Rel>
-			</ruleml:op>
-			<ruleml:slot>
-				<ruleml:Ind>role_name1</ruleml:Ind>
-				<ruleml:Ind>role 1</ruleml:Ind>
-			</ruleml:slot>
-			<ruleml:Ind>constant a</ruleml:Ind>
-			<ruleml:Ind>constant b</ruleml:Ind>
-			<ruleml:slot>
-				<ruleml:Ind>role_name2</ruleml:Ind>
-				<ruleml:Ind>role 2</ruleml:Ind>
-			</ruleml:slot>
-		</ruleml:Atom>
-
-     <ruleml:Equal oriented="yes">
+      <ruleml:Equal oriented="yes">
         <ruleml:Expr>
-          <ruleml:op><ruleml:Fun per="value">some function</ruleml:Fun></ruleml:op>
-          <ruleml:arg index="1"><ruleml:Ind>arg1</ruleml:Ind></ruleml:arg>
-        	<ruleml:arg index="2"><ruleml:Ind>arg2</ruleml:Ind></ruleml:arg>
-        	<ruleml:arg index="3"><ruleml:Ind>arg3</ruleml:Ind></ruleml:arg>
+          <ruleml:op>
+            <ruleml:Fun per="value">some function</ruleml:Fun>
+          </ruleml:op>
+          <ruleml:arg index="1">
+            <ruleml:Ind>arg1</ruleml:Ind>
+          </ruleml:arg>
+          <ruleml:arg index="2">
+            <ruleml:Ind>arg2</ruleml:Ind>
+          </ruleml:arg>
+          <ruleml:arg index="3">
+            <ruleml:Ind>arg3</ruleml:Ind>
+          </ruleml:arg>
         </ruleml:Expr>
         <ruleml:Expr per="open" type="Q">
-          <ruleml:op><ruleml:Fun per="value">some other function</ruleml:Fun></ruleml:op>
+          <ruleml:op>
+            <ruleml:Fun per="value"
+              >some other function</ruleml:Fun>
+          </ruleml:op>
           <ruleml:Ind>arg4</ruleml:Ind>
           <ruleml:Ind>arg5</ruleml:Ind>
           <ruleml:Ind>arg6</ruleml:Ind>
         </ruleml:Expr>
       </ruleml:Equal>
-		
 
-</ruleml:Assert>
+    </ruleml:Rulebase>
+  </ruleml:Assert>
 
 </ruleml:RuleML>

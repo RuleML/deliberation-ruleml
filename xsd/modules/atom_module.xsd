@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML atoms.
 			File: atom_module.xsd
 			Version: 1.0
-			Last Modification: 2010-07-16
+			Last Modification: 2011-10-06 (Tara Athan)
 			
 			This module declares the following RuleML elements and attributes:
 			* Atom
@@ -75,10 +75,15 @@ elementFormDefault="qualified"
 			<!-- (repo?) added in hornlog -->
 		</xs:sequence>
 	</xs:group>
-	<xs:group name="Atom-slots.extend">
+	<xs:group name="Atom-slots.extend1">
 		<xs:sequence>
 			<xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
-			<!-- (resl)? added in hornlog -->
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="Atom-slots.extend2">
+		<xs:sequence>
+		  <!-- [2011/09/17] Correction: this sequence is empty until hornlog -->
+		  <!-- (resl)? added in hornlog -->
 		</xs:sequence>
 	</xs:group>
 	<xs:group name="Atom.content">
@@ -89,11 +94,12 @@ elementFormDefault="qualified"
 				<xs:element name="op" type="op-atom.type"/>
 				<xs:group ref="op-atom.content"/>
 			</xs:choice>
-			<xs:group ref="Atom-slots.extend"/>
+			<xs:group ref="Atom-slots.extend1"/>
 			<xs:sequence minOccurs="0">
 				<xs:group ref="Atom-repo.extend"/>
-				<xs:group ref="Atom-slots.extend"/>
+				<xs:group ref="Atom-slots.extend1"/>
 			</xs:sequence>
+	    <xs:group ref="Atom-slots.extend2"/>
 		</xs:sequence>
 	</xs:group>
 	<xs:complexType name="Atom.type">

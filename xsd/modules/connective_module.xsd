@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			This is the XML Schema module for RuleML connectives.
 			File: connective_module.xsd
 			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
+			Last Modification: 2011-10-06 [Tara Athan]
 			
 			This module declares the following RuleML elements and attributes:
 			* Implies
@@ -382,9 +382,9 @@ elementFormDefault="qualified"
 	<xs:group name="formula-rulebase.content">
 		<xs:choice>
 			<xs:element name="Atom" type="Atom.type"/>
-			<xs:element name="Implies"/>
-			<xs:element name="Equivalent"/>
-			<xs:element name="Forall"/>
+			<xs:element name="Implies" type="Implies.type"/>
+			<xs:element name="Equivalent" type="Equivalent.type"/>
+			<xs:element name="Forall" type="Forall.type"/>
 		</xs:choice>
 	</xs:group>
 	<xs:complexType name="formula-and-or.type">
