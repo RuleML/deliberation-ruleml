@@ -1,7 +1,10 @@
 <?php
 //Assembler of RNC schema for RuleML 1.0
-// Last Modified 2011/09/21
+// Last Modified 2011/10/08
 // Step 000. Initialize some parameters
+header('Content-Description: File Transfer');
+header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
+header('Content-Disposition: attachment; filename="'.basename('custom_driver.rnc').'"');
 $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
 $start = ' start = Node.choice | edge.choice'."\n";
@@ -77,7 +80,7 @@ echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
 //
 $propo = "propo";
-$propo_uri = 0;
+$propo_iri = 0;
 $propo_rulebase = 1;
 $propo_entails = 2;
 $propo_degree = 3;
@@ -162,14 +165,15 @@ if ($bdefault==0){
   $needDis = extractBit($bbackbone, $backbone_dis);
   $needFO = extractBit($bbackbone, $backbone_fo);
 
-  $needDefaultAbsent = extractBit($bdefault, $default_absent);
+  $needDefaultAbsent = extractBit($bdefault, $default_absent); 
   $bdefault_present = extractBit($bdefault, $default_present);
-  $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);  
+  $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);
 
   $btermseq_unary = extractBit($btermseq, $unary);
   $btermseq_binary = extractBit($btermseq, $binary);
   $btermseq_ternary_plus = extractBit($btermseq, $ternary_plus);
   $needPoly = $btermseq_ternary_plus * $btermseq_binary * $btermseq_unary;
+  
   // Apparent lack of monotonicity caused by incomplete orthogonalization
   // of modules for binary and polyadic positional term sequences.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
@@ -185,7 +189,8 @@ if ($bdefault==0){
   $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
-  $needURI = extractBit($bpropo, $propo_uri);
+
+  $needURI = extractBit($bpropo, $propo_iri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
   $needEntails = extractBit($bpropo, $propo_entails);
   $needFuzzy = extractBit($bpropo, $propo_degree);
@@ -375,7 +380,7 @@ if ($bdefault==0){
     if ($needURI){
       echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'uri_expansion_module.rnc"'."$end\n";
+          'iri_expansion_module.rnc"'."$end\n";
     }
     // Include rulebases if needed
     if ($needRulebase){
@@ -607,20 +612,28 @@ if ($bdefault==0){
   if ($needInAtt){
     echo "#\n# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'in_attrib_expansion_module.rnc"'."$end\n";      
+        'per_attrib_expansion_module.rnc"'."$end\n";      
   }  
   // Include non-default values of interpretation of expressions if needed
   if ($needInND){
     echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-        'in_non-default_expansion_module.rnc"'."$end\n";
+        'per_non-default_expansion_module.rnc"'."$end\n";
   }
   // Include default values of interpretation of expressions if needed
   if ($needInD){
     echo "#\n# DEFAULT VALUE OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
-      'in_default_expansion_module.rnc"'."$end\n";
+      'per_default_expansion_module.rnc"'."$end\n";
   }
+  //Step 4B. Initialize abstract patterns
+    if ($needInit){
+      echo "#\n# INITIALIZATION MODULES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'init_expansion_module.rnc"'."$end\n";
+    }
+
+
   //Step 4A. Translate to requested xs:lang
   // FIXME: need to handle differently when more than one alternate available
   //        or simulataneous alternate element names allowed
@@ -629,27 +642,22 @@ if ($bdefault==0){
     if ($needLongNames){
       echo "#\n# LONG ENGLISH ELEMENT NAMES\n";
       echo "#\n".'include "' . $modulesLocation .
-          'long_name_base_module.rnc"'."$end\n";
+          'long_name_expansion_module.rnc"'."$end\n";
       // this second module is separated out because of a short-coming in trang
       // where element xyz{notAllowed} is not simplified to notAllowed
       // with the result that we cannot rename abstract elements if
       // we want to be able to generate XSD or monolithic content-models    
       if ($needRepo){
         echo "#\n".'include "' . $modulesLocation .
-            'long_name_repo_base_module.rnc"'."$end\n";      
+            'long_name_repo_expansion_module.rnc"'."$end\n";      
       }
       if ($needResl){
         echo "#\n".'include "' . $modulesLocation .
-            'long_name_resl_base_module.rnc"'."$end\n";
+            'long_name_resl_expansion_module.rnc"'."$end\n";
       }
     }
   }
-  //Step 4B. Initialize abstract patterns
-    if ($needInit){
-      echo "#\n# INITIALIZATION MODULES INCLUDED\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'init_expansion_module.rnc"'."$end\n";
-    }
+echo "\n#";
 
 }
 //Functions
@@ -673,7 +681,7 @@ function processGETParameter ($paramName){
       if (ctype_xdigit($xparam)) {
         $bparam = decbin(hexdec($xparam));
       } else {
-        echo "#\n# Error: The string $xparam does not consist of all".
+        echo "#\n# Warning: The string $xparam does not consist of all".
              "hexadecimal digits.\n";
         echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
         $bparam = $bparam_default;
@@ -682,7 +690,7 @@ function processGETParameter ($paramName){
       $bparam = $bparam_default;
     }
   } else {
-    echo "<#\n# Error: The ".$paramName." parameter ".$param." is not a".
+    echo "<#\n# Warning: The ".$paramName." parameter ".$param." is not a".
          " hexidecimal or blank string.\n";
     echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
     $bparam = $bparam_default;

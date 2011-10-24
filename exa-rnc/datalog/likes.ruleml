@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd">
+
+
+<!-- Clocksin/Mellish sample rule -->
+
+
+  <Assert mapClosure="universal">
+
+  <Implies>
+    <then>
+      <Atom>
+        <op><Rel>likes</Rel></op>
+        <Ind>John</Ind>
+        <Var>x</Var>
+      </Atom>
+    </then>
+    <if>
+      <Atom>
+        <op><Rel>likes</Rel></op>
+        <Var>x</Var>
+        <Ind>wine</Ind>
+      </Atom>
+    </if>
+  </Implies>
+
+  <Atom>
+    <op><Rel>likes</Rel></op>
+    <Ind>Mary</Ind>
+    <Ind>wine</Ind>
+  </Atom>
+ 
+ </Assert>
+ 
+ <Query>
+   <Atom>
+     <Rel>likes</Rel>
+     <Ind>John</Ind>
+     <Ind>whom</Ind>
+   </Atom>
+ </Query>
+ 
+ <Retract>
+   <Atom>
+     <Rel>likes</Rel>
+     <Ind>Mary</Ind>
+     <Ind>wine</Ind>
+   </Atom>
+ </Retract>
+ 
+</RuleML>

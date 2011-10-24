@@ -1,0 +1,87 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace ruleml = "http://www.ruleml.org/0.91/xsd"
+
+dc:title [ "RuleML Custom-Built Schema" ]
+dc:version [ "1.0.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
+dc:subject [ "RuleML, all modules for validation" ]
+dc:description [
+    "custom-built main module for a RuleML sublanguage."
+]
+dc:date [ "2011-10-06" ]
+dc:language [ "en" ]
+dc:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+ start = Node.choice | edge.choice
+
+include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/dataterm_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_absent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_present_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_present_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/desc_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/direction_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/direction_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/direction_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/dis_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/header_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/per_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/per_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/per_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/init_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/long_name_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/long_name_repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/long_name_resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/material_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/material_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/material_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/meta_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/naf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/neg_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/oriented_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/oriented_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/oriented_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/performative_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/quantification_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+    

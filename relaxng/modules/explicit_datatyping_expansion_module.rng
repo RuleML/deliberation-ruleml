@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- default namespace = "http://www.ruleml.org/1.0/xsd" -->
+<grammar xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <dc:title>RuleML Explicit Datatype Emulation</dc:title>
+  <dc:version>1.0.01</dc:version>
+  <dc:creator>Tara Athan (taraathan AT gmail.com</dc:creator>
+  <dc:subject>RuleML, explicit datatype</dc:subject>
+  <dc:description>The expansion module for explicit datatyping for the complete-form serialization.</dc:description>
+  <dc:date>2011-10-06</dc:date>
+  <dc:language>en</dc:language>
+  <dcterms:rights>LGPL-3.0</dcterms:rights>
+  <dc:relation>http://wiki.ruleml.org/index.php/Relax_NG</dc:relation>
+  <start combine="choice">
+    <notAllowed/>
+  </start>
+  <!-- Union Datatypes -->
+  <define name="anySimpleTypeForElements.datatype.choice" combine="choice">
+    <choice>
+      <ref name="duration.datatype.choice"/>
+      <ref name="dateTime.datatype.choice"/>
+      <ref name="time.datatype.choice"/>
+      <ref name="date.datatype.choice"/>
+      <ref name="gYearMonth.datatype.choice"/>
+      <ref name="gYear.datatype.choice"/>
+      <ref name="gMonthDay.datatype.choice"/>
+      <ref name="gDay.datatype.choice"/>
+      <ref name="gMonth.datatype.choice"/>
+      <ref name="boolean.datatype.choice"/>
+      <ref name="base64Binary.datatype.choice"/>
+      <ref name="hexBinary.datatype.choice"/>
+      <ref name="float.datatype.choice"/>
+      <ref name="decimal.datatype.choice"/>
+      <ref name="double.datatype.choice"/>
+      <ref name="anyURI.datatype.choice"/>
+      <ref name="QName.datatype.choice"/>
+      <ref name="NOTATION.datatype.choice"/>
+      <ref name="String.datatype.choice"/>
+      <ref name="normalizedString.datatype.choice"/>
+      <ref name="Token.datatype.choice"/>
+      <ref name="language.datatype.choice"/>
+      <ref name="Name.datatype.choice"/>
+      <ref name="NCName.datatype.choice"/>
+      <ref name="NMTOKEN.datatype.choice"/>
+      <ref name="NMTOKENS.datatype.choice"/>
+      <ref name="ENTITY.datatype.choice"/>
+      <ref name="ENTITIES.datatype.choice"/>
+      <ref name="integer.datatype.choice"/>
+      <ref name="nonPositiveInteger.datatype.choice"/>
+      <ref name="negativeInteger.datatype.choice"/>
+      <ref name="long.datatype.choice"/>
+      <ref name="int.datatype.choice"/>
+      <ref name="short.datatype.choice"/>
+      <ref name="byte.datatype.choice"/>
+      <ref name="nonNegativeInteger.datatype.choice"/>
+      <ref name="unsignedLong.datatype.choice"/>
+      <ref name="unsignedInt.datatype.choice"/>
+      <ref name="unsignedByte.datatype.choice"/>
+      <ref name="positiveInteger.datatype.choice"/>
+    </choice>
+  </define>
+  <!-- Primitive Datatypes -->
+  <define name="duration.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:duration</value>
+    </attribute>
+    <data type="duration"/>
+  </define>
+  <define name="dateTime.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:dateTime</value>
+    </attribute>
+    <data type="dateTime"/>
+  </define>
+  <define name="time.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:time</value>
+    </attribute>
+    <data type="time"/>
+  </define>
+  <define name="date.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:date</value>
+    </attribute>
+    <data type="date"/>
+  </define>
+  <define name="gYearMonth.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:gYearMonth</value>
+    </attribute>
+    <data type="gYearMonth"/>
+  </define>
+  <define name="gYear.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:gYear</value>
+    </attribute>
+    <data type="gYear"/>
+  </define>
+  <define name="gMonthDay.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:gMonthDay</value>
+    </attribute>
+    <data type="gMonthDay"/>
+  </define>
+  <define name="gDay.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:gDay</value>
+    </attribute>
+    <data type="gDay"/>
+  </define>
+  <define name="gMonth.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:gMonth</value>
+    </attribute>
+    <data type="gMonth"/>
+  </define>
+  <define name="boolean.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:boolean</value>
+    </attribute>
+    <data type="boolean"/>
+  </define>
+  <define name="base64Binary.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:base64Binary</value>
+    </attribute>
+    <data type="base64Binary"/>
+  </define>
+  <define name="hexBinary.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:hexBinary</value>
+    </attribute>
+    <data type="hexBinary"/>
+  </define>
+  <define name="float.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:float</value>
+    </attribute>
+    <data type="float"/>
+  </define>
+  <define name="decimal.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:decimal</value>
+    </attribute>
+    <data type="decimal"/>
+  </define>
+  <define name="double.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:double</value>
+    </attribute>
+    <data type="double"/>
+  </define>
+  <define name="anyURI.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:anyURI</value>
+    </attribute>
+    <data type="anyURI"/>
+  </define>
+  <define name="QName.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:QName</value>
+    </attribute>
+    <data type="QName"/>
+  </define>
+  <define name="NOTATION.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:NOTATION</value>
+    </attribute>
+    <data type="NOTATION"/>
+  </define>
+  <define name="String.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:string</value>
+    </attribute>
+    <data type="string"/>
+  </define>
+  <!-- Derived Types -->
+  <define name="normalizedString.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:normalizedString</value>
+    </attribute>
+    <data type="normalizedString"/>
+  </define>
+  <define name="Token.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:token</value>
+    </attribute>
+    <data type="token"/>
+  </define>
+  <define name="language.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:language</value>
+    </attribute>
+    <data type="language"/>
+  </define>
+  <define name="Name.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:Name</value>
+    </attribute>
+    <data type="Name"/>
+  </define>
+  <define name="NCName.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:NCName</value>
+    </attribute>
+    <data type="NCName"/>
+  </define>
+  <define name="NMTOKEN.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:NMTOKEN</value>
+    </attribute>
+    <data type="NMTOKEN"/>
+  </define>
+  <define name="NMTOKENS.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:NMTOKENS</value>
+    </attribute>
+    <data type="NMTOKENS"/>
+  </define>
+  <define name="ENTITY.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:ENTITY</value>
+    </attribute>
+    <data type="ENTITY"/>
+  </define>
+  <define name="ENTITIES.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:ENTITIES</value>
+    </attribute>
+    <data type="ENTITIES"/>
+  </define>
+  <define name="integer.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:integer</value>
+    </attribute>
+    <data type="integer"/>
+  </define>
+  <define name="nonPositiveInteger.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:nonPositiveInteger</value>
+    </attribute>
+    <data type="nonPositiveInteger"/>
+  </define>
+  <define name="negativeInteger.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:negativeInteger</value>
+    </attribute>
+    <data type="negativeInteger"/>
+  </define>
+  <define name="long.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:long</value>
+    </attribute>
+    <data type="long"/>
+  </define>
+  <define name="int.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:int</value>
+    </attribute>
+    <data type="int"/>
+  </define>
+  <define name="short.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:short</value>
+    </attribute>
+    <data type="short"/>
+  </define>
+  <define name="byte.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:byte</value>
+    </attribute>
+    <data type="byte"/>
+  </define>
+  <define name="nonNegativeInteger.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:nonNegativeInteger</value>
+    </attribute>
+    <data type="nonNegativeInteger"/>
+  </define>
+  <define name="unsignedLong.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:unsignedLong</value>
+    </attribute>
+    <data type="unsignedLong"/>
+  </define>
+  <define name="unsignedInt.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:unsignedInt</value>
+    </attribute>
+    <data type="unsignedInt"/>
+  </define>
+  <define name="unsignedByte.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:unsignedByte</value>
+    </attribute>
+    <data type="unsignedByte"/>
+  </define>
+  <define name="positiveInteger.datatype.choice" combine="choice">
+    <attribute name="xsi:type">
+      <value type="QName">xs:positiveInteger</value>
+    </attribute>
+    <data type="positiveInteger"/>
+  </define>
+</grammar>
