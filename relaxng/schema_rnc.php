@@ -662,6 +662,8 @@ echo "\n#";
 }
 //Functions
 function processGETParameter ($paramName){
+  //FIXME: error/warning handling needs to be cleaned up
+  //       if a parameter is not passed, then select sup(remum) or inf(imum) value depending on value of parameter "mode" (default sup)
   $param_base_default = "x";
   $bparam_default = decbin(hexdec(fff));
   $param = $_GET[$paramName];
@@ -687,13 +689,13 @@ function processGETParameter ($paramName){
         $bparam = $bparam_default;
       }
     } elseif (strcmp($param_base, '0')==0){
-      $bparam = $bparam_default;
+      $bparam = 0;
     }
   } else {
     echo "<#\n# Warning: The ".$paramName." parameter ".$param." is not a".
          " hexidecimal or blank string.\n";
-    echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
-    $bparam = $bparam_default;
+      echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
+      $bparam = $bparam_default;
   }
   //echo("#\n# The ".$paramName." parameter is ".$bparam." in binary.\n");
   return $bparam;

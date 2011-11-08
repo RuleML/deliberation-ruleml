@@ -64,15 +64,15 @@
 	          <!-- <li>abstract syntax</li> -->
 	          <li>XML syntax, including
 	          <ul>
-	            <li>the normative informal syntax as given in the <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a>@@@</li>
+	            <li>the @@@normative informal@@@ syntax as given in the <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a></li>
 	            <li>informative formal syntax as
 	              <ul>
 	                <li><a href="http://www.ruleml.org/1.0/xsd/">schemas in XML Schema Definition Language (XSD) with Schematron annotation</a></li>
 	                <li><a href="http://www.ruleml.org/1.0/relaxng/">schemas in Relax NG</a></li>
 	              </ul>
 	            </li> 
-	            <!--<li>a mapping from the RuleML Version 1.0 syntax to the "normalized" RuleML Version 1.0 syntax as given in the XSLT Normalizer stylesheet</li>-->
-	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the XSLT Upgrader stylesheet</li>
+	            <li>a mapping from the RuleML Version 1.0 syntax to the "normalized" RuleML Version 1.0 syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">XSLT Normalizer</a>@@@ this links to the old, defective normalizer  @@@ stylesheet</li>
+	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/upgrader/091-to-ruleml100.xslt">XSLT Upgrader</a> stylesheet</li>
 	            
 	          </ul>
 	          </li>

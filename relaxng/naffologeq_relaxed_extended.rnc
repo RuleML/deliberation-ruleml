@@ -19,5 +19,8 @@ include "http://ruleml.org/1.0/relaxng/modules-ext/xor_stripe_skipping_expansion
 #
 # included in languages that have the expressive power of disjunctive Horn logic.
 include "http://ruleml.org/1.0/relaxng/modules-ext/xor_dis_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
+#
+# included in languages that have the expressive power of disjunctive Horn logic.
+include "http://ruleml.org/1.0/relaxng/modules-ext/xor_fo_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
 
 #

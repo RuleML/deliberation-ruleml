@@ -9,24 +9,24 @@ dc:subject [ "RuleML, custom-built" ]
 dc:description [
     "custom-built main module for a RuleML sublanguage."
 ]
-dc:date [ "2011-10-09T02:20:42-0300" ]
+dc:date [ "2011-10-31T21:54:32-0300" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # Call parameters
 # Base URL = http://www.ruleml.org/1.0/relaxng/schema_rnc.php 
 # GET parameter: backbone=x3f
-# GET parameter: default=x7
+# GET parameter: default=x2
 # GET parameter: termseq=x7
 # GET parameter: lng=x1
 # GET parameter: propo=x3f
 # GET parameter: implies=x7
 # GET parameter: terms=xf3f
 # GET parameter: quant=x7
-# GET parameter: expr=xf
-# GET parameter: serial=xf
+# GET parameter: expr=xe
+# GET parameter: serial=x0
 # Complete URL = 
-#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3f&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3f&implies=x7&terms=xf3f&quant=x7&expr=xe&serial=x0
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -66,11 +66,6 @@ include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAl
 #
 include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
-#
-include "modules/default_absent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
 # ATTRIBUTES WITH DEFAULT VALUES REQUIRED
 #
 include "modules/default_present_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -80,27 +75,9 @@ include "modules/default_present_folog_expansion_module.rnc" inherit = ruleml {s
 #
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# ORDER MODE - UNORDERED GROUPS ENABLED
+# ORDER MODE - UNORDERED GROUPS DISABLED
 #
-include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# STRIPE-SKIPPING MODE ENABLED
-#
-include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# EXPLICIT DATATYPING ENABLED
-#
-include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# xsi:schemaLocation ALLOWED IN RuleML
-#
-include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ABSTRACT HEADERS INCLUDED
 #
@@ -206,9 +183,9 @@ include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
+# REIFICATION TERMS INCLUDED, ANY CONTENT
 #
-include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
 #
@@ -233,10 +210,6 @@ include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 # GENERALIZED LISTS INCLUDED
 #
 include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
-#
-include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
 #

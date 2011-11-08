@@ -103,6 +103,8 @@ ExistsFormula.choice |= Xor-node.choice
 ForallFormula.choice |= Xor-node.choice
 RulebaseFormula.choice |= Xor-node.choice
 ConclusionFormula.choice |= Xor-dis-node.choice
+AssertRetractFormula.choice |= Xor-fo-node.choice
+QueryFormula.choice |= Xor-Query-node.choice
 
 ## exclusive disjunctions have scoped attributes that are activated at full first-order logic
 Xor-datt.choice |=
@@ -112,5 +114,6 @@ Xor-datt.choice |=
 Xor-Query-datt.choice |=
   mapMaterial-att-fo.choice & mapDirection-att-fo.choice
 
-## this pattern is initialized notAllowed, and will be overriden if the xor_dis_expansion module is included
+## these pattern is initialized notAllowed, and will be overriden if the xor_dis_expansion module is included
 Xor-dis-node.choice |= notAllowed
+Xor-fo-node.choice |= notAllowed
