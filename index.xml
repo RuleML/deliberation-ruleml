@@ -47,7 +47,7 @@
 			<h2>Quick links:</h2>
 			<h2><a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Models</a>,
 			<a href="http://www.ruleml.org/1.0/xsd/">Schemas</a>,
-			  <!--<a href="http://www.ruleml.org/1.0/xslt/normalizer/">Normalizer</a>,-->
+			<a href="http://www.ruleml.org/1.0/xslt/normalizer/">Normalizer</a>,
 			<a href="http://www.ruleml.org/1.0/xslt/upgrader/">Upgrader</a>,
 			<a href="http://www.ruleml.org/1.0/exa/">Examples</a>,
 			  <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a>,
@@ -57,7 +57,7 @@
 		<br/>
 		
 		<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>
-	  <p>The scope of this specification covers 
+	  <p>The scope of this specification covers </p>
 	    <ul>
 	      <li>syntax, including
 	        <ul>
@@ -82,28 +82,28 @@
 	      </li>
 	      <li>semantics, including
 	        <ul>
-	      <li>an informal semantics as given in the <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a></li>
+	      <li>an informal semantics as given in the <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a>@@@ not finalized @@@</li>
 	          <!-- <li>formal model-theoretic semantics</li> -->
 	          <!-- <li>formal proof-theoretic semantics</li> -->
 	          
 	        </ul>
 	      </li>
 	    </ul>
-	  </p>
-	  <p>The scope of this specification does not cover applications that make use of RuleML languages, such as inference engines, editors or @@@. For a listing of such applications, see the RuleML <a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a> wiki page.</p>
-	  <p>RuleML Version 1.0 is a "Rosetta Stone" release where two schema languages, XSD and Relax NG, are independently employed to formalize the normative syntax, to the extent possible within each language. See <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG</a> and the RuleML <a href="http://wiki.ruleml.org/index.php/Relax_NG">Relax NG</a> wiki page for the details of this re-engineering effort. </p>
-		<p>The RuleML Version 1.0 XSD schemas are a minor modification of the patched XSD schemas of RuleML Version 0.91, which follow the tree-based <a href="http://www.ruleml.org/modularization">modularization approach</a>. The XSD schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations, and are also conservative in that certain permutations of elements are allowed in the normative syntax but are not implemented in the XSD schemas.
+	  <p>The scope of this specification does not cover applications that make use of RuleML languages, such as parsers, inference engines or editors. For a listing of such applications, see the RuleML <a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a> wiki page @@@.</p>
+	  <p>RuleML Version 1.0 is a "Rosetta Stone" release where two schema languages, XSD and Relax NG, are independently employed to formalize the normative syntax, to the extent possible within each language. See <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG</a> and the RuleML <a href="http://wiki.ruleml.org/index.php/Relax_NG">MYNG</a> wiki page for the details of this re-engineering effort. MYNG is an acronym for "Modular sYNtax confiGurator", or "Modularize Your NG", and may be pronounced either "ming" or "my N G". </p>
+		<p>The RuleML Version 1.0 XSD schemas are a minor modification of the patched XSD schemas of RuleML Version 0.91, which follow the tree-based <a href="http://www.ruleml.org/modularization">modularization approach</a>. @@@The XSD schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations @@@ the Schematron rules should be separated out so that they may be applied independently of choice of XSD or Relax NG schema language@@@, and are also conservative in that certain permutations of elements are allowed in the normative syntax but are not implemented in the XSD schemas.@@@
+		  A procedure for validation against the XSD schemas is described in <a href="#Appendix-3">Appendix 3</a>.  
 		</p>
-	  <p>The RuleML Version 1.0 Relax NG schemas for the relaxed-form serialization are permissive for certain invalid syntactic constructs @@@details where?@@@. </p>
-	  <p>The normalized form of any syntactically-valid instance is valid relative to both the XSD schemas, and the Relax NG schemas for the normal-form serialization. </p>
-		  <p>Note that the Document Type Definition (DTD) specification of RuleML is no longer being maintained, but will continue to be <a href="http://www.ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between XML Schema and DTDs such as <a href="http://www.altova.com/products_ide.html">XMLSpy</a> are always available.</p>
+	  <p>The RuleML Version 1.0 Relax NG schemas are a new component of the RuleML Version 1.0 release, and are intended to replace the hand-written XSD schemas in future releases. The Relax NG schemas are available for two serialzations, "normal" and "relaxed". The relaxed-form serialization are permissive relative to the specification in the Content Model document, i. e. every RuleML version 1.0 instance that is valid with respect to the Content Model document will validate against the relaxed serialization Relax NG schemas. The normal serialization Relax NG schemas validate instances in the normal form, which is described in the <a href="#Normalization">Normalization</a> section. Procedures for validation against the Relax NG schemas is described in <a href="#Appendix-5">Appendix 5</a>.</p>
+	  <p>Note that the Document Type Definition (DTD) specification of RuleML is no longer being maintained, but will continue to be <a href="http://www.ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between XML Schema and DTDs such as <a href="http://www.altova.com/xml-editor/">XMLSpy</a> are always available.</p>
 		
 	</opening>
 
 <section>
 	<header>Overview</header>
-	<p>An introduction to RuleML is given in our <a href="http://www.ruleml.org/papers/tutorial-ruleml.html">tutorial</a>. Also, the main page's <a href="http://www.ruleml.org/index.html#Design">design section</a> discusses the upper layer of the RuleML hierarchy of rules. In that terminology, the system of RuleML XSDs presented here only covers derivation rules, not reaction rules (see the <a href="http://www.ruleml.org/modularization/#Model">official model</a>).</p>
-	<p>This is because we think it is important to start with a subset of simple rules, test and refine our principal strategy using these, and then work 'up' to the more general categories of rules in the hierarchy. For this we choose Datalog, a language corresponding to relational databases (ground facts without complex domains or 'constructors') augmented by views (possibly recursive rules), and work a few steps upwards to further declarative rules as allowed in (equational) Horn logic.</p>
+	<p>An introduction to RuleML is given in our <a href="http://www.ruleml.org/papers/tutorial-ruleml.html">tutorial</a> @@@ this tutorial is out-of-date @@@. Also, the main page's <a href="http://www.ruleml.org/index.html#Design">design section</a> discusses the upper layer of the RuleML hierarchy of rules. In that terminology, the system of RuleML XSDs presented here only covers derivation rules, not reaction rules (see the <a href="http://www.ruleml.org/modularization/#Model">official model</a>).</p>
+	<p>This is because we think it is important to start with a subset of simple rules, test and refine our principal strategy using these, and then work 'up' to the more general categories of rules in the hierarchy. <!--(this statement no longer applies to the new modularization) For this we choose Datalog, a language corresponding to relational databases (ground facts without complex domains or 'constructors') augmented by views (possibly recursive rules), and work a few steps upwards to further declarative rules as allowed in (equational) Horn logic. -->
+	  </p>
 	
 	<p>Below is a summary of the changes in version 1.0:</p>
 
@@ -113,9 +113,9 @@
 		<item>Role tags <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>, replaced with <code>&lt;then&gt;</code> and <code>&lt;if&gt;</code>, respectively </item>	
 		<item>Role tags <code>&lt;lhs&gt;</code> and <code>&lt;rhs&gt;</code>, replaced with <code>&lt;left&gt;</code> and <code>&lt;right&gt;</code>, respectively </item>	
 		<item>Type tags <code>&lt;Hterm&gt;</code> and <code>&lt;Con&gt;</code>, replaced with <code>&lt;Uniterm&gt;</code> and <code>&lt;Const&gt;</code> respectively </item>	
-		<item>Attribute <code>in="no|semi|yes|effect|modal"</code> with respective values, replaced with <code>per="copy|open|value|effect|modal"</code> </item> 
+		<item>Attribute <code>in="no|semi|yes|effect|modal"</code> with respective values, replaced with <code>per="copy|open|value|effect|modal"</code> @@@ effect and modal are not part of Derivation RuleML @@@</item> 
 	  <item>Attribute <code>uri</code> replaced with <code>iri</code> </item> 
-	  <item>New role tag <code>transaction</code> introduced for all content of <code>RuleML</code> element </item> 
+	  <item>New role tag <code>act</code> introduced for all content of <code>RuleML</code> element </item> 
 	  
 	</itemize>	
 
@@ -123,7 +123,7 @@
 
 	<p>A comprehensive <a href="#Glossary">glossary</a> accompanies this specification.</p>
 	
-	<p>The grammar of RuleML 1.0 (i.e. the content model of each individual tag) is available as a single document called <a href="xsd/content_models_10.pdf">Content Models for RuleML</a> in addition to being encoded within the <a href="xsd/">XML Schemas</a>.
+	<p>The grammar of RuleML 1.0 (i.e. the content model of each individual tag) is available as a single document called <a href="xsd/content_models_10.pdf">Content Models for RuleML</a> in addition to being partially specified within the <a href="xsd/">XML Schemas</a> and <a href="relaxng/">Relax NG Schemas</a>.
 	</p>
 
 </section>   
@@ -133,7 +133,7 @@
 	<header>Changes</header>
 
 	<p>Changes in this 1.0 release relative to the previous version <a href="http://www.ruleml.org/0.91/">0.91</a> are detailed below, including examples where appropriate.</p>
-		
+	@@@ THIS SECTION NEEDS A MAJOR REWRITE @@@	
     <p> Datalog RuleML is defined over both <b>Data</b> constants and <b>Ind</b>ividual constants with an optional attribute, <b>iri</b>, for webizing. RuleML's <b>Rel</b>ational <b>Atom</b>s have m+n arguments (m &gt; 0, n &gt; 0), where m arguments are positional and n are slotted (key -> term pairs). In Datalog RuleML, terms (e.g. used as positional arguments and slot fillers) can only be constants or <b>Var</b>iables. Datalog RuleML also has optional RDF-like <b>type</b> (on constants and variables) and <b>oid</b> attributes via IRIs. It allows for an <b>Equal</b>ity extension, e.g. to call built-ins from `pluggable' libraries. </p>
 
    <p> To initialize a running example, let us consider Datalog rule <b>Implies 1</b> for deriving discounts, with the ternary <b>Rel</b>ation <b>discount</b> and the unary <b>premium</b> and <b>regular</b> all being positional: </p> 
@@ -200,10 +200,10 @@ having exactly the same spelling (incl. spaces)
 	  <!-- In the <a href="xslt/upgrader/comparison/">comparison</a> directory a comparison between manual and automatic updates of few files from the 0.91 exa directory can be found.-->
 	</p>
 	
-	<p>Upgrader transformation can be accomplished using a web-based XSLT transformation tool provided by W3C. Instructions for this process can be found in <a href="http://ruleml.org/1.0/index.xml#Appendix%204">Appendix 4.</a></p>
+	<p>Upgrader transformation can be accomplished using a web-based XSLT transformation tool provided by W3C. Instructions for this process can be found in <a href="#Appendix-4">Appendix 4.</a></p>
 	<p>The stylesheet has also been tested
 	  using <a href="http://www.oxygenxml.com">oXygen version 12.2</a>, 
-	  whereby it was confirmed that all examples in the directory <a href="http://ruleml.org/1.0/exa">http://ruleml.org/1.0/exa</a> are properly upgraded.
+	  whereby it was confirmed that all examples in the directory <a href="http://ruleml.org/1.0/exa/">http://ruleml.org/1.0/exa</a> are properly upgraded.
 	  However, the upgraded instances documents will have the RuleML namespace as the default namespace, 
 	  independent of the choice of prefix for the RuleML namespace in the original instance.
 	  A similar <a href="xslt/upgrader/091-to-ruleml100.xslt">091-to-ruleml100.xslt</a> has been developed that uses the prefix "ruleml" for the RuleML namespace.
@@ -218,8 +218,7 @@ having exactly the same spelling (incl. spaces)
 	
 </section>
 
-<section>
-
+<section label="Normalization">
 	<header>XSLT-Based Normalizer</header>
 
 	<p>An XSLT stylesheet will be developed (<a href="http://www.ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">100_normalizer.xslt</a>) for normalizing the syntax used in a given RuleML 1.0 instance, reconstructing all skipped role tags to be in a fully-expanded, normal form.  An example is the <a href="xslt/normalizer/own_compact.ruleml">compact version of the 'own' example</a>.The goal of this normalizer is the following:</p>
@@ -403,9 +402,9 @@ Equal
 
 <p>Additional examples are located in the <a href="xslt/normalizer/">Normalizer</a> directory.</p>
 
-<p>The RuleML 1.00 normalizer contains a simple tag debugging tool that allows users to find tags that do not belong to RuleML. By setting variable DEBUG to true in the XSLT file, while transforming, the XSLT wraps the children of the incorrect tag with the PARENTERROR tag. This is significantly better than not having the transformation completed due to errors with no reason given.</p>
+<p>@@@ THIS SWITCH IS NOT NEEDED IN THE PUSH-STYLE NORMALIZER @@@ The RuleML 1.00 normalizer contains a simple tag debugging tool that allows users to find tags that do not belong to RuleML. By setting variable DEBUG to true in the XSLT file, while transforming, the XSLT wraps the children of the incorrect tag with the PARENTERROR tag. This is significantly better than not having the transformation completed due to errors with no reason given.</p>
 
-<p>XSLT processing can be accomplished using procedures identical to those of the XSLT Upgrader. Instructions for the W3C web-based process can be found in <a href="http://ruleml.org/1.0/index.xml#Appendix%204">Appendix 4.</a></p>
+<p>XSLT processing can be accomplished using procedures identical to those of the XSLT Upgrader. Instructions for the W3C web-based process can be found in <a href="#Appendix-4">Appendix 4.</a></p>
 
 </section>
 
@@ -417,7 +416,8 @@ Equal
 
 <section>
 	<header>Modularization</header>
-	<p>The most current model of the modularization of RuleML is always documented at <a href="http://www.ruleml.org/modularization/#Model">http://www.ruleml.org/modularization/#Model</a>.</p>
+	<p>The XSD schemas use a tree-based modularization strategy. The most current model of the XSD modularization of RuleML is always documented at <a href="http://www.ruleml.org/modularization/#Model">http://www.ruleml.org/modularization/#Model</a>.</p>
+  <p>The Relax NG schemas use a different modularization approach based on lattices. The details are given in <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG</a> and the RuleML <a href="http://wiki.ruleml.org/index.php/Relax_NG">MYNG</a> wiki page. A <a href="http://ruleml.org/1.0/myng/">GUI</a> to the Modular sYNtax confiGurator (MYNG) is available.</p>
 </section>
 
 <section>
@@ -431,11 +431,11 @@ Equal
 <section>
 <header>Appendix</header>
 
-<p>Appended below is a simple example rulebase (<a href="#Appendix 1">Appendix 1</a>), the XML Schema for the Datalog sublanguage of RuleML to which the rulebase conforms (<a href="#Appendix 2">Appendix 2</a>) and instructions for how to validate the example against the schema (<a href="#Appendix 3">Appendix 3</a>).
+<p>Appended below is a simple example rulebase (<a href="#Appendix-1">Appendix 1</a>), the XML Schema for the Datalog sublanguage of RuleML to which the rulebase conforms (<a href="#Appendix-2">Appendix 2</a>) and instructions for how to validate the example against the schema (<a href="#Appendix-3">Appendix 3</a>).
 </p>
 </section>
 
-<section label="Appendix 1">
+<section label="Appendix-1">
 <header>Appendix 1: New Example rulebase in RuleML</header>
 <p>Source: <a href="exa/Datalog/own.ruleml">own.ruleml</a></p>
 <box bgcolor="#FFFFFF"><pre><![CDATA[
@@ -560,7 +560,7 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 </RuleML>]]></pre></box>
 </section>
 
-<section label="Appendix 2">
+<section label="Appendix-2">
 <header>Appendix 2: XSD for the Datalog sublanguage of RuleML</header>
 <p>Source: <a href="xsd/datalog.xsd">datalog.xsd</a></p>
 
@@ -614,7 +614,7 @@ targetNamespace="http://www.ruleml.org/1.0/xsd"
 </xs:schema>]]></pre></box>
 </section>
 
-<section label="Appendix 3">
+<section label="Appendix-3">
 <header>Appendix 3:  Instructions on validating the example online with XSD</header>
 <box bgcolor="#FFFFFF"><pre><![CDATA[
 Validating a RuleML 1.0 Sample Document with XSV
@@ -702,7 +702,7 @@ You should get the following output (using the default output):]]></pre>
 </box>
 </section>
 
-<section label="Appendix 4">
+<section label="Appendix-4">
 <header>Appendix 4:  Normalizing or Upgrading RuleML files with XSLT</header>
 <box><pre>
 1.Go to the W3C XSLT Service at <a href ="http://www.w3.org/2005/08/online_xslt/">http://www.w3.org/2005/08/online_xslt/</a>
@@ -717,10 +717,9 @@ Compact examples for the normalizer can be found <a href="http://ruleml.org/1.0/
 </pre></box>
 </section>
 
-<section label="Appendix 5">
-  <header>Appendix 5:  Validating an Instance with a Relax NG schema</header>
-  <box><pre>
-  </pre></box>
+<section label="Appendix-5">
+  <header>Appendix 5:  Validating an Instance against a Relax NG schema</header>
+  An online demo of validation using the RuleML Relax NG schemas with Validator.nu is available at the <a href="http://wiki.ruleml.org/index.php/MYNG#Demo">Demos section of the MYNG</a> wiki page. Other tools that may be used for validation against Relax NG schemas are described in the <a href="http://wiki.ruleml.org/index.php/MYNG#Tools">Tools section of the MYNG</a> wiki page.
 </section>
 
 	<closing>
