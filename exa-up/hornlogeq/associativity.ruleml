@@ -3,6 +3,22 @@
 <RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlogeq.xsd">
 
 <Assert mapClosure="universal">
+  
+  <!-- Note: parentheses () denote active evaluation
+             while brackets [] denote passive evaluation
+  
+      Passive evaluation may be used to increase efficiency while still
+      enabling inference.
+      In the examples below we consider what equations enable
+      the rewriting an associated sum of three numbers into a different
+      form without actually evaluating the summations.
+      
+      While the evaluation of the addition of two integers is not an expensive operation,
+      the principle illustrated here applies to arbitrary functions, which may often be time- or memory-consuming.
+      For example consider the evaluation of the length of a list formed by concatenation.
+      The length of the result list can be calculated, as the sum of the length of the two original lists, without performing the concatenation.
+     
+  -->
 
 
 <!--
@@ -13,29 +29,29 @@
 
    Can rewrite ((1+2)+3) to (1+(2+3)) 
    Can rewrite (1+(2+3)) to ((1+2)+3)
- 
+--> 
  
 <Equal oriented="no">
   <Expr>
-    <Fun in="no">plus</Fun>
+    <Fun per="value">plus</Fun>
     <Expr>
-      <Fun in="yes">plus</Fun>
+      <Fun per="value">plus</Fun>
       <Var>x</Var>
       <Var>y</Var>
     </Expr>
     <Var>z</Var>
   </Expr>
   <Expr>
-    <Fun in="yes">plus</Fun>
+    <Fun per="value">plus</Fun>
     <Var>x</Var>
     <Expr>
-      <Fun in="yes">plus</Fun>
+      <Fun per="value">plus</Fun>
       <Var>y</Var>
       <Var>z</Var>
     </Expr>
   </Expr>
 </Equal>
--->
+
 
 
 
@@ -83,7 +99,7 @@
 -->
 
 
-<Equal oriented="yes">
+<Equal oriented="no">
   <Expr>
     <Fun per="value">plus</Fun>
     <Expr>
@@ -143,8 +159,39 @@
 
 <!--
   Unoriented with interpreted function only on top-level of lhs and uninterpreted functions on rhs:
-
+  ([x+y]+z) = [x+[y+z]]
+  Can rewrite ([1+2]+3) to [1+[2+3]]
+  BUT CANNOT rewrite [1+[2+3]] to ([1+2]+3)
+  
   NOT ALLOWED: Top-level uninterpreted function on rhs prevents any right-to-left rewriting.
+
+  This code is invalid...
+
+  <Equal oriented="yes">
+    <Expr>
+      <Fun per="value">plus</Fun>
+      <Expr>
+        <Fun per="copy">plus</Fun>
+          <Var>x</Var>
+          <Var>y</Var>
+      </Expr>
+      <Var>z</Var>
+    </Expr>
+    <Expr>
+      <Fun per="copy">plus</Fun>
+      <Var>x</Var>
+      <Expr>
+        <Fun per="copy">plus</Fun>
+        <Var>y</Var>
+        <Var>z</Var>
+      </Expr>
+    </Expr>
+  </Equal>
+
+-->
+  
+
+  <!--
   
   Oriented with interpreted function only on top-level of lhs and uninterpreted functions on rhs
   (constructor discipline):
@@ -155,7 +202,7 @@
 -->
 
 
-<Equal oriented="no">
+<Equal oriented="yes">
   <Expr>
     <Fun per="value">plus</Fun>
     <Expr>
@@ -175,6 +222,76 @@
     </Expr>
   </Expr>
 </Equal>
+
+  <!--
+    
+    Unoriented with uninterpreted function throughout
+    (constructor discipline):
+    
+    [[x+y]+z] = [x+[y+z]]
+    
+    Can rewrite [[1+2]+3] to [1+[2+3]]
+    Can rewrite [1+[2+3]] to [[1+2]+3] 
+  -->
+  
+  
+  <Equal oriented="no">
+    <Expr>
+      <Fun per="copy">plus</Fun>
+      <Expr>
+        <Fun per="copy">plus</Fun>
+        <Var>x</Var>
+        <Var>y</Var>
+      </Expr>
+      <Var>z</Var>
+    </Expr>
+    <Expr>
+      <Fun per="copy">plus</Fun>
+      <Var>x</Var>
+      <Expr>
+        <Fun per="copy">plus</Fun>
+        <Var>y</Var>
+        <Var>z</Var>
+      </Expr>
+    </Expr>
+  </Equal>
+  
+  <!-- The above may be also written using default values of attributes -->
+
+  <Equal>
+    <Expr>
+      <Fun>plus</Fun>
+      <Expr>
+        <Fun>plus</Fun>
+        <Var>x</Var>
+        <Var>y</Var>
+      </Expr>
+      <Var>z</Var>
+    </Expr>
+    <Expr>
+      <Fun>plus</Fun>
+      <Var>x</Var>
+      <Expr>
+        <Fun>plus</Fun>
+        <Var>y</Var>
+        <Var>z</Var>
+      </Expr>
+    </Expr>
+  </Equal>
+  
+  
+  <Equal oriented ="yes">
+    <Expr>
+      <Fun per="value">f</Fun>
+      <Ind>x</Ind>
+    </Expr>
+    <Expr>
+      <Fun per="copy">f</Fun>
+      <Ind>x</Ind>
+    </Expr>
+  </Equal>
+  
+
 
 </Assert>
 

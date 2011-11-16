@@ -264,7 +264,7 @@
       	
       <p>This is because we think it is important to start with a subset of simple rules, test
          and refine our principal strategy using these, and then work 'up' to the more general
-         categories of rules in the hierarchy. 
+         categories of rules in the hierarchy.
          	  
       </p>
       	
@@ -318,36 +318,43 @@
       	
       
       	
-      <p>Changes in this 1.0 release relative to the previous version <a href="http://www.ruleml.org/0.91/">0.91</a> are detailed below, including examples where appropriate.
-      </p>
-      	@@@ THIS SECTION NEEDS A MAJOR REWRITE @@@	
-      
-      <p> Datalog RuleML is defined over both <b>Data</b> constants and <b>Ind</b>ividual constants with an optional attribute, <b>iri</b>, for webizing. RuleML's <b>Rel</b>ational <b>Atom</b>s have m+n arguments (m &gt; 0, n &gt; 0), where m arguments are positional and n are slotted
-         (key -&gt; term pairs). In Datalog RuleML, terms (e.g. used as positional arguments and
-         slot fillers) can only be constants or <b>Var</b>iables. Datalog RuleML also has optional RDF-like <b>type</b> (on constants and variables) and <b>oid</b> attributes via IRIs. It allows for an <b>Equal</b>ity extension, e.g. to call built-ins from `pluggable' libraries. 
+      <p>Changes in the RuleML 1.0 XSD release relative to the previous XSD version <a href="http://www.ruleml.org/0.91/">0.91</a> are detailed below, including examples where appropriate.
       </p>
       
       
-      <p> To initialize a running example, let us consider Datalog rule <b>Implies 1</b> for deriving discounts, with the ternary <b>Rel</b>ation <b>discount</b> and the unary <b>premium</b> and <b>regular</b> all being positional: 
-      </p> 
+      <p>Schematron dependency has been reduced (as comments in the code). For example, the
+         following code provides annotation related to restrictions 
+         on the interpretation attribute of nested functions.
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;xs:annotation&gt;
+  &lt;xs:appinfo&gt;
+    &lt;sch:pattern name="Uninterpreted functions"&gt;
+      &lt;sch:rule context="r:Expr/r:Fun[@per='no']"&gt;
+        &lt;sch:assert test=
+          "not(../r:Expr/r:Fun[@per='yes'] or
+           ../r:arg/r:Expr/r:Fun[@per='yes'] or
+           ../r:Expr/r:op/r:Fun[@per='yes'] or 
+           ../r:arg/r:Expr/r:op/r:Fun[@per='yes'])"&gt;
+          Functions nested within an uninterpreted function must also be uninterpreted.
+        &lt;/sch:assert&gt;
+      &lt;/sch:rule&gt;
+    &lt;/sch:pattern&gt;
+  &lt;/xs:appinfo&gt;
+&lt;/xs:annotation&gt;</b></pre></td>
+            </tr>
+         </table>  
+         
+      </p>
       
-      
-      <p><pre><b>
-
-&lt;!-- Implication Rule 1:
-     Backward notation of 'then' and 'if' roles, as in Logic Programming, and forward notation
-     using natural 'if' ... 'then' order, as in textbook logic, with exact same meaning
-
-"The discount for a customer buying a product is 5.0 percent
-if the customer is premium and the product is regular."
-
-Notice that the ternary discount relation is applied via an Atom.
-Furthermore, a Data constant can syntactically be an entire phrase
-like "5.0 percent". It will unify only with variables and with Data
-having exactly the same spelling (incl. spaces)
---&gt;
-
-&lt;Implies&gt;
+      <p>Role tags <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> are replaced with <code>&lt;then&gt;</code> and <code>&lt;if&gt;</code>, respectively.
+         These tags appear as children of <code>&lt;Implies&gt;</code> and <code>&lt;Entails&gt;</code>.
+         For example, the following implication:
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;Implies&gt;
   &lt;if&gt;
     &lt;And&gt;
       &lt;Atom&gt;
@@ -368,7 +375,110 @@ having exactly the same spelling (incl. spaces)
       &lt;Data&gt;5.0 percent&lt;/Data&gt;
     &lt;/Atom&gt;
   &lt;/then&gt;
-&lt;/Implies&gt;</b></pre></p>
+&lt;/Implies&gt;</b></pre></td>
+            </tr>
+         </table>
+         expresses the statement "A premium customer recieves a 5% discount on regular products."
+      </p>
+      
+      <p>Role tags <code>&lt;lhs&gt;</code> and <code>&lt;rhs&gt;</code> are replaced with <code>&lt;left&gt;</code> and <code>&lt;right&gt;</code>, respectively. 
+         These tags appear as children of <code>&lt;Equal&gt;</code>. As an example consider the statement:
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;Equal&gt;    
+  &lt;left&gt;
+    &lt;Ind&gt;Lady Gaga&lt;/Ind&gt;
+  &lt;/left&gt;
+  &lt;right&gt;
+    &lt;Ind&gt;Stefani Joanne Angelina Germanotta&lt;/Ind&gt;
+  &lt;/right&gt;
+&lt;/Equal&gt;</b></pre></td>
+            </tr>
+         </table>
+         which expresses that the individuals named "Lady Gaga" and "Stefani Joanne Angelina
+         Germanotta" are the same.
+      </p>
+      
+      
+      <p>In the SWSL languages, which are implemented only in the XSDs, type tags <code>&lt;Hterm&gt;</code> and <code>&lt;Con&gt;</code> are replaced with <code>&lt;Uniterm&gt;</code> and <code>&lt;Const&gt;</code> respectively. 
+      </p>	
+      
+      
+      <p>Attribute <code>in="no|semi|yes|effect|modal"</code> with respective values are replaced with <code>per="copy|open|value|effect|modal"</code> @@@ effect and modal are not part of Derivation RuleML @@@
+         For example, the following functional expression uses the default value ("copy") of
+         the attribute "per" 
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;Expr per="copy"&gt;
+  &lt;op&gt;&lt;Fun&gt;MultiplyFn&lt;/Fun&gt;&lt;/op&gt;
+  &lt;arg index="1"&gt;&lt;Data xsi:type="xs:integer"&gt;3&lt;/Data&gt;&lt;/arg&gt;
+  &lt;arg index="2"&gt;&lt;Var&gt;X&lt;/Var&gt;&lt;/arg&gt;
+&lt;/Expr&gt;</b></pre></td>
+            </tr>
+         </table>
+         to generate an algebraic expression that may be evaluated after the variable X is
+         bound to a numerical value.
+         In contrast, the expression
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;Expr per="value"&gt;
+  &lt;op&gt;&lt;Fun&gt;MultiplyFn&lt;/Fun&gt;&lt;/op&gt;
+  &lt;arg index="1"&gt;&lt;Data xsi:type="xs:integer"&gt;3&lt;/Data&gt;&lt;/arg&gt;
+  &lt;arg index="2"&gt;&lt;Data xsi:type="xs:integer"&gt;4&lt;/Data&gt;&lt;/arg&gt;
+&lt;/Expr&gt;</b></pre></td>
+            </tr>
+         </table>
+         will be evaluated (to 
+         <Data>12</Data>) before inference is performed.
+      </p>
+      
+      
+      <p>Attribute <code>uri</code> is replaced with <code>iri</code>.
+         This attribute is used to identify, by International Resource Identifier (IRI),
+         the elements <code>Ind</code>, <code>Rel</code> and <code>Fun</code> as individuals,
+         relations and functions, respectively. For example: 
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;Atom&gt;
+  &lt;op&gt;
+    &lt;Rel iri="http://dublincore.org/documents/dces/index.shtml.rdf#Creator"/&gt;
+  &lt;/op&gt;
+  &lt;Ind iri="http://www.w3.org/Home/Lassila"/&gt;
+  &lt;Data xsi:type="xs:string"&gt;Ora Lassila&lt;/Data&gt;
+&lt;/Atom&gt;</b></pre></td>
+            </tr>
+         </table>
+         expresses a fact equivalent to the RDF triple:      
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;rdf:RDF xmlns:s="http://dublincore.org/documents/dces/index.shtml.rdf"&gt;
+  &lt;rdf:Description about="http://www.w3.org/Home/Lassila"&gt;
+    &lt;s:Creator&gt;Ora Lassila&lt;/s:Creator&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</b></pre></td>
+            </tr>
+         </table>
+         
+      </p> 
+      
+      <p>New role tag <code>act</code> is introduced for all content of the <code>RuleML</code> element, as shown here:
+         
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;RuleML&gt;
+  &lt;act&gt;
+    &lt;Assert/&gt;
+  &lt;/act&gt;
+&lt;/RuleML&gt;</b></pre></td>
+            </tr>
+         </table>
+      </p>
       
       
       <h2><a name="Examples">Examples</a></h2>
@@ -626,10 +736,10 @@ having exactly the same spelling (incl. spaces)
       
       
       <p>For example, <a href="http://www.ruleml.org/1.0/xslt/normalizer/own_compact.ruleml">the compact version of the 'own' example</a>:
-      </p>
-      
-      <p><pre><b>
-&lt;RuleML&gt;
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;RuleML&gt;
   &lt;Assert mapClosure="universal"&gt;
     &lt;Implies&gt;
       &lt;And&gt;
@@ -659,15 +769,15 @@ having exactly the same spelling (incl. spaces)
     &lt;/Atom&gt;
   &lt;/Assert&gt;
 &lt;/RuleML&gt;
-  </b></pre></p>
-      
-      
-      <p>is normalized to the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a>:
-      </p>
-      
-      
-      <p><pre><b>
-&lt;RuleML&gt;
+  </b></pre></td>
+            </tr>
+         </table>
+         is normalized to the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a>:
+         
+         
+         <table border="1" cellpadding="5" bgcolor="#EEFFEE">
+            <tr>
+               <td><pre><b>&lt;RuleML&gt;
   &lt;transaction index="1"&gt;
   &lt;Assert mapClosure="universal"&gt;
       &lt;formula&gt;
@@ -710,10 +820,11 @@ having exactly the same spelling (incl. spaces)
       &lt;/formula&gt;
   &lt;/Assert&gt;
   &lt;/transaction&gt;
-&lt;/RuleML&gt;</b></pre></p>
-      
-      
-      <p>(See a <a href="xslt/normalizer/own_compare.htm">comparison of these two files</a> generated using
+&lt;/RuleML&gt;</b></pre></td>
+            </tr>
+         </table>
+         
+         (See a <a href="xslt/normalizer/own_compare.htm">comparison of these two files</a> generated using
          <a href="http://www.componentsoftware.com/products/htmldiff/">HTML Diff</a>.)
       </p>
       
@@ -966,145 +1077,152 @@ targetNamespace="http://www.ruleml.org/1.0/xsd"
       <h2><a name="Appendix-3">Appendix 3:  Instructions on validating the example online with XSD</a></h2>
       
       
-      <table border="1" cellpadding="5" bgcolor="#FFFFFF">
-         <tr>
-            <td><pre><b>
-Validating a RuleML 1.0 Sample Document with XSV
-=================================================
-
-1. Direct your browser to </b></pre><a href="http://www.w3.org/2001/03/webdata/xsv">http://www.w3.org/2001/03/webdata/xsv</a>
-               <pre><b>(Validator for XML Schema REC (20010502) version, as amended).
-
-2. Enter the following URL of our example RuleML file (or any other) into the textfield
-preceded by "Address(es)": http://www.ruleml.org/1.0/exa/Datalog/own.ruleml
-
-3. If desired, check the "Show Warnings" box.
-
-4. Click the "Get Results" button.
-
-Note: The validation may take a while, and may require a full
-refresh when re-validating to avoid caching.
-
-Also note: Depending on your browser, you may want to select a different
-output using the radio buttons just above the "Get Results" button.
-
-***
- 
-You should get the following output (using the default output):</b></pre>
-               
-               		<h3>Schema validating with XSV 3.1-1 of 2007/12/11 16:20:05</h3>
-               		
-               <ul>
-                  			
-                  <li><b>Target</b>: <code>http://www.ruleml.org/1.0/exa/Datalog/own.ruleml</code><br>&nbsp;&nbsp;&nbsp;(Real name: http://www.ruleml.org/1.0/exa/Datalog/own.ruleml<br>&nbsp;&nbsp;&nbsp;&nbsp;Length: 4263 bytes
-                     <br>&nbsp;&nbsp;&nbsp;&nbsp;Last Modified: Sun, 18 Jul 2010 05:05:40 GMT<br>&nbsp;&nbsp;&nbsp;&nbsp;Server: Apache/2.0.55 (Red Hat)) 
-                  </li>
-                  			
-                  <li><b>docElt</b>: <code>{http://www.ruleml.org/1.0/xsd}RuleML</code></li>
-                  			
-                  <li>Validation was strict, starting with type <code>{http://www.ruleml.org/1.0/xsd}:RuleML.type</code></li>
-                  			
-                  <li><b>schemaLocs</b>: http://www.ruleml.org/1.0/xsd -&gt; http://www.ruleml.org/1.0/xsd/datalog.xsd
-                  </li>
-                  			
-                  <li>The schema(s) used for schema-validation had no errors</li>
-                  			
-                  <li>No schema-validity problems were found in the target </li>
-                  		
-               </ul>
-               		
-               <hr>
-               		
-               <h3>Schema resources involved</h3>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/datalog.xsd</code>
-                  (source: <code>schemaLoc</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/performative_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/desc_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/quantifier_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/connective_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/atom_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/slot_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/term_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>
-               		
-               <p>Attempt to load a schema document from
-                  <code>http://www.ruleml.org/1.0/xsd/modules/uri_module.xsd</code>
-                  (source: <code>include</code>) for
-                  <code>http://www.ruleml.org/1.0/xsd</code>,
-                  succeeded
-               </p>      
-               		
-               <hr>
-               		
-               
-            </td>
-         </tr>
-      </table>
+      <ol>
+         
+         <li> Direct your browser to <a href="http://www.w3.org/2001/03/webdata/xsv">http://www.w3.org/2001/03/webdata/xsv</a></li>
+         
+         
+         <li>Enter the following URL of our example RuleML file (or any other) into the textfield
+            preceded by "Address(es)": http://www.ruleml.org/1.0/exa/Datalog/own.ruleml
+         </li>
+         
+         
+         <li>If desired, check the "Show Warnings" box.</li>
+         
+         
+         <li>Click the "Get Results" button.</li>
+         
+      </ol>
+      
+      Note: The validation may take a while, and may require a full
+      refresh when re-validating to avoid caching.
+      
+      Also note: Depending on your browser, you may want to select a different
+      output using the radio buttons just above the "Get Results" button.
+      
+      
+      <p> 
+         You should get the following output (using the default output):
+      </p>
+      
+      		
+      <h4>Schema validating with XSV 3.1-1 of 2007/12/11 16:20:05</h4>
+      		
+      <ul>
+         			
+         <li><b>Target</b>: <code>http://www.ruleml.org/1.0/exa/Datalog/own.ruleml</code><br>&nbsp;&nbsp;&nbsp;(Real name: http://www.ruleml.org/1.0/exa/Datalog/own.ruleml<br>&nbsp;&nbsp;&nbsp;&nbsp;Length: 4263 bytes
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;Last Modified: Sun, 18 Jul 2010 05:05:40 GMT<br>&nbsp;&nbsp;&nbsp;&nbsp;Server: Apache/2.0.55 (Red Hat)) 
+         </li>
+         			
+         <li><b>docElt</b>: <code>{http://www.ruleml.org/1.0/xsd}RuleML</code></li>
+         			
+         <li>Validation was strict, starting with type <code>{http://www.ruleml.org/1.0/xsd}:RuleML.type</code></li>
+         			
+         <li><b>schemaLocs</b>: http://www.ruleml.org/1.0/xsd -&gt; http://www.ruleml.org/1.0/xsd/datalog.xsd
+         </li>
+         			
+         <li>The schema(s) used for schema-validation had no errors</li>
+         			
+         <li>No schema-validity problems were found in the target </li>
+         		
+      </ul>
+      		
+      <hr>
+      		
+      <h3>Schema resources involved</h3>
+      		
+      <p>Attempt to load a schema document from
+         
+         <code>http://www.ruleml.org/1.0/xsd/datalog.xsd</code>
+         (source: <code>schemaLoc</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/performative_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/desc_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/quantifier_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/connective_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/atom_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/slot_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/term_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>
+      		
+      <p>Attempt to load a schema document from
+         <code>http://www.ruleml.org/1.0/xsd/modules/uri_module.xsd</code>
+         (source: <code>include</code>) for
+         <code>http://www.ruleml.org/1.0/xsd</code>,
+         succeeded
+      </p>      
+      		
+      <hr>
+      		
+      
       
       <h2><a name="Appendix-4">Appendix 4:  Normalizing or Upgrading RuleML files with XSLT</a></h2>
       
       
-      <table border="1" cellpadding="5" bgcolor="#EEFFEE">
-         <tr>
-            <td><pre><b>
-1.Go to the W3C XSLT Service at <a href="http://www.w3.org/2005/08/online_xslt/">http://www.w3.org/2005/08/online_xslt/</a>
-
-2.For the xsl resource insert the URI for either the RuleML 1.0 Normalizer XSLT (<a href="http://ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt</a>)
-or the RuleML 0.91-1.0 Upgrader XSLT (<a href="http://ruleml.org/1.0/xslt/upgrader/091-to-100.xslt">http://ruleml.org/1.0/xslt/upgrader/091-to-100.xslt</a>).
-
-3.For the xml resource use a file that is either considered compact RuleML (for the normalizer) or a RuleML file using an older version of RuleML (for the upgrader).
-Compact examples for the normalizer can be found <a href="http://ruleml.org/1.0/xslt/normalizer/">here</a> while old version examples for the upgrader can be found <a href="http://ruleml.org/1.0/xslt/upgrader/">here</a>.
-
-4.Once both URI's have been entered, click transform. To see the result, in some browsers you need to do "View | Page Source".
-</b></pre></td>
-         </tr>
-      </table>
+      <ol>
+         
+         <li>Go to the W3C XSLT Service at <a href="http://www.w3.org/2005/08/online_xslt/">http://www.w3.org/2005/08/online_xslt/</a></li>
+         
+         
+         <li>For the xsl resource insert the URI for either the RuleML 1.0 Normalizer XSLT (<a href="http://ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt</a>)
+            or the RuleML 0.91-1.0 Upgrader XSLT (<a href="http://ruleml.org/1.0/xslt/upgrader/091-to-100.xslt">http://ruleml.org/1.0/xslt/upgrader/091-to-100.xslt</a>).
+         </li>
+         
+         
+         <li>For the xml resource use a file that is either considered compact RuleML (for the
+            normalizer) or a RuleML file using an older version of RuleML (for the upgrader).
+            Compact examples for the normalizer can be found <a href="http://ruleml.org/1.0/xslt/normalizer/">here</a> while old version examples for the upgrader can be found <a href="http://ruleml.org/1.0/xslt/upgrader/">here</a>.
+         </li>
+         
+         
+         <li>Once both URI's have been entered, click transform. To see the result, in some browsers
+            you need to do "View | Page Source".
+         </li>
+         
+      </ol>
       
       <h2><a name="Appendix-5">Appendix 5:  Validating an Instance against a Relax NG schema</a></h2>
       

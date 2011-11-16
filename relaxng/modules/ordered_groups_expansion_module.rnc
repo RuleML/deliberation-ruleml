@@ -1,36 +1,60 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
-
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dc:title [ "RuleML Positional Independence" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, positional independence" ]
-dc:description [ "The expansion module for positional independence." ]
-dc:date [ "2011-10-06" ]
+dc:description [
+  "The expansion module for positional independence."
+]
+dc:date [ "2011-11-15" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 
 ## Pre-fix operator notation for atomic formulas is required in a normal-form serialization.
-Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
-argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence, slotsForAtoms.sequence
+Atom.main |=
+  operatorForAtoms-edge.choice, argumentsForAtoms.sequence
+
+## Slotted arguments follow positional arguments in atomic formulas
+## in the normal-form serialization. 
+argumentsForAtoms.sequence |=
+  positionalArgumentsForAtoms.sequence, slotsForAtoms.sequence
+
+## Positional rest arguments follow the ordinary positional arguments
+## in atomic formulas in the normal-form serialization. 
 positionalArgumentsForAtoms.sequence |=
-    termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
-# termsForAtoms.sequence |= termsPlus.sequence?
-slotsForAtoms.sequence |= slotTermsForAtoms.sequence, restOfSlots-edge.choice?
+  termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
+
+## Slotted rest arguments follow the ordinary slots
+## in atomic formulas in the normal-form serialization. 
+slotsForAtoms.sequence |=
+  slotTermsForAtoms.sequence, restOfSlots-edge.choice?
 
 ## Pre-fix operator notation for expressions is required in the normal-form serialization.
-Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequence
+Expr.main |=
+  operatorForExpressions-edge.choice,
+  argumentsForExpressions.sequence
+
+## Slotted arguments follow positional arguments in expressions
+## in the normal-form serialization. 
 argumentsForExpressions.sequence |=
-    positionalArgumentsForExpressions.sequence, slotsForExpressions.sequence
+  positionalArgumentsForExpressions.sequence,
+  slotsForExpressions.sequence
+
+## Positional rest arguments follow the ordinary positional arguments
+## in expressions in the normal-form serialization. 
 positionalArgumentsForExpressions.sequence |=
-    termsForExpressions.sequence, restOfPositionalArguments-edge.choice?
-# termsForExpressions.sequence |= termsPlus.sequence?
-slotsForExpressions.sequence |= slotTermsForExpressions.sequence, restOfSlots-edge.choice?
-#
+  termsForExpressions.sequence,
+  restOfPositionalArguments-edge.choice?
+
+## Slotted rest arguments follow the ordinary slots
+## in expressions in the normal-form serialization. 
+slotsForExpressions.sequence |=
+  slotTermsForExpressions.sequence, restOfSlots-edge.choice?
 
 ## In the normal-form serialization, the if and then of an implication must occur in canonical order.
 Implies.main |= body_Implies.name.choice, head_Implies.name.choice

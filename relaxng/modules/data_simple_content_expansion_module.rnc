@@ -9,7 +9,7 @@ dc:subject [ "RuleML, Data, Simple Content" ]
 dc:description [
   "The expansion module for the simple-type Data element, a Type (Object) for literal constants."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-15" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -18,6 +18,10 @@ Node.choice |= Data_simple.Node.def
 # This module declares the following RuleML elements, attributes and patterns:
 #            * <Data>
 
+## Because of a Trang bug 
+## (http://code.google.com/p/jing-trang/issues/detail?id=132&q=xsi&colspec=ID%20Type%20Status%20Priority%20Stars%20Module%20Summary)
+## this module should not be included when translating from RNC to XSD.
+##
 ## an extension point for alternate spellings and internationalization of the data tag name.  
 Data_simple-node.choice |= Data_simple.Node.def
 
