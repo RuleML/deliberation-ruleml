@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundlog_relaxed.rnc"?>
 
-<RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd"
->
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd">
+
 
 <!-- a trivial example rulebase for testing the 'UR'-Centered Binary Ground-Datalog RuleML sublanguage -->
+
 
 <Assert mapClosure="universal">
 
@@ -23,7 +22,7 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
     <Atom>
       <op><Rel>friend</Rel></op>
       <Ind>Bob</Ind>
-      <Ind uri="some_URI">Frank</Ind>
+      <Ind iri="some_URI">Frank</Ind>
     </Atom>
     </And>
   </if>
@@ -31,7 +30,7 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 
 <Atom>
   <op><Rel>yet another relation</Rel></op>
-  <Ind uri="URI">constant e</Ind>
+  <Ind iri="URI">constant e</Ind>
   <Ind>constant b</Ind>
   <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
 </Atom>
@@ -41,14 +40,14 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 <Query>
     <And>
       <Atom>
-        <op><Rel uri="some_URI">some relation</Rel></op>
+        <op><Rel iri="some_URI">some relation</Rel></op>
         <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
         <Ind>constant a</Ind>
-        <Ind uri="another_URI">constant b</Ind>
+        <Ind iri="another_URI">constant b</Ind>
         <slot><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
       </Atom>
       <Atom>
-        <op><Rel uri="some_URI">another relation</Rel></op>
+        <op><Rel iri="some_URI">another relation</Rel></op>
         <Ind>constant c</Ind>
         <Ind>constant d</Ind>
       </Atom>
