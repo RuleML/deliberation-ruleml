@@ -28,7 +28,7 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
   </Equivalent>
 </Forall>
 
-<!-- also directly below top level And, as follows -->
+<!-- also directly below top level Assert with @mapClosure value of "universal", as follows -->
 
  <Equivalent>
     <torso>
