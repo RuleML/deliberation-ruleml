@@ -7,7 +7,7 @@
 			<br/>
 			<br/>
 			<h1>Glossary of RuleML 1.0</h1>
-			<h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq</h2>
+			<h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq, Tara Athan</h2>
 			<table border="0" align="center">
 				<tr>
 					<td colspan="2" align="center">
@@ -25,7 +25,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right"><h3>2010-08-26 - </h3></td>
+					<td align="right"><h3>2011-11-17 - </h3></td>
 					<td>
 						<h3><a href="http://www.ruleml.org/1.0/glossary">Version 1.0</a></h3>
 					</td>
@@ -47,7 +47,17 @@
 	<section>
 		<header>Glossary</header>
 		<dl>
-		
+
+		  <dt id="gloss-act"><code>&lt;act&gt;</code></dt>
+		  <dd>A role used for the performatives (
+		    <a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>
+		    <a href="#gloss-Query"><code>&lt;Query&gt;</code></a>
+		    <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>
+		    ) contained in the top element (<a href="#gloss-RuleML"><code>&lt;RuleML&gt;</code></a>) 
+		    <p>Attributes: <a href="#gloss-@index"><code>@index</code></a>
+		    </p>
+		    <p>(See: <a href="../xsd/modules/performative_module.xsd">performative module</a> )</p>
+		  </dd>
 		
 			<dt id="gloss-And"><code>&lt;And&gt;</code></dt>
 			<dd>A conjunctive expression, where <code>&lt;And&gt;Atom&lt;/And&gt;</code> is equivalent to <code>Atom</code>.
@@ -132,19 +142,19 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			
 			
 			<dt id="gloss-degree"><code>&lt;degree&gt;</code></dt>
-			<dd>An optional uncertainty value (between 0.0 and 1.0) that may be assigned to facts and rules.
+			<dd>An optional uncertainty value (between 0.0 and 1.0) that may be assigned to atomic formulas and equations.
 <p>(See: <a href="../xsd/modules/atom_module.xsd">atom module</a>) and <a href="http://image.ntua.gr/FuzzyRuleML">Fuzzy RuleML</a>
 				</p>
 			</dd>
 			
 			
 			<dt id="gloss-@direction"><code>@direction</code></dt>
-			<dd>An attribute indicating the intended direction of an implication rule's (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) inferencing. It has a neutral default value of "bidirectional". Other allowed values are "forward" and "forward".
+			<dd>An attribute indicating the intended direction of an implication rule's (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) inferencing. It has a neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
 <p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 						
 			<dt id="gloss-Entails"><code>&lt;Entails&gt;</code></dt>
-			<dd>Used to <a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>/<a href="#gloss-Query"><code>&lt;Query&gt;</code></a> that/whether the sequence of formulas in the first <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a> entails the sequence of formulas in the second, e.g. the first acting as a knowledge base and the second acting as its integrity constraints. For example: <a href="http://www.ruleml.org/0.91/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
+			<dd>Used to <a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>/<a href="#gloss-Query"><code>&lt;Query&gt;</code></a> that/whether the sequence of formulas in the first <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a> entails the sequence of formulas in the second, e.g. the first acting as a knowledge base and the second acting as its integrity constraints. For example: <a href="http://www.ruleml.org/1.0/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
 			<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 
@@ -209,7 +219,7 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			
 			
 			<dt id="gloss-Expr"><code>&lt;Expr&gt;</code></dt>
-			<dd>A logical function of the form "f(...)" where f is a function name. The function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>). Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments, just like an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).	Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. If the attribute <a href="#gloss-@per"><code>@per</code></a> has value "no", the <code>&lt;Expr&gt;</code> corresponds to a complex term (<a href="/0.9/glossary/#gloss-Cterm"><code>&lt;Cterm&gt;</code></a>) in 0.9 and earlier:
+			<dd>A logical function of the form "f(...)" where f is a function name. The function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>). Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments, just like an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).	Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. If the attribute <a href="#gloss-@per"><code>@per</code></a> has value "copy", the <code>&lt;Expr&gt;</code> corresponds to a complex term (<a href="/0.9/glossary/#gloss-Cterm"><code>&lt;Cterm&gt;</code></a>) in 0.9 and earlier:
 <pre><![CDATA[
 <Expr in="no">
   <Fun>book</Fun>
@@ -218,7 +228,7 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
   <Var>table of contents</Var>
   <Var>chapters</Var>
 </Expr>]]></pre>
-		On the other hand, if the attribute <a href="#gloss-@per"><code>@per</code></a> has value "yes", the <code>&lt;Expr&gt;</code> corresponds to a nano (<a href="/0.9/glossary/#gloss-Nano"><code>&lt;Nano&gt;</code></a>) in 0.9 and earlier.
+		On the other hand, if the attribute <a href="#gloss-@per"><code>@per</code></a> has value "value", the <code>&lt;Expr&gt;</code> corresponds to a nano (<a href="/0.9/glossary/#gloss-Nano"><code>&lt;Nano&gt;</code></a>) in 0.9 and earlier.
 		<p>Attributes: <a href="#gloss-@per"><code>@per</code></a>, <a href="#gloss-@type"><code>@type</code></a></p>
 			<p>(See: <a href="../xsd/modules/expr_module.xsd">expr module</a> and <a href="http://www.ruleml.org/fun">Functional Ruleml</a>)</p>
 			</dd>
@@ -315,7 +325,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-@index"><code>@index</code></dt>
-			<dd>A required role for specifying the position of a positional argument (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) within a logical atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).
+		  <dd>A required role for specifying the position of a positional argument (see <a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) within a logical atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>). Also used to specify the position of a performative (see <a href="#gloss-act"><code>&lt;act&gt;</code></a>) within the top element (<a href="#gloss-RuleML"><code>&lt;RuleML&gt;</code></a>).
 <p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>)</p>
 			</dd>
 			
@@ -436,7 +446,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 
 
 			<dt id="gloss-@oriented"><code>@oriented</code></dt>
-			<dd>An attribute indicating whether an equation (<a href="#gloss-Equal"><code>&lt;Equal&gt;</code></a>) is oriented (directed) or unoriented (symmetric). For example, the (oriented) defining equation <b><code>home(father-of(John)) = Mexico City</code></b> appears as follows:
+		  <dd>An attribute indicating whether an equation (<a href="#gloss-Equal"><code>&lt;Equal&gt;</code></a>) is oriented (directed) or unoriented (symmetric). Allowed values are "no" (unoriented, the default) and "yes" (oriented). For example, the (oriented) defining equation <b><code>home(father-of(John)) = Mexico City</code></b> appears as follows:
 <pre><![CDATA[
 <Equal oriented="yes">
   <left>
@@ -465,7 +475,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-@per"><code>@per</code></dt>
-			<dd>An attribute used to indicate whether a function  (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) or an expr (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>) will be interpreted. In equality sublanguages, it has three values "no" (the default), "yes" and "no", while in non-equality sublanguages it can only have the value "no".
+			<dd>An attribute used to indicate whether a function  (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) or an expr (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>) will be interpreted. In equality sublanguages, it has three values "copy" (the default), "value" and "open", while in non-equality sublanguages it can only have the value "copy".
 			<p>(See: <a href="../xsd/modules/expr_module.xsd">expr module</a> and <a href="http://www.ruleml.org/fun">Functional RuleML</a>)</p>
 			</dd>
 			
@@ -540,13 +550,15 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-Rulebase"><code>&lt;Rulebase&gt;</code></dt>
-			<dd>A collection of rules that can be ordered or unordered, without or with duplicates. For example: <a href="http://www.ruleml.org/0.91/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
+			<dd>A collection of rules that can be ordered or unordered, without or with duplicates. For example: <a href="http://www.ruleml.org/1.0/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
 			<p>Attributes: <a href="#gloss-@mapClosure"><code>@mapClosure</code></a>, <a href="#gloss-@mapDirection"><code>@mapDirection</code></a> and <a href="#gloss-@mapMaterial"><code>@mapMaterial</code></a></p>
 			<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 			
 			<dt id="gloss-RuleML"><code>&lt;RuleML&gt;</code></dt>
-			<dd>The n-ary top-level of a RuleML document. It permits (ordered) transactions of performatives (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>), making an 'implicitly sequential' assumption.
+			<dd>The n-ary top-level of a RuleML document. It permits (ordered) transactions of performatives (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>),
+			  optionally wrapped in <a href="#gloss-act"><code>&lt;act&gt;</code></a>,
+			  making an 'implicitly sequential' assumption.
 <p>(See: <a href="../xsd/modules/performative_module.xsd">performative module</a>)</p>
 			</dd>
 			
@@ -616,7 +628,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-@type"><code>@type</code></dt>
-			<dd>A role for optionally specify a term (user-defined) type.
+			<dd>A role for optionally specifying a term (user-defined) type.
 <p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>)</p>
 			</dd>
 			
