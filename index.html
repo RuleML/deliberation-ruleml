@@ -22,6 +22,7 @@
          
          <h2>
             <a href="http://www.cs.unb.ca/~boley/">Harold Boley</a>,
+            <a href="http://www.alt2is.com/">Tara Athan</a>,
             <a href="http://www.corporate-semantic-web.de/">Adrian Paschke</a>,
             <a href="http://home.comcast.net/~stabet/">Said Tabet</a>,
             <a href="http://www.mit.edu/~bgrosof/">Benjamin Grosof</a>,<br>
@@ -29,8 +30,7 @@
             <a href="http://www.governatori.net/">Guido Governatori</a>,
             <a href="http://www.cs.uwaterloo.ca/~dhirtle/">David Hirtle</a>,
             <a href="http://sites.google.com/site/omairshafiq/">Omair Shafiq</a>,
-            <a href="http://pl.linkedin.com/pub/monika-machunik/10/9a4/b0a">Monika Machunik</a>,
-            <a href="http://www.alt2is.com/">Tara Athan</a>
+            <a href="http://pl.linkedin.com/pub/monika-machunik/10/9a4/b0a">Monika Machunik</a>
             
          </h2>
          
@@ -242,6 +242,7 @@
          <li><a href="#Overview">Overview</a></li>
          <li><a href="#Changes">Changes</a></li>
          <li><a href="#Examples">Examples</a></li>
+         <li><a href="#Mapping">Attribute Mapping</a></li>
          <li><a href="#XSLT-Based Upgrader">XSLT-Based Upgrader</a></li>
          <li><a href="#Normalization">XSLT-Based Normalizer</a></li>
          <li><a href="#Glossary">Glossary</a></li>
@@ -492,6 +493,19 @@
       	
       <p>Examples from previous versions of RuleML are also maintained, e.g. <a href="http://www.ruleml.org/0.91/exa/">0.91 examples</a>).
       </p>
+      
+      <h2><a name="Mapping">Attribute Mapping</a></h2>
+      
+      
+      <p>There are three pairs of attributes in RuleML that have names which differ only by
+         a 'map' prefix: <code>closure</code> and <code>mapClosure</code>, <code>direction</code> and <code>mapDirection</code>, and <code>material</code> and <code>mapMaterial</code>. The naming convention reflects attribute 'mapping' through XML trees, where
+      </p>
+      
+      <p><pre><b>&lt;TypeTag mapAttribute="..."&gt;&lt;c1&gt;. . .&lt;/c1&gt;. . .&lt;cN&gt;. . .&lt;/cN&gt;&lt;/TypeTag&gt;</b></pre></p>
+      
+      <p>basically acts like</p>
+      
+      <p><pre><b>&lt;TypeTag&gt;&lt;c1 attribute="..."&gt;. . .&lt;/c1&gt;. . .&lt;cN attribute="..."&gt;. . .&lt;/cN&gt;&lt;/TypeTag&gt;</b></pre></p>
       
       <h2><a name="XSLT-Based Upgrader">XSLT-Based Upgrader</a></h2>
       
