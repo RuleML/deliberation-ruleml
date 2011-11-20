@@ -16,29 +16,29 @@ http://www.ruleml.org/1.0/xsd/hornlogeq.xsd">
 
    Can rewrite ((1+2)+3) to (1+(2+3)) 
    Can rewrite (1+(2+3)) to ((1+2)+3)
- 
+--> 
  
 <Equal oriented="no">
   <Expr>
-    <Fun in="no">plus</Fun>
+    <Fun per="value">plus</Fun>
     <Expr>
-      <Fun in="yes">plus</Fun>
+      <Fun per="value">plus</Fun>
       <Var>x</Var>
       <Var>y</Var>
     </Expr>
     <Var>z</Var>
   </Expr>
   <Expr>
-    <Fun in="yes">plus</Fun>
+    <Fun per="value">plus</Fun>
     <Var>x</Var>
     <Expr>
-      <Fun in="yes">plus</Fun>
+      <Fun per="value">plus</Fun>
       <Var>y</Var>
       <Var>z</Var>
     </Expr>
   </Expr>
 </Equal>
--->
+
 
 <!--
   Oriented with interpreted functions on left and right
