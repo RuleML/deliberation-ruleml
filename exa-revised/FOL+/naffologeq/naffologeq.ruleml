@@ -5,14 +5,11 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/naffologeq.xsd"
 xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
+	<!-- a trivial example rulebase for testing the Naffolog RuleML sublanguage without fuzzy logic -->
 
 	<Assert mapClosure="universal" mapDirection="bidirectional">
 
 				    <Equal>
-    				      <degree>
-				        <Data xsi:type="xs:float">0.87</Data>
-				      </degree>
 				      <Ind>some constant</Ind>
 				      <Var>d</Var>
 				    </Equal>
@@ -89,9 +86,6 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 							</oid>
 							<if>
 							    <Equal>
-			    				      <degree>
-							        <Data xsi:type="xs:float">0.87</Data>
-							      </degree>
 							      <Ind>some constant</Ind>
 							      <Var>d</Var>
 							    </Equal>

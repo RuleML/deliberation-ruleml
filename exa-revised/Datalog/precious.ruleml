@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/datalog_relaxed.rnc"?>
 
 <RuleML
 xmlns="http://www.ruleml.org/1.0/xsd"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatalog.xsd">
+xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd">
                                                    
                                                  
-<!-- A Simple example to test bindatalog -->
+<!-- A Simple example to test Unary predicates in datalog -->
    
   <Assert mapClosure="universal">
     
@@ -42,12 +43,12 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 
   </Assert>
  
-  <oid>
-    <Ind>
+  
+    <!--
       Can retract a fact which doesnot exist.The fact that goldwatch17 
       is precious which doesnot exist is retracted.                                                         
-    </Ind>
-  </oid>
+    -->
+  
   <Retract>
     <Atom>
       <Rel>precious</Rel>
