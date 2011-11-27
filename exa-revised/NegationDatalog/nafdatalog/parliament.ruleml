@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/nafdatalog.xsd">
-
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/nafdatalog_relaxed.rnc"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/nafdatalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
 <!-- An example rulebase for testing the Datalog RuleML sublanguage, with negation  -->
 
 <Assert mapClosure="universal">

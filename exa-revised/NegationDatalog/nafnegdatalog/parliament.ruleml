@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<RuleML
-xmlns="http://www.ruleml.org/0.91/xsd"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xsd/nafnegdatalog.xsd">
-
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/nafnegdatalog_relaxed.rnc"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/nafnegdatalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
 <!-- An example rulebase for testing the Datalog RuleML sublanguage, with negation  -->
 
 <Assert mapClosure="universal">
@@ -21,15 +21,15 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 <!-- A person is in an opposition party of countryX in a year if the person is a Member of Parliament (MP) but is not in the Government in that year -->
     
 <Implies>
-  <head>
+  <then>
     <Atom>
       <op><Rel>opposition</Rel></op>
       <Var>countryX</Var>
       <Var>person</Var>
       <Var>year</Var>
     </Atom>  
-  </head>
-  <body>
+  </then>
+  <if>
     <And>
       <Atom>
         <op><Rel>mp</Rel></op>
@@ -48,7 +48,7 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
         </Neg>		
       </Naf>
     </And>		
-  </body>
+  </if>
 </Implies>
   
 </Assert>

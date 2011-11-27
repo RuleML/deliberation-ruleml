@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundfact_normal.rnc"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundfact_normal.rnc" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 
-<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd">
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd">
   <act index="1">
     <Query>
       <!-- a trivial example rulebase for testing the 'UR'-Centered Binary Ground-Datalog-Fact RuleML sublanguage -->
