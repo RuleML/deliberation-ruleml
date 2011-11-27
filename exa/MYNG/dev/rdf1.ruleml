@@ -1,0 +1,64 @@
+<?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
+
+<!--<?xml-model href="http://ruleml.org/1.0/xsd/naffologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-model href="rdf.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:ex="http://example.org#"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- This example shows how a sublanguage of arbitrary expressivity 
+       (in this case naffologeq)
+       can be restricted to binary (zero or two) positional arguments.
+       
+       We use this restricted language below to assert the equivalence
+       of a particular RDF triple to a RuleML binary predicate.
+  -->
+  <act index="1">
+    <Assert>
+      <Equivalent>
+        <Atom>
+          <Rel>Truth Value</Rel>
+          <Data>
+            <rdf:RDF>
+              <rdf:Description
+                rdf:about="http://example.org#subject">
+                <ex:Predicate>object</ex:Predicate>
+              </rdf:Description>
+            </rdf:RDF>
+          </Data>
+          <Ind>isTrue</Ind>
+        </Atom>
+        <Atom>
+          <Rel iri="http://example.org#Predicate"/>
+          <Ind iri="http://example.org#subject"/>
+          <Data xsi:type="xs:string">object</Data>
+        </Atom>
+      </Equivalent>
+      <Atom>
+        <Rel>Truth Value</Rel>
+        <Data>
+          <rdf:RDF>
+            <rdf:Description
+              rdf:about="http://example.org#subject">
+              <ex:Predicate>object</ex:Predicate>
+            </rdf:Description>
+          </rdf:RDF>
+        </Data>
+        <Ind>isTrue</Ind>
+      </Atom>
+    </Assert>
+  </act>
+  <act index="2">
+    <Query> 
+      <Atom>
+        <Rel iri="http://example.org#Predicate"/>
+        <Ind iri="http://example.org#subject"/>
+        <Var>x</Var>
+      </Atom>      
+    </Query>
+  </act>
+  <!-- Results
+    <Data xsi:type="xs:string">object</Data>
+  -->
+</RuleML>
