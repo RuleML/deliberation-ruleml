@@ -9,7 +9,7 @@ dc:subject [ "RuleML, inference, direction" ]
 dc:description [
   "The expansion module for the inference direction attribute."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -41,11 +41,9 @@ mapDirection.attrib.def =
   ## falling within its scope (i.e. child elements). See attribute mapping for more details. This attribute has a 
   ## neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
   ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapDirection
-  attribute mapDirection { mapDirection.value }
-mapDirection.value |= direction.value
+  attribute mapDirection { direction.value }
 #
-direction.edge.def = element direction { direction.content }
+direction.edge.def = element direction { direction.attlist? & direction.content }
 direction.content |= direction.value
 mapDirection.edge.def =
-  element mapDirection { mapDirection.content }
-mapDirection.content |= mapDirection.value
+  element mapDirection { direction.attlist? & direction.content }

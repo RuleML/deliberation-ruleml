@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, quantify, quantification, universal, existential" ]
 dc:description [ "The expansion module for quantifications." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -73,7 +73,7 @@ declare.edge.def =
     
     ## A role used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-declare
-    element declare { declare.content }
+    element declare { declare.attlist? & declare.content }
 
 ## a declaration element contains a single quantifiable term
 declare.content |= SimpleQuantifiableTerm.choice
@@ -86,7 +86,7 @@ formula_Forall.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## within Forall...
-    element formula { formula_Forall.content }
+    element formula { formula_Forall.attlist? & formula_Forall.content }
 
 ## The formula role of universal quantifications contains a single formula. 
 formula_Forall.content |= ForallFormula.choice
@@ -115,7 +115,7 @@ formula_Exists.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Exists...
-    element formula { formula_Exists.content }
+    element formula { formula_Exists.attlist? & formula_Exists.content }
 
 ## The formula role of existential quantifications contains a single formula.
 formula_Exists.content |= ExistsFormula.choice

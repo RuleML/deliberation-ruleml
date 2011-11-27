@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, long names" ]
 dc:description [ "The expansion module for human-readable names." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -48,19 +48,19 @@ Individual-node.choice |= Individual.Node.def
 Individual.Node.def = element Individual { (Ind-datt.choice & reInd.attlist), Ind.content }
 #
 operatorForAtoms-edge.choice |= operator_Atom.edge.def
-operator_Atom.edge.def = element operator { op_Atom.content }
+operator_Atom.edge.def = element operator { op_Atom.attlist? & op_Atom.content }
 #
 objectIdentifier-edge.choice |= objectIdentifier.edge.def
-objectIdentifier.edge.def = element objectIdentifier { oid.content }
+objectIdentifier.edge.def = element objectIdentifier { oid.attlist? & oid.content }
 #
 operatorForExpressions-edge.choice |= operator_Expr.edge.def
-operator_Expr.edge.def = element operator { op_Expr.content }
+operator_Expr.edge.def = element operator { op_Expr.attlist? & op_Expr.content }
 #
 positionalArgument-edge.choice |= argument.edge.def
 argument.edge.def = element argument { (arg-datt.choice & rearg.attlist), arg.content }
 #
 leftSide-edge.choice |= leftHandSide.edge.def
-leftHandSide.edge.def = element leftHandSide { left.content }
+leftHandSide.edge.def = element leftHandSide { left.attlist? & left.content }
 #
 rightSide-edge.choice |= rightHandSide.edge.def
-rightHandSide.edge.def = element rightHandSide { right.content }
+rightHandSide.edge.def = element rightHandSide { right.attlist? & right.content }

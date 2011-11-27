@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, reify, reification" ]
 dc:description [ "The expansion module for reification of RuleML objects." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -27,7 +27,7 @@ Reify.Node.def =
     ## it as a term for performing reasoning on, e.g.
     ## <Reify><Ind>John Doe</Ind></Reify>
     ## See http://www.ruleml.org/1.0/glossary/#gloss-Reify
-    element Reify { Reify.content }
+    element Reify { Reify.attlist? & Reify.content }
 Reify.content |= (Node.choice | edge.choice)?
 # FIXME This is still not right - RuleML can allow children from other namespaces within Data (Structure in 1.0).
 # Better to accumulate the patterns for all defined elements, and use that as the content model for Reify.

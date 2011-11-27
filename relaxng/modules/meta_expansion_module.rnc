@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -47,7 +47,7 @@ body_Entails.edge.def =
     ## Also used as the "antecedent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-if
     ##  Within Entails...
-    element if { body_Entails.content }
+    element if { body_Entails.attlist? & body_Entails.content }
 
 ## The if of an entailment contains a single rulebase.
 body_Entails.content |= Rulebase-node.choice
@@ -60,7 +60,7 @@ head_Entails.edge.def =
     ## Also used as the "consequent" part of an entailment (<Entails>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-then
     ##  within Entails
-    element then { head_Entails.content }
+    element then { head_Entails.attlist? & head_Entails.content }
 
 ## The then of an entailment contains a single rulebase.
 head_Entails.content |= Rulebase-node.choice

@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, iri" ]
 dc:description [ "The expansion module for the International Resource Identifier (iri) attribute." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -28,5 +28,5 @@ iri.attrib.def =
     attribute iri { iri.value }
 iri.value |= xsd:anyURI
 #
-iri.edge.def = element iri { iri.content }
+iri.edge.def = element iri { iri.attlist? & iri.content }
 iri.content |= iri.value

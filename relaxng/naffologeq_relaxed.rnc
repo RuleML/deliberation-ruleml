@@ -32,6 +32,7 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # ROOT NODE AND PERFORMATIVES INCLUDED
 #
 include "modules/performative_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/xml_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ATOMIC FORMULAS INCLUDED
 #

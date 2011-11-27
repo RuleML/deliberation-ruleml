@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -72,7 +72,7 @@ body_Implies.edge.def =
   
   ## <if>: contains the premise of the implication. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-if
-  element if { body_Implies.content }
+  element if { body_Implies.attlist? & body_Implies.content }
 
 ## The premise of an implication consists of a single formula
 body_Implies.content |= PremiseFormula.choice
@@ -104,7 +104,7 @@ head_Implies.edge.def =
   
   ## <then>: contains the conclusion of the implication. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-then
-  element then { head_Implies.content }
+  element then { head_Implies.attlist? & head_Implies.content }
 
 ## The conclusion of an implication consists of a single formula.
 head_Implies.content |= ConclusionFormula.choice

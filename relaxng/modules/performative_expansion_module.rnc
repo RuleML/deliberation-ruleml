@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, performative, assert, retract, query" ]
 dc:description [ "The expansion module for performative components." ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -93,7 +93,7 @@ formula_AssertRetract.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Assert or Retract...
-    element formula { formula_AssertRetract.content }
+    element formula { formula_AssertRetract.attlist? & formula_AssertRetract.content }
 
 ## Forumulas within assertions and retractions contain a single formula.
 formula_AssertRetract.content |= AssertRetractFormula.choice
@@ -155,7 +155,7 @@ formula_Query.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
     ## Within Query ...
-    element formula { formula_Query.content }
+    element formula { formula_Query.attlist? & formula_Query.content }
 
 ## The content model of a forumula within queries is a single formula.
 formula_Query.content |= QueryFormula.choice
@@ -187,3 +187,4 @@ QueryFormula.choice |= Entails-node.choice | Rulebase-node.choice
 # For the declaration of the entailment and rulebase formula pattern, see the meta-logic and rulebase modules ( meta_module and rulebase_module) 
 Node.choice |= performative.Node.defs
 edge.choice |= performative.edge.defs
+

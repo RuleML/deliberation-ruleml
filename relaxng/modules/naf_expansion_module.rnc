@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, negation, weak, formula" ]
 dc:description [ "The expansion module for weak negation formulas." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -42,7 +42,7 @@ weak-edge.choice |= weak.edge.def
 weak.edge.def =
     # A role used for negation as failure (<Naf>).
     #        See http://www.ruleml.org/1.0/glossary/#gloss-weak
-    element weak { weak.content }
+    element weak { weak.attlist? & weak.content }
 
 ## The negation role contains a single formula. 
 weak.content |= NafFormula.choice

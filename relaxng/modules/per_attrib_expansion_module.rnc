@@ -9,7 +9,7 @@ dc:subject [ "RuleML, interpretation" ]
 dc:description [
   "The expansion module for the interpretation attribute."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -32,5 +32,5 @@ interpretation.value |=
 interpretation_default.value |= notAllowed
 interpretation_non-default.value |= notAllowed
 #
-per.edge.def = element per { interpretation.content }
+per.edge.def = element per { interpretation.attlist? & interpretation.content }
 interpretation.content |= interpretation.value

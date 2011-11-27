@@ -30,5 +30,5 @@ val.value |= val_default.value | val_non-default.value
 val_default.value |= notAllowed
 val_non-default.value |= notAllowed
 #
-val.edge.def = element val { val.content }
+val.edge.def = element val { val.attlist? & val.content }
 val.content |= val.value

@@ -8,7 +8,7 @@ dc:subject [ "RuleML, conjunction, disjunction" ]
 dc:description [
   "The expansion module for conjunctions and disjunctions."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -100,7 +100,7 @@ formula_And.edge.def =
   
   ## <formula>: contains a single formula. See  
   ## http://www.ruleml.org/1.0/glossary/#gloss-formula
-  element formula { formula_And.content }
+  element formula { formula_And.attlist? & formula_And.content }
 
 ## Formulas within conjunctions consist of a single formula
 formula_And.content |= AndFormula.choice
@@ -167,7 +167,7 @@ formula_Or-edge.choice |= formula_Or.edge.def
 formula_Or.edge.def =
   
   ##
-  element formula { formula_Or.content }
+  element formula { formula_Or.attlist? & formula_Or.content }
 
 ## Formulas within disjunctions consist of a single formula
 formula_Or.content |= OrFormula.choice

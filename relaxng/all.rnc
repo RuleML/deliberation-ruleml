@@ -84,4 +84,5 @@ include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |
 include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/xml_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
     

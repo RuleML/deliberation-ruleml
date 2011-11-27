@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, rest, slot" ]
 dc:description [ "The expansion module for slotted rest variables." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -24,7 +24,7 @@ resl.edge.def =
     ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
     ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
     ## See http://www.ruleml.org/1.0/glossary/#gloss-resl
-    element resl { resl.content }
+    element resl { resl.attlist? & resl.content }
 
 ## The content model of a slotted rest variable is a single term.
 resl.content |= reslTerm.choice

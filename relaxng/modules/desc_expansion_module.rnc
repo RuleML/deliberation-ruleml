@@ -8,7 +8,7 @@ dc:subject [ "RuleML, object identifier" ]
 dc:description [
   "This is the Core Schema module for object identifiers in RuleML."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -29,7 +29,7 @@ oid.edge.def =
   
   ## <oid>: a label for Node elements. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-oid
-  element oid { oid.content }
+  element oid { oid.attlist? & oid.content }
 
 ## The object descriptor content model consists of any single term.
 ## Note: this corrects an error in the oid content model of RuleML 1.0,

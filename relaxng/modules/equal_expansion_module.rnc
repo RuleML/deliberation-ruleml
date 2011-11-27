@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, equals, equality, equations" ]
 dc:description [ "The expansion module for equations." ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -51,7 +51,7 @@ left.edge.def =
   
   ## <left>: The left-hand side of an equation. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-left
-  element left { left.content }
+  element left { left.attlist? & left.content }
 
 ## The left-hand side role in an equation is filled by a term.
 left.content |= leftTerm.choice
@@ -62,7 +62,7 @@ right.edge.def =
   
   ## <right>: The right-hand side of an equation. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-right
-  element right { right.content }
+  element right { right.attlist? & right.content }
 
 ## The right-hand side role in an equation is filled by a term.
 right.content |= rightTerm.choice

@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, negation, strong, formula" ]
 dc:description [ "The expansion module for strong negation formulas." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -44,7 +44,7 @@ strong.edge.def =
     
     ## A role used for logical negation (<Neg>).
     ##        See http://www.ruleml.org/1.0/glossary/#gloss-strong
-    element strong { strong.content }
+    element strong { strong.attlist? & strong.content }
 
 ## The negation role contains a single formula. 
 strong.content |= NegFormula.choice

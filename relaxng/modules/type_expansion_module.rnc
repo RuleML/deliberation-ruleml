@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, type" ]
 dc:description [ "The expansion module for the optional type attribute." ]
-dc:date ["2011-10-06"]
+dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -28,5 +28,5 @@ type.attrib.def =
     attribute type { type.value }
 type.value |= xsd:string
 #
-type.edge.def = element type { type.content }
+type.edge.def = element type { type.attlist? & type.content }
 type.content |= type.value

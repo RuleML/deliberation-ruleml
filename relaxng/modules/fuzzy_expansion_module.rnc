@@ -11,7 +11,7 @@ dc:subject [ "RuleML, uncertainty, fuzzy, degree" ]
 dc:description [
   "The expansion module for degree of uncertainty."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -24,7 +24,7 @@ degree.edge.def =
   
   ## An optional uncertainty value (between 0.0 and 1.0) that may be assigned to simple formulas.
   ## See http://www.ruleml.org/1.0/glossary/#gloss-degree
-  element degree { degree.content }
+  element degree { degree.attlist? & degree.content }
 
 ## The degree edge element contains a single data term. 
 degree.content |= Data_degree-node.choice
