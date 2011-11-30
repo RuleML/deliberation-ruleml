@@ -4,6 +4,7 @@
 <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 <!ENTITY xs "http://www.w3.org/2001/XMLSchema">
+<!ENTITY this "http://www.animals.fake/animals#">
 ]>
 
 <?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
@@ -14,9 +15,7 @@
   xmlns:rdf="&rdf;"
   xmlns:xsi="&xs;-instance"
   xmlns:xs="&xs;"
-  xml:base="http://www.animals.fake/animals#"
   >
-  <!--  xml:base="http://www.animals.fake/animals#" -->
   <!-- This example shows how a sublanguage of arbitrary expressivity 
        (in this case naffologeq)
        can be restricted to binary (zero or two) positional arguments.
@@ -91,19 +90,19 @@
     <!-- A simple taxonomy "The class horse is a subclass of class animal" -->
     <Rulebase>
       <Atom>
-        <Ind iri="#animal"/>
+        <Ind iri="&this;animal"/>
         <Rel iri="&rdf;type"/>
         <Ind iri="&rdfs;Class"/>
       </Atom>
       <Atom>
-        <Ind iri="#horse"/>
+        <Ind iri="&this;horse"/>
         <Rel iri="&rdf;type"/>
         <Ind iri="&rdfs;Class"/>
       </Atom>
       <Atom>
-        <Ind iri="#horse"/>
+        <Ind iri="&this;horse"/>
         <Rel iri="&rdfs;subClassOf"/>
-        <Ind iri="#animal"/>
+        <Ind iri="&this;animal"/>
       </Atom>
     </Rulebase>
   </Assert>
@@ -113,7 +112,7 @@
       <Atom>
         <Ind>Nellie</Ind>
         <Rel iri="&rdf;type"/>
-        <Ind iri="#horse"/>
+        <Ind iri="&this;horse"/>
       </Atom>
     </Rulebase>
   </Assert>
@@ -124,7 +123,7 @@
     <Atom>
       <Var>?WHAT</Var>
       <Rel iri="&rdf;type"/>
-      <Ind iri="#animal"/>
+      <Ind iri="&this;animal"/>
     </Atom>
   </Query>
   <!-- Results
