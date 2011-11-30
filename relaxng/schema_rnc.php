@@ -251,8 +251,6 @@ if ($bdefault==0){
       echo "#\n# ROOT NODE AND PERFORMATIVES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'performative_expansion_module.rnc"'."$end\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'xml_expansion_module.rnc"'."$end\n";
     }
   //Step 1B. Assemble the backbone expressivity from expansion modules 
     if ($needAtom){    
