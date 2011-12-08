@@ -55,14 +55,14 @@
 		</center>
 		<br/>
 		
-		<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>
+		<!--<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>-->
 	  <p>The scope of this specification covers </p>
 	  <!--  
 	    <ul>
-	    <li>syntax, including -->
+	    <li>syntax, including 
 	        <ul>
-	          <!-- <li>abstract syntax</li> -->
-	          <li>XML syntax, including
+	          <li>abstract syntax</li> 
+	          <li>XML syntax, including -->
 	          <ul>
 	            <li>content models for the named sublanguages, available from <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a></li>
 	            <li>schemas, including
@@ -75,11 +75,11 @@
 	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/upgrader/091-to-ruleml100.xslt">XSLT Upgrader</a> stylesheet</li>
 	            
 	          </ul>
-	          </li>
-	          <!--  <li>presentation syntax</li>-->
+	        <!--</li>
+	            <li>presentation syntax</li>
 	          
 	        </ul>
-	      <!--  </li>
+	        </li>
 	      <li>semantics, including
 	        <ul>
 	      <li>an informal semantics as given in the <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a></li>
@@ -115,7 +115,9 @@
 		<item>Type tags <code>&lt;Hterm&gt;</code> and <code>&lt;Con&gt;</code>, replaced with <code>&lt;Uniterm&gt;</code> and <code>&lt;Const&gt;</code> respectively </item>	
 		<item>Attribute <code>in="no|semi|yes"</code> with respective values, replaced with <code>per="copy|open|value"</code></item> 
 	  <item>Attribute <code>uri</code> replaced with <code>iri</code> </item> 
-	  <item>New role tag <code>act</code> introduced for all content of <code>RuleML</code> element </item> 
+	  <item>New role tag <code>act</code> introduced for all content of <code>RuleML</code> element </item>
+	  <item>@@@ Status of Normalizer</item>
+	  <item>@@@ Features that are "at risk"</item>
 	  
 	</itemize>	
 
