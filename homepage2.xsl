@@ -8,10 +8,11 @@ modified by Elina Hotman -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:import href="slixhtml2.xsl"/>
+  <xsl:output method="html" doctype-system="http://www.w3.org/TR/html4/loose.dtd" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" indent="yes" media-type="text/html" omit-xml-declaration="yes" />
 
   <xsl:template match="homepage">
-   <xsl:processing-instruction name="cocoon-format">type="text/html"</xsl:processing-instruction>
-   <html>
+   <!--<xsl:processing-instruction name="cocoon-format">type="text/html"</xsl:processing-instruction>-->
+    <html>
     <head>
      <title>
       <xsl:value-of select="//title"/>
