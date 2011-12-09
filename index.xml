@@ -73,15 +73,19 @@ the major kinds of Web rules in an XML format that is uniform across various rul
 	          <li>abstract syntax</li> 
 	          <li>XML syntax, including -->
 	          <ul>
-	            <li>content models for the named sublanguages, available from <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a></li>
+	            <li>content models for the named sublanguages, available from <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a>
+	            
+	            content models for the named sublanguages, available from the <a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Model Document</a> (along with a glossary of all tags, available from <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a> );
+	            
+	            </li>
 	            <li>schemas, including
 	              <ul>
-	                <li><a href="http://www.ruleml.org/1.0/xsd/">schemas in XML Schema Definition Language (XSD) with Schematron annotation</a></li>
-	                <li><a href="http://www.ruleml.org/1.0/relaxng/">schemas in Relax NG</a></li>
+	                <li><a href="http://www.ruleml.org/1.0/xsd/">schemas in XML Schema Definition Language (XSD) with Schematron annotation</a>;</li>
+	                <li><a href="http://www.ruleml.org/1.0/relaxng/">schemas in Relax NG</a>;</li>
 	              </ul>
 	            </li> 
-	            <li>a mapping from the RuleML Version 1.0 syntax to the "normalized" RuleML Version 1.0 syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">XSLT Normalizer</a><!--@@@ this links to the old, defective normalizer  @@@ stylesheet--></li>
-	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/upgrader/091-to-ruleml100.xslt">XSLT Upgrader</a> stylesheet</li>
+	            <li>a mapping from the RuleML Version 1.0 syntax to the "normalized" RuleML Version 1.0 syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt">XSLT Normalizer</a><!--@@@ this links to the old, defective normalizer  @@@ stylesheet-->;</li>
+	            <li>a mapping from the preceding RuleML Version 0.91 XML syntax to RuleML Version 1.0 XML syntax as given in the <a href="http://www.ruleml.org/1.0/xslt/upgrader/091-to-ruleml100.xslt">XSLT Upgrader</a> stylesheet.</li>
 	            
 	          </ul>
 	        <!--</li>
