@@ -54,8 +54,16 @@
 			</h2>
 		</center>
 		<br/>
-		
-		<!--<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>-->
+	  <!--<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>-->
+<!--	  <p>
+	  Rules on the Web come in various formats and with diverse packaging.
+	  Often, however, the semantics of Web-distributed rule content are compatible.
+	  In such cases, rulebases can be reused with an interchange technology consisting of a family of canonical rule languages and bi-directional translators between canonical languages and the languages to be interchanged.
+	  The need for Web rule interchange has been increasing with the amount of business rules (incl. policies, regulations, laws, ...) in many domains (e.g. finance, engineering, healthcare, ...) on the Web 1.0, 2.0 (Social), and 3.0 (Social Semantic).	  
+	  </p> -->
+<p>
+RuleML has been designed for the interchange of
+the major kinds of Web rules in an XML format that is uniform across various rule languages and platforms. It has broad coverage and is defined as an extensible family of languages, whose modular system of schemas permits rule interchange with high precision.</p>
 	  <p>The scope of this specification covers </p>
 	  <!--  
 	    <ul>
@@ -116,9 +124,21 @@
 		<item>Attribute <code>in="no|semi|yes"</code> with respective values, replaced with <code>per="copy|open|value"</code></item> 
 	  <item>Attribute <code>uri</code> replaced with <code>iri</code> </item> 
 	  <item>New role tag <code>act</code> introduced for all content of <code>RuleML</code> element </item>
-	  <item>@@@ Status of Normalizer</item>
-	  <item>@@@ Features that are "at risk"</item>
-	  
+	  <item>The Normalizer at <a href="http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is underdevelopment at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
+	  <item>Features that are "at risk" of being deprecated in future release, including: 
+	    <itemize>
+	    <item><code>Reify</code> at Datalog and lower, as this introduces the possibility of nesting reification to an arbitrary level </item>
+	      <item> the default values of attributes which indicate semantics variants: 
+	        <code>direction</code>, 
+	        <code>mapDirection</code>,
+	        <code>material</code>,
+	        <code>mapMaterial</code>,
+	        <code>oriented</code>,
+	        <code>val</code>,
+	        <code>per</code>, as it may be more effective to use the absence of the attribute to indicate a "neutral" semantics.
+	      </item>
+	    </itemize>
+	    </item>
 	</itemize>	
 
 	<p>For more information, see the <a href="#Changes">Changes</a> section.</p>
