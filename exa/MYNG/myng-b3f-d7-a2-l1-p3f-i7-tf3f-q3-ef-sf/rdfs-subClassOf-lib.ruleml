@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
+  <Assert xmlns="http://www.ruleml.org/1.0/xsd">
+    <!-- Structural Axioms for the RDFS predicate "subClassOf". 
+         CLASS1 is a subclass of CLASS2 if and only if
+         every individual of type CLASS1 is also of type CLASS2.-->
+    <Equivalent closure="universal">
+      <torso>
+        <Atom>
+          <Var>?CLASS1</Var>
+          <Rel
+            iri="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+          <Var>?CLASS2</Var>
+        </Atom>
+      </torso>
+      <torso>
+        <Forall>
+          <declare>
+            <Var>?IND</Var>
+          </declare>
+          <Implies>
+            <if>
+              <Atom>
+                <Var>?IND</Var>
+                <Rel
+                  iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                <Var>?CLASS1</Var>
+              </Atom>
+            </if>
+            <then>
+              <Atom>
+                <Var>?IND</Var>
+                <Rel
+                  iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+                <Var>?CLASS2</Var>
+              </Atom>
+            </then>
+          </Implies></Forall>
+      </torso>
+    </Equivalent>    
+  </Assert>

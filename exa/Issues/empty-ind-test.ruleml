@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/hornlog_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/hornlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+
+<!-- <RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/hornlog.xsd"> -->
+  
+<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    >
+    
+  <Assert mapClosure="universal">
+    <!-- POSL r(_]) -->
+    <Rulebase>
+      <Atom>
+        <op>
+          <Rel>r</Rel>
+        </op>
+        <Ind/>
+      </Atom>
+    </Rulebase>
+  </Assert>
+
+
+  <Query>
+    <!-- POSL r(?X) -->
+    <Atom>
+      <op>
+        <Rel>r</Rel>
+      </op>
+      <Var>X</Var>
+    </Atom>
+  </Query>
+  <!-- 
+  
+  Specified Results
+  Success
+  
+  Variable
+  <Var>X</Var>
+  
+  Value
+  <Ind/>
+
+  Actual Results
+  Failure
+
+  -->
+
+  <!-- <RetractAll/> -->
+  <!-- By Comparison ... -->
+  <Assert mapClosure="universal">
+    <!-- POSL r(a->b) -->
+    <Rulebase>
+      <Atom>
+        <op>
+          <Rel>r</Rel>
+        </op>
+        <slot>
+          <Ind>a</Ind>
+          <Ind>b</Ind>
+        </slot>
+      </Atom>
+    </Rulebase>
+  </Assert>
+
+  <Query>
+    <!-- POSL r(a->?X) -->
+    <Atom>
+      <op>
+        <Rel>r</Rel>
+      </op>
+      <slot>
+        <Ind>a</Ind>
+        <Var>X</Var>
+      </slot>
+    </Atom>
+  </Query>
+  <!-- 
+    Specified Results
+    Success
+    
+    Variable
+    <Var>X</Var>
+    
+    Value
+    <Ind>b</Ind>
+    
+    Actual Results = Specified Results
+  -->
+
+</RuleML>

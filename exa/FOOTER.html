@@ -1,0 +1,20 @@
+<h2>Validation Instructions in oXygen</h2>
+<p>
+In the instances in this examples directory, xml-model processing instructions (PIs) are used to indicate the minimal RNC and XSD schemas that the instances should validate against.
+An xml-model processing application, such as oXygen (http://oxygenxml.com) will use these PIs to determine the schemas to be used for validation.
+Unfortunately, the RuleML Version 1.0 XSD schemas are not validated by oXygen's default XSD validator, Xerces, due to circular definitions.
+These XSD schemas are validated by Saxon EE (with warning messages) and XSV (with no warning messages).
+Ideally, a user would configure oXygen to use a non-default XSD validation engine, enabling validation of an instance against both RNC and XSD schemas.
+Unfortunately, in oXygen versions up to at least 13.1, this configuration setting causes oXygen to attempt to apply the Saxon engine to the RNC schema, which produces an error message. This bug has been reported and is scheduled to be fixed in oXygen 13.2.
+The xml-model processing instruction for the XSD schema has been commented out, so that it can be easily activated once this oXygen issue is fixed.
+</p>
+<p>
+As a temporary workaround to this oXygen issue, one may apply a custom validation configuration to each subdirectory, except for the MYNG subdirectory, where each file requires a custom validation configuration. Each configuration contains two validation scenarios:
+<ol>
+  <li>the default validation scenario, which activates the xml-model PI with the RNC schema;</li>
+  <li>a scenario specifying the XSD schema appropriate to that instance or subdirectory, and a validation engine (either Saxon EE or XSV)</li>
+</ol>
+Once these configurations have been set, batch validation may be performed on the entire exa directory.
+</p><p>
+Hint: the oXygen "Information" view provides helpful information about the batch validation process, beyond what appears in the "Results" pane.
+</p>
