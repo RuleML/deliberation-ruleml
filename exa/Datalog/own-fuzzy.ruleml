@@ -21,24 +21,24 @@ The first and second rules are implications; the third and fourth ones are facts
 
 In English:
 
-The first rule implies that a person owns an object
+The first rule implies that a person owns an object (with degree 0.87)
 if that person buys the object from a merchant and the person keeps the object.
 
 As an OrdLab Tree:
 
-Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      *                                                                             *
-   if *                                                                        then * 
-      *                                                                             * 
-     And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                   Atom~~~~~~~~~~~~~ 
-           |                                   |                                    *     |     |   
-           |                                   |                                op  *     |     |  
-           |                                   |                                    *     |     |   
-         Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~                Rel   Var   Var  
-                  *     |      |       |              *     |     |                 .     .     .   
-              op  *     |      |       |          op  *     |     |                 .     .     .  
-                  *     |      |       |              *     |     |                 .     .     .   
-                 Rel   Var    Var     Var            Rel   Var   Var               own  person object
+Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      *                                                                     *
+   if *                                                                then * 
+      *                                                                     * 
+     And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                           Atom~~~~~~~~~~~~~~~~~~ 
+           |                                   |                                *     *     |     |   
+           |                                   |                        degree  * op  *     |     |  
+           |                                   |                                *     *     |     |   
+         Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~           Data   Rel   Var   Var  
+                  *     |      |       |              *     |     |             .     .     .     .   
+              op  *     |      |       |          op  *     |     |             .     .     .     .  
+                  *     |      |       |              *     |     |             .     .     .     .   
+                 Rel   Var    Var     Var            Rel   Var   Var          0.87   own  person object
                   .     .      .       .              .     .     . 
                   .     .      .       .              .     .     .
                   .     .      .       .              .     .     .
