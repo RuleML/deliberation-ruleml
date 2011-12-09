@@ -124,7 +124,7 @@ the major kinds of Web rules in an XML format that is uniform across various rul
 		<item>Attribute <code>in="no|semi|yes"</code> with respective values, replaced with <code>per="copy|open|value"</code></item> 
 	  <item>Attribute <code>uri</code> replaced with <code>iri</code> </item> 
 	  <item>New role tag <code>act</code> introduced for all content of <code>RuleML</code> element </item>
-	  <item>The Normalizer at <a href="http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is underdevelopment at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
+	  <item>The Normalizer at <a href="http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is under development at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
 	  <item>Features that are "at risk" of being deprecated in future release, including: 
 	    <itemize>
 	    <item><code>Reify</code> at Datalog and lower, as this introduces the possibility of nesting reification to an arbitrary level </item>
@@ -524,9 +524,11 @@ is normalized to the <a href="xslt/normalizer/own_expanded.ruleml">expanded vers
 </section>
 
 <section>
-<header>Appendix</header>
+<header>Appendices</header>
 
-<p>Appended below is a simple example rulebase (<a href="#Appendix-1">Appendix 1</a>), the XML Schema for the Datalog sublanguage of RuleML to which the rulebase conforms (<a href="#Appendix-2">Appendix 2</a>) and instructions for how to validate the example against the schema (<a href="#Appendix-3">Appendix 3</a>).
+<p>Appended below is a simple example rulebase (<a href="#Appendix-1">Appendix 1</a>), the XML Schema for the Datalog sublanguage of RuleML to which the rulebase conforms (<a href="#Appendix-2">Appendix 2</a>), instructions for how to validate instances against the XSD schema (<a href="#Appendix-3">Appendix 3</a>),
+  instructions for how to transform with XSLT stylesheets (<a href="#Appendix-4">Appendix 4</a>),  and
+  instructions for how to validate instances against the  Relax NG schema (<a href="#Appendix-5">Appendix 5</a>).
 </p>
 </section>
 
