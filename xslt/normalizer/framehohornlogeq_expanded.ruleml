@@ -3,7 +3,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/framehohornlogeq.xsd">
 
-  <content>
+  <act index="1">
     <Assert>
       <formula>
         <Entails>
@@ -36,10 +36,10 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/frameho
                   <op>
                     <Const>p</Const>
                   </op>
-                  <arg index="0">
+                  <arg index="1">
                     <Var>X</Var>
                   </arg>
-                  <arg index="1">
+                  <arg index="2">
                     <Var>Y</Var>
                   </arg>
                 </Uniterm>
@@ -184,7 +184,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/frameho
                   <op>
                     <Const>p</Const>
                   </op>
-                  <arg index="0">
+                  <arg index="1">
                     <Uniterm>
                       <oid>
                         <Var>X</Var>
@@ -214,7 +214,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/frameho
                   <op>
                     <Const>p</Const>
                   </op>
-                  <arg index="0">
+                  <arg index="1">
                     <Var>X</Var>
                   </arg>
                 </Uniterm>
@@ -313,13 +313,13 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/frameho
                     <Const>t</Const>
                     <Var>b</Var>
                   </slot>
-                  <arg index="0">
+                  <arg index="1">
                     <Var>x</Var>
                   </arg>
-                  <arg index="1">
+                  <arg index="2">
                     <Var>y</Var>
                   </arg>
-                  <arg index="2">
+                  <arg index="3">
                     <Const>Steph</Const>
                   </arg>
                 </Uniterm>
@@ -471,5 +471,5 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/frameho
         </Entails>
       </formula>
     </Assert>
-  </content>
+  </act>
 </RuleML>

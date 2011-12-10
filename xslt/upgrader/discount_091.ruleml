@@ -4,7 +4,7 @@
 xmlns="http://www.ruleml.org/0.91/xsd"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xsd/datalog.xsd">
-  <oid>
+  <!--<oid>
     <Ind>
 	BUSINESS RULES IN RuleML                            Harold Boley, 1 Apr. 2002
 	(revised Nov 2005)
@@ -25,13 +25,13 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 	These examples could be easily extended by further categories of customers,
 	product discounting conditions, etc.
     </Ind>
-  </oid>
+  </oid>-->
 
 <Assert mapClosure="universal">
 <oid><Ind>Asserted content, i.e. rules and facts</Ind></oid>
 
 <Implies>
-  <oid>
+  <!--<oid>
     <Ind>
 	Implies 1
 	The discount for a customer buying a product is 5.0 percent
@@ -43,7 +43,7 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 	by introducing a constructor term for "percent[5.0]", thus leaving Datalog
 	towards full Horn logic.
     </Ind>
-  </oid>
+  </oid>-->
   <head>
     <Atom>
       <op><Rel>discount</Rel></op>
@@ -67,13 +67,13 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 </Implies>
 
 <Implies>
-  <oid>
+  <!--<oid>
     <Ind>
 	Implies 2
 	The discount for a customer buying a product is 7.5 percent
 	if the customer is premium and the product is luxury.
     </Ind>
-  </oid>
+  </oid>-->
   <head>
     <Atom>
       <op><Rel>discount</Rel></op>
@@ -97,7 +97,7 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 </Implies>
 
 <Implies>
-  <oid>
+  <!--<oid>
     <Ind>
 	Implies 3
 	A customer is premium if
@@ -112,7 +112,7 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 	It can also be regarded as a semi-formal construct ultimately to be replaced by a
 	'greater-than' comparison over numbers with units.
     </Ind>
-  </oid>
+  </oid>-->
   <head>
     <Atom>
       <op><Rel>premium</Rel></op>
@@ -130,29 +130,28 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 </Implies>
 
   <Atom>
-    <oid>
+    <!--<oid>
       <Ind>
 	Fact 1
 	A Porsche is luxury.
       </Ind>
-    </oid>
-    <op><Rel>luxury</Rel></op>
+    </oid>-->    <op><Rel>luxury</Rel></op>
     <Ind>Porsche</Ind>
   </Atom>
 
   <Atom>
-    <oid>
+    <!--<oid>
       <Ind>
 	Fact 2
 	A Honda is regular.
       </Ind>
-    </oid>
+    </oid>-->
     <op><Rel>regular</Rel></op>
     <Ind>Honda</Ind>
   </Atom>
 
   <Atom>
-    <oid>
+    <!--<oid>
       <Ind>
 	Fact 3
 	Peter Miller's spending has been min 5000 euro in the previous year.
@@ -162,7 +161,7 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 	semi-formal constructs can be used for debugging the rules already
 	in an early phase of the formalization process.
       </Ind>
-    </oid>
+    </oid>-->
     <op><Rel>spending</Rel></op>
     <Ind>Peter Miller</Ind>
     <Ind>min 5000 euro</Ind>
@@ -172,15 +171,15 @@ xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xs
 </Assert>
 
 <Query>
-  <oid><Ind>Queried content</Ind></oid>
+  <!--<oid><Ind>Queried content</Ind></oid>-->
 
   <Atom>
-    <oid>
+    <!--<oid>
       <Ind>
 	Query 1
 	Give the discount amounts for all customers buying any products.
       </Ind>
-    </oid>
+    </oid>-->
     <op><Rel>discount</Rel></op>
     <Var>customer</Var>
     <Var>product</Var>

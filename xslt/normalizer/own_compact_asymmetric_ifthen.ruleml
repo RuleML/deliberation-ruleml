@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RuleML xmlns="http://ruleml.org/spec"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd">
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/datalog_relaxed.rnc"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<!--<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd"> -->
 
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
   <!-- start XML comment ...
 
-Note: This is a compact (i.e. minimally-roled) version of this example.
+Note: This is a compact (i.e. minimally-roled) version of this example,
+except in the first implication the premise and conclusion are switched.
+For validity against the XSD schemas, neither stripe would not be allowed to be skipped in this case.
+However, the relaxed serialization implemented in the Relax NG schemas is more permissive,
+and would allow one or the other of the stripes to be skipped, but not both.
 
 This example rulebase contains four rules.
 The first and second rules are implications; the third and fourth ones are facts.
@@ -37,31 +48,29 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ... end XML comment -->
   <Assert mapClosure="universal">
-	<Implies>
-		  <!-- explicit 'And' -->
-		  <then>
-		  <Atom>
-			<Rel>own</Rel>
-			<Var>person</Var>
-			<Var>object</Var>
-		  </Atom>
-		  </then>
-
-		  <And>
-			<Atom>
-			  <Rel>buy</Rel>
-			  <Var>person</Var>
-			  <Var>merchant</Var>
-			  <Var>object</Var>
-			</Atom>
-			<Atom>
-			  <Rel>keep</Rel>
-			  <Var>person</Var>
-			  <Var>object</Var>
-			</Atom>
-		  </And>
-		<oid><Rel>keep</Rel></oid>
-	</Implies>
+    <Implies>
+      <!-- explicit 'And' -->
+      <then>
+        <Atom>
+          <Rel>own</Rel>
+          <Var>person</Var>
+          <Var>object</Var>
+        </Atom>
+      </then>
+        <And>
+          <Atom>
+            <Rel>buy</Rel>
+            <Var>person</Var>
+            <Var>merchant</Var>
+            <Var>object</Var>
+          </Atom>
+          <Atom>
+            <Rel>keep</Rel>
+            <Var>person</Var>
+            <Var>object</Var>
+          </Atom>
+        </And>
+    </Implies>
     <!-- The second rule implies that a person buys an object from a merchant
 if the merchant sells the object to the person. -->
     <Implies>

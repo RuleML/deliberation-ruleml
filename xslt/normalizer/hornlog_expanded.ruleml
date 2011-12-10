@@ -4,7 +4,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
 
   <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
-  <content>
+  <act index="1">
     <Assert mapClosure="universal">
       <formula>
         <Implies>
@@ -203,5 +203,5 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog
         </Atom>
       </formula>
     </Assert>
-  </content>
+  </act>
 </RuleML>

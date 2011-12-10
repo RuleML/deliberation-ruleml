@@ -20,7 +20,7 @@
 
 	A. The namespace is changed from "http://www.ruleml.org/0.91/xsd" to "http://ruleml.org/spec".
 	 	
-	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd" to "http://ruleml.org/spec".
+	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd/..." to "http://ruleml.org/1.0/xsd/...".
 
 
 
@@ -112,9 +112,9 @@
   <xsl:template match="@xsi:schemaLocation[starts-with(.,'http://www.ruleml.org/0.91/xsd')]" priority="3"> 
       <xsl:attribute name="xsi:schemaLocation">
         <xsl:variable name="ns"
-          >http://www.ruleml.org/1.0/xsd</xsl:variable>
+          >http://ruleml.org/spec</xsl:variable>
         <xsl:variable name="url"
-          >http://www.ruleml.org/1.0/xsd</xsl:variable>
+          >http://ruleml.org/1.0/xsd</xsl:variable>
         <!-- store just the name of the schema -->
         <xsl:variable name="file"
           select="substring-after(., 'http://www.ruleml.org/0.91/xsd/')"/>
