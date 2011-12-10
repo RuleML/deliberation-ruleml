@@ -545,7 +545,7 @@ Equal
 <?xml version="1.0" encoding="UTF-8"?>
 
 <RuleML
-xmlns="http://www.ruleml.org/1.0/xsd"
+xmlns="http://ruleml.org/spec"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd"
 >
@@ -670,9 +670,9 @@ xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xs:schema 
-xmlns="http://www.ruleml.org/1.0/xsd" 
+xmlns="http://ruleml.org/spec" 
 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-targetNamespace="http://www.ruleml.org/1.0/xsd"
+targetNamespace="http://ruleml.org/spec"
 >
 
 	<xs:annotation>
