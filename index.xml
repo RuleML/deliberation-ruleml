@@ -547,7 +547,7 @@ Equal
 <RuleML
 xmlns="http://ruleml.org/spec"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/datalog.xsd"
+xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd"
 >
 
   <Assert mapClosure="universal">
@@ -742,9 +742,9 @@ output using the radio buttons just above the "Get Results" button.
 		<ul>
 		  <li><b>Target</b>: <code>http://www.ruleml.org/1.0/exa/Datalog-xsd/own-xsd.ruleml</code><br/>   (Real name: http://www.ruleml.org/1.0/exa/Datalog-xsd/own-xsd.ruleml<br/>    Length: 4311 bytes
 			  <br/>    Last Modified: Fri, 09 Dec 2011 18:22:28 GMT<br/>    Server: Apache/2.0.55 (Red Hat)) </li>
-			<li><b>docElt</b>: <code>{http://www.ruleml.org/1.0/xsd}RuleML</code></li>
-			<li>Validation was strict, starting with type <code>{http://www.ruleml.org/1.0/xsd}:RuleML.type</code></li>
-			<li><b>schemaLocs</b>: http://www.ruleml.org/1.0/xsd -&gt; http://www.ruleml.org/1.0/xsd/datalog.xsd</li>
+			<li><b>docElt</b>: <code>{http://ruleml.org/spec}RuleML</code></li>
+			<li>Validation was strict, starting with type <code>{http://ruleml.org/spec}:RuleML.type</code></li>
+			<li><b>schemaLocs</b>: http://ruleml.org/spec -&gt; http://www.ruleml.org/1.0/xsd/datalog.xsd</li>
 			<li>The schema(s) used for schema-validation had no errors</li>
 			<li>No schema-validity problems were found in the target </li>
 		</ul>
@@ -754,47 +754,47 @@ output using the radio buttons just above the "Get Results" button.
 
 <code>http://www.ruleml.org/1.0/xsd/datalog.xsd</code>
  (source: <code>schemaLoc</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/performative_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/desc_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/quantifier_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/connective_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/atom_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/slot_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/term_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 <code>http://www.ruleml.org/1.0/xsd/modules/iri_module.xsd</code>
  (source: <code>include</code>) for
-   <code>http://www.ruleml.org/1.0/xsd</code>,
+   <code>http://ruleml.org/spec</code>,
     succeeded</p>      
 		<hr/>
 		
