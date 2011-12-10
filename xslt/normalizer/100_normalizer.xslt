@@ -2,9 +2,9 @@
 
 <xsl:stylesheet version="1.0" 
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:ruleml="http://www.ruleml.org/1.0/xsd"
+xmlns:ruleml="http://ruleml.org/spec"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://www.ruleml.org/1.0/xsd">
+xmlns="http://ruleml.org/spec">
 
 <!-- XSLT stylesheet for normalizing RuleML 1.00  documents which is built upon
 	 the 0.91 version and has been tested with examples at ruleml.org/1.0/exa.

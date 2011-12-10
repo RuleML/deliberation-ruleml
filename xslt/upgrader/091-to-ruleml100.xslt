@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:ruleml="http://www.ruleml.org/1.0/xsd"
+  xmlns:ruleml="http://ruleml.org/spec"
   xmlns:ruleml091="http://www.ruleml.org/0.91/xsd"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   exclude-result-prefixes="ruleml091">
@@ -18,9 +18,9 @@
 
 	Changes from RuleML 0.91 to 1.0 reflected in this document:
 
-	A. The namespace is changed from "http://www.ruleml.org/0.91/xsd" to "http://www.ruleml.org/1.0/xsd".
+	A. The namespace is changed from "http://www.ruleml.org/0.91/xsd" to "http://ruleml.org/spec".
 	 	
-	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd" to "http://www.ruleml.org/1.0/xsd".
+	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd" to "http://ruleml.org/spec".
 
 
 
