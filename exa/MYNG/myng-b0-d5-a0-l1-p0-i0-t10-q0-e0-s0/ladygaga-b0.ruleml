@@ -2,7 +2,7 @@
 
 <?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x0&amp;default=x5&amp;termseq=x0&amp;lng=x1&amp;propo=x0&amp;implies=x0&amp;terms=x10&amp;quant=x0&amp;expr=x0&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
 <!--<?xml-model href="http://ruleml.org/1.0/xsd/hornlogeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML xmlns="http://www.ruleml.org/1.0/xsd">
+<RuleML xmlns="http://ruleml.org/spec">
   <!-- This example is taken from 
     "Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG" (2011)
     Tara Athan and Harold Boley

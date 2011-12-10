@@ -1,7 +1,7 @@
 <?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
 
 <!-- FIXME: Need to find out if Entails has an implicit closure assumption-->
-<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+<RuleML xmlns="http://ruleml.org/spec"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:ex="http://example.org#"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

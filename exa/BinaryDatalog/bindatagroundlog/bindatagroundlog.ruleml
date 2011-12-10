@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundlog_relaxed.rnc"?>
 <!--<?xml-model href="http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<!--<RuleML xmlns="http://www.ruleml.org/1.0/xsd"
+<!--<RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.ruleml.org/1.0/xsd http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd"> -->
+  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/bindatagroundlog.xsd"> -->
 
-<RuleML xmlns="http://www.ruleml.org/1.0/xsd">
+<RuleML xmlns="http://ruleml.org/spec">
 
 
 <!-- a syntactic example rulebase for testing the 'UR'-Centered Binary Ground-Datalog RuleML sublanguage -->
