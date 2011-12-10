@@ -14,7 +14,7 @@ $now =  date(DATE_ATOM,time());
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
-namespace ruleml = "http://www.ruleml.org/1.0/xsd"
+namespace ruleml = "http://ruleml.org/spec"
 
 dc:title [ "RuleML Custom-Built Schema" ]
 dc:version [ "1.0.01" ]
