@@ -43,19 +43,62 @@
 
 			<h2>Latest version: <a href="http://ruleml.org/spec/">ruleml.org/spec/</a></h2>
 			<p/>
-			<h2>Quick links:</h2>
-			<h2><a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Models</a>,
-			  <a href="http://www.ruleml.org/1.0/xsd/">XSD Schemas</a>,
-			  <a href="http://www.ruleml.org/1.0/relaxng/">Relax NG Schemas</a>,
-			  <a href="http://www.ruleml.org/1.0/myng/">MYNG</a>,
-			  <a href="http://www.ruleml.org/1.0/xslt/normalizer/">Normalizer</a>,
-			<a href="http://www.ruleml.org/1.0/xslt/upgrader/">Upgrader</a>,
-			<a href="http://www.ruleml.org/1.0/exa/">Examples</a>,
-			  <a href="http://www.ruleml.org/1.0/glossary/">Glossary</a>,
-			  <a href="http://www.ruleml.org/1.0/doc/">Schema Docs</a>,
-			  <a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a>
-			</h2>
 		</center>
+	  <h2>Quick links:</h2>
+	  <itemize>
+	    <item><a name="parent-spec"/>
+	      Parent Specification of RuleML 
+	      (<a href="http://ruleml.org/">Homepage</a>) 
+	      <br/> Prerequisites: None, Level: Formal</item>
+	    <item><a name="overarching"/>
+	      Overarching Specification of Web Rules 
+	      (<a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a>) 
+	      <br/> Prerequisites: None, Level: Semi-formal </item>
+	    <item><a name="primer"/>
+	      Introduction to the RuleML Language 
+	      (<a href="http://ruleml.org/papers/Primer/">Primer</a>) 
+	      <br/> Prerequisites: None, Level: Informative</item>
+	    <item><a name="content-model"/>
+	      High-level Presentation of the RueML Serialization Grammar 
+	      (<a href="http://www.ruleml.org/1.0/xsd/content_models_10.pdf">Content Models</a>) 
+	      <br/> Prerequisites: EBNF, Level: Semi-formal</item>
+	    <item><a name="xsd-schemas"/>
+	      Machine-readable schemas in the XML Schema Definition Lanuage 
+	      (<a href="http://www.ruleml.org/1.0/xsd/">XSD Schemas</a>) 
+	      <br/> Prerequisites: XSD, Level: Formal</item>
+	    <item><a name="relaxng-schemas"/>
+	      Machine-readable grammar in the Relax NG language 
+	      (<a href="http://www.ruleml.org/1.0/relaxng/">Relax NG Schemas</a>) 
+	      <br/> Prerequisites: <a href="http://relaxng.org">Relax NG</a>, Level: Formal</item>
+	    <item><a name="myng"/> 
+	      Modular sYNtax confiGurator, a GUI for customizing Relax NG schemas 
+	      (<a href="http://www.ruleml.org/1.0/myng/">MYNG</a>) 
+	      <br/> Prerequisites: None, Level: Formal</item>
+	    <item><a name="normalizer"/>
+	      Stylesheet for transforming into the normal-form serialization 
+	      (<a href="http://www.ruleml.org/1.0/xslt/normalizer/">Normalizer</a>) 
+	      <br/> Prerequisites: XSLT, Level: Formal</item>
+	    <item><a name="upgrader"/>
+	      Stylesheet for transforming from RuleML Version 0.91 into Version 1.0
+	      (<a href="http://www.ruleml.org/1.0/xslt/upgrader/">Upgrader</a>)
+	      <br/> Prerequisites: XSLT, Level: Formal</item>
+	    <item><a name="examples"/>
+	      Illustrative Instances of the RuleML Version 1.0 Language 
+	      (<a href="http://www.ruleml.org/1.0/exa/">Examples</a>) 
+	      <br/> Prerequisites: <a href="#primer">Primer</a>, Level: Informative</item>
+	    <item><a name="glossary"/>
+	      Definitions of Elements and Attributes
+	      (<a href="http://www.ruleml.org/1.0/glossary/">Glossary</a>) 
+	      <br/> Prerequisites: Primer, Level: Semi-formal</item>
+	    <item><a name="schema-docs"/>
+	      Diagrammatic Presentation of the RuleML Serialization Grammar 
+	      (<a href="http://www.ruleml.org/1.0/doc/">Schema Docs</a>) 
+	      <br/> Prerequisites: Primer, Level: Semi-formal</item>
+	    <item><a name="implementations"/>
+	      Implemented RuleML tools 
+	      (<a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a>)
+	    </item>  
+	  </itemize>
 		<br/>
 	  <!--<p>This is the specification for RuleML version 1.0, as the overarching specification of Web rules that encompasses RIF RuleML as a subfamily, and takes into account corresponding OASIS, OMG (e.g., PRR, SBVR), and ISO (e.g., Common Logic) specifications. </p>-->
 <!--	  <p>
