@@ -7,7 +7,7 @@
 			<br/>
 			<br/>
 			<h1>Glossary of RuleML 1.0</h1>
-			<h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq, Tara Athan</h2>
+			<h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq, Tara Athan, Harold Boley</h2>
 			<table border="0" align="center">
 				<tr>
 					<td colspan="2" align="center">
@@ -60,7 +60,7 @@
 		  </dd>
 		
 			<dt id="gloss-And"><code>&lt;And&gt;</code></dt>
-			<dd>A conjunctive expression, where <code>&lt;And&gt;Atom&lt;/And&gt;</code> is equivalent to <code>Atom</code>.
+		  <dd>A conjunctive expression, where <code>&lt;And&gt;</code>F<code>&lt;/And&gt;</code> is equivalent to F for any formula F, and <code>&lt;And/&gt;</code> is always true.
 <p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
 				</p>
 				<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
@@ -75,14 +75,14 @@
 			
 			
 			<dt id="gloss-Assert"><code>&lt;Assert&gt;</code></dt>
-			<dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is asserted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives.
+			<dd>A performative wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is asserted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'tell').
 <p>Attributes: <a href="#gloss-@mapDirection"><code>@mapDirection</code></a>, <a href="#gloss-@mapClosure"><code>@mapClosure</code></a>, <a href="#gloss-@mapMaterial"><code>@mapMaterial</code></a></p>
 				<p>(See: <a href="../xsd/modules/performative_module.xsd">performative module</a> and <a href="http://www.ruleml.org/fol">FOL RuleML</a>)</p>
 			</dd>
 			
 			
 			<dt id="gloss-Atom"><code>&lt;Atom&gt;</code></dt>
-			<dd>A logical atom, i.e. an expression formed from a predicate (or relation) applied to a collection of its (logical) arguments.  The relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>).  Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments. Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example, "John is the father of Mary":
+			<dd>A logical atom, i.e. an expression formed from a predicate (or relation) applied to a collection of operands.  The relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) is followed by a sequence of zero or more positional arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>).  Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the positional arguments. Rest variables -- <a href="#gloss-repo"><code>&lt;repo&gt;</code></a> (positional) and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a> (slotted) -- are also permitted. For example, one way to formalize "John is the father of Mary":
 <pre><![CDATA[
 <Atom>
   <Rel>father</Rel>
@@ -117,7 +117,7 @@
 			
 			
 			<dt id="gloss-Data"><code>&lt;Data&gt;</code></dt>
-			<dd>A fixed argument like RDF literals. It may be optionally associated with an
+			<dd>A fixed character sequence (like XML PCDATA and RDF literals). It may be optionally associated with an
 <a href="http://www.w3.org/TR/xmlschema-2/#built-in-datatypes">XML Schema built-in datatype</a> using the <code>xsi:type</code> attribute. For example:
 <pre><![CDATA[<Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data>]]></pre>
 is valid (according to the <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">dateTime</a> datatype), but the following is not:
@@ -154,13 +154,13 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			</dd>
 						
 			<dt id="gloss-Entails"><code>&lt;Entails&gt;</code></dt>
-			<dd>Used to <a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>/<a href="#gloss-Query"><code>&lt;Query&gt;</code></a> that/whether the sequence of formulas in the first <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a> entails the sequence of formulas in the second, e.g. the first acting as a knowledge base and the second acting as its integrity constraints. For example: <a href="http://www.ruleml.org/1.0/exa/FOL+/naffolog/ssn.ruleml"><code>ssn.ruleml</code></a>
+		  <dd>Used to <a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>/<a href="#gloss-Query"><code>&lt;Query&gt;</code></a> that/whether the sequence of formulas in the first <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a> entails the sequence of formulas in the second, e.g. the first acting as a knowledge base and the second acting as its integrity constraints. For example: <a href="http://www.ruleml.org/1.0/exa/Folog/ssn.ruleml"><code>ssn.ruleml</code></a>
 			<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 
 			
 			<dt id="gloss-Equal"><code>&lt;Equal&gt;</code></dt>
-			<dd>An equational formula consisting of two expressions, each of which contains an argument and may be optionally surrounded by a left (<a href="#gloss-left"><code>&lt;left&gt;</code></a>) or a right (<a href="#gloss-right"><code>&lt;right&gt;</code></a>) role. For example, &quot;factorial(0)=1&quot; may be equivalently represented in the following two ways:
+			<dd>An equational formula consisting of two expressions, each of which may be optionally surrounded by a left (<a href="#gloss-left"><code>&lt;left&gt;</code></a>) or a right (<a href="#gloss-right"><code>&lt;right&gt;</code></a>) role. For example, &quot;factorial(0)=1&quot; may be equivalently represented in the following two ways:
 <pre><![CDATA[
 <Equal>
   <Expr in="yes">
@@ -188,7 +188,7 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			
 			
 			<dt id="gloss-Equivalent"><code>&lt;Equivalent&gt;</code></dt>
-			<dd>An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>). It consists of a pair of (optionally skipped) <a href="#gloss-torso"><code>&lt;torso&gt;</code></a> roles. For example, "A person owning an object is equivalent to an object belonging to a person":
+			<dd>An equivalence formula, which is "syntactic sugar" for a pair of conjoined converse implication rules (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>). It consists of a pair of (optionally skipped) <a href="#gloss-torso"><code>&lt;torso&gt;</code></a> roles. For example, "A person owning an object is equivalent to an object belonging to a person":
 <pre><![CDATA[
 <Equivalent>
   <torso>
@@ -241,7 +241,7 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			
 			
 			<dt id="gloss-formula"><code>&lt;formula&gt;</code></dt>
-			<dd>The formula role of a conjunctive (<a href="#gloss-And"><code>&lt;And&gt;</code></a>) or disjunctive (<a href="#gloss-Or"><code>&lt;Or&gt;</code></a>) expression, quantifier (<a href="#gloss-Forall"><code>&lt;Forall&gt;</code></a> or <a href="#gloss-Exists"><code>&lt;Exists&gt;</code></a>), or performative (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>).
+			<dd>The formula role of a conjunctive (<a href="#gloss-And"><code>&lt;And&gt;</code></a>) or disjunctive (<a href="#gloss-Or"><code>&lt;Or&gt;</code></a>) formula, quantifier (<a href="#gloss-Forall"><code>&lt;Forall&gt;</code></a> or <a href="#gloss-Exists"><code>&lt;Exists&gt;</code></a>), or performative (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>).
 <p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>, <a href="../xsd/modules/performative_module.xsd">performative module</a> and <a href="../xsd/modules/quantifier_module.xsd">quantifier module</a>)</p>
 			</dd>
 			
@@ -261,7 +261,7 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 					
 			
 			<dt id="gloss-if"><code>&lt;if&gt;</code></dt>
-			<dd>The if of an implication rule (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) containing the premise(s), also known as the "antecedent" or "if" part of the rule. Also used as the "antecedent" part of an entailment (<a href="#gloss-Entails"><code>&lt;Entails&gt;</code></a>).
+			<dd>The "if" part of an implication rule (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) containing the premise(s), also known as the "antecedent" or "head" of the rule. Also used as the "antecedent" part of an entailment (<a href="#gloss-Entails"><code>&lt;Entails&gt;</code></a>).
 <p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 			
@@ -317,7 +317,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-Ind"><code>&lt;Ind&gt;</code></dt>
-			<dd>An individual constant, as in predicate logic, which can also be considered to be a fixed argument like RDF resources.
+			<dd>An individual constant, as in predicate logic (which can have an IRI like an RDF resource).
 <p>Attributes: <a href="#gloss-@type"><code>@type</code></a>, <a href="#gloss-@iri"><code>@iri</code></a>
 				</p>
 				<p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>)</p>
@@ -433,13 +433,13 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-op"><code>&lt;op&gt;</code></dt>
-			<dd>An operator expression including either a relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) of an atom (<a href="#gloss-op"><code>&lt;Atom&gt;</code></a>), a function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) of a (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>), or a neutralized constant (<a href="#gloss-Const"><code>&lt;Const&gt;</code></a>) of a Hilog term (<a href="#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a>).
+			<dd>A role for operators, containing either a relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) of an atom (<a href="#gloss-op"><code>&lt;Atom&gt;</code></a>), a function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) of a (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>), or a neutralized constant (<a href="#gloss-Const"><code>&lt;Const&gt;</code></a>) of a Hilog term (<a href="#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a>).
 <p>(See: <a href="../xsd/modules/atom_module.xsd">atom module</a>, <a href="../xsd/modules/expr_module.xsd">expr module</a> and <a href="../xsd/modules/holog_module.xsd">holog module</a>)</p>
 			</dd>
 			
 			
 			<dt id="gloss-Or"><code>&lt;Or&gt;</code></dt>
-			<dd>A disjunctive expression, where <code>&lt;Or&gt;Atom&lt;/Or&gt;</code> is equivalent to <code>Atom</code>. 
+			<dd>A disjunctive formula, where <code>&lt;Or&gt;Atom&lt;/Or&gt;</code> is equivalent to <code>Atom</code>. 
 <p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a></p>
 				<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
@@ -496,7 +496,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 
 			
 			<dt id="gloss-Query"><code>&lt;Query&gt;</code></dt>
-			<dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is queried, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives.
+			<dd>A performative acting as a wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is queried, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'ask').
 <p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
 				</p>
 				<p>(See: <a href="../xsd/modules/performative_module.xsd">performative module</a> and <a href="http://www.ruleml.org/fol">FOL RuleML</a>)</p>
@@ -528,7 +528,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			</dd>
 			
 			<dt id="gloss-Retract"><code>&lt;Retract&gt;</code></dt>
-			<dd>A performative similar to <abbr title="Knowledge Query Manipulation Language">KQML</abbr>'s 'untell' that acts as a wrapper specifying that its	content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is to be deleted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives. For example, if John no longer likes Mary (after an argument, perhaps) then this fact could be retracted:
+			<dd>A performative wrapper specifying that its	content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is to be deleted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'untell'). For example, if John no longer likes Mary then this fact could be retracted:
 <pre><![CDATA[
  <Retract>
    <Atom>
@@ -577,7 +577,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-Skolem"><code>&lt;Skolem&gt;</code></dt>
-			<dd>A Skolem individual constant, like RDF's blank nodes.
+			<dd>A Skolem individual constant.
 <p>Attributes: <a href="#gloss-@type"><code>@type</code></a></p>
 				<p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>, and the <a href="http://www.ruleml.org/posl/poslintweb-talk.pdf">Integrating Positional and Slotted Knowledge on the Semantic Web</a> slides)</p>
 			</dd>
@@ -615,14 +615,14 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-then"><code>&lt;then&gt;</code></dt>
-			<dd>The 'then' of an implication rule (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) containing the conclusion, also known as the "consequent" or "then" part of the rule.
+			<dd>The "then" part of an implication rule (<a href="#gloss-Implies"><code>&lt;Implies&gt;</code></a>) containing the conclusion, also known as the "consequent" or "head" of the rule.
 			Also used as the "consequent" part of an entailment (<a href="#gloss-Entails"><code>&lt;Entails&gt;</code></a>).
 			<p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 
 			
 			<dt id="gloss-torso"><code>&lt;torso&gt;</code></dt>
-			<dd>A symmetric role used in an equivalence expression (<a href="#gloss-Equivalent"><code>&lt;Equivalent&gt;</code></a>) combining the asymmetric <a href="#gloss-then"><code>&lt;then&gt;</code></a> and <a href="#gloss-if"><code>&lt;if&gt;</code></a>.
+			<dd>A symmetric role used in an equivalence formula (<a href="#gloss-Equivalent"><code>&lt;Equivalent&gt;</code></a>) combining the asymmetric <a href="#gloss-then"><code>&lt;then&gt;</code></a> and <a href="#gloss-if"><code>&lt;if&gt;</code></a>.
 <p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>)</p>
 			</dd>
 			
@@ -679,7 +679,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 		<p>
 		Site Contact:
 		<a href="http://alt2is.com">Tara Athan</a>.
-		Page Version: 2011-12-09
+		Page Version: 2011-12-14
 		<br/>
 			<br/>
 			<br/>
