@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			XML Schema for a Binary Ground-Datalog RuleML sublanguage
 			File: bindatagroundlog.xsd
 			Version: 1.0
-			Last Modification: 2010-08-19
+			Last Modification: 2011-12-12
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -36,7 +36,21 @@ elementFormDefault="qualified"
 				<xs:element ref="Reify"/>					
 			</xs:choice>
 		</xs:group>
-		
+
+	  <!--
+	    remove Var so that oid's content model is: (Ind | Data | Skolem | Reify)
+	    
+	  -->		
+	  <xs:group name="oid.content">
+	    <xs:choice>
+	      <xs:element ref="Ind"/>
+	      <xs:element ref="Data"/>
+	      <xs:element ref="Skolem"/>
+	      <xs:element ref="Reify"/>					
+	    </xs:choice>
+	  </xs:group>
+	  
+
 		<!--
 			remove Forall (since ground) so that Assert's content model is:
 			( oid?, (formula | Rulebase | Atom | Implies | Equivalent | Entails)* )

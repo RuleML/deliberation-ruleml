@@ -12,13 +12,13 @@ elementFormDefault="qualified"
 	<xs:annotation>
 		<xs:documentation xml:lang="en">
 			XML Schema for a Frames Layer RuleML sublanguage with equational logic
-			File: hoframehornlogeq.xsd
+			File: framehohornlogeq.xsd
 			Version: 1.0
-			Last Modification: 2010-08-26
+			Last Modification: 2011-12-12
 		</xs:documentation>
 	</xs:annotation>
 	
-	<!-- hoframehornlog includes the 'frame' module -->
+	<!-- framehohornlogeq includes the 'frame' module -->
 	<xs:include schemaLocation="modules/frame_module.xsd"/>
 
 	<!--
@@ -53,7 +53,16 @@ elementFormDefault="qualified"
 			... and to slot-frame so that its content model is:
 			( (Const | Uniterm), (Const | Uniterm | Skolem | Var | Reify | Get | Set)? )
 		-->
-		
+
+	  <!-- add Get and Set to oid -->
+	  <xs:group name="oid.content">
+	    <xs:choice>
+	      <xs:group ref="oid.content"/>
+	      <xs:element ref="Get"/>
+	      <xs:element ref="Set"/>
+	    </xs:choice>
+	  </xs:group>
+	  
 		<!-- add Get to slot names -->
 		<xs:group name="slot-name.extend">
 			<xs:choice>

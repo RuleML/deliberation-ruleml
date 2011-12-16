@@ -13,7 +13,7 @@ elementFormDefault="qualified"
 			XML Schema for a Higher-Order Logic RuleML sublanguage
 			File: hohornlog.xsd
 			Version: 1.0
-			Last Modification: 2010-08-26
+			Last Modification: 2011-12-12
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -94,7 +94,7 @@ elementFormDefault="qualified"
 			note that the above indirectly adds Uniterm to slot fillers:
 			( (), (Const | Uniterm | Skolem | Var | Reify) )
 		-->
-		
+	  
 		<!--
 			add Uniterm and Const to slot names:
 			( (Const | Uniterm), (Const | Uniterm | Skolem | Var | Reify) )
