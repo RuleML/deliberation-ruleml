@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://ruleml.org/spec http://ruleml.org/1.0/xsd/datalog.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://ruleml.org/1.0/xsd/datalog.xsd">
 
   <!-- start XML comment ...
 
-Note: This is a compact (i.e. minimally-roled) version of this example.
+Note: This is an expanded (i.e. normalized, including all role tags, canonical ordering and explicit attributes) version of this example.
 
 This example rulebase contains four rules.
 The first and second rules are implications; the third and fourth ones are facts.
@@ -17,23 +17,23 @@ if that person buys the object from a merchant and the person keeps the object.
 
 As an OrdLab Tree:
 
-Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          |                         |
-          |                         |
-          |                         |
-        Atom~~~~~~~~~~~~~~~~~~     And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                 |     |     |           |                                   |
-                 |     |     |           |                                   |
-                 |     |     |           |                                   |        
-                Rel   Var   Var        Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~
-                 .     .     .                  |     |      |       |              |     |     |
-                 .     .     .                  |     |      |       |              |     |     |
-                 .     .     .                  |     |      |       |              |     |     |
-                own  person object             Rel   Var    Var     Var            Rel   Var   Var
-                                                .     .      .       .              .     .     . 
-                                                .     .      .       .              .     .     .
-                                                .     .      .       .              .     .     .
-                                               buy  person merchant object        keep  person object
+
+Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        |                                                                        |
+        if~~                                                                    then~~         
+           |                                                                         |
+           And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                              Atom~~~~~~~~~~~~~~~~             
+                 |                                   |                                     |     |     |
+               formula~~                           formula~~                               op~  arg~  arg~
+                       |                                   |                                 |     |     |     
+                      Atom~~~~~~~~~~~~~~~~~~~~~~~~        Atom~~~~~~~~~~~~~~~               Rel   Var   Var
+                            |     |      |       |              |     |     |                .     .     .
+                            op~  arg~   arg~    arg~            op~  arg~  arg~              .     .     .
+                              |     |      |       |              |     |     |              .     .     .
+                             Rel   Var    Var     Var            Rel   Var   Var            own  person object
+                              .     .      .       .              .     .     . 
+                              .     .      .       .              .     .     .
+                             buy  person merchant object        keep  person object
 
 ... end XML comment -->
   <act index="1">
@@ -41,7 +41,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       <formula>
         <Implies>
           <!-- explicit 'And' -->
-		  <if>
+          <if>
             <And>
               <formula>
                 <Atom>
@@ -74,7 +74,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
               </formula>
             </And>
           </if>
-		  <then>
+          <then>
             <Atom>
               <op>
                 <Rel>own</Rel>
