@@ -222,11 +222,12 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 
   <section label="Mapping">
     <header>Attribute Mapping</header>
-    <p>There are three pairs of attributes in Rule<abbr>ML</abbr> that have names which differ only by a 'map' prefix: <a href="./glossary#gloss-@closure"><code>@closure</code></a> and <a href="./glossary#gloss-@mapClosure"><code>@mapClosure</code></a>, <a href="./glossary#gloss-@direction"><code>@direction</code></a> and <a href="./glossary#gloss-@mapDirection"><code>@mapDirection</code></a>, and <a href="./glossary#gloss-@material"><code>@material</code></a> and <a href="./glossary#gloss-@mapMaterial"><code>@mapMaterial</code></a>. The naming convention reflects attribute 'mapping' through <abbr>XML</abbr> trees, where</p>
+    <p>As in previous versions of Rule<abbr>ML</abbr>, there are three pairs of attributes in Rule<abbr>ML</abbr> Version 1.0 that have names which differ only by a 'map' prefix: <a href="./glossary#gloss-@closure"><code>@closure</code></a> and <a href="./glossary#gloss-@mapClosure"><code>@mapClosure</code></a>, <a href="./glossary#gloss-@direction"><code>@direction</code></a> and <a href="./glossary#gloss-@mapDirection"><code>@mapDirection</code></a>, and <a href="./glossary#gloss-@material"><code>@material</code></a> and <a href="./glossary#gloss-@mapMaterial"><code>@mapMaterial</code></a>. The naming convention reflects attribute 'mapping' through <abbr>XML</abbr> trees, where</p>
     <pre><![CDATA[<TypeTag mapAttribute="..."><c1>. . .</c1>. . .<cN>. . .</cN></TypeTag>]]></pre>
     <p>basically acts like</p>
     <pre><![CDATA[<TypeTag><c1 attribute="...">. . .</c1>. . .<cN attribute="...">. . .</cN></TypeTag>]]></pre>
   </section>
+The attribute is mapped uniformly to (only) the first generation of "type tags" descended from the element in which the "map" attribute appears. For this abbreviated encoding to be applicable, the value of the attribute must be homogeneous within a given level of type tags.  
   
 
 <section label="Upgrader">
@@ -266,18 +267,20 @@ Rule<abbr>ML</abbr> Version 1.0 mostly builds on top of 0.91.)-->  Additional tr
 <section label="Normalization">
 	<header><abbr>XSLT</abbr>-Based Normalizer</header>
 
-  <p>An <abbr>XSLT</abbr> stylesheet will be developed (see the <a href="#normalizer">Normalizer</a> directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, reconstructing all skipped role tags to be in a fully-expanded, normal form.  An example of the normal form is the <a href="xslt/normalizer/own_expanded.ruleml">expanded version of the 'own' example</a>.
+  <p>RuleML has always allowed abbreviated encoding (skipped role tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing role tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Offical Normalizer">RON</abbr></a>, also see the <a href="#normalizer">Normalizer</a> directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
+    An example of the normal form is the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a> of the <a href="xslt/normalizer/own_compact.ruleml">compact 'own' example</a>.
 	</p>
   <p>
-	  The goal of this normalizer is the following:</p>
+	  The goals of this normalizer include the following:</p>
 <itemize>
   <!--<item>Pre-validate to test that all element names, taken individually, belong to Rule<abbr>ML</abbr> Version 1.0. This works for all given child permutations but does not check for syntax unlike the Rule<abbr>ML</abbr> validation.</item>-->
-<item>Reconstruct all skipped or optional role tags to be in a fully-expanded normal form also known as fully striped form.</item>
-<item>Perform canonical child ordering of sub-elements.</item>
+<item>Reconstruct all skipped or optional role tags to produce a fully striped form;</item>
+<item>Perform canonical child ordering of sub-elements;</item>
+  <item>Make all default attributes explicit.</item>
 </itemize>
-<p>We say that using this normalizer followed by <abbr>XSD</abbr>-based Rule<abbr>ML</abbr> validation performs "normalidation" on Rule<abbr>ML</abbr> instances. That is to say, not only are skipped or missing role tags inserted into the Rule<abbr>ML</abbr> Version 1.0 instance in order to normalize it, but the general tree structure of the file is also validated syntactically to insure that type and role tags only appear in correct positions.</p>
+<p>We say that using this normalizer followed by schema-based Rule<abbr>ML</abbr> validation performs "normalidation" on Rule<abbr>ML</abbr> instances. That is to say, not only are missing role tags and attributes with default values inserted into the Rule<abbr>ML</abbr> Version 1.0 instance in order to normalize it, but the general tree structure of the file is also validated syntactically to insure that type and role tags only appear in correct positions.</p>
 
-The following is a list of the operations the <abbr>XSLT</abbr> Normalizer should perform whenever it is used on a Rule<abbr>ML</abbr> Version 1.0 file. It includes adding missing role tags, rearranging elements into the canonical order and making attributes with default values explicit.
+The following is a list of the operations the <abbr>XSLT</abbr> Normalizer should perform whenever it is used on a Rule<abbr>ML</abbr> Version 1.0 file.
 
 <itemize>
 <item><a href="./glossary#gloss-Implies"><code>&lt;Implies&gt;</code></a>, <a href="./glossary#gloss-Entails"><code>&lt;Entails&gt;</code></a>
@@ -883,7 +886,7 @@ output using the radio buttons just above the "Get Results" button.
     
     <p>Attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a> is replaced with 
       <a href="./glossary#gloss-@iri"><code>@iri</code></a>.
-      This attribute is used to identify, by International Resource Identifier (IRI),
+      This attribute is used to identify, by Internationalized Resource Identifier (IRI),
       the elements <a href="./glossary#gloss-ind"><code>&lt;Ind&gt;</code></a>, 
       <a href="./glossary#gloss-rel"><code>&lt;Rel&gt;</code></a> and 
       <a href="./glossary#gloss-fun"><code>&lt;Fun&gt;</code></a> as individuals,
