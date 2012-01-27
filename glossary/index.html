@@ -18,7 +18,9 @@
          			
          <h1>Glossary of RuleML 1.0</h1>
          			
-         <h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq, Tara Athan</h2>
+         <h2>David Hirtle, Tshering Dema, Doan Dai Duong, Le Thi Thu Thuy, Omair Shafiq, Tara Athan,
+            Harold Boley
+         </h2>
          			
          <table border="0" align="center">
             				
@@ -144,9 +146,8 @@
          			
          <dt id="gloss-Assert"><code>&lt;Assert&gt;</code></dt>
          			
-         <dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content (optionally surrounded
-            by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is asserted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural
-            performatives.
+         <dd>A performative wrapper specifying that its content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is asserted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural
+            performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'tell').
             
             <p>Attributes: <a href="#gloss-@mapDirection"><code>@mapDirection</code></a>, <a href="#gloss-@mapClosure"><code>@mapClosure</code></a>, <a href="#gloss-@mapMaterial"><code>@mapMaterial</code></a></p>
             				
@@ -160,7 +161,9 @@
          <dt id="gloss-Atom"><code>&lt;Atom&gt;</code></dt>
          			
          <dd>A logical atom, i.e. an expression formed from a predicate (or relation) applied to
-            a collection of its (logical) arguments.  The relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>).  Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments. Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example, "John is the father of Mary":
+            a collection of operands.  The relation (<a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>) is followed by a sequence of zero or more positional arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>).  Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the positional arguments. Rest variables
+            -- <a href="#gloss-repo"><code>&lt;repo&gt;</code></a> (positional) and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a> (slotted) -- are also permitted. For example, one way to formalize "John is the father
+            of Mary":
             <b><pre>
 &lt;Atom&gt;
   &lt;Rel&gt;father&lt;/Rel&gt;
@@ -220,7 +223,8 @@
          			
          <dt id="gloss-Data"><code>&lt;Data&gt;</code></dt>
          			
-         <dd>A fixed argument like RDF literals. It may be optionally associated with an
+         <dd>A fixed character sequence (like XML PCDATA and RDF literals). It may be optionally
+            associated with an
             <a href="http://www.w3.org/TR/xmlschema-2/#built-in-datatypes">XML Schema built-in datatype</a> using the <code>xsi:type</code> attribute. For example:
             <b><pre>&lt;Data xsi:type="xs:dateTime"&gt;2002-10-10T17:00:00Z&lt;/Data&gt;</pre></b>
             is valid (according to the <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">dateTime</a> datatype), but the following is not:
@@ -292,8 +296,8 @@
          			
          <dt id="gloss-Equal"><code>&lt;Equal&gt;</code></dt>
          			
-         <dd>An equational formula consisting of two expressions, each of which contains an argument
-            and may be optionally surrounded by a left (<a href="#gloss-left"><code>&lt;left&gt;</code></a>) or a right (<a href="#gloss-right"><code>&lt;right&gt;</code></a>) role. For example, "factorial(0)=1" may be equivalently represented in the following
+         <dd>An equational formula consisting of two expressions, each of which may be optionally
+            surrounded by a left (<a href="#gloss-left"><code>&lt;left&gt;</code></a>) or a right (<a href="#gloss-right"><code>&lt;right&gt;</code></a>) role. For example, "factorial(0)=1" may be equivalently represented in the following
             two ways:
             <b><pre>
 &lt;Equal&gt;
@@ -516,8 +520,7 @@
          			
          <dt id="gloss-Ind"><code>&lt;Ind&gt;</code></dt>
          			
-         <dd>An individual constant, as in predicate logic, which can also be considered to be
-            a fixed argument like RDF resources.
+         <dd>An individual constant, as in predicate logic (which can have an IRI like an RDF resource).
             
             <p>Attributes: <a href="#gloss-@type"><code>@type</code></a>, <a href="#gloss-@iri"><code>@iri</code></a>
                				
@@ -774,9 +777,9 @@
          			
          <dt id="gloss-Query"><code>&lt;Query&gt;</code></dt>
          			
-         <dd>A <abbr title="Knowledge Query Manipulation Language">KQML</abbr>-like performative acting as a wrapper specifying that its content (optionally surrounded
+         <dd>A performative acting as a wrapper specifying that its content (optionally surrounded
             by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is queried, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural
-            performatives.
+            performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'ask').
             
             <p>Attributes: <a href="#gloss-@closure"><code>@closure</code></a>
                				
@@ -837,10 +840,9 @@
          			
          <dt id="gloss-Retract"><code>&lt;Retract&gt;</code></dt>
          			
-         <dd>A performative similar to <abbr title="Knowledge Query Manipulation Language">KQML</abbr>'s 'untell' that acts as a wrapper specifying that its	content (optionally surrounded
-            by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is to be deleted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural
-            performatives. For example, if John no longer likes Mary (after an argument, perhaps)
-            then this fact could be retracted:
+         <dd>A performative wrapper specifying that its	content (optionally surrounded by a <a href="#gloss-formula"><code>&lt;formula&gt;</code></a> role) is to be deleted, making an 'implicit <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>' assumption. This allows the separation of declarative content from such procedural
+            performatives (as pioneered by <a href="http://www.csee.umbc.edu/csee/research/kqml/whats-kqml.html">KQML</a>, which has a similar performative 'untell'). For example, if John no longer likes
+            Mary then this fact could be retracted:
             <b><pre>
  &lt;Retract&gt;
    &lt;Atom&gt;
@@ -923,7 +925,7 @@
          			
          <dt id="gloss-Skolem"><code>&lt;Skolem&gt;</code></dt>
          			
-         <dd>A Skolem individual constant, like RDF's blank nodes.
+         <dd>A Skolem individual constant.
             
             <p>Attributes: <a href="#gloss-@type"><code>@type</code></a></p>
             				
@@ -1012,8 +1014,8 @@
          			
          			
          <dt id="gloss-@type"><code>@type</code></dt>
-         			
-         <dd>A role for optionally specifying a term (user-defined) type.
+         		  
+         <dd>A role for optionally specifying a term (user-defined) type. See the <a href="../exa/Hornlog/hornlog/oojdrew.ruleml">oojdrew.ruleml</a> instance for an example of the usage of <code>@type</code>.
             
             <p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>)
             </p>
@@ -1094,7 +1096,7 @@
       <p>
          		Site Contact:
          		<a href="http://alt2is.com">Tara Athan</a>.
-         		Page Version: 2011-12-09
+         		Page Version: 2012-01-26
          		<br>
          			<br>
          			<br>
