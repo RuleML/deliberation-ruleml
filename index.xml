@@ -182,22 +182,8 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@in"><code>@in</code></a> <code>="no|semi|yes"</code> with respective values, replaced with <a href="./glossary#gloss-@per"><code>@per</code></a> <code>="copy|open|value"</code></item> 
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a>, for <abbr title="Universal Resource Identifiers">URI</abbr>s replaced with <a href="./glossary#gloss-@iri"><code>@iri</code></a>, for <abbr title="International Resource Identifiers">IRI</abbr>s </item> 
 	  <item>A new edge element <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> introduced as optional wrapper of all performatives (e.g. <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>) in the <a href="./glossary#gloss-ruleml"><code>&lt;Rule<abbr>ML</abbr>&gt;</code></a> element </item>
-	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">./xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is under development at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
-	  <item>Features that are "deprecation candidates", i.e. that may be deprecated in future releases, include: 
-	    <itemize>
-	      <item><a href="./glossary#gloss-reify"><code>&lt;Reify&gt;</code></a> at Datalog and lower, as this introduces the possibility of nesting reification to an arbitrary level ;</item>
-	      <item> the default values of attributes which indicate semantics variants: 
-	        <a href="./glossary#gloss-@direction"><code>@direction</code></a>, 
-	        <a href="./glossary#gloss-@mapDirection"><code>@mapDirection</code></a>,
-	        <a href="./glossary#gloss-@material"><code>@material</code></a>,
-	        <a href="./glossary#gloss-@mapMaterial"><code>@mapMaterial</code></a>,
-	        <a href="./glossary#gloss-@oriented"><code>@oriented</code></a>,
-	        <a href="./glossary#gloss-@val"><code>@val</code></a>,
-	        <a href="./glossary#gloss-@per"><code>@per</code></a>, as it may be more effective to use the absence of the attribute to indicate a "neutral" semantics;
-	      </item>
-	      <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, which may be deprecated in favor of variant semantics of the <a href="http://ruleml.org/#FOL"><abbr title="First-Order Logic">FOL</abbr></a> syntax.</item>
-	    </itemize>
-	    </item>
+	  <item>Additional freedom in element order with partial stripe-skipping (see <a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a> for an explanation of stripe-skipping and element order in Rule<abbr>ML</abbr>) has been introduced in the "relaxed-form serialization", as specified in the Relax NG schemas.</item>
+	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is under development at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
 	</itemize>	
 
   <p>Readers who already know Rule<abbr>ML</abbr> Version 0.91 may want to refer to the <a href="#Changes">Changes</a> section.</p>
@@ -241,7 +227,7 @@ Rule<abbr>ML</abbr> Version 1.0 mostly builds on top of 0.91.)-->  Additional tr
     provided by <abbr title="World Wide Web Consortium">W3C</abbr>. Instructions for this process can be found in <a href="#Appendix-4">Appendix 4.</a></p>
 	<p>The stylesheet has also been tested
 	  using <a href="http://www.oxygenxml.com">oXygen version 12.2</a>, 
-	  whereby it was confirmed that all examples in the directory <a href="./exa/">./exa</a> are properly upgraded.
+	  whereby it was confirmed that all examples in the directory <a href="./exa/">http://ruleml.org/1.0/exa</a> are properly upgraded.
 	  However, the upgraded instances documents will have the Rule<abbr>ML</abbr> namespace as the default namespace, 
 	  independent of the choice of prefix for the Rule<abbr>ML</abbr> namespace in the original instance.
 	  A similar <a href="xslt/upgrader/091-to-ruleml100.xslt">091-to-ruleml100.xslt</a> has been developed that uses the prefix "ruleml" for the Rule<abbr>ML</abbr> namespace.
@@ -272,14 +258,17 @@ Rule<abbr>ML</abbr> Version 1.0 mostly builds on top of 0.91.)-->  Additional tr
 </itemize>
 <p>We say that using this normalizer followed by schema-based Rule<abbr>ML</abbr> validation performs "normalidation" on Rule<abbr>ML</abbr> instances. That is to say, not only are missing edge tags and attributes with default values inserted into the Rule<abbr>ML</abbr> Version 1.0 instance in order to normalize it, but the general tree structure of the file is also validated syntactically to ensure that Node and edge elements only appear in correct positions.</p>
 
-The following is a list of the operations the <abbr>XSLT</abbr> Normalizer should perform whenever it is used on a Rule<abbr>ML</abbr> Version 1.0 file. Note that the Normalizer is intended to successfully transform XML instances that may not be valid RuleML Version 1.0 (validation is the <em>second</em> step of the "Normalidation" process); therefore no assumptions are made about the names or number of child elements.
+The following is a list of the operations the Rule<abbr>ML</abbr> Version 1.0 <abbr>XSLT</abbr> Normalizer should perform whenever it is used on an XML instance. Note that the Normalizer is intended to successfully transform XML instances that may not be valid RuleML Version 1.0 (validation is the <em>second</em> step of the "Normalidation" process); therefore no assumptions are made about the names or number of child elements in the instance being transformed.
 
 <itemize>
 <item><a href="./glossary#gloss-Implies"><code>&lt;Implies&gt;</code></a>, <a href="./glossary#gloss-Entails"><code>&lt;Entails&gt;</code></a>
 	<itemize>
-	  <item>When <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a>-<a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a> edge elements are both missing, wraps the first "naked Node" (a Node element that has a Node parent element) child within an <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a> edge element, and the second naked Node child within a <a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a> edge element.</item>
+	  <item>When <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a>-<a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a> edge elements are both missing, wrap the first "naked Node" (a Node element that has a Node parent element) child within an <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a> edge element, and the second naked Node child within a <a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a> edge element.</item>
 	  <item>If exactly one of the <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a>-<a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a> edge elements is missing, wraps the first naked Rule<abbr>ML</abbr> Node element within the missing edge element.</item>
-	  <item>Re-orders the elements as <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a>, <a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a>, followed by any other children. </item>
+	  <item>Re-orders the elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, then 
+	    <a href="./glossary#gloss-if"><code>&lt;if&gt;</code></a>, followed by
+	    <a href="./glossary#gloss-then"><code>&lt;then&gt;</code></a>, followed by any other children. </item>
 	</itemize>
 </item>
 
@@ -287,7 +276,15 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 	<a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a>
 	<itemize>
 	  <item>Wrap each naked <a href="./glossary#gloss-Fun"><code>&lt;Fun&gt;</code></a> child (if any) with an <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> edge element.</item>
-	  <item>Adds <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) wrapping each remaining naked Rule<abbr>ML</abbr> Node (if any), including: <a href="./glossary#gloss-Ind"><code>&lt;Ind&gt;</code></a>, <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, <a href="./glossary#gloss-Fun"><code>&lt;Fun&gt;</code></a>, <a href="./glossary#gloss-Plex"><code>&lt;Plex&gt;</code></a>, <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, <a href="./glossary#gloss-Data"><code>&lt;Data&gt;</code></a>, or <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.</item>
+	  <item>Add <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) wrapping each remaining naked Rule<abbr>ML</abbr> Node (if any). The naked Node children that may occur within this element in a valid Rule<abbr>ML</abbr> Version 1.0 instance  include: 
+	    <a href="./glossary#gloss-Ind"><code>&lt;Ind&gt;</code></a>, 
+	    <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, 
+	    <a href="./glossary#gloss-Fun"><code>&lt;Fun&gt;</code></a>, 
+	    <a href="./glossary#gloss-Plex"><code>&lt;Plex&gt;</code></a>, 
+	    <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, 
+	    <a href="./glossary#gloss-Data"><code>&lt;Data&gt;</code></a>, or 
+	    <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.
+	  </item>
 	  <item>Re-order the child elements as 
 	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
 	    <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a>, followed by 
@@ -304,8 +301,19 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a>
 	<itemize>
 	  <item>Wrap each naked <a href="./glossary#gloss-Rel"><code>&lt;Rel&gt;</code></a> child (if any) with an <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a>.</item> 
-	  <item>Adds <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) wrapping each naked Node, including: <a href="./glossary#gloss-Ind"><code>&lt;Ind&gt;</code></a>, <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, <a href="./glossary#gloss-Fun"><code>&lt;Fun&gt;</code></a>, <a href="./glossary#gloss-Plex"><code>&lt;Plex&gt;</code></a>, <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, <a href="./glossary#gloss-Data"><code>&lt;Data&gt;</code></a>, or <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.</item>
+	  <item>Adds <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) wrapping each naked Node. 
+	    The naked Node children that may occur within this element in a valid Rule<abbr>ML</abbr> Version 1.0 instance include: 
+	    <a href="./glossary#gloss-Ind"><code>&lt;Ind&gt;</code></a>, 
+	    <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, 
+	    <a href="./glossary#gloss-Fun"><code>&lt;Fun&gt;</code></a>, 
+	    <a href="./glossary#gloss-Plex"><code>&lt;Plex&gt;</code></a>, 
+	    <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, 
+	    <a href="./glossary#gloss-Data"><code>&lt;Data&gt;</code></a>, or 
+	    <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.
+	  </item>
 	  <item>Re-order the child elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-degree"><code>&lt;degree&gt;</code></a>, followed by 
 	    <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a>, followed by 
 	    positional arguemnts (<a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a>, then 
 	    <a href="./glossary#gloss-repo"><code>&lt;repo&gt;</code></a>) followed by 
@@ -318,10 +326,22 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 <item>
   <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a>
 	<itemize>
-	  <item>If there is no <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element, wrap the first child that is not <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> or <a href="./glossary#gloss-degree"><code>&lt;degree&gt;</code></a> within a <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element.</item>
-	  <item>Adds <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) to each of the remaining naked child Nodes, including: <a href="./glossary#gloss-Const"><code>&lt;Const&gt;</code></a>, <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a>, <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.</item>
+	  <item>If there is no <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element, wrap the first child that is not 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> or 
+	    <a href="./glossary#gloss-degree"><code>&lt;degree&gt;</code></a> 
+	    within a <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element.
+	  </item>
+	  <item>Add <a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a> edge elements (with an index attribute) to each of the remaining naked child Nodes. 
+	    The naked Node children that may occur within this element in a valid Rule<abbr>ML</abbr> Version 1.0 instance  include: 
+	    <a href="./glossary#gloss-Const"><code>&lt;Const&gt;</code></a>, 
+	    <a href="./glossary#gloss-Var"><code>&lt;Var&gt;</code></a>, 
+	    <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>, 
+	    <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a>, 
+	    <a href="./glossary#gloss-Skolem"><code>&lt;Skolem&gt;</code></a>.
+	  </item>
 	  <item>Re-order the child elements as 
 	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-degree"><code>&lt;degree&gt;</code></a>, followed by 
 	    <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a>, followed by 
 	    positional arguemnts (<a href="./glossary#gloss-arg"><code>&lt;arg&gt;</code></a>, then 
 	    <a href="./glossary#gloss-repo"><code>&lt;repo&gt;</code></a>,	    followed by 
@@ -332,7 +352,11 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 </item>
 
 <item>
-  <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="./glossary#gloss-Retract"><code>&lt;Retract&gt;</code></a>, <a href="./glossary#gloss-Query"><code>&lt;Query&gt;</code></a>, <a href="./glossary#gloss-And"><code>&lt;And&gt;</code></a>, <a href="./glossary#gloss-Or"><code>&lt;Or&gt;</code></a>
+  <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>, 
+  <a href="./glossary#gloss-Retract"><code>&lt;Retract&gt;</code></a>, 
+  <a href="./glossary#gloss-Query"><code>&lt;Query&gt;</code></a>, 
+  <a href="./glossary#gloss-And"><code>&lt;And&gt;</code></a>, 
+  <a href="./glossary#gloss-Or"><code>&lt;Or&gt;</code></a>
 	<itemize>
 		<item>Wrap each naked child Node (if any) with a <a href="./glossary#gloss-formula"><code>&lt;formula&gt;</code></a> edge element.</item>
 	</itemize>
@@ -353,38 +377,63 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 <item>
   <a href="./glossary#gloss-Ruleml"><code>&lt;Rule<abbr>ML</abbr>&gt;</code></a>
 	<itemize>
-	  <item>Wraps naked child Nodes with <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> edge element.</item>
+	  <item>Wraps each naked child Node (if any) with an <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> edge element.</item>
+  <item>Re-order the child elements as 
+    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+    <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a>, followed by
+    any other children.</item>
 	</itemize>
 </item>
 
 <item>
   <a href="./glossary#gloss-Neg"><code>&lt;Neg&gt;</code></a>
 	<itemize>
-	  <item>Wraps a naked child Node with <a href="./glossary#gloss-strong"><code>&lt;strong&gt;</code></a> edge element.</item>
+	  <item>Wraps each naked child Node (if any) with a <a href="./glossary#gloss-strong"><code>&lt;strong&gt;</code></a> edge element.</item>
+	  <item>Re-order the child elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-strong"><code>&lt;strong&gt;</code></a>, followed by
+	    any other children.</item>
 	</itemize>
 </item>
 
 <item>
   <a href="./glossary#gloss-Naf"><code>&lt;Naf&gt;</code></a>
 	<itemize>
-	  <item>Wraps a naked child Node with <a href="./glossary#gloss-weak"><code>&lt;weak&gt;</code></a> edge element.</item>
+	  <item>Wraps each naked child Node (if any) with a <a href="./glossary#gloss-weak"><code>&lt;weak&gt;</code></a> edge element.</item>
+	  <item>Re-order the child elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-weak"><code>&lt;weak&gt;</code></a>, followed by
+	    any other children.</item>
+	  
 	</itemize>
 </item>
 
 <item>
   <a href="./glossary#gloss-Equivalent"><code>&lt;Equivalent&gt;</code></a>
 	<itemize>
-	  <item>Wraps any naked child Node with <a href="./glossary#gloss-torso"><code>&lt;torso&gt;</code></a> edge element.</item>
+	  <item>Wraps each naked child Node (if any) with a <a href="./glossary#gloss-torso"><code>&lt;torso&gt;</code></a> edge element.</item>
+	  <item>Re-order the child elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-torso"><code>&lt;torso&gt;</code></a>, followed by
+	    any other children.</item>
+	  
 	</itemize>	
 </item>
 
 <item>
   <a href="./glossary#gloss-Equal"><code>&lt;Equal&gt;</code></a>
 	<itemize>
-	  <item>If there are two naked child Nodes, wraps first child with <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a> element and second child with <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a> element.  </item>
+	  <item>If there are two naked child Nodes, wraps first naked Node child with a <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a> element and second naked Node child with <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a> element.  </item>
 		<item>
 		  Partial completion is also accepted. Example: if the first child has a <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a> edge element, and the second child has no <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a> or <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a> edge element, the <abbr>XSLT</abbr> will wrap the second child with the <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a> edge element.
 		</item>
+	  <item>Re-order the child elements as 
+	    <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-degree"><code>&lt;degree&gt;</code></a>, followed by 
+	    <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a>, followed by
+	    <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a>, followed by
+	    any other children.</item>
+	  
 	</itemize>
 </item>
 
@@ -537,7 +586,7 @@ The following is a list of the operations the <abbr>XSLT</abbr> Normalizer shoul
 <RuleML
 xmlns="http://ruleml.org/spec"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://ruleml.org/spec ./xsd/datalog.xsd"
+xsi:schemaLocation="http://ruleml.org/spec http://ruleml.org/1.0/xsd/datalog.xsd"
 >
 
   <Assert mapClosure="universal">
@@ -712,7 +761,7 @@ targetNamespace="http://ruleml.org/spec"
   <item> Direct your browser to <a href="http://www.w3.org/2001/03/webdata/xsv">http://www.w3.org/2001/03/webdata/xsv</a></item>
 
   <item>Enter the following <abbr title="Uniform Resource Locator">URL</abbr> of our example Rule<abbr>ML</abbr> file (or any other) into the textfield
-    preceded by "Address(es)": ./exa/Datalog-xsd/own-xsd.ruleml</item>
+    preceded by "Address(es)": http://ruleml.org/1.0/exa/Datalog-xsd/own-xsd.ruleml</item>
 
   <item>If desired, check the "Show Warnings" box.</item>
 
@@ -730,11 +779,11 @@ output using the radio buttons just above the "Get Results" button.
 
 		<h4>Schema validating with <abbr title="XML Schema Validator">XSV</abbr> 3.1-1 of 2007/12/11 16:20:05</h4>
 		<itemize>
-		  <item><b>Target</b>: <code>./exa/Datalog-xsd/own-xsd.ruleml</code><br/>   (Real name: ./exa/Datalog-xsd/own-xsd.ruleml<br/>    Length: 4311 bytes
+		  <item><b>Target</b>: <code>http://ruleml.org/1.0/exa/Datalog-xsd/own-xsd.ruleml</code><br/>   (Real name: http://ruleml.org/1.0/exa/Datalog-xsd/own-xsd.ruleml<br/>    Length: 4311 bytes
 			  <br/>    Last Modified: Fri, 09 Dec 2011 18:22:28 GMT<br/>    Server: Apache/2.0.55 (Red Hat)) </item>
 			<item><b>docElt</b>: <code>{http://ruleml.org/spec}RuleML</code></item>
 			<item>Validation was strict, starting with type <code>{http://ruleml.org/spec}:RuleML.type</code></item>
-			<item><b>schemaLocs</b>: http://ruleml.org/spec -&gt; ./xsd/datalog.xsd</item>
+			<item><b>schemaLocs</b>: http://ruleml.org/spec -&gt; http://ruleml.org/1.0/xsd/datalog.xsd</item>
 			<item>The schema(s) used for schema-validation had no errors</item>
 			<item>No schema-validity problems were found in the target </item>
 		</itemize>
@@ -742,47 +791,47 @@ output using the radio buttons just above the "Get Results" button.
 		<h3>Schema resources involved</h3>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
 
-<code>./xsd/datalog.xsd</code>
+<code>http://ruleml.org/1.0/xsd/datalog.xsd</code>
  (source: <code>schemaLoc</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/performative_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/performative_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/desc_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/desc_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/quantifier_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/quantifier_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/connective_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/connective_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/atom_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/atom_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/slot_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/slot_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/term_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/term_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>
 		<p style="margin-bottom: 0px">Attempt to load a schema document from
-<code>./xsd/modules/iri_module.xsd</code>
+<code>http://ruleml.org/1.0/xsd/modules/iri_module.xsd</code>
  (source: <code>include</code>) for
    <code>http://ruleml.org/spec</code>,
     succeeded</p>      
@@ -948,31 +997,59 @@ output using the radio buttons just above the "Get Results" button.
   <act index="1">
     <Assert/>
   </act>
-</RuleML>]]></pre></box>
+  </RuleML>]]></pre></box>
+    
+    <p>Additional freedom in element order with partial stripe-skipping has been introduced in the "relaxed form serialization", as specified in the Relax NG schemas.
+      In particular, infix and postfix operator notation is now allowed in the relaxed form serialization as long as the <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element is not skipped.</p>
     
   </section>
   
 
-  <section label="Errata">
-    <header>Appendix 7: Errata</header>
-    During the review of the Rule<abbr>ML</abbr> Version 0.91 <abbr>XSD</abbr> schemas that was conducted in conjunction with the re-engineering of <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>, a number of <a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91">Errata</a> were identified. A number of these were patched in the <a href="http://ruleml.org/0.91/#Patches">Version 0.91 Patched</a> release, and these patched <abbr>XSD</abbr>s form the basis of the hand-written <abbr>XSD</abbr>s for Rule<abbr>ML</abbr> Version 1.0. There are several errata that could not be patched in the handwritten <abbr>XSD</abbr>s, including:
+  <section label="Issues">
+    <header>Appendix 7: Issues</header>
+    <p>Features that are "deprecation candidates", i.e. that may be deprecated in future releases, include: 
+      <itemize>
+        <item><a href="./glossary#gloss-reify"><code>&lt;Reify&gt;</code></a> at Datalog and lower, as this introduces the possibility of nesting reification to an arbitrary level ;</item>
+        <item> the default values of attributes which indicate semantics variants: 
+          <a href="./glossary#gloss-@direction"><code>@direction</code></a>, 
+          <a href="./glossary#gloss-@mapDirection"><code>@mapDirection</code></a>,
+          <a href="./glossary#gloss-@material"><code>@material</code></a>,
+          <a href="./glossary#gloss-@mapMaterial"><code>@mapMaterial</code></a>,
+          <a href="./glossary#gloss-@oriented"><code>@oriented</code></a>,
+          <a href="./glossary#gloss-@val"><code>@val</code></a>,
+          <a href="./glossary#gloss-@per"><code>@per</code></a>, as it may be more effective to use the absence of the attribute to indicate a "neutral" semantics;
+        </item>
+        <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, which may be deprecated in favor of variant semantics of the <a href="http://ruleml.org/#FOL"><abbr title="First-Order Logic">FOL</abbr></a> syntax.</item>
+        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> does not have commonly accepted semantics,  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Rule<abbr>ML</abbr> Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a metadata mechanism) 
+        </item>
+      </itemize>
+    </p>
+    
+    <p>
+    During the review of the Rule<abbr>ML</abbr> Version 0.91 XSD schemas that was conducted in conjunction with the re-engineering of  
+    <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>, a number of issues and defects <!--(jointly referred to as <a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91">Errata</a>)--> were identified.
+    A number of these issues were patched in the <a href="http://ruleml.org/0.91/#Patches">Version 0.91 Patched</a> release, and these patched <abbr>XSD</abbr>s form the basis of the hand-written <abbr>XSD</abbr>s for Rule<abbr>ML</abbr> Version 1.0. There are several issues that could not be resolved in the handwritten <abbr>XSD</abbr>s, including:
     <itemize>
-      <item><a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err4">Err4</a>:
+      <item><a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err4">Reification in Languages Below Datalog</a>:
         the Binary sublanguages have an overly-permissive schema for reification
         (<a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a>). For example, in bindatagroundfact, it is valid to reify a universal quantification (<a href="./glossary#gloss-Forall"><code>&lt;Forall&gt;</code></a>
-), while it is not allowed to construct a universal quantification in the language. It is not possibly to fix this problem without discarding the tree-based modularization approach of the hand-written schemas. Because Rule<abbr>ML</abbr> Version 1.0 is a "Rosetta" release, we have retained the hand-written <abbr>XSD</abbr> schemas that contain this erratum for consistency with legacy schemas. However, the Relax NG schemas do not duplicate the error, and thus there is a discrepancy between the <abbr>XSD</abbr> and Relax NG schemas in these unusual cases. 
+), while it is not allowed to construct a universal quantification in the language. It is not possibly to fix this issue without discarding the tree-based modularization approach of the hand-written schemas. Because Rule<abbr>ML</abbr> Version 1.0 is a "Rosetta" release, we have retained the hand-written <abbr>XSD</abbr> schemas that contain this issue for consistency with legacy schemas. However, the Relax NG schemas are not affected by this issue, and thus there is a discrepancy between the <abbr>XSD</abbr> and Relax NG schemas in these unusual cases. 
       </item>
-    <item><a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err5">Err5</a>:
-      all sublanguages that redefine the Datalog <abbr>XSD</abbr> schema use circular group definitions, leading to an inability to validate against these schemas using some validators, such as <a href="http://xerces.apache.org/xerces-j/schema.html">Xerces</a>. As discussed above, it is not possible to fix this erratum within the modularization approach of the hand-written <abbr>XSD</abbr> schemas. However, <a href="http://www.w3.org/2001/03/webdata/xsv"><abbr>XSV</abbr></a> and <a href="http://saxon.sourceforge.net/">Saxon</a> validators are lax in enforcing <a href="http://www.w3.org/TR/xmlschema-1/#coss-modelGroup">Constraints on Model Group Schema Components (§3.8.6)</a> of the <a href="http://www.w3.org/TR/xmlschema-1/"><abbr>XSD</abbr> specification, Part 1</a>, and are able to work around it.
+    <item><a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err5">Circular Group Definitions</a>:
+      all schemas that redefine the Datalog <abbr>XSD</abbr> schema use circular group definitions, leading to an inability to validate against these schemas using some validators, such as <a href="http://xerces.apache.org/xerces-j/schema.html">Xerces</a>. Similar to the issue above, it is not possible to fix this issue within the modularization approach of the hand-written <abbr>XSD</abbr> schemas. However, <a href="http://www.w3.org/2001/03/webdata/xsv"><abbr>XSV</abbr></a> and <a href="http://saxon.sourceforge.net/">Saxon</a> validators are lax in enforcing <a href="http://www.w3.org/TR/xmlschema-1/#coss-modelGroup">Constraints on Model Group Schema Components (§3.8.6)</a> of the <a href="http://www.w3.org/TR/xmlschema-1/"><abbr>XSD</abbr> specification, Part 1</a>, and are able to work around it. Relax NG schemas and the XSD schemas automatically generated from the Relax NG schemas are not affected by this issue.
     </item>
     </itemize>
+    
+    The latter two issues will be resolved in Version 1.1 by discontinuing support of the handwritten XSDs, relying instead on XSD schemas automatically generated from the Relax NG schemas.
+    
+    </p>
   </section>
 
 	<closing>
 		<p>
 		Site Contact:
 		<a href="http://alt2is.com">Tara Athan</a>.
-		Page Version: 2011-12-12
+		Page Version: 2012-01-26
 		
 		<br/>
 		<br/>
