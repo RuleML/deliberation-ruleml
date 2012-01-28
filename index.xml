@@ -162,8 +162,11 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 
 <section>
 	<header>Overview</header>
-  <p>An introduction to Rule<abbr>ML</abbr> is given in our <a href="#primer">primer</a>. Also, the main page's <a href="http://ruleml.org/index.html#Design">design section</a> discusses the upper layer of the Rule<abbr>ML</abbr> hierarchy of rules. In that terminology, the system of Rule<abbr>ML</abbr> <abbr>XSD</abbr>s presented here only covers derivation rules, not reaction rules (see the <a href="http://ruleml.org/modularization/#Model">official model</a>).</p>
-	<p>This is because we think it is important to start with a subset of simple rules, test and refine our principal strategy using these, and then work 'up' to the more general categories of rules in the hierarchy.
+  <p>An introduction to Rule<abbr>ML</abbr> is given in our <a href="#primer">primer</a>. 
+    <!--Also, the main page's <a href="http://ruleml.org/index.html#Design">design section</a> discusses the upper layer of the Rule<abbr>ML</abbr> hierarchy of rules. -->
+    Also, the paper <a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a> discusses the upper layer of the RuleML hierarchy of rules.
+    In that terminology, the system of Rule<abbr>ML</abbr> languages presented here only covers derivation rules, (see the <a href="http://ruleml.org/modularization/#Model">official model</a>).</p>
+  <p>This is because we think it is important to start with a subset of simple rules, test and refine our principal strategy using these, and then proceed to more general categories of rules in the hierarchy (deliberation rules), as well as to other kinds of rules (reaction rules).
 	  </p>
 
   <p>A comprehensive <a href="#Glossary">glossary</a> accompanies this specification.</p>
@@ -180,10 +183,10 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	  <item>Edge elements <a href="http://ruleml.org/0.91/glossary#gloss-lhs"><code>&lt;lhs&gt;</code></a> and <a href="http://ruleml.org/0.91/glossary#gloss-rhs"><code>&lt;rhs&gt;</code></a>, replaced with <a href="./glossary#gloss-left"><code>&lt;left&gt;</code></a> and <a href="./glossary#gloss-right"><code>&lt;right&gt;</code></a>, respectively </item>	
 	  <item>Node elements <a href="http://ruleml.org/0.91/glossary#gloss-hterm"><code>&lt;Hterm&gt;</code></a> and <a href="http://ruleml.org/0.91/glossary#gloss-Con"><code>&lt;Con&gt;</code></a>, replaced with <a href="./glossary#gloss-uniterm"><code>&lt;Uniterm&gt;</code></a> and <a href="./glossary#gloss-Const"><code>&lt;Const&gt;</code></a> respectively </item>	
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@in"><code>@in</code></a> <code>="no|semi|yes"</code> with respective values, replaced with <a href="./glossary#gloss-@per"><code>@per</code></a> <code>="copy|open|value"</code></item> 
-	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a>, for <abbr title="Universal Resource Identifiers">URI</abbr>s replaced with <a href="./glossary#gloss-@iri"><code>@iri</code></a>, for <abbr title="International Resource Identifiers">IRI</abbr>s </item> 
+	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a>, for <abbr title="Universal Resource Identifiers">URI</abbr>s, replaced with <a href="./glossary#gloss-@iri"><code>@iri</code></a>, for <abbr title="International Resource Identifiers">IRI</abbr>s </item> 
 	  <item>A new edge element <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> introduced as optional wrapper of all performatives (e.g. <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>) in the <a href="./glossary#gloss-ruleml"><code>&lt;Rule<abbr>ML</abbr>&gt;</code></a> element </item>
 	  <item>Additional freedom in element order with partial stripe-skipping (see <a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a> for an explanation of stripe-skipping and element order in Rule<abbr>ML</abbr>) has been introduced in the "relaxed-form serialization", as specified in the Relax NG schemas.</item>
-	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer is under development at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
+	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer has been developed at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
 	</itemize>	
 
   <p>Readers who already know Rule<abbr>ML</abbr> Version 0.91 may want to refer to the <a href="#Changes">Changes</a> section.</p>
@@ -245,7 +248,7 @@ Rule<abbr>ML</abbr> Version 1.0 mostly builds on top of 0.91.)-->  Additional tr
 <section label="Normalizater">
 	<header><abbr>XSLT</abbr>-Based Normalizer</header>
 
-  <p>RuleML has always allowed abbreviated encoding (skipped edge tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing edge tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Offical Normalizer">RON</abbr></a>, also see the <a href="#normalizer">Normalizer</a> directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
+  <p>RuleML has always allowed abbreviated encoding (skipped edge tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing edge tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Official Normalizer">RON</abbr></a>, also see the <a href="#normalizer">Normalizer</a> directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
     An example of the normal form is the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a> of the <a href="xslt/normalizer/own_compact.ruleml">compact 'own' example</a>.
 	</p>
   <p>
@@ -1019,15 +1022,16 @@ output using the radio buttons just above the "Get Results" button.
           <a href="./glossary#gloss-@val"><code>@val</code></a>,
           <a href="./glossary#gloss-@per"><code>@per</code></a>, as it may be more effective to use the absence of the attribute to indicate a "neutral" semantics;
         </item>
-        <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, which may be deprecated in favor of variant semantics of the <a href="http://ruleml.org/#FOL"><abbr title="First-Order Logic">FOL</abbr></a> syntax.</item>
-        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> does not have commonly accepted semantics,  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Rule<abbr>ML</abbr> Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a metadata mechanism) 
+        <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, whose current version may be deprecated in favor of better integration with the rest of the RuleML syntax.
+        </item>
+        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> or certain cases of <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> does not have commonly accepted semantics (in particular, F-logic's object semantics, as adapted in W3C RIF and developed in PSOA RuleML),  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Rule<abbr>ML</abbr> Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a metadata mechanism.) 
         </item>
       </itemize>
     </p>
     
     <p>
     During the review of the Rule<abbr>ML</abbr> Version 0.91 XSD schemas that was conducted in conjunction with the re-engineering of  
-    <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>, a number of issues and defects <!--(jointly referred to as <a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91">Errata</a>)--> were identified.
+    <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>, a number of shortcomings and defects <!--(jointly referred to as <a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91">Errata</a>)--> were identified.
     A number of these issues were patched in the <a href="http://ruleml.org/0.91/#Patches">Version 0.91 Patched</a> release, and these patched <abbr>XSD</abbr>s form the basis of the hand-written <abbr>XSD</abbr>s for Rule<abbr>ML</abbr> Version 1.0. There are several issues that could not be resolved in the handwritten <abbr>XSD</abbr>s, including:
     <itemize>
       <item><a href="http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err4">Reification in Languages Below Datalog</a>:
