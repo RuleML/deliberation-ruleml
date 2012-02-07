@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <?xml-stylesheet href="homepage2.xsl" type="text/xsl"?>
+<!DOCTYPE homepage [
+<!ENTITY primer '<a href="http://ruleml.org/papers/Primer/">Primer</a>'>
+<!ENTITY content-models '<a href="./xsd/content_models_10.pdf">Content Models</a>'>
+<!ENTITY glossary '<a href="./glossary/">Glossary</a>'>
+<!ENTITY xsd-schemas '<a href="./xsd/"><abbr>XSD</abbr> Schemas</a>'>
+<!ENTITY relaxng-schemas '<a href="./relaxng/">Relax NG Schemas</a>'>
+<!ENTITY normalizer '<a href="./xslt/normalizer/">Normalizer</a>'>
+<!ENTITY upgrader '<a href="./xslt/upgrader/">Upgrader</a>'>
+<!ENTITY implementations '<a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a>'>
+<!ENTITY myng '<a href="./myng/"><acronym title="Modular sYNtax confiGurator">MYNG</acronym></a>'>
+<!ENTITY overarching '<a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a>'>
+]>
 
 <homepage>
 
@@ -19,10 +31,9 @@
                                 <a href="http://home.comcast.net/~stabet/">Said Tabet</a>,
                                 <a href="http://www.mit.edu/~bgrosof/">Benjamin Grosof</a>, <br />
                                 <a href="http://lpis.csd.auth.gr/people/nbassili/">Nick Bassiliades</a>,
-                                <a href="http://www.governatori.net/">Guido Governatori</a>,
-                                <a href="http://www.cs.uwaterloo.ca/~dhirtle/">David Hirtle</a>,
-                                <a href="http://sites.google.com/site/omairshafiq/">Omair Shafiq</a>,
-                          <a href="http://pl.linkedin.com/pub/monika-machunik/10/9a4/b0a">Monika Machunik</a>
+                          <a href="http://www.governatori.net/">Guido Governatori</a>,
+                          <a href="http://www.linkedin.com/in/frankolken">Frank Olken</a>,
+                          <a href="http://www.cs.uwaterloo.ca/~dhirtle/">David Hirtle</a>
                         </h2>
 
 
@@ -44,62 +55,62 @@
 			<h2>Latest version: <a href="http://ruleml.org/spec/">ruleml.org/spec/</a></h2>
 			<p/>
 		</center>
-	  <h2>Quick links:</h2>
+	  <h2><a name="quicklinks"/>Quick links:</h2>
 	  <itemize>
-	    <item><a name="parent-spec"/>
+	    <item>
 	      Parent Specification of Rule<abbr title="Markup Language">ML</abbr> 
 	      (<a href="http://ruleml.org/">Homepage</a>) 
 	      <br/> Prerequisites: None, Level: Informal</item>
-	    <item><a name="overarching"/>
+	    <item>
 	      Overarching Specification of Web Rules 
-	      (<a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a>) 
+	      (&overarching;) 
 	      <br/> Prerequisites: None, Level: Semi-formal </item>
-	    <item><a name="primer"/>
+	    <item>
 	      Introduction to the Rule<abbr>ML</abbr> Language 
-	      (<a href="http://ruleml.org/papers/Primer/">Primer</a>) 
+	      (&primer;) 
 	      <br/> Prerequisites: None, Level: Informative</item>
-	    <item><a name="content-models"/>
+	    <item>
 	      High-level Presentation of the Rule<abbr>ML</abbr> Serialization Grammar 
-	      (<a href="./xsd/content_models_10.pdf">Content Models</a>) 
+	      (&content-models;) 
 	      <br/> Prerequisites: <a href="http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form"><abbr title="Extended Backus-Naur Form">EBNF</abbr></a> or <a href="http://relaxng.org">Relax NG</a>, Level: Semi-formal</item>
-	    <item><a name="xsd-schemas"/>
+	    <item>
 	      Machine-readable schemas in <abbr title="XML Schema Definition Lanuage">XSD</abbr>
-	      (<a href="./xsd/"><abbr>XSD</abbr> Schemas</a>) 
+	      (&xsd-schemas;) 
 	      <br/> Prerequisites: <a href="http://www.w3schools.com/schema/"><abbr>XSD</abbr></a>, Level: Formal</item>
-	    <item><a name="relaxng-schemas"/>
+	    <item>
 	      Machine-readable grammar in the Relax NG language 
-	      (<a href="./relaxng/">Relax NG Schemas</a>) 
+	      (&relaxng-schemas;) 
 	      <br/> Prerequisites: <a href="http://relaxng.org">Relax NG</a>, Level: Formal</item>
-	    <item><a name="myng"/> 
+	    <item> 
 	      Modular sYNtax confiGurator, a <acronym title="Graphical User Interface">GUI</acronym> for customizing Relax NG schemas 
-	      (<a href="./myng/"><acronym title="Modular sYNtax confiGurator">MYNG</acronym></a>) 
+	      (&myng;) 
 	      <br/> Prerequisites: None, Level: Formal</item>
-	    <item><a name="normalizer"/>
+	    <item>
 	      Stylesheet for transforming into the normal-form serialization 
-	      (<a href="./xslt/normalizer/">Normalizer</a>) 
+	      (&normalizer;) 
 	      <br/> Prerequisites: <a href="http://www.w3schools.com/xsl/"><abbr title="XSL Transformations ">XSLT</abbr></a>, Level: Formal</item>
-	    <item><a name="upgrader"/>
+	    <item>
 	      Stylesheet for transforming from Rule<abbr>ML</abbr> Version 0.91 into Version 1.0
-	      (<a href="./xslt/upgrader/">Upgrader</a>)
+	      (&upgrader;)
 	      <br/> Prerequisites: <a href="http://www.w3schools.com/xsl/"><abbr title="XSL Transformations ">XSLT</abbr></a>, Level: Formal</item>
-	    <item><a name="examples"/>
+	    <item>
 	      Illustrative Instances of the Rule<abbr>ML</abbr> Version 1.0 Language 
 	      (<a href="./exa/">Examples</a>) 
-	      <br/> Prerequisites: <a href="#primer">Primer</a>, Level: Informative</item>
-	    <item><a name="glossary"/>
+	      <br/> Prerequisites: &primer;, Level: Informative</item>
+	    <item>
 	      Definitions of Elements and Attributes
-	      (<a href="./glossary/">Glossary</a>) 
-	      <br/> Prerequisites: <a href="#primer">Primer</a>, Level: Semi-formal</item>
-	    <item><a name="schema-docs"/>
+	      (&glossary;) 
+	      <br/> Prerequisites: &primer;, Level: Semi-formal</item>
+	    <item>
 	      Diagrammatic Presentation of the Rule<abbr>ML</abbr> Normal-Form Serialization Grammar 
 	      (<a href="./doc/">Schema Docs</a>) 
-	      <br/> Prerequisites: <a href="#primer">Primer</a>, Level: Semi-formal</item>
-	    <item><a name="oo-jdrew"/>
+	      <br/> Prerequisites: &primer;, Level: Semi-formal</item>
+	    <item>
 	      Reference Implementation of RuleML Operational Semantics  (<a href="http://www.jdrew.org/oojdrew/">OO jDREW</a>) 
 	      <br /> Prerequisites: <a href="http://ruleml.org/modularization/#Model">Naf Hornlog RuleML</a>, Level: Formal</item>
-	    <item><a name="implementations"/>
+	    <item>
 	      Implemented Rule<abbr>ML</abbr> tools 
-	      (<a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a>)
+	      (&implementations;)
 	    </item>  
 	  </itemize>
 		<br/>
@@ -123,17 +134,17 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	          <itemize>
 	            <item>
 	            
-	            content models for the named sublanguages, available from the <a href="#content-models">Content Models</a> document (along with a glossary of all elements, available from the <a href="#glossary">Glossary</a>);
+	            content models for the named sublanguages, available from the &content-models; document (along with a glossary of all elements, available from the &glossary;);
 	            
 	            </item>
 	            <item>schemas, including
 	              <itemize>
-	                <item><a href="#xsd-schemas"><abbr>XSD</abbr> schemas</a>  with Schematron annotation;</item>
-	                <item><a href="#relaxng-schemas">Relax NG schemas</a>;</item>
+	                <item>&xsd-schemas;  with Schematron annotation;</item>
+	                <item>&relaxng-schemas;;</item>
 	              </itemize>
 	            </item> 
-	            <item>a mapping from the Rule<abbr>ML</abbr> Version 1.0 syntax to the "normalized" Rule<abbr>ML</abbr> Version 1.0 syntax as given in the <a href="#normalizer">Normalizer</a> <abbr>XSLT</abbr>  stylesheet;</item>
-	            <item>a mapping from the preceding Rule<abbr>ML</abbr> Version 0.91 <abbr>XML</abbr> syntax to Rule<abbr>ML</abbr> Version 1.0 <abbr>XML</abbr> syntax as given in the <a href="#upgrader">Upgrader</a> <abbr>XSLT</abbr>  stylesheet.</item>
+	            <item>a mapping from the Rule<abbr>ML</abbr> Version 1.0 syntax to the "normalized" Rule<abbr>ML</abbr> Version 1.0 syntax as given in the &normalizer; <abbr>XSLT</abbr>  stylesheet;</item>
+	            <item>a mapping from the preceding Rule<abbr>ML</abbr> Version 0.91 <abbr>XML</abbr> syntax to Rule<abbr>ML</abbr> Version 1.0 <abbr>XML</abbr> syntax as given in the &upgrader; <abbr>XSLT</abbr>  stylesheet.</item>
 	            
 	          </itemize>
 	        <!--</item>
@@ -143,35 +154,35 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	        </item>
 	      <item>semantics, including
 	        <itemize>
-	      <item>an informal semantics as given in the <a href="#glossary">Glossary</a></item>
+	      <item>an informal semantics as given in the &glossary;</item>
 	          <item>formal model-theoretic semantics</item> 
 	          <item>formal proof-theoretic semantics</item>
 	          
 	        </itemize>
 	      </item>
 	      </itemize> -->
-	  <p>The scope of this specification does not cover tools that make use of Rule<abbr>ML</abbr> languages, such as parsers, inference engines or editors. For a listing of such tools, see the Rule<abbr>ML</abbr> <a href="#implementations">Implementations</a> wiki page.</p>
+	  <p>The scope of this specification does not cover tools that make use of Rule<abbr>ML</abbr> languages, such as parsers, inference engines or editors. For a listing of such tools, see the Rule<abbr>ML</abbr> &implementations; wiki page.</p>
 	  <p>Rule<abbr>ML</abbr> Version 1.0 is a "Rosetta Stone" release where two schema languages, <abbr>XSD</abbr> and Relax NG, are independently employed to formalize the syntax, to the extent possible within each language. See Design and Implementation of Highly Modular Schemas for <abbr>XML</abbr>: Customization of Rule<abbr>ML</abbr> in Relax NG (<a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>) and the Rule<abbr>ML</abbr> <a href="http://wiki.ruleml.org/index.php/MYNG"><acronym>MYNG</acronym> Wiki</a> page for the details of this re-engineering effort. <acronym>MYNG</acronym> is an acronym for "Modular sYNtax confiGurator", or "Modularize Your NG", and may be pronounced either "ming" or "my N G". </p>
 	  <p>The Rule<abbr>ML</abbr> Version 1.0 <abbr>XSD</abbr> schemas are a minor modification of the patched <abbr>XSD</abbr> schemas of Rule<abbr>ML</abbr> Version 0.91, which follow the <a href="http://ruleml.org/modularization">tree-based modularization approach</a>. <!--@@@The <abbr>XSD</abbr> schemas are permissive for certain invalid syntactic constructs as expressed by the Schematron annotations @@@ the Schematron rules should be separated out so that they may be applied independently of choice of <abbr>XSD</abbr> or Relax NG schema language@@@, and are also conservative in that certain permutations of elements are allowed in the normative syntax but are not implemented in the <abbr>XSD</abbr> schemas.@@@-->
 		  A procedure for validation against the <abbr>XSD</abbr> schemas is described in <a href="#Appendix-3">Appendix 3</a>.  
 		</p>
-	  <p>The Rule<abbr>ML</abbr> Version 1.0 Relax NG schemas are a new component of the Rule<abbr>ML</abbr> Version 1.0 release, and are intended to replace the hand-written <abbr>XSD</abbr> schemas in future releases. The Relax NG schemas are available for two serializations, "normal" and "relaxed", and follow a lattice-based modularization (<a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>). The relaxed-form serialization is permissive relative to the grammar given in the <a href="#content-models">Content Models</a> document, i. e. every Rule<abbr>ML</abbr> Version 1.0 instance that is valid with respect to the <a href="#content-models">Content Models</a> document will validate against the relaxed serialization Relax NG schemas. The normal serialization Relax NG schemas validate instances in the normal form, which is described in the <a href="#Normalizer">Normalizer</a> section. Procedures for validation against the Relax NG schemas is described in <a href="#Appendix-5">Appendix 5</a>.</p>
+	  <p>The Rule<abbr>ML</abbr> Version 1.0 Relax NG schemas are a new component of the Rule<abbr>ML</abbr> Version 1.0 release, and are intended to replace the hand-written <abbr>XSD</abbr> schemas in future releases. The Relax NG schemas are available for two serializations, "normal" and "relaxed", and follow a lattice-based modularization (<a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a>). The relaxed-form serialization is permissive relative to the grammar given in the &content-models; document, i. e. every Rule<abbr>ML</abbr> Version 1.0 instance that is valid with respect to the &content-models; document will validate against the relaxed serialization Relax NG schemas. The normal serialization Relax NG schemas validate instances in the normal form, which is described in the &normalizer; section. Procedures for validation against the Relax NG schemas is described in <a href="#Appendix-5">Appendix 5</a>.</p>
 	  <p>Note that the <a href="http://www.w3schools.com/dtd/"><abbr title="Document Type Definition">DTD</abbr></a> specification of Rule<abbr>ML</abbr> is no longer being maintained, but will continue to be <a href="http://ruleml.org/0.85/dtd">available as an archive</a>. Tools capable of converting between <abbr>XML</abbr> Schema and <abbr>DTD</abbr>s such as <a href="http://www.altova.com/xml-editor/"><abbr>XML</abbr>Spy</a> are always available.</p>
 		
 	</opening>
 
 <section>
 	<header>Overview</header>
-  <p>An introduction to Rule<abbr>ML</abbr> is given in our <a href="#primer">primer</a>. 
+  <p>An introduction to Rule<abbr>ML</abbr> is given in our &primer;. 
     <!--Also, the main page's <a href="http://ruleml.org/index.html#Design">design section</a> discusses the upper layer of the Rule<abbr>ML</abbr> hierarchy of rules. -->
-    Also, the paper <a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a> discusses the upper layer of the RuleML hierarchy of rules.
+    Also, the paper &overarching; discusses the upper layer of the RuleML hierarchy of rules.
     In that terminology, the system of Rule<abbr>ML</abbr> languages presented here only covers derivation rules, (see the <a href="http://ruleml.org/modularization/#Model">official model</a>).</p>
   <p>This is because we think it is important to start with a subset of simple rules, test and refine our principal strategy using these, and then proceed to more general categories of rules in the hierarchy (deliberation rules), as well as to other kinds of rules (reaction rules).
 	  </p>
 
-  <p>A comprehensive <a href="#Glossary">glossary</a> accompanies this specification.</p>
+  <p>A comprehensive &glossary; accompanies this specification.</p>
   
-  <p>The grammar of Rule<abbr>ML</abbr> Version 1.0 is partially described in the <a href="#content-models">Content Models</a> document, where the content model of each individual element is compared across the named sublanguages, as specified within the <a href="#xsd-schemas"><abbr>XSD</abbr> Schemas</a>. The Rule<abbr>ML</abbr> grammar is also partially described by the <a href="#relaxng-schemas">Relax NG Schemas</a>.
+  <p>The grammar of Rule<abbr>ML</abbr> Version 1.0 is partially described in the &content-models; document, where the content model of each individual element is compared across the named sublanguages, as specified within the &xsd-schemas;. The Rule<abbr>ML</abbr> grammar is also partially described by the &relaxng-schemas;.
   </p>
   
   <p>Below is a summary of the changes in Rule<abbr>ML</abbr> Version 1.0:</p>
@@ -185,7 +196,7 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@in"><code>@in</code></a> <code>="no|semi|yes"</code> with respective values, replaced with <a href="./glossary#gloss-@per"><code>@per</code></a> <code>="copy|open|value"</code></item> 
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a>, for <abbr title="Universal Resource Identifiers">URI</abbr>s, replaced with <a href="./glossary#gloss-@iri"><code>@iri</code></a>, for <abbr title="International Resource Identifiers">IRI</abbr>s </item> 
 	  <item>A new edge element <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> introduced as optional wrapper of all performatives (e.g. <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>) in the <a href="./glossary#gloss-ruleml"><code>&lt;Rule<abbr>ML</abbr>&gt;</code></a> element </item>
-	  <item>Additional freedom in element order with partial stripe-skipping (see <a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a> for an explanation of stripe-skipping and element order in Rule<abbr>ML</abbr>) has been introduced in the "relaxed-form serialization", as specified in the Relax NG schemas.</item>
+	  <item>Additional freedom in element order with partial stripe-skipping (see &overarching; for an explanation of stripe-skipping and element order in Rule<abbr>ML</abbr>) has been introduced in the "relaxed-form serialization", as specified in the Relax NG schemas.</item>
 	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer has been developed at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
 	</itemize>	
 
@@ -248,7 +259,7 @@ Rule<abbr>ML</abbr> Version 1.0 mostly builds on top of 0.91.)-->  Additional tr
 <section label="Normalizater">
 	<header><abbr>XSLT</abbr>-Based Normalizer</header>
 
-  <p>RuleML has always allowed abbreviated encoding (skipped edge tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing edge tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Official Normalizer">RON</abbr></a>, also see the <a href="#normalizer">Normalizer</a> directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
+  <p>RuleML has always allowed abbreviated encoding (skipped edge tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing edge tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Official Normalizer">RON</abbr></a>, also see the &normalizer; directory) for normalizing the syntax used in a given Rule<abbr>ML</abbr> Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
     An example of the normal form is the <a href="xslt/normalizer/own_expanded.ruleml">expanded version</a> of the <a href="xslt/normalizer/own_compact.ruleml">compact 'own' example</a>.
 	</p>
   <p>
@@ -524,7 +535,7 @@ The following is a list of the operations the Rule<abbr>ML</abbr> Version 1.0 <a
 <!--(See a <a href="xslt/normalizer/own_compare.htm">comparison of these two files</a> generated using
 <a href="http://www.componentsoftware.com/products/htmldiff/">HTML Diff</a>.)--></p>
 
-<!--<p>Additional examples are located in the <a href="#normalizer">Normalizer</a> directory.</p>-->
+<!--<p>Additional examples are located in the &normalizer; directory.</p>-->
 
 <!--<p> THIS SWITCH IS NOT NEEDED IN THE PUSH-STYLE NORMALIZER @@@ The Rule<abbr>ML</abbr> Version 1.00 normalizer contains a simple tag debugging tool that allows users to find tags that do not belong to Rule<abbr>ML</abbr>. By setting variable DEBUG to true in the <abbr>XSLT</abbr> file, while transforming, the <abbr>XSLT</abbr> wraps the children of the incorrect tag with the PARENTERROR tag. This is significantly better than not having the transformation completed due to errors with no reason given.</p>-->
 
@@ -535,7 +546,7 @@ The following is a list of the operations the Rule<abbr>ML</abbr> Version 1.0 <a
 
 <section>
 	<header>Glossary</header>
-	<p>The <a href="#glossary">glossary for Rule<abbr>ML</abbr> Version 1.0</a> contains descriptions for every element in Rule<abbr>ML</abbr> Version 1.0.</p>
+	<p>The &glossary; for Rule<abbr>ML</abbr> Version 1.0 contains descriptions for every element in Rule<abbr>ML</abbr> Version 1.0.</p>
 </section>
 
 <!-- In lieu of a "Semantic Glossary" or detailed "Language Reference" document, this specification contains a few sections explaining abstract concepts that are necessary for a deeper understanding of the language and schemas, beyond what is covered in the Primer. These sections include:
@@ -559,14 +570,14 @@ The following is a list of the operations the Rule<abbr>ML</abbr> Version 1.0 <a
 <section>
 	<header>Modularization</header>
 	<p>The <abbr>XSD</abbr> schemas use a tree-based modularization strategy. The most current model of the <abbr>XSD</abbr> modularization of Rule<abbr>ML</abbr> is always documented at <a href="http://ruleml.org/modularization/#Model">http://ruleml.org/modularization/#Model</a>.</p>
-  <p>The Relax NG schemas use a different modularization approach based on lattices. The details are given in the publication about the re-engineering of <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a> and the Rule<abbr>ML</abbr> <a href="http://wiki.ruleml.org/index.php/MYNG"><acronym>MYNG</acronym> Wiki</a> page. <a href="#myng"><acronym>MYNG</acronym></a> is accessible through a <acronym>GUI</acronym> or, for advanced users, a <a href="./relaxng/schema_rnc.php"><abbr title="PHP Hypertext Processor">PHP</abbr> script</a> .</p>
+  <p>The Relax NG schemas use a different modularization approach based on lattices. The details are given in the publication about the re-engineering of <a href="http://www.cs.unb.ca/~boley/papers/RuleMLinRelaxNG.pdf">Rule<abbr>ML</abbr> in Relax NG</a> and the Rule<abbr>ML</abbr> <a href="http://wiki.ruleml.org/index.php/MYNG"><acronym>MYNG</acronym> Wiki</a> page. &myng; is accessible through a <acronym>GUI</acronym> or, for advanced users, a <a href="./relaxng/schema_rnc.php"><abbr title="PHP Hypertext Processor">PHP</abbr> script</a> .</p>
 </section>
 
 <section>
 	<header><abbr>XSD</abbr>s</header>
-	<p>The <!--stable--> <a href="#xsd-schemas"><abbr>XSD</abbr> specification of Rule<abbr>ML</abbr> Version 1.0</a> has been created using an <a href="http://ruleml.org/modularization/#Approach">approach</a> that is consistent with that of all earlier <abbr>XSD</abbr>s, and back to that of the (version 0.85) <a href="http://ruleml.org/0.85/dtd"><abbr>DTD</abbr>s</a>.
-	  The <a href="#content-models">Content Models</a> document should be read in parallel to the <abbr>XSD</abbr> schemas, because they give a high-level, complete documentation of the <abbr>XSD</abbr>s.
-	  Likewise, the <a href="#glossary">Glossary</a> can help to find quick descriptions of, and cross-reference between, the Rule<abbr>ML</abbr> Version 1.0 <abbr>XML</abbr> elements.
+	<p>The <!--stable--> &xsd-schemas; specification of Rule<abbr>ML</abbr> Version 1.0 has been created using an <a href="http://ruleml.org/modularization/#Approach">approach</a> that is consistent with that of all earlier <abbr>XSD</abbr>s, and back to that of the (version 0.85) <a href="http://ruleml.org/0.85/dtd"><abbr>DTD</abbr>s</a>.
+	  The &content-models; document should be read in parallel to the <abbr>XSD</abbr> schemas, because they give a high-level, complete documentation of the <abbr>XSD</abbr>s.
+	  Likewise, the &glossary; can help to find quick descriptions of, and cross-reference between, the Rule<abbr>ML</abbr> Version 1.0 <abbr>XML</abbr> elements.
 	 </p>
 </section>
 
@@ -852,7 +863,7 @@ output using the radio buttons just above the "Get Results" button.
   or the Rule<abbr>ML</abbr> 0.91-1.0 Upgrader <abbr>XSLT</abbr> (<a href = "../xslt/upgrader/091-to-100.xslt">http://ruleml.org/1.0/xslt/upgrader/091-to-100.xslt</a>).</item>
 
 <item>For the xml resource use a file that is either considered compact Rule<abbr>ML</abbr> (for the normalizer) or a Rule<abbr>ML</abbr> file using an older version of Rule<abbr>ML</abbr> (for the upgrader).
-  Compact examples for the normalizer can be found <a href="#normalizer">here</a> while old version examples for the upgrader can be found <a href="#upgrader">here</a>.</item>
+  Compact examples for the normalizer can be found in the &normalizer; directory, while old version examples for the upgrader can be found in the &upgrader; directory.</item>
 
     <item>Once both <abbr>URL</abbr>'s have been entered, click transform. To see the result, in some browsers you need to do "View | Page Source".</item>
   </enumerate>
@@ -1053,7 +1064,7 @@ output using the radio buttons just above the "Get Results" button.
 		<p>
 		Site Contact:
 		<a href="http://alt2is.com">Tara Athan</a>.
-		Page Version: 2012-01-26
+		Page Version: 2012-01-28
 		
 		<br/>
 		<br/>
