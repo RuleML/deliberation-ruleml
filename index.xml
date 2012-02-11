@@ -1035,7 +1035,7 @@ output using the radio buttons just above the "Get Results" button.
         </item>
         <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, whose current version may be deprecated in favor of better integration with the rest of the RuleML syntax.
         </item>
-        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> or certain cases of <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> does not have commonly accepted semantics (in particular, F-logic's object semantics, as adapted in W3C RIF and developed in PSOA RuleML),  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Rule<abbr>ML</abbr> Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a metadata mechanism.) 
+        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> or certain cases of <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> does not have commonly accepted semantics (in particular, F-logic's object semantics, as adapted in W3C RIF and developed in PSOA RuleML),  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Rule<abbr>ML</abbr> Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a separate metadata mechanism.) 
         </item>
       </itemize>
     </p>
@@ -1059,7 +1059,44 @@ output using the radio buttons just above the "Get Results" button.
     
     </p>
   </section>
-
+  <!-- <section label="Acknowledgements">
+    <header>Acknowledgements</header>
+    Sadnan Al-Manir
+    Alexander Cameron
+    Monika Machunik
+    Omair Shafiq
+    Gerd Wagner
+    Jae Kyu Lee
+    
+    co-authors of prior versions:
+    Harold Boley
+    Said Tabet
+    Benjamin Grosof
+    Gerd Wagner
+    Carlos Damasio
+    Michael Kifer
+    Michael Sintek
+    David Hirtle
+    
+    Content Model
+    Tshering Dema
+    
+    Glossary
+    Doan Dai Duong, 
+    Le Thi Thu Thuy
+    
+    RuleML, Co-Chairs: Harold Boley & Said Tabet
+    Steering Committee: Yevgen Biletskiy, Harold Boley, Mike Dean, Benjamin Grosof, Michael Kifer, Alex Kozlenkov, Jeff Z. Pan, Adrian Paschke, Bruce Spencer, Giorgos Stamou, Suzette Stoutenburg, Said Tabet, Gerd Wagner
+    Advisory Board: Asaf Adi, Andreas Eberhart, Steve Ross-Talbot
+    Reaction Rules (Reaction RuleML) Technical Group, Co-Chairs: Adrian Paschke & Alex Kozlenkov, Mailing list: reaction-tg
+    Ontology Combination Technical Group, Co-Chairs: Benjamin Grosof & Andreas Eberhart
+    Defeasible Logic in RuleML (Defeasible RuleML) Technical Group, Co-Chairs: Nick Bassiliades & Guido Governatori
+    Frames, Objects, and RUle Markup ( FORUM) Technical Group, Co-Chairs: Michael Kifer & Jürgen Angele
+    Fuzziness in RuleML (Fuzzy RuleML) Technical Group, Co-Chairs: Giorgos Stamou & Jeff Z. Pan
+    RuleML-Based Responder (Rule Responder) Technical Group, Co-Chairs: Adrian Paschke & Harold Boley, Mailing list: responder-tg
+    
+  </section>
+  -->
 	<closing>
 		<p>
 		Site Contact:
