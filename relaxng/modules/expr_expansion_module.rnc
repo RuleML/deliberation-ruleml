@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, expressions" ]
 dc:description [ "The expansion module for expressions." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -38,8 +38,6 @@ Expr.Node.def =
 ## Expressions optionally accept the attribute pattern of objects with user-defined types.
 reExpr.attlist &= Type.attlist?
 
-## Expressions accept the header pattern of general objects.
-Expr.header &= Object.header?
 
 ## an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in expressions. 
 operatorForExpressions-edge.choice |= op_Expr.edge.def

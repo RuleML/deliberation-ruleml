@@ -8,13 +8,12 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, reify, reification" ]
 dc:description [ "The expansion module for reification of RuleML objects." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Reify-any.Node.def
-# for modules
-
+Node.choice |= Reify-any.Node.def
 # This module declares the following RuleML elements, attributes and patterns:
 #           * <Reify>
 
@@ -35,4 +34,3 @@ AnyThis =
         attribute * { text }*,
         (text & AnyThis*)
     }
-Node.choice |= Reify-any.Node.def

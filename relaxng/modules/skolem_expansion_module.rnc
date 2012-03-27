@@ -8,11 +8,12 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, skolem" ]
 dc:description [ "The expansion module for skolems." ]
-dc:date ["2011-10-06"]
+dc:date ["2012-03-27"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Skolem.Node.def
+Node.choice |= Skolem.Node.def
 # This module declares the following RuleML elements, attributes and patterns:
 #            * <Skolem>
 
@@ -29,6 +30,5 @@ reSkolem.attlist &= Type.attlist?
 
 ## The content model for skolems is text.
 Skolem.content |= text
-Node.choice |= Skolem.Node.def
 
 

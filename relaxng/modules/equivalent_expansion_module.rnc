@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, equivalence" ]
 dc:description [ "The expansion module for equivalances." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -42,9 +42,9 @@ reEquivalent.attlist &=
   closure-att.choice? & mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Equivalences optionally accept the header pattern of general formulas.
-Equivalent.header &= CompoundFormula.header?
-# For the declaration of the compound formula header, see the con/disjunction module (andor_module).
+## Equivalences optionally accept the header pattern common to Nodes.
+Equivalent.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
 
 ## the main content model of equivalances consists of two "torso" formulas
 Equivalent.main |= torso-edge.choice, torso-edge.choice
@@ -64,4 +64,4 @@ torso.edge.def =
 ## because this is a requirement for the statement "P implies P" to be syntactically valid whenever P is a valid conclusion.
 ## Therefore, formulas allowed in equivalences are the same as those allowed in conclusions.
 torso.content |= ConclusionFormula.choice
-# For the declaration of the conclusion pattern, see the implication module (implication_module).
+# For the declaration of the conclusion pattern, see the implication module (implication_expansion_module).

@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
 dc:description [ "The expansion module for atomic formulas." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -20,7 +20,7 @@ edge.choice |= atom.edge.defs
 #            * <op>
 # This module also declares the following RuleML choice pattern:
 #            * SimpleFormula-node.choice
-# Schema Design Pattern Key: see andor_expansion_module.rnc
+# Schema Design Pattern Key: see andor_expansion_module
 atom.Node.defs |= Atom.Node.def | Rel.Node.def
 atom.edge.defs |= op_Atom.edge.def
 
@@ -40,12 +40,6 @@ Atom.Node.def =
 ## Atomic formulas may have an optional closure attribute.
 reAtom.attlist &= closure-att.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
-
-## Atomic formulas accept the header pattern of simple formulas.
-Atom.header &= SimpleFormula.header?
-
-## Simple formulas are fuzzifiable.
-SimpleFormula.header &= FuzzyFormula-header.choice?
 
 ## an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in atomic formulas.  
 operatorForAtoms-edge.choice |= op_Atom.edge.def

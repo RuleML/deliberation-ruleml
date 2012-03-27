@@ -8,7 +8,7 @@ dc:subject [ "RuleML, conjunction, disjunction" ]
 dc:description [
   "The expansion module for conjunctions and disjunctions."
 ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -40,9 +40,7 @@ edge.choice |= andor.edge.defs
 
 ##
 andor.Node.defs |=
-  And.Node.def
-  | Or.Node.def
-  | And-Query.Node.def
+  And-Query.Node.def
   | Or-Query.Node.def
 andor.edge.defs |= formula_And.edge.def | formula_Or.edge.def
 
@@ -80,13 +78,9 @@ reAnd-Query.attlist &=
   closure-att.choice? & mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## The header section of the conjunction content model follows a common pattern for compound formulas.
-And.header &= CompoundFormula.header?
-
-## Compound formulas are crisp (not fuzzifiable) and therefore contain only the pattern for general formulas
-CompoundFormula.header &= Formula.header?
-# The formula header may be serialization-dependent, 
-# see the serialization modules (orderlax_module, orderstrict_module, ordermix_module).
+## Conjunctions accept the header patter common to Nodes.
+And.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
 
 ## The main section of the conjunction content model contains zero or more formulas.
 And.main |= formula_And-edge.choice*
@@ -118,7 +112,7 @@ AndFormula.choice |=
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 
 ## an extension point for alternate spellings and internationalization of the disjunction tag name.  
@@ -154,8 +148,9 @@ reOr-Query.attlist &=
   closure-att.choice? & mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## The header section of the disjunction content model follows a common pattern for compound formulas.
-Or.header &= CompoundFormula.header?
+## Conjunctions accept the header patter common to Nodes.
+Or.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
 
 ## The main section of the disjunction content model contains zero or more formulas.
 Or.main |= formula_Or-edge.choice*
@@ -185,5 +180,5 @@ OrFormula.choice |=
 # For the declaration of the simple formula pattern, see the atomic formula and equation modules ( atom_expansion_module) 
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)

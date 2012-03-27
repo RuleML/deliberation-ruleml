@@ -8,11 +8,12 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, plex, generalized lists" ]
 dc:description [ "The expansion module for generalized lists." ]
-dc:date ["2011-10-06"]
+dc:date ["2012-02-23"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Plex_Any.Node.def
+Node.choice |= Plex_Any.Node.def
 # This module declares the following RuleML elements and attributes:
 #            * <Plex>
 
@@ -27,10 +28,9 @@ Plex_Any.Node.def =
     ## within Atom
     element Plex { (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_Any.main }
 
-## Generalized lists optionally accept the header pattern of general objects.
-Plex.header &= Object.header?
-# The object header may be positionally-dependent, 
-# see the position-(in)dependence serialization modules (orderstrict_module, orderlax_module).
+## Generalized lists accept the header pattern common to Nodes.
+Plex.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
 
 ## A generalized list contains a generalized term sequence, which may be empty.
 Plex_Any.main |= argumentsForExpressions.sequence
@@ -67,8 +67,3 @@ Plex_resl.Node.def =
 ## A generalized list within a slotted rest variable contains a slotted argument sequence
 Plex_resl.main |= slotsForExpressions.sequence
 # For the declaration of slot sequences, see the slot module (slot_module).
-Node.choice |= Plex_Any.Node.def
-# 
-
-
-

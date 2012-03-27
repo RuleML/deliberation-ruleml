@@ -9,7 +9,7 @@ dc:subject [ "RuleML, positional independence" ]
 dc:description [
   "The expansion module for positional independence."
 ]
-dc:date [ "2011-11-15" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -76,10 +76,13 @@ Implies.main |=
 Entails.main |=
   body_Entails.name.choice & head_Entails.name.choice
 
-## In the relaxed-form serialization, the object identifier occupies any position in the header of fuzzifiable formulas.
+## In the normal-form serialization, the order of header elements is:
+## meta* & oid? & degree
+## or some subset of this sequence.
 ## This pattern can be translated accurately into XSD using xs:any, but is not correctly translated by the Trang software.
-## The header for fuzzifiable formulas interleaves the patterns for general formulas and fuzzifiable objects.
-FuzzyFormula-header.choice |= Formula.header & Fuzzy.header
+Atom.header &= Node.header? & objectIdentifier-edge.choice? & degree-edge.choice?
+Equal.header &= Node.header & degree-edge.choice?
+Expr.header &= Node.header? & objectIdentifier-edge.choice?
 # 
 # 
 # STRIPE-SKIPPING AND POSITIONAL-DNDEPENDENCE

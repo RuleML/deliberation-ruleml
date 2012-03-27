@@ -7,11 +7,13 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, rulebase" ]
 dc:description [ "The expansion module for the rulebase component." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Rulebase.Node.def
+Node.choice |= Rulebase.Node.def
+edge.choice |= formula_Rulebase.edge.def
 # This module declares or extends the following RuleML elements and attributes:
 #            * <Rulebase>
 #            * <formula>
@@ -28,10 +30,9 @@ Rulebase.Node.def =
 reRulebase.attlist &= mapClosure-att.choice?
 # For the declaration of the scope closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Rulebases accept the header pattern of general formulas.
-Rulebase.header &= Object.header?
-# The object header may be positionally-dependent, 
-# see the position-(in)dependence serialization modules (orderstrict_module, orderlax_module).
+## Rulebases accept the header pattern common to Nodes.
+Rulebase.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
 
 ## Rulebases contain zero or more formulas.
 Rulebase.main |= formula_Rulebase-edge.choice*
@@ -59,10 +60,8 @@ RulebaseFormula.choice |=
     | Forall-node.choice
     | Exists-fo-node.choice
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
-# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
+# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
-Node.choice |= Rulebase.Node.def
-edge.choice |= formula_Rulebase.edge.def

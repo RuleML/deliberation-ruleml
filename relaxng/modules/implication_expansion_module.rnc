@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -27,7 +27,7 @@ edge.choice |= head_Implies.edge.def | body_Implies.edge.def
 ## because equivalence is allowed wherever implication is allowed.
 Implication-node.choice |=
   Implies-node.choice | Equivalent-node.choice
-# For the declaration of equivalences, see the equivalance module (equivalence_module)
+# For the declaration of equivalences, see the equivalance module (equivalence_expansion_module)
 
 ## an extension point to allow alternate names and internationalization of uni-directional implication tag name.
 Implies-node.choice |= Implies.Node.def
@@ -51,9 +51,10 @@ reImplies.attlist &=
   closure-att.choice? & mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Implications accept the header pattern of general formulas.
-Implies.header &= CompoundFormula.header?
-# For the declaration of the compound formula header, see the con/disjunction module (andor_module).
+## Implications accept the header pattern common to Nodes.
+Implies.header &= Node.header?
+# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
+
 # 
 # Implies.main |= notAllowed is declared in the initialization module.
 # This pattern must be over-ridden to allow the Implies element to be used.
@@ -72,6 +73,7 @@ body_Implies.edge.def =
   
   ## <if>: contains the premise of the implication. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-if
+  ## FIXME: replace body_ with if_ and head_ with then_
   element if { body_Implies.attlist? & body_Implies.content }
 
 ## The premise of an implication consists of a single formula
@@ -88,10 +90,10 @@ PremiseFormula.choice |=
   | Forall-fo-node.choice
   | Exists-fo-node.choice
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
-# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
+# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 
 ## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in implications.  
@@ -120,8 +122,8 @@ ConclusionFormula.choice |=
   | Forall-fo-node.choice
   | Exists-fo-node.choice
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
-# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_module)
+# For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
-# For the declaration of the implication pattern, see the implication modules (implication_module and equivalence_module)
+# For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)

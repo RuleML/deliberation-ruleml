@@ -1,18 +1,17 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-
 dc:title [ "RuleML Initializing Base Patterns" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, initialize, base patterns" ]
 dc:description [ "expansion module for initializing base patterns." ]
-dc:date [ "2011-11-26" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
-#
+# 
 # .content
 act.content |= notAllowed
 arg.content |= notAllowed
@@ -51,63 +50,67 @@ head_Entails-ss.content |= notAllowed
 # ATTRIBUTE LISTS
 # FIXME: move these definitions to the appropriate modules and 
 # just intialize commonInit.attlist here as empty
-reAnd.attlist &= commonInit.attlist?
-reAnd-Query.attlist &= commonInit.attlist?
+reAnd.attlist &= commonNode.attlist?
+reInfo-And.attlist &= commonNode.attlist?
+reAnd-Query.attlist &= commonNode.attlist?
+reInfo-And-Query.attlist &= commonNode.attlist?
 formula_And.attlist &= commonInit.attlist?
-reOr.attlist &= commonInit.attlist?
-reOr-Query.attlist &= commonInit.attlist?
+reOr.attlist &= commonNode.attlist?
+reOr-Query.attlist &= commonNode.attlist?
 formula_Or.attlist &= commonInit.attlist?
-reAtom.attlist &= commonInit.attlist?
+reAtom.attlist &= commonNode.attlist?
 op_Atom.attlist &= commonInit.attlist?
-reRel.attlist &= commonInit.attlist?
+reRel.attlist &= commonNode.attlist?
 card.attlist &= commonInit.attlist?
 closure.attlist &= commonInit.attlist?
+id.attlist &= commonInit.attlist?
 oid.attlist &= commonInit.attlist?
 direction.attlist &= commonInit.attlist?
-reData.attlist &= commonInit.attlist?
-reEqual.attlist &= commonInit.attlist?
+reData.attlist &= commonNode.attlist?
+reEqual.attlist &= commonNode.attlist?
 left.attlist &= commonInit.attlist?
 right.attlist &= commonInit.attlist?
-reEquivalent.attlist &= commonInit.attlist?
+reEquivalent.attlist &= commonNode.attlist?
 torso.attlist &= commonInit.attlist?
-reExpr.attlist &= commonInit.attlist?
-reFun.attlist &= commonInit.attlist?
+reExpr.attlist &= commonNode.attlist?
+reFun.attlist &= commonNode.attlist?
 op_Expr.attlist &= commonInit.attlist?
 degree.attlist &= commonInit.attlist?
-reImplies.attlist &= commonInit.attlist?
+reImplies.attlist &= commonNode.attlist?
 body_Implies.attlist &= commonInit.attlist?
 head_Implies.attlist &= commonInit.attlist?
 rearg.attlist &= commonInit.attlist?
-reInd.attlist &= commonInit.attlist?
+reInd.attlist &= commonNode.attlist?
 iri.attlist &= commonInit.attlist?
 material.attlist &= commonInit.attlist?
-reEntails.attlist &= commonInit.attlist?
+reEntails.attlist &= commonNode.attlist?
 body_Entails.attlist &= commonInit.attlist?
 head_Entails.attlist &= commonInit.attlist?
-reNaf.attlist &= commonInit.attlist?
-reNeg.attlist &= commonInit.attlist?
+reNaf.attlist &= commonNode.attlist?
+reNeg.attlist &= commonNode.attlist?
 strong.attlist &= commonInit.attlist?
 weak.attlist &= commonInit.attlist?
-reRuleML.attlist &= commonInit.attlist?
+reRuleML.attlist &= commonNode.attlist?
 react.attlist &= commonInit.attlist?
-reAssertRetract.attlist &= commonInit.attlist?
-reQuery.attlist &= commonInit.attlist?
-formula_AssertRetract.attlist &= commonInit.attlist? 
-formula_Query.attlist &= commonInit.attlist? 
-rePlex.attlist &= commonInit.attlist?
-reForall.attlist &= commonInit.attlist?
-reExists.attlist &= commonInit.attlist?
+reAssertRetract.attlist &= commonNode.attlist?
+reQuery.attlist &= commonNode.attlist?
+formula_AssertRetract.attlist &= commonInit.attlist?
+formula_Query.attlist &= commonInit.attlist?
+rePlex.attlist &= commonNode.attlist?
+reForall.attlist &= commonNode.attlist?
+reExists.attlist &= commonNode.attlist?
 declare.attlist &= commonInit.attlist?
 formula_Forall.attlist &= commonInit.attlist?
 formula_Exists.attlist &= commonInit.attlist?
-Reify-any.attlist &= commonInit.attlist?
-Reify.attlist &= commonInit.attlist?
-reRulebase.attlist &= commonInit.attlist?
+Reify-any.attlist &= commonNode.attlist?
+Reify.attlist &= commonNode.attlist?
+Reify-node.attlist &= commonNode.attlist?
+reRulebase.attlist &= commonNode.attlist?
 formula_Rulebase.attlist &= commonInit.attlist?
-reSkolem.attlist &= commonInit.attlist?
+reSkolem.attlist &= commonNode.attlist?
 reslot.attlist &= commonInit.attlist?
 type.attlist &= commonInit.attlist?
-reVar.attlist &= commonInit.attlist?
+reVar.attlist &= commonNode.attlist?
 repo.attlist &= commonInit.attlist?
 resl.attlist &= commonInit.attlist?
 oriented.attlist &= commonInit.attlist?
@@ -115,8 +118,8 @@ interpretation.attlist &= commonInit.attlist?
 type.attlist &= commonInit.attlist?
 val.attlist &= commonInit.attlist?
 weight.attlist &= commonInit.attlist?
+commonNode.attlist &= commonInit.attlist?
 commonInit.attlist &= empty
-
 Resource.attlist &= empty
 Type.attlist &= empty
 # 
@@ -130,18 +133,13 @@ argumentsForExpressions.sequence |= empty
 positionalArgumentsForExpressions.sequence |= empty
 # 
 # HEADERS
-Performative.header &= empty
-Object.header &= empty
-SimpleFormula.header &= empty
-CompoundFormula.header &= empty
-Formula.header &= empty
-Fuzzy.header &= empty
-FuzzyFormula-header.choice |= empty
-Equal.header &= empty
+Node.header &= empty
+Atom.header &= empty
 Expr.header &= empty
-Naf.header &= empty
+Equal.header &= empty
 Neg.header &= empty
-#
+Naf.header &= empty
+# 
 # MAIN
 Atom.main |= notAllowed
 Equal.main |= notAllowed
@@ -166,14 +164,14 @@ interpretation-att-inf.choice |= notAllowed
 material-att.choice |= notAllowed
 material-att-inf.choice |= notAllowed
 mapMaterial-att.choice |= notAllowed
-mapMaterial-att-inf.choice  |= notAllowed
+mapMaterial-att-inf.choice |= notAllowed
 mapMaterial-att-fo.choice |= notAllowed
 oriented-att.choice |= notAllowed
 oriented-att-inf.choice |= notAllowed
 singlevalued-att.choice |= notAllowed
 singlevalued-att-inf.choice |= notAllowed
 weight-att.choice |= notAllowed
-#
+# 
 # ATTRIBUTES WITH DEFAULT VALUES
 And-datt.choice |= notAllowed
 Or-datt.choice |= notAllowed
@@ -230,7 +228,6 @@ Or-dis-node.choice |= notAllowed
 Or-fo-node.choice |= notAllowed
 Or-Query-node.choice |= notAllowed
 SimpleFormula-node.choice |= notAllowed
-Data-node.choice |= notAllowed
 Data_any-node.choice |= notAllowed
 Data_simple-node.choice |= notAllowed
 Equal-node.choice |= notAllowed
@@ -262,6 +259,7 @@ ConclusionFormula.choice |= notAllowed
 # role re-naming and stripe-skipping choice patterns
 operatorForAtoms-edge.choice |= notAllowed
 objectIdentifier-edge.choice |= notAllowed
+metaKnowledge-edge.choice |= notAllowed
 operatorForExpressions-edge.choice |= notAllowed
 degree-edge.choice |= notAllowed
 body_Implies.name.choice |= notAllowed
@@ -276,11 +274,11 @@ positionalArgument-edge.choice |= notAllowed
 cardinality.value |= notAllowed
 interpretation.value |= notAllowed
 val.value |= notAllowed
-#
+# 
 # Choice patterns for all Nodes, all edges.
 # Used for start and Reify
 Node.choice |= notAllowed
 edge.choice |= notAllowed
-#
+# 
 # -attrib.choice
 index-attrib.choice |= notAllowed

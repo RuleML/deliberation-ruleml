@@ -1,7 +1,6 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-
 dc:title [ "RuleML Data Element" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
@@ -9,9 +8,9 @@ dc:subject [ "RuleML, Data, Simple Content" ]
 dc:description [
   "The expansion module for the simple-type Data element, a Type (Object) for literal constants."
 ]
-dc:date [ "2011-11-15" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Data_simple.Node.def
 Node.choice |= Data_simple.Node.def
@@ -22,6 +21,7 @@ Node.choice |= Data_simple.Node.def
 ## (http://code.google.com/p/jing-trang/issues/detail?id=132&q=xsi&colspec=ID%20Type%20Status%20Priority%20Stars%20Module%20Summary)
 ## this module should not be included when translating from RNC to XSD.
 ##
+
 ## an extension point for alternate spellings and internationalization of the data tag name.  
 Data_simple-node.choice |= Data_simple.Node.def
 
@@ -32,8 +32,8 @@ Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Data
-  element Data { anySimpleTypeForElements.datatype.choice }
-
+  element Data { Data.attlist?,  anySimpleTypeForElements.datatype.choice }
+Data.attlist &= commonNode.attlist?
 ## an extension point for explicit datatyping
 anySimpleTypeForElements.datatype.choice |=
   xsd:duration

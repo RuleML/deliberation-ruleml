@@ -9,7 +9,7 @@ dc:subject [ "RuleML, term, data, mixed, foreign" ]
 dc:description [
   "The expansion module for mixed-any data terms."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -19,4 +19,4 @@ start |= notAllowed
 
 ## Data terms may have mixed content from any namespace.
 DataTerm.choice |= Data_any-node.choice
-# For the declaration of mixed-any data terms, see the mixed-any data modules (data_any_expansion_module).
+# For the declaration of mixed-any data terms, see the mixed-any data modules (data_any_content_expansion_module).

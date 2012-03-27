@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, constant, SWSL" ]
 dc:description [ "The expansion module for SWSL constants." ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -36,7 +36,7 @@ Const.Node.def =
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.
 reConst.attlist &= Resource.attlist?
 reConst.attlist &= Type.attlist?
-# For the declaration of the attribute list for resources, see the iri modules (uri_module).
+# For the declaration of the attribute list for resources, see the iri modules (iri_module).
 # For the declaration of the attribute list for objects with user-defined types, see the type module (type_module). 
 
 ## The content model for individuals is text.

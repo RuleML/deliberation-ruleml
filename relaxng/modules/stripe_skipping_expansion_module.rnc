@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, stripe-skipping" ]
 dc:description [ "expansion module for stripe-skipping." ]
-dc:date ["2011-10-06"]
+dc:date ["2012-03-27"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -100,7 +100,3 @@ strong-edge.choice |= strong.content
 # 
 ## Stripe-skipping is allowed for actions.
 act-edge.choice |= act.content
-# 
-
-
-

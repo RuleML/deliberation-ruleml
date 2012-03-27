@@ -79,9 +79,16 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= n
 #
 include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# ABSTRACT HEADERS INCLUDED
+# EXPLICIT DATATYPING ENABLED
+# comment all of these out when translating to XSD
+#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-include "modules/header_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# xsi:schemaLocation ALLOWED IN RuleML
+# comment this out when translating to XSD
+#include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 #
 # UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
 #
@@ -93,7 +100,7 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 #
 # ENTAILMENTS (PROVES) INCLUDED
 #
-include "modules/meta_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/metalevel_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # DEGREE OF UNCERTAINTY INCLUDED
 #
@@ -137,7 +144,7 @@ include "modules/material_default_expansion_module.rnc" inherit = ruleml {start 
 #
 # OBJECT IDENTIFIERS INCLUDED
 #
-include "modules/desc_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # SLOTS INCLUDED
 #
@@ -183,9 +190,9 @@ include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# REIFICATION TERMS INCLUDED, ANY CONTENT
+# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
 #
-include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
 #

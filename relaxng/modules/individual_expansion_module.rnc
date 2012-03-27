@@ -1,15 +1,14 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-
 dc:title [ "RuleML Basic Terms" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, term, individual" ]
 dc:description [ "The expansion module for basic terms." ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Ind.Node.def | arg.edge.def
 Node.choice |= Ind.Node.def
@@ -76,6 +75,8 @@ SimpleConstantTerm.choice |= SimpleKeyTerm.choice
 
 ## Individuals and literals (data) are simple, constant terms, and may be used in slot keys.
 SimpleKeyTerm.choice |= Individual-node.choice | DataTerm.choice
+## Data terms are literals, and may have simple or complex datatypes.
+# For the declaration of data terms, see the dataterm modules (dataterm_any_expansion_module and dataterm_simple_expansion_module).
 
 ## Compound terms are built up from other terms.
 ## Compound terms include expressions.
@@ -87,9 +88,6 @@ CompoundTerm.choice |= Expression-node.choice
 CompoundTerm.choice |= Plex_Any-node.choice
 # For the declaration of generalized list terms, see the generalized list module (plex_module).
 
-## Data terms are literals, and may have simple or complex datatypes.
-DataTerm.choice |= Data-node.choice
-# For the declaration of data terms, see the data modules (data_module and complexdata_module).
 
 ## an extension point for alternate spellings and internationalization of the individual tag name. 
 Individual-node.choice |= Ind.Node.def

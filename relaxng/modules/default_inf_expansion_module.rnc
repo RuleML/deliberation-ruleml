@@ -10,7 +10,7 @@ dc:subject [ "RuleML, default-valued attributes" ]
 dc:description [
   "The expansion module to allow attributes to have default values."
 ]
-dc:date [ "2011-10-06" ]
+dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -40,8 +40,8 @@ Rulebase-datt.choice |=
 ## scope material implication as an attribute with default values. 
 AssertRetract-datt.choice |=
   mapMaterial-att-inf.choice & mapDirection-att-inf.choice
-# For the declaration of the scope material attribute pattern, see the material implication module (material_module)
-# For the declaration of the scope direction attribute pattern, see the inference direction module (direction_module)
+# For the declaration of the scope material attribute pattern, see the material implication module (material_expansion_module)
+# For the declaration of the scope direction attribute pattern, see the inference direction module (direction_expansion_module)
 
 ## equations have orientation as an attribute with default values.
 Equal-datt.choice |= oriented-att-inf.choice

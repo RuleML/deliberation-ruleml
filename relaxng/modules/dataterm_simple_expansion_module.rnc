@@ -7,7 +7,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, term, data, simple" ]
 dc:description [ "The expansion module for simple data terms." ]
-dc:date [ "2011-11-15" ]
+dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -21,4 +21,4 @@ start |= notAllowed
 ## this module should not be included when translating from RNC to XSD.
 ##
 DataTerm.choice |= Data_simple-node.choice
-# For the declaration of simple data terms, see the simple data modules (data_simple_expansion_module).
+# For the declaration of simple data terms, see the simple data modules (data_simple_content_expansion_module).
