@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://www.w3.org/XML/1998/namespace"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:attributeGroup name="xml.attlist">
+    <xs:attribute name="base" use="optional" form="qualified" type="xs:anyURI"/>
+    <xs:attribute name="id" use="optional" form="qualified" type="xs:ID"/>
+  </xs:attributeGroup>
+</xs:schema>

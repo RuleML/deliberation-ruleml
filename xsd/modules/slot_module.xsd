@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
-xmlns="http://ruleml.org/spec"
->
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
 
-	<xs:annotation>
-		<xs:documentation xml:lang="en">
+  <xs:annotation>
+    <xs:documentation xml:lang="en"
+      >
 			This is the XML Schema module for RuleML slots.
 			File: slot_module.xsd
 			Version: 1.0
@@ -20,9 +18,9 @@ xmlns="http://ruleml.org/spec"
 			
 			See http://www.ruleml.org/modularization for details about this modularization approach.
 		</xs:documentation>
-	</xs:annotation>
-	
-	<!--
+  </xs:annotation>
+
+  <!--
 		*** slot ***
 		A user-defined slot consisting of a name (first position) and a filler (second position).
 		
@@ -33,53 +31,54 @@ xmlns="http://ruleml.org/spec"
 		
 		Another (context-sensitive) version of <slot> is in the holog module.
 	-->
-	<xs:attributeGroup name="slot.attlist">
-		<xs:attributeGroup ref="card.attrib"/>
-		<xs:attributeGroup ref="weight.attrib"/>
-	</xs:attributeGroup>
-	<xs:group name="slot-name.extend">
-		<xs:choice>
-			<xs:element ref="Ind"/>
-			<xs:element ref="Data"/>
-		</xs:choice>
-	</xs:group>
-	<xs:group name="slot.content">
-		<xs:sequence>
-			<xs:group ref="slot-name.extend"/>
-			<xs:group ref="arg.content"/>
-		</xs:sequence>
-	</xs:group>
-	<xs:complexType name="slot.type">
-		<xs:group ref="slot.content"/>
-		<xs:attributeGroup ref="slot.attlist"/>
-	</xs:complexType>
-	<xs:element name="slot" type="slot.type"/>
+  <xs:attributeGroup name="slot.attlist">
+    <xs:attributeGroup ref="card.attrib"/>
+    <xs:attributeGroup ref="weight.attrib"/>
+    <xs:attributeGroup ref="xml.attlist"/>
+  </xs:attributeGroup>
+  <xs:group name="slot-name.extend">
+    <xs:choice>
+      <xs:element ref="Ind"/>
+      <xs:element ref="Data"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="slot.content">
+    <xs:sequence>
+      <xs:group ref="slot-name.extend"/>
+      <xs:group ref="arg.content"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="slot.type">
+    <xs:group ref="slot.content"/>
+    <xs:attributeGroup ref="slot.attlist"/>
+  </xs:complexType>
+  <xs:element name="slot" type="slot.type"/>
 
-	<!--
+  <!--
 		*** @card ***
 		An attribute optionally specifying a slot's cardinality.
 		
 		See http://www.ruleml.org/1.0/glossary/#gloss-@card		
 	-->
-	<xs:attributeGroup name="card.attrib">
-		<xs:attribute name="card" type="xs:nonNegativeInteger" use="optional"/>
-	</xs:attributeGroup>
+  <xs:attributeGroup name="card.attrib">
+    <xs:attribute name="card" type="xs:nonNegativeInteger" use="optional"/>
+  </xs:attributeGroup>
 
-	<!--
+  <!--
 		*** @weight ***
 		An attribute optionally specifying a slot's relative weight.
 		
 		See http://www.ruleml.org/1.0/glossary/#gloss-@weight		
 	-->
-	<xs:attributeGroup name="weight.attrib">
-		<xs:attribute name="weight" use="optional">
-			<xs:simpleType>
-				<xs:restriction base="xs:decimal">
-					<xs:minInclusive value="0"/>
-					<xs:maxInclusive value="1"/>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
-	</xs:attributeGroup>
+  <xs:attributeGroup name="weight.attrib">
+    <xs:attribute name="weight" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minInclusive value="0"/>
+          <xs:maxInclusive value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
 
 </xs:schema>

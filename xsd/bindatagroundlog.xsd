@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			XML Schema for a Binary Ground-Datalog RuleML sublanguage
 			File: bindatagroundlog.xsd
 			Version: 1.0
-			Last Modification: 2011-12-12
+			Last Modification: 2011-12-21
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -24,7 +24,7 @@ elementFormDefault="qualified"
 
 			note that this automatically removes Var from Atom so that its content model is:
 			(
-				(oid)?, (op | Rel), (slot)*,
+				id?, meta?, oid?, (op | Rel), (slot)*,
 				( (arg|Ind|Data|Skolem|Reify), (arg|Ind|Data|Skolem|Reify), (slot)* )?
 			)
 		-->		
@@ -37,18 +37,6 @@ elementFormDefault="qualified"
 			</xs:choice>
 		</xs:group>
 
-	  <!--
-	    remove Var so that oid's content model is: (Ind | Data | Skolem | Reify)
-	    
-	  -->		
-	  <xs:group name="oid.content">
-	    <xs:choice>
-	      <xs:element ref="Ind"/>
-	      <xs:element ref="Data"/>
-	      <xs:element ref="Skolem"/>
-	      <xs:element ref="Reify"/>					
-	    </xs:choice>
-	  </xs:group>
 	  
 
 		<!--
