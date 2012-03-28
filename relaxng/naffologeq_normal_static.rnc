@@ -9,7 +9,7 @@ dc:subject [ "RuleML, custom-built" ]
 dc:description [
     "custom-built main module for a RuleML sublanguage."
 ]
-dc:date [ "2011-10-31T21:54:32-0300" ]
+dc:date [ "2012-03-27T21:15:23-0300" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -19,14 +19,14 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # GET parameter: default=x2
 # GET parameter: termseq=x7
 # GET parameter: lng=x1
-# GET parameter: propo=x3f
+# GET parameter: propo=x3ff
 # GET parameter: implies=x7
 # GET parameter: terms=xf3f
 # GET parameter: quant=x7
-# GET parameter: expr=xe
-# GET parameter: serial=x0
+# GET parameter: expr=xf
+# GET parameter: serial=xc
 # Complete URL = 
-#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3f&implies=x7&terms=xf3f&quant=x7&expr=xe&serial=x0
+#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -80,15 +80,14 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= n
 include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # EXPLICIT DATATYPING ENABLED
-# comment all of these out when translating to XSD
-#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # xsi:schemaLocation ALLOWED IN RuleML
-# comment this out when translating to XSD
-#include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
 #
@@ -113,6 +112,22 @@ include "modules/neg_expansion_module.rnc" inherit = ruleml {start |= notAllowed
 # WEAK NEGATIONS INCLUDED
 #
 include "modules/naf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# NODE IDENTIFIERS INCLUDED
+#
+include "modules/node_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# IN-PLACE ANNOTATIONS INCLUDED
+#
+include "modules/meta_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# XML BASE ATTRIBUTE INCLUDED
+#
+include "modules/xml_base_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# XML ID ATTRIBUTE INCLUDED
+#
+include "modules/xml_id_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # EQUIVALENCES INCLUDED
 #
@@ -190,9 +205,9 @@ include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
+# REIFICATION TERMS INCLUDED, ANY CONTENT
 #
-include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
 #
@@ -217,6 +232,10 @@ include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 # GENERALIZED LISTS INCLUDED
 #
 include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
+#
+include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
 #
