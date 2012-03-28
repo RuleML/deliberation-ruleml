@@ -228,7 +228,7 @@
         params = params+"&lng=x"+lng.toString(16);
         //
         var propo = 0;
-        for (i = 0; i <= 5; i = i + 1) {
+        for (i = 0; i <= 9; i = i + 1) {
           if(eval("LanguageForm.propo" + i + ".checked")){
             propo = propo + Math.pow(2, i);
           }
@@ -499,6 +499,22 @@
                     onclick="checkAll(this.form)" checked="checked"/> 
                     Weak Negation <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Negation as Failure)   
+                  </li>
+                  <li><input type="checkbox" name="propo6" 
+                    onclick="checkAll(this.form)" checked="checked"/> 
+                    Node Identifiers <br/>
+                  </li>
+                  <li><input type="checkbox" name="propo7" 
+                    onclick="checkAll(this.form)" checked="checked"/> 
+                    In-Place Annotation <br/>   
+                  </li>
+                  <li><input type="checkbox" name="propo8" 
+                    onclick="checkAll(this.form)" checked="checked"/> 
+                    XML base <br/>   
+                  </li>
+                  <li><input type="checkbox" name="propo9" 
+                    onclick="checkAll(this.form)" checked="checked"/> 
+                    XML id <br/>   
                   </li>
                 </ol>
             </td>
