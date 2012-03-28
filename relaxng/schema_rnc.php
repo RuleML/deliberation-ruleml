@@ -86,6 +86,10 @@ $propo_entails = 2;
 $propo_degree = 3;
 $propo_neg = 4;
 $propo_naf = 5;
+$propo_node = 6;
+$propo_meta = 7;
+$propo_xmlbase = 8;
+$propo_xmlid = 9;
 $bpropo = processGETParameter ($propo);
 $propoParam = "x".dechex(bindec($bpropo));
 $call_fragment = $propo."=".$propoParam;
@@ -196,6 +200,10 @@ if ($bdefault==0){
   $needFuzzy = extractBit($bpropo, $propo_degree);
   $needNeg = extractBit($bpropo, $propo_neg);
   $needNaf = extractBit($bpropo, $propo_naf);
+  $needNode = extractBit($bpropo, $propo_node);
+  $needMeta = extractBit($bpropo, $propo_meta);
+  $needBase = extractBit($bpropo, $propo_xmlbase);
+  $needId = extractBit($bpropo, $propo_xmlid);
 
   $needEquiv = extractBit($bimplies, $implies_equivalent);
   $needDirND =  extractBit($bimplies, $implies_direction);
@@ -237,8 +245,7 @@ if ($bdefault==0){
   $needPerformatives = 1;
   $needAtom = 1;
   $needInit = 1;
-  $needHeader = $needFuzzy + $needOid;
-
+  
   $needDefaultPresent =  $bdefault_present + $needDirND + $needMatND + $needInND + $needValND + $needOrientedND;    
   $needDefaultPresentFO = $needDefaultPresent * $needFO;
 
@@ -370,12 +377,6 @@ if ($bdefault==0){
   }
   //Step 4. Mix-in optional expansion modules
   //Step 4A. Include proposition-related modules 
-  // Include abstract header patterns if needed
-  if ($needHeader){    
-    echo "#\n# ABSTRACT HEADERS INCLUDED\n";
-    echo "#\n".'include "' . $modulesLocation .
-      'header_expansion_module.rnc"'."$end\n";
-  }      
     // Include universal resource identifiers (URIs) if needed
     if ($needURI){
       echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
@@ -392,7 +393,7 @@ if ($bdefault==0){
     if ($needEntails){
       echo "#\n# ENTAILMENTS (PROVES) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'meta_expansion_module.rnc"'."$end\n";
+          'metalevel_expansion_module.rnc"'."$end\n";
     }
     // Include degree of uncertainty if needed
     if ($needFuzzy){
@@ -411,6 +412,30 @@ if ($bdefault==0){
       echo "#\n# WEAK NEGATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'naf_expansion_module.rnc"'."$end\n";
+    }
+    // Include node identifiers if needed
+    if ($needNode){
+      echo "#\n# NODE IDENTIFIERS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'node_attribute_expansion_module.rnc"'."$end\n";
+    }
+    // Include in-place annotations if needed
+    if ($needMeta){
+      echo "#\n# IN-PLACE ANNOTATIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'meta_expansion_module.rnc"'."$end\n";
+    }
+    // Include XML base attribute if needed
+    if ($needBase){
+      echo "#\n# XML BASE ATTRIBUTE INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'xml_base_expansion_module.rnc"'."$end\n";
+    }
+    // Include XML id attribute if needed
+    if ($needId){
+      echo "#\n# XML ID ATTRIBUTE INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'xml_id_expansion_module.rnc"'."$end\n";
     }
   //Step 4B. Include implication-related modules 
     // Include equivalences
@@ -461,7 +486,7 @@ if ($bdefault==0){
     if ($needOid){
       echo "#\n# OBJECT IDENTIFIERS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'desc_expansion_module.rnc"'."$end\n";
+          'oid_expansion_module.rnc"'."$end\n";
     }
     // Include slots
     if ($needSlot){
