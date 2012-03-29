@@ -16,8 +16,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 <Assert mapClosure="universal">
 
 <formula>
-<Implies>
-  <oid><Ind>(implication) rule label</Ind></oid>
+<Implies node="#rule1">
   <if>
     <And>
      <formula>

@@ -46,8 +46,7 @@
 
 </Assert>
 
-<Query>
-   <oid><Ind>rule (query) label</Ind></oid>
+<Query node="#query1">
     <And>
       <Atom>
         <op><Rel iri="some_URI">some relation</Rel></op>

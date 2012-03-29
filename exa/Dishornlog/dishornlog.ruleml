@@ -16,13 +16,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 <Assert mapClosure="universal">
 
 
-<Implies>
-  <oid>
-    <Expr>
-      <op><Fun>rule label</Fun></op>
-      <slot><Ind>label</Ind><Ind>an example fact</Ind></slot>
-    </Expr>
-  </oid>
+<Implies node="an_example_fact">
   <then>
      <Or>
        <Atom>

@@ -30,10 +30,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffolo
 				<if>
 					<Naf mapDirection="bidirectional">
 						<weak>
-						<Implies>
-							<oid>
-								<Ind>disclaiming-of-other-persons</Ind>
-							</oid>
+						  <Implies node="#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -80,10 +77,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffolo
 			</torso>
 		</Equivalent>
 
-		<Implies>
-			<oid>
-				<Ind>claiming-through-disclaimers</Ind>
-			</oid>
+	  <Implies node="#claiming-through-disclaimers">
 			<then>
 				<Atom>
 					<Rel>claim</Rel>
@@ -113,10 +107,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffolo
 					</Naf>
 					<Forall>
 						<Var>x</Var>
-						<Implies>
-							<oid>
-								<Ind>disclaiming-of-other-persons</Ind>
-							</oid>
+					  <Implies node="#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -143,10 +134,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffolo
 			</if>
 		</Implies>
 
-		<Implies>
-			<oid>
-				<Ind>claiming-or-relinquishing-through-disclaimers</Ind>
-			</oid>
+	  <Implies node="#claiming-or-relinquishing-through-disclaimers">
 			<then>
 				<Or>	<Naf>
 					<Atom>
@@ -164,10 +152,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffolo
 			<if>
 				<Forall>
 					<Var>x</Var>
-					<Implies>
-						<oid>
-							<Ind>disclaiming-of-other-persons</Ind>
-						</oid>
+				  <Implies node="#disclaiming-of-other-persons">
 						<if>
 							<Atom>
 								<Rel>unequal</Rel>

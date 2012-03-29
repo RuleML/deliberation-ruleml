@@ -6,79 +6,77 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/fologeq.xsd"> -->
 
-<RuleML
-xmlns="http://ruleml.org/spec"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-<!--
+  <!--
 
   Here are serialization examples from the SWSL Report
   (http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous):
 
 -->
 
-<Assert>
-<oid><Ind iri="http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous"></Ind></oid>
+  <Assert
+    node="http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous">
 
-<Entails>
+    <Entails>
 
-	<Rulebase>
+      <Rulebase>
 
-		<Atom>
-		  <Rel>gold</Rel>
-		  <Ind>watch17</Ind>
-		</Atom>
+        <Atom>
+          <Rel>gold</Rel>
+          <Ind>watch17</Ind>
+        </Atom>
 
-	</Rulebase>
-	<Rulebase>
+      </Rulebase>
+      <Rulebase>
 
-		  <Neg>
-		   <And>
-		     <Atom>
-		       <Rel>pricediscount</Rel>
-		       <Var>CUST</Var>
-		       <Ind>fivepercent</Ind>
-		     </Atom>
-		     <Atom>
-		       <Rel>pricediscount</Rel>
-		       <Var>CUST</Var>
-		       <Ind>tenpercent</Ind>
-		     </Atom>
-		   </And>
-		  </Neg>
+        <Neg>
+          <And>
+            <Atom>
+              <Rel>pricediscount</Rel>
+              <Var>CUST</Var>
+              <Ind>fivepercent</Ind>
+            </Atom>
+            <Atom>
+              <Rel>pricediscount</Rel>
+              <Var>CUST</Var>
+              <Ind>tenpercent</Ind>
+            </Atom>
+          </And>
+        </Neg>
 
-		 <Implies material="yes">
-		 <then>
-		  <Neg>
-		   <And>
-		     <Atom>
-		       <Rel>pricediscount</Rel>
-		       <Var>CUST</Var>
-		       <Var>Y</Var>
-		     </Atom>
-		     <Atom>
-		       <Rel>pricediscount</Rel>
-		       <Var>CUST</Var>
-		       <Var>Z</Var>
-		     </Atom>
-		   </And>
-		  </Neg>
-		 </then>
-		 <if>
-		   <Neg>
-		     <Equal>
-		       <Var>Y</Var>
-		       <Var>Z</Var>
-		     </Equal>
-		   </Neg>
-		 </if>
-		 </Implies>
+        <Implies material="yes">
+          <then>
+            <Neg>
+              <And>
+                <Atom>
+                  <Rel>pricediscount</Rel>
+                  <Var>CUST</Var>
+                  <Var>Y</Var>
+                </Atom>
+                <Atom>
+                  <Rel>pricediscount</Rel>
+                  <Var>CUST</Var>
+                  <Var>Z</Var>
+                </Atom>
+              </And>
+            </Neg>
+          </then>
+          <if>
+            <Neg>
+              <Equal>
+                <Var>Y</Var>
+                <Var>Z</Var>
+              </Equal>
+            </Neg>
+          </if>
+        </Implies>
 
-	</Rulebase>
-		
-</Entails>
+      </Rulebase>
 
-</Assert>
+    </Entails>
+
+  </Assert>
 
 </RuleML>

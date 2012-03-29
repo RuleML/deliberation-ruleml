@@ -16,10 +16,7 @@
 
   <Assert mapClosure="universal">
 
-    <Implies>
-      <oid>
-        <Ind>(implication) rule label</Ind>
-      </oid>
+    <Implies node ="#rule1">
       <if>
         <And>
           <Atom>

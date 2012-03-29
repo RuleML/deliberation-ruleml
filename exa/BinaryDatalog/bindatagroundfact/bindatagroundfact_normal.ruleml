@@ -47,10 +47,7 @@
     </Query>
   </act>
   <act index="2">
-    <Assert mapDirection="bidirectional" mapMaterial="yes">
-      <oid>
-        <Ind>rule (fact) label</Ind>
-      </oid>
+    <Assert mapDirection="bidirectional" mapMaterial="yes" node="#assert1">
       <formula>
         <Atom>
           <op>

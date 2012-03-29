@@ -103,10 +103,7 @@ xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-insta
 			</torso>
 		</Equivalent>
 
-		<Implies>
-			<oid>
-				<Ind>claiming-through-disclaimers</Ind>
-			</oid>
+	  <Implies node="#claiming-through-disclaimers">
 			<then>
 				<Atom>
 					<Rel>claim</Rel>
@@ -118,10 +115,7 @@ xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-insta
 				<And>
 					<Forall>
 						<Var>x</Var>
-						<Implies>
-							<oid>
-								<Ind>disclaiming-of-other-persons</Ind>
-							</oid>
+					  <Implies node="#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -148,10 +142,7 @@ xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-insta
 			</if>
 		</Implies>
 
-		<Implies>
-			<oid>
-				<Ind>claiming-or-relinquishing-through-disclaimers</Ind>
-			</oid>
+	  <Implies node="#claiming-or-relinquishing-through-disclaimers">
 			<then>
 			    <Equal>
 			      <Ind>some constant</Ind>
@@ -161,10 +152,7 @@ xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-insta
 			<if>
 				<Forall>
 					<Var>x</Var>
-					<Implies>
-						<oid>
-							<Ind>disclaiming-of-other-persons</Ind>
-						</oid>
+				  <Implies node="#disclaiming-of-other-persons">
 						<if>
 							<Atom>
 								<Rel>unequal</Rel>
