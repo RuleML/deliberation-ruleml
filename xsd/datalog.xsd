@@ -4,7 +4,6 @@
 xmlns="http://ruleml.org/spec" 
 xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 targetNamespace="http://ruleml.org/spec"
-xmlns:xml="http://www.w3.org/XML/1998/namespace"
 >
 
 	<xs:annotation>
@@ -12,7 +11,7 @@ xmlns:xml="http://www.w3.org/XML/1998/namespace"
 			XML Schema for the RuleML sublanguage "datalog".
 			File: datalog.xsd
 			Version: 1.0
-			Last Modification: 2010-07-16
+			Last Modification: 2012-04-03
 		</xs:documentation>
 	</xs:annotation>
 
@@ -30,6 +29,7 @@ xmlns:xml="http://www.w3.org/XML/1998/namespace"
 		* atom
 		* slot
 		* term
+		* datatypes
 		* iri
 
 		For details on each module, including what element and/or attribute declarations
@@ -42,7 +42,7 @@ xmlns:xml="http://www.w3.org/XML/1998/namespace"
 	<xs:include schemaLocation="modules/connective_module.xsd"/>
 	<xs:include schemaLocation="modules/atom_module.xsd"/>
 	<xs:include schemaLocation="modules/slot_module.xsd"/>
-	<xs:include schemaLocation="modules/term_module.xsd"/>
+  <xs:include schemaLocation="modules/term_module.xsd"/>
   <xs:include schemaLocation="modules/iri_module.xsd"/>
-  
+
 </xs:schema>

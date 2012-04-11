@@ -11,14 +11,14 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			XML Schema for a Binary Ground-Datalog-Fact RuleML sublanguage
 			File: bindatagroundfact.xsd
 			Version: 1.0
-			Last Modification: 2010-08-19
+			Last Modification: 2012-03-29
 		</xs:documentation>
 	</xs:annotation>
 	
 	<xs:redefine schemaLocation="bindatagroundlog.xsd">
 		<!--
 			remove Implies and Equivalent so that Assert's content model is:
-			( oid?, (formula | Rulebase | Atom | Entails)* )
+			(  (formula | Rulebase | Atom | Entails)* )
 		-->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
@@ -30,7 +30,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		
 		<!--
 			remove Implies and Equivalent so that Rulebase's content model is:
-			( oid?, (formula | Atom)* )
+			(  (formula | Atom)* )
 		-->
 		<xs:group name="formula-rulebase.content">
 			<xs:choice>

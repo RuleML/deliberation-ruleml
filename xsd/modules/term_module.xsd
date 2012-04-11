@@ -9,7 +9,7 @@
 			This is the XML Schema module for RuleML terms.
 			File: term_module.xsd
 			Version: 1.0
-			Last Modification: 2010-07-16
+			Last Modification: 2012-04-03
 			
 			This module declares the following RuleML elements and attributes:
 			* arg
@@ -21,10 +21,13 @@
 			* @type
 			* @index
 			
+			as well as including a number of complex types for use in expicitly-typed data Nodes.
+			
 			See http://www.ruleml.org/modularization for details about this modularization approach.
 		</xs:documentation>
   </xs:annotation>
-
+  <xs:include schemaLocation="datatypes_module.xsd"/>
+  
   <!--
 		*** arg ***
 		A role used for the positional arguments of a logical atom.
@@ -59,7 +62,7 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Ind
 		
-		content model: (id?, meta*) & text
+		content model: text
 
 	-->
   <xs:attributeGroup name="Ind.attlist">
@@ -69,10 +72,7 @@
     <xs:attributeGroup ref="xml.attlist"/>
   </xs:attributeGroup>
   <xs:group name="Ind.content">
-    <xs:sequence>
-
-      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
+    <xs:sequence/>
   </xs:group>
   <xs:complexType name="Ind.type" mixed="true">
     <xs:group ref="Ind.content"/>
@@ -89,18 +89,17 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Data
 		
-		content model: (id?, meta*) & text
- [optionally datatyped]
-	-->
-  <xs:element name="Data" type="xs:anyType"/>
-
+		content model: xs:anytype [optionally datatyped]
+  -->
+  <xs:element name="Data" type="xs:anyType"/> 
+ 
   <!--
 		*** Var ***
 		A logical variable, as in logic programming.
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Var
 
-		content model: (id?, meta*) & text
+		content model: text
 
 	-->
   <xs:attributeGroup name="Var.attlist">
@@ -109,10 +108,7 @@
     <xs:attributeGroup ref="xml.attlist"/>
   </xs:attributeGroup>
   <xs:group name="Var.content">
-    <xs:sequence>
-
-      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
+    <xs:sequence/>
   </xs:group>
   <xs:complexType name="Var.type" mixed="true">
     <xs:group ref="Var.content"/>
@@ -126,7 +122,7 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Skolem
 
-		content model: (id?, meta*) & text
+		content model: text
 
 	-->
   <xs:attributeGroup name="Skolem.attlist">
@@ -135,10 +131,8 @@
     <xs:attributeGroup ref="xml.attlist"/>
   </xs:attributeGroup>
   <xs:group name="Skolem.content">
-    <xs:sequence>
+    <xs:sequence/>
 
-      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
   </xs:group>
   <xs:complexType name="Skolem.type" mixed="true">
     <xs:group ref="Skolem.content"/>
@@ -155,7 +149,7 @@
 				
 		See http://www.ruleml.org/1.0/glossary/#gloss-Reify		
 		
-		content model: ( id?, meta*, (any valid RuleML formula) )
+		content model: (any valid RuleML formula)
 	-->
   <xs:attributeGroup name="Reify.attlist">
     <xs:attributeGroup ref="node.attrib"/>

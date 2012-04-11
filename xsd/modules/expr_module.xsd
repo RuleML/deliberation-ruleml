@@ -237,6 +237,7 @@ content model: (#PCDATA, id?, #PCDATA, meta?, #PCDATA)
   </xs:group>
   <xs:group name="Plex-repo.content">
     <xs:sequence>
+      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="arg"/>
         <xs:group ref="arg.content"/>
@@ -246,6 +247,7 @@ content model: (#PCDATA, id?, #PCDATA, meta?, #PCDATA)
   </xs:group>
   <xs:group name="Plex-resl.content">
     <xs:sequence>
+      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="slot" type="slot.type" minOccurs="0"
         maxOccurs="unbounded"/>
       <xs:element ref="resl" minOccurs="0"/>
