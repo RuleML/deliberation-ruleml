@@ -1,0 +1,68 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+default namespace this = inherit
+
+
+dc:title [ "RuleML Stripe-Skipping Module" ]
+dc:version [ "1.0.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, stripe-skipping" ]
+dc:description [ "expansion module for stripe-skipping." ]
+dc:date ["2012-02-23"]
+dc:language [ "en" ]
+dcterms:rights [ "LGPL-3.0" ] 
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+# This module extends the following RuleML choice patterns:
+
+## An information wrapper is allowed for positional arguments in atomic formulas and expressions.
+arg.content |= Info-in-arg.choice
+Info-in-arg.choice |= Info-in-arg.def
+Info-in-arg.def = element Info {(Info-in-arg-datt.choice & reInfo-in-arg.attlist), Info-in-arg.header, Info-in-arg.main}
+Info-in-arg-datt.choice |= empty
+reInfo-in-arg.attlist |= empty
+Info-in-arg.header &= Info.header?
+Info-in-arg.main |= arg.content
+
+## An information wrapper is allowed for operators in atomic formulas.
+op_Atom.content |= Info-in-op_Atom.choice
+Info-in-op_Atom.choice |= Info-in-op_Atom.def
+Info-in-op_Atom.def = element Info {(Info-in-op_Atom-datt.choice & reInfo-in-op_Atom.attlist), Info-in-op_Atom.header, Info-in-op_Atom.main}
+Info-in-op_Atom-datt.choice |= empty
+reInfo-in-op_Atom.attlist |= empty
+Info-in-op_Atom.header &= Info.header?
+Info-in-op_Atom.main |= op_Atom.content
+
+## An information wrapper is allowed for operators in expressions.
+op_Expr.content |= Info-in-op_Expr.choice
+Info-in-op_Expr.choice |= Info-in-op_Expr.def
+Info-in-op_Expr.def = element Info {(Info-in-op_Expr-datt.choice & reInfo-in-op_Expr.attlist), Info-in-op_Expr.header, Info-in-op_Expr.main}
+Info-in-op_Expr-datt.choice |= empty
+reInfo-in-op_Expr.attlist |= empty
+Info-in-op_Expr.header &= Info.header?
+Info-in-op_Expr.main |= arg.content
+# 
+
+#body_Implies-ss.content
+#head_Implies.content
+#body_Implies.content
+#head_Implies.content
+#body_Entails-ss.content
+#head_Entails-ss.content
+#body_Entails.content
+#head_Entails.content
+#torso.content
+
+#left.content
+#right.content
+#formula_And.content
+#formula_Or.content
+#formula_Forall.content
+#formula_Exists.content
+#formula_AssertRetract.content
+#formula_Query.content
+#formula_Rulebase.content
+#declare.content
+#weak.content
+#strong.content
+#act.content

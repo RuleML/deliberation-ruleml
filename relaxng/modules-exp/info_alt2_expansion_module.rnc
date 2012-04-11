@@ -1,0 +1,18 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "The RuleML information module- Alternative 2" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, information module" ]
+dc:description [
+  "This is Alternative 2 the Core Schema module for the information module in RuleML."
+]
+dc:date [ "2012-02-26" ]
+dc:language [ "en" ]
+dcterms:rights [ "LGPL-3.0" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+# This module extends the following RuleML elements and attributes:
+
+##
+Node.header &= Info.header?

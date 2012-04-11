@@ -1,0 +1,28 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+default namespace this = inherit
+namespace xs = "http://www.w3.org/2001/XMLSchema"
+
+datatypes xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+dc:title [ "RuleML Explicit Datatype Emulation: Alternative 2" ]
+dc:version [ "1.0.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, explicit datatype" ]
+dc:description [
+    "The expansion module (alternative 2) for explicit datatyping for the complete-form serialization."
+]
+dc:date ["2012-02-27"]
+dc:language [ "en" ]
+dcterms:rights [ "LGPL-3.0" ] 
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+## The datatype attribute is allowed on <Data>
+## However, consistency between the text content of <Data> and the datatype value is not enforce by the schema.
+## Schematron is needed.
+reData.attlist &= datatype-att.choice?
+##
+datatype-att.choice |= datatype.attrib.def
+datatype.attrib.def = attribute datatype { datatype.value }
+datatype.value |= xsd:QName
+

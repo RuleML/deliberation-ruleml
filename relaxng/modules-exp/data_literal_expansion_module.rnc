@@ -1,0 +1,47 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML Data Element" ]
+dc:version [ "1.0.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, Data, Simple Content" ]
+dc:description [
+  "The expansion module for the simple-type Data element, a Type (Object) for literal constants."
+]
+dc:date [ "2012-02-23" ]
+dc:language [ "en" ]
+dcterms:rights [ "LGPL-3.0" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= Data_simple-node.choice
+Node.choice |= Data_simple-node.choice
+# This module declares the following RuleML elements, attributes and patterns:
+#            * <Data>
+
+## FIXME: check applicability of this warning: Because of a Trang bug 
+## (http://code.google.com/p/jing-trang/issues/detail?id=132&q=xsi&colspec=ID%20Type%20Status%20Priority%20Stars%20Module%20Summary)
+## this module should not be included when translating from RNC to XSD.
+##
+Data_simple-node.choice |= Data_simple_idmeta-node.choice
+
+## an extension point for alternate spellings and internationalization of the data tag name. 
+Data_simple_idmeta-node.choice |= Data_simple_idmeta.Node.def
+
+## When annotation tags <id> and/or <meta> are used within a <Data> element,
+## the edge element <literal> may be used as a wrapper for the literal content to allow explicit datatyping.
+Data_simple_idmeta.Node.def =
+  
+  ##
+  element Data {
+    (Data-datt.choice & reData.attlist),
+    Data_simple_idmeta.header,
+    literal_simple-edge.choice
+  }
+
+##
+Data_simple_idmeta.header &= Node.header?
+literal_simple-edge.choice |= literal_simple-edge.def
+literal_simple-edge.def =
+  element literal { anySimpleTypeForElements.datatype.choice }
+
+##  FIXME: move this to init
+anySimpleTypeForElements.datatype.choice |= notAllowed
