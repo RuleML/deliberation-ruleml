@@ -49,7 +49,7 @@
 			<tr><td align="right">2005-11-09 - </td><td><a href="http://ruleml.org/0.9/">Version 0.9</a></td></tr>
 			<tr><td align="right">2006-08-24 - </td><td><a href="http://ruleml.org/0.91/">Version 0.91</a></td></tr>
 			<tr><td align="right">2011-09-27 - </td><td><a href="http://ruleml.org/0.91/">Version 0.91 Patched</a></td></tr>
-			  <tr><td align="right"><h3>2011-12-09 - </h3></td><td><h3><a href="http://ruleml.org/1.0/">Version 1.0</a></h3></td></tr>
+			  <tr><td align="right"><h3>2012-04-03 - </h3></td><td><h3><a href="http://ruleml.org/1.0/">Version 1.0</a></h3></td></tr>
 			</table>			
 
 			<h2>Latest version: <a href="http://ruleml.org/spec/">ruleml.org/spec/</a></h2>
@@ -196,6 +196,13 @@ Rule<abbr>ML</abbr> has been designed for the interchange of
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@in"><code>@in</code></a> <code>="no|semi|yes"</code> with respective values, replaced with <a href="./glossary#gloss-@per"><code>@per</code></a> <code>="copy|open|value"</code></item> 
 	  <item>The attribute <a href="http://ruleml.org/0.91/glossary#gloss-@uri"><code>@uri</code></a>, for <abbr title="Universal Resource Identifiers">URI</abbr>s, replaced with <a href="./glossary#gloss-@iri"><code>@iri</code></a>, for <abbr title="International Resource Identifiers">IRI</abbr>s </item> 
 	  <item>A new edge element <a href="./glossary#gloss-act"><code>&lt;act&gt;</code></a> introduced as optional wrapper of all performatives (e.g. <a href="./glossary#gloss-Assert"><code>&lt;Assert&gt;</code></a>) in the <a href="./glossary#gloss-ruleml"><code>&lt;Rule<abbr>ML</abbr>&gt;</code></a> element </item>
+	  <item>A new edge element <a href="./glossary#gloss-meta"><code>&lt;meta&gt;</code></a> is introduced as a non-skippable wrapper of a formula expressing meta-knowledge, allowed zero to many times in the header of non-leaf Node elements.  </item>
+	  <item>A new attribute <a href="./glossary#gloss-@node"><code>@node</code></a> is introduced as an optional IRI identifier of a Node element, useful for referencing the element in external meta-knowledge.  </item>
+	  <item>The edge element <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> is no longer allowed on all non-leaf Node elements, but is restricted to <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> and 
+	    <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a>, for use as an identifier for the object of slotted atoms and expressions.
+	  </item>
+	  <item>The attributes <code>@xml:base</code> and <code>@xml:id</code> are allowed on all elements.
+	  </item>
 	  <item>Additional freedom in element order with partial stripe-skipping (see &overarching; for an explanation of stripe-skipping and element order in Rule<abbr>ML</abbr>) has been introduced in the "relaxed-form serialization", as specified in the Relax NG schemas.</item>
 	  <item>The Normalizer at <a href="./xslt/normalizer/100_normalizer.quarantine.xslt">http://ruleml.org/1.0/xslt/normalizer/100_normalizer.quarantine.xslt</a> has been deprecated. A refactored Normalizer has been developed at <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/">http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/</a>.</item>
 	</itemize>	
@@ -1113,8 +1120,48 @@ output using the radio buttons just above the "Get Results" button.
   <act index="1">
     <Assert/>
   </act>
-  </RuleML>]]></pre></box>
+</RuleML>]]></pre></box>
+
+
+    <p>A new attribute <a href="./glossary#gloss-@node"><code>@node</code></a> is introduced as an optional IRI identifier of a Node element, useful for referencing the element in external meta-knowledge. It is allowed on all Nodes, including leaf Nodes such as <a href="./glossary#gloss-Data"><code>&lt;Data&gt;</code></a>, <a href="./glossary#gloss-Reify"><code>&lt;Reify&gt;</code></a> and <a href="./glossary#gloss-Rel"><code>&lt;Rel&gt;</code></a>.  </p>
+
+<box><pre><![CDATA[<Implies node = "#rule1">
+  <if>...</if><then>...</then>
+</Implies>]]></pre></box>
     
+
+    <p>A new edge element <a href="./glossary#gloss-meta"><code>&lt;meta&gt;</code></a> is introduced as a non-skippable wrapper of a formula expressing meta-knowledge, allowed zero to many times in the header of non-leaf Node elements. When a slotted  
+      <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> is wrapped in <a href="./glossary#gloss-meta"><code>&lt;meta&gt;</code></a>, the object of the slotted frame is
+      assumed (unless specified otherwise) to be the reification of the parent Node, which may be specified with the 
+      <a href="./glossary#gloss-@node"><code>@node</code></a> attribute, or may be anonymous.</p>
+    
+<box><pre><![CDATA[<Implies node="rule2">
+  <meta>
+    <Atom>
+      <oid><Ind iri="#rule2"/></oid>
+      <Rel iri="&ruleml;Override"/>
+      <Ind iri="#rule1"/>
+    </Atom>  
+  </meta>
+  <if>...</if><then>...</then>
+</Implies>]]></pre></box>
+    
+    
+    <p>The edge element <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> is no longer allowed on all non-leaf Node elements, but is restricted to <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> and 
+      <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a>, for use as an identifier for the object of slotted atoms and expressions. The functionality of providing an identifier for attaching meta-knowledge, such as the defeasible priority of rules, is
+      transferred to the <a href="./glossary#gloss-@node"><code>@node</code></a> attribute.
+    </p>
+    
+    <p>The attributes <code>@xml:base</code> and <code>@xml:id</code> are allowed on all elements. The base for resolving relative IRI references is explicitly declared with <code>@xml:base</code>. The attribute <code>@xml:id</code> provides an alternate means of identifying elements, and is applicable to edges as well as nodes. The semantics of the <code>@xml:id</code> identifier, which denotes the information resource fragment that is the element and is referentially opaque, differs from that of the <a href="./glossary#gloss-@node"><code>@node</code></a> identifier, which denotes a reification of the logical or extra-logical entity associated with the element and is referentially transparent. 
+    </p>
+
+<box><pre><![CDATA[<Atom>
+  <op xml:base="http://example.org" xml:id = "op1">
+    <Rel iri="#rel2"/>
+  </op>
+</Atom>]]></pre></box>
+    
+
     <p>Additional freedom in element order with partial stripe-skipping has been introduced in the "relaxed form serialization", as specified in the Relax NG schemas.
       In particular, infix and postfix operator notation is now allowed in the relaxed form serialization as long as the <a href="./glossary#gloss-op"><code>&lt;op&gt;</code></a> element is not skipped.</p>
     
@@ -1167,7 +1214,7 @@ output using the radio buttons just above the "Get Results" button.
 		<p>
 		Site Contact:
 		<a href="http://athant.com">Tara Athan</a>.
-		Page Version: 2012-03-10
+		Page Version: 2012-04-03
 		
 		<br/>
 		<br/>
