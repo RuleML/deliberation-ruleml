@@ -56,7 +56,7 @@
             <tr>
                					
                <td align="right">
-                  <h3>2011-11-17 - </h3>
+                  <h3>2012-04-03 - </h3>
                </td>
                					
                <td>
@@ -410,8 +410,8 @@
          			
          			
          <dt id="gloss-formula"><code>&lt;formula&gt;</code></dt>
-         			
-         <dd>The formula role of a conjunctive (<a href="#gloss-And"><code>&lt;And&gt;</code></a>) or disjunctive (<a href="#gloss-Or"><code>&lt;Or&gt;</code></a>) formula, quantifier (<a href="#gloss-Forall"><code>&lt;Forall&gt;</code></a> or <a href="#gloss-Exists"><code>&lt;Exists&gt;</code></a>), or performative (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>).
+         		  
+         <dd>The formula role of a conjunctive (<a href="#gloss-And"><code>&lt;And&gt;</code></a>) or disjunctive (<a href="#gloss-Or"><code>&lt;Or&gt;</code></a>) formula, quantifier (<a href="#gloss-Forall"><code>&lt;Forall&gt;</code></a> or <a href="#gloss-Exists"><code>&lt;Exists&gt;</code></a>), rulebase <a href="#gloss-Rulebase"><code>&lt;Rulebase&gt;</code></a>),  or performative (<a href="#gloss-Assert"><code>&lt;Assert&gt;</code></a>, <a href="#gloss-Query"><code>&lt;Query&gt;</code></a> or <a href="#gloss-Retract"><code>&lt;Retract&gt;</code></a>).
             
             <p>(See: <a href="../xsd/modules/connective_module.xsd">connective module</a>, <a href="../xsd/modules/performative_module.xsd">performative module</a> and <a href="../xsd/modules/quantifier_module.xsd">quantifier module</a>)
             </p>
@@ -632,7 +632,19 @@
             </p>
             			
          </dd>
-         			
+         
+         
+         		  
+         <dt id="gloss-meta"><code>&lt;meta&gt;</code></dt>
+         		  
+         <dd>An optional role for internally attaching to a Node a single formula as meta-knowledge.
+            		    Not available for leaf Nodes, such as <a href="#gloss-Var"><code>&lt;Var&gt;</code></a> or <a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>.
+            		    
+            <p>(See: <a href="../xsd/modules/desc_module.xsd">desc module</a>)
+            </p>
+            		  
+         </dd>		  
+         		  
          			
          			
          <dt id="gloss-@minCard"><code>@minCard</code></dt>
@@ -670,15 +682,25 @@
             </p>
             			
          </dd>
-         			
+         
+         		  
+         <dt id="gloss-@node"><code>@node</code></dt>
+         		  
+         <dd>An optional IRI identifier for a Node, creating accessibility within the knowledge
+            representation. This can help for representing prioritization between rules, for example.
+            All Node tags (i.e. those that begin with an uppercase letter) of RuleML can be decorated
+            with such an identifier. Web semantics requires that each IRI denote a unique Node
+            in a unique rulebase.
+            		    
+            <p>(See: <a href="../xsd/modules/desc_module.xsd">desc module</a>)
+            </p>
+            		  
+         </dd>		  
          			
          			
          <dt id="gloss-oid"><code>&lt;oid&gt;</code></dt>
          			
-         <dd>An optional label for a clause, creating accessibility within the knowledge representation.
-            This can help for representing prioritization between rules, for example. All type
-            tags (i.e. those that begin with an uppercase letter) of RuleML can begin with such
-            a label except those that permit only character data (e.g. <a href="#gloss-Ind"><code>&lt;Ind&gt;</code></a>, <a href="#gloss-Rel"><code>&lt;Rel&gt;</code></a>, etc.). Note that <code>oid</code>s are not required to be unique within a rulebase.
+         <dd>An optional label for the object of a slotted atom or expression. Note that <code>oid</code>s are not required to be unique within a rulebase.
             
             <p>(See: <a href="../xsd/modules/desc_module.xsd">desc module</a>)
             </p>
@@ -1015,7 +1037,7 @@
          			
          <dt id="gloss-@type"><code>@type</code></dt>
          		  
-         <dd>A role for optionally specifying a term (user-defined) type. See the <a href="../exa/Hornlog/hornlog/oojdrew.ruleml">oojdrew.ruleml</a> instance for an example of the usage of <code>@type</code>.
+         <dd>An attribute for optionally specifying a term (user-defined) type. See the <a href="../exa/Hornlog/hornlog/oojdrew.ruleml">oojdrew.ruleml</a> instance for an example of the usage of <code>@type</code>.
             
             <p>(See: <a href="../xsd/modules/term_module.xsd">term module</a>)
             </p>
