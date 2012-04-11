@@ -1,6 +1,6 @@
 <?php
 //Assembler of RNC schema for RuleML 1.0
-// Last Modified 2011/11/26
+// Last Modified 2012/04/03
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
