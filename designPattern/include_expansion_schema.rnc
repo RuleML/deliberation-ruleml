@@ -74,7 +74,7 @@ include "relaxng.rnc" {
       }
     | element grammar { common-atts, grammar-content }
   define-element = define-element.choice | define-element.interleave | define-element.noCombine
-}
+    }
 define-element.choice =
   element define { nameNCName.choice, combine-att.choice, common-atts, open-patterns }
 define-element.interleave =
@@ -82,19 +82,17 @@ define-element.interleave =
 define-element.noCombine = element define { nameNCName.noCombine, common-atts, open-patterns }
 nameNCName.choice =
   attribute name {
-    xsd:NCName { pattern = "[a-zA-Z\.\-_]+\.(choice|main|content|value|datatype|sequence|defs)" }
-  }
+    xsd:NCName { pattern = ".*\.(choice|main|content|value|datatype|sequence|defs)"}}  
 nameNCName.interleave =
   attribute name {
-    xsd:NCName { pattern = "[a-zA-Z\.\-_]+\.(attlist|header|notallowed)" }
-  }
+    xsd:NCName { pattern = ".*\.(attlist|header)"}}  
 nameNCName.noCombine =
   attribute name {
-    xsd:NCName { pattern = "[a-zA-Z\.\-_]+\.(def)" }
-  }
+    xsd:NCName { pattern = ".*\.(def|notallowed)"}}  
+
 combine-att.choice = attribute combine { "choice" }
 combine-att.interleave = attribute combine { "interleave" }
-optional-element = element optional { common-atts, open-patterns }
-zeroOrMore-element = element zeroOrMore { common-atts, open-patterns }
 empty-element = element empty { common-atts, other }
 open-optional = other & (zeroOrMore-element | optional-element | empty-element)
+optional-element = element optional { common-atts, open-patterns }
+zeroOrMore-element = element zeroOrMore { common-atts, open-patterns }
