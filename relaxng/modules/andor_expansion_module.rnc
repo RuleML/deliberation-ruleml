@@ -5,12 +5,10 @@ dc:title [ "RuleML Conjunctions and Disjunctions" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, conjunction, disjunction" ]
-dc:description [
-  "The expansion module for conjunctions and disjunctions."
-]
-dc:date [ "2012-03-27" ]
+dc:description [ "The expansion module for conjunctions and disjunctions." ]
+dc:date [ "2012-04-03" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= andor.Node.defs | andor.edge.defs
 Node.choice |= andor.Node.defs
@@ -39,9 +37,7 @@ edge.choice |= andor.edge.defs
 # .edge.def : definition of dummy elements for workaround to bug in translation to XSD of modules with only attributes
 
 ##
-andor.Node.defs |=
-  And-Query.Node.def
-  | Or-Query.Node.def
+andor.Node.defs |= And-Query.Node.def | Or-Query.Node.def
 andor.edge.defs |= formula_And.edge.def | formula_Or.edge.def
 
 ##
@@ -53,9 +49,7 @@ And.Node.def =
   
   ## <And>: polyadic conjunction where <And/> is true. See
   ## http://www.ruleml.org/1.0/glossary/#gloss-And
-  element And {
-    (And-datt.choice & reAnd.attlist), And.header, And.main
-  }
+  element And { (And-datt.choice & reAnd.attlist), And.header, And.main }
 
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
 reAnd.attlist &= mapClosure-att-fo.choice?
@@ -68,14 +62,12 @@ And-Query.Node.def =
   
   ##
   element And {
-    (And-Query-datt.choice & reAnd-Query.attlist),
-    And.header,
-    And.main
+    (And-Query-datt.choice & reAnd-Query.attlist), And.header, And.main
   }
 
 ## Within query, conjunctions may have an optional existential closure attribute.
-reAnd-Query.attlist &=
-  closure-att.choice? & mapClosure-att-fo.choice?
+reAnd-Query.attlist &= closure-att.choice?
+reAnd-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## Conjunctions accept the header patter common to Nodes.
@@ -123,9 +115,7 @@ Or.Node.def =
   
   ## <Or>: polyadic disjunction where <Or/> is false. See
   ## http://www.ruleml.org/1.0/glossary/#gloss-Or
-  element Or {
-    (Or-datt.choice & reOr.attlist), Or.header, Or.main
-  }
+  element Or { (Or-datt.choice & reOr.attlist), Or.header, Or.main }
 
 ## The attribute list of the disjunction element will accept a scoped closure attribute at full first-order logic.
 reOr.attlist &= mapClosure-att-fo.choice?
@@ -137,15 +127,11 @@ Or-Query-node.choice |= Or-Query.Node.def
 Or-Query.Node.def =
   
   ##
-  element Or {
-    (Or-Query-datt.choice & reOr-Query.attlist),
-    Or.header,
-    Or.main
-  }
+  element Or { (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main }
 
 ## Within query, disjunctions may have an optional existential closure attribute.
-reOr-Query.attlist &=
-  closure-att.choice? & mapClosure-att-fo.choice?
+reOr-Query.attlist &= closure-att.choice?
+reOr-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## Conjunctions accept the header patter common to Nodes.

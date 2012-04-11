@@ -32,10 +32,10 @@ Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Data
-  element Data { Data.attlist?,  anySimpleTypeForElements.datatype.choice }
-Data.attlist &= commonNode.attlist?
+  element Data { Data_simple.attlist?,  Data_simple.Node.content }
+Data_simple.attlist &= commonNode.attlist?
 ## an extension point for explicit datatyping
-anySimpleTypeForElements.datatype.choice |=
+Data_simple.Node.content |=
   xsd:duration
   | xsd:dateTime
   | xsd:time

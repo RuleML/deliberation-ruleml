@@ -1,18 +1,16 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-
 dc:title [ "RuleML Implications" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
-dc:date [ "2012-03-27" ]
+dc:date [ "2012-04-03" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |=
-  Implies.Node.def | head_Implies.edge.def | body_Implies.edge.def
+start |= Implies.Node.def | head_Implies.edge.def | body_Implies.edge.def
 Node.choice |= Implies.Node.def
 edge.choice |= head_Implies.edge.def | body_Implies.edge.def
 # This module declares the following RuleML elements and attributes:
@@ -25,8 +23,7 @@ edge.choice |= head_Implies.edge.def | body_Implies.edge.def
 
 ## a convenience pattern that unifies implications and equivalences
 ## because equivalence is allowed wherever implication is allowed.
-Implication-node.choice |=
-  Implies-node.choice | Equivalent-node.choice
+Implication-node.choice |= Implies-node.choice | Equivalent-node.choice
 # For the declaration of equivalences, see the equivalance module (equivalence_expansion_module)
 
 ## an extension point to allow alternate names and internationalization of uni-directional implication tag name.
@@ -40,15 +37,13 @@ Implies.Node.def =
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Implies
   element Implies {
-    (Implies-datt.choice & reImplies.attlist),
-    Implies.header,
-    Implies.main
+    (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main
   }
 
 ## Implications may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
-reImplies.attlist &=
-  closure-att.choice? & mapClosure-att-fo.choice?
+reImplies.attlist &= closure-att.choice?
+reImplies.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## Implications accept the header pattern common to Nodes.

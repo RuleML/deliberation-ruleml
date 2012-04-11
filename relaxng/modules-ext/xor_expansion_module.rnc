@@ -56,7 +56,7 @@ reXor-Query.attlist &=
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## The header section of the exclusive disjunction content model follows a common pattern for compound formulas.
-Xor.header &= CompoundFormula.header?
+Xor.header &= Node.header?
 
 ## The main section of the exclusive disjunction content model contains zero or more formulas.
 Xor.main |= formula_Xor-edge.choice*

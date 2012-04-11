@@ -8,7 +8,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, reify, reification" ]
 dc:description [ "The expansion module for reification of RuleML objects." ]
-dc:date [ "2012-02-23" ]
+dc:date [ "2012-04-03" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -28,9 +28,9 @@ Reify-any.Node.def =
     ## See http://www.ruleml.org/1.0/glossary/#gloss-Reify
     element Reify { Reify-any.attlist? & Reify-any.content }
 # This version of Reify is needed for conversion to XSD.
-Reify-any.content |= AnyThis?
-AnyThis =
+Reify-any.content |= AnyThis.def?
+AnyThis.def =
     element inherit:* {
         attribute * { text }*,
-        (text & AnyThis*)
+        (text & AnyThis.def*)
     }

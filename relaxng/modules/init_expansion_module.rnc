@@ -6,7 +6,7 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, initialize, base patterns" ]
 dc:description [ "expansion module for initializing base patterns." ]
-dc:date [ "2012-03-27" ]
+dc:date [ "2012-04-03" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -51,9 +51,7 @@ head_Entails-ss.content |= notAllowed
 # FIXME: move these definitions to the appropriate modules and 
 # just intialize commonInit.attlist here as empty
 reAnd.attlist &= commonNode.attlist?
-reInfo-And.attlist &= commonNode.attlist?
 reAnd-Query.attlist &= commonNode.attlist?
-reInfo-And-Query.attlist &= commonNode.attlist?
 formula_And.attlist &= commonInit.attlist?
 reOr.attlist &= commonNode.attlist?
 reOr-Query.attlist &= commonNode.attlist?
@@ -109,7 +107,6 @@ reRulebase.attlist &= commonNode.attlist?
 formula_Rulebase.attlist &= commonInit.attlist?
 reSkolem.attlist &= commonNode.attlist?
 reslot.attlist &= commonInit.attlist?
-type.attlist &= commonInit.attlist?
 reVar.attlist &= commonNode.attlist?
 repo.attlist &= commonInit.attlist?
 resl.attlist &= commonInit.attlist?
@@ -251,7 +248,7 @@ Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
 Skolem-node.choice |= notAllowed
 #
-NegationAsFailure-node.notallowed &= notAllowed
+NegationAsFailure-node.notallowed = notAllowed
 # 
 # FORMULA CHOICE PATTERNS
 ConclusionFormula.choice |= notAllowed
