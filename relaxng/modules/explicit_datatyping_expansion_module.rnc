@@ -10,7 +10,7 @@ dc:subject [ "RuleML, explicit datatype" ]
 dc:description [
   "The expansion module for explicit datatyping for the complete-form serialization."
 ]
-dc:date [ "2012-04-03" ]
+dc:date [ "2012-04-19" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -20,6 +20,17 @@ start |= notAllowed
 ## Because of a Trang bug 
 ## (http://code.google.com/p/jing-trang/issues/detail?id=132&q=xsi&colspec=ID%20Type%20Status%20Priority%20Stars%20Module%20Summary)
 ## this module should not be included when translating from RNC to XSD.
+
+Data_any.Node.choice |=
+  
+  ## <Data>: May contain arbitrary simple or complex content. See 
+  ## http://www.ruleml.org/1.0/glossary/#gloss-Data
+  element Data {(Data-datt.choice & reData.attlist) &
+   attribute xsi:type { xsd:QName "xs:anyType" } &
+  text & anyElement.choice* }
+## FIXME: move to initialization
+anyElement.choice |= notAllowed
+
 Data_simple-node.choice |= Data_simple_typed.Node.def
 Data_simple_typed.Node.def = element Data { Data_simple_typed.Node.content }
 
@@ -65,6 +76,13 @@ Data_simple_typed.Node.content |=
   | unsignedInt.datatype.choice
   | unsignedByte.datatype.choice
   | positiveInteger.datatype.choice
+  | anySimpleType.datatype.choice
+  
+# ur type
+anySimpleType.datatype.choice |=
+  attribute xsi:type { xsd:QName "xs:anySimpleType"},
+  text
+
 # Primitive Datatypes
 duration.datatype.choice |=
   attribute xsi:type { xsd:QName "xs:duration" },

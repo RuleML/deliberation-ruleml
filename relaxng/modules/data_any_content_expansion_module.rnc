@@ -1,5 +1,6 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
+namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dc:title [ "RuleML Data Element, Any Content" ]
@@ -9,7 +10,7 @@ dc:subject [ "RuleML, Data" ]
 dc:description [
   "The expansion module for mixed-type Data element, a Type (Object) for literal constants and structure data from any namespace."
 ]
-dc:date [ "2012-03-27" ]
+dc:date [ "2012-04-19" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -23,13 +24,16 @@ Data_any-node.choice |= Data_any.Node.def
 
 ## A fixed argument like RDF literals.
 ## Data may have mixed content with any elements interleaved with text.
+## Explicit datatyping of xs:anyType is implemented in the explicit datatyping module.
 Data_any.Node.def =
   
   ## <Data>: May contain arbitrary simple or complex content. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Data
-  element Data {(Data-datt.choice & reData.attlist) & text & anyElement.def* }
+  element Data {(Data-datt.choice & reData.attlist) &
+  text & anyElement.def* }
 
 ##
+anyElement.choice |= anyElement.def
 anyElement.def =
   element * {
     attribute * { text }*,
