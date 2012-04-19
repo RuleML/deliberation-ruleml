@@ -188,7 +188,7 @@ positiveInteger.datatype.choice |=
   attribute xsi:type { xsd:QName "xs:positiveInteger" },
   xsd:positiveInteger
 
-# Complex Datatypes
+# Derived Datatypes
 duration.datatype.node.choice |=
   commonNode.attlist,
   attribute xsi:type { xsd:QName "duration" },
