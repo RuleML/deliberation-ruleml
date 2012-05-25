@@ -30,7 +30,7 @@
 		
 		See http://www.ruleml.org/1.0/glossary/#gloss-Forall
 
-		content model: ( id?, meta?, (declare|Var)+, (formula|Atom|Implies|Equivalent|Forall) )
+		content model: ( meta*, (declare|Var)+, (formula|Atom|Implies|Equivalent|Forall) )
 	-->
   <xs:attributeGroup name="Forall.attlist">
     <xs:attributeGroup ref="node.attrib"/>
@@ -62,7 +62,7 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Exists
 
-		content model: ( id?, meta?, (declare|Var)+, (formula|Atom|And|Or|Exists) )
+		content model: ( meta*, (declare|Var)+, (formula|Atom|And|Or|Exists) )
 	-->
   <xs:attributeGroup name="Exists.attlist">
     <xs:attributeGroup ref="node.attrib"/>

@@ -29,7 +29,7 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-Naf
 
-content model: ( id?, meta?, (weak | Atom) )
+content model: ( meta*, (weak | Atom) )
 	-->
   <xs:attributeGroup name="Naf.attlist">
     <xs:attributeGroup ref="node.attrib"/>

@@ -37,20 +37,20 @@
 		
 		content model:
 		( 
-		   meta*, (oid)?, (op | Const | Data | Skolem | Var | Reify | Uniterm), (slot)*, (resl)?,
-		   (arg | Const | Data | Skolem | Var | Reify | Uniterm)*, (repo)?, (slot)*, (resl)?
+		   meta*, oid?, (op | Const | Data | Skolem | Var | Reify | Uniterm), slot*, resl?,
+		   (arg | Const | Data | Skolem | Var | Reify | Uniterm)*, repo?, slot*, resl?
 		)
 
 		however, this is non-deterministic, so it is (equivalently) restructured as follows:
 		(
-			meta*, (oid)?, (op | Const | Data | Skolem | Var | Reify | Uniterm), (slot)*, (resl)?,
+			meta*, oid?, (op | Const | Data | Skolem | Var | Reify | Uniterm), slot*, resl?,
 			( 
 				( 
-					((arg|Const|Data|Skolem|Var|Reify|Uniterm)+, (repo)?)
+					((arg|Const|Data|Skolem|Var|Reify|Uniterm)+, repo?)
 					|
-					(repo)
+					repo
 				),
-				(slot)*, (resl)?
+				slot*, resl?
 			)?
 		)                    
 	-->

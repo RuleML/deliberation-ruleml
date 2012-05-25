@@ -19,7 +19,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
-	<!-- note the addition of Equal and Nanos from the equality module -->
+	<!-- note the addition of Equal from the equality module -->
 	<xs:redefine schemaLocation="_naffolog-to-naffologeq.xsd">
 	
 		<!-- add (modified) @per back to Expr -->
@@ -36,7 +36,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		
 		<!--
 			add Equal so that Query's content model is:
-			( oid?,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Naf|Equal)* )
+			( meta*,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Naf|Equal)* )
 		-->
 		<xs:group name="formula-query.content">
 			<xs:choice>
@@ -47,7 +47,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
 		<!--
 			add Equal so that Assert's content model is:
-			( oid?,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Equal)* )
+			( meta*,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Equal)* )
 		-->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
@@ -58,7 +58,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	  
 	  <!--
 	    add Equal so that Rulebase's content model is:
-	    ( oid?, (formula | Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)* )
+	    ( meta*, (formula | Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)* )
 	  -->
 	  <xs:group name="formula-rulebase.content">
 	    <xs:choice>
@@ -91,7 +91,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Implies so that its content model is:
 			(
-				oid?, (then, if) | (if, then) |
+				meta*, (then, if) | (if, then) |
 				(
 					(Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists | Equal ),
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal ) 
@@ -101,7 +101,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
 		<!--
 			add Equal so that Forall's content model is:
-			( oid?, (declare|Var)+, (formula|Atom|And|Or|Neg|Implies|Equivalent|Forall|Exists|Equal) )
+			( meta*, (declare|Var)+, (formula|Atom|And|Or|Neg|Implies|Equivalent|Forall|Exists|Equal) )
 		-->
 		<xs:group name="formula-forall.content">
 			<xs:choice>
@@ -112,7 +112,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
 		<!--
 			add Equal so Exists' content model is:
-			( oid?, (declare|Var)+, (formula|Atom|And|Or|Neg|Implies|Equivalent|Forall|Exists|Equal) )
+			( meta*, (declare|Var)+, (formula|Atom|And|Or|Neg|Implies|Equivalent|Forall|Exists|Equal) )
 		-->
 		<xs:group name="formula-exists.content">
 			<xs:choice>
@@ -154,7 +154,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 
 		<!--
 			add Equal so that And/Or's content model is:
-			( oid?, (formula | Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists | Equal)* )
+			( meta*, (formula | Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists | Equal)* )
 		-->
 		<xs:group name="formula-and-or.content">
 			<xs:choice>
@@ -176,7 +176,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Equivalent so that its content model is:
 			(
-				oid?, (torso, torso) |
+				meta*, (torso, torso) |
 				(
 				  (Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal),
 				  (Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)

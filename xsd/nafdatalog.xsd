@@ -32,12 +32,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>		
 		<!--
 			note that the above indirectly adds Naf to Implies so that its content model is:
-			( oid?, (then, if) | (if, then) | ( (Atom | And | Or | Naf), Atom ) )
+			( meta*, (then, if) | (if, then) | ( (Atom | And | Or | Naf), Atom ) )
 		-->			
 
 		<!--
 			add Naf so that Query's content model is:
-			( oid?, (formula | Rulebase | Naf | Atom | And | Or | Entails | Exists)* )
+			( meta*, (formula | Rulebase | Naf | Atom | And | Or | Entails | Exists)* )
 		-->
 		<xs:group name="formula-query.content">
 			<xs:choice>
@@ -59,7 +59,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>		
 		<!-- 
 			note that the above indirectly adds Naf to And/Or so their content models are:
-			( oid?, (formula | Atom | And | Or | Naf)* )
+			( meta*, (formula | Atom | And | Or | Naf)* )
 		-->
 
 		

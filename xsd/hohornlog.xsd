@@ -36,7 +36,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds Uniterm and Neg to Assert so that its content model is:
-			( oid?, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall)* )
+			( meta*, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall)* )
 		-->	
 
 		<!-- add Uniterm to formula-rulebase -->
@@ -49,7 +49,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds Uniterm and Neg to Rulebase so that its content model is:
-			( oid?, (formula | Uniterm | Neg | Implies | Equivalent | Forall)* )
+			( meta*, (formula | Uniterm | Neg | Implies | Equivalent | Forall)* )
 		-->	
 
 		<!-- add Uniterm to strong -->
@@ -67,7 +67,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Uniterm to Neg so that its content model is:
-			( oid?, (strong | Uniterm | And) )
+			( meta*, (strong | Uniterm | And) )
 		-->
 
 		<!-- add Uniterm to weak -->
@@ -79,7 +79,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Uniterm to Naf so that its content model is:
-			( oid?, (strong | Uniterm) )
+			( meta*, (strong | Uniterm) )
 		-->
 
 		<!-- add Uniterm and Const to arg -->
@@ -138,7 +138,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Uniterm and Neg to Implies so that its content model is:
-			( oid?, (then, if) | (if, then) | ( (Uniterm | And | Or | Neg | Naf), (Uniterm | Neg) ) )
+			( meta*, (then, if) | (if, then) | ( (Uniterm | And | Or | Neg | Naf), (Uniterm | Neg) ) )
 		-->	
 		
 		<!-- add Uniterm to torso -->
@@ -150,7 +150,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds Uniterm to Equivalent so that its content model is:
-			( oid?, ( (torso, torso) | (Uniterm, Uniterm) ) )	
+			( meta*, ( (torso, torso) | (Uniterm, Uniterm) ) )	
 		-->			
 
 		<!-- add Uniterm and Neg to formula-and-or -->
@@ -163,7 +163,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds Uniterm and Neg to And/Or so that their content model is:
-			( oid?, (formula | Uniterm | And | Or | Neg | Naf)* )
+			( meta*, (formula | Uniterm | And | Or | Neg | Naf)* )
 		-->
 
 		<!-- add Uniterm and Neg to formula-query -->		
@@ -176,7 +176,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds Uniterm to Query so that its content model is:
-			( oid?, (formula | Uniterm | Rulebase | And | Or | Entails | Exists | Neg | Naf)* )
+			( meta*, (formula | Uniterm | Rulebase | And | Or | Entails | Exists | Neg | Naf)* )
 		-->
 		
 		<!-- add Uniterm to formula-forall -->	
@@ -188,7 +188,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Uniterm to Forall so that its content model is:
-			( oid?, (declare | Var)+, (formula | Uniterm | Implies | Equivalent | Forall) )
+			( meta*, (declare | Var)+, (formula | Uniterm | Implies | Equivalent | Forall) )
 		-->
 		
 		<!-- add Uniterm to formula-exists -->
@@ -200,7 +200,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Uniterm to Exists so that its content model is:
-			( oid?, (declare | Var)+, (formula | Uniterm | And | Or | Exists) )
+			( meta*, (declare | Var)+, (formula | Uniterm | And | Or | Exists) )
 		-->							
 
 	</xs:redefine>

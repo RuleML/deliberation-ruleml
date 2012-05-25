@@ -2,7 +2,6 @@
 
 <xs:schema targetNamespace="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec"
-  xmlns:xml="http://www.w3.org/XML/1998/namespace"
   elementFormDefault="qualified">
 
   <!-- note that elementFormDefault is qualified because of local declarations -->
@@ -34,15 +33,15 @@
 	
 		content model (normally):
 		(
-			meta*, oid?, degree?, (op | Rel), (slot)*,
-			(arg | Ind | Data | Skolem | Var | Reify)*, (slot)*
+			meta*, oid?, degree?, (op | Rel), slot*,
+			(arg | Ind | Data | Skolem | Var | Reify)*, slot*
 		)
 		
 		however, the above content model is non-deterministic,
 		so it is (equivalently) restructured as follows:
 		(
-		meta*, oid?, degree?, (op | Rel), (slot)*,
-			( (arg | Ind | Data | Skolem | Var | Reify)+, (slot)* )?
+		meta*, oid?, degree?, (op | Rel), slot*,
+			( (arg | Ind | Data | Skolem | Var | Reify)+, slot* )?
 		)
 
 		Another (context-sensitive) version of <Atom> is in the holog module.
@@ -63,7 +62,7 @@
   <xs:group name="Atom-repo.extend">
     <xs:choice>
       <xs:group ref="Atom-arg.extend"/>
-      <!-- (repo) added in hornlog -->
+      <!-- repo added in hornlog -->
     </xs:choice>
   </xs:group>
   <xs:group name="Atom-arg.extend">
@@ -85,7 +84,7 @@
   <xs:group name="Atom-slots.extend2">
     <xs:sequence>
       <!-- [2011/09/17] Correction: this sequence is empty until hornlog -->
-      <!-- (resl)? added in hornlog -->
+      <!-- resl? added in hornlog -->
     </xs:sequence>
   </xs:group>
   <xs:group name="Atom.content">

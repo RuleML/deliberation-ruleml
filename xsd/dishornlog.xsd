@@ -14,7 +14,7 @@ elementFormDefault="qualified"
 			XML Schema for a Disjunctive Horn-Logic RuleML sublanguage
 			File: dishornlog.xsd
 			Version: 1.0
-			Last Modification: 2010-08-19
+			Last Modification: 2012-05-24
 		</xs:documentation>
 	</xs:annotation>
 	
@@ -33,7 +33,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Or to Implies so that its content model is:
-			( oid?, ( then, if) | ( if, then) | ( (Atom | And | Or), (Atom | Or) ) )	
+			( meta*, ( then, if) | ( if, then) | ( (Atom | And | Or), (Atom | Or) ) )	
 		-->
 		
 	</xs:redefine>

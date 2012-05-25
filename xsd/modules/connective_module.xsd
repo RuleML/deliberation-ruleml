@@ -53,7 +53,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Implies
 
 		content model:
-		( id?, meta?, (then, if) | (if, then) | ( (Atom | Rulebase | And | Or), Atom ) )
+		( meta*, (then, if) | (if, then) | ( (Atom | Rulebase | And | Or), Atom ) )
 	-->
   <xs:attributeGroup name="Implies.attlist">
     <xs:attributeGroup ref="closure.attrib"/>
@@ -164,7 +164,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Entails
 		
 		content model:
-		( id?, meta?, (if | Rulebase), (then | Rulebase) )
+		( meta*, (if | Rulebase), (then | Rulebase) )
 	-->
   <xs:attributeGroup name="Entails.attlist">
     <xs:attributeGroup ref="node.attrib"/>
@@ -197,7 +197,7 @@
 		
 		See http://www.ruleml.org/1.0/glossary/#gloss-Equivalent
 
-		content model: ( id?, meta?, ((torso, torso) | (Atom, Atom)) )
+		content model: ( meta*, ((torso, torso) | (Atom, Atom)) )
 	-->
   <xs:attributeGroup name="Equivalent.attlist">
     <xs:attributeGroup ref="closure.attrib"/>
@@ -274,7 +274,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Rulebase
 		
 		content model:
-		( id?, meta?, (formula | Atom | Implies | Equivalent | Forall)* )
+		( meta*, (formula | Atom | Implies | Equivalent | Forall)* )
 	-->
   <xs:attributeGroup name="Rulebase.attlist">
     <xs:attributeGroup ref="mapClosure.attrib"/>
@@ -305,7 +305,7 @@
 
 		See http://www.ruleml.org/1.0/glossary/#gloss-And
 		
-		content model: ( id?, meta?, (formula | Atom | And | Or)* )
+		content model: ( meta*, (formula | Atom | And | Or)* )
 
 		Under Query, And may have attribute closure="existential"; elsewhere, it may
 		not have any attributes.
@@ -344,7 +344,7 @@
 		
 		See http://www.ruleml.org/1.0/glossary/#gloss-Or
 		
-		content model: ( id?, meta?, (formula | Atom | And | Or)* )
+		content model: ( meta*, (formula | Atom | And | Or)* )
 
 		Under Query, Or may have attribute closure="existential"; elsewhere, it may not
 		have any attributes.

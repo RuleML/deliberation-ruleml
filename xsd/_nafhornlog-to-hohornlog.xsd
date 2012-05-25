@@ -27,7 +27,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from Neg so that its content model is:
-			( oid?, (strong) )
+			( meta*, (strong) )
 		-->	
 
 	</xs:redefine>
@@ -41,7 +41,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from Naf so that its content model is:
-			( oid?, (weak) )
+			( meta*, (weak) )
 		-->
 
 		<!-- remove Ind, Data, Expr and Plex from arg by restriction -->
@@ -86,7 +86,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly removes Atom from Implies so that its content model is:
-			( oid?, ( then, if) | ( if, then) | ( (And | Or | Naf), () ) )	
+			( meta*, ( then, if) | ( if, then) | ( (And | Or | Naf), () ) )	
 		-->
 
 		<!-- remove Atom from torso by restriction -->
@@ -95,7 +95,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from Equivalent so that its content model is:
-			( oid?, ( ( torso, torso) | ( (), () ) ) )	
+			( meta*, ( ( torso, torso) | ( (), () ) ) )	
 		-->
 
 		<!-- remove Atom from formula-assert by restriction -->
@@ -110,7 +110,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly removes Atom from Assert so that its content model is:
-			( oid?, (formula | Rulebase | Implies | Equivalent | Entails | Forall)* )
+			( meta*, (formula | Rulebase | Implies | Equivalent | Entails | Forall)* )
 		-->	
 		
 		<!-- remove Atom from formula-rulebase by restriction -->
@@ -123,7 +123,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly removes Atom from Rulebase so that its content model is:
-			( oid?, (formula | Implies | Equivalent | Forall)* )
+			( meta*, (formula | Implies | Equivalent | Forall)* )
 		-->	
 		
 		<!-- remove Atom from formula-and-or by restriction -->		
@@ -136,7 +136,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from And/Or so that their content model is:
-			( oid?, (formula | And | Or | Naf)* )
+			( meta*, (formula | And | Or | Naf)* )
 		-->	
 		
 		<!-- remove Atom from formula-query by restriction -->		
@@ -152,7 +152,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly removes Atom from Query so that its content model is:
-			( oid?, (formula | Rulebase | And | Or | Entails | Exists | Naf)* )
+			( meta*, (formula | Rulebase | And | Or | Entails | Exists | Naf)* )
 		-->
 
 		<!-- remove Atom from formula-forall by restriction -->
@@ -165,7 +165,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from Forall so that its content model is:
-			( oid?, (declare | Var)+, (formula | Implies | Equivalent | Forall) )
+			( meta*, (declare | Var)+, (formula | Implies | Equivalent | Forall) )
 		-->	
 
 		<!-- remove Atom from formula-exists by restriction -->
@@ -178,7 +178,7 @@ elementFormDefault="qualified"
 		</xs:group>
 		<!--
 			note that the above indirectly removes Atom from Exists so that its content model is:
-			( oid?, (declare | Var)+, (formula | And | Or | Exists) )
+			( meta*, (declare | Var)+, (formula | And | Or | Exists) )
 		-->			
 		
 	</xs:redefine>

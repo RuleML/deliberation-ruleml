@@ -24,8 +24,8 @@ elementFormDefault="qualified"
 
 			note that this automatically removes Var from Atom so that its content model is:
 			(
-				meta?, oid?, (op | Rel), (slot)*,
-				( (arg|Ind|Data|Skolem|Reify), (arg|Ind|Data|Skolem|Reify), (slot)* )?
+				meta*, oid?, (op | Rel), slot*,
+				( (arg|Ind|Data|Skolem|Reify), (arg|Ind|Data|Skolem|Reify), slot* )?
 			)
 		-->		
 		<xs:group name="arg.content">
@@ -41,7 +41,7 @@ elementFormDefault="qualified"
 
 		<!--
 			remove Forall (since ground) so that Assert's content model is:
-			( oid?, (formula | Rulebase | Atom | Implies | Equivalent | Entails)* )
+			( meta*, (formula | Rulebase | Atom | Implies | Equivalent | Entails)* )
 		-->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
@@ -55,7 +55,7 @@ elementFormDefault="qualified"
 		
 		<!--
 			remove Forall (since ground) so that Rulebase's content model is:
-			( oid?, (formula | Atom | Implies | Equivalent)* )
+			( meta*, (formula | Atom | Implies | Equivalent)* )
 		-->
 		<xs:group name="formula-rulebase.content">
 			<xs:choice>
@@ -67,7 +67,7 @@ elementFormDefault="qualified"
 
 		<!--
 			similarly, remove Exists (since ground) so that Query's content model is:
-			( oid?, (formula | Rulebase | And | Or | Atom | Entails)* )
+			( meta*, (formula | Rulebase | And | Or | Atom | Entails)* )
 		-->
 		<xs:group name="formula-query.content">
 			<xs:choice>

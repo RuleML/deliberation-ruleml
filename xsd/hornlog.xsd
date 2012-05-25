@@ -37,8 +37,8 @@ elementFormDefault="qualified">
 		<!--
 			note that the above indirectly adds Expr and Plex to Atom so that its content model is:
 			(
-				(oid)?, (op | Rel), (slot)*,
-				( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (slot)* )?
+				meta*, oid?, (op | Rel), slot*,
+				( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, slot* )?
 			)
 			
 			... as well as to slot so that its content model is:
@@ -72,15 +72,15 @@ elementFormDefault="qualified">
 		<!--
 			add repo and resl so that Atom's content model is:
 			(
-				(oid)?, (op | Rel), (slot)*,
+				meta*, oid?, (op | Rel), slot*,
 				( 
 					( 
-						((arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (repo)?)
+						((arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, repo?)
 						|
-						(repo)
+						repo
 					),
-					(slot)*)?, 
-				(resl)?
+					slot*)?, 
+				resl?
 			)			
 		-->
 		<xs:group name="Atom-repo.extend">

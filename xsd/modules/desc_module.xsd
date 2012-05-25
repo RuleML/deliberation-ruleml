@@ -10,7 +10,7 @@
 			This is the XML Schema module for description-related RuleML elements.
 			File: desc_module.xsd
 			Version: 1.0
-			Last Modification: 2012-04-03 [Tara Athan]
+			Last Modification: 2012-05-17 [Tara Athan]
 			
 			This module declares the following RuleML element:
 			* @node
@@ -74,8 +74,8 @@
     <xs:element name="meta" type="formula-assert.type"/>
   
   <xs:attributeGroup name="xml.attlist">
-    <xs:attribute ref="xml:base"/>
-    <xs:attribute ref="xml:id"/>
+    <xs:attribute ref="xml:base" use="optional"/>
+    <xs:attribute ref="xml:id" use="optional"/>
   </xs:attributeGroup>
   
 </xs:schema>

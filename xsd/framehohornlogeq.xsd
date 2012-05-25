@@ -90,7 +90,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Assert:
-			( oid?, (formula|Rulebase|Uniterm|Atom|Neg|Implies|Equivalent|Entails|Forall|Equal|InstanceOf|SubclassOf|Signature)* )
+			( meta*, (formula|Rulebase|Uniterm|Atom|Neg|Implies|Equivalent|Entails|Forall|Equal|InstanceOf|SubclassOf|Signature)* )
 		-->
 		
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-rulebase -->
@@ -105,7 +105,7 @@ elementFormDefault="qualified"
 		</xs:group>	
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Rulebase:
-			( oid?, (formula |Atom|Uniterm|Neg|Implies|Equivalent|Forall|InstanceOf|SubclassOf|Signature|Equal)* )
+			( meta*, (formula |Atom|Uniterm|Neg|Implies|Equivalent|Forall|InstanceOf|SubclassOf|Signature|Equal)* )
 		-->
 
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to if -->
@@ -133,7 +133,7 @@ elementFormDefault="qualified"
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Implies so
 			that its content model is:
 			( 
-   			   oid?, (then, if ) | (if, then ) |
+   			   meta*, (then, if ) | (if, then ) |
 				 ( 
 				  (Atom | Uniterm | InstanceOf | SubclassOf | Signature | And | Or | Neg | Naf | Equal),
  				  (Atom | Uniterm | InstanceOf | SubclassOf | Signature | Neg | Equal)
@@ -155,7 +155,7 @@ elementFormDefault="qualified"
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			Equivalent so that its content model is:
 			(
-			   oid?, (
+			   meta*, (
 				   ( torso, torso) |
 				   (
 				    (Atom|Uniterm|InstanceOf|SubclassOf|Signature|Equal),
@@ -178,7 +178,7 @@ elementFormDefault="qualified"
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			And, Rulebase and Or so that their content model is:
-			( oid?, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|And|Or|Neg|Naf|Equal)* )
+			( meta*, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|And|Or|Neg|Naf|Equal)* )
 		-->	
 
 		<!-- add Atom to formula-query -->		
@@ -194,7 +194,7 @@ elementFormDefault="qualified"
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			Query so that its content model is:
-			( oid?, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|Rulebase|And|Or|Entails|Exists|Neg|Naf|Equal)* )
+			( meta*, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|Rulebase|And|Or|Entails|Exists|Neg|Naf|Equal)* )
 		-->
 
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-forall -->
@@ -210,7 +210,7 @@ elementFormDefault="qualified"
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			Forall so that its content model is:
-			(oid?,(declare|Var)+,(formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|Implies|Equivalent|Forall|Equal))
+			(meta*,(declare|Var)+,(formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|Implies|Equivalent|Forall|Equal))
 		-->
 
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-exists -->
@@ -226,7 +226,7 @@ elementFormDefault="qualified"
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			Exists so that its content model is:
-			( oid?, (declare | Var)+, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|And|Or|Exists|Equal) )
+			( meta*, (declare | Var)+, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|And|Or|Exists|Equal) )
 		-->
 
 	</xs:redefine>

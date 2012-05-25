@@ -70,7 +70,7 @@ elementFormDefault="qualified"
 		<!--
 			note that the above indirectly changes the content model of Implies to become:		
 			(
-				oid?, (then, if) | (if, then) |
+				meta*, (then, if) | (if, then) |
 				(
 					(Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists),
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists)
@@ -80,7 +80,7 @@ elementFormDefault="qualified"
 		
 		<!--
 			add Naf so that Query's content model is:
-			( oid?,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Naf)* )
+			( meta*,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Naf)* )
 		-->
 		<xs:group name="formula-query.content">
 			<xs:choice>
@@ -91,7 +91,7 @@ elementFormDefault="qualified"
 		
 		<!--
 			add Naf so that And/Or's content model is:
-			( oid?, (formula | Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists)* )
+			( meta*, (formula | Atom | And | Or | Neg | Naf | Implies | Equivalent | Forall | Exists)* )
 		-->
 		<xs:group name="formula-and-or.content">
 			<xs:choice>

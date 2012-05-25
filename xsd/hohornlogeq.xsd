@@ -17,7 +17,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
-	<!-- note the addition of Equal and Nanos from the equality module -->
+	<!-- note the addition of Equal from the equality module -->
 	<xs:redefine schemaLocation="_hohornlog-to-hohornlogeq.xsd">
 
 		<!-- add (modified) @per back to Expr -->
@@ -41,12 +41,12 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Assert so that its content model is:
-			( oid?, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall | Equal)* )
+			( meta*, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall | Equal)* )
 		-->	
 		
 		<!--
 			add Equal so that Rulebase's content model is:
-			( oid?, (formula | Uniterm | Neg | Implies | Equivalent | Forall | Equal)* )
+			( meta*, (formula | Uniterm | Neg | Implies | Equivalent | Forall | Equal)* )
 		-->
 		<xs:group name="formula-rulebase.content">
 			<xs:choice>
@@ -72,7 +72,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Implies so that its content model is:
-			( oid?, (then, if) | (if, then) | ( (Uniterm|And|Or|Neg|Naf|Equal), (Uniterm|Neg|Equal) ) )
+			( meta*, (then, if) | (if, then) | ( (Uniterm|And|Or|Neg|Naf|Equal), (Uniterm|Neg|Equal) ) )
 		-->
 
 		<!-- add Equal to formula-forall -->
@@ -85,7 +85,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Forall so that its content model is:
-			( oid?, (declare | Var)+, (formula | Uniterm | Implies | Equivalent | Forall | Equal) )
+			( meta*, (declare | Var)+, (formula | Uniterm | Implies | Equivalent | Forall | Equal) )
 		-->
 
 		<!-- add Equal so formula-exists -->
@@ -97,7 +97,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Exists so that its content model is:
-			( oid?, (declare | Var)+, (formula | Uniterm | And | Or | Exists | Equal) )
+			( meta*, (declare | Var)+, (formula | Uniterm | And | Or | Exists | Equal) )
 		-->	
 
 		<!-- add Equal to formula-query -->
@@ -109,7 +109,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Query so that its content model is:
-			( oid?, (formula | Uniterm | Rulebase | And | Or | Entails | Exists | Neg | Naf | Equal)* )
+			( meta*, (formula | Uniterm | Rulebase | And | Or | Entails | Exists | Neg | Naf | Equal)* )
 		-->
 
 		<!-- add Equal to formula-and-or -->
@@ -121,7 +121,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to And/Or so that their content model is:
-			( oid?, (formula | Uniterm | And | Or | Neg | Naf | Equal)* )
+			( meta*, (formula | Uniterm | And | Or | Neg | Naf | Equal)* )
 		-->
 
 		<!-- add Equal to torso -->
@@ -133,7 +133,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Equivalent so that its content model is:
-			( oid?, ( (torso, torso) | ( (Uniterm | Equal), (Uniterm | Equal) ) ) )	
+			( meta*, ( (torso, torso) | ( (Uniterm | Equal), (Uniterm | Equal) ) ) )	
 		-->		
 
 		<!-- add Equal to strong -->
@@ -145,7 +145,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Neg so that its content model is:
-			( oid?, (strong | Uniterm | And | Equal) )
+			( meta*, (strong | Uniterm | And | Equal) )
 		-->
 		
 	</xs:redefine>

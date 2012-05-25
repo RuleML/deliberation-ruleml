@@ -28,7 +28,7 @@
 
 		See http://www.ruleml.org/0.91/glossary/#gloss-Neg
 
-content model: ( id?, meta?, (strong | Atom) )
+content model: ( meta*, (strong | Atom) )
 	-->
   <xs:attributeGroup name="Neg.attlist">
     <xs:attributeGroup ref="node.attrib"/>

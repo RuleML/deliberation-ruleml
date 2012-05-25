@@ -34,7 +34,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-RuleML
 
 		content model:
-		( id?, meta?, (act | Assert | Retract | Query)* )
+		( meta*, (act | Assert | Retract | Query)* )
 	-->
   <xs:attributeGroup name="RuleML.attlist">
     <xs:attributeGroup ref="node.attrib"/>
@@ -90,7 +90,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Assert 
 
 		content model:
-		( id?, meta?, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall)* )
+		( meta*, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall)* )
 	-->
   <xs:attributeGroup name="Assert.attlist">
     <xs:attributeGroup ref="mapDirection.attrib"/>
@@ -123,7 +123,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Retract
 
 		content model:
-		( id?, meta?, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall)* )
+		( meta*, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall)* )
 	-->
   <xs:attributeGroup name="Retract.attlist">
     <xs:attributeGroup ref="mapDirection.attrib"/>
@@ -156,7 +156,7 @@
 		See http://www.ruleml.org/1.0/glossary/#gloss-Query 
 
 		content model:
-		( id?, meta?, (formula | Rulebase | Atom | And | Or | Entails | Exists)* )
+		( meta*, (formula | Rulebase | Atom | And | Or | Entails | Exists)* )
 	-->
   <xs:attributeGroup name="Query.attlist">
     <xs:attributeGroup ref="closure.attrib"/>

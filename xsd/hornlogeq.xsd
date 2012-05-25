@@ -18,7 +18,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
-	<!-- note the addition of Equal and Nanos from the equality module -->
+	<!-- note the addition of Equal from the equality module -->
 	<xs:redefine schemaLocation="_hornlog-to-hornlogeq.xsd">
 	
 		<!-- add (modified) @per back to Expr -->
@@ -35,7 +35,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		
 		<!--
 			add Equal so that Assert's content model is:
-			( oid?, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall | Equal)* )
+			( meta*, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall | Equal)* )
 		-->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
@@ -46,7 +46,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		
 		<!--
 			add Equal so that Rulebase's content model is:
-			( oid?, (formula | Atom | Implies | Equivalent | Forall | Equal)* )
+			( meta*, (formula | Atom | Implies | Equivalent | Forall | Equal)* )
 		-->
 		<xs:group name="formula-rulebase.content">
 			<xs:choice>
@@ -78,7 +78,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Implies so that its content model is:
-			( oid?, (then, if) | (if, then) | ( (Atom | And | Or | Equal), (Atom | Equal) ) )
+			( meta*, (then, if) | (if, then) | ( (Atom | And | Or | Equal), (Atom | Equal) ) )
 		-->		
 
 
@@ -94,7 +94,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--		
 			note that the above indirectly adds Equal to Forall so that its content model is:
-			( oid?, (declare | Var)+, (formula | Atom | Implies | Equivalent | Forall | Equal) )
+			( meta*, (declare | Var)+, (formula | Atom | Implies | Equivalent | Forall | Equal) )
 		-->
 
 		<!--
@@ -109,13 +109,13 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--		
 			note that the above indirectly adds Equal to Exists so that its content model is:
-			( oid?, (declare | Var)+, (formula | Atom | And | Or | Exists | Equal) )
+			( meta*, (declare | Var)+, (formula | Atom | And | Or | Exists | Equal) )
 		-->
 
 
 		<!--
 			add Equal so that Query's content model is:
-			( oid?, (formula | Atom | Rulebase | And | Or | Entails | Exists | Equal)* )
+			( meta*, (formula | Atom | Rulebase | And | Or | Entails | Exists | Equal)* )
 		-->
 		<xs:group name="formula-query.content">
 			<xs:choice>
@@ -137,7 +137,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to And/Or so that their content models are:
-			( oid?, (formula | Atom | And | Or | Equal)* )
+			( meta*, (formula | Atom | And | Or | Equal)* )
 		-->
 
 		<!--
@@ -152,7 +152,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Equivalent so that its content model is:
-			( oid?, ( (torso, torso) | ( (Atom | Equal), (Atom | Equal) ) ) )
+			( meta*, ( (torso, torso) | ( (Atom | Equal), (Atom | Equal) ) ) )
 		-->		
 		
 	</xs:redefine>

@@ -41,23 +41,23 @@
 
 		content model:
 		( 
-		  id?, meta?, oid?,
-		  (op|Fun), (slot)*, 
+		  meta*, oid?,
+		  (op|Fun), slot*, 
       (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)*,
-		  (repo)?, (slot)*, (resl)?
+		  repo?, slot*, resl?
 		)
 
 		however, this is non-deterministic, so it is (equivalently) restructured as follows:
 		(
-		id?, meta?, oid?, (op | Fun), (slot)*,
+		meta*, oid?, (op | Fun), slot*,
 			( 
 				( 
-					( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (repo)? )
+					( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, repo? )
 					|
-					(repo)
+					repo
 				),
-				(slot)*)? , 
-			(resl)?
+				slot*)? , 
+			resl?
 		)
 		
 		Note the 'positionalized' normal form where the op role is only
@@ -158,7 +158,7 @@
 		
 		See http://www.ruleml.org/0.91/glossary/#gloss-Fun
 
-content model: (#PCDATA, id?, #PCDATA, meta?, #PCDATA)
+content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
 	-->
   <xs:attributeGroup name="Fun.attlist">
     <xs:attributeGroup ref="iri.attrib"/>
@@ -185,17 +185,17 @@ content model: (#PCDATA, id?, #PCDATA, meta?, #PCDATA)
 		See http://www.ruleml.org/0.91/glossary/#gloss-Plex
 		
 		content model (within Atom, Plex, slot):
-		( (slot)*, (arg | Ind | Skolem | Var | Expr | Plex)*, (repo)?, (slot)*, (resl)? )
+		( slot*, (arg | Ind | Skolem | Var | Expr | Plex)*, repo?, slot*, resl? )
 
 		however, this is non-deterministic, so it is (equivalently) restructured as follows:
 		(
-		   id?, meta?, (slot)*,
+		   meta*, slot*,
 		     (
-		        ( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, (repo)?, (slot)*, (resl)? )?
+		        ( (arg|Ind|Data|Skolem|Var|Reify|Expr|Plex)+, repo?, slot*, resl? )?
 		        |
-                     ( (repo), (slot)*, (resl)? )
+                     ( repo, slot*, resl? )
                      |
-                     (resl)
+                     resl
 		     )
 		)
 
