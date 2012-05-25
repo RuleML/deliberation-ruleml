@@ -145,7 +145,6 @@
   <xs:group name="Get.content">
     <xs:sequence>
       <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element ref="oid"/>
       <xs:element ref="SlotProd"/>
     </xs:sequence>
   </xs:group>

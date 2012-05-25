@@ -152,7 +152,6 @@
   <xs:group name="Rel.content">
     <xs:sequence>
 
-      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:group>
   <xs:complexType name="Rel.type" mixed="true">

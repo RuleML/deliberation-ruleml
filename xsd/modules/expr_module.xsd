@@ -169,7 +169,6 @@ content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
   <xs:group name="Fun.content">
     <xs:sequence>
 
-      <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:group>
   <xs:complexType name="Fun.type" mixed="true">
