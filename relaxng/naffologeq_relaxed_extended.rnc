@@ -3,24 +3,34 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 namespace rulemlx = "http://www.ruleml.org/1.0/ext"
 
- start |= notAllowed
-#
+start |= notAllowed
+# 
 # RuleML schema
 #
 include "http://ruleml.org/1.0/relaxng/schema_rnc.php"
-#
-#
+# 
+# 
 # Xor Modules
 # the basic definitions of the <Xor> element and its <formula> edge element
-include "http://ruleml.org/1.0/relaxng/modules-ext/xor_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
-#
+include "http://ruleml.org/1.0/relaxng/modules-ext/xor_expansion_module.rnc"
+        inherit = rulemlx {
+  start |= notAllowed
+}
+# 
 # included when stripe-skipping is allowed
-include "http://ruleml.org/1.0/relaxng/modules-ext/xor_stripe_skipping_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
-#
+include "http://ruleml.org/1.0/relaxng/modules-ext/xor_stripe_skipping_expansion_module.rnc"
+        inherit = rulemlx {
+  start |= notAllowed
+}
+# 
 # included in languages that have the expressive power of disjunctive Horn logic.
-include "http://ruleml.org/1.0/relaxng/modules-ext/xor_dis_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
-#
+include "http://ruleml.org/1.0/relaxng/modules-ext/xor_dis_expansion_module.rnc"
+        inherit = rulemlx {
+  start |= notAllowed
+}
+# 
 # included in languages that have the expressive power of disjunctive Horn logic.
-include "http://ruleml.org/1.0/relaxng/modules-ext/xor_fo_expansion_module.rnc" inherit = rulemlx {start |= notAllowed}
-
-#
+include "http://ruleml.org/1.0/relaxng/modules-ext/xor_fo_expansion_module.rnc"
+        inherit = rulemlx {
+  start |= notAllowed
+}

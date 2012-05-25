@@ -1,0 +1,12 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+namespace ruleml = "http://ruleml.org/spec"
+namespace legalruleml = "http://legalruleml.example.org"
+
+ start |= notAllowed
+#
+# RuleML schema
+#
+include "http://ruleml.org/1.0/relaxng/schema_rnc.php"
+#
+include "modules/metadata_module.rnc" inherit = legalruleml {start |= notAllowed}
