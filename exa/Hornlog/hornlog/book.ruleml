@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/hornlog_relaxed.rnc"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/hornlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+
+<!-- non-ground-fact-like rule with 4-ary Expr as single argument -->
+
+<Assert>
+
+    <Atom closure="universal">
+      <op><Rel>book</Rel></op>
+      <Expr>
+        <Fun per="copy">parts</Fun>
+        <Var>title</Var>
+        <Var>author</Var>
+        <Var>toc</Var>
+        <Var>chapters</Var>
+      </Expr>
+    </Atom>
+
+</Assert>
+
+</RuleML>

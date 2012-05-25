@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE doc [
+  <!ENTITY vocab "http://ruleml.org/vocab">
+  <!ENTITY xs "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/">  
+  <!ENTITY ruleml "http://ruleml.org/spec">  
+  ]>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundfact_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
+<!--  <?xml-model href="http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="&ruleml;"
+  xmlns:xsi="&xs;-instance" xmlns:xs="&xs;"
+  xsi:schemaLocation="&ruleml;xsd &ruleml;xsd/bindatagroundfact.xsd">
+  <Assert>
+    <!-- Modality implemented through reification -->
+    <Rulebase>
+      <!-- It is possible that it may rain tomorrow. -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Possible"/>
+        <Reify>
+          <Atom>
+            <Rel iri="#hasWeather"/>
+            <Ind iri="#tomorrow"/>
+            <Ind iri="#rainy"/>
+          </Atom>
+        </Reify>
+      </Atom>
+      <!-- It is possible that Hesperus (the evening star) is Phosphorus (the morning star). -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Possible"/>
+        <Reify>
+          <Atom>
+            <Rel iri="&vocab;/core#Equal"/>
+            <Ind iri="#Hesperus"/>
+            <Ind iri="#Phosphorus"/>
+          </Atom>
+        </Reify>
+      </Atom>
+      <!-- It is necessary that Hesperus is Hesperus. -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Necessary"/>
+        <Reify>
+          <Atom>
+            <Rel iri="&vocab;/core#Equal"/>
+            <Ind iri="#Hesperus"/>
+            <Ind iri="#Hesperus"/>
+          </Atom>
+        </Reify>
+      </Atom>
+    </Rulebase>
+    <!-- Contextual metadata implemented through reification. -->
+    <Atom>
+      <Rel iri="&dc;creator"/>
+      <Reify>
+        <Atom>
+          <Rel iri="#hasWeather"/>
+          <Ind iri="#tomorrow"/>
+          <Ind iri="#rainy"/>
+        </Atom>
+      </Reify>
+      <Data xsi:type="xs:string">Tara Athan</Data>
+    </Atom>
+  </Assert>
+
+</RuleML>

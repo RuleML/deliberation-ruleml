@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE doc [
+<!ENTITY xs "http://www.w3.org/2001/XMLSchema">
+<!ENTITY ruleml "http://ruleml.org/spec">  
+<!ENTITY dcterms "http://purl.org/dc/terms/">  
+]>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/datalog_relaxed.rnc" 
+  type="application/relax-ng-compact-syntax"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd">
+  <Assert node="#assert1" xml:base="http://example.org/myrulebase.ruleml">
+    <Implies node="#rule1">
+      <meta xml:id="xml-id-1">
+        <Atom node="#meta1">
+          <Rel>Author</Rel>
+          <Ind node="#ind1" iri="#rule1" xml:id="xml-id-2"/>
+          <Data xsi:type="xs:string">Tara Athan</Data>
+        </Atom>
+      </meta>
+      <meta>
+        <Atom node="#meta2">
+          <!-- Implicit <oid><Ind iri="#rule1"/></oid> here. -->
+          <Rel iri="&ruleml;Implies"/>
+          <slot>
+            <Ind>Institution</Ind>
+            <Data xsi:type="xs:string">Athan Services</Data>
+          </slot>
+          <slot>
+            <Ind>Date</Ind>
+            <Data node="#date1" xsi:type="date">2012-03-20-06:00</Data>
+          </slot>
+        </Atom>
+      </meta>
+      <if>
+        <And/>
+      </if>
+      <then>
+        <Atom>
+          <Rel/>
+        </Atom>
+      </then>
+    </Implies>
+    <Atom node="#meta3">
+      <Rel iri="http://ruleml.org/Defeasible#Overrides"/>
+      <Ind iri="#rule1"/>
+      <Ind iri="#rule2"/>
+    </Atom>
+  </Assert>
+  <Assert xml:base="http://example.org/mymetarulebase.ruleml">
+    <Atom node="#meta3">
+      <oid>
+        <Ind iri="#meta3" xml:base="http://example.org/myrulebase.ruleml"/>
+      </oid>
+      <Rel iri="&ruleml;Atom"/>
+      <slot>
+        <Ind iri="http://ruleml.org/Defeasible#Justification"/>
+        <Ind iri="urn:legalruleml:lex-superior"/>
+      </slot>
+      <slot>
+        <Ind node="#ind1" iri = "&dcterms;created"/>
+        <Data node="#date1"  xsi:type="date">2012-04-01</Data>
+      </slot>
+    </Atom>
+  </Assert>
+  <Query node="/query1" xml:base="http://example.org/myquery/">
+    <Atom node="?x" xml:base="http://example.org/myrulebase.ruleml">
+      <Rel>Author</Rel>
+      <Var>y</Var>
+      <Data xsi:type="xs:string">Tara Athan</Data>
+    </Atom>
+  </Query>
+</RuleML>

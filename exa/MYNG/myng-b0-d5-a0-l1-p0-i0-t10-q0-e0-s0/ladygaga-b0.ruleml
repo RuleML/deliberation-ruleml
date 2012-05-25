@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-model href="http://ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x0&amp;default=x5&amp;termseq=x0&amp;lng=x1&amp;propo=x0&amp;implies=x0&amp;terms=x10&amp;quant=x0&amp;expr=x0&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="http://ruleml.org/1.0/xsd/hornlogeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- This example is taken from 
+    "Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG" (2011)
+    Tara Athan and Harold Boley
+    Rule - Based Modeling and Computing on the Semantic Web
+    Lecture Notes in Computer Science, 2011, Volume 7018/2011, 17-32, DOI: 10.1007/978-3-642-24908-2_9
+    
+    It illustrates a customized RuleML Version 1.0 sublanguage with the minimal power necessary to express
+    the equation of two individuals (constants).
+    The queries that can be written in such a minimal language are limited to verification of specific equations or atomic
+    formulas.
+    
+    To validate with respect to one of the original 15 sublanguages 
+    (formalized in the RuleML XSD schemas http://ruleml.org/1.0/xsd/), the expressivity of
+    Hornlog with Equations (hornlogeq) would be required.
+    
+    See http://ruleml.org/papers/RuleMLinRelaxNG/, http://ruleml.org/talks/RuleMLinRelaxNG/  -->
+  <act index="1">
+    <Assert>
+      <formula>
+        <Equal>
+          <left>
+            <Ind>Lady Gaga</Ind>
+          </left>
+          <right>
+            <Ind>Stefani Joanne Angelina
+        Germanotta</Ind>
+          </right>
+        </Equal>
+      </formula>
+    </Assert>
+  </act>
+  <act index="2">
+    <Query>
+      <formula>
+        <Equal>                    
+          <left>
+            <Ind>Lady Gaga</Ind>
+          </left>
+          <right>
+            <Ind>Stefani Joanne Angelina
+              Germanotta</Ind>
+          </right>
+        </Equal>
+      </formula>
+    </Query>
+  </act>
+  <!-- Results
+  TRUE
+  -->
+</RuleML>
