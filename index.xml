@@ -1148,7 +1148,7 @@ output using the radio buttons just above the "Get Results" button.
     
     
     <p>The edge element <a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> is no longer allowed on all non-leaf Node elements, but is restricted to <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> and 
-      <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a>, for use as an identifier for the object of slotted atoms and expressions. The functionality of providing an identifier for attaching meta-knowledge, such as the defeasible priority of rules, is
+      <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> (and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> in the SWSL branch,) for use as an identifier for the object of slotted atoms and expressions. The functionality of providing an identifier for attaching meta-knowledge, such as the defeasible priority of rules, is
       transferred to the <a href="./glossary#gloss-@node"><code>@node</code></a> attribute.
     </p>
     
@@ -1184,8 +1184,8 @@ output using the radio buttons just above the "Get Results" button.
         </item>
         <item> the (<a href="http://www.w3.org/Submission/SWSF-SWSL/"><acronym title="Semantic Web Services Language">SWSL</acronym></a>) syntax, whose current syntax may be deprecated in favor of better integration with the rest of the Rule<abbr>ML</abbr> syntax.
         </item>
-        <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> or certain cases of <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> does not have commonly accepted semantics (in particular, F-logic's object semantics, as adapted in W3C RIF and developed in PSOA Rule<abbr>ML</abbr>),  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a separate metadata mechanism.) 
-        </item>
+       <!-- <item><a href="./glossary#gloss-oid"><code>&lt;oid&gt;</code></a> as a child of Nodes other than <a href="./glossary#gloss-Atom"><code>&lt;Atom&gt;</code></a> or certain cases of <a href="./glossary#gloss-Expr"><code>&lt;Expr&gt;</code></a> and <a href="./glossary#gloss-Uniterm"><code>&lt;Uniterm&gt;</code></a> does not have commonly accepted semantics (in particular, F-logic's object semantics, as adapted in W3C RIF and developed in PSOA Rule<abbr>ML</abbr>),  although it has been informally used in earlier Rule<abbr>ML</abbr> instances for labels, which sometimes have consisted of entire comment lines (Version 1.0 instances use <abbr>XML</abbr>-level comments instead, while a future Rule<abbr>ML</abbr> version is expected to introduce/adopt a separate metadata mechanism.) 
+        </item>-->
       </itemize>
     </p>
     
@@ -1214,7 +1214,7 @@ output using the radio buttons just above the "Get Results" button.
 		<p>
 		Site Contact:
 		<a href="http://athant.com">Tara Athan</a>.
-		Page Version: 2012-04-03
+		Page Version: 2012-05-11
 		
 		<br/>
 		<br/>
