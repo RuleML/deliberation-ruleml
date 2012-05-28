@@ -56,7 +56,7 @@
             <tr>
                					
                <td align="right">
-                  <h3>2012-04-03 - </h3>
+                  <h3>2012-05-26 - </h3>
                </td>
                					
                <td>
@@ -301,8 +301,8 @@
             two ways:
             <b><pre>
 &lt;Equal&gt;
-  &lt;Expr in="yes"&gt;
-    &lt;Fun&gt;fac&lt;/Fun&gt;
+  &lt;Expr&gt;
+    &lt;Fun per="value"&gt;fac&lt;/Fun&gt;
     &lt;Data xsi:type="xs:int"&gt;0&lt;/Data&gt;
   &lt;/Expr&gt;
   &lt;Data xsi:type="xs:int"&gt;1&lt;/Data&gt;
@@ -311,8 +311,8 @@
             <b><pre>
 &lt;Equal&gt;
   &lt;left&gt;
-    &lt;Expr in="yes"&gt;
-      &lt;Fun&gt;fac&lt;/Fun&gt;
+    &lt;Expr &gt;
+      &lt;Fun per="value"&gt;fac&lt;/Fun&gt;
       &lt;Data xsi:type="xs:int"&gt;0&lt;/Data&gt;
     &lt;/Expr&gt;
   &lt;/left&gt;
@@ -380,8 +380,8 @@
          <dd>A logical function of the form "f(...)" where f is a function name. The function name
             (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>). Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments, just like an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).	Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. If the attribute <a href="#gloss-@per"><code>@per</code></a> has value "copy", the <code>&lt;Expr&gt;</code> corresponds to a complex term (<a href="/0.9/glossary/#gloss-Cterm"><code>&lt;Cterm&gt;</code></a>) in 0.9 and earlier:
             <b><pre>
-&lt;Expr in="no"&gt;
-  &lt;Fun&gt;book&lt;/Fun&gt;
+&lt;Expr &gt;
+  &lt;Fun per="copy"&gt;book&lt;/Fun&gt;
   &lt;Var&gt;title&lt;/Var&gt;
   &lt;Var&gt;author&lt;/Var&gt;
   &lt;Var&gt;table of contents&lt;/Var&gt;
@@ -741,9 +741,9 @@
 &lt;Equal oriented="yes"&gt;
   &lt;left&gt;
     &lt;Expr&gt;
-      &lt;Fun in="yes"&gt;home&lt;/Fun&gt;
+      &lt;Fun per="value"&gt;home&lt;/Fun&gt;
       &lt;Expr&gt;
-        &lt;Fun in="no"&gt;father-of&lt;/Fun&gt;
+        &lt;Fun per="copy"&gt;father-of&lt;/Fun&gt;
         &lt;Ind&gt;John&lt;/Ind&gt;
       &lt;/Expr&gt;
     &lt;/Expr&gt;
@@ -778,8 +778,8 @@
          			
          <dt id="gloss-Plex"><code>&lt;Plex&gt;</code></dt>
          			
-         <dd>A collection of (ordered) arguments (optionally enclosed by <a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) and/or (unordered) user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>), identical to an uninterpreted expression (<a href="#gloss-Expr"><code>&lt;Expr in="no"&gt;</code></a>) except not having a user-specified function name (equivalent to having a system-specified
-            constructor 'Plex'). Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example:
+         <dd>A collection of (ordered) arguments (optionally enclosed by <a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) and/or (unordered) user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>), identical to an uninterpreted expression (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>) except not having a user-specified function name (equivalent to having a system-specified
+            constructor <code>&lt;Fun per="value"&gt;Plex&lt;/Fun&gt;</code>). Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example:
             <b><pre>
 &lt;Plex&gt;
   &lt;Var&gt;title&lt;/Var&gt;
@@ -1063,7 +1063,7 @@
             one) and "0.." (set-valued: zero or more). For example, the function <b><code>children(John, Mary)</code></b> can be interpreted in a set-valued manner using a definition <b><code>children(John, Mary) = {Jory, Mahn}</code></b>, so that the application <b><code>children(John, Mary)</code></b> returns <b><code>{Jory, Mahn}</code></b>:
             <b><pre>
 &lt;Expr&gt;
-  &lt;Fun in="yes" val="0.."&gt;children&lt;/Fun&gt;
+  &lt;Fun per="value" val="0.."&gt;children&lt;/Fun&gt;
   &lt;Ind&gt;John&lt;/Ind&gt;
   &lt;Ind&gt;Mary&lt;/Ind&gt;
 &lt;/Expr&gt;
@@ -1118,7 +1118,7 @@
       <p>
          		Site Contact:
          		<a href="http://alt2is.com">Tara Athan</a>.
-         		Page Version: 2012-01-26
+         		Page Version: 2012-05-26
          		<br>
          			<br>
          			<br>

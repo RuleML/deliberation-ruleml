@@ -25,7 +25,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td align="right"><h3>2012-04-03 - </h3></td>
+					<td align="right"><h3>2012-05-26 - </h3></td>
 					<td>
 						<h3><a href="http://www.ruleml.org/1.0/glossary">Version 1.0</a></h3>
 					</td>
@@ -163,8 +163,8 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			<dd>An equational formula consisting of two expressions, each of which may be optionally surrounded by a left (<a href="#gloss-left"><code>&lt;left&gt;</code></a>) or a right (<a href="#gloss-right"><code>&lt;right&gt;</code></a>) role. For example, &quot;factorial(0)=1&quot; may be equivalently represented in the following two ways:
 <pre><![CDATA[
 <Equal>
-  <Expr in="yes">
-    <Fun>fac</Fun>
+  <Expr>
+    <Fun per="value">fac</Fun>
     <Data xsi:type="xs:int">0</Data>
   </Expr>
   <Data xsi:type="xs:int">1</Data>
@@ -173,8 +173,8 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 <pre><![CDATA[
 <Equal>
   <left>
-    <Expr in="yes">
-      <Fun>fac</Fun>
+    <Expr >
+      <Fun per="value">fac</Fun>
       <Data xsi:type="xs:int">0</Data>
     </Expr>
   </left>
@@ -221,8 +221,8 @@ Note, however, that <code>&lt;Data&gt;tomorrow&lt;/Data&gt;</code> is valid beca
 			<dt id="gloss-Expr"><code>&lt;Expr&gt;</code></dt>
 			<dd>A logical function of the form "f(...)" where f is a function name. The function name (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is followed by a sequence of zero or more arguments (<a href="#gloss-arg"><code>&lt;arg&gt;</code></a>). Optional user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>) are also permitted before and/or after the arguments, just like an atom (<a href="#gloss-Atom"><code>&lt;Atom&gt;</code></a>).	Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. If the attribute <a href="#gloss-@per"><code>@per</code></a> has value "copy", the <code>&lt;Expr&gt;</code> corresponds to a complex term (<a href="/0.9/glossary/#gloss-Cterm"><code>&lt;Cterm&gt;</code></a>) in 0.9 and earlier:
 <pre><![CDATA[
-<Expr in="no">
-  <Fun>book</Fun>
+<Expr >
+  <Fun per="copy">book</Fun>
   <Var>title</Var>
   <Var>author</Var>
   <Var>table of contents</Var>
@@ -347,9 +347,9 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			<dt id="gloss-Lambda"><code>&lt;Lambda&gt;</code></dt>
 			<dd>Lambda formulas from Lambda-calculus. For example, the function returned by Compose(age,first-born) as marked up by:
 <pre><![CDATA[<Expr>
-  <Fun in="yes">Compose</Fun>
-  <Fun in="yes">age</Fun>
-  <Fun in="no">first-born</Fun>
+  <Fun per="value">Compose</Fun>
+  <Fun per="value">age</Fun>
+  <Fun per="copy">first-born</Fun>
 </Expr>
 ]]></pre>			
 			 can now be explicitly given as "Lambda(?X,?Y)age(first-born(?X, ?Y))":
@@ -357,9 +357,9 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
  <Var>X</Var>
  <Var>Y</Var>
  <Expr>
-   <Fun in="yes">age</Fun>
+   <Fun per="value">age</Fun>
    <Expr>
-     <Fun in="no">first-born</Fun>
+     <Fun per="copy">first-born</Fun>
      <Var>X</Var>
      <Var>Y</Var>
   </Expr>
@@ -462,9 +462,9 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 <Equal oriented="yes">
   <left>
     <Expr>
-      <Fun in="yes">home</Fun>
+      <Fun per="value">home</Fun>
       <Expr>
-        <Fun in="no">father-of</Fun>
+        <Fun per="copy">father-of</Fun>
         <Ind>John</Ind>
       </Expr>
     </Expr>
@@ -492,7 +492,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			
 			
 			<dt id="gloss-Plex"><code>&lt;Plex&gt;</code></dt>
-			<dd>A collection of (ordered) arguments (optionally enclosed by <a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) and/or (unordered) user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>), identical to an uninterpreted expression (<a href="#gloss-Expr"><code>&lt;Expr in="no"&gt;</code></a>) except not having a user-specified function name (equivalent to having a system-specified constructor 'Plex'). Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example:
+			<dd>A collection of (ordered) arguments (optionally enclosed by <a href="#gloss-arg"><code>&lt;arg&gt;</code></a>) and/or (unordered) user-defined slots (<a href="#gloss-slot"><code>&lt;slot&gt;</code></a>), identical to an uninterpreted expression (<a href="#gloss-Expr"><code>&lt;Expr&gt;</code></a>) except not having a user-specified function name (equivalent to having a system-specified constructor <code>&lt;Fun per="value"&gt;Plex&lt;/Fun&gt;</code>). Rest variables (<a href="#gloss-repo"><code>&lt;repo&gt;</code></a> and <a href="#gloss-resl"><code>&lt;resl&gt;</code></a>) are also permitted. For example:
 <pre><![CDATA[
 <Plex>
   <Var>title</Var>
@@ -654,7 +654,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 			<dd>This attribute is used to indicate whether a function (<a href="#gloss-Fun"><code>&lt;Fun&gt;</code></a>) is deterministic or non-deterministic. It has two values: "1" (deterministic: exactly one) and "0.." (set-valued: zero or more). For example, the function <b><code>children(John, Mary)</code></b> can be interpreted in a set-valued manner using a definition <b><code>children(John, Mary) = {Jory, Mahn}</code></b>, so that the application <b><code>children(John, Mary)</code></b> returns <b><code>{Jory, Mahn}</code></b>:
 <pre><![CDATA[
 <Expr>
-  <Fun in="yes" val="0..">children</Fun>
+  <Fun per="value" val="0..">children</Fun>
   <Ind>John</Ind>
   <Ind>Mary</Ind>
 </Expr>
@@ -690,7 +690,7 @@ Alternatively, the roles may be skipped, in which case the premise comes first f
 		<p>
 		Site Contact:
 		<a href="http://alt2is.com">Tara Athan</a>.
-		Page Version: 2012-01-26
+		Page Version: 2012-05-26
 		<br/>
 			<br/>
 			<br/>
