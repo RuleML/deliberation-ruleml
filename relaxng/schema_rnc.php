@@ -560,11 +560,14 @@ if ($bdefault==0){
     //             needed for conversion to XSD with process strict
     //             In that case, monotonicity is preserved.
     if ($needReify){
-      if ($needUnordered){    
+      if ($needSchemaLocation){    
         echo "#\n# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
             'reify_expansion_module.rnc"'."$end\n";
       } else {
+        // FIXME: this module is needed for conversion of the reify syntax to XSD
+        // It is a HACK to use the "xsi:schemaLocation" selector to also switch the reification module.
+        // Instead, there should be an explicit option in MYNG for "pivot"
         echo "#\n# REIFICATION TERMS INCLUDED, ANY CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
             'reify_any_expansion_module.rnc"'."$end\n";      
