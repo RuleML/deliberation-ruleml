@@ -12,7 +12,7 @@ dc:date ["2011-10-06"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= val.edge.def
+start |= notAllowed
 # This module declares the following RuleML elements and attributes:
 #            * @val
 
@@ -29,6 +29,3 @@ val.value |= val_default.value | val_non-default.value
 ## FIXME: move all such statements into initialization module.
 val_default.value |= notAllowed
 val_non-default.value |= notAllowed
-#
-val.edge.def = element val { val.attlist? & val.content }
-val.content |= val.value

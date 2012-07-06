@@ -12,7 +12,7 @@ dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= material.edge.def | mapMaterial.edge.def
+start |= notAllowed
 # This module declares the following RuleML attributes:
 #    * @material
 #    * @mapMaterial
@@ -41,6 +41,3 @@ mapMaterial.attrib.def =
     ##  Allowed values are "yes" (the default) and "no".
     ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapMaterial
     attribute mapMaterial { material.value }
-#
-material.edge.def = element material { material.attlist? & material.value }
-mapMaterial.edge.def = element mapMaterial { material.attlist? & material.value }

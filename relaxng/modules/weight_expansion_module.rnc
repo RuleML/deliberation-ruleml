@@ -14,7 +14,7 @@ dc:date ["2011-11-26"]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= weight.edge.def | Data-weight-node.choice
+start |= notAllowed
 # This module declares the following RuleML elements and attributes:
 #            * @weight
 # and extends the Data element to include a RuleML-defined datatype
@@ -27,11 +27,7 @@ weight.attrib.def =
     ## See http://www.ruleml.org/1.0/glossary/#gloss-weight
     attribute weight { weight.datatype }
 #
-weight.edge.def = element weight { weight.attlist? & weight.content }
-weight.content |= Data-weight-node.choice
-Data-weight-node.choice |= Data-weight.Node.def
-Data-weight.Node.def =
     
     ## When representing a weight or probability, the content of the Data element is constrained to values between 0 and 1, inclusive. 
-    element Data { weight.datatype }
+
 weight.datatype |= xsd:decimal { minInclusive = "0.0" maxInclusive = "1.0" }

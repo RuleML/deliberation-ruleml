@@ -13,7 +13,7 @@ dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= per.edge.def
+start |= notAllowed
 # This module declares the following RuleML attribute:
 #    * @per
 
@@ -32,5 +32,3 @@ interpretation.value |=
 interpretation_default.value |= notAllowed
 interpretation_non-default.value |= notAllowed
 #
-per.edge.def = element per { interpretation.attlist? & interpretation.content }
-interpretation.content |= interpretation.value

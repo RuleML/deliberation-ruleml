@@ -13,7 +13,7 @@ dc:date [ "2011-11-26" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= direction.edge.def | mapDirection.edge.def
+start |= notAllowed
 # This module declares the following RuleML attribute:
 #    * @direction
 #    * @mapDirection
@@ -42,8 +42,3 @@ mapDirection.attrib.def =
   ## neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
   ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapDirection
   attribute mapDirection { direction.value }
-#
-direction.edge.def = element direction { direction.attlist? & direction.content }
-direction.content |= direction.value
-mapDirection.edge.def =
-  element mapDirection { direction.attlist? & direction.content }
