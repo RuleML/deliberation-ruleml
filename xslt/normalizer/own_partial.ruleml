@@ -36,11 +36,11 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                                buy  person merchant object        keep  person object
 
 ... end XML comment -->
-  <act index="1">
     <Assert mapClosure="universal">
       <formula>
         <Implies>
           <!-- explicit 'And' -->
+          <meta><Atom><Rel>P</Rel></Atom></meta>
           <if>
             <And>
                 <Atom>
@@ -144,5 +144,4 @@ e.g., the first must be a resource (basically, a URI). -->
           </arg>
         </Atom>
     </Assert>
-  </act>
 </RuleML>

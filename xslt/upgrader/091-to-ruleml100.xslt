@@ -14,7 +14,7 @@
 	File: 091_to_100.xslt
 	Version: 1.0
 	Author: Tara Athan
-	Last Modification: 2011-09-18
+	Last Modification: 2012-05-17
 
 	Changes from RuleML 0.91 to 1.0 reflected in this document:
 
@@ -92,6 +92,22 @@
      was changed to
       
        <Const>
+       
+   7. Elements of the form
+      <oid><Ind>...</Ind></oid>
+      
+      were changed to
+      
+      <meta>
+        <Atom>
+          <Rel iri="&ruleml;Implies"/>
+          <Data>
+            <Comment>...</Comment>
+          </Data>
+        </Atom>
+      </meta>
+      
+      where &ruleml; = "http://ruleml.org/vocab/ruleml.ruleml#"
        
    Note: the output from this stylesheet will have RuleML Version 1.0 as the default namespace,
    no matter what if any prefix is given to the RuleML Version 0.91 namespace in the original instance. 
