@@ -9,14 +9,14 @@ dc:subject [ "RuleML, custom-built" ]
 dc:description [
     "custom-built main module for a RuleML sublanguage."
 ]
-dc:date [ "2012-03-27T21:15:23-0300" ]
+dc:date [ "2012-07-05T23:11:17-0300" ]
 dc:language [ "en" ]
 dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # Call parameters
 # Base URL = http://www.ruleml.org/1.0/relaxng/schema_rnc.php 
 # GET parameter: backbone=x3f
-# GET parameter: default=x2
+# GET parameter: default=x7
 # GET parameter: termseq=x7
 # GET parameter: lng=x1
 # GET parameter: propo=x3ff
@@ -24,9 +24,9 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # GET parameter: terms=xf3f
 # GET parameter: quant=x7
 # GET parameter: expr=xf
-# GET parameter: serial=xc
+# GET parameter: serial=x0
 # Complete URL = 
-#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
+#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=x0
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -66,6 +66,11 @@ include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAl
 #
 include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
+#
+include "modules/default_absent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # ATTRIBUTES WITH DEFAULT VALUES REQUIRED
 #
 include "modules/default_present_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -78,16 +83,6 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= n
 # ORDER MODE - UNORDERED GROUPS DISABLED
 #
 include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# EXPLICIT DATATYPING ENABLED
-#
-include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# xsi:schemaLocation ALLOWED IN RuleML
-#
-include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
 #
@@ -264,3 +259,5 @@ include "modules/per_default_expansion_module.rnc" inherit = ruleml {start |= no
 # INITIALIZATION MODULES INCLUDED
 #
 include "modules/init_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+
+#
