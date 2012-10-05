@@ -33,7 +33,7 @@ reNeg.attlist &= mapClosure-att-fo.choice?
 
 ## Negation formulas accept the header pattern common to Nodes.
 Neg.header &= Node.header?
-# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
+# For the declaration of the Node header, see the modules meta_expansion_module).
 
 ## Negation formulas contain a single role.
 Neg.main |= strong-edge.choice

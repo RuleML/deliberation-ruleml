@@ -131,20 +131,31 @@ positionalArgumentsForExpressions.sequence |= empty
 # 
 # HEADERS
 Node.header &= empty
+And.header &= empty
 Atom.header &= empty
 Expr.header &= empty
 Equal.header &= empty
+Equivalent.header &= empty
+Exists.header &= empty
+Forall.header &= empty
+Implies.header &= empty
 Neg.header &= empty
 Naf.header &= empty
+Or.header &= empty
 # 
 # MAIN
+And.main |= notAllowed
 Atom.main |= notAllowed
 Equal.main |= notAllowed
 Expr.main |= notAllowed
+Equivalent.main |= notAllowed
+Exists.main |= notAllowed
+Forall.main |= notAllowed
 Implies.main |= notAllowed
 Entails.main |= notAllowed
 Naf.main |= notAllowed
 Neg.main |= notAllowed
+Or.main |= notAllowed
 # 
 # ATTRIBUTES
 cardinality-att.choice |= notAllowed
@@ -252,6 +263,7 @@ NegationAsFailure-node.notallowed = notAllowed
 # 
 # FORMULA CHOICE PATTERNS
 ConclusionFormula.choice |= notAllowed
+RulebaseFormula.choice |= notAllowed
 # 
 # role re-naming and stripe-skipping choice patterns
 operatorForAtoms-edge.choice |= notAllowed

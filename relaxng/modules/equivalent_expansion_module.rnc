@@ -43,7 +43,7 @@ reEquivalent.attlist &= mapClosure-att-fo.choice?
 
 ## Equivalences optionally accept the header pattern common to Nodes.
 Equivalent.header &= Node.header?
-# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
+# For the declaration of the Node header, see the modules meta_expansion_module).
 
 ## the main content model of equivalances consists of two "torso" formulas
 Equivalent.main |= torso-edge.choice, torso-edge.choice

@@ -1,7 +1,6 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-
 dc:title [ "RuleML Atomic Formulas" ]
 dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
@@ -9,7 +8,7 @@ dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
 dc:description [ "The expansion module for atomic formulas." ]
 dc:date [ "2012-03-27" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "LGPL-3.0" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= atom.Node.defs | atom.edge.defs
 Node.choice |= atom.Node.defs
@@ -33,9 +32,7 @@ Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
   ## http://www.ruleml.org/1.0/glossary/#gloss-Atom
-  element Atom {
-    (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
-  }
+  element Atom { (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main }
 
 ## Atomic formulas may have an optional closure attribute.
 reAtom.attlist &= closure-att.choice?

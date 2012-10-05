@@ -75,9 +75,9 @@ SimpleConstantTerm.choice |= SimpleKeyTerm.choice
 
 ## Individuals and literals (data) are simple, constant terms, and may be used in slot keys.
 SimpleKeyTerm.choice |= Individual-node.choice | DataTerm.choice
+
 ## Data terms are literals, and may have simple or complex datatypes.
 # For the declaration of data terms, see the dataterm modules (dataterm_any_expansion_module and dataterm_simple_expansion_module).
-
 ## Compound terms are built up from other terms.
 ## Compound terms include expressions.
 CompoundTerm.choice |= Expression-node.choice
@@ -87,7 +87,6 @@ CompoundTerm.choice |= Expression-node.choice
 ## the object that is the list of the arguments.
 CompoundTerm.choice |= Plex_Any-node.choice
 # For the declaration of generalized list terms, see the generalized list module (plex_module).
-
 
 ## an extension point for alternate spellings and internationalization of the individual tag name. 
 Individual-node.choice |= Ind.Node.def

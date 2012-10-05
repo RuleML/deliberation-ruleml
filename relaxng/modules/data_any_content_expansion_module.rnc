@@ -29,8 +29,7 @@ Data_any.Node.def =
   
   ## <Data>: May contain arbitrary simple or complex content. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Data
-  element Data {(Data-datt.choice & reData.attlist) &
-  text & anyElement.def* }
+  element Data { (Data-datt.choice & reData.attlist) & text & anyElement.def* }
 
 ##
 anyElement.choice |= anyElement.def

@@ -48,7 +48,7 @@ reImplies.attlist &= mapClosure-att-fo.choice?
 
 ## Implications accept the header pattern common to Nodes.
 Implies.header &= Node.header?
-# For the declaration of the Node header, see the serialization modules ((un)ordered_groups_expansion_module).
+# For the declaration of the Node header, see the modules meta_expansion_module).
 
 # 
 # Implies.main |= notAllowed is declared in the initialization module.
