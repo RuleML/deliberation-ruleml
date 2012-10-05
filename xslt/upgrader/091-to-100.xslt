@@ -14,7 +14,7 @@
 	File: 091_to_100.xslt
 	Version: 1.0
 	Author: Tara Athan
-	Last Modification: 2011-09-18
+	Last Modification: 2012-07-09
 
 	Changes from RuleML 0.91 to 1.0 reflected in this document:
 
@@ -93,12 +93,41 @@
       
        <Const>
        
+   7. Elements of the form
+        <oid><Ind>...</Ind></oid>
+      that are not children of <Atom>, <Expr> or <Uniterm>
+      
+      were changed to
+      
+      <meta>
+        <Atom>
+          <Rel iri="&ruleml;Implies"/>
+          <slot>
+            <Ind>comment</Ind>
+            <Data xsi:type="xs:string">...</Data>
+          </slot>  
+        </Atom>
+      </meta>
+      
+      where &ruleml; = "http://ruleml.org/vocab/ruleml.ruleml#"
+      
+      or to @node attributes as follows:
+      
+      <Implies node="...">
+     
+      depending on the intended use of the <oid>.
+      Because it is impossible to determine the intended use without human intervention,
+      the Upgrader does not attempt to convert these elements.
+      Instead they are wrapped in an XML comment-->
+  <!-- From <oid>: ... -->
+  <!--     so that the information is not lost during upgrading.
+       
    Note: the output from this stylesheet will have RuleML Version 1.0 as the default namespace,
    no matter what if any prefix is given to the RuleML Version 0.91 namespace in the original instance. 
 
  	-->
 
-  <xsl:output method="xml" version="1.0" />
+  <xsl:output method="xml" version="1.0"/>
   <xsl:template match="/" priority="3">
     <xsl:text>&#xa;</xsl:text>
     <!--newline-->
@@ -108,20 +137,22 @@
   </xsl:template>
 
   <!-- A/B. change references to 0.91 xsd to 1.0 xsd in the root node attributes -->
-  
-  <xsl:template match="@xsi:schemaLocation[starts-with(.,'http://www.ruleml.org/0.91/xsd')]" priority="3"> 
-      <xsl:attribute name="xsi:schemaLocation">
-        <xsl:variable name="ns"
-          >http://ruleml.org/spec</xsl:variable>
-        <xsl:variable name="url"
-          >http://ruleml.org/1.0/xsd</xsl:variable>
-        <!-- store just the name of the schema -->
-        <xsl:variable name="file"
-          select="substring-after(., 'http://www.ruleml.org/0.91/xsd/')"/>
-        <xsl:value-of select="concat($ns, ' ', $url, '/', $file)"
-        />
-      </xsl:attribute>
-    
+
+  <xsl:template
+    match="@xsi:schemaLocation[starts-with(.,'http://www.ruleml.org/0.91/xsd')]"
+    priority="3">
+    <xsl:attribute name="xsi:schemaLocation">
+      <xsl:variable name="ns"
+        >http://ruleml.org/spec</xsl:variable>
+      <xsl:variable name="url"
+        >http://ruleml.org/1.0/xsd</xsl:variable>
+      <!-- store just the name of the schema -->
+      <xsl:variable name="file"
+        select="substring-after(., 'http://www.ruleml.org/0.91/xsd/')"/>
+      <xsl:value-of
+        select="concat($ns, ' ', $url, '/', $file)"/>
+    </xsl:attribute>
+
   </xsl:template>
 
   <!-- Ad. 1a. change < in="no">.. to < per="copy">.. -->
@@ -174,29 +205,49 @@
     </xsl:attribute>
   </xsl:template>
 
-	<!-- Ad. 5. change Hterm to Uniterm -->
-	<xsl:template match="ruleml091:Hterm" priority="3">	
-		<xsl:element name="Uniterm" >			
-			<xsl:apply-templates select="node()|@*"/>			
-		</xsl:element>		
-	</xsl:template>
-	
-	<!-- Ad. 6. change Con to Const -->
-	<xsl:template match="ruleml091:Con" priority="3">	
-		<xsl:element name="Const" >			
-			<xsl:apply-templates select="node()|@*"/>			
-		</xsl:element>		
-	</xsl:template>
+  <!-- Ad. 5. change Hterm to Uniterm -->
+  <xsl:template match="ruleml091:Hterm" priority="3">
+    <xsl:element name="Uniterm">
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
 
+  <!-- Ad. 6. change Con to Const -->
+  <xsl:template match="ruleml091:Con" priority="3">
+    <xsl:element name="Const">
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Ad. 7. change <oid> to comment -->
+  <xsl:template match="ruleml091:oid" priority="3">
+    <xsl:choose>
+      <xsl:when
+        test="parent::Atom|parent::Expr|parent::Uniterm">
+        <xsl:copy>
+          <xsl:apply-templates select="node()|@*"/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- prevent code from being escaped -->
+        <xsl:text disable-output-escaping="yes">&lt;!--</xsl:text>
+        <xsl:copy>
+          <xsl:apply-templates select="node()|@*"/>
+        </xsl:copy>
+        <xsl:text disable-output-escaping="yes">--></xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <!-- copy any element whose namespace matches the old namespace to the new namespace -->
-  <xsl:template match="*[namespace-uri()='http://www.ruleml.org/0.91/xsd']" priority="2">
+  <xsl:template
+    match="*[namespace-uri()='http://www.ruleml.org/0.91/xsd']"
+    priority="2">
     <xsl:element name="{local-name()}">
       <!-- copy any namespace declaration for xsd datatypes, if present -->
       <xsl:copy-of select="namespace::xs"/>
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
   </xsl:template>
-
 
   <!-- preserve comments -->
   <xsl:template match="comment()" priority="2">

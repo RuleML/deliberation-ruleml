@@ -14,13 +14,13 @@
 	File: 091_to_100.xslt
 	Version: 1.0
 	Author: Tara Athan
-	Last Modification: 2012-05-17
+	Last Modification: 2012-07-09
 
 	Changes from RuleML 0.91 to 1.0 reflected in this document:
 
 	A. The namespace is changed from "http://www.ruleml.org/0.91/xsd" to "http://ruleml.org/spec".
 	 	
-	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd/..." to "http://ruleml.org/1. 0/xsd/...".
+	B. The schema location is changed from "http://www.ruleml.org/0.91/xsd/..." to "http://ruleml.org/1.0/xsd/...".
 
 
 
@@ -94,20 +94,33 @@
        <Const>
        
    7. Elements of the form
-      <oid><Ind>...</Ind></oid>
+        <oid><Ind>...</Ind></oid>
+      that are not children of <Atom>, <Expr> or <Uniterm>
       
       were changed to
       
       <meta>
         <Atom>
           <Rel iri="&ruleml;Implies"/>
-          <Data>
-            <Comment>...</Comment>
-          </Data>
+          <slot>
+            <Ind>comment</Ind>
+            <Data xsi:type="xs:string">...</Data>
+          </slot>  
         </Atom>
       </meta>
       
       where &ruleml; = "http://ruleml.org/vocab/ruleml.ruleml#"
+      
+      or to @node attributes as follows:
+      
+      <Implies node="...">
+     
+      depending on the intended use of the <oid>.
+      Because it is impossible to determine the intended use without human intervention,
+      the Upgrader does not attempt to convert these elements.
+      Instead they are wrapped in an XML comment-->
+      <!-- From <oid>: ... -->
+ <!--     so that the information is not lost during upgrading.
        
    Note: the output from this stylesheet will have RuleML Version 1.0 as the default namespace,
    no matter what if any prefix is given to the RuleML Version 0.91 namespace in the original instance. 
@@ -203,6 +216,29 @@
 			<xsl:apply-templates select="node()|@*"/>			
 		</xsl:element>		
 	</xsl:template>
+    
+  <!-- Ad. 7. change <oid> to comment -->
+    <xsl:template match="ruleml091:oid" priority="3">
+      <xsl:choose>
+        <xsl:when test="parent::Atom|parent::Expr|parent::Uniterm">
+          <xsl:copy>
+            <xsl:apply-templates select="node()|@*"/>
+          </xsl:copy>                  
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>&#xa;</xsl:text>
+          <!--newline-->
+          <!-- prevent commented-out code from being escaped -->
+          <xsl:text disable-output-escaping="yes">&lt;!--</xsl:text>
+          <xsl:copy>
+            <xsl:apply-templates select="node()|@*"/>
+          </xsl:copy>                  
+          <xsl:text disable-output-escaping="yes">--></xsl:text>
+          <xsl:text>&#xa;</xsl:text>
+          <!--newline-->          
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:template>
 
   <!-- copy any element whose namespace matches the old namespace to the new namespace -->
   <xsl:template match="*[namespace-uri()='http://www.ruleml.org/0.91/xsd']" priority="2">
