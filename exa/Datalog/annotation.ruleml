@@ -2,17 +2,42 @@
 <!DOCTYPE doc [
 <!ENTITY xs "http://www.w3.org/2001/XMLSchema">
 <!ENTITY ruleml "http://ruleml.org/spec">  
+<!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">  
 <!ENTITY dcterms "http://purl.org/dc/terms/">  
 ]>
-<?xml-model href="http://www.ruleml.org/1.0/relaxng/datalog_relaxed.rnc" 
-  type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/relaxng/datalog_relaxed.rnc" 
+  type="application/relax-ng-compact-syntax"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd">
+  <!-- XML comments are always available for adding descriptive comments,
+       which may include XML, XML fragments and non-well-formed XML.
+       
+       These comments can be accessed with XSLT for formatted output.
+       For such purposes, the XML comments should be placed inside the element
+       they annotate, so that the annotation is linked as a child node to the
+       element it annotates.
+       
+       For semantic annotations, which may be considered to belong to a,
+       in general, distinct RuleML metaknowledge base, the <meta> element should
+       be used.
+  -->
   <Assert node="#assert1" xml:base="http://example.org/myrulebase.ruleml">
     <Implies node="#rule1">
+      <!-- The @node attribute, which takes an IRI value, is used to "reify" a document, 
+        metaformula, formula, or term. This IRI may then be used as a constant
+        in formulas. There are two primary use cases for such an IRI
+        1. attaching semantic annotations as metaknowledge to a node;
+        2. contextual statements.
+        Only the first use case is described here.
+      -->
       <meta xml:id="xml-id-1">
+        <!-- The "internal" method of annotation uses
+             the <meta> edge, which can contain any formula or metaformula that is
+             allowed within <Assert>. Semantically, it is equivalent to
+             asserting the enclosed formula or metaformula into the 
+             metaknowledge base.-->
         <Atom node="#meta1">
           <Rel>Author</Rel>
           <Ind node="#ind1" iri="#rule1" xml:id="xml-id-2"/>
@@ -21,15 +46,31 @@
       </meta>
       <meta>
         <Atom node="#meta2">
-          <!-- Implicit <oid><Ind iri="#rule1"/></oid> here. -->
-          <Rel iri="&ruleml;Implies"/>
+          <!-- Implicit <oid><Ind iri="#rule1"/></oid> here. 
+               There must be a match between the <Rel> iri
+               and the element name of the parent.
+               In particular, the type of the node, as specified by
+               the parent element name and any attributes which define
+               semantic variants, must be a subclass of the
+               metamodel class appearing as the iri value of <Rel>-->
+          <Rel iri="&rulemlmm;#Implies"/>
           <slot>
+            <!-- Lexemes can be used to establish an internal
+                 metadata system. Extra information must be
+                 provided to relate such systems to external
+                 metadata systems.-->
             <Ind>Institution</Ind>
             <Data xsi:type="xs:string">Athan Services</Data>
           </slot>
           <slot>
             <Ind>Date</Ind>
-            <Data node="#date1" xsi:type="date">2012-03-20-06:00</Data>
+            <Data xsi:type="xs:date">2012-03-20-06:00</Data>
+          </slot>
+          <slot>
+            <!-- The slot key can be used to directly employ external metadata
+                 systems that provide IRIs, such as Dublin Core.-->
+            <Ind iri="&dcterms;creator"/>
+            <Ind iri="mailto:taraathan@gmail.com"/>
           </slot>
         </Atom>
       </meta>
@@ -42,30 +83,38 @@
         </Atom>
       </then>
     </Implies>
-    <Atom node="#meta3">
-      <Rel iri="http://ruleml.org/Defeasible#Overrides"/>
-      <Ind iri="#rule1"/>
-      <Ind iri="#rule2"/>
-    </Atom>
   </Assert>
   <Assert xml:base="http://example.org/mymetarulebase.ruleml">
     <Atom node="#meta3">
+      <!-- Metaknowledge can be asserted "externally" by explicitly
+           identifying the <oid>.-->
       <oid>
-        <Ind iri="#meta3" xml:base="http://example.org/myrulebase.ruleml"/>
+        <Ind iri="#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
       </oid>
-      <Rel iri="&ruleml;Atom"/>
-      <slot>
-        <Ind iri="http://ruleml.org/Defeasible#Justification"/>
-        <Ind iri="urn:legalruleml:lex-superior"/>
-      </slot>
+      <Rel iri="&rulemlmm;#Atom"/>
       <slot>
         <Ind node="#ind1" iri = "&dcterms;created"/>
-        <Data node="#date1"  xsi:type="date">2012-04-01</Data>
+        <Data node="#d1"  xsi:type="date">
+        <!-- The use of @node on <Data> precludes the use of explicit datatyping
+             using the XSD Part 2 datatypes directly, which cannot be used on elements
+             with other attributes. Instead use the corresponding RuleML complex type, which
+             impose the datatype on the simple content while also allowing @node.-->
+          2012-04-01</Data>
       </slot>
     </Atom>
   </Assert>
-  <Query node="/query1" xml:base="http://example.org/myquery/">
+  <Query node="query1" xml:base="http://example.org/myquery/">
     <Atom node="?x" xml:base="http://example.org/myrulebase.ruleml">
+      <!-- It is possible to query for the value of node identifiers
+           using a naming convention where IRIs containing a query string
+           of datatype xs:NCName are considered as variables rather than
+           constants.
+           This convention applies only to the node identifier, and thus
+           does not restrict the use of external IRIs that may have this form.
+           It is syntactically invalid to use such IRIs as node identifiers
+           outside of <Query>, although this condition is not checked by the
+           Relax NG or XSD schemas.
+           -->
       <Rel>Author</Rel>
       <Var>y</Var>
       <Data xsi:type="xs:string">Tara Athan</Data>

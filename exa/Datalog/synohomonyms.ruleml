@@ -5,7 +5,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/datalog.xsd">
-  
+
   <!-- This suite of examples about constants deals with the RuleML counterparts to synonyms and homonyms in natural languages.
        The syntax of local symbols permits to introduce short constant names.
        The semantics of local symbols permits to merge documents while avoiding name clashs, as in W3C RDF and RIF.
@@ -20,13 +20,13 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Synonyms: local (unary) predicate symbols -->
- 
+    <!-- Synonyms: local (unary) predicate symbols -->
+
     <Atom>
       <Rel>car</Rel>
       <Ind>enty1</Ind>
     </Atom>
- 
+
     <Atom>
       <Rel>auto</Rel>
       <Ind>enty2</Ind>
@@ -103,7 +103,7 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Synonyms: local (unary) predicate symbols identified through identical global IRI -->
+    <!-- Synonyms: local (unary) predicate symbols identified through identical global IRI -->
 
     <Atom>
       <Rel iri="http://example.org/vehicle#automobile">car</Rel>
@@ -175,7 +175,7 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Synonyms: (unary) predicates as identical global IRI -->
+    <!-- Synonyms: (unary) predicates as identical global IRI -->
 
     <Atom>
       <Rel iri="http://example.org/vehicle#automobile"/>
@@ -226,13 +226,13 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Homonyms: local (unary) predicate symbols -->
- 
+    <!-- Homonyms: local (unary) predicate symbols -->
+
     <Atom>
       <Rel>bank</Rel>
       <Ind>thng1</Ind>
     </Atom>
- 
+
     <Atom>
       <Rel>bank</Rel>
       <Ind>thng2</Ind>
@@ -298,13 +298,13 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Homonyms: local (unary) predicate symbols differentiated through different global IRIs -->
- 
+    <!-- Homonyms: local (unary) predicate symbols differentiated through different global IRIs -->
+
     <Atom>
       <Rel iri="http://example.org/geography#riverbank">bank</Rel>
       <Ind>thng3</Ind>
     </Atom>
- 
+
     <Atom>
       <Rel iri="http://example.org/financial#savingsbank">bank</Rel>
       <Ind>thng4</Ind>
@@ -359,19 +359,19 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Homonyms: local (unary) predicates as different global IRIs -->
- 
+    <!-- Homonyms: local (unary) predicates as different global IRIs -->
+
     <Atom>
       <Rel iri="http://example.org/geography#riverbank"/>
       <Ind>thng5</Ind>
     </Atom>
- 
+
     <Atom>
       <Rel iri="http://example.org/financial#savingsbank"/>
       <Ind>thng6</Ind>
     </Atom>
 
- </Assert>
+  </Assert>
 
   <Query>
 
@@ -398,13 +398,13 @@
 
   <Assert mapClosure="universal">
 
-  <!-- Homonyms: local (unary) predicate symbols, the second occurrence disambiguated through global IRI -->
- 
+    <!-- Homonyms: local (unary) predicate symbols, the second occurrence disambiguated through global IRI -->
+
     <Atom>
       <Rel>bank</Rel>
       <Ind>thng7</Ind>
     </Atom>
- 
+
     <Atom>
       <Rel iri="http://example.org/financial#savingsbank">bank</Rel>
       <Ind>thng8</Ind>
