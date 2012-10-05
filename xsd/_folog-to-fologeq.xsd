@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			Behind-the-scenes XML Schema for the transition from folog to fologeq
-			File: _folog-to-fologeq.xsd
-			Version: 1.0
-			Last Modification: 2012-05-25 [Tara Athan]
-		</xs:documentation>
-	</xs:annotation>
+  <xs:annotation>
+    <xs:documentation xml:lang="en"> Behind-the-scenes XML Schema for the
+      transition from folog to fologeq File: _folog-to-fologeq.xsd Version: 1.0
+      Last Modification: 2012-05-25 [Tara Athan] </xs:documentation>
+  </xs:annotation>
 
-	<xs:redefine schemaLocation="folog.xsd">
+  <xs:redefine schemaLocation="folog.xsd">
 
-		<!--
+    <!--
 			In previous versions of the hand-written XSDs the approach was:
 			Remove @per, to be re-added (slightly changed) in fologeq
 			
@@ -32,33 +26,33 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		See http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err5
 
 				-->
-	  <xs:attributeGroup name="Fun.attlist">
-	    <xs:attributeGroup ref="iri.attrib"/>
-	    <xs:attributeGroup ref="node.attrib"/>
-	    <xs:attributeGroup ref="xml.attlist"/>
-	  </xs:attributeGroup>
-	  <xs:attributeGroup name="Expr.attlist">
-	    <xs:attributeGroup ref="node.attrib"/>
-	    <xs:attributeGroup ref="xml.attlist"/>
-	  </xs:attributeGroup>
-	  	  <xs:complexType name="Expr.type">
-	    <xs:complexContent>
-	      <xs:restriction base="Expr.type">
-	        <xs:group ref="Expr.content"/>
-	        <xs:attributeGroup ref="Expr.attlist"></xs:attributeGroup>
-	      </xs:restriction>
-	    </xs:complexContent>
-	  </xs:complexType>
-	  <xs:complexType name="Fun.type">
-	    <xs:complexContent>
-	      <xs:restriction base="Fun.type">
-	        <xs:group ref="Fun.content"/>
-	        <xs:attributeGroup ref="Fun.attlist"></xs:attributeGroup>
-	      </xs:restriction>
-	    </xs:complexContent>
-	  </xs:complexType>
+    <xs:attributeGroup name="Fun.attlist">
+      <xs:attributeGroup ref="iri.attrib"/>
+      <xs:attributeGroup ref="node.attrib"/>
+      <xs:attributeGroup ref="xml.attlist"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Expr.attlist">
+      <xs:attributeGroup ref="node.attrib"/>
+      <xs:attributeGroup ref="xml.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="Expr.type">
+      <xs:complexContent>
+        <xs:restriction base="Expr.type">
+          <xs:group ref="Expr.content"/>
+          <xs:attributeGroup ref="Expr.attlist"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Fun.type"  mixed="true">
+      <xs:complexContent>
+        <xs:restriction base="Fun.type">
+          <xs:group ref="Fun.content"/>
+          <xs:attributeGroup ref="Fun.attlist"/>
+        </xs:restriction>
+      </xs:complexContent>
+    </xs:complexType>
 
 
-	</xs:redefine>
-	
+  </xs:redefine>
+
 </xs:schema>
