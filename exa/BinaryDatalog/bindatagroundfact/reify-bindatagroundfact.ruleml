@@ -9,7 +9,7 @@
 <!--  <?xml-model href="http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="&ruleml;"
   xmlns:xsi="&xs;-instance" xmlns:xs="&xs;"
-  xsi:schemaLocation="&ruleml;xsd &ruleml;xsd/bindatagroundfact.xsd">
+  xsi:schemaLocation="&ruleml; http://ruleml.org/1.0/xsd/bindatagroundfact.xsd">
   <Assert>
     <!-- Modality implemented through reification -->
     <Rulebase>
