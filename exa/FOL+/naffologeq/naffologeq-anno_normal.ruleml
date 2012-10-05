@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/naffologeq_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/naffologeq.xsd">
+  <act index="1">
+    <Assert>
+      <formula>
+        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#rule1">
+          <meta>
+            <Atom node="#meta1">
+              <op><Rel>Author</Rel></op>
+              <arg index="1"><Ind iri="#rule1"/></arg>
+              <arg index="2"><Data xsi:type="xs:string">Tara Athan</Data></arg>
+            </Atom>
+          </meta>
+          <meta>
+            <Atom node="#meta2">
+              <op><Rel/></op>
+              <slot><Ind>Institution</Ind><Data xsi:type="xs:string">Athan Services</Data></slot>
+              <slot><Ind>Date</Ind><Data node="#date1" xsi:type="date">2012-03-20-06:00</Data></slot>
+            </Atom>
+          </meta>
+          <if>
+            <Atom>
+              <op><Rel>P</Rel></op>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op><Rel>Q</Rel></op>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Atom node="#meta3">
+          <op><Rel iri="http://ruleml.org/Defeasible#Overrides"/></op>
+          <arg index="1"><Ind iri="#rule1"/></arg>
+          <arg index="2"><Ind iri="#rule2"/></arg>
+        </Atom>
+      </formula>
+      <formula>
+        <Atom node="#meta4">
+          <op><Rel iri="http://ruleml.org/Defeasible#Justification"/></op>
+          <arg index="1"><Ind iri="#meta3"/></arg>
+          <arg index="2"><Ind iri="urn:legalruleml:lex-superior"/></arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </act>
+  <act index="2">
+    <Query>
+      <formula>
+        <Atom node="?x">
+          <op><Rel>Author</Rel></op>
+          <arg index="1"><Var>y</Var></arg>
+          <arg index="2"><Data xsi:type="xs:string">Tara Athan</Data></arg>
+        </Atom>
+      </formula>
+    </Query>
+  </act>
+</RuleML>
