@@ -263,7 +263,7 @@ Version 1.0 mostly builds on top of 0.91.)-->  Additional translation
 	
 </section>
 
-<section label="Normalizater">
+<section label="Normalizer">
 	<header><abbr>XSLT</abbr>-Based Normalizer</header>
 
   <p>Rule<abbr>ML</abbr> has always allowed abbreviated encoding (skipped edge tags and default attribute values) and some freedom in the ordering of elements. The new Relax NG schemas allows even more freedom in element ordering than the XSD schemas, with all perturbations possible as long as the missing edge tags may be unambiguously reconstructed. An <abbr>XSLT</abbr> stylesheet has been developed (see <a href="http://v37s3b4h7dn47s37hg1br4h7rs7n3du7s8nu.unbf.ca/~lbidlak1/"><abbr title="RuleML Official Normalizer">RON</abbr></a>, also see the &normalizer; directory) for normalizing the syntax used in a given Version 1.0 instance, undoing the abbreviated encoding and re-ordering of elements.  
@@ -1214,7 +1214,7 @@ output using the radio buttons just above the "Get Results" button.
 		<p>
 		Site Contact:
 		<a href="http://athant.com">Tara Athan</a>.
-		Page Version: 2012-05-11
+		Page Version: 2012-10-08
 		
 		<br/>
 		<br/>
