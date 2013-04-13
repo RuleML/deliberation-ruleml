@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE doc [
+ <!ENTITY ruleml "http://ruleml.org/spec#">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">  
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema#">  
+ ]>
+
+ <?xml-model href="nvdl/rdf.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+ <rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="&rdfs;"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ruleml="http://ruleml.org/spec"
+  xml:base="http://ruleml.org/spec">
+
+  <!-- In these comments I will use CURIE syntax -->
+
+  <!-- The top of the RuleML taxonomic hierarchy is ruleml:#Thing -->
+  <rdfs:Class rdf:about="&ruleml;Thing"> </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Thing called ruleml:#RuleML.
+       It is intended to have members whose names are specified using
+       the @node attribute of <RuleML>.
+       
+     * ruleml:#RuleML Properties
+       ** from attributes of <RuleML>
+       @xml:id See ruleml:#xml-id
+       
+       ** from child elements of <RuleML>
+       <meta> See ruleml:#meta
+       <act> See ruleml:#act       
+   -->
+  <rdfs:Class rdf:about="#RuleML">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Thing called ruleml:#Performative.
+       It is intended to be an "abstract" class with members whose names are specified using
+       the @node attribute of subtypes such as ruleml:#Assert, ruleml:#Retract and ruleml:#Query.
+       
+     * ruleml:#Performative Properties
+       ** from attributes
+       @xml:id See ruleml:#xml-id
+       
+       ** from child elements
+       <meta> See ruleml:#meta
+   -->
+  <rdfs:Class rdf:about="#Performative">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+
+  <!-- There is a subclass of ruleml:#Performative called ruleml:#Assert.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Assert>.
+       
+     * ruleml:#Assert Properties
+       ** from attributes
+       @xml:id See ruleml:#xml-id
+       
+       ** from child elements
+       <meta> See ruleml:#meta
+       <formula> See ruleml:#formulaAssertRetract       
+   -->
+
+  <rdfs:Class rdf:about="#Assert">
+    <rdfs:subClassOf rdf:resource="#Performative"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Retract">
+    <rdfs:subClassOf rdf:resource="#Performative"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Query">
+    <rdfs:subClassOf rdf:resource="#Performative"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#MetaFormulaOrFormula">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#MetaFormula">
+    <rdfs:subClassOf rdf:resource="#MetaFormulaOrFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Entails">
+    <rdfs:subClassOf rdf:resource="#MetaFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Rulebase">
+    <rdfs:subClassOf rdf:resource="#MetaFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Formula">
+    <rdfs:subClassOf rdf:resource="#MetaFormulaOrFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Rule">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#LogicalFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#SimpleFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#CompoundFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Quantification">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Connective">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Negation">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#ModalFormula">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Universal">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Existential">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+
+
+  <rdfs:Class rdf:about="#NegationAsFailure">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#NegationClassical">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Conjunctive">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Disjunctive">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Equivalence">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implication">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implies?closure=universal">
+    <rdfs:subClassOf rdf:resource="#Universal"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implies?closure=existential">
+    <rdfs:subClassOf rdf:resource="#Existential"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#ImplicationMaterial">
+    <rdfs:subClassOf rdf:resource="#Implication"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#AtomicFormula">
+    <rdfs:subClassOf rdf:resource="#SimpleFormula"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Equation">
+    <rdfs:subClassOf rdf:resource="#SimpleFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#EquationBidirectional">
+    <rdfs:subClassOf rdf:resource="#Equation"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Term">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Individual">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Variable">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Skolem">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Expression">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Relation">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Function">
+    <rdfs:subClassOf rdf:resource="#Thing"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="#act">
+    <rdfs:domain rdf:resource="#RuleML"/>
+    <rdfs:range rdf:resource="#Performative"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaAssertRetract">
+    <rdfs:domain rdf:resource="#Performative"/>
+    <rdfs:range rdf:resource="#MetaFormulaOrFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaQuery">
+    <rdfs:domain rdf:resource="#Query"/>
+    <rdfs:range rdf:resource="#MetaFormulaOrFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaRulebase">
+    <rdfs:domain rdf:resource="#Rulebase"/>
+    <rdfs:range rdf:resource="#Formula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaFormula">
+    <rdfs:domain rdf:resource="#Formula"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaNaf">
+    <rdfs:domain rdf:resource="#NegationAsFailure"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaNeg">
+    <rdfs:domain rdf:resource="#NegationClassical"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaExists">
+    <rdfs:domain rdf:resource="#Existential"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaForall">
+    <rdfs:domain rdf:resource="#Universal"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaEquivalent">
+    <rdfs:domain rdf:resource="#Equivalence"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#meta">
+    <rdfs:domain rdf:resource="#Thing"/>
+    <rdfs:range rdf:resource="#Formula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#oidAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#opAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Relation"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#argAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#oidExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#opExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Function"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#argExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ifImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#thenImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ifEntails">
+    <rdfs:domain rdf:resource="#Entailment"/>
+    <rdfs:range rdf:resource="#Rulebase"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#thenEntails">
+    <rdfs:domain rdf:resource="#Entailment"/>
+    <rdfs:range rdf:resource="#Rulebase"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#iriInd">
+    <rdfs:domain rdf:resource="#Individual"/>
+    <rdfs:range rdf:resource="&xs;anyURI"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#xml-id">
+    <rdfs:domain rdf:resource="#Thing"/>
+    <rdfs:range rdf:resource="&xs;NCName"/>
+  </rdf:Property>
+
+ </rdf:RDF>

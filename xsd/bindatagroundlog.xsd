@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
-elementFormDefault="qualified"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- note that elementFormDefault is qualified because of local declarations -->
+	<!-- note that elementFormDefault is qualified because of local declarations -->
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Binary Ground-Datalog RuleML sublanguage
-			File: bindatagroundlog.xsd
-			Version: 1.0
-			Last Modification: 2012-03-29
+		<xs:documentation xml:lang="en"> XML Schema for a Binary Ground-Datalog RuleML sublanguage
+			File: bindatagroundlog.xsd Version: 1.0 Last Modification: 2012-03-29
 		</xs:documentation>
 	</xs:annotation>
-	
+
 	<xs:redefine schemaLocation="bindatalog.xsd">
 		<!--
 			remove Var so that arg's content model is: (Ind | Data | Skolem | Reify)
@@ -27,17 +20,17 @@ elementFormDefault="qualified"
 				meta*, oid?, (op | Rel), slot*,
 				( (arg|Ind|Data|Skolem|Reify), (arg|Ind|Data|Skolem|Reify), slot* )?
 			)
-		-->		
+		-->
 		<xs:group name="arg.content">
 			<xs:choice>
 				<xs:element ref="Ind"/>
 				<xs:element ref="Data"/>
 				<xs:element ref="Skolem"/>
-				<xs:element ref="Reify"/>					
+				<xs:element ref="Reify"/>
 			</xs:choice>
 		</xs:group>
 
-	  
+
 
 		<!--
 			remove Forall (since ground) so that Assert's content model is:
@@ -52,7 +45,7 @@ elementFormDefault="qualified"
 				<xs:element ref="Entails"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			remove Forall (since ground) so that Rulebase's content model is:
 			( meta*, (formula | Atom | Implies | Equivalent)* )
@@ -63,7 +56,7 @@ elementFormDefault="qualified"
 				<xs:element ref="Implies"/>
 				<xs:element ref="Equivalent"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 
 		<!--
 			similarly, remove Exists (since ground) so that Query's content model is:
@@ -77,7 +70,7 @@ elementFormDefault="qualified"
 				<xs:element name="Atom" type="Atom.type"/>
 				<xs:element ref="Entails"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 
 	</xs:redefine>
 

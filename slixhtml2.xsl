@@ -2,8 +2,7 @@
 
 <!-- Written by Michael Sintek, modified by Harold Boley "{sintek,boley}@dfki.de", modified by Elina Hotman and David Hirtle -->
 
-<xsl:stylesheet version="1.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template match="img">
     <xsl:copy-of select="."/>
@@ -173,8 +172,7 @@
   <xsl:template match="itemize" mode="reverse">
     <ul>
       <xsl:apply-templates>
-        <xsl:sort data-type="number" select="position()"
-          order="descending"/>
+        <xsl:sort data-type="number" select="position()" order="descending"/>
       </xsl:apply-templates>
     </ul>
   </xsl:template>

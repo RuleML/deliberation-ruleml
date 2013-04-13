@@ -1,23 +1,14 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://ruleml.org/spec">
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"
-      >
-			This is the XML Schema module for RuleML slots.
-			File: slot_module.xsd
-			Version: 1.0
-			Last Modification: 2010-07-16
-			
-			This module declares the following RuleML element and attributes:
-			* slot
-			* @card
-			* @weight
-			
-			See http://www.ruleml.org/modularization for details about this modularization approach.
-		</xs:documentation>
+    <xs:documentation xml:lang="en"> This is the XML Schema module for RuleML slots. File:
+      slot_module.xsd Version: 1.0 Last Modification: 2010-07-16 This module declares the following
+      RuleML element and attributes: * slot * @card * @weight See
+      http://www.ruleml.org/modularization for details about this modularization approach.
+    </xs:documentation>
   </xs:annotation>
 
   <!--

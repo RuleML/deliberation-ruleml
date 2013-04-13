@@ -1,38 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Horn-Logic RuleML sublanguage with equational logic
-			File: hornlogeq.xsd
-			Version: 1.0
-			Last Modification: 2010-08-17
+		<xs:documentation xml:lang="en"> XML Schema for a Horn-Logic RuleML sublanguage with
+			equational logic File: hornlogeq.xsd Version: 1.0 Last Modification: 2010-08-17
 		</xs:documentation>
 	</xs:annotation>
-	
+
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
 	<!-- note the addition of Equal from the equality module -->
 	<xs:redefine schemaLocation="_hornlog-to-hornlogeq.xsd">
-	
+
 		<!-- add (modified) @per back to Expr -->
 		<xs:attributeGroup name="per.attrib">
 			<xs:attributeGroup ref="per.attrib"/>
 			<xs:attributeGroup ref="per-equality.attrib"/>
 		</xs:attributeGroup>
-		
+
 		<!-- add @val to Fun -->
 		<xs:attributeGroup name="Fun.attlist">
 			<xs:attributeGroup ref="Fun.attlist"/>
 			<xs:attributeGroup ref="val.attrib"/>
 		</xs:attributeGroup>
-		
+
 		<!--
 			add Equal so that Assert's content model is:
 			( meta*, (formula | Rulebase | Atom | Implies | Equivalent | Entails | Forall | Equal)* )
@@ -41,9 +35,9 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:group ref="formula-assert.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			add Equal so that Rulebase's content model is:
 			( meta*, (formula | Atom | Implies | Equivalent | Forall | Equal)* )
@@ -52,8 +46,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:group ref="formula-rulebase.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
-		</xs:group>		
+			</xs:choice>
+		</xs:group>
 
 		<!--
 			add Equal so that then's content model is:
@@ -65,7 +59,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			add Equal so that if's content model is:
 			(Atom | And | Or | Equal)
@@ -79,7 +73,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Implies so that its content model is:
 			( meta*, (then, if) | (if, then) | ( (Atom | And | Or | Equal), (Atom | Equal) ) )
-		-->		
+		-->
 
 
 		<!--
@@ -123,7 +117,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-	
+
 
 		<!--
 			add Equal so that formula's content model (below And/Or) is:
@@ -153,8 +147,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Equivalent so that its content model is:
 			( meta*, ( (torso, torso) | ( (Atom | Equal), (Atom | Equal) ) ) )
-		-->		
-		
+		-->
+
 	</xs:redefine>
 
 </xs:schema>

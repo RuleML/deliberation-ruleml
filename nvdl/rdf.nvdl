@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules xmlns="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+  <namespace ns="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <validate
+      schema="http://www.w3.org/TR/2001/WD-rdf-syntax-grammar-20011218/rdfxml.xml"
+      schemaType="application/relax-ng"/>
+    
+  </namespace>
+  <namespace ns="http://www.w3.org/XML/1998/namespace"
+    match="attributes">
+    <validate schema="http://ruleml.org/1.0/xsd/modules/xml_module.xsd"/>
+  </namespace>
+  <anyNamespace>
+    <allow/>
+  </anyNamespace>
+</rules>

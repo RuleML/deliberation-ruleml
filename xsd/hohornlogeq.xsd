@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a higher-order Horn-Logic RuleML sublanguage with equational logic
-			File: hohornlogeq.xsd
-			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
-		</xs:documentation>
+		<xs:documentation xml:lang="en"> XML Schema for a higher-order Horn-Logic RuleML sublanguage
+			with equational logic File: hohornlogeq.xsd Version: 1.0 Last Modification: 2011-09-19
+			[Tara Athan] </xs:documentation>
 	</xs:annotation>
-	
+
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
@@ -25,25 +19,25 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:attributeGroup ref="per.attrib"/>
 			<xs:attributeGroup ref="per-equality.attrib"/>
 		</xs:attributeGroup>
-		
+
 		<!-- add @val to Fun -->
 		<xs:attributeGroup name="Fun.attlist">
 			<xs:attributeGroup ref="Fun.attlist"/>
 			<xs:attributeGroup ref="val.attrib"/>
 		</xs:attributeGroup>
-	
+
 		<!-- add Equal to formula-assert -->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
 				<xs:group ref="formula-assert.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
 		<!--
 			note that the above indirectly adds Equal to Assert so that its content model is:
 			( meta*, (formula | Rulebase | Uniterm | Neg | Implies | Equivalent | Entails | Forall | Equal)* )
-		-->	
-		
+		-->
+
 		<!--
 			add Equal so that Rulebase's content model is:
 			( meta*, (formula | Uniterm | Neg | Implies | Equivalent | Forall | Equal)* )
@@ -52,8 +46,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:group ref="formula-rulebase.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
-		</xs:group>	
+			</xs:choice>
+		</xs:group>
 
 		<!-- add Equal so then -->
 		<xs:group name="then.content">
@@ -62,7 +56,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!-- add Equal to if -->
 		<xs:group name="if.content">
 			<xs:choice>
@@ -98,7 +92,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Exists so that its content model is:
 			( meta*, (declare | Var)+, (formula | Uniterm | And | Or | Exists | Equal) )
-		-->	
+		-->
 
 		<!-- add Equal to formula-query -->
 		<xs:group name="formula-query.content">
@@ -134,7 +128,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<!--
 			note that the above indirectly adds Equal to Equivalent so that its content model is:
 			( meta*, ( (torso, torso) | ( (Uniterm | Equal), (Uniterm | Equal) ) ) )	
-		-->		
+		-->
 
 		<!-- add Equal to strong -->
 		<xs:group name="strong.content">
@@ -147,7 +141,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			note that the above indirectly adds Equal to Neg so that its content model is:
 			( meta*, (strong | Uniterm | And | Equal) )
 		-->
-		
+
 	</xs:redefine>
 
 </xs:schema>

@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Binary Ground-Datalog-Fact RuleML sublanguage
-			File: bindatagroundfact.xsd
-			Version: 1.0
-			Last Modification: 2012-03-29
+		<xs:documentation xml:lang="en"> XML Schema for a Binary Ground-Datalog-Fact RuleML
+			sublanguage File: bindatagroundfact.xsd Version: 1.0 Last Modification: 2012-03-29
 		</xs:documentation>
 	</xs:annotation>
-	
+
 	<xs:redefine schemaLocation="bindatagroundlog.xsd">
 		<!--
 			remove Implies and Equivalent so that Assert's content model is:
@@ -27,7 +21,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Entails"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			remove Implies and Equivalent so that Rulebase's content model is:
 			(  (formula | Atom)* )
@@ -36,8 +30,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:element ref="Atom"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 
 	</xs:redefine>
-	
+
 </xs:schema>
