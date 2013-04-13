@@ -1,24 +1,15 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://ruleml.org/spec">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
-  
+
   <xs:annotation>
-    <xs:documentation xml:lang="en"
-      >
-			This is the XML Schema module for description-related RuleML elements.
-			File: desc_module.xsd
-			Version: 1.0
-			Last Modification: 2012-05-17 [Tara Athan]
-			
-			This module declares the following RuleML element:
-			* @node
-			* oid
-			* meta
-			
-			See http://www.ruleml.org/modularization for details about this modularization approach.
-		</xs:documentation>
+    <xs:documentation xml:lang="en"> This is the XML Schema module for description-related RuleML
+      elements. File: desc_module.xsd Version: 1.0 Last Modification: 2012-05-17 [Tara Athan] This
+      module declares the following RuleML element: * @node * oid * meta See
+      http://www.ruleml.org/modularization for details about this modularization approach.
+    </xs:documentation>
   </xs:annotation>
 
   <!--
@@ -36,7 +27,7 @@
   <xs:attributeGroup name="node.attrib">
     <xs:attribute name="node" type="xs:anyURI" use="optional"/>
   </xs:attributeGroup>
-  
+
   <xs:attributeGroup name="oid.attlist"/>
   <xs:group name="oid.content">
     <xs:choice>
@@ -71,11 +62,11 @@
     
     content model: (Atom | Implies | Equivalent | Entails | Forall | Rulebase)
   -->
-    <xs:element name="meta" type="formula-assert.type"/>
-  
+  <xs:element name="meta" type="formula-assert.type"/>
+
   <xs:attributeGroup name="xml.attlist">
     <xs:attribute ref="xml:base" use="optional"/>
     <xs:attribute ref="xml:id" use="optional"/>
   </xs:attributeGroup>
-  
+
 </xs:schema>

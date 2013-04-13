@@ -1,32 +1,17 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://ruleml.org/spec">
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"
-      >
-			This is the XML Schema module for RuleML terms.
-			File: term_module.xsd
-			Version: 1.0
-			Last Modification: 2012-04-03
-			
-			This module declares the following RuleML elements and attributes:
-			* arg
-			* Ind
-			* Data
-			* Var
-			* Skolem
-			* Reify
-			* @type
-			* @index
-			
-			as well as including a number of complex types for use in expicitly-typed data Nodes.
-			
-			See http://www.ruleml.org/modularization for details about this modularization approach.
-		</xs:documentation>
+    <xs:documentation xml:lang="en"> This is the XML Schema module for RuleML terms. File:
+      term_module.xsd Version: 1.0 Last Modification: 2012-04-03 This module declares the following
+      RuleML elements and attributes: * arg * Ind * Data * Var * Skolem * Reify * @type * @index as
+      well as including a number of complex types for use in expicitly-typed data Nodes. See
+      http://www.ruleml.org/modularization for details about this modularization approach.
+    </xs:documentation>
   </xs:annotation>
-  
+
   <!--
 		*** arg ***
 		A role used for the positional arguments of a logical atom.
@@ -90,8 +75,8 @@
 		
 		content model: xs:anytype [optionally datatyped]
   -->
-  <xs:element name="Data" type="xs:anyType"/> 
- 
+  <xs:element name="Data" type="xs:anyType"/>
+
   <!--
 		*** Var ***
 		A logical variable, as in logic programming.
@@ -160,8 +145,7 @@
 		  <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/> -->
       <!-- <Reify> only allows valid RuleML -->
       <!--<xs:any minOccurs="0" maxOccurs="unbounded" processContents="strict" namespace="##targetNamespace"/>-->
-      <xs:any minOccurs="0" processContents="strict"
-        namespace="##targetNamespace"/>
+      <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
     </xs:sequence>
   </xs:group>
   <xs:complexType name="Reify.type">

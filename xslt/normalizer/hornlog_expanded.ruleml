@@ -1,43 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:ex="http://example.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+
   <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
-  <meta>
-    <Atom>
-      <op><Rel>P</Rel></op>
-    </Atom>
-  </meta>
   <act index="1">
     <Assert mapClosure="universal">
-      <meta>
-        <Atom>
-          <op><Rel>P</Rel></op>
-        </Atom>
-      </meta>
       <formula>
-        <Implies material="yes" direction="bidirectional">
-          <meta>
+        <Implies>
+          <then>
             <Atom>
-              <op><Rel>P</Rel></op>
+              <op>
+                <Rel>asf</Rel>
+              </op>
+              <slot>
+                <Ind>t</Ind>
+                <Ind>b</Ind>
+              </slot>
+              <resl>
+                <Var>c</Var>
+              </resl>
             </Atom>
-          </meta>
+          </then>
           <if>
             <And>
               <formula>
                 <Atom>
-                  <op><Rel>friend</Rel></op>
-                  <arg index="1"><Ind>Jane</Ind></arg>
-                  <arg index="2"><Ind>Joan</Ind></arg>
-                  <arg index="3"><Ind>Jack</Ind></arg>
-                  <arg index="4"><Var node="ex:_y">y</Var></arg>
-                  <arg index="5"><Ind>Frank</Ind></arg>
+                  <op>
+                    <Rel>friend</Rel>
+                  </op>
+                  <arg index="1">
+                    <Ind>Jane</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>Joan</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>Jack</Ind>
+                  </arg>
+                  <arg index="4">
+                    <Var>y</Var>
+                  </arg>
+                  <arg index="5">
+                    <Ind>Frank</Ind>
+                  </arg>
                   <slot>
                     <Ind>yar</Ind>
                     <Expr>
-                      <op><Fun per="copy">constructor</Fun></op>
+                      <op>
+                        <Fun>constructor</Fun>
+                      </op>
                       <arg index="1">
                         <Plex>
-                          <slot><Ind>yar2</Ind><Ind>c</Ind></slot>
-                          <resl><Var>c</Var></resl>
+                          <slot>
+                            <Ind>yar2</Ind>
+                            <Ind>c</Ind>
+                          </slot>
+                          <resl>
+                            <Var>c</Var>
+                          </resl>
                         </Plex>
                       </arg>
                     </Expr>
@@ -46,98 +67,139 @@
               </formula>
             </And>
           </if>
-          <then>
-            <Atom>
-              <op><Rel>asf</Rel></op>
-              <slot><Ind>t</Ind><Ind>b</Ind></slot>
-              <resl><Var>c</Var></resl>
-            </Atom>
-          </then>
         </Implies>
       </formula>
       <formula>
         <Atom>
-          <op><Rel>some relation</Rel></op>
-          <arg index="1"><Ind>constant a</Ind></arg>
-          <arg index="2"><Ind>constant b</Ind></arg>
-          <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
-          <slot><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
-        </Atom>
-      </formula>
-      <formula>
-        <Atom>
-          <op><Rel>another relation</Rel></op>
-          <arg index="1"><Ind>constant c</Ind></arg>
-          <arg index="2"><Ind>constant d</Ind></arg>
-          <arg index="3">
-            <Expr>
-              <op><Fun  per="copy">yac</Fun></op>
-              <repo><Var>b</Var></repo>
-              <resl>
-                <Plex>
-                  <slot><Ind/><Ind>test</Ind></slot>
-                </Plex>
-              </resl>
-            </Expr>
+          <op>
+            <Rel>some relation</Rel>
+          </op>
+          <slot>
+            <Ind>role_name1</Ind>
+            <Ind>role 1</Ind>
+          </slot>
+          <arg index="1">
+            <Ind>constant a</Ind>
           </arg>
-        </Atom>
-      </formula>
-      <formula>
-        <Atom>
-          <op><Rel>some relation</Rel></op>
-          <arg index="1"><Ind>constant a</Ind></arg>
           <arg index="2">
-            <Expr>
-              <op><Fun per="copy">empty</Fun></op>
-            </Expr>
+            <Ind>constant b</Ind>
           </arg>
-          <arg index="3"><Ind>constant b</Ind></arg>
-          <arg index="4"><Skolem>constant b</Skolem></arg>
-          <repo><Var>b</Var></repo>
-          <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
-          <slot><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
+          <slot>
+            <Ind>role_name2</Ind>
+            <Ind>role 2</Ind>
+          </slot>
         </Atom>
       </formula>
       <formula>
         <Atom>
-          <oid>
-            <Ind>b</Ind>
-          </oid>
-          <degree>
-            <Data xsi:type="xs:decimal">0.5</Data>
-          </degree>
-          <op><Rel>another relation</Rel></op>
-          <arg index="1"><Ind>constant c</Ind></arg>
-          <arg index="2"><Ind>constant d</Ind></arg>
-          <repo><Var>x</Var></repo>
-          <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
+          <op>
+            <Rel>another relation</Rel>
+          </op>
+          <arg index="1">
+            <Ind>constant c</Ind>
+          </arg>
+          <arg index="2">
+            <Ind>constant d</Ind>
+          </arg>
+          <Expr>
+            <op>
+              <Fun>yac</Fun>
+            </op>
+            <repo>
+              <Var>b</Var>
+            </repo>
+            <resl>
+              <Plex>
+                <slot>
+                  <Ind />
+                  <Ind>test</Ind>
+                </slot>
+              </Plex>
+            </resl>
+          </Expr>
+        </Atom>
+      </formula>
+      <formula>
+        <Atom>
+          <op>
+            <Rel>some relation</Rel>
+          </op>
+          <slot>
+            <Ind>role_name1</Ind>
+            <Ind>role 1</Ind>
+          </slot>
+          <arg index="1">
+            <Ind>constant a</Ind>
+          </arg>
+          <Expr>
+            <op>
+              <Fun>empty</Fun>
+            </op>
+          </Expr>
+          <arg index="3">
+            <Ind>constant b</Ind>
+          </arg>
+          <arg index="4">
+            <Skolem>constant b</Skolem>
+          </arg>
+          <repo>
+            <Var>b</Var>
+          </repo>
+          <slot>
+            <Ind>role_name2</Ind>
+            <Ind>role 2</Ind>
+          </slot>
+        </Atom>
+      </formula>
+      <formula>
+        <Atom>
+          <op>
+            <Rel>another relation</Rel>
+          </op>
+          <arg index="1">
+            <Ind>constant c</Ind>
+          </arg>
+          <arg index="2">
+            <Ind>constant d</Ind>
+          </arg>
+          <repo>
+            <Var>x</Var>
+          </repo>
+          <slot>
+            <Ind>role_name3</Ind>
+            <Ind>role 3</Ind>
+          </slot>
           <resl>
             <Plex>
-              <meta>
-                <Atom>
-                  <op><Rel>P</Rel></op>
-                </Atom>
-              </meta>
-              <slot><Ind/><Ind>test</Ind></slot>
+              <slot>
+                <Ind />
+                <Ind>test</Ind>
+              </slot>
             </Plex>
           </resl>
         </Atom>
       </formula>
       <formula>
         <Atom>
-          <meta>
-            <Atom>
-              <op><Rel>P</Rel></op>
-            </Atom>
-          </meta>
-          <oid><Ind>a</Ind></oid>
-          <degree><Data xsi:type="xs:decimal">0.5</Data></degree>
-          <op><Rel>yet another relation</Rel></op>
-          <arg index="1"><Skolem>constant b</Skolem></arg>
-          <arg index="2"><Ind>constant e</Ind></arg>
-          <arg index="3"><Ind>constant b</Ind></arg>
-          <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
-          <resl><Var>b</Var></resl>
+          <op>
+            <Rel>yet another relation</Rel>
+          </op>
+          <arg index="1">
+            <Skolem>constant b</Skolem>
+          </arg>
+          <arg index="2">
+            <Ind>constant e</Ind>
+          </arg>
+          <arg index="3">
+            <Ind>constant b</Ind>
+          </arg>
+          <slot>
+            <Ind>role_name3</Ind>
+            <Ind>role 3</Ind>
+          </slot>
+          <resl>
+            <Var>b</Var>
+          </resl>
         </Atom>
       </formula>
     </Assert>

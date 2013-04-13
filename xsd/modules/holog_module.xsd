@@ -1,32 +1,17 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec"
-  elementFormDefault="qualified">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://ruleml.org/spec" elementFormDefault="qualified">
 
   <!-- note that elementFormDefault is qualified because of local declarations -->
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"
-      >
-			This is the XML Schema module for higher-order logic in RuleML.
-			File: holog_module.xsd
-			Version: 1.0
-			Last Modification: 2006-08-18
-			
-			See http://www.daml.org/services/swsl/report/swsl/#ruleml-hilog for more details.
-
-			This module declares the following RuleML elements:
-			* Uniterm
-			* Atom
-			* slot
-			* op
-			* Const
-			* @minCard
-			* @maxCard
-			
-			See http://www.ruleml.org/modularization for details about this modularization approach.
-		</xs:documentation>
+    <xs:documentation xml:lang="en"> This is the XML Schema module for higher-order logic in RuleML.
+      File: holog_module.xsd Version: 1.0 Last Modification: 2006-08-18 See
+      http://www.daml.org/services/swsl/report/swsl/#ruleml-hilog for more details. This module
+      declares the following RuleML elements: * Uniterm * Atom * slot * op * Const * @minCard *
+      @maxCard See http://www.ruleml.org/modularization for details about this modularization
+      approach. </xs:documentation>
   </xs:annotation>
 
   <!--
@@ -66,8 +51,7 @@
         <xs:element name="op" type="op-Uniterm.type"/>
         <xs:group ref="op-Uniterm.content"/>
       </xs:choice>
-      <xs:element name="slot" type="slot.type" minOccurs="0"
-        maxOccurs="unbounded"/>
+      <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="resl" minOccurs="0"/>
       <xs:sequence minOccurs="0">
         <xs:choice>
@@ -80,8 +64,7 @@
           </xs:sequence>
           <xs:element ref="repo"/>
         </xs:choice>
-        <xs:element name="slot" type="slot.type" minOccurs="0"
-          maxOccurs="unbounded"/>
+        <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element ref="resl" minOccurs="0"/>
       </xs:sequence>
     </xs:sequence>
@@ -120,8 +103,7 @@
   <xs:group name="Atom-frame.content">
     <xs:sequence>
       <xs:group ref="Atom-frame.extend"/>
-      <xs:element name="slot" type="slot-frame.type" minOccurs="0"
-        maxOccurs="unbounded"/>
+      <xs:element name="slot" type="slot-frame.type" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:group>
   <xs:complexType name="Atom-frame.type">

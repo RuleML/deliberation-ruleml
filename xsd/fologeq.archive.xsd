@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a First-Order Logic RuleML sublanguage with equational logic
-			File: fologeq.xsd
-			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
-		</xs:documentation>
+		<xs:documentation xml:lang="en"> XML Schema for a First-Order Logic RuleML sublanguage with
+			equational logic File: fologeq.xsd Version: 1.0 Last Modification: 2011-09-19 [Tara
+			Athan] </xs:documentation>
 	</xs:annotation>
-	
+
 	<!-- equalog includes the 'equality' module -->
 	<xs:include schemaLocation="modules/equality_module.xsd"/>
 
@@ -26,13 +20,13 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:attributeGroup ref="per.attrib"/>
 			<xs:attributeGroup ref="per-equality.attrib"/>
 		</xs:attributeGroup>
-		
+
 		<!-- add @val to Fun -->
 		<xs:attributeGroup name="Fun.attlist">
 			<xs:attributeGroup ref="Fun.attlist"/>
 			<xs:attributeGroup ref="val.attrib"/>
 		</xs:attributeGroup>
-		
+
 		<!--
 			add Equal so that Query's content model is:
 			( oid?,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Equal)* )
@@ -43,7 +37,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-	
+
 		<!--
 			add Equal so that Assert's content model is:
 			( oid?,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Equal)* )
@@ -52,10 +46,10 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:group ref="formula-assert.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
-		
-		
+
+
 		<!--
 			add Equal so that Rulebase's content model is:
 			( oid?, (formula | Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)* )
@@ -64,7 +58,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			<xs:choice>
 				<xs:group ref="formula-rulebase.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
 
 		<!--
@@ -77,7 +71,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			add Equal so that if's content model is:
 			(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal )
@@ -97,7 +91,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal ) 
 				)
 			)
-		-->	
+		-->
 
 		<!--
 			add Equal so that strong's content model is:
@@ -184,8 +178,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)
 				)
 			)
-		-->	
-		
+		-->
+
 	</xs:redefine>
 
 </xs:schema>
