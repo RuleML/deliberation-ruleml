@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Datalog RuleML sublanguage, including classical/strong negation
-			File: negdatalog.xsd
-			Version: 1.0
-			Last Modification: 2010-08-26
-		</xs:documentation>
+		<xs:documentation xml:lang="en"> XML Schema for a Datalog RuleML sublanguage, including
+			classical/strong negation File: negdatalog.xsd Version: 1.0 Last Modification:
+			2010-08-26 </xs:documentation>
 	</xs:annotation>
-	
+
 	<!-- negdatalog includes the 'neg' module -->
 	<xs:include schemaLocation="modules/neg_module.xsd"/>
 
@@ -29,7 +24,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 				<xs:element ref="Neg"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!--
 			add Neg so that if's content model is:
 			(Atom | And | Or | Neg)
@@ -39,7 +34,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 				<xs:group ref="if.content"/>
 				<xs:element ref="Neg"/>
 			</xs:choice>
-		</xs:group>		
+		</xs:group>
 		<!--
 			note that the above indirectly adds Neg to Implies so that its content model is:
 			( oid?, ( then, if) | ( if, then) | ( (Atom | And | Or | Neg), (Atom | Neg) ) )
@@ -54,7 +49,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 				<xs:group ref="formula-assert.content"/>
 				<xs:element ref="Neg"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 
 		<!--
 			add Neg so that Rulebase's content model is:
@@ -65,8 +60,8 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 				<xs:group ref="formula-rulebase.content"/>
 				<xs:element ref="Neg"/>
 			</xs:choice>
-		</xs:group>	
-		
+		</xs:group>
+
 		<!--
 			add Neg so that Query's content model is:
 			( oid?, (formula | Rulebase | Neg | Atom | And | Or | Entails | Exists)* )
@@ -75,7 +70,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:choice>
 				<xs:group ref="formula-query.content"/>
 				<xs:element ref="Neg"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
 
 
@@ -87,7 +82,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<xs:choice>
 				<xs:group ref="formula-and-or.content"/>
 				<xs:element ref="Neg"/>
-			</xs:choice>	
+			</xs:choice>
 		</xs:group>
 		<!-- 
 			note that the above indirectly adds Neg to And/Or so their content models are:
@@ -95,5 +90,5 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 		-->
 
 	</xs:redefine>
-	
+
 </xs:schema>

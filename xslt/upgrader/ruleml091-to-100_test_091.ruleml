@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleml:RuleML
+xmlns:ruleml="http://www.ruleml.org/0.91/xsd"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.ruleml.org/0.91/xsd http://www.ruleml.org/0.91/xsd/hornlogeq.xsd">
+
+<!--<oid>
+	<Ind>
+		This is a simple test file for testing 0.91 - 1.0 RuleML transformations.
+	</Ind>
+</oid>-->
+
+<ruleml:Assert>
+	<ruleml:Atom>
+		<ruleml:Rel/>
+		<ruleml:Expr>
+			<ruleml:Fun in="no">hasBook</ruleml:Fun>
+			<ruleml:Ind>John</ruleml:Ind>
+			<ruleml:Ind uri="www.harrypotter.com">Harry Potter</ruleml:Ind>
+		</ruleml:Expr>
+	</ruleml:Atom>
+	
+	<ruleml:Implies>
+	  <ruleml:head>
+		<ruleml:Atom>
+		  <ruleml:op><ruleml:Rel>asf</ruleml:Rel></ruleml:op>            
+		  <ruleml:resl><ruleml:Var>c</ruleml:Var></ruleml:resl>
+		</ruleml:Atom>
+	  </ruleml:head>
+	  <ruleml:body>
+		<ruleml:And>
+			<ruleml:Atom>
+			  <ruleml:op><ruleml:Rel>friend</ruleml:Rel></ruleml:op>
+			  <ruleml:Ind>Jane</ruleml:Ind>
+			  <ruleml:Ind>Joan</ruleml:Ind>      
+			</ruleml:Atom>    
+		</ruleml:And>    
+	  </ruleml:body>
+	</ruleml:Implies>
+	
+	<ruleml:Equal>
+		<ruleml:lhs>
+			<ruleml:Ind>the left side of an equation</ruleml:Ind>
+		</ruleml:lhs>
+		<ruleml:rhs>
+			<ruleml:Ind>the right side of an equation</ruleml:Ind>
+		</ruleml:rhs>		
+	</ruleml:Equal>	
+
+</ruleml:Assert>
+</ruleml:RuleML>

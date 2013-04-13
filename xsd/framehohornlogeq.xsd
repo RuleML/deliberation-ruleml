@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
-elementFormDefault="qualified"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- note that elementFormDefault is qualified because of local declarations -->
+	<!-- note that elementFormDefault is qualified because of local declarations -->
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Frames Layer RuleML sublanguage with equational logic
-			File: framehohornlogeq.xsd
-			Version: 1.0
-			Last Modification: 2011-12-12
+		<xs:documentation xml:lang="en"> XML Schema for a Frames Layer RuleML sublanguage with
+			equational logic File: framehohornlogeq.xsd Version: 1.0 Last Modification: 2011-12-12
 		</xs:documentation>
 	</xs:annotation>
-	
+
 	<!-- framehohornlogeq includes the 'frame' module -->
 	<xs:include schemaLocation="modules/frame_module.xsd"/>
 
@@ -54,15 +47,15 @@ elementFormDefault="qualified"
 			( (Const | Uniterm), (Const | Uniterm | Skolem | Var | Reify | Get | Set)? )
 		-->
 
-	  <!-- add Get and Set to oid -->
-	  <xs:group name="oid.content">
-	    <xs:choice>
-	      <xs:group ref="oid.content"/>
-	      <xs:element ref="Get"/>
-	      <xs:element ref="Set"/>
-	    </xs:choice>
-	  </xs:group>
-	  
+		<!-- add Get and Set to oid -->
+		<xs:group name="oid.content">
+			<xs:choice>
+				<xs:group ref="oid.content"/>
+				<xs:element ref="Get"/>
+				<xs:element ref="Set"/>
+			</xs:choice>
+		</xs:group>
+
 		<!-- add Get to slot names -->
 		<xs:group name="slot-name.extend">
 			<xs:choice>
@@ -81,28 +74,28 @@ elementFormDefault="qualified"
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-assert -->
 		<xs:group name="formula-assert.content">
 			<xs:choice>
-				<xs:group ref="formula-assert.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-assert.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Assert:
 			( meta*, (formula|Rulebase|Uniterm|Atom|Neg|Implies|Equivalent|Entails|Forall|Equal|InstanceOf|SubclassOf|Signature)* )
 		-->
-		
+
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-rulebase -->
 		<xs:group name="formula-rulebase.content">
 			<xs:choice>
-				<xs:group ref="formula-rulebase.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-rulebase.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Rulebase:
 			( meta*, (formula |Atom|Uniterm|Neg|Implies|Equivalent|Forall|InstanceOf|SubclassOf|Signature|Equal)* )
@@ -111,24 +104,24 @@ elementFormDefault="qualified"
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to if -->
 		<xs:group name="if.content">
 			<xs:choice>
-				<xs:group ref="if.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="if.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
 		</xs:group>
-		
+
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to then -->
 		<xs:group name="then.content">
 			<xs:choice>
-				<xs:group ref="then.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="then.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to Implies so
 			that its content model is:
@@ -144,9 +137,9 @@ elementFormDefault="qualified"
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to torso -->
 		<xs:group name="torso.content">
 			<xs:choice>
-				<xs:group ref="torso.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="torso.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
@@ -165,12 +158,12 @@ elementFormDefault="qualified"
 			)	
 		-->
 
-		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-and-or -->		
+		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-and-or -->
 		<xs:group name="formula-and-or.content">
 			<xs:choice>
-				<xs:group ref="formula-and-or.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-and-or.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
@@ -179,18 +172,18 @@ elementFormDefault="qualified"
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			And, Rulebase and Or so that their content model is:
 			( meta*, (formula|Atom|Uniterm|InstanceOf|SubclassOf|Signature|And|Or|Neg|Naf|Equal)* )
-		-->	
+		-->
 
-		<!-- add Atom to formula-query -->		
+		<!-- add Atom to formula-query -->
 		<xs:group name="formula-query.content">
 			<xs:choice>
-				<xs:group ref="formula-query.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-query.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
-		</xs:group>	
+		</xs:group>
 		<!--
 			note that the above indirectly adds InstanceOf, SubclassOf, Signature and Atom to
 			Query so that its content model is:
@@ -200,9 +193,9 @@ elementFormDefault="qualified"
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-forall -->
 		<xs:group name="formula-forall.content">
 			<xs:choice>
-				<xs:group ref="formula-forall.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-forall.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>
@@ -216,9 +209,9 @@ elementFormDefault="qualified"
 		<!-- add InstanceOf, SubclassOf, Signature and Atom to formula-exists -->
 		<xs:group name="formula-exists.content">
 			<xs:choice>
-				<xs:group ref="formula-exists.content"/>		
-				<xs:element name="Atom" type="Atom-frame.type"/>			
-				<xs:element ref="InstanceOf"/>			
+				<xs:group ref="formula-exists.content"/>
+				<xs:element name="Atom" type="Atom-frame.type"/>
+				<xs:element ref="InstanceOf"/>
 				<xs:element ref="SubclassOf"/>
 				<xs:element ref="Signature"/>
 			</xs:choice>

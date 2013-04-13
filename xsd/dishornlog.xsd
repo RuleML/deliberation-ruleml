@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
-elementFormDefault="qualified"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
-<!-- note that elementFormDefault is qualified because of local declarations -->
+	<!-- note that elementFormDefault is qualified because of local declarations -->
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			XML Schema for a Disjunctive Horn-Logic RuleML sublanguage
-			File: dishornlog.xsd
-			Version: 1.0
-			Last Modification: 2012-05-24
-		</xs:documentation>
+		<xs:documentation xml:lang="en"> XML Schema for a Disjunctive Horn-Logic RuleML sublanguage
+			File: dishornlog.xsd Version: 1.0 Last Modification: 2012-05-24 </xs:documentation>
 	</xs:annotation>
-	
+
 	<xs:redefine schemaLocation="hornlog.xsd">
 
 		<!--
@@ -27,7 +19,7 @@ elementFormDefault="qualified"
 		-->
 		<xs:group name="then.content">
 			<xs:choice>
-				<xs:group ref="then.content"/>		
+				<xs:group ref="then.content"/>
 				<xs:element name="Or" type="Or-inner.type"/>
 			</xs:choice>
 		</xs:group>
@@ -35,7 +27,7 @@ elementFormDefault="qualified"
 			note that the above indirectly adds Or to Implies so that its content model is:
 			( meta*, ( then, if) | ( if, then) | ( (Atom | And | Or), (Atom | Or) ) )	
 		-->
-		
+
 	</xs:redefine>
 
 </xs:schema>

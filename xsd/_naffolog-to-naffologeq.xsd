@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema 
-targetNamespace="http://ruleml.org/spec" 
-xmlns="http://ruleml.org/spec"
-xmlns:xs="http://www.w3.org/2001/XMLSchema"
->
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en">
-			Behind-the-scenes XML Schema for the transition from naffolog to naffologeq
-			File: _naffolog-to-naffologeq.xsd
-			Version: 1.0
-			Last Modification: 2011-09-19 [Tara Athan]
-		</xs:documentation>
+		<xs:documentation xml:lang="en"> Behind-the-scenes XML Schema for the transition from
+			naffolog to naffologeq File: _naffolog-to-naffologeq.xsd Version: 1.0 Last Modification:
+			2011-09-19 [Tara Athan] </xs:documentation>
 	</xs:annotation>
 
 	<xs:redefine schemaLocation="naffolog.xsd">
@@ -26,5 +20,5 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		<xs:attributeGroup name="per.attrib"/>
 
 	</xs:redefine>
-	
+
 </xs:schema>

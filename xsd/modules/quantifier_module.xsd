@@ -1,27 +1,16 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec"
-  elementFormDefault="qualified">
+<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://ruleml.org/spec" elementFormDefault="qualified">
 
   <!-- note that elementFormDefault is qualified because of local declarations -->
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"
-      >
-			This is the XML Schema module for RuleML quantifiers.
-			File: quantifier_module.xsd
-			Version: 1.0
-			Last Modification: 2010-07-16
-			
-			This module declares the following RuleML elements:
-			* Forall
-			* Exists
-			* declare
-			* formula
-						
-			See http://www.ruleml.org/modularization for details about this modularization approach.
-		</xs:documentation>
+    <xs:documentation xml:lang="en"> This is the XML Schema module for RuleML quantifiers. File:
+      quantifier_module.xsd Version: 1.0 Last Modification: 2010-07-16 This module declares the
+      following RuleML elements: * Forall * Exists * declare * formula See
+      http://www.ruleml.org/modularization for details about this modularization approach.
+    </xs:documentation>
   </xs:annotation>
 
   <!--

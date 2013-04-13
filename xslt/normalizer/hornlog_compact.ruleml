@@ -1,28 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:ex="http://example.org"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
 
   <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
-  <meta>
-    <Atom>
-      <Rel>P</Rel>
-    </Atom>
-  </meta>
   <Assert mapClosure="universal">
-    <meta>
-      <Atom>
-        <Rel>P</Rel>
-      </Atom>
-    </meta>
     <Implies>
-      <meta>
-        <Atom>
-          <Rel>P</Rel>
-        </Atom>
-      </meta>
       <then>
         <Atom>
           <op>
@@ -40,13 +23,13 @@
       <if>
         <And>
           <Atom>
-            <Rel>friend</Rel>
-            <arg index="1">
-              <Ind>Jane</Ind>
-            </arg>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <Ind>Jane</Ind>
             <Ind>Joan</Ind>
             <Ind>Jack</Ind>
-            <Var node="ex:_y">y</Var>
+            <Var>y</Var>
             <Ind>Frank</Ind>
             <slot>
               <Ind>yar</Ind>
@@ -66,11 +49,13 @@
               </Expr>
             </slot>
           </Atom>
-         </And>
+        </And>
       </if>
     </Implies>
     <Atom>
-      <Rel>some relation</Rel>
+      <op>
+        <Rel>some relation</Rel>
+      </op>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
@@ -83,18 +68,22 @@
       </slot>
     </Atom>
     <Atom>
-      <Rel>another relation</Rel>
+      <op>
+        <Rel>another relation</Rel>
+      </op>
       <Ind>constant c</Ind>
       <Ind>constant d</Ind>
       <Expr>
-        <Fun>yac</Fun>
+        <op>
+          <Fun>yac</Fun>
+        </op>
         <repo>
           <Var>b</Var>
         </repo>
         <resl>
           <Plex>
             <slot>
-              <Ind/>
+              <Ind />
               <Ind>test</Ind>
             </slot>
           </Plex>
@@ -102,14 +91,18 @@
       </Expr>
     </Atom>
     <Atom>
-      <Rel>some relation</Rel>
+      <op>
+        <Rel>some relation</Rel>
+      </op>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
       </slot>
       <Ind>constant a</Ind>
       <Expr>
-        <Fun>empty</Fun>
+        <op>
+          <Fun>empty</Fun>
+        </op>
       </Expr>
       <Ind>constant b</Ind>
       <Skolem>constant b</Skolem>
@@ -122,13 +115,9 @@
       </slot>
     </Atom>
     <Atom>
-      <oid>
-        <Ind>b</Ind>
-      </oid>
-      <degree>
-        <Data xsi:type="xs:decimal">0.5</Data>
-      </degree>
-      <Rel>another relation</Rel>
+      <op>
+        <Rel>another relation</Rel>
+      </op>
       <Ind>constant c</Ind>
       <Ind>constant d</Ind>
       <repo>
@@ -140,31 +129,17 @@
       </slot>
       <resl>
         <Plex>
-          <meta>
-            <Atom>
-              <Rel>P</Rel>
-            </Atom>
-          </meta>
           <slot>
-            <Ind/>
+            <Ind />
             <Ind>test</Ind>
           </slot>
         </Plex>
       </resl>
     </Atom>
     <Atom>
-      <meta>
-        <Atom>
-          <Rel>P</Rel>
-        </Atom>
-      </meta>
-      <oid>
-        <Ind>a</Ind>
-      </oid>
-      <degree>
-        <Data xsi:type="xs:decimal">0.5</Data>
-      </degree>
-      <Rel>yet another relation</Rel>
+      <op>
+        <Rel>yet another relation</Rel>
+      </op>
       <Skolem>constant b</Skolem>
       <Ind>constant e</Ind>
       <Ind>constant b</Ind>
