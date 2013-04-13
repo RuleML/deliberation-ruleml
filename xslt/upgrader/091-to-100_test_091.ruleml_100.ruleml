@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://ruleml.org/1.0/xsd/hornlogeq.xsd">
+
+<oid>
+	<Ind>
+		This is a simple test file for testing 0.91 - 1.0 RuleML transformations.
+	</Ind>
+</oid>
+
+<Assert>
+	<Atom>
+		<Rel/>
+		<Expr>
+			<Fun per="copy">hasBook</Fun>
+			<Ind>John</Ind>
+			<Ind iri="www.harrypotter.com">Harry Potter</Ind>
+		</Expr>
+	</Atom>
+	
+	<Implies>
+	  <then>
+		<Atom>
+		  <op><Rel>asf</Rel></op>            
+		  <resl><Var>c</Var></resl>
+		</Atom>
+	  </then>
+	  <if>
+		<And>
+			<Atom>
+			  <op><Rel>friend</Rel></op>
+			  <Ind>Jane</Ind>
+			  <Ind>Joan</Ind>      
+			</Atom>    
+		</And>    
+	  </if>
+	</Implies>
+	
+	<Equal>
+		<left>
+			<Ind>the left side of an equation</Ind>
+		</left>
+		<right>
+			<Ind>the right side of an equation</Ind>
+		</right>		
+	</Equal>	
+
+</Assert>
+</RuleML>
