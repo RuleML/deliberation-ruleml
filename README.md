@@ -22,11 +22,24 @@ You should replace "greenTara" with your Github user name.
 
 2. Clone the central repo to your local computer using the read-only URL.([1])
 
+    $ cd path/to/directory/of/Git/repositories  
     $ git clone git://github.com/RuleML/deliberation-ruleml.git
 
-3. Add your forked repository as a read-write remote.([2])
+3. Enter the local repository
+
+    $ cd ruleml-website
+4. Add your forked repository as a read-write remote.([2])
 
     $ git remote add myFork https://github.com/greenTara/deliberation-ruleml.git
+
+5. Other configuration steps, such as providing your name and email so your commits can be identified
+   should be performed at this point, if they haven't been done already.
+
+    $ git config --global user.name "Tara Athan"
+    
+    $ git config --global user.email "taraathan AT gmail.com"
+    
+    $ git config --global push.default simple
 
 Branching to Resolve Issues
 ---------------------------
@@ -59,28 +72,32 @@ Branching to Resolve Issues
     
   d) Repeat a-c, or continue to the next step.
     
-   
-
 6. When your fix is finished (or far enough along that you want some review), 
-  update your repository from the central repo online.([2]) 
+  update your repository (again) from the RuleML repo online.([2])
+  This time, instead of using "pull" (which is a shortcut for "fetch-merge"), we will use 
+  "fetch-rebase".
+  Rebase is an alternative to merge that re-writes history regarding the order and granularity of commits[5].
 
+  a) Fetch from the central RuleML repository:
+  
     $ git fetch
     
-7. Use rebase to reorder your commits to occur on top of everybody else's. 
-   The -i option allows you to interactively clean up your commits and "squash" them together.([5])
-
+  b) If nothing was fetched, and you made only one or a few commits, you may continue with step 4.
+   Otherwise, rebase* interactively:
+   
     $ git rebase -i
     
-8. Push your commits to a new branch in your remote fork.([2])
+7. Push your commits to a new branch in your remote fork.([2])
 
     $ git push myFork Issue#45
     
-9. Login to your Github account to verify that everything got uploaded OK, then
-submit a pull request to RuleML/deliberation-ruleml from your Github account.
-If the RuleML repo already has a branch for Issue#45, submit your pull-request to that branch,
-otherwise submit to master.
+8. Login to your Github account  and perform the following:  
+  a) verify that everything got uploaded OK  
+  b) submit a pull request to RuleML/ruleml-website from your Github account. 
+     If the RuleML repo already has a branch for Issue#45, submit your pull-request to that branch,
+     otherwise submit to master.
 
-10. The RuleML maintainer and/or other developers will make comments on your pull-request if 
+9. The RuleML maintainer and/or other developers will make comments on your pull-request if 
 anything needs to be changed.
 You can push new commits to your Issue#45 branch and they will automatically be added to the pull-request.
 If your submission is accepted, the RuleML/Issue#45 branch will be merged with RuleML/master.
