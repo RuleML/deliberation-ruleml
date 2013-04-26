@@ -11,6 +11,14 @@ deliberation-ruleml
 * PHP scripts for MYNG
 * NVDL scripts for MYNG
  
+Prerequisites
+-------------
+1. To contribute to this repository, You must have Git installed on your system. See [7].
+
+Training
+--------
+1. See the RuleML Github Demos at http://wiki.ruleml.org/index.php/Github_Demo .
+
 Recommended Workflow
 ====================
 
