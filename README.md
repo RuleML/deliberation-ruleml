@@ -20,13 +20,13 @@ Initialization
 I'll use my account (greenTara) for the examples. 
 You should replace "greenTara" with your Github user name.
 
-2. Clone your fork to your local computer.([1])
+2. Clone the central repo to your local computer.([1])
 
-    $ git clone https://github.com/greenTara/deliberation-ruleml.git
+    $ git clone https://github.com/RuleML/deliberation-ruleml.git
 
-3. Add the central (RuleML) repository as a read-only remote.([2])
+3. Add your forked repository as a read-only remote.([2])
 
-    $ git remote add ruleml git://github.com/RuleML/deliberation-ruleml.git
+    $ git remote add myFork git://github.com/greenTara/deliberation-ruleml.git
 
 Branching to Resolve Issues
 ---------------------------
@@ -36,7 +36,7 @@ Branching to Resolve Issues
 
 2. Update your master branch from the ruleml remote.([2])
     
-    $ git pull ruleml master
+    $ git pull
     
     There should be no conflicts from this pull, because you have been following the
     workflow described here and doing all your development in temporary branches.
@@ -47,34 +47,36 @@ Branching to Resolve Issues
 
     $ git checkout -b Issue#45 
 
-5. Make your changes in your usual working environment (eclipse, oXygen, ...),
-   commit frequently, using messages that are helpful to you,([4], [6]) 
-       
-    $ git commit -a
-
-    test, repeat, ..., but do NOT push to your public fork. 
-    If you add or delete files or folders, use
+5. Modify your local clone:  
+  a) Make your changes in your usual working environment (plain text eclipse, oXygen, ...), and test your modifications  
+  b) Optional: If you add or delete files or folders, use  
 
     $ git add -A
-    
-    before you commit. End with a commit.
-   
-6. When your fix is finished (or far enough along that you want some review), 
-  update your repository from the ruleml repo online.([2]) 
 
-    $ git fetch ruleml
+  c) Commit frequently, using messages that are helpful to you,([4], [6])  
+
+    $ git commit -a
+    
+  d) Repeat a-c, or continue to the next step.
+    
+   
+
+6. When your fix is finished (or far enough along that you want some review), 
+  update your repository from the central repo online.([2]) 
+
+    $ git fetch
     
 7. Use rebase to reorder your commits to occur on top of everybody else's. 
-   The -i option allows you to interactively clean up your commits.([5])
+   The -i option allows you to interactively clean up your commits and "squash" them together.([5])
 
-    $ git rebase -i ruleml/master
+    $ git rebase -i
     
 8. Push your commits to a new branch in your remote fork.([2])
 
-    $ git push origin Issue#45
+    $ git push myFork Issue#45
     
 9. Login to your Github account to verify that everything got uploaded OK, then
-submit a pull request to RuleML/Test-Rebase from your Github account.
+submit a pull request to RuleML/deliberation-ruleml from your Github account.
 If the RuleML repo already has a branch for Issue#45, submit your pull-request to that branch,
 otherwise submit to master.
 
