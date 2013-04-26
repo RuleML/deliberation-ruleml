@@ -93,7 +93,7 @@ Branching to Resolve Issues
     
 8. Login to your Github account  and perform the following:  
   a) verify that everything got uploaded OK  
-  b) submit a pull request to RuleML/ruleml-website from your Github account. 
+  b) submit a pull request to RuleML/deliberation-ruleml from your Github account. 
      If the RuleML repo already has a branch for Issue#45, submit your pull-request to that branch,
      otherwise submit to master.
 
