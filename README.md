@@ -20,13 +20,13 @@ Initialization
 I'll use my account (greenTara) for the examples. 
 You should replace "greenTara" with your Github user name.
 
-2. Clone the central repo to your local computer.([1])
+2. Clone the central repo to your local computer using the read-only URL.([1])
 
-    $ git clone https://github.com/RuleML/deliberation-ruleml.git
+    $ git clone git://github.com/RuleML/deliberation-ruleml.git
 
-3. Add your forked repository as a read-only remote.([2])
+3. Add your forked repository as a read-write remote.([2])
 
-    $ git remote add myFork git://github.com/greenTara/deliberation-ruleml.git
+    $ git remote add myFork https://github.com/greenTara/deliberation-ruleml.git
 
 Branching to Resolve Issues
 ---------------------------
