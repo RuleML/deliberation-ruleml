@@ -1,0 +1,42 @@
+<?xml-model href="http://ruleml.org/1.0/relaxng/bindatalog_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
+
+<!--<?xml-model href="http://ruleml.org/1.0/xsd/naffologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+  <?xml-model href="../rdf.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:ex="http://example.org#"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- This example shows how a sublanguage of arbitrary expressivity 
+       (in this case naffologeq)
+       can be restricted to binary (zero or two) positional arguments.
+       
+       We use this restricted language below to assert a statement equivalent
+       to the following RDF triple:
+       <rdf:Description
+           rdf:about="http://example.org#subject1">
+         <ex:Predicate1>object1</ex:Predicate>
+       </rdf:Description>
+  -->
+    <Assert xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xs="http://www.w3.org/2001/XMLSchema"
+      mapClosure="universal">
+      <Rulebase mapClosure="universal"><Atom>
+          <Rel iri="http://example.org#Predicate1"/>
+          <Ind iri="http://example.org#subject1"/>
+          <Data xsi:type="xs:string">object1</Data>
+        </Atom></Rulebase>
+     </Assert>
+  <Query xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+      <Atom>
+        <Rel iri="http://example.org#Predicate1"/>
+        <Ind iri="http://example.org#subject1"/>
+        <Var>?WHAT</Var>
+      </Atom>      
+    </Query>
+  <!-- Results
+    Solution  Variable           Binding
+    TRUE      <Var>?WHAT</Var>   <Data xsi:type="xs:string">object1</Data>
+  -->
+</RuleML>
