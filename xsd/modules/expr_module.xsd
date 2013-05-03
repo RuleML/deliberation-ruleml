@@ -1,15 +1,28 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://ruleml.org/spec" elementFormDefault="qualified">
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec"
+  elementFormDefault="qualified">
 
   <!-- note that elementFormDefault is qualified because of local declarations -->
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"> This is the XML Schema module for RuleML expressions. File:
-      expr_module.xsd Version: 1.0 Last Modification: 2011-10-05 [Tara Athan] This module declares
-      the following RuleML elements and attributes: * Expr * op * Fun * Plex * @per See
-      http://www.ruleml.org/modularization for details about this modularization approach. </xs:documentation>
+    <xs:documentation xml:lang="en"
+      >
+			This is the XML Schema module for RuleML expressions.
+			File: expr_module.xsd
+			Version: 1.0
+			Last Modification: 2011-10-05 [Tara Athan]
+			
+			This module declares the following RuleML elements and attributes:
+			* Expr
+			* op
+			* Fun
+			* Plex
+			* @per
+			
+			See http://www.ruleml.org/modularization for details about this modularization approach.
+		</xs:documentation>
 
     <!-- necessary for schematron -->
     <!-- 
@@ -65,7 +78,8 @@
         <xs:element name="op" type="op-Expr.type"/>
         <xs:group ref="op-Expr.content"/>
       </xs:choice>
-      <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="slot" type="slot.type" minOccurs="0"
+        maxOccurs="unbounded"/>
       <xs:sequence minOccurs="0">
         <xs:choice>
           <xs:sequence>
@@ -77,7 +91,8 @@
           </xs:sequence>
           <xs:element ref="repo"/>
         </xs:choice>
-        <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="slot" type="slot.type" minOccurs="0"
+          maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:element ref="resl" minOccurs="0"/>
     </xs:sequence>
@@ -152,7 +167,9 @@ content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
     <xs:attributeGroup ref="xml.attlist"/>
   </xs:attributeGroup>
   <xs:group name="Fun.content">
-    <xs:sequence> </xs:sequence>
+    <xs:sequence>
+
+    </xs:sequence>
   </xs:group>
   <xs:complexType name="Fun.type" mixed="true">
     <xs:group ref="Fun.content"/>
@@ -192,7 +209,8 @@ content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
     <xs:sequence>
 
       <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="slot" type="slot.type" minOccurs="0"
+        maxOccurs="unbounded"/>
       <xs:choice>
         <xs:sequence minOccurs="0">
           <xs:choice maxOccurs="unbounded">
@@ -200,12 +218,14 @@ content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
             <xs:group ref="arg.content"/>
           </xs:choice>
           <xs:element ref="repo" minOccurs="0"/>
-          <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="slot" type="slot.type" minOccurs="0"
+            maxOccurs="unbounded"/>
           <xs:element ref="resl" minOccurs="0"/>
         </xs:sequence>
         <xs:sequence>
           <xs:element ref="repo"/>
-          <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="slot" type="slot.type" minOccurs="0"
+            maxOccurs="unbounded"/>
           <xs:element ref="resl" minOccurs="0"/>
         </xs:sequence>
         <xs:sequence>
@@ -227,7 +247,8 @@ content model: (#PCDATA, id?, #PCDATA, meta*, #PCDATA)
   <xs:group name="Plex-resl.content">
     <xs:sequence>
       <xs:element ref="meta" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="slot" type="slot.type" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="slot" type="slot.type" minOccurs="0"
+        maxOccurs="unbounded"/>
       <xs:element ref="resl" minOccurs="0"/>
     </xs:sequence>
   </xs:group>

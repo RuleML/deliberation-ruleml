@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="http://ruleml.org/spec" elementFormDefault="qualified">
-
-	<!-- note that elementFormDefault is qualified because of local declarations -->
-
+<xs:schema
+targetNamespace="http://ruleml.org/spec"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns="http://ruleml.org/spec"
+elementFormDefault="qualified">
+	
+<!-- note that elementFormDefault is qualified because of local declarations -->
+	
 	<xs:annotation>
-		<xs:documentation xml:lang="en"> XML Schema for a Horn-Logic RuleML sublanguage File:
-			hornlog.xsd Version: 1.0 Last Modification: 2011-10-06 </xs:documentation>
+		<xs:documentation xml:lang="en">
+			XML Schema for a Horn-Logic RuleML sublanguage
+			File: hornlog.xsd
+			Version: 1.0
+			Last Modification: 2011-10-06
+		</xs:documentation>
 	</xs:annotation>
-
+	
 	<!-- hornlog includes the 'expr' and 'rest' modules -->
 	<xs:include schemaLocation="modules/expr_module.xsd"/>
 	<xs:include schemaLocation="modules/rest_module.xsd"/>
-
+	
 	<!-- note the addition of Expr and Plexs from the expr module -->
 	<xs:redefine schemaLocation="datalog.xsd">
 		<!--
@@ -37,7 +44,7 @@
 			... as well as to slot so that its content model is:
 	   		( (Ind|Data), (Ind|Data|Skolem|Var|Reify|Expr|Plex) )
 		-->
-
+		
 		<!--
 			add Exprs and Plexs so that slot's content model is:
 			( (Ind|Data|Expr|Plex), (Ind|Data|Skolem|Var|Reify|Expr|Plex) )
@@ -49,7 +56,7 @@
 				<xs:element name="Plex" type="Plex.type"/>
 			</xs:choice>
 		</xs:group>
-
+		
 		<!--
 			add Expr and Plex to oid so that its content model is:
 			(Ind | Data | Var | Skolem | Reify | Expr | Plex)
@@ -61,7 +68,7 @@
 				<xs:element name="Plex" type="Plex.type"/>
 			</xs:choice>
 		</xs:group>
-
+		
 		<!--
 			add repo and resl so that Atom's content model is:
 			(
@@ -94,6 +101,6 @@
 				<xs:element ref="resl" minOccurs="0"/>
 			</xs:sequence>
 		</xs:group>
-
+		
 	</xs:redefine>
 </xs:schema>

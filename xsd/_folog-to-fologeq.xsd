@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"> Behind-the-scenes XML Schema for the transition from folog to
-      fologeq File: _folog-to-fologeq.xsd Version: 1.0 Last Modification: 2012-05-25 [Tara Athan]
-    </xs:documentation>
+    <xs:documentation xml:lang="en"> Behind-the-scenes XML Schema for the
+      transition from folog to fologeq File: _folog-to-fologeq.xsd Version: 1.0
+      Last Modification: 2012-05-25 [Tara Athan] </xs:documentation>
   </xs:annotation>
 
   <xs:redefine schemaLocation="folog.xsd">
@@ -43,7 +43,7 @@
         </xs:restriction>
       </xs:complexContent>
     </xs:complexType>
-    <xs:complexType name="Fun.type" mixed="true">
+    <xs:complexType name="Fun.type"  mixed="true">
       <xs:complexContent>
         <xs:restriction base="Fun.type">
           <xs:group ref="Fun.content"/>

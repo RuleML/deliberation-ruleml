@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml_module.xsd"/>
+  
+  <xs:annotation>
+    <xs:documentation xml:lang="en"
+      >
+			This is the XML Schema module for description-related RuleML elements.
+			File: desc_module.xsd
+			Version: 1.0
+			Last Modification: 2012-04-03 [Tara Athan]
+			
+			This module declares the following RuleML element:
+			* @node
+			* oid
+			* meta
+			
+			See http://www.ruleml.org/modularization for details about this modularization approach.
+		</xs:documentation>
+  </xs:annotation>
+
+  <!--
+    *** @node ***
+    An optional identification label for a Node, creating accessibility within
+    the knowledge representation.
+    This can help for representing prioritization between rules, for example. 
+    The content of all Node elements (i.e. those that begin with an uppercase letter) of RuleML can begin with 
+    such a label.
+    
+    See http://www.ruleml.org/1.0/glossary/#gloss-@node
+    
+    content model: xs:anyURI
+  -->
+  <xs:attributeGroup name="node.attrib">
+    <xs:attribute name="node" type="xs:anyURI" use="optional"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="oid.attlist"/>
+  <xs:group name="oid.content">
+    <xs:choice>
+      <xs:element ref="Ind"/>
+      <xs:element ref="Data"/>
+      <xs:element ref="Var"/>
+      <xs:element ref="Skolem"/>
+      <xs:element ref="Reify"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="oid.type">
+    <xs:group ref="oid.content"/>
+    <xs:attributeGroup ref="oid.attlist"/>
+  </xs:complexType>
+  <!--
+  *** oid ***
+  An optional object identifier for an atomic formula, expression or the unifed terms
+  of the SWSL branch, as needed for PSOA semantics.
+  Note that oids are not required to be unique within a rulebase.
+  
+  See http://www.ruleml.org/1.0/glossary/#gloss-oid
+  
+  content model: (Ind | Data | Var | Skolem | Reify)
+  -->
+  <xs:element name="oid" type="oid.type"/>
+  <!--
+    *** meta ***
+    An optional container for meta-knowledge about a Node.
+    
+    See http://www.ruleml.org/1.0/glossary/#gloss-meta
+    
+    content model: (Atom | Implies | Equivalent | Entails | Forall | Rulebase)
+  -->
+    <xs:element name="meta" type="formula-assert.type"/>
+  
+  <xs:attributeGroup name="xml.attlist">
+    <xs:attribute ref="xml:base"/>
+    <xs:attribute ref="xml:id"/>
+  </xs:attributeGroup>
+  
+</xs:schema>

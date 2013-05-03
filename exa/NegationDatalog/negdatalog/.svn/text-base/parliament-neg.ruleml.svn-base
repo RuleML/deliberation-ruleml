@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.ruleml.org/1.0/relaxng/negdatalog_relaxed.rnc"?>
+<!--<?xml-model href="http://www.ruleml.org/1.0/xsd/negdatalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/negdatalog.xsd">
+
+<!-- An example rulebase for testing the Datalog RuleML sublanguage, with negation  -->
+
+<Assert mapClosure="universal">
+
+ <!--person1 is a Member of Parliament(MP) of Canada in  year02--> 
+ 
+  <Atom>
+    <op><Rel>mp</Rel></op>
+    <Ind>Canada</Ind>
+    <Ind>person1</Ind>
+    <Ind>year02</Ind>
+  </Atom>
+  
+<!-- A person is in an opposition party of countryX in a year if the person is a Member of Parliament (MP) but is not in the Government in that year -->
+    
+<Implies>
+  <then>
+    <Atom>
+      <op><Rel>opposition</Rel></op>
+      <Var>countryX</Var>
+      <Var>person</Var>
+      <Var>year</Var>
+    </Atom>  
+  </then>
+  <if>
+    <And>
+      <Atom>
+        <op><Rel>mp</Rel></op>
+        <Var>countryX</Var>
+        <Var>person</Var>		  
+        <Var>year</Var> 
+      </Atom>
+      <Neg>	  
+        <Atom>
+          <op><Rel>government</Rel></op>
+          <Var>countryX</Var>
+          <Var>person</Var>
+          <Var>year</Var>
+        </Atom>
+      </Neg>
+    </And>
+  </if>
+</Implies>
+  
+</Assert>
+
+</RuleML>

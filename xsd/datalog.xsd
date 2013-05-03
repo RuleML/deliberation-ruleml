@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  targetNamespace="http://ruleml.org/spec">
+<xs:schema 
+xmlns="http://ruleml.org/spec" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://ruleml.org/spec"
+>
 
-  <xs:annotation>
-    <xs:documentation xml:lang="en"> XML Schema for the RuleML sublanguage "datalog". File:
-      datalog.xsd Version: 1.0 Last Modification: 2012-05-25 </xs:documentation>
-  </xs:annotation>
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			XML Schema for the RuleML sublanguage "datalog".
+			File: datalog.xsd
+			Version: 1.0
+			Last Modification: 2012-05-25
+		</xs:documentation>
+	</xs:annotation>
 
-  <!--
+	<!--
 		Note that datalog is entirely composed of modules and that all other
 		schema drivers rely on it, making it the root of the sublanguage family tree.
 	-->
 
-  <!--
+	<!--
 		Datalog redefines the following modules:
 		* performative
 		* desc
@@ -43,7 +50,8 @@
   use a restricted interpretation of circular definitions within redefines.
   See http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err5
 	-->
-  <xs:redefine schemaLocation="modules/performative_module.xsd">
+  <xs:redefine
+    schemaLocation="modules/performative_module.xsd">
     <xs:group name="formula-assert.content">
       <xs:choice>
         <xs:group ref="formula-assert.content"/>
@@ -65,7 +73,8 @@
       </xs:choice>
     </xs:group>
   </xs:redefine>
-  <xs:redefine schemaLocation="modules/quantifier_module.xsd">
+  <xs:redefine
+    schemaLocation="modules/quantifier_module.xsd">
     <xs:group name="formula-forall.content">
       <xs:choice>
         <xs:group ref="formula-forall.content"/>
@@ -83,7 +92,8 @@
       <xs:attributeGroup ref="Exists.attlist"/>
     </xs:attributeGroup>
   </xs:redefine>
-  <xs:redefine schemaLocation="modules/connective_module.xsd">
+  <xs:redefine
+    schemaLocation="modules/connective_module.xsd">
     <xs:group name="then.content">
       <xs:choice>
         <xs:group ref="then.content"/>

@@ -1,0 +1,684 @@
+default namespace = "http://ruleml.org/spec"
+
+start =
+  torso
+  | Implies
+  | Query
+  | Assert
+  | Data
+  | arg
+  | Retract
+  | Atom
+  | if
+  | repo
+  | oid
+  | Neg
+  | Equal
+  | Rulebase
+  | left
+  | slot
+  | right
+  | Expr
+  | Reify
+  | Equivalent
+  | resl
+  | op
+  | Rel
+  | Ind
+  | declare
+  | Fun
+  | Plex
+  | degree
+  | Forall
+  | Exists
+  | strong
+  | Or
+  | then
+  | Skolem
+  | RuleML
+  | Var
+  | act
+  | And
+  | Entails
+torso =
+  element torso {
+    Atom
+    | And
+    | Or
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Exists
+    | Equal
+  }
+Implies =
+  element Implies {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute material { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute direction {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    ((then, if)
+     | (if, then)
+     | ((Atom
+         | And
+         | Or
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists
+         | Equal),
+        (Atom
+         | Or
+         | And
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists
+         | Equal)))
+  }
+Query =
+  element Query {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    (formula
+     | Rulebase
+     | Atom
+     | And_2
+     | Or_2
+     | Entails
+     | Exists
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Equal)*
+  }
+Assert =
+  element Assert {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (formula_2
+     | Rulebase
+     | Atom
+     | Implies
+     | Equivalent
+     | Entails
+     | Forall
+     | And
+     | Or
+     | Neg
+     | Exists
+     | Equal)*
+  }
+Data =
+  element Data {
+    text
+    & (attribute * { text }
+       | _1)*
+  }
+arg =
+  element arg {
+    attribute index { xsd:positiveInteger },
+    (Ind | Data | Var | Skolem | Reify | Expr | Plex)
+  }
+Retract =
+  element Retract {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (formula_2
+     | Rulebase
+     | Atom
+     | Implies
+     | Equivalent
+     | Entails
+     | Forall
+     | And
+     | Or
+     | Neg
+     | Exists
+     | Equal)*
+  }
+Atom =
+  element Atom {
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    degree?,
+    (op | Rel),
+    slot*,
+    ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
+      | repo),
+     slot*)?,
+    resl?
+  }
+if =
+  element if {
+    Atom
+    | And
+    | Or
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Exists
+    | Equal
+  }
+repo = element repo { Var | Plex_2 }
+oid = element oid { Ind | Data | Var | Skolem | Reify | Expr | Plex }
+Neg =
+  element Neg {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (strong
+     | Atom
+     | And
+     | Or
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Exists
+     | Equal)
+  }
+Equal =
+  element Equal {
+    attribute oriented { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    oid?,
+    degree?,
+    ((left, right)
+     | ((Ind | Data | Var | Skolem | Reify | Expr | Plex),
+        (Ind | Data | Var | Skolem | Reify | Expr | Plex)))
+  }
+Rulebase =
+  element Rulebase {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    (formula_3
+     | Atom
+     | Implies
+     | Equivalent
+     | Forall
+     | And
+     | Or
+     | Neg
+     | Exists
+     | Equal)*
+  }
+left = element left { Ind | Data | Var | Skolem | Reify | Expr | Plex }
+slot =
+  element slot {
+    attribute weight {
+      xsd:decimal { minInclusive = "0" maxInclusive = "1" }
+    }?,
+    attribute card { xsd:nonNegativeInteger }?,
+    (Ind | Data | Expr | Plex),
+    (Ind | Data | Var | Skolem | Reify | Expr | Plex)
+  }
+right =
+  element right { Ind | Data | Var | Skolem | Reify | Expr | Plex }
+Expr =
+  element Expr {
+    attribute per {
+      xsd:NMTOKEN "open" | xsd:NMTOKEN "value" | xsd:NMTOKEN "copy"
+    }?,
+    attribute type { xsd:string }?,
+    oid?,
+    (op_2 | Fun),
+    slot*,
+    ((((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+, repo?)
+      | repo),
+     slot*)?,
+    resl?
+  }
+Reify =
+  element Reify {
+    (torso
+     | Implies
+     | Query
+     | Assert
+     | Data
+     | arg
+     | Retract
+     | Atom
+     | if
+     | repo
+     | oid
+     | Neg
+     | Equal
+     | Rulebase
+     | left
+     | slot
+     | right
+     | Expr
+     | Reify
+     | Equivalent
+     | resl
+     | op
+     | Rel
+     | Ind
+     | declare
+     | Fun
+     | Plex
+     | degree
+     | Forall
+     | Exists
+     | strong
+     | Or
+     | then
+     | Skolem
+     | RuleML
+     | Var
+     | act
+     | And
+     | Entails)?
+  }
+Equivalent =
+  element Equivalent {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    ((torso, torso)
+     | ((Atom
+         | And
+         | Or
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists
+         | Equal),
+        (Atom
+         | And
+         | Or
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists
+         | Equal)))
+  }
+resl = element resl { Var | Plex_3 }
+op = element op { Rel }
+Rel =
+  element Rel {
+    text
+    & attribute iri { xsd:anyURI }?
+  }
+Ind =
+  element Ind {
+    text
+    & (attribute iri { xsd:anyURI }?,
+       attribute type { xsd:string }?)
+  }
+declare = element declare { Var }
+Fun =
+  element Fun {
+    text
+    & (attribute val { xsd:NMTOKEN "1" | xsd:NMTOKEN "0.." }?,
+       attribute per {
+         xsd:NMTOKEN "open" | xsd:NMTOKEN "value" | xsd:NMTOKEN "copy"
+       }?,
+       attribute iri { xsd:anyURI }?)
+  }
+Plex =
+  element Plex {
+    oid?,
+    slot*,
+    (((arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)+,
+      repo?,
+      slot*,
+      resl?)?
+     | (repo, slot*, resl?)
+     | resl)
+  }
+degree = element degree { Data }
+Forall =
+  element Forall {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (declare | Var)+,
+    (formula_4
+     | Atom
+     | Implies
+     | Equivalent
+     | Forall
+     | And
+     | Or
+     | Neg
+     | Exists
+     | Equal)
+  }
+Exists =
+  element Exists {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (declare | Var)+,
+    (formula_5
+     | Atom
+     | And
+     | Or
+     | Exists
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Equal)
+  }
+strong =
+  element strong {
+    Atom
+    | And
+    | Or
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Exists
+    | Equal
+  }
+Or =
+  element Or {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (formula_6
+     | Atom
+     | And
+     | Or
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Exists
+     | Equal)*
+  }
+then =
+  element then {
+    Atom
+    | Or
+    | And
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Exists
+    | Equal
+  }
+Skolem =
+  element Skolem {
+    text
+    & attribute type { xsd:string }?
+  }
+RuleML = element RuleML { oid?, (act | Assert | Retract | Query)* }
+Var =
+  element Var {
+    text
+    & attribute type { xsd:string }?
+  }
+act =
+  element act {
+    attribute index { xsd:positiveInteger },
+    (Assert | Retract | Query)
+  }
+And =
+  element And {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    oid?,
+    (formula_6
+     | Atom
+     | And
+     | Or
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Exists
+     | Equal)*
+  }
+Entails =
+  element Entails { oid?, (if_2 | Rulebase), (then_2 | Rulebase) }
+formula =
+  element formula {
+    Rulebase
+    | Atom
+    | And_2
+    | Or_2
+    | Entails
+    | Exists
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Equal
+  }
+And_2 =
+  element And {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    (formula_6
+     | Atom
+     | And
+     | Or
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Exists
+     | Equal)*
+  }
+Or_2 =
+  element Or {
+    attribute mapMaterial { xsd:NMTOKEN "yes" | xsd:NMTOKEN "no" }?,
+    attribute mapClosure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    attribute mapDirection {
+      xsd:NMTOKEN "backward"
+      | xsd:NMTOKEN "forward"
+      | xsd:NMTOKEN "bidirectional"
+    }?,
+    attribute closure {
+      xsd:NMTOKEN "universal" | xsd:NMTOKEN "existential"
+    }?,
+    oid?,
+    (formula_6
+     | Atom
+     | And
+     | Or
+     | Neg
+     | Implies
+     | Equivalent
+     | Forall
+     | Exists
+     | Equal)*
+  }
+formula_2 =
+  element formula {
+    Rulebase
+    | Atom
+    | Implies
+    | Equivalent
+    | Entails
+    | Forall
+    | And
+    | Or
+    | Neg
+    | Exists
+    | Equal
+  }
+_1 =
+  element * {
+    text
+    & (attribute * { text }
+       | _1)*
+  }
+Plex_2 =
+  element Plex {
+    (arg | Ind | Data | Var | Skolem | Reify | Expr | Plex)*, repo?
+  }
+formula_3 =
+  element formula {
+    Atom
+    | Implies
+    | Equivalent
+    | Forall
+    | And
+    | Or
+    | Neg
+    | Exists
+    | Equal
+  }
+op_2 = element op { Fun }
+Plex_3 = element Plex { slot*, resl? }
+formula_4 =
+  element formula {
+    Atom
+    | Implies
+    | Equivalent
+    | Forall
+    | And
+    | Or
+    | Neg
+    | Exists
+    | Equal
+  }
+formula_5 =
+  element formula {
+    Atom
+    | And
+    | Or
+    | Exists
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Equal
+  }
+formula_6 =
+  element formula {
+    Atom
+    | And
+    | Or
+    | Neg
+    | Implies
+    | Equivalent
+    | Forall
+    | Exists
+    | Equal
+  }
+if_2 = element if { Rulebase }
+then_2 = element then { Rulebase }

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RDF [
+ <!ENTITY ruleml "http://ruleml.org/spec#">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">  
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema#">  
+]>
+
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="&rdfs;" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ruleml="http://ruleml.org/spec" xml:base="http://ruleml.org/spec">
+
+  <!-- In these comments I will use CURIE syntax -->
+
+  <!-- This meta-model has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+
+  <!-- There is a subclass of ruleml:#RuleMLNode called ruleml:#MetaformulaOrFormula.
+       It is intended to be a union of classes Metaformula and Formula.       
+
+     * ruleml:#MetaformulaOrFormula Properties
+       ** from attributes
+         @xml:id See ruleml:#xml-id
+
+       ** from child elements
+         <meta> See ruleml:#meta
+   -->
+  <rdfs:Class rdf:about="#MetaformulaOrFormula">
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#MetaformulaOrFormula called ruleml:#Metaformula.
+       It is intended to be a union of classes for metalevel formulas, 
+       such as ruleml:#Entailment and ruleml:#Rulebase.       
+   -->
+  <rdfs:Class rdf:about="#Metaformula">
+    <rdfs:subClassOf rdf:resource="#MetaformulaOrFormula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Metaformula called ruleml:#Entailment.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Entails>.
+       
+     * ruleml:#Entails Properties
+       ** from child elements
+         <if> See ruleml:#ifEntails       
+         <then> See ruleml:#thenEntails       
+   -->
+  <rdfs:Class rdf:about="#Entailment">
+    <rdfs:subClassOf rdf:resource="#Metaformula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Metaformula called ruleml:#Rulebase.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Rulebase>.
+       
+     * ruleml:#Rulebase Properties
+       ** from child elements
+         <formula> See ruleml:#formulaRulebase       
+   -->
+  <rdfs:Class rdf:about="#Rulebase">
+    <rdfs:subClassOf rdf:resource="#Metaformula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#MetaformulaOrFormula called ruleml:#Formula.
+       It is intended to be a super-class for classes of base-level formulas, 
+       such as ruleml:#Rule and ruleml:#AtomicFormula.       
+       The union of ruleml:#SimpleFormula and ruleml:#CompoundFormula is ruleml:#Formula .
+   -->
+  <rdfs:Class rdf:about="#Formula">
+    <rdfs:subClassOf rdf:resource="#MetaformulaOrFormula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Formula called ruleml:#Rule.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Rule>.
+       
+     * ruleml:#Rule Properties
+       ** from child elements
+         <if> See ruleml:#ifRule       
+         <then> See ruleml:#thenRule       
+   -->
+  <rdfs:Class rdf:about="#Rule">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Formula called ruleml:#LogicalFormula.
+       It is intended to be a super-class for classes of logical formulas,
+       such as ruleml:#Conjunction .
+   -->
+  <rdfs:Class rdf:about="#LogicalFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Formula called ruleml:#SimpleFormula.
+       It is intended to be a super-class for classes of formulas that are simple,
+       such as ruleml:#AtomicFormula and ruleml:#Equation .
+       Simple means they do not contain other formulas.
+       This class is disjoint with ruleml:#CompoundFormula.
+   -->
+  <rdfs:Class rdf:about="#SimpleFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Formula called ruleml:#CompoundFormula.
+       It is intended to be a super-class for classes of formulas that are compound,
+       such as ruleml:#Conjuntion and ruleml:#Rule .
+       Compound means they contain at least one formula.
+   -->
+  <rdfs:Class rdf:about="#CompoundFormula">
+    <rdfs:subClassOf rdf:resource="#Formula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#CompoundFormula called ruleml:#Quantification.
+       It is intended to be a superclass for classes of formulas that quantify variables
+       over the domain of discourse (or sorts in the domain of discourse),
+       such as ruleml:#Universal, ruleml:#Existential as well as user-defined quantifications
+       such as numerical quantification (there exists exactly two ...).
+   -->
+  <rdfs:Class rdf:about="#Quantification">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#CompoundFormula called ruleml:#Operation.
+       It is intended to be an abstract superclass for classes of operations, such as
+       ruleml:#TruthFunctionalOperation and ruleml:#ModalOperation.
+       It is disjoint with ruleml:#Quantification .
+  -->
+  <rdfs:Class rdf:about="#Operation">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Operation called ruleml:#TruthFunctionalOperation.
+       It is intended to be a superclass for classes of truth-functional operations 
+       on formulas, such as ruleml:#Conjunction .
+       The deductive system for truth-functional operations 
+       applied to ground formulas may be specified by 
+       truth-value (not necessarily Boolean) tables or axiom schemas.
+       The operational semantics for the standard logical operators is built in to RuleML,
+       but users may also specifiy operations such as polyadic implication, 
+       exclusive disjunction or flavors of weak negation.
+       The (argument) formulas may by non-ground (contain free variables).
+   -->
+  <rdfs:Class rdf:about="#TruthFunctionalOperation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Operation called ruleml:#Negation.
+       It is intended to be a superclass for more specialized classes of negation,
+       such as ruleml:#NegationClassical .
+   -->
+  <rdfs:Class rdf:about="#Negation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Operation called ruleml:#ModalOperation.
+       It is intended to be a superclass for certain classes of 
+       non-truth-functional operations on formulas.
+       It is necessary to supplement the built-in RuleML deductive system 
+       with a deductive system for the modal operators that are used.
+   -->
+  <rdfs:Class rdf:about="#ModalOperation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Quantification called ruleml:#Universal.
+      The variable(s) declared to be in-scope in the universal quantification
+      may be bound to any member of (the power set of) the domain of discourse, or
+      if the quantification is restricted by sort type or a guard, then
+      the binding is to any elements of a subset of the (power set of the) domain of discourse.
+      The universal quantification is true of all such bindings yield true formulas.
+   -->
+  <rdfs:Class rdf:about="#Universal">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Quantification called ruleml:#Existential.
+   -->
+  <rdfs:Class rdf:about="#Existential">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+
+
+  <!-- There is a subclass of ruleml:#Negation called ruleml:#NegationAsFailure
+   -->
+  <rdfs:Class rdf:about="#NegationAsFailure">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#Negation called ruleml:#NegationClassical
+   -->
+  <rdfs:Class rdf:about="#NegationClassical">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+    <rdfs:subClassOf rdf:resource="#LogicalOperation"/>
+  </rdfs:Class>
+
+  <!-- There is a subclass of ruleml:#TruthFunctionalOperation called ruleml:#Conjunction.
+       It is intended to have members whose names are specified using
+       the @node attribute of <And>, excluding any non-truth-functional semantic variants,
+       such as the probabilistic intersection of dependent events.
+   -->
+  <rdfs:Class rdf:about="#Conjunction">
+    <rdfs:subClassOf rdf:resource="#LogicalOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Disjunction">
+    <rdfs:subClassOf rdf:resource="#LogicalOperation"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Equivalence">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implication">
+    <rdfs:subClassOf rdf:resource="#Connective"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implies?closure=universal">
+    <rdfs:subClassOf rdf:resource="#Universal"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Implies?closure=existential">
+    <rdfs:subClassOf rdf:resource="#Existential"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#ImplicationMaterial">
+    <rdfs:subClassOf rdf:resource="#Implication"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#AtomicFormula">
+    <rdfs:subClassOf rdf:resource="#SimpleFormula"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Equation">
+    <rdfs:subClassOf rdf:resource="#SimpleFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#EquationBidirectional">
+    <rdfs:subClassOf rdf:resource="#Equation"/>
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Term">
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Individual">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Variable">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Skolem">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Expression">
+    <rdfs:subClassOf rdf:resource="#Term"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Relation">
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#Function">
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="#formulaRulebase">
+    <rdfs:domain rdf:resource="#Rulebase"/>
+    <rdfs:range rdf:resource="#Formula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaFormula">
+    <rdfs:domain rdf:resource="#Formula"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaNaf">
+    <rdfs:domain rdf:resource="#NegationAsFailure"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaNeg">
+    <rdfs:domain rdf:resource="#NegationClassical"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaExists">
+    <rdfs:domain rdf:resource="#Existential"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaForall">
+    <rdfs:domain rdf:resource="#Universal"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#formulaEquivalent">
+    <rdfs:domain rdf:resource="#Equivalence"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#meta">
+    <rdfs:domain rdf:resource="#RuleMLNode"/>
+    <rdfs:range rdf:resource="#Formula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#oidAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#opAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Relation"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#argAtom">
+    <rdfs:domain rdf:resource="#AtomicFormula"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#oidExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#opExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Function"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#argExpr">
+    <rdfs:domain rdf:resource="#Expression"/>
+    <rdfs:range rdf:resource="#Term"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ifRule">
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#thenRule">
+    <rdfs:domain rdf:resource="#Rule"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ifImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#thenImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#LogicalFormula"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ifEntails">
+    <rdfs:domain rdf:resource="#Entailment"/>
+    <rdfs:range rdf:resource="#Rulebase"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#thenEntails">
+    <rdfs:domain rdf:resource="#Entailment"/>
+    <rdfs:range rdf:resource="#Rulebase"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#iriInd">
+    <rdfs:domain rdf:resource="#Individual"/>
+    <rdfs:range rdf:resource="&xs;anyURI"/>
+  </rdf:Property>
+
+</rdf:RDF>

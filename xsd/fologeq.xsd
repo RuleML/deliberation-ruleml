@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec" xmlns="http://ruleml.org/spec"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema 
+targetNamespace="http://ruleml.org/spec" 
+xmlns="http://ruleml.org/spec"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
 
 	<xs:annotation>
-		<xs:documentation xml:lang="en"> XML Schema for a First-Order Logic RuleML sublanguage with
-			equational logic File: fologeq.xsd Version: 1.0 Last Modification: 2012-05-25 [Tara
-			Athan] </xs:documentation>
+		<xs:documentation xml:lang="en">
+			XML Schema for a First-Order Logic RuleML sublanguage with equational logic
+			File: fologeq.xsd
+			Version: 1.0
+			Last Modification: 2012-05-25 [Tara Athan]
+		</xs:documentation>
 	</xs:annotation>
-
+	
 	<!-- equalog includes the 'equality' module -->
 	<xs:redefine schemaLocation="modules/equality_module.xsd"/>
 
@@ -33,21 +39,21 @@
 		[Tara Athan 2012-05-25]
 		See http://wiki.ruleml.org/index.php/XSD-Errata0.91#Err5
 		-->
-		<xs:complexType name="Expr.type">
-			<xs:complexContent>
-				<xs:extension base="Expr.type">
-					<xs:attributeGroup ref="per-equality.attrib"/>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
-		<xs:complexType name="Fun.type">
-			<xs:complexContent>
-				<xs:extension base="Fun.type">
-					<xs:attributeGroup ref="per-equality.attrib"/>
-					<xs:attributeGroup ref="val.attrib"/>
-				</xs:extension>
-			</xs:complexContent>
-		</xs:complexType>
+		   <xs:complexType name="Expr.type">
+      <xs:complexContent>
+        <xs:extension base="Expr.type">
+          <xs:attributeGroup ref="per-equality.attrib"></xs:attributeGroup>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Fun.type">
+      <xs:complexContent>
+        <xs:extension base="Fun.type">
+          <xs:attributeGroup ref="per-equality.attrib"></xs:attributeGroup>
+			<xs:attributeGroup ref="val.attrib"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
 
 		<!--
 			add Equal so that Query's content model is:
@@ -59,7 +65,7 @@
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-
+	
 		<!--
 			add Equal so that Assert's content model is:
 			( meta*,(formula|Atom|Rulebase|And|Or|Neg|Implies|Equivalent|Entails|Forall|Exists|Equal)* )
@@ -68,10 +74,10 @@
 			<xs:choice>
 				<xs:group ref="formula-assert.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>
+			</xs:choice>	
 		</xs:group>
-
-
+		
+		
 		<!--
 			add Equal so that Rulebase's content model is:
 			( meta*, (formula | Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)* )
@@ -80,7 +86,7 @@
 			<xs:choice>
 				<xs:group ref="formula-rulebase.content"/>
 				<xs:element ref="Equal"/>
-			</xs:choice>
+			</xs:choice>	
 		</xs:group>
 
 		<!--
@@ -93,7 +99,7 @@
 				<xs:element ref="Equal"/>
 			</xs:choice>
 		</xs:group>
-
+		
 		<!--
 			add Equal so that if's content model is:
 			(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal )
@@ -113,7 +119,7 @@
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal ) 
 				)
 			)
-		-->
+		-->	
 
 		<!--
 			add Equal so that strong's content model is:
@@ -200,8 +206,8 @@
 					(Atom | And | Or | Neg | Implies | Equivalent | Forall | Exists | Equal)
 				)
 			)
-		-->
-
+		-->	
+		
 	</xs:redefine>
 
 </xs:schema>
