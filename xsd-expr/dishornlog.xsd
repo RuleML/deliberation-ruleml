@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+targetNamespace="http://ruleml.org/spec" 
+xmlns="http://ruleml.org/spec"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified"
+>
+
+<!-- note that elementFormDefault is qualified because of local declarations -->
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			XML Schema for a Disjunctive Horn-Logic RuleML sublanguage
+			File: dishornlog.xsd
+			Version: 1.0
+			Last Modification: 2012-05-24
+		</xs:documentation>
+	</xs:annotation>
+	
+	<xs:redefine schemaLocation="hornlog.xsd">
+
+		<!--
+			Add Or so that then's content model is: (Atom | Or)
+
+			Note: And could also be added to then.
+		-->
+		<xs:group name="then.content">
+			<xs:choice>
+				<xs:group ref="then.content"/>		
+				<xs:element name="Or" type="Or-inner.type"/>
+			</xs:choice>
+		</xs:group>
+		<!--
+			note that the above indirectly adds Or to Implies so that its content model is:
+			( meta*, ( then, if) | ( if, then) | ( (Atom | And | Or), (Atom | Or) ) )	
+		-->
+	  <xs:attributeGroup name="per.attrib">
+	    <xs:attributeGroup ref="per.attrib"/>	  
+	  </xs:attributeGroup>
+	  <xs:group name="formula-and-or.content">
+	    <xs:choice>
+	      <xs:group ref="formula-and-or.content"/>
+	    </xs:choice>	
+	  </xs:group>
+	  <xs:group name="if.content">
+	    <xs:choice>
+	      <xs:group ref="if.content"/>		
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-query.content">
+	    <xs:choice>
+	      <xs:group ref="formula-query.content"/>
+	    </xs:choice>	
+	  </xs:group>
+	  <xs:group name="formula-assert.content">
+	    <xs:choice>
+	      <xs:group ref="formula-assert.content"/>
+	    </xs:choice>	
+	  </xs:group>	
+	  <xs:group name="formula-rulebase.content">
+	    <xs:choice>
+	      <xs:group ref="formula-rulebase.content"/>
+	    </xs:choice>	
+	  </xs:group>	
+	  <xs:attributeGroup name="Fun.attlist">
+	    <xs:attributeGroup ref="iri.attrib"/>
+	    <xs:attributeGroup ref="node.attrib"/>
+	    <xs:attributeGroup ref="xml.attlist"/>
+	  </xs:attributeGroup>
+	  <xs:attributeGroup name="Expr.attlist">
+	    <xs:attributeGroup ref="node.attrib"/>
+	    <xs:attributeGroup ref="xml.attlist"/>
+	  </xs:attributeGroup>
+	  
+	  <xs:complexType name="Expr.type">
+	    <xs:complexContent>
+	      <xs:restriction base="Expr.type">
+	        <xs:group ref="Expr.content"/>
+	        <xs:attributeGroup ref="Expr.attlist"/>
+	      </xs:restriction>
+	    </xs:complexContent>
+	  </xs:complexType>
+	  <xs:complexType name="Fun.type">
+	    <xs:complexContent>
+	      <xs:restriction base="Fun.type">
+	        <xs:group ref="Fun.content"/>
+	        <xs:attributeGroup ref="Fun.attlist"/>
+	      </xs:restriction>
+	    </xs:complexContent>
+	  </xs:complexType>
+	  
+		<xs:attributeGroup name="And-query.attlist">
+			<xs:attributeGroup ref="And-query.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="And-inner.attlist">	
+			<xs:attributeGroup ref="And-inner.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Or-query.attlist">
+			<xs:attributeGroup ref="Or-query.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Or-inner.attlist">	
+			<xs:attributeGroup ref="Or-inner.attlist"/>
+		</xs:attributeGroup>		
+	  
+		<xs:group name="torso.content">
+			<xs:choice>
+				<xs:group ref="torso.content"/>
+			</xs:choice>
+		</xs:group>	
+
+		<xs:attributeGroup name="Implies.attlist">
+			<xs:attributeGroup ref="Implies.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Equivalent.attlist">
+			<xs:attributeGroup ref="Equivalent.attlist"/>
+		</xs:attributeGroup>
+
+	  <xs:group name="formula-forall.content">
+			<xs:choice>
+				<xs:group ref="formula-forall.content"/>
+			</xs:choice>
+		</xs:group>	
+		<xs:group name="formula-exists.content">
+			<xs:choice>
+				<xs:group ref="formula-exists.content"/>
+			</xs:choice>
+		</xs:group>
+		<xs:attributeGroup name="Forall.attlist">
+			<xs:attributeGroup ref="Forall.attlist"/>
+		</xs:attributeGroup>
+		<xs:attributeGroup name="Exists.attlist">
+			<xs:attributeGroup ref="Exists.attlist"/>
+		</xs:attributeGroup>		
+		<xs:attributeGroup name="Query.attlist">
+			<xs:attributeGroup ref="Query.attlist"/>
+		</xs:attributeGroup>
+		
+	</xs:redefine>
+
+</xs:schema>

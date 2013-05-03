@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+targetNamespace="http://ruleml.org/spec" 
+xmlns="http://ruleml.org/spec"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			Behind-the-scenes XML Schema for the transition from folog to fologeq
+			File: _folog-to-fologeq.xsd
+			Version: 1.0
+			Last Modification: 2011-09-19 [Tara Athan]
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:redefine schemaLocation="folog.xsd">
+
+		<!--
+			Remove @per, to be re-added (slightly changed) in fologeq
+			
+			This would be more intuitive if done by restricting Expr.attlist,
+			but this type of attribute restriction apparently isn't recognized by XSV.
+		-->
+		<!--<xs:attributeGroup name="per.attrib"/>-->
+	  <xs:attributeGroup name="Fun.attlist">
+	    <xs:attributeGroup ref="iri.attrib"/>
+	    <xs:attributeGroup ref="node.attrib"/>
+	    <xs:attributeGroup ref="xml.attlist"/>
+	  </xs:attributeGroup>
+	  <xs:attributeGroup name="Expr.attlist">
+	    <xs:attributeGroup ref="node.attrib"/>
+	    <xs:attributeGroup ref="xml.attlist"/>
+	  </xs:attributeGroup>
+	  <xs:complexType name="Expr.type">
+	    <xs:complexContent>
+	      <xs:restriction base="Expr.type">
+	        <xs:group ref="Expr.content"/>
+	        <xs:attributeGroup ref="Expr.attlist"></xs:attributeGroup>
+	      </xs:restriction>
+	    </xs:complexContent>
+	  </xs:complexType>
+	  <xs:complexType name="Fun.type">
+	    <xs:complexContent>
+	      <xs:restriction base="Fun.type">
+	        <xs:group ref="Fun.content"/>
+	        <xs:attributeGroup ref="Fun.attlist"></xs:attributeGroup>
+	      </xs:restriction>
+	    </xs:complexContent>
+	  </xs:complexType>
+	  
+	  <xs:group name="formula-query.content">
+	    <xs:choice>
+	      <xs:group ref="formula-query.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-assert.content">
+	    <xs:choice>
+	      <xs:group ref="formula-assert.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-rulebase.content">
+	    <xs:choice>
+	      <xs:group ref="formula-rulebase.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="then.content">
+	    <xs:choice>
+	      <xs:group ref="then.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="if.content">
+	    <xs:choice>
+	      <xs:group ref="if.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="strong.content">
+	    <xs:choice>
+	      <xs:group ref="strong.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="torso.content">
+	    <xs:choice>
+	      <xs:group ref="torso.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-forall.content">
+	    <xs:choice>
+	      <xs:group ref="formula-forall.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-exists.content">
+	    <xs:choice>
+	      <xs:group ref="formula-exists.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-and-or.content">
+	    <xs:choice>
+	      <xs:group ref="formula-and-or.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  
+
+	</xs:redefine>
+	
+</xs:schema>

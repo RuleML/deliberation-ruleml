@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">     
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">    
+]>
+
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+  <!-- This metamodel has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+
+  <!-- Within "rdfs:comment"s CURIE syntax will be used. 
+       For example the CURIE 
+         rulemlmm:RuleML 
+       corresponds to the IRI
+         http://ruleml.org/1.0/metamodel#RuleML
+       See: http://www.w3.org/TR/curie/  
+  -->
+
+  <!--<owl:Ontology rdf:about="&rulemlmm;#"/>-->
+
+  <rdfs:Class rdf:about="#RuleMLNode">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>RuleMLNode</rdfs:label>
+    <rdfs:comment>A "Node" in a RuleML Document. 
+      Disjoint from rulemlmm:ruleMLEdge and rulemlmm:ruleMLDataProperty.
+      Abstract. The element name of a Node in the RuleML XML syntax always
+      begins with an upper-case letter. In the normal-form serialization,
+      Node elements alternate with edge elements.
+      Such XML syntaxes are sometimes called "striped".
+      In the relaxed serialization, a Node element is never optional.
+      The value of the @node attribute of the RuleML syntax is the IRI of an
+      instance of rulemlmm:#RuleMLNode.
+    </rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="#RuleMLLeafNode">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>RuleMLLeafNode</rdfs:label>
+    <rdfs:comment>A Node in a RuleML document capable of containing simple content. 
+      Abstract. 
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+
+  <rdf:Property rdf:about="#ruleMLEdge">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>ruleMLEdge</rdfs:label>
+    <rdfs:comment>An "edge" in a RuleML document. 
+      Disjoint from Nodes and data properties.
+      Abstract. The element name of an edge in the RuleML XML syntax always
+      begins with a lower-case letter. In the relaxed serialization,
+      some edge elements are optional,
+      giving rise to the "stripe-skipped" abbreviated syntax.
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#RuleMLNode"/>
+    <rdfs:range rdf:resource="#RuleMLNode"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#ruleMLDataProperty">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>ruleMLDataProperty</rdfs:label>
+    <rdfs:comment>A data property in a RuleML documents. 
+      Disjoint from Nodes and edges.
+      Abstract. 
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#RuleMLNode"/>
+    <rdfs:range rdf:resource="&xs;#anyType"/>
+  </rdf:Property>
+
+
+  <rdfs:Class rdf:about="#RuleMLDocument">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>RuleMLDocument</rdfs:label>
+    <rdfs:comment>An equivalence class of RuleML
+       XML serializations where the equivalence relation is defined by
+       
+       Option 1. Normalize, and compared XDM intances
+       1. Normalizing by XSLT transformation according to the stylesheet
+       http://ruleml.org/1.0/xslt/normalizer/100_normalizer.xslt.
+       2. Constructing the XQuery 1.0 and XPath 2.0 Data Model (XDM) instance as
+       a fragment, starting with the RuleML Document element.
+       (This allows RuleML documents to be embedded in other XML syntaxes.)
+       3. All relative IRI references are resolved in the standard fashion
+       relataive to the baseURI, and thereafter the baseURI is ignored .
+       4. document order is ignored.
+       5. XML comments are ignored.
+       6. XML processing instructions are ignored.
+       7. element types or the absence of element types are ignored
+       8. literals are compared according to their lexical values.
+       9. Text nodes containing only whitespace are ignored, except if such a
+       text node occurs as the simple content of a rulemlmm:RuleMLLeafNode.
+       10. xml:id attributes and values are ignored.
+       
+       Option 2. Construct RDF models consistent with this RDFS, and compare
+       the RDF graphs for syntactic equivalence.
+       The construction is performed by the XSLT transformation FIXME.
+       
+       Concrete. In the RuleML XML sytnax, the IRI of a
+       rulemlmm:RuleMLDocument is specified by the value of the @node attribute
+       of the root ruleml:RuleML element.
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="#hasMetaknowledge">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>hasMetaknowledge</rdfs:label>
+    <rdfs:comment>The subject, a RuleML node, has a metaknowledge annotation which is a RuleML
+      formula or metaformula.
+      
+      A rulemlmm:RuleMLNode is related by rulemlmm:hasMetaknowledge to any number of
+       rulemlmm:FormulaforMeta.  
+       A rulemlmm:FormulaforMeta may be inversely related by
+       rulemlmm:hasMetaknowledge to any number of rulemlmm:RuleMLNode,
+       although in practice this would be uncommon.
+      
+      Concrete. In the RuleML XML sytnax, the ruleml:meta edge is used to state
+      the rulemlmm:hasMetaknowledge property.
+    </rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#ruleMLEdge"/>
+    <rdfs:domain rdf:resource="#RuleMLNode"/>
+    <rdfs:range>
+      <rdfs:Class rdf:about="#FormulaForMeta">
+        <rdfs:subClassOf>
+          <rdfs:Class rdf:about="#MetaformalaOrFormula">
+            <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+          </rdfs:Class>
+        </rdfs:subClassOf>
+      </rdfs:Class>
+    </rdfs:range>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#hasLexeme">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>hasLexeme</rdfs:label>
+    <rdfs:comment>The subject, a RuleML leaf node, has a lexeme which is a character string.
+      
+      A rulemlmm:RuleMLLeafNode is related by rulemlmm:hasLexeme to any number of
+      xs:string.  
+      An xs:string may be inversely related by
+      rulemlmm:hasLexeme to any number of rulemlmm:RuleMLLeafNode,
+      which are disambiguated by IRI or blank node identifier.
+      
+      Abstract. In the RuleML XML sytnax, this property is stated when an element
+      has simple content. 
+      Within a single RuleML Rulebase, all the leaf nodes of the constant syntactic category
+      (individual, relation, function, skolem)
+      and having the same lexeme but no IRI are associated with the same RDF blank node.
+      Within the scope of quantification, all the variable leaf nodes
+      having the same lexeme are associated with the same RDF blank node.
+      
+    </rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#ruleMLDataProperty"/>
+    <rdfs:domain rdf:resource="#RuleMLLeafNode"/>
+    <rdfs:range rdf:resource="&xs;#string"/>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:about="#xml-id">
+    <rdfs:isDefinedBy rdf:resource="&rulemlmm;#"/>
+    <rdfs:label>xml-id</rdfs:label>
+    <rdfs:comment>
+      A rulemlmm:xml-Element has exactly one value of the data property 
+       rulemlmm:xml-id. These "xml-" concepts and properties are part of the 
+       XDM (XQuery 1.0 and XPath 2.0 Data Model http://www.w3.org/TR/xpath-datamodel/)
+       and are external to the RuleML metamodel.
+       
+       The xml:id attribute does not have any semantic effect on the resource
+       named by the @node attribute of that element.
+       By RuleML convention, fragments of XML from a RuleML document may be identified with an
+       IRI reference containing an XPointer expression, such as 
+               #xpointer(xml:id['1234'])
+       
+       In the case of the RuleML element
+         <!--
+         <Atom node="#abc" xml:id="1234" xml:base="http://example.org/ex1"><Rel>P</Rel></Atom>
+         -->
+       retrieved from "http://example.org/ex2.xml"
+       the information resource http://example.org/ex2.xml#xpointer(xml:id['1234']) is a manifestation of
+       an expression of some information about the entity http://example.org/ex1#abc.   
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#xml-element"/>
+    <rdfs:range rdf:resource="&xs;#NCName"/>
+  </rdf:Property>
+
+</rdf:RDF>

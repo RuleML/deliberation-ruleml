@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">     
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">    
+ <!ENTITY ruledesc SYSTEM "../inc/rules.inc">
+]>
+
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+  <!-- In these comments I will use CURIE syntax -->
+  <!-- This metamodel has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+  <!-- There is a subclass of rulemlmm:Formula called rulemlmm:Rule.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Rule>. 
+       In RuleML Version 1.0, this is the only kind of rulemlmm:Formula which can
+       never be used as sub-formula of a rulemlmm:CompoundFormula.
+       
+     * rulemlmm:Rule Properties
+       ** from child elements
+         <if> See rulemlmm:ifRule       
+         <then> See rulemlmm:thenRule       
+   -->
+  &ruledesc; </rdf:RDF>

@@ -1,13 +1,25 @@
 <?xml version="1.0"?>
 
-<xs:schema targetNamespace="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://ruleml.org/spec">
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec">
 
   <xs:annotation>
-    <xs:documentation xml:lang="en"> This is the XML Schema module for equality in RuleML. File:
-      equality_module.xsd Version: 1.0 Last Modification: 2012-02-21 [Tara Athan] This module
-      declares the following RuleML elements and attributes: * Equal * left * right * @oriented *
-      @val See http://www.ruleml.org/modularization for details about this modularization approach. </xs:documentation>
+    <xs:documentation xml:lang="en"
+      >
+			This is the XML Schema module for equality in RuleML.
+			File: equality_module.xsd
+			Version: 1.0
+			Last Modification: 2012-02-21 [Tara Athan]
+			
+			This module declares the following RuleML elements and attributes:
+			* Equal
+			* left
+			* right
+			* @oriented
+			* @val
+			
+			See http://www.ruleml.org/modularization for details about this modularization approach.
+		</xs:documentation>
 
     <!-- necessary for schematron -->
     <!-- 
