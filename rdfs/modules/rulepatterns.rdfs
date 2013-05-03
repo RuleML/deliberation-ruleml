@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">     
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">    
+ ]>
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+
+
+  <!-- The class rulemlmm:Rule has type rulemlmm:RulePattern. -->
+  <rdfs:Class rdf:about="http://ruleml.org/1.0/metamodel#Rule">
+    <rdf:type rdf:resource="http://ruleml.org/1.0/metamodel#RulePattern"/>
+  </rdfs:Class>
+
+  <!-- legalruleml:LegalRule is a subclass of  rulemlmm:RulePattern . -->
+  <rdfs:Class rdf:about="#LegalRule">
+    <rdfs:subClassOf rdf:resource="http://ruleml.org/1.0/metamodel#RulePattern"
+    />
+  </rdfs:Class>
+
+  <!-- The class rulemlmm:LogicalFormula has type rulemlmm:LogicalFormulaPattern. -->
+  <rdfs:Class rdf:about="http://ruleml.org/1.0/metamodel#LogicalFormula">
+    <rdf:type
+      rdf:resource="http://ruleml.org/1.0/metamodel#LogicalFormulaPattern"/>
+  </rdfs:Class>
+
+
+  <rdfs:Class rdf:about="http://example.legalruleml.org#LegalNorm">
+    <rdfs:subClassOf rdf:resource="http://ruleml.org/1.0/metamodel#Rule"/>
+  </rdfs:Class>
+
+
+
+  <rdfs:Class rdf:about="http://example.financialruleml.org#FinancialRule">
+    <rdfs:subClassOf rdf:resource="http://ruleml.org/1.0/metamodel#Rule"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://acme.org#ContractForm">
+    <rdfs:subClassOf rdf:resource="http://ruleml.org/1.0/metamodel#RulePattern"
+    />
+  </rdfs:Class>
+
+
+
+</rdf:RDF>

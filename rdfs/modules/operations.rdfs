@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">     
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">  
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">    
+]>
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+  <!-- In these comments I will use CURIE syntax -->
+  <!-- This metamodel has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+  <!-- rulemlmm:Operation is a subclass of #rulemlmm:Formula
+       See formulas.rdfs
+   -->
+  <!-- There is a subclass of rulemlmm:Operation called rulemlmm:ModalOperation.
+       It is intended to be a superclass for certain classes of 
+       non-truth-functional operations on formulas.
+       It is necessary to supplement the built-in RuleML deductive system 
+       with a deductive system for the modal operators that are used.
+   -->
+  <rdfs:Class rdf:about="#ModalOperation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Operation called rulemlmm:Negation.
+       It is intended to be an abstract superclass for more specialized classes of negation,
+       such as rulemlmm:NegationClassical or rulemlmm:NegationAsFailure. 
+   -->
+  <rdfs:Class rdf:about="#Negation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Operation called
+       rulemlmm:Junction.
+       It is intended to have members whose names are specified using
+       the @node attribute of <And> or <Or>, including non-truth-functional semantic variants,
+       such as the probabilistic intersection of dependent events.
+   -->
+  <rdfs:Class rdf:about="#Junction">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Conjunction">
+    <rdfs:subClassOf rdf:resource="#Junction"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Disjunction">
+    <rdfs:subClassOf rdf:resource="#Junction"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Operation called
+       rulemlmm:Implication.
+       It is intended to have members whose names are specified using
+       the @node attribute of <Implies>, including non-truth-functional semantic variants,
+       such as non-material implication, or implication restricted by direction of
+       reasoning.
+   -->
+  <rdfs:Class rdf:about="#Implication">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Operation called
+       rulemlmm:Equivalaence.
+       It is intended to have members whose names are specified using
+       the @node attribute of <Equivalence>, including non-truth-functional semantic variants,
+       although none are implemented in RuleML Version 1.0.
+   -->
+  <rdfs:Class rdf:about="#Equivalence">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Negation called rulemlmm:NegationAsFailure
+   -->
+  <rdfs:Class rdf:about="#NegationAsFailure">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Operation called
+       rulemlmm:TruthFunctionalOperation. 
+       It is intended to be a superclass for classes of truth-functional operations 
+       on formulas, such as rulemlmm:NegationClassical and
+       rulemlmm:ImplicationClassical .
+       The deductive system for truth-functional operations 
+       applied to ground formulas may be specified by 
+       truth-value (not necessarily Boolean) tables or axiom schemas.
+       The operational semantics for the standard logical operators is built in to RuleML,
+       but users may also specifiy operations such as polyadic implication, 
+       exclusive disjunction or flavors of weak negation.
+       The (argument) formulas may by non-ground (contain free variables).
+   -->
+  <rdfs:Class rdf:about="#TruthFunctionalOperation">
+    <rdfs:subClassOf rdf:resource="#Operation"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Negation called rulemlmm:NegationClassical
+   -->
+  <rdfs:Class rdf:about="#NegationClassical">
+    <rdfs:subClassOf rdf:resource="#Negation"/>
+    <rdfs:subClassOf rdf:resource="#TruthFunctionalOperation"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#ImplicationClassical">
+    <rdfs:subClassOf rdf:resource="#Implication"/>
+    <rdfs:subClassOf rdf:resource="#TruthFunctionalOperation"/>
+  </rdfs:Class>
+  <!-- The arguments of a compound formula are defined, below, by properties.
+       The range of these properties, such as rulemlmm:formulaNeg, is restricted
+       in certain RuleML sublanguages, according to the expressivity of the
+       sublanguage according to the "backbone" facet.
+       The backbone facet has the following values:
+       datagroundfact
+       datagroundlog
+       datalog
+       hornlog
+       dislog
+       fol
+       The classes below define the ranges for compound logical formulas
+       according to the expressivity level.
+       At the expressivity level of fol, the range is all formulas.
+  -->
+  <rdfs:Class rdf:about="#FormulaForNaf">
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#FormulaForNeg">
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Premise">
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#Conclusion">
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#FormulaForAndOr">
+    <rdfs:subClassOf rdf:resource="#LogicalFormula"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="#formulaNaf">
+    <rdfs:domain rdf:resource="#NegationAsFailure"/>
+    <rdfs:range rdf:resource="#FormulaForNaf"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#formulaNeg">
+    <rdfs:domain rdf:resource="#NegationClassical"/>
+    <rdfs:range rdf:resource="#FormulaForNeg"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#formulaAndOr">
+    <rdfs:domain rdf:resource="#Junction"/>
+    <rdfs:range rdf:resource="#FormulaForAndOr"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#ifImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#Premise"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#thenImplies">
+    <rdfs:domain rdf:resource="#Implication"/>
+    <rdfs:range rdf:resource="#Conclusion"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#formulaEquivalent">
+    <rdfs:domain rdf:resource="#Equivalence"/>
+    <rdfs:range rdf:resource="#Conclusion"/>
+  </rdf:Property>
+</rdf:RDF>

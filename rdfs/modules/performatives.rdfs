@@ -1,0 +1,131 @@
+<!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">     
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">  
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">    
+]>
+
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+  <!-- This metamodel has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+  <!-- In these comments I will use CURIE syntax. 
+       For example the CURIE 
+         rulemlmm:RuleML 
+       corresponds to the IRI
+         http://ruleml.org/1.0/metamodel#RuleML
+       See: http://www.w3.org/TR/curie/  
+  -->
+  <!-- There is a subclass of rulemlmm:RuleMLNode called rulemlmm:Performative.
+       It is intended to be an "abstract" class with members belonging to some
+       particular subtypes such as rulemlmm:Assertion, rulemlmm:Retraction and
+       rulemlmm:Query.
+       
+     * rulemlmm:Performative Properties
+       The properties of rulemlmm:Performative are the common properties of all
+       of its subtypes.
+       ** from attributes
+         @xml:id See rulemlmm:xml-id
+       
+       ** from child elements
+         <meta> See rulemlmm:meta
+   -->
+  <rdfs:Class rdf:about="#Performative">
+    <rdfs:subClassOf rdf:resource="#RuleMLNode"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Performative called rulemlmm:AssertionOrRetract.
+       It is intended to be an "abstract" class with members whose names are
+       specified using the @node attribute of (exactly) subtypes
+       rulemlmm:Assertion and rulemlmm:Retraction . 
+       These two performatives are grouped together because their properties are
+       always related due to rulemlmm:Retraction being an "undo" performative for
+       rulemlmm:Assertion. In sublanguages such as Datalog and Horn Logic, the
+       range of some properties of rulemlmm:Assertion and rulemlmm:Retraction are
+       restricted in a synchronized fashion.
+ -->
+  <rdfs:Class rdf:about="#AssertionOrRetraction">
+    <rdfs:subClassOf rdf:resource="#Performative"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Performative called rulemlmm:Assertion.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Assert>.
+       
+     * rulemlmm:Assertion Properties
+       ** from child elements
+         <formula> See rulemlmm:formulaAssertRetract       
+   -->
+  <rdfs:Class rdf:about="#Assertion">
+    <rdfs:subClassOf rdf:resource="#AssertionOrRetraction"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Performative called rulemlmm:Retraction.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Retract>.
+       
+     * rulemlmm:Retraction Properties
+       ** from child elements
+         <formula> See rulemlmm:formulaAssertRetract       
+   -->
+  <rdfs:Class rdf:about="#Retraction">
+    <rdfs:subClassOf rdf:resource="#AssertionOrRetraction"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Performative called rulemlmm:Query.
+       It is intended to be a class with members whose names are specified using
+       the @node attribute of <Query>.
+       
+     * rulemlmm:Query Properties
+       ** from child elements
+         <formula> See rulemlmm:formulaQuery       
+   -->
+  <rdfs:Class rdf:about="#Query">
+    <rdfs:subClassOf rdf:resource="#Performative"/>
+  </rdfs:Class>
+  <!-- A rulemlmm:RuleMLDocument (document) is related by rulemlmm:act to any number of 
+       rulemlmm:Performative. 
+       A rulemlmm:Performative may in principle be inversely related by rulemlmm:act to any
+       number of rulemlmm:RuleMLDocument, allowing the description of a particular
+       rulemlmm:Performative to be distributed over multiple rulemlmm:RuleMLDocument
+       documents.
+
+       In practice, a single rulemlmm:RuleMLDocument may be implemented multiple
+       times, and thus each #Performative is a fluent having a temporal history
+       containing multiple individual transactions.
+  -->
+  <rdfs:Class rdf:about="#FormulaForQuery">
+    <rdfs:subClassOf rdf:resource="#MetaformulaOrFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#FormulaForAssertRetract">
+    <rdfs:subClassOf rdf:resource="#MetaformulaOrFormula"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="#act">
+    <rdfs:domain rdf:resource="#RuleMLDocument"/>
+    <rdfs:range rdf:resource="#Performative"/>
+  </rdf:Property>
+  <!-- A rulemlmm:Assertion or rulemlmm:Retraction is related by
+       rulemlmm:formulaAssertRetract to any number of rulemlmm:Metaformula and
+       rulemlmm:Formula.  
+       A rulemlmm:Metaformula or rulemlmm:Formula may be inversely related by
+       rulemlmm:formulaAssertRetract to any number of rulemlmm:Assertion or
+       rulemlmm:Retraction, allowing the same formula or metaformula to be asserted
+       and/or retracted in multiple RuleML documents. 
+  -->
+  <rdf:Property rdf:about="#formulaAssertRetract">
+    <rdfs:domain rdf:resource="#AssertionOrRetraction"/>
+    <rdfs:range rdf:resource="#FormulaForAssertRetract"/>
+  </rdf:Property>
+  <!-- A rulemlmm:Query is related by rulemlmm:formulaQuery to any number of
+       rulemlmm:Metaformula and rulemlmm:Formula.  
+       A rulemlmm:Metaformula or rulemlmm:Formula may be inversely related by
+       rulemlmm:formulaQuery to any number of rulemlmm:Query, allowing the same
+       formula or metaformula to be used as a query in multiple RuleML documents.
+  -->
+  <rdf:Property rdf:about="#formulaQuery">
+    <rdfs:domain rdf:resource="#Query"/>
+    <rdfs:range rdf:resource="#FormulaForQuery"/>
+  </rdf:Property>
+</rdf:RDF>

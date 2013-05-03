@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+xmlns="http://ruleml.org/spec" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://ruleml.org/spec"
+>
+
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+			XML Schema for the RuleML sublanguage "datalog".
+			File: datalog.xsd
+			Version: 1.0
+			Last Modification: 2012-04-03
+		</xs:documentation>
+	</xs:annotation>
+
+	<!--
+		Note that datalog is entirely composed of modules and that all other
+		schema drivers rely on it, making it the root of the sublanguage family tree.
+	-->
+
+	<!--
+		Datalog includes the following modules:
+		* performative
+		* desc
+		* quantifier
+		* connective
+		* atom
+		* slot
+		* term
+		* datatypes
+		* iri
+
+		For details on each module, including what element and/or attribute declarations
+		they contain, please refer to them individually.
+	-->
+
+	<xs:redefine schemaLocation="modules/performative_module.xsd">
+	  <xs:group name="formula-assert.content">
+	    <xs:choice>
+	      <xs:group ref="formula-assert.content"/>
+	    </xs:choice>
+	  </xs:group>	
+	  <xs:group name="formula-query.content">
+	    <xs:choice>
+	      <xs:group ref="formula-query.content"/>
+	    </xs:choice>	
+	  </xs:group>
+		<xs:attributeGroup name="Query.attlist">
+			<xs:attributeGroup ref="Query.attlist"/>
+		</xs:attributeGroup>
+	  
+	  
+	</xs:redefine>
+  
+	<xs:redefine schemaLocation="modules/desc_module.xsd">
+	  <xs:group name="oid.content">
+	    <xs:choice>
+	      <xs:group ref="oid.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  
+	</xs:redefine>
+  
+	<xs:redefine schemaLocation="modules/quantifier_module.xsd">
+	  	  <xs:group name="formula-forall.content">
+			<xs:choice>
+				<xs:group ref="formula-forall.content"/>
+			</xs:choice>
+		</xs:group>	
+		<xs:group name="formula-exists.content">
+			<xs:choice>
+				<xs:group ref="formula-exists.content"/>
+			</xs:choice>
+		</xs:group>
+		<xs:attributeGroup name="Forall.attlist">
+			<xs:attributeGroup ref="Forall.attlist"/>
+		</xs:attributeGroup>
+		<xs:attributeGroup name="Exists.attlist">
+			<xs:attributeGroup ref="Exists.attlist"/>
+		</xs:attributeGroup>		
+
+	</xs:redefine>
+  
+	<xs:redefine schemaLocation="modules/connective_module.xsd">
+	  <xs:group name="then.content">
+	    <xs:choice>
+	      <xs:group ref="then.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="if.content">
+	    <xs:choice>
+	      <xs:group ref="if.content"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="formula-rulebase.content">
+	    <xs:choice>
+	      <xs:group ref="formula-rulebase.content"/>
+	    </xs:choice>
+	  </xs:group>	
+	  <xs:group name="formula-and-or.content">
+	    <xs:choice>
+	      <xs:group ref="formula-and-or.content"/>
+	    </xs:choice>	
+	  </xs:group>
+		<xs:attributeGroup name="And-query.attlist">
+			<xs:attributeGroup ref="And-query.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="And-inner.attlist">	
+			<xs:attributeGroup ref="And-inner.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Or-query.attlist">
+			<xs:attributeGroup ref="Or-query.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Or-inner.attlist">	
+			<xs:attributeGroup ref="Or-inner.attlist"/>
+		</xs:attributeGroup>		
+	  
+		<xs:group name="torso.content">
+			<xs:choice>
+				<xs:group ref="torso.content"/>
+			</xs:choice>
+		</xs:group>	
+
+		<xs:attributeGroup name="Implies.attlist">
+			<xs:attributeGroup ref="Implies.attlist"/>
+		</xs:attributeGroup>	
+		<xs:attributeGroup name="Equivalent.attlist">
+			<xs:attributeGroup ref="Equivalent.attlist"/>
+		</xs:attributeGroup>
+
+	  
+	</xs:redefine>
+  
+	<xs:redefine schemaLocation="modules/atom_module.xsd">
+	  <xs:group name="Atom-repo.extend">
+	    <xs:choice>
+	      <xs:group ref="Atom-repo.extend"/>
+	    </xs:choice>
+	  </xs:group>
+	  <xs:group name="Atom-arg.extend">
+	    <xs:sequence>
+	      <xs:group ref="Atom-arg.extend"/>
+	    </xs:sequence>
+	  </xs:group>
+	  <xs:group name="Atom-slots.extend2">
+	    <xs:sequence>
+	      <xs:group ref="Atom-slots.extend2"/>
+	    </xs:sequence>
+	  </xs:group>
+	  
+	</xs:redefine>
+	<xs:redefine schemaLocation="modules/slot_module.xsd">
+	  <xs:group name="slot-name.extend">
+	    <xs:choice>
+	      <xs:group ref="slot-name.extend"/>
+	    </xs:choice>
+	  </xs:group>
+	  
+	</xs:redefine>
+  <xs:redefine schemaLocation="modules/term_module.xsd">
+    <xs:group name="arg.content">
+      <xs:choice>
+        <xs:group ref="arg.content"/>
+      </xs:choice>
+    </xs:group>
+    
+  </xs:redefine>
+  <xs:redefine schemaLocation="modules/iri_module.xsd">
+    <xs:attributeGroup name="iri.attrib">
+      <xs:attributeGroup ref="iri.attrib"></xs:attributeGroup>
+    </xs:attributeGroup>
+    
+  </xs:redefine>
+
+</xs:schema>

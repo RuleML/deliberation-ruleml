@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RDF [
+ <!ENTITY owl "http://www.w3.org/2002/07/owl">    
+ <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">  
+ <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+ <!ENTITY rulemlmm "http://ruleml.org/1.0/metamodel">
+ <!ENTITY rulemlv "http://ruleml.org/1.0/vocab">
+ <!ENTITY xs "http://www.w3.org/2001/XMLSchema">     
+]>
+
+<?xml-model href="http://www.w3.org/TR/2003/WD-rdf-syntax-grammar-20030123/rdfxml.rng" 
+  type="application/relax-ng-compact-syntax"?>
+<rdf:RDF xmlns:owl="&owl;#" xmlns:rdf="&rdf;#" xmlns:rdfs="&rdfs;#"
+  xmlns:rulemlmm="&rulemlmm;#" xmlns:rulemlv="&rulemlv;#" xmlns:xs="&xs;"
+  xml:base="&rulemlmm;">
+  <!-- In these comments I will use CURIE syntax -->
+  <!-- This metamodel has been reverse-engineered from the
+       RuleML Version 1.0 syntax. -->
+  <!-- There is a subclass of rulemlmm:CompoundFormula called rulemlmm:Quantification.
+       It is intended to be a superclass for classes of formulas that quantify variables
+       over the domain of discourse (or sorts in the domain of discourse),
+       such as rulemlmm:Universal, rulemlmm:Existential as well as user-defined quantifications
+       such as numerical quantification (there exists exactly two ...).
+   -->
+  <rdfs:Class rdf:about="#Quantification">
+    <rdfs:subClassOf rdf:resource="#CompoundFormula"/>
+  </rdfs:Class>
+  <!-- A rulemlmm:QuantificationClosed is a rulemlmm:Quantification that has no free
+    variables. -->
+  <rdfs:Class rdf:about="#QuantificationClosed">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Quantification called rulemlmm:Universal.
+      The variable(s) declared to be in-scope in the universal quantification
+      may be bound to any member of (the power set of) the domain of discourse, or
+      if the quantification is restricted by sort type or a guard, then
+      the binding is to any elements of a subset of the (power set of the) domain of discourse.
+      The universal quantification is true of all such bindings yield true formulas.
+   -->
+  <rdfs:Class rdf:about="#Universal">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+  <!-- There is a subclass of rulemlmm:Quantification called rulemlmm:Existential.
+   -->
+  <rdfs:Class rdf:about="#Existential">
+    <rdfs:subClassOf rdf:resource="#Quantification"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="#formulaExists">
+    <rdfs:domain rdf:resource="#Existential"/>
+    <rdfs:range rdf:resource="#FormulaForExistential"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="#formulaForall">
+    <rdfs:domain rdf:resource="#Universal"/>
+    <rdfs:range rdf:resource="#FormulaForUniversal"/>
+  </rdf:Property>
+  <rdfs:Class rdf:about="#FormulaForUniversal">
+    <rdfs:subClassOf rdf:resource="LogicalFormula"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="#FormulaForExistential">
+    <rdfs:subClassOf rdf:resource="LogicalFormula"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="#declare">
+    <rdfs:domain rdf:resource="#Quantification"/>
+    <rdfs:range rdf:resource="#Variable"/>
+  </rdf:Property>
+</rdf:RDF>
