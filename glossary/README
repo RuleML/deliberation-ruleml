@@ -1,7 +1,0 @@
-index-manually-edited.html is the current release, hence was copied to index.html.
-index-generated-from-old-xml-source.html is the result of applying homepage2.xsl to index.xml.
-We need to find the index.xml of the current release or rebuild it from index-manually-edited.html and the old index.xml.
-
-The application of homepage2.xsl to index.xml happens automatically via
-xsltproc -o index.html index.xml
-where the current index.html will be overwritten by the newly generated index.html.
