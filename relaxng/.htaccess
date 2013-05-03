@@ -1,81 +1,89 @@
-Redirect /1.0/relaxng/propatom_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
-
-Redirect /1.0/relaxng/propfact_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x1&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
-
-Redirect /1.0/relaxng/fologeq_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x5&termseq=x7&lng=x1&propo=x310&implies=x1&terms=x210&quant=x0&expr=x1&serial=x0
-
-Redirect /1.0/relaxng/bindatagroundfact_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/bindatagroundlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/bindatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/datalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/nafdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/negdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/nafnegdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
-
-Redirect /1.0/relaxng/hornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
-
-Redirect /1.0/relaxng/nafhornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
-
-Redirect /1.0/relaxng/hornlogeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
-
-Redirect /1.0/relaxng/dishornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1f&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
-
-Redirect /1.0/relaxng/folog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
-
-Redirect /1.0/relaxng/fologeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
-
-Redirect /1.0/relaxng/naffolog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
-
-Redirect /1.0/relaxng/naffologeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
-
-Redirect /1.0/relaxng/bindatagroundfact_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/bindatagroundlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/bindatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/datalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/nafdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-  Redirect /1.0/relaxng/negdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/nafnegdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
-
-Redirect /1.0/relaxng/hornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
-
-Redirect /1.0/relaxng/nafhornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
-
-Redirect /1.0/relaxng/hornlogeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-Redirect /1.0/relaxng/dishornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1f&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
-
-Redirect /1.0/relaxng/folog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
-
-Redirect /1.0/relaxng/fologeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-Redirect /1.0/relaxng/naffolog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
-
-Redirect /1.0/relaxng/naffologeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-Redirect /1.0/relaxng/schema.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-Redirect /1.0/relaxng/naffologeq_relaxed_long-en.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x2&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-#Redirect /1.0/relaxng/ruleml1-00_normal_rnc.zip http://www.alt2is.com/RuleML/1.0/relaxng/schema_normal_zipped.php
-#Redirect /1.0/relaxng/ruleml1-00_relaxed_rnc.zip http://www.alt2is.com/RuleML/1.0/relaxng/schema_relaxed_zipped.php
+# Rewrite rules
+Options +FollowSymLinks
+#IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
 
 
-IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble SuppressSize SuppressLastModified
+RewriteEngine On
+
+HeaderName HEADER.html
+#ReadmeName FOOTER.html
+#IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble SuppressSize SuppressLastModified
 
 AddDescription  "created on-the-fly: please be patient ..." .zip
 
-HeaderName HEADER.html
-ReadmeName FOOTER.html
-IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
+
+Redirect /ruleml.org/1.0/relaxng/propatom_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
+
+Redirect /ruleml.org/1.0/relaxng/propfact_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x1&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
+
+Redirect /ruleml.org/1.0/relaxng/fologeq_cl.rnc http://www.ruleml.org/RuleML/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x5&termseq=x7&lng=x1&propo=x310&implies=x1&terms=x210&quant=x0&expr=x1&serial=x0
+
+Redirect /ruleml.org/1.0/relaxng/bindatagroundfact_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/bindatagroundlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/bindatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/datalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/nafdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/negdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/nafnegdatalog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/hornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/nafhornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/hornlogeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/dishornlog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1f&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/folog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/fologeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/naffolog_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/naffologeq_normal.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
+
+Redirect /ruleml.org/1.0/relaxng/bindatagroundfact_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/bindatagroundlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/bindatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/datalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/nafdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+  Redirect /ruleml.org/1.0/relaxng/negdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/nafnegdatalog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/hornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/nafhornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/hornlogeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/dishornlog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x1f&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/folog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/fologeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/naffolog_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/naffologeq_relaxed.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/schema.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+Redirect /ruleml.org/1.0/relaxng/naffologeq_relaxed_long-en.rnc http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x2&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+#Redirect /ruleml.org/1.0/relaxng/ruleml1-00_normal_rnc.zip http://www.alt2is.com/RuleML/1.0/relaxng/schema_normal_zipped.php
+#Redirect /ruleml.org/1.0/relaxng/ruleml1-00_relaxed_rnc.zip http://www.alt2is.com/RuleML/1.0/relaxng/schema_relaxed_zipped.php
+
+
