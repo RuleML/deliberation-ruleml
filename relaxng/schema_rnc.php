@@ -1,6 +1,5 @@
 <?php
 //Assembler of RNC schema for RuleML 1.01
-// Last Modified 2012/04/03
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
@@ -182,6 +181,7 @@ if ($bdefault==0){
   // of modules for binary and polyadic positional term sequences.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
   $needBin = extractBit($btermseq, $termseq_binary) * (1-$needPoly);
+  $needUn  = extractBit($btermseq, $termseq_unary)  * (1-$needPoly);
   
   $needLongNames = extractBit($blng, $lng_long_en);
 
@@ -322,7 +322,12 @@ if ($bdefault==0){
           echo 'include "' . $modulesLocation .
               'default_present_folog_expansion_module.rnc"'."$end\n";
   }
-  //Step 1D. Determine which module to include for positional arguments
+  //Step 1D. Determine which module to include for positional arguments 
+  if ($needUn){
+      echo "#\n# UNARY TERM (ONE TERM ONLY) SEQUENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+        'termseq_un_expansion_module.rnc"'."$end\n";
+  }
   if ($needBin){
       echo "#\n# BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
