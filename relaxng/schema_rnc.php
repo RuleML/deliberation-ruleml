@@ -29,7 +29,7 @@ echo($now);
 echo '" ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]';
 echo "\n";
 echo "# Call parameters\n";
 $this_url = $base_url;
