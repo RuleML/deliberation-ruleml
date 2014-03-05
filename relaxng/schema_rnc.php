@@ -1,5 +1,5 @@
 <?php
-//Assembler of RNC schema for RuleML 1.0
+//Assembler of RNC schema for RuleML 1.01
 // Last Modified 2012/04/03
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
@@ -17,7 +17,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
 dc:title [ "RuleML Custom-Built Schema" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
 dc:subject [ "RuleML, custom-built" ]
 dc:description [
