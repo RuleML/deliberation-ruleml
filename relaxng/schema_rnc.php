@@ -172,16 +172,16 @@ if ($bdefault==0){
   $bdefault_present = extractBit($bdefault, $default_present);
   $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);
 
-  $btermseq_unary = extractBit($btermseq, $unary);
-  $btermseq_binary = extractBit($btermseq, $binary);
-  $btermseq_ternary_plus = extractBit($btermseq, $ternary_plus);
+  $btermseq_unary = extractBit($btermseq, $termseq_unary);
+  $btermseq_binary = extractBit($btermseq, $termseq_binary);
+  $btermseq_ternary_plus = extractBit($btermseq, $termseq_ternary_plus);
   $needPoly = $btermseq_ternary_plus * $btermseq_binary * $btermseq_unary;
   
   // Apparent lack of monotonicity caused by incomplete orthogonalization
   // of modules for binary and polyadic positional term sequences.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
-  $needBin = extractBit($btermseq, $termseq_binary) * (1-$needPoly);
-  $needUn  = extractBit($btermseq, $termseq_unary)  * (1-$needPoly);
+  $needBin = $btermseq_binary * (1-$needPoly);
+  $needUn  = $btermseq_unary  * (1-$needPoly);
   
   $needLongNames = extractBit($blng, $lng_long_en);
 
@@ -698,7 +698,7 @@ function processGETParameter ($paramName){
   //FIXME: error/warning handling needs to be cleaned up
   //       if a parameter is not passed, then select sup(remum) or inf(imum) value depending on value of parameter "mode" (default sup)
   $param_base_default = "x";
-  $bparam_default = decbin(hexdec(fff));
+  $bparam_default = decbin(hexdec('fff'));
   $param = $_GET[$paramName];
   //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
   if (strlen($param)>0){
