@@ -25,7 +25,7 @@ dc:relation [ "http://deliberation.ruleml.org/1.01" ]
 # GET parameter: expr=x0
 # GET parameter: serial=xb
 # Complete URL = 
-#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x2&lng=x1&propo=x1&implies=x0&terms=x0&quant=x0&expr=x0&serial=xb
+#     http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x1&lng=x1&propo=x1&implies=x0&terms=x0&quant=x0&expr=x0&serial=xb
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED

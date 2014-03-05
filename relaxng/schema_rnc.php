@@ -8,26 +8,26 @@ $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
-$base_url = "http://www.ruleml.org/1.0/relaxng/schema_rnc.php";
+$base_url = "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
-dc:title [ "RuleML Custom-Built Schema" ]
+dc:title [ "Deliberation RuleML Custom-Built Schema" ]
 dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "RuleML, custom-built" ]
+dc:subject [ "Deliberation RuleML, custom-built" ]
 dc:description [
-    "custom-built main module for a RuleML sublanguage."
+    "custom-built main module for a Deliberation RuleML sublanguage."
 ]
 dc:date [ "';
 echo($now);
 echo '" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]';
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
 echo "\n";
 echo "# Call parameters\n";
 $this_url = $base_url;
