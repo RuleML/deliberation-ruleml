@@ -31,9 +31,11 @@
                 if (!(
                 LanguageForm.termseq[0].checked *
                 LanguageForm.termseq[1].checked *
-                LanguageForm.termseq[2].checked)) {
+                LanguageForm.termseq[2].checked *
+                LanguageForm.termseq[3].checked *
+                LanguageForm.termseq[4].checked)) {
                     // initialize to Polyadic
-                    LanguageForm.termseq[2].checked = true;
+                    LanguageForm.termseq[4].checked = true;
                 }
                 if (!(
                 LanguageForm.lng[0].checked *
@@ -144,7 +146,7 @@
                 // If quantification is allowed and
                 // term sequences are polyadic, then
                 // positional rest variables are available
-                if (datalogAndUp && LanguageForm.termseq[2].checked) {
+                if (datalogAndUp && LanguageForm.termseq[4].checked) {
                     LanguageForm.quant2.removeAttribute('disabled');
                 } else {
                     LanguageForm.quant2.checked = false;
@@ -207,10 +209,26 @@
                 params = params + "&default=x" + df.toString(16);
                 //
                 var ts = 0;
-                for (i = 0; i <= 2; i = i + 1) {
+                for (i = 0; i <= 4; i = i + 1) {
                     if (LanguageForm.termseq[i].checked) {
-                        ts = (-1) * i + 3 * i *(i + 1) / 2;
-                    }
+			switch (i) {
+			    case 0:
+			        ts = 0;
+			        break;
+			    case 1:
+			        ts = 1;
+			        break;
+			    case 2:
+			        ts = 2;
+			        break;
+			    case 3:
+			        ts = 3;
+			        break;
+			    case 4:
+			        ts = 7;
+			        break;
+
+			}                    }
                 }
                 params = params + "&termseq=x" + ts.toString(16);
                 //
@@ -359,8 +377,14 @@
                 style="list-style-type:none;padding: 0px; margin: 0px;">
                 <li><input type="radio" name="termseq" onclick="checkAll(this.form)" /> None </li>
                 <li>
+                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary (Zero
+                  or One) </li>
+                <li>
                   <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Binary (Zero
                   or Two) </li>
+                <li>
+                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary/Binary (Zero
+                  to Two) </li>
                 <li>
                   <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Polyadic (Zero
                   or More) </li>
