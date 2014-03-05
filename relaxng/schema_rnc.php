@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 'On');
+error_reporting(E_ALL | E_STRICT);
 //Assembler of RNC schema for RuleML 1.01
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
@@ -255,7 +256,7 @@ if ($bdefault==0){
   // Add the start statement
     echo $start;
   // Include the root and performatives if needed
-    if ($needPerformatives){    
+    if ($needPerformatives) {    
       echo "#\n# ROOT NODE AND PERFORMATIVES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .'performative_expansion_module.rnc"'."$end\n";
     }
