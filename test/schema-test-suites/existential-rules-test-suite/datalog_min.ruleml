@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalog_min.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+
+  <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
+
+  <Assert>
+    <Forall>
+      <Var>y</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>friend</Rel>
+              <Ind>Jane</Ind>
+
+              <Data xsi:type="xs:string">test</Data>
+              <Data xsi:type="xs:integer">12</Data>
+              <Data>tomorrow</Data>
+              <Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data>
+              <Data>test12</Data>
+
+              <Ind>Jack</Ind>
+              <Var>y</Var>
+              <Ind>Frank</Ind>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Atom>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+</RuleML>

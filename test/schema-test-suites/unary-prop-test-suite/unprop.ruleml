@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/unprop.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Negative Constraints sublanguage -->
+
+  <Assert>
+
+    <Atom>
+      <Rel>mother</Rel>
+      <Ind>x</Ind>
+    </Atom>
+  </Assert>
+
+</RuleML>

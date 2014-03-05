@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/ncdatalog.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Negative Constraints sublanguage -->
+
+  <Assert>
+
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Ind>x</Ind>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+
+</RuleML>

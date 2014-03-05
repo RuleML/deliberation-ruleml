@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogeq.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
+
+  <Assert>
+
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>mother</Rel>
+              <Ind>Jane</Ind>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>mother</Rel>
+              <Ind>Jane</Ind>
+              <Var>y</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+
+</RuleML>
