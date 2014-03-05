@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 'On');
 //Assembler of RNC schema for RuleML 1.01
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
