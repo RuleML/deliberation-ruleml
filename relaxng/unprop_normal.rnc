@@ -1,0 +1,73 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+namespace ruleml = "http://ruleml.org/spec"
+
+dc:title [ "Deliberation RuleML Custom-Built Schema" ]
+dc:version [ "1.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
+dc:subject [ "Deliberation RuleML, custom-built" ]
+dc:description [
+    "custom-built main module for a Deliberation RuleML sublanguage."
+]
+dc:date [ "2014-03-05T08:58:45-05:00" ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+# Call parameters
+# Base URL = http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php 
+# GET parameter: backbone=x0
+# GET parameter: default=x5
+# GET parameter: termseq=x1
+# GET parameter: lng=x1
+# GET parameter: propo=x1
+# GET parameter: implies=x0
+# GET parameter: terms=x0
+# GET parameter: quant=x0
+# GET parameter: expr=x0
+# GET parameter: serial=x8
+# Complete URL = 
+#     http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x1&lng=x1&propo=x1&implies=x0&terms=x0&quant=x0&expr=x0&serial=x8
+ start = Node.choice | edge.choice
+#
+# ROOT NODE AND PERFORMATIVES INCLUDED
+#
+include "modules/performative_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ATOMIC FORMULAS INCLUDED
+#
+include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED
+#
+include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL
+#
+include "modules/default_absent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# UNARY TERM (ONE TERM ONLY) SEQUENCES INCLUDED
+#
+include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ORDER MODE - UNORDERED GROUPS DISABLED
+#
+include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# xsi:schemaLocation ALLOWED IN RuleML
+#
+include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
+#
+include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
+#
+include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INITIALIZATION MODULES INCLUDED
+#
+include "modules/init_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+
+#

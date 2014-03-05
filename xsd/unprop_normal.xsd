@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec" xmlns:spec="http://ruleml.org/spec">
+  <xs:element name="RuleML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:act"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Assert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Retract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Atom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="spec:op"/>
+        <xs:element minOccurs="0" ref="spec:arg"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rel">
+    <xs:complexType mixed="true">
+      <xs:attribute name="iri" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ind">
+    <xs:complexType mixed="true">
+      <xs:attribute name="iri" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="formula">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="spec:Atom"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="op">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="spec:Rel"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="spec:Ind"/>
+      </xs:sequence>
+      <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="act">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="spec:Assert"/>
+        <xs:element ref="spec:Retract"/>
+        <xs:element ref="spec:Query"/>
+      </xs:choice>
+      <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
