@@ -54,17 +54,22 @@
                 // Terms are needed if sequences or equations are allowed
                 termsNeeded = sequencesAllowed ||
                 LanguageForm.terms4.checked;
+                //
                 groundLogicAndUp = !(LanguageForm.backbone[0].checked ||
                 LanguageForm.backbone[1].checked);
+                //
                 datalogAndUp = !(LanguageForm.backbone[0].checked ||
                 LanguageForm.backbone[1].checked ||
                 LanguageForm.backbone[2].checked);
+                //
                 hornlogAndUp = !(LanguageForm.backbone[0].checked ||
                 LanguageForm.backbone[1].checked ||
                 LanguageForm.backbone[2].checked ||
                 LanguageForm.backbone[3].checked);
+                //
                 hornlogeqAndUp = hornlogAndUp *
                 LanguageForm.terms4.checked;
+                fol = LanguageForm.backbone[6].checked;
                 // If rulebases are allowed, entailments are available
                 if (LanguageForm.propo1.checked) {
                     LanguageForm.propo2.removeAttribute('disabled');
@@ -77,13 +82,21 @@
                     LanguageForm.implies0.removeAttribute('disabled');
                     //  LanguageForm.implies1.removeAttribute('disabled');
                     //  LanguageForm.implies2.removeAttribute('disabled');
+                    if(fol) {
+                      LanguageForm.implies3.checked = true;
+                      LanguageForm.implies3.disabled = "disabled";
+                    } else {
+                      LanguageForm.implies3.removeAttribute('disabled');
+                    }  
                 } else {
                     LanguageForm.implies0.checked = false;
                     //  LanguageForm.implies1.checked = false;
                     //  LanguageForm.implies2.checked = false;
+                    LanguageForm.implies3.checked = false;
                     LanguageForm.implies0.disabled = "disabled";
                     //  LanguageForm.implies1.disabled = "disabled";
                     //  LanguageForm.implies2.disabled = "disabled";
+                    LanguageForm.implies3.disabled = "disabled";
                 }
                 // In RuleML 1.0, non-default values of scope implication attributes
                 // are allowed, even in fact languages with no implications
@@ -249,7 +262,7 @@
                 params = params + "&propo=x" + propo.toString(16);
                 //
                 var implies = 0;
-                for (i = 0; i <= 2; i = i + 1) {
+                for (i = 0; i <= 3; i = i + 1) {
                     if (eval("LanguageForm.implies" + i + ".checked")) {
                         implies = implies + Math.pow(2, i);
                     }
@@ -459,6 +472,9 @@
                 <li>
                   <input type="checkbox" name="implies2" onclick="checkAll(this.form)"
                     checked="checked" /> Non-Material </li>
+                <li>
+                  <input type="checkbox" name="implies3" onclick="checkAll(this.form)"
+                    checked="checked" /> Existential Head </li>
               </ol>
             </td>
             <td style="padding:8px"> Term <br /> Options <br /> (Check Zero or More) <ol

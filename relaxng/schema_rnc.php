@@ -101,6 +101,7 @@ $implies = "implies";
 $implies_equivalent = 0;
 $implies_direction = 1;
 $implies_material = 2;
+$implies_ex = 3;
 $bimplies = processGETParameter ($implies);
 $impliesParam = "x".dechex(bindec($bimplies));
 $call_fragment = $implies."=".$impliesParam;
@@ -214,7 +215,8 @@ if ($bdefault==0){
   $needMatND =  extractBit($bimplies, $implies_material);
   $needMatD =  $bdefault_present;
   $needMatAtt = $needMatD + $needMatND;
-
+  $needExHead = extractBit($bimplies, $implies_ex);
+  
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
   $needCard = extractBit($bterms, $terms_card);
@@ -485,6 +487,12 @@ if ($bdefault==0){
       echo "#\n# DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
         'material_default_expansion_module.rnc"'."$end\n";
+    }
+    // Include existential heads in implications
+    if ($needExHead){
+      echo "#\n# EXISTENTIAL HEADS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'existential_head_expansion_module.rnc"'."$end\n";
     }
     
   //Step 3C. Include term-related modules 
