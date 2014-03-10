@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogex_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Existential Rules sublanguage -->
+
+  <Assert>
+    <!-- Every manager directs at least one department. -->
+    <Forall>
+      <Var>M</Var>
+      <Implies>
+        <if>
+            <Atom>
+              <Rel>manager</Rel>
+              <Ind>x</Ind>
+            </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>P</Var>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>M</Var>
+              <Var>P</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+
+    <!-- The heads and bodies of existential rules can contain conjunctions. -->
+    <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->  
+    <Forall>
+      <Var>E</Var>
+      <Var>P</Var>
+      <Implies>
+        <if>
+          <And>            
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>E</Var>
+            </Atom>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>E</Var>
+              <Var>P</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Exists>
+            <Var>E'</Var>
+            <And>
+              <Atom>
+                <Rel>manager</Rel>
+                <Var>E</Var>
+              </Atom>
+              <Atom>
+                <Rel>supervises</Rel>
+                <Var>E</Var>
+                <Var>E'</Var>
+              </Atom>
+              <Atom>
+                <Rel>works_in</Rel>
+                <Var>E'</Var>
+                <Var>P</Var>
+              </Atom>
+            </And>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+
+</RuleML>

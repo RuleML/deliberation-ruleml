@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogeqex_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Existential Rules sublanguage -->
+
+  <Assert>
+    <!-- Equations are allowed as facts-->
+    <Equal>
+      <Ind>Bill</Ind>
+      <Ind>William</Ind>
+    </Equal>
+
+    <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+    <Forall>
+      <Var>x</Var>
+      <Equal>
+        <Var>x</Var>
+        <Var>x</Var>
+      </Equal>
+    </Forall>
+    
+    <!-- Equations are allowed in the body of (existential) implications, 
+         but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Equal>
+            <Ind>Jane</Ind>
+            <Var>x</Var>
+          </Equal>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+            <Atom>
+              <Rel>son</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+
+    <!-- Functionality Constraint: Everyone has at most one mother. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>x</Var>
+              <Var>z</Var>
+            </Atom>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+
+
+  </Assert>
+
+</RuleML>

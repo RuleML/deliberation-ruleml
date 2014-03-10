@@ -36,9 +36,7 @@ Implies.Node.def =
   
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
   ## http://www.ruleml.org/1.0/glossary/#gloss-Implies
-  element Implies {
-    (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main
-  }
+  element Implies { (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main }
 
 ## Implications may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
@@ -108,14 +106,48 @@ head_Implies.content |= ConclusionFormula.choice
 
 ## formulas allowed to be conclusions include atomic formulas. 
 ConclusionFormula.choice |=
-  SimpleFormula-node.choice
-  | And-fo-node.choice
-  | Or-dis-node.choice
-  | Negation-node.choice
+  Atom-head-node.choice
+  | Equal-head-node.choice
+  | And-head-node.choice
+  | Or-head-node.choice
+  | Negation-head-node.choice
   | NegationAsFailure-node.notallowed
-  | Implication-fo-node.choice
-  | Forall-fo-node.choice
-  | Exists-fo-node.choice
+  | Implication-head-node.choice
+  | Forall-head-node.choice
+  | Exists-head-node.choice
+
+##    
+Atom-head-node.choice |= Atom-node.choice
+Equal-head-node.choice |= Equal-node.choice
+Or-head-node.choice |= Or-dis-node.choice
+Negation-head-node.choice |= Negation-node.choice
+Implication-head-node.choice |= Implication-fo-node.choice
+Forall-head-node.choice |= Forall-fo-node.choice
+Exists-head-node.choice |= Exists-fo-node.choice
+
+##
+And-head-node.choice |= And-head.Node.def
+And-head.Node.def =
+  
+  ## within the head of implications
+  element And { (And-datt.choice & reAnd.attlist), And.header, And-head.main }
+And-head.main |= formula_And-head-edge.choice*
+formula_And-head-edge.choice |= formula_And-head.edge.def
+formula_And-head.edge.def =
+  
+  ##
+  element formula { formula_And.attlist? & formula_And-head.content }
+formula_And-head.content |= AndHeadFormula.choice
+AndHeadFormula.choice |=
+  Atom-node.choice
+  | Equal-fo-node.choice
+  | And-head-node.choice
+  | Or-head-node.choice
+  | Negation-head-node.choice
+  | NegationAsFailure-node.notallowed
+  | Implication-head-node.choice
+  | Forall-head-node.choice
+  | Exists-head-node.choice
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
 # For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 

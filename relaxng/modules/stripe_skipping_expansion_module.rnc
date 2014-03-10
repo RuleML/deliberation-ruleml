@@ -21,9 +21,11 @@ start |= notAllowed
 #            * head_Entails
 #            * torso
 #            * formula_And
+#            * formula_And-head
 #            * formula_Or
 #            * formula_Forall
 #            * formula_Exists
+#            * formula_Exists-head
 #            * formula_AssertRetract
 #            * formula_Query
 #            * formula_Rulebase
@@ -70,6 +72,7 @@ rightSide-edge.choice |= right.content
 
 ## Stripe-skipping is allowed asynchronously for formulas in conjunctions.
 formula_And-edge.choice |= formula_And.content
+formula_And-head-edge.choice |= formula_And-head.content
 
 ## Stripe-skipping is allowed asynchronously for formulas in disjunctions.
 formula_Or-edge.choice |= formula_Or.content
@@ -79,6 +82,7 @@ formula_Forall-edge.choice |= formula_Forall.content
 
 ## Stripe-skipping is allowed for formulas in existential quantifications.
 formula_Exists-edge.choice |= formula_Exists.content
+formula_Exists-head-edge.choice |= formula_Exists-head.content
 
 ## Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.
 formula_AssertRetract-edge.choice |= formula_AssertRetract.content

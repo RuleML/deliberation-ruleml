@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogex_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Existential Rules sublanguage -->
+
+  <Assert>
+    <!-- An existential head cannot contain disjunctions. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Ind>Jane</Ind>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+            <Or>
+              <Atom>
+                <Rel>son</Rel>
+                <Var>x</Var>
+                <Var>y</Var>
+              </Atom>
+              <Atom>
+                <Rel>married</Rel>
+                <Var>y</Var>
+              </Atom>
+            </Or>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+
+    <!-- An existential head cannot contain equations. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Ind>Jane</Ind>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+              <Equal>
+                <Var>x</Var>
+                <Var>y</Var>
+              </Equal>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    
+  </Assert>
+
+</RuleML>

@@ -1,0 +1,39 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML Existential Rules" ]
+dc:version [ "1.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, existential" ]
+dc:description [ "The expansion module for existential heads in implications." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+start |= notAllowed
+# This module declares the following RuleML choice pattern:
+  Exists-head-node.choice |= Exists-head.Node.def
+  Exists-head.Node.def =
+    
+    ## within the head of implications
+    element Exists { (Exists-datt.choice & reExists.attlist), Exists.header, Exists-head.main }
+  Exists-head.main |= boundVariables.choice, formula_Exists-head-edge.choice
+  formula_Exists-head-edge.choice |= formula_Exists-head.edge.def
+  formula_Exists-head.edge.def =
+    
+    ## within the head of implications
+    element formula { formula_Exists.attlist? & formula_Exists-head.content }
+  
+  ##    
+  formula_Exists-head.content |= ExistsHeadFormula.choice
+  
+  ##
+  ExistsHeadFormula.choice |=
+    Atom-node.choice
+    | Equal-fo-node.choice
+    | And-head-node.choice
+    | Or-dis-node.choice
+    | Negation-head-node.choice
+    | NegationAsFailure-node.notallowed
+    | Implication-fo-node.choice
+    | Forall-fo-node.choice
+    | Exists-head-node.choice

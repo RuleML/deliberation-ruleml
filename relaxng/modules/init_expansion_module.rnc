@@ -2,14 +2,13 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Initializing Base Patterns" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, initialize, base patterns" ]
 dc:description [ "expansion module for initializing base patterns." ]
-dc:date [ "2012-04-03" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
 start |= notAllowed
 # 
 # .content
@@ -25,9 +24,11 @@ torso.content |= notAllowed
 left.content |= notAllowed
 right.content |= notAllowed
 formula_And.content |= notAllowed
+formula_And-head.content |= notAllowed
 formula_Or.content |= notAllowed
 formula_Forall.content |= notAllowed
 formula_Exists.content |= notAllowed
+formula_Exists-head.content |= notAllowed
 formula_AssertRetract.content |= notAllowed
 formula_Query.content |= notAllowed
 formula_Rulebase.content |= notAllowed
@@ -229,31 +230,40 @@ SlotSequenceMarker.choice |= notAllowed
 # 
 # Node renaming and internationalizatio
 And-node.choice |= notAllowed
+And-head-node.choice |= notAllowed
 And-fo-node.choice |= notAllowed
 And-Query-node.choice |= notAllowed
 Or-node.choice |= notAllowed
+Or-head-node.choice |= notAllowed
 Or-dis-node.choice |= notAllowed
 Or-fo-node.choice |= notAllowed
 Or-Query-node.choice |= notAllowed
 SimpleFormula-node.choice |= notAllowed
+Atom-node.choice |= notAllowed
 Data_any-node.choice |= notAllowed
 Data_simple-node.choice |= notAllowed
 Equal-node.choice |= notAllowed
+Equal-head-node.choice |= notAllowed
+Equal-fo-node.choice |= notAllowed
 Equivalent-node.choice |= notAllowed
 Expression-node.choice |= notAllowed
 Implication-node.choice |= notAllowed
+Implication-head-node.choice |= notAllowed
 Implication-fo-node.choice |= notAllowed
 Rulebase-node.choice |= notAllowed
 Entails-node.choice |= notAllowed
 NegationAsFailure-node.choice |= notAllowed
 Negation-node.choice |= notAllowed
+Negation-head-node.choice |= notAllowed
 Negation-fo-node.choice |= notAllowed
 Plex_Any-node.choice |= notAllowed
 Plex_repo-node.choice |= notAllowed
 Plex_resl-node.choice |= notAllowed
 Forall-node.choice |= notAllowed
+Forall-head-node.choice |= notAllowed
 Forall-fo-node.choice |= notAllowed
 Exists-node.choice |= notAllowed
+Exists-head-node.choice |= notAllowed
 Exists-fo-node.choice |= notAllowed
 Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
@@ -278,6 +288,8 @@ head_Entails.name.choice |= notAllowed
 restOfPositionalArguments-edge.choice |= notAllowed
 restOfSlots-edge.choice |= notAllowed
 positionalArgument-edge.choice |= notAllowed
+#
+boundVariables.choice |= notAllowed
 # 
 # ATTRIBUTE VALUES
 cardinality.value |= notAllowed

@@ -41,5 +41,30 @@
         </then>
       </Implies>
     </Forall>
+
+    <Forall>
+      <Var>X</Var>
+      <Forall>
+        <Var>Y</Var>
+        <Implies>
+          <Atom>
+            <Rel>P</Rel>
+            <Var>X</Var>
+          </Atom>
+          <Atom>
+            <Rel>Q</Rel>
+            <Var>Y</Var>
+          </Atom>
+        </Implies>
+      </Forall>
+    </Forall>
+
+    <Forall>
+      <Var>X</Var>
+      <Atom>
+        <Rel>P</Rel>
+        <Var>X</Var>
+      </Atom>
+    </Forall>
   </Assert>
 </RuleML>

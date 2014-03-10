@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalog_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+
+  <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
+
+  <Assert>
+    <!-- Existentials are not allowed in the head of Datalog implications. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Var>x</Var>
+            <Ind>Jane</Ind>
+          </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+            <Atom>
+              <Rel>son</Rel>
+              <Var>y</Var>
+              <Var>x</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    
+    <!-- Equality is not allowed in the heads (or bodies) of Datalog implications. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>mother</Rel>
+              <Ind>Jane</Ind>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>mother</Rel>
+              <Ind>Jane</Ind>
+              <Var>y</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+    
+    <!-- Disjunction, even the empty disjunction, is not allowed in the heads of
+         Datalog implications.-->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Ind>x</Ind>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+    
+  </Assert>
+</RuleML>
