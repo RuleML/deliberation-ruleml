@@ -5,8 +5,8 @@ AddType text/xml .ruleml
 AddType application/rdf+xml .rdfs
 AddType text/xhtml+xml .xhtml
 AddType application/xml .nvdl .rng .sch
-Redirect /ruleml.org/1.0/rnc http://ruleml.org/1.0/relaxng/schema_rnc.php
-Redirect /ruleml.org/1.0/gui http://ruleml.org/1.0/myng
+Redirect /1.01/rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php
+Redirect /1.01/gui http://deliberation.ruleml.org/1.01/myng
 
 HeaderName HEADER.html
 ReadmeName FOOTER.html

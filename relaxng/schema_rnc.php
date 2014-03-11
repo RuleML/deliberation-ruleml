@@ -215,7 +215,10 @@ if ($bdefault==0){
   $needMatND =  extractBit($bimplies, $implies_material);
   $needMatD =  $bdefault_present;
   $needMatAtt = $needMatD + $needMatND;
-  $needExHead = extractBit($bimplies, $implies_ex);
+  //Apparent lack of monotonicity caused by containment of the
+  // existential head module within the implementation of FOL.
+  //Including the existential head module would be redundant in FOL.
+  $needExHead = extractBit($bimplies, $implies_ex)*(1-$needFO);
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
@@ -704,41 +707,45 @@ echo "\n#";
 }
 //Functions
 function processGETParameter ($paramName){
-  //FIXME: error/warning handling needs to be cleaned up
-  //       if a parameter is not passed, then select sup(remum) or inf(imum) value depending on value of parameter "mode" (default sup)
   $param_base_default = "x";
   $bparam_default = decbin(hexdec('fff'));
-  $param = $_GET[$paramName];
-  //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
-  if (strlen($param)>0){
-    $param_base = substr($param,0,1);
-  } else {
-    $param_base = $param_base_default;
-  }
-  if (preg_match('/x|0/',$param_base)){
-    //echo("#  The ".$paramName." parameter base is ".$param_base."\n");
-    if (strcmp($param_base, 'x')==0){
-      $xparam = substr($param,1);
-      //echo("# The ".$paramName." parameter was provided in hexadecimal");
-      //echo(" as ".$xparam);
-      //echo(".\n");
-      if (ctype_xdigit($xparam)) {
-        $bparam = decbin(hexdec($xparam));
-      } else {
-        echo "#\n# Warning: The string $xparam does not consist of all".
-             "hexadecimal digits.\n";
-        echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
-        $bparam = $bparam_default;
+  if(isset($_GET[$paramName])) {
+    $param = $_GET[$paramName];
+    //echo("#\n#  The ".$paramName." parameter has length ".strlen($param)."\n");
+    if (strlen($param)>0){
+      $param_base = substr($param,0,1);
+    } else {
+      $param_base = $param_base_default;
+    }
+    if (preg_match('/x|0/',$param_base)){
+      //echo("#  The ".$paramName." parameter base is ".$param_base."\n");
+      if (strcmp($param_base, 'x')==0){
+        $xparam = substr($param,1);
+        //echo("# The ".$paramName." parameter was provided in hexadecimal");
+        //echo(" as ".$xparam);
+        //echo(".\n");
+        if (ctype_xdigit($xparam)) {
+          $bparam = decbin(hexdec($xparam));
+        } else {
+          echo "#\n# Warning: The string $xparam does not consist of all".
+               "hexadecimal digits.\n";
+          echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
+          $bparam = $bparam_default;
+        }
+      } elseif (strcmp($param_base, '0')==0){
+        $bparam = 0;
       }
-    } elseif (strcmp($param_base, '0')==0){
-      $bparam = 0;
+    } else {
+      echo "#\n# Warning: The ".$paramName." parameter ".$param." is not a".
+           " hexidecimal or blank string.\n";
+         echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
+        $bparam = $bparam_default;
     }
   } else {
-    echo "<#\n# Warning: The ".$paramName." parameter ".$param." is not a".
-         " hexidecimal or blank string.\n";
-      echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
-      $bparam = $bparam_default;
-  }
+    echo("#\n# The ".$paramName." parameter was not provided.\n"); 
+    echo "# Default (supremum) ".$paramName." parameter is assumed.\n";
+    $bparam = $bparam_default;
+  }  
   //echo("#\n# The ".$paramName." parameter is ".$bparam." in binary.\n");
   return $bparam;
 }
