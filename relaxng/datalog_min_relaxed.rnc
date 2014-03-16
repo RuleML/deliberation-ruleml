@@ -2,21 +2,21 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
-dc:title [ "RuleML Custom-Built Schema" ]
-dc:version [ "1.0.01" ]
+dc:title [ "Deliberation RuleML Custom-Built Schema" ]
+dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "RuleML, custom-built" ]
+dc:subject [ "Deliberation RuleML, custom-built" ]
 dc:description [
-    "custom-built main module for a RuleML sublanguage."
+    "custom-built main module for a Deliberation RuleML sublanguage."
 ]
-dc:date [ "2014-03-04T17:10:30-05:00" ]
+dc:date [ "2014-03-16T08:26:48-04:00" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
 # Call parameters
-# Base URL = http://www.ruleml.org/1.0/relaxng/schema_rnc.php 
+# Base URL = http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php 
 # GET parameter: backbone=x7
-# GET parameter: default=x5
+# GET parameter: default=x7
 # GET parameter: termseq=x7
 # GET parameter: lng=x1
 # GET parameter: propo=x1
@@ -26,7 +26,7 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 # GET parameter: expr=x0
 # GET parameter: serial=xf
 # Complete URL = 
-#     http://www.ruleml.org/1.0/relaxng/schema_rnc.php?backbone=x7&default=x5&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf
+#     http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -58,6 +58,10 @@ include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= no
 include "modules/default_absent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# ATTRIBUTES WITH DEFAULT VALUES REQUIRED
+#
+include "modules/default_present_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED
 #
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -87,6 +91,22 @@ include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {star
 # UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED
 #
 include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INFERENCE DIRECTION ATTRIBUTE IS INCLUDED
+#
+include "modules/direction_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED
+#
+include "modules/direction_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED
+#
+include "modules/material_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED
+#
+include "modules/material_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # DATA TERMS INCLUDED
 #
