@@ -500,7 +500,7 @@ if ($bdefault==0){
           'existential_head_expansion_module.rnc"'."$end\n";
     }    
     // Include negative constraints if needed
-    if ($needNegativeConstraints){
+    if ($needNegConstraint){
       echo "#\n# NEGATIVE CONSTRAINTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'negative_constraint_expansion_module.rnc"'."$end\n";
