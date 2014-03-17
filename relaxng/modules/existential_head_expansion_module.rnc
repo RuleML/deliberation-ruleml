@@ -31,7 +31,7 @@ start |= notAllowed
     Atom-node.choice
     | Equal-fo-node.choice
     | And-head-node.choice
-    | Or-dis-node.choice
+    | Or-head-node.choice
     | Negation-head-node.choice
     | NegationAsFailure-node.notallowed
     | Implication-fo-node.choice

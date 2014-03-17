@@ -76,6 +76,7 @@ formula_And-head-edge.choice |= formula_And-head.content
 
 ## Stripe-skipping is allowed asynchronously for formulas in disjunctions.
 formula_Or-edge.choice |= formula_Or.content
+formula_Or-head-edge.choice |= formula_Or-head.content
 
 ## Stripe-skipping is allowed for formulas in universal quantifications.
 formula_Forall-edge.choice |= formula_Forall.content

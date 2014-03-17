@@ -203,8 +203,30 @@
         </Or>
       </then>
     </Implies>
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>P</Rel>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or>
+            <Atom>
+              <Rel>Q</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>R</Rel>
+            </Atom>
+          </Or>
+        </then>
+      </Implies>
+    </Forall>
 
-    <!-- Disjuntive Rules -->
+    <!-- Existential Disjunctive Rules -->
     <Implies>
       <if>
         <Atom>
@@ -217,6 +239,7 @@
           <Or>
             <Atom>
               <Rel>Q</Rel>
+              <Var>x</Var>
             </Atom>
             <Atom>
               <Rel>R</Rel>

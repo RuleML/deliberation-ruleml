@@ -16,10 +16,9 @@
                 LanguageForm.backbone[2].checked *
                 LanguageForm.backbone[3].checked *
                 LanguageForm.backbone[4].checked *
-                LanguageForm.backbone[5].checked *
-                LanguageForm.backbone[6].checked)) {
+                LanguageForm.backbone[5].checked)) {
                     // initialize to Full First-Order
-                    LanguageForm.backbone[6].checked = true;
+                    LanguageForm.backbone[5].checked = true;
                 }
                 if (!(
                 LanguageForm.deflt[0].checked *
@@ -69,7 +68,7 @@
                 //
                 hornlogeqAndUp = hornlogAndUp *
                 LanguageForm.terms4.checked;
-                fol = LanguageForm.backbone[6].checked;
+                fol = LanguageForm.backbone[5].checked;
                 // If rulebases are allowed, entailments are available
                 if (LanguageForm.propo1.checked) {
                     LanguageForm.propo2.removeAttribute('disabled');
@@ -77,42 +76,57 @@
                     LanguageForm.propo2.checked = false;
                     LanguageForm.propo2.disabled = "disabled";
                 }
-                // for Ground Logic and up, implication options are available
-                // for FOL, existential heads and negative constraints are implicit
+                // In RuleML 1.01, non-default values of scope implication attributes
+                // are allowed, even in fact languages with no implications
+                LanguageForm.implies1.removeAttribute('disabled');
+                LanguageForm.implies2.removeAttribute('disabled');                
+                // for Ground Logic and up, all other implication options except existential heads are available
+                // for FOL, conjunctive heads, disjunctive heads and negative constraints are implicit
                 if (groundLogicAndUp) {
                     LanguageForm.implies0.removeAttribute('disabled');
                     if(fol) {
+                      LanguageForm.implies3.checked = true;
+                      LanguageForm.implies3.disabled = "disabled";
                       LanguageForm.implies4.checked = true;
                       LanguageForm.implies4.disabled = "disabled";
                       LanguageForm.implies5.checked = true;
                       LanguageForm.implies5.disabled = "disabled";
                     } else {
+                      LanguageForm.implies3.removeAttribute('disabled');
                       LanguageForm.implies4.removeAttribute('disabled');
-                      LanguageForm.implies5.removeAttribute('disabled');
-                    }  
+                      // If negative constraints are allowed, disjunctive heads are available
+                     if (LanguageForm.implies4.checked) {
+                       LanguageForm.implies5.removeAttribute('disabled');
+                     } else {
+                       LanguageForm.implies5.checked = false;
+                       LanguageForm.implies5.disabled = "disabled";
+                     }
+                   }  
                 } else {
                     LanguageForm.implies0.checked = false;
                     LanguageForm.implies0.disabled = "disabled";
+                    LanguageForm.implies3.checked = false;
+                    LanguageForm.implies3.disabled = "disabled";
                     LanguageForm.implies4.checked = false;
                     LanguageForm.implies4.disabled = "disabled";
                     LanguageForm.implies5.checked = false;
                     LanguageForm.implies5.disabled = "disabled";
                 }
+                // for Datalog and up, existential heads are available
+                // for FOL, existential heads are implicit
                 if (datalogAndUp) {
                     if(fol) {
-                      LanguageForm.implies3.checked = true;
-                      LanguageForm.implies3.disabled = "disabled";
+                      LanguageForm.implies6.checked = true;
+                      LanguageForm.implies6.disabled = "disabled";
                     } else {
-                      LanguageForm.implies3.removeAttribute('disabled');
+                      LanguageForm.implies6.removeAttribute('disabled');
                     }  
                 } else {
-                    LanguageForm.implies3.checked = false;
-                    LanguageForm.implies3.disabled = "disabled";
+                    LanguageForm.implies6.checked = false;
+                    LanguageForm.implies6.disabled = "disabled";
                 }
-                // In RuleML 1.01, non-default values of scope implication attributes
-                // are allowed, even in fact languages with no implications
-                LanguageForm.implies1.removeAttribute('disabled');
-                LanguageForm.implies2.removeAttribute('disabled');                
+
+
                 // If slots are allowed, slot options including
                 // cardinality and weight are available
                 if (LanguageForm.terms1.checked) {
@@ -209,10 +223,14 @@
                 var params = "?";
                 //
                 var bb = 0;
-                for (i = 0; i <= 6; i = i + 1) {
+                for (i = 0; i < 5; i = i + 1) {
                     if (LanguageForm.backbone[i].checked) {
                         bb = Math.pow(2, i) - 1;
                     }
+                }
+                // Modification of encoding for backbone due to omission of dishornlog
+                if (LanguageForm.backbone[5].checked) {
+                        bb = Math.pow(2, 6) - 1;
                 }
                 params = params + "backbone=x" + bb.toString(16);
                 //
@@ -221,7 +239,7 @@
                     df = 5;
                 }
                 if (LanguageForm.deflt[1].checked) {
-                    if (LanguageForm.backbone[6].checked) {
+                    if (LanguageForm.backbone[5].checked) {
                         df = 2;
                     } else {
                         df = 6;
@@ -274,7 +292,7 @@
                 params = params + "&propo=x" + propo.toString(16);
                 //
                 var implies = 0;
-                for (i = 0; i <= 5; i = i + 1) {
+                for (i = 0; i <= 6; i = i + 1) {
                     if (eval("LanguageForm.implies" + i + ".checked")) {
                         implies = implies + Math.pow(2, i);
                     }
@@ -380,9 +398,6 @@
                 <li>
                   <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Horn Logic </li>
                 <li>
-                  <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Disjunctive
-                  Logic </li>
-                <li>
                   <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Full
                   First-Order Logic </li>
               </ol>
@@ -484,16 +499,19 @@
                 <li>
                   <input type="checkbox" name="implies2" onclick="checkAll(this.form)"
                     checked="checked" /> Non-Material </li>
-                <li>
-                  <input type="checkbox" name="implies3" onclick="checkAll(this.form)"
-                    checked="checked" /> Existential Heads</li>
-                <li>
-                  <input type="checkbox" name="implies4" onclick="checkAll(this.form)"
-                    checked="checked" /> Negative Constraints </li>
-                <li>
-                  <input type="checkbox" name="implies5" onclick="checkAll(this.form)"
-                    checked="checked" /> Conjunctive Heads </li>
-              </ol>
+              <li>
+                <input type="checkbox" name="implies3" onclick="checkAll(this.form)"
+                  checked="checked" /> Conjunctive Heads </li>
+              <li >
+                <input type="checkbox" name="implies4" onclick="checkAll(this.form)"
+                  checked="checked" /> Negative Constraints </li>
+              <li style="margin-left:16px">
+                <input type="checkbox" name="implies5" onclick="checkAll(this.form)"
+                  checked="checked" /> Disjunctive Heads </li>
+              <li>
+                <input type="checkbox" name="implies6" onclick="checkAll(this.form)"
+                  checked="checked" /> Existential Heads</li>
+            </ol>
             </td>
             <td style="padding:8px"> Term <br /> Options <br /> (Check Zero or More) <ol
                 style="list-style-type:none;padding: 0px; margin: 0px;">
