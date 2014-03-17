@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/ncdatalog_min_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- a syntactic example rulebase for testing the RuleML Negative Constraints sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <!-- No one is their own mother. -->
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>mother</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>x</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or/>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

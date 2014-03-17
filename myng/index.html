@@ -78,30 +78,28 @@
                     LanguageForm.propo2.disabled = "disabled";
                 }
                 // for Ground Logic and up, implication options are available
+                // for FOL, existential heads and negative constraints are implicit
                 if (groundLogicAndUp) {
                     LanguageForm.implies0.removeAttribute('disabled');
-                    //  LanguageForm.implies1.removeAttribute('disabled');
-                    //  LanguageForm.implies2.removeAttribute('disabled');
                     if(fol) {
                       LanguageForm.implies3.checked = true;
                       LanguageForm.implies3.disabled = "disabled";
+                      LanguageForm.implies4.checked = true;
+                      LanguageForm.implies4.disabled = "disabled";
                     } else {
                       LanguageForm.implies3.removeAttribute('disabled');
+                      LanguageForm.implies4.removeAttribute('disabled');
                     }  
                 } else {
                     LanguageForm.implies0.checked = false;
-                    //  LanguageForm.implies1.checked = false;
-                    //  LanguageForm.implies2.checked = false;
                     LanguageForm.implies3.checked = false;
                     LanguageForm.implies0.disabled = "disabled";
-                    //  LanguageForm.implies1.disabled = "disabled";
-                    //  LanguageForm.implies2.disabled = "disabled";
                     LanguageForm.implies3.disabled = "disabled";
                 }
-                // In RuleML 1.0, non-default values of scope implication attributes
+                // In RuleML 1.01, non-default values of scope implication attributes
                 // are allowed, even in fact languages with no implications
                 LanguageForm.implies1.removeAttribute('disabled');
-                LanguageForm.implies2.removeAttribute('disabled');
+                LanguageForm.implies2.removeAttribute('disabled');                
                 // If slots are allowed, slot options including
                 // cardinality and weight are available
                 if (LanguageForm.terms1.checked) {
@@ -224,24 +222,25 @@
                 var ts = 0;
                 for (i = 0; i <= 4; i = i + 1) {
                     if (LanguageForm.termseq[i].checked) {
-			switch (i) {
-			    case 0:
-			        ts = 0;
-			        break;
-			    case 1:
-			        ts = 1;
-			        break;
-			    case 2:
-			        ts = 2;
-			        break;
-			    case 3:
-			        ts = 3;
-			        break;
-			    case 4:
-			        ts = 7;
-			        break;
-
-			}                    }
+                			switch (i) {
+                			    case 0:
+                			        ts = 0;
+                			        break;
+                			    case 1:
+                			        ts = 1;
+                			        break;
+                			    case 2:
+                			        ts = 2;
+                			        break;
+                			    case 3:
+                			        ts = 3;
+                			        break;
+                			    case 4:
+                			        ts = 7;
+                			        break;
+                
+                			}
+                	 }
                 }
                 params = params + "&termseq=x" + ts.toString(16);
                 //
@@ -262,7 +261,7 @@
                 params = params + "&propo=x" + propo.toString(16);
                 //
                 var implies = 0;
-                for (i = 0; i <= 3; i = i + 1) {
+                for (i = 0; i <= 4; i = i + 1) {
                     if (eval("LanguageForm.implies" + i + ".checked")) {
                         implies = implies + Math.pow(2, i);
                     }
@@ -474,7 +473,10 @@
                     checked="checked" /> Non-Material </li>
                 <li>
                   <input type="checkbox" name="implies3" onclick="checkAll(this.form)"
-                    checked="checked" /> Existential Head </li>
+                    checked="checked" /> Existential Head s</li>
+                <li>
+                  <input type="checkbox" name="implies4" onclick="checkAll(this.form)"
+                    checked="checked" /> Negative Constraints </li>
               </ol>
             </td>
             <td style="padding:8px"> Term <br /> Options <br /> (Check Zero or More) <ol
