@@ -1,7 +1,7 @@
 # Rewrite rules
 Options +FollowSymLinks
 #IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
-IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README*
 
 
 RewriteEngine On
@@ -9,8 +9,6 @@ RewriteEngine On
 HeaderName HEADER.html
 #ReadmeName FOOTER.html
 #IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble SuppressSize SuppressLastModified
-
-AddDescription  "created on-the-fly: please be patient ..." .zip
 
 
 Redirect /1.01/relaxng/propatom_cl.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
@@ -27,6 +25,8 @@ Redirect /1.01/relaxng/bindatalog_normal.rnc http://deliberation.ruleml.org/1.01
 
 Redirect /1.01/relaxng/datalog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
 
+Redirect /1.01/relaxng/datalogplus_min_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x58&terms=x210&quant=x0&expr=x0&serial=xc 
+
 Redirect /1.01/relaxng/nafdatalog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
 
 Redirect /1.01/relaxng/negdatalog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3df&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xc
@@ -38,6 +38,10 @@ Redirect /1.01/relaxng/hornlog_normal.rnc http://deliberation.ruleml.org/1.01/re
 Redirect /1.01/relaxng/nafhornlog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
 
 Redirect /1.01/relaxng/hornlogeq_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xc
+
+Redirect /1.01/relaxng/disdatalog_min_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x30&terms=x200&quant=x0&expr=x0&serial=xc 
+
+Redirect /1.01/relaxng/disdatalogplus_min_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x78&terms=x210&quant=x0&expr=x0&serial=xc   
 
 Redirect /1.01/relaxng/dishornlog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x6&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xc
 
@@ -57,7 +61,7 @@ Redirect /1.01/relaxng/bindatalog_relaxed.rnc http://deliberation.ruleml.org/1.0
 
 Redirect /1.01/relaxng/datalog_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
 
-Redirect /1.01/relaxng/datalogex_min_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x5&termseq=x7&lng=x1&propo=x1&implies=x8&terms=x200&quant=x0&expr=x0&serial=xf 
+Redirect /1.01/relaxng/datalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x58&terms=x210&quant=x0&expr=x0&serial=xf  
 
 Redirect /1.01/relaxng/nafdatalog_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
 
@@ -70,6 +74,10 @@ Redirect /1.01/relaxng/hornlog_relaxed.rnc http://deliberation.ruleml.org/1.01/r
 Redirect /1.01/relaxng/nafhornlog_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
 
 Redirect /1.01/relaxng/hornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
+
+Redirect /1.01/relaxng/disdatalog_min_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x30&terms=x200&quant=x0&expr=x0&serial=xf
+
+Redirect /1.01/relaxng/disdatalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x78&terms=x210&quant=x0&expr=x0&serial=xf  
 
 Redirect /1.01/relaxng/dishornlog_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=xf
 
