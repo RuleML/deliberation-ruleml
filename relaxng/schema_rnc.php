@@ -101,9 +101,10 @@ $implies = "implies";
 $implies_equivalent = 0;
 $implies_direction = 1;
 $implies_material = 2;
-$implies_ex = 3;
+$implies_and = 3;
 $implies_nc = 4;
-$implies_and = 5;
+$implies_or = 5;
+$implies_ex = 6;
 $bimplies = processGETParameter ($implies);
 $impliesParam = "x".dechex(bindec($bimplies));
 $call_fragment = $implies."=".$impliesParam;
@@ -170,9 +171,11 @@ if ($bdefault==0){
   $needImp = extractBit($bbackbone, $backbone_implies);
   $needQuant = extractBit($bbackbone, $backbone_quant);
   $needExpr = extractBit($bbackbone, $backbone_expr);
+  // Disjunctive Heads are now indicated from the implication options facets.
+  // However, we honor the backbone code for dishornlog for backward compatibility
   $needDis = extractBit($bbackbone, $backbone_dis);
   $needFO = extractBit($bbackbone, $backbone_fo);
-
+  
   $needDefaultAbsent = extractBit($bdefault, $default_absent); 
   $bdefault_present = extractBit($bdefault, $default_present);
   $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);
@@ -225,6 +228,7 @@ if ($bdefault==0){
   $needExHead = extractBit($bimplies, $implies_ex)*(1-$needFO);
   $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needFO);
   $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
+  $needOrHead = ($needDis + extractBit($bimplies, $implies_or))*(1-$needFO);
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
@@ -297,7 +301,7 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'expr_expansion_module.rnc"'."$end\n";
     }
-    if ($needDis){
+    if ($needOrHead){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'dis_expansion_module.rnc"'."$end\n";
