@@ -1,0 +1,36 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML Existential Rules" ]
+dc:version [ "1.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, existential" ]
+dc:description [ "The expansion module for existential heads in implications." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+start |= notAllowed
+
+##
+And-head-node.choice |= And-head.Node.def
+And-head.Node.def =
+  
+  ## within the head of implications
+  element And { (And-datt.choice & reAnd.attlist), And.header, And-head.main }
+And-head.main |= formula_And-head-edge.choice*
+formula_And-head-edge.choice |= formula_And-head.edge.def
+formula_And-head.edge.def =
+  
+  ##
+  element formula { formula_And.attlist? & formula_And-head.content }
+formula_And-head.content |= AndHeadFormula.choice
+AndHeadFormula.choice |=
+  Atom-node.choice
+  | Equal-fo-node.choice
+  | And-head-node.choice
+  | Or-head-node.choice
+  | Negation-head-node.choice
+  | NegationAsFailure-node.notallowed
+  | Implication-head-node.choice
+  | Forall-head-node.choice
+  | Exists-head-node.choice

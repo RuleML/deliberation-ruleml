@@ -59,6 +59,49 @@
       </Implies>
     </Forall>
     
+    <!-- The heads and bodies of existential rules cannot contain conjunctions (unless the conjunctive heads module is also included. -->
+    <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->  
+    <Forall>
+      <Var>E</Var>
+      <Var>P</Var>
+      <Implies>
+        <if>
+          <And>            
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>E</Var>
+            </Atom>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>E</Var>
+              <Var>P</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Exists>
+            <Var>E'</Var>
+            <And>
+              <Atom>
+                <Rel>manager</Rel>
+                <Var>E</Var>
+              </Atom>
+              <Atom>
+                <Rel>supervises</Rel>
+                <Var>E</Var>
+                <Var>E'</Var>
+              </Atom>
+              <Atom>
+                <Rel>works_in</Rel>
+                <Var>E'</Var>
+                <Var>P</Var>
+              </Atom>
+            </And>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    
   </Assert>
 
 </RuleML>
