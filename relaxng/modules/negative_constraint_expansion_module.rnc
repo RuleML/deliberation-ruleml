@@ -1,0 +1,21 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML Negative Constraints" ]
+dc:version [ "1.01" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, falsity, constraint" ]
+dc:description [ "The expansion module for negative constraints." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+start |= notAllowed
+Or-head-node.choice |= Or_falsity-node.choice
+Or_falsity-node.choice |= Or_falsity.Node.def
+
+## An empty disjunctive expression (falsity)
+Or_falsity.Node.def =
+  
+  ##
+  element Or { Or_falsity.type.def }
+Or_falsity.type.def = (Or-datt.choice & reOr.attlist), Or.header
