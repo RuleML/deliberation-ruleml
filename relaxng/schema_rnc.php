@@ -103,6 +103,7 @@ $implies_direction = 1;
 $implies_material = 2;
 $implies_ex = 3;
 $implies_nc = 4;
+$implies_and = 5;
 $bimplies = processGETParameter ($implies);
 $impliesParam = "x".dechex(bindec($bimplies));
 $call_fragment = $implies."=".$impliesParam;
@@ -219,8 +220,11 @@ if ($bdefault==0){
   //Apparent lack of monotonicity caused by containment of the
   // existential head module within the implementation of FOL.
   //Including the existential head module would be redundant in FOL.
+  // Similar considerations hold for negative constraints and
+  // conjunctive heads.
   $needExHead = extractBit($bimplies, $implies_ex)*(1-$needFO);
   $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needFO);
+  $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
@@ -504,6 +508,12 @@ if ($bdefault==0){
       echo "#\n# NEGATIVE CONSTRAINTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'negative_constraint_expansion_module.rnc"'."$end\n";
+    }
+    // Include conjunctive heads in implications if needed
+    if ($needAndHead){
+      echo "#\n# CONJUNCTIVE HEADS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'conjunctive_head_expansion_module.rnc"'."$end\n";
     }
     
   //Step 3C. Include term-related modules 

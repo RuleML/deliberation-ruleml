@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogexand_min_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- a syntactic example rulebase for testing the RuleML Existential Conjunctive Rules sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- The heads and bodies of existential rules can contain conjunctions. -->
+      <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <declare>
+            <Var>P</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>employee</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>directs</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                      <arg index="2"><Var>P</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Exists>
+                  <declare>
+                    <Var>E'</Var>
+                  </declare>
+                  <formula>
+                    <And>
+                      <formula>
+                        <Atom>
+                          <op><Rel>manager</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+                          <op><Rel>supervises</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
+                          <arg index="2"><Var>E'</Var></arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+                          <op><Rel>works_in</Rel></op>
+                          <arg index="1"><Var>E'</Var></arg>
+                          <arg index="2"><Var>P</Var></arg>
+                        </Atom>
+                      </formula>
+                    </And>
+                  </formula>
+                </Exists>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

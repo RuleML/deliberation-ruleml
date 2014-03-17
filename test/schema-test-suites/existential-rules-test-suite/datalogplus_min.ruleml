@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogplus_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
+
+  <Assert>
+    <!-- Equations are allowed as facts-->
+    <Equal>
+      <Ind>Bill</Ind>
+      <Ind>William</Ind>
+    </Equal>
+
+    <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+    <Forall>
+      <Var>x</Var>
+      <Equal>
+        <Var>x</Var>
+        <Var>x</Var>
+      </Equal>
+    </Forall>
+    
+    <!-- Non-ground facts are allowed. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Atom>
+        <Rel>P</Rel>
+        <Var>x</Var>
+        <Var>y</Var>
+      </Atom>
+    </Forall>
+    
+    <!-- Equations are allowed in the body of (existential) implications, 
+         but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Equal>
+            <Ind>Jane</Ind>
+            <Var>x</Var>
+          </Equal>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+            <Atom>
+              <Rel>son</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    
+    <!-- Disjoint Classes -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>        
+        <if>
+          <And>
+            <Atom><Rel>P</Rel><Var>x</Var></Atom>
+            <Atom><Rel>Q</Rel><Var>x</Var></Atom>            
+          </And>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+    
+    <!-- Functionality Constraint: Everyone has at most one mother. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>x</Var>
+              <Var>z</Var>
+            </Atom>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+
+    <!-- Negative Constraints are allowed.
+         No one is their own mother. -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>mother</Rel>
+            <Var>x</Var>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+    
+    <!-- Equations may appear in the body of negative constraints.
+         The simplest case is the assertion that two individuals
+         are different.-->
+    <Implies>
+      <if>
+        <Equal>
+          <Ind>a</Ind>
+          <Ind>b</Ind>
+        </Equal>        
+      </if>
+      <then>
+        <Or/>
+      </then>
+    </Implies>
+    
+    <!-- The heads and bodies of existential rules can contain conjunctions. -->
+    <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->  
+    <Forall>
+      <Var>E</Var>
+      <Var>P</Var>
+      <Implies>
+        <if>
+          <And>            
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>E</Var>
+            </Atom>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>E</Var>
+              <Var>P</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Exists>
+            <Var>E'</Var>
+            <And>
+              <Atom>
+                <Rel>manager</Rel>
+                <Var>E</Var>
+              </Atom>
+              <Atom>
+                <Rel>supervises</Rel>
+                <Var>E</Var>
+                <Var>E'</Var>
+              </Atom>
+              <Atom>
+                <Rel>works_in</Rel>
+                <Var>E'</Var>
+                <Var>P</Var>
+              </Atom>
+            </And>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    
+    
+
+  </Assert>
+
+</RuleML>

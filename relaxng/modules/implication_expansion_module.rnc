@@ -116,38 +116,15 @@ ConclusionFormula.choice |=
   | Forall-head-node.choice
   | Exists-head-node.choice
 
-##    
+## backbone patterns    
 Atom-head-node.choice |= Atom-node.choice
 Equal-head-node.choice |= Equal-node.choice
+And-head-node.choice |= And-fo-node.choice
 Or-head-node.choice |= Or-dis-node.choice
 Negation-head-node.choice |= Negation-node.choice
 Implication-head-node.choice |= Implication-fo-node.choice
 Forall-head-node.choice |= Forall-fo-node.choice
 Exists-head-node.choice |= Exists-fo-node.choice
-
-##
-And-head-node.choice |= And-head.Node.def
-And-head.Node.def =
-  
-  ## within the head of implications
-  element And { (And-datt.choice & reAnd.attlist), And.header, And-head.main }
-And-head.main |= formula_And-head-edge.choice*
-formula_And-head-edge.choice |= formula_And-head.edge.def
-formula_And-head.edge.def =
-  
-  ##
-  element formula { formula_And.attlist? & formula_And-head.content }
-formula_And-head.content |= AndHeadFormula.choice
-AndHeadFormula.choice |=
-  Atom-node.choice
-  | Equal-fo-node.choice
-  | And-head-node.choice
-  | Or-head-node.choice
-  | Negation-head-node.choice
-  | NegationAsFailure-node.notallowed
-  | Implication-head-node.choice
-  | Forall-head-node.choice
-  | Exists-head-node.choice
 # For the declaration of the simple formula pattern, see the atomic formula module ( atom_expansion_module) 
 # For the declaration of conjunctive and disjunctive formula patterns, see the conjunction and disjunction module (andor_expansion_module)
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 

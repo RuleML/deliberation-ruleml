@@ -19,6 +19,7 @@ include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" 
 include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/conjunctive_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/dataterm_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
