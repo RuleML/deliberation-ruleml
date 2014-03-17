@@ -82,26 +82,32 @@
                 if (groundLogicAndUp) {
                     LanguageForm.implies0.removeAttribute('disabled');
                     if(fol) {
-                      LanguageForm.implies3.checked = true;
-                      LanguageForm.implies3.disabled = "disabled";
                       LanguageForm.implies4.checked = true;
                       LanguageForm.implies4.disabled = "disabled";
                       LanguageForm.implies5.checked = true;
                       LanguageForm.implies5.disabled = "disabled";
                     } else {
-                      LanguageForm.implies3.removeAttribute('disabled');
                       LanguageForm.implies4.removeAttribute('disabled');
                       LanguageForm.implies5.removeAttribute('disabled');
                     }  
                 } else {
                     LanguageForm.implies0.checked = false;
                     LanguageForm.implies0.disabled = "disabled";
-                    LanguageForm.implies3.checked = false;
-                    LanguageForm.implies3.disabled = "disabled";
                     LanguageForm.implies4.checked = false;
                     LanguageForm.implies4.disabled = "disabled";
                     LanguageForm.implies5.checked = false;
                     LanguageForm.implies5.disabled = "disabled";
+                }
+                if (datalogAndUp) {
+                    if(fol) {
+                      LanguageForm.implies3.checked = true;
+                      LanguageForm.implies3.disabled = "disabled";
+                    } else {
+                      LanguageForm.implies3.removeAttribute('disabled');
+                    }  
+                } else {
+                    LanguageForm.implies3.checked = false;
+                    LanguageForm.implies3.disabled = "disabled";
                 }
                 // In RuleML 1.01, non-default values of scope implication attributes
                 // are allowed, even in fact languages with no implications
