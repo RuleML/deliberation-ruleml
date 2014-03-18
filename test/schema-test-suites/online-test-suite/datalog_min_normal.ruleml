@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../relaxng/datalog_min_normal.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&amp;default=x6&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x200&amp;quant=x0&amp;expr=x0&amp;serial=xc" type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd"
+ xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalog.xsd"
  xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
   <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
@@ -24,7 +24,7 @@
                       <arg index="3"><Data xsi:type="xs:integer">12</Data></arg>
                       <arg index="4"><Data>tomorrow</Data></arg>
                       <arg index="5"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
-                      <arg index="6"><Data><content/></Data></arg>
+                      <arg index="6"><Data> xsi:type="xs:anyType"&gt;<content/></Data></arg>
                       <arg index="7"><Data>test12</Data></arg>
                       <arg index="8"><Ind>Jack</Ind></arg>
                       <arg index="9"><Var>y</Var></arg>

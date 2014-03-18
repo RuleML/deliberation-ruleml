@@ -226,9 +226,9 @@ if ($bdefault==0){
   // Similar considerations hold for negative constraints and
   // conjunctive heads.
   $needExHead = extractBit($bimplies, $implies_ex)*(1-$needFO);
-  $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needFO);
   $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
-  $needOrHead = ($needDis + extractBit($bimplies, $implies_or))*(1-$needFO);
+  $needOrHead = max($needDis , extractBit($bimplies, $implies_or))*(1-$needFO);
+  $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needDis)*(1-$needOrHead);
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
