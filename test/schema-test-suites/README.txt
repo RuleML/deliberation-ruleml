@@ -6,3 +6,6 @@ Therefore, a batch validation should skip files with the .txt extension.
 
 Documents within the test suite should reference schemas by relative paths, so that
 the development version in the working directory is called.
+
+Final testing is performed after running the script bash/web2rnc.sh, which downloads the published RNC schemas from MYNG
+into the local relaxng folder.

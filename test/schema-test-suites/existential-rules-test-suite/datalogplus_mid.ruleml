@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../relaxng/datalogplus_min_normal.rnc"?>
+<?xml-model href="../../../relaxng/datalogplus_min_relaxed.rnc"?>
 <RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd"
+ xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_mid.xsd"
  xmlns="http://ruleml.org/spec"
  xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
@@ -51,7 +51,7 @@
               <op><Rel>P</Rel></op>
               <arg index="1"><Var>x</Var></arg>
               <arg index="2"><Var>y</Var></arg>
-              <arg index="3"><Data><content>any</content>abc</Data></arg>
+              <arg index="3"><Data><content>any</content>sbc</Data></arg>
             </Atom>
           </formula>
         </Forall>
