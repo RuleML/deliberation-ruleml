@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/disdatalogplus_min_normal.rnc"?>
+<RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ruleml.org/spec" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/disdatalogplus_min_normal.xsd">
+  <!-- a syntactic example rulebase for testing the RuleML Disjunctive Datalog Plus sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Disjuntive Rules 
+      Union classes 
+      Every employee is a manager or a worker (or both). -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>Employee</Rel></op>
+                  <arg index="1"><Var>E</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Manager</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Worker</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                </Or>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Existential Disjunctive Rules 
+      Exceptions to subsumption.
+      Every employee, other than the CEO, has a supervisor. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>Employee</Rel></op>
+                  <arg index="1"><Var>E</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>CEO</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Exists>
+                      <declare>
+                        <Var>S</Var>
+                      </declare>
+                      <formula>
+                        <Atom>
+                          <op><Rel>Supervises</Rel></op>
+                          <arg index="1"><Var>S</Var></arg>
+                          <arg index="2"><Var>E</Var></arg>
+                        </Atom>
+                      </formula>
+                    </Exists>
+                  </formula>
+                </Or>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
