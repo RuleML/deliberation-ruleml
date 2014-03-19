@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/disdatalogplus_min_normal.rnc"?>
+<RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min_normal.xsd"
+  xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Equations are allowed as facts-->
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Ind>Bill</Ind>
+          </left>
+          <right>
+            <Ind>William</Ind>
+          </right>
+        </Equal>
+      </formula>
+      <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Equal oriented="no">
+              <left>
+                <Var>x</Var>
+              </left>
+              <right>
+                <Var>x</Var>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Non-ground facts are allowed. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>P</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+              <arg index="2"><Var>y</Var></arg>
+            </Atom>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Equations are allowed in the body of (existential) implications, 
+         but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Equal oriented="no">
+                  <left>
+                    <Ind>Jane</Ind>
+                  </left>
+                  <right>
+                    <Var>x</Var>
+                  </right>
+                </Equal>
+              </if>
+              <then>
+                <Exists>
+                  <declare>
+                    <Var>y</Var>
+                  </declare>
+                  <formula>
+                    <Atom>
+                      <op><Rel>son</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>y</Var></arg>
+                    </Atom>
+                  </formula>
+                </Exists>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Disjoint Classes -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>P</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Q</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Or/>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Functionality Constraint: Everyone has at most one mother. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <declare>
+            <Var>z</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>y</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Equal oriented="no">
+                  <left>
+                    <Var>x</Var>
+                  </left>
+                  <right>
+                    <Var>y</Var>
+                  </right>
+                </Equal>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Negative Constraints are allowed.
+         No one is their own mother. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>mother</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>x</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or/>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Equations may appear in the body of negative constraints.
+         The simplest case is the assertion that two individuals
+         are different.-->
+      <formula>
+        <Implies material="yes" direction="bidirectional">
+          <if>
+            <Equal oriented="no">
+              <left>
+                <Ind>a</Ind>
+              </left>
+              <right>
+                <Ind>b</Ind>
+              </right>
+            </Equal>
+          </if>
+          <then>
+            <Or/>
+          </then>
+        </Implies>
+      </formula>
+      <!-- The heads and bodies of existential rules can contain conjunctions. -->
+      <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <declare>
+            <Var>P</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>employee</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>directs</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                      <arg index="2"><Var>P</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Exists>
+                  <declare>
+                    <Var>E'</Var>
+                  </declare>
+                  <formula>
+                    <And>
+                      <formula>
+                        <Atom>
+                          <op><Rel>manager</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+                          <op><Rel>supervises</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
+                          <arg index="2"><Var>E'</Var></arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+                          <op><Rel>works_in</Rel></op>
+                          <arg index="1"><Var>E'</Var></arg>
+                          <arg index="2"><Var>P</Var></arg>
+                        </Atom>
+                      </formula>
+                    </And>
+                  </formula>
+                </Exists>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Disjuntive Rules -->
+      <formula>
+        <Implies material="yes" direction="bidirectional">
+          <if>
+            <Atom>
+              <op><Rel>P</Rel></op>
+            </Atom>
+          </if>
+          <then>
+            <Or>
+              <formula>
+                <Atom>
+                  <op><Rel>Q</Rel></op>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>R</Rel></op>
+                </Atom>
+              </formula>
+            </Or>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>P</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Q</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>R</Rel></op>
+                    </Atom>
+                  </formula>
+                </Or>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Existential Disjunctive Rules -->
+      <formula>
+        <Implies material="yes" direction="bidirectional">
+          <if>
+            <Atom>
+              <op><Rel>P</Rel></op>
+            </Atom>
+          </if>
+          <then>
+            <Exists>
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Q</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>R</Rel></op>
+                    </Atom>
+                  </formula>
+                </Or>
+              </formula>
+            </Exists>
+          </then>
+        </Implies>
+      </formula>
+      <!-- Disjuntive Rules 
+      Union classes 
+      Every employee is a manager or a worker (or both). -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>Employee</Rel></op>
+                  <arg index="1"><Var>E</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Manager</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>Worker</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                </Or>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Existential Disjunctive Rules 
+      Exceptions to subsumption.
+      Every employee, other than the CEO, has a supervisor. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>E</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Atom>
+                  <op><Rel>Employee</Rel></op>
+                  <arg index="1"><Var>E</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Or>
+                  <formula>
+                    <Atom>
+                      <op><Rel>CEO</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Exists>
+                      <declare>
+                        <Var>S</Var>
+                      </declare>
+                      <formula>
+                        <Atom>
+                          <op><Rel>Supervises</Rel></op>
+                          <arg index="1"><Var>S</Var></arg>
+                          <arg index="2"><Var>E</Var></arg>
+                        </Atom>
+                      </formula>
+                    </Exists>
+                  </formula>
+                </Or>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
