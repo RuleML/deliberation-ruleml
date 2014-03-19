@@ -1,13 +1,12 @@
 # Rewrite rules
 Options +FollowSymLinks
 #IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
-IndexIgnore .htaccess */.??* *~ *# */HEADER* */README*
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* schema_rnc.php error_log
 
 
 RewriteEngine On
 
 HeaderName HEADER.html
-#ReadmeName FOOTER.html
 #IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble SuppressSize SuppressLastModified
 
 
@@ -92,6 +91,3 @@ Redirect /1.01/relaxng/naffologeq_relaxed.rnc http://deliberation.ruleml.org/1.0
 Redirect /1.01/relaxng/schema.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
 
 Redirect /1.01/relaxng/naffologeq_relaxed_long-en.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x2&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
-
-
-
