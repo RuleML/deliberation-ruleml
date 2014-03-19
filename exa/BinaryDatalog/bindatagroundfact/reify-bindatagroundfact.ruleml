@@ -5,11 +5,11 @@
   <!ENTITY dc "http://purl.org/dc/elements/1.1/">  
   <!ENTITY ruleml "http://ruleml.org/spec">  
   ]>
-<?xml-model href="http://www.ruleml.org/1.0/relaxng/bindatagroundfact_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
-<!--  <?xml-model href="http://www.ruleml.org/1.0/xsd/bindatagroundfact.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/bindatagroundfact_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
+<!--  <?xml-model href="http://deliberation.ruleml.org/1.01/xsd/bindatagroundfact.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="&ruleml;"
   xmlns:xsi="&xs;-instance" xmlns:xs="&xs;"
-  xsi:schemaLocation="&ruleml; http://ruleml.org/1.0/xsd/bindatagroundfact.xsd">
+  xsi:schemaLocation="&ruleml; http://deliberation.ruleml.org/1.01/xsd/bindatagroundfact.xsd">
   <Assert>
     <!-- Modality implemented through reification -->
     <Rulebase>
