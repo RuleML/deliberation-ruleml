@@ -1,4 +1,0 @@
-for %%X in (*.xsd) do java -jar "C:\Program Files\RelaxNGTools\rngconv-20060319\rngconv.jar" %%X > ../temp/%%X_rngconv.rng
-cd ../temp
-for %%X in (*_rngconv.rng) do java -jar "C:\Program Files\RelaxNGTools\jing-20091111\bin\jing.jar"  -s %%X > %%X_flatten.rng
-for %%X in (*_flatten.rng) do java -jar "C:\Program Files\RelaxNGTools\trang-20091111\trang.jar" %%X ../rngconv/%%X.rnc

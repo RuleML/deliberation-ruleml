@@ -1,1 +1,0 @@
-for %%X in (*.xsd) do java -jar "C:\Program Files\RelaxNGTools\xmlgen-20060319\xmlgen.jar" %%X -n 10 -depth 30 -width 3 "..\examples\%%~nX_Qvalid$.xml"
