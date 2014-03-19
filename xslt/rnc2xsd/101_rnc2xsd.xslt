@@ -15,6 +15,26 @@
     <xs:element name="Data" type="xs:anyType"/>
   </xsl:template>
   
+  <xsl:template match="xs:element[@name='Reify']">
+    <xs:element name="Reify">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
+        </xs:sequence>
+        <xs:attribute name="node" type="xs:anyURI"/>
+        <xs:attribute ref="xml:base"/>
+        <xs:attribute ref="xml:id"/>
+      </xs:complexType>
+    </xs:element>
+  </xsl:template>
+  
+  <!-- Remove groups like 
+  <xs:group name="_1">-->
+  <xsl:template match="xs:group[@name='_1']">    
+  </xsl:template>
+  <xsl:template match="xs:group[@name='_2']">    
+  </xsl:template>
+  
   <xsl:template match="xs:attribute[@name='id']">
     <xs:attribute name="id" type="xs:ID"/>    
   </xsl:template>
