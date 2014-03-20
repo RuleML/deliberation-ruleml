@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ruleml="http://ruleml.org/spec"
+  elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="RuleML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:act"/>
+      </xs:sequence>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Assert">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula"/>
+      </xs:sequence>
+      <xs:attribute name="mapMaterial" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Retract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula"/>
+      </xs:sequence>
+      <xs:attribute name="mapMaterial" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Query">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_2"/>
+      </xs:sequence>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Atom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:element ref="ruleml:op"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:arg"/>
+      </xs:sequence>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rel">
+    <xs:complexType mixed="true">
+      <xs:attribute name="iri" type="xs:anyURI"/>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="And">
+    <xs:sequence>
+      <xs:element name="And">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_3"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_4"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Implies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:element ref="ruleml:if"/>
+        <xs:element ref="ruleml:then"/>
+      </xs:sequence>
+      <xs:attribute name="direction" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="material" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Forall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
+        <xs:group ref="ruleml:formula_5"/>
+      </xs:sequence>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="Exists">
+    <xs:sequence>
+      <xs:element name="Exists">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
+            <xs:group ref="ruleml:formula_6"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="Equal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+        <xs:element ref="ruleml:left"/>
+        <xs:element ref="ruleml:right"/>
+      </xs:sequence>
+      <xs:attribute name="oriented" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Data" type="xs:anyType"/>
+  <xs:element name="Skolem">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Reify">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
+      </xs:sequence>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ind">
+    <xs:complexType mixed="true">
+      <xs:attribute name="iri" type="xs:anyURI"/>
+      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Var">
+    <xs:complexType mixed="true">
+      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="formula">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:element ref="ruleml:Implies"/>
+            <xs:element ref="ruleml:Forall"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_2">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:group ref="ruleml:And"/>
+            <xs:group ref="ruleml:Or"/>
+            <xs:group ref="ruleml:Exists"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="op">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ruleml:Rel"/>
+      </xs:sequence>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="formula_3">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:group ref="ruleml:And_2"/>
+            <xs:group ref="ruleml:Or_2"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_4">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:group ref="ruleml:And_2"/>
+            <xs:group ref="ruleml:Or_2"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="then">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Atom"/>
+        <xs:element ref="ruleml:Equal"/>
+        <xs:group ref="ruleml:And_3"/>
+        <xs:group ref="ruleml:Or_3"/>
+        <xs:group ref="ruleml:Exists_2"/>
+      </xs:choice>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="if">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Atom"/>
+        <xs:element ref="ruleml:Equal"/>
+        <xs:group ref="ruleml:And_2"/>
+        <xs:group ref="ruleml:Or_2"/>
+      </xs:choice>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="declare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ruleml:Var"/>
+      </xs:sequence>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="formula_5">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:element ref="ruleml:Implies"/>
+            <xs:element ref="ruleml:Forall"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_6">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:element ref="ruleml:Equal"/>
+            <xs:group ref="ruleml:And_2"/>
+            <xs:group ref="ruleml:Or_2"/>
+            <xs:group ref="ruleml:Exists"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="meta">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Atom"/>
+        <xs:element ref="ruleml:Equal"/>
+        <xs:element ref="ruleml:Implies"/>
+        <xs:element ref="ruleml:Forall"/>
+      </xs:choice>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="left">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Skolem"/>
+        <xs:element ref="ruleml:Reify"/>
+        <xs:element ref="ruleml:Ind"/>
+        <xs:element ref="ruleml:Data"/>
+        <xs:element ref="ruleml:Var"/>
+      </xs:choice>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="right">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Skolem"/>
+        <xs:element ref="ruleml:Reify"/>
+        <xs:element ref="ruleml:Ind"/>
+        <xs:element ref="ruleml:Data"/>
+        <xs:element ref="ruleml:Var"/>
+      </xs:choice>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arg">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ruleml:Skolem"/>
+        <xs:element ref="ruleml:Reify"/>
+        <xs:element ref="ruleml:Ind"/>
+        <xs:element ref="ruleml:Data"/>
+        <xs:element ref="ruleml:Var"/>
+      </xs:choice>
+      <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="act">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ruleml:Assert"/>
+        <xs:element ref="ruleml:Retract"/>
+        <xs:element ref="ruleml:Query"/>
+      </xs:choice>
+      <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="And_2">
+    <xs:sequence>
+      <xs:element name="And">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_3"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or_2">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_4"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="And_3">
+    <xs:sequence>
+      <xs:element name="And">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_7"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Or_3">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_8"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Exists_2">
+    <xs:sequence>
+      <xs:element name="Exists">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
+            <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
+            <xs:group ref="ruleml:formula_9"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_7">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:group ref="ruleml:And_3"/>
+            <xs:group ref="ruleml:Or_3"/>
+            <xs:group ref="ruleml:Exists_2"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_8">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:group ref="ruleml:And_3"/>
+            <xs:group ref="ruleml:Or_3"/>
+            <xs:group ref="ruleml:Exists_2"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_9">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="ruleml:Atom"/>
+            <xs:group ref="ruleml:And_3"/>
+            <xs:group ref="ruleml:Or_3"/>
+            <xs:group ref="ruleml:Exists_2"/>
+          </xs:choice>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
