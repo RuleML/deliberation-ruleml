@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+
+<xs:schema targetNamespace="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ruleml.org/spec"
+  elementFormDefault="qualified">
+
+
+  <!-- Extending http://ruleml.org/1.0/xsd/modules/atom_module.xsd -->
+  
+
+
+  <!--
+        *** Atom ***
+		An atom formula, i.e. built from a predicate
+		applied to a collection of arguments.
+	-->
+  <xs:attributeGroup name="Atom.attlist">
+    <xs:attributeGroup ref="per.attrib"/>         <!-- Extension -->
+    <xs:attributeGroup ref="closure.attrib"/>
+    <xs:attributeGroup ref="node.attrib"/>
+    <xs:attributeGroup ref="xml.attlist"/>
+  </xs:attributeGroup>
+
+
+
+
+  
+  <!--
+		*** Rel ***
+		A relation, i.e. a logical predicate, of an atom.
+	-->
+  <xs:attributeGroup name="Rel.attlist">
+    <xs:attributeGroup ref="modal.attrib"/>       <!-- Extension -->
+    <xs:attributeGroup ref="iri.attrib"/>
+    <xs:attributeGroup ref="node.attrib"/>
+    <xs:attributeGroup ref="xml.attlist"/>
+  </xs:attributeGroup>
+
+
+
+
+  <!--
+		*** @modal ***
+		An attribute indicating the modality of a relation.
+		The relativized versions are now handled via an optional agent argument,
+		i.e. by making the enclosing atom polyadic
+	-->
+
+  <xs:attributeGroup name="modal.attrib">        <!-- Extension -->
+    <xs:attribute name="modal" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:anyURI">
+
+          <!-- alethic logic -->
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/alethic#Necessary"/>
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/alethic#Possible"/>
+
+          <!-- alethic logic (relativized to an agent) -->
+  <!--
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/alethic#Necessitates"/>
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/alethic#Enables"/>
+  -->
+
+          <!-- deontic logic -->
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/deontic#Obligatory"/>
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/deontic#Permitted"/>
+
+          <!-- deontic logic (relativized to an agent) -->
+  <!--
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/deontic#Obligates"/>
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/deontic#Permits"/>
+  -->
+
+          <!-- epistemic logic -->
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/epistemic#Known"/>
+          <!-- epistemic logic (relativized to an agent) -->
+  <!--
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/epistemic#Knows"/>
+  -->
+ 
+          <!-- doxastic logic -->
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/epistemic#Believed"/>
+          <!-- doxastic logic (relativized to an agent) -->
+  <!--
+          <xs:enumeration value="http://ruleml.org/1.0/vocab/modal/epistemic#Believes"/>
+  -->
+
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+</xs:schema>

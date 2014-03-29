@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet href="../homepage2.xsl" type="text/xsl"?>
+<!DOCTYPE homepage [
+<!ENTITY primer '<a href="http://ruleml.org/papers/Primer/">Primer</a>'>
+<!ENTITY content-models '<a href="./xsd/content_models_10.pdf">Content Models</a>'>
+<!ENTITY glossary '<a href="./glossary/">Glossary</a>'>
+<!ENTITY xsd-schemas '<a href="./xsd/"><abbr>XSD</abbr> Schemas</a>'>
+<!ENTITY relaxng-schemas '<a href="./relaxng/">Relax NG Schemas</a>'>
+<!ENTITY normalizer '<a href="./xslt/normalizer/">Normalizer</a>'>
+<!ENTITY upgrader '<a href="./xslt/upgrader/">Upgrader</a>'>
+<!ENTITY implementations '<a href="http://wiki.ruleml.org/index.php/RuleML_Implementations">Implementations</a>'>
+<!ENTITY myng '<a href="./myng/"><acronym title="Modular sYNtax confiGurator">MYNG</acronym></a>'>
+<!ENTITY overarching '<a href="http://cs.unb.ca/~boley/papers/RuleML-Overarching.pdf">Overarching</a>'>
+]>
+
+<homepage>
+
+  <title>Schema Specification of Defeasible RuleML Version 1.0 </title>
+
+	<opening>
+		<center>
+			<br/>
+			<br/>
+			<h1>Schema Specification of Defeasible RuleML Version 1.0</h1>
+
+
+                        <h2>
+                          <a href="http://lpis.csd.auth.gr/people/nbassili/">Nick Bassiliades</a>,
+                          <a href="http://www.governatori.net/">Guido Governatori</a>,
+			  <a href="http://www.mit.edu/~bgrosof/">Benjamin Grosof</a>,
+			  <a href="http://www.ics.forth.gr/~antoniou/">Grigoris Antoniou</a>, <br />
+                          <a href="http://www.cs.unb.ca/~boley/">Harold Boley</a>,
+                          <a href="http://www.corporate-semantic-web.de/">Adrian Paschke</a>,
+			  <a href="http://www.athant.com/">Tara Athan</a>,
+			  <a href="http://users.auth.gr/skontopo/">Efstratios Kontopoulos</a>,
+                          <a href="http://www.unibo.it/Faculty/default.htm?UPN=monica.palmirani%40unibo.it">Monica Palmirani</a>
+                        </h2>
+
+
+			<table border="0" align="center">
+			<tr><td colspan="2" align="center"><h2>Version history:</h2></td></tr>
+			<tr><td align="right">2007-11-09 - </td><td><a href="http://lpis.csd.auth.gr/systems/dr-device/dr-device-0.9.xsd">Version 0.9</a></td></tr>
+			<tr><td align="right">2008-08-24 - </td><td><a href="http://lpis.csd.auth.gr/systems/dr-device/defeasible-0.91.xsd">Version 0.91</a></td></tr>
+			<tr><td align="right"><h3>2012-07-22 - </h3></td><td><h3><a href="http://lpis.csd.auth.gr/systems/dr-device/1.0/defeasible.xsd">Version 1.0</a></h3></td></tr>
+			</table>			
+
+			<h2>Latest version: <a href="http://lpis.csd.auth.gr/systems/dr-device/1.0/defeasible.xsd">defeasible.ruleml.org/spec/</a></h2>
+			<p/>
+		</center>
+
+	  <p>This is the specification of Defeasible RuleML 1.0.</p>
+	</opening>
+
+<section>
+	<header>Overview</header>
+  <p>Based on previous work including <a href="http://www.mit.edu/~bgrosof/paps/rc20836.pdf">Courteous Logic Programs</a>,
+  Defeasible RuleML was first exemplified in the <a href="http://www.ruleml.org/papers/DesignRationaleRuleML-SWWS01paper20.pdf">'Rationale' RuleML paper</a>
+  and later revised for <a href="http://mail.ruleml.org/pipermail/ruleml-all/2004-August/000019.html">RuleML 0.87</a>, 0.9, 0.91, and 1.0.</p>
+  <p>Defeasible RuleML 1.0 uses (control-)relationship <tt>Atom</tt>s applying a binary control relation
+  <pre><![CDATA[<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>]]></pre>
+  to rule labels, where <tt>http://ruleml.org/1.0/vocab/control#Overrides</tt> is a reserved IRI representing overriding between the labeled rules.
+  Such overriding superiority is 'hard' in the sense of, e.g., committed choice languages, where failure of subsequent computation will not lead to a revision of a choice between rules
+  (e.g., there will be no backtracking to an earlier <tt>Overrides</tt> choice).
+  In an extension of Defeasible RuleML 1.0, a 'soft' variant of superiority allowing such revision could be introduced by replacing
+  the IRI <tt>http://ruleml.org/1.0/vocab/control#Overrides</tt>, for (irreversibly) overriding superiority, with <tt>http://ruleml.org/1.0/vocab/control#Dominates</tt>, for (reversibly) dominating superiority.
+  Similarly, other extensions can introduce (RuleML-internal or -external) reserved IRIs for expressing further superiority-variant semantics such as time- and/or location-sensitive overriding.
+  The superiority relationships can be defined both by facts and rules, the latter permitting conditional superiority.
+  In Defeasible RuleML documents in which only unconditional overriding is needed, an <tt>Overrides</tt> element
+  <pre><![CDATA[<Overrides> ... ... </Overrides>]]></pre>
+  can be used as a special atom that shortcuts the regular <tt>Atom</tt> element
+  <pre><![CDATA[<Atom><Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/> ... ... </Atom>]]></pre></p>
+  applying <tt>http://ruleml.org/1.0/vocab/control#Overrides</tt> as its relation.
+  <p>Introductions to (earlier versions of) Defeasible RuleML were given, e.g., in the context of <a href="http://espace.uq.edu.au/eserv/UQ:9617/coala.pdf">business contracts</a> and
+  <a href="http://lpis.csd.auth.gr/systems/dr-device/manual.pdf">DR-DEVICE</a>.</p>
+
+
+</section>   
+
+
+<section>
+	<header>Examples</header>
+  <p>Various sample Defeasible RuleML documents have been prepared and maintained; some exemplify features of Defeasible RuleML and are useful didactically while others are mostly for testing puposes.</p>
+  
+  <p>A use case of Defeasible RuleML has been developed at <a href="http://wiki.ruleml.org/index.php/Carlo-rbase-1.0.ruleml">Carlo-rbase-1.0.ruleml</a>
+  (cf. wiki <a href="http://wiki.ruleml.org/index.php?title=Carlo-rbase-1.0.ruleml&amp;action=history">history</a>).
+  The 'Carlo use case' version accessible to validators is being kept at <a href="http://lpis.csd.auth.gr/systems/dr-device/1.0/carlo-rbase.ruleml">carlo-rbase.ruleml</a>.</p>
+ 
+</section>
+
+
+<section>
+	<header><abbr>XSD</abbr>s</header>
+	<p>The schema specification of Version 1.0 has been created at
+	<a href="http://lpis.csd.auth.gr/systems/dr-device/1.0/defeasible.xsd">defeasible.xsd</a> and
+	<a href="http://lpis.csd.auth.gr/systems/dr-device/1.0/dr-device.xsd">dr-device.xsd</a>.
+	</p>
+</section>
+
+
+<section>
+	<header>Acknowledgement</header>
+	<p>This specification is being developed in collaboration with <a href="https://www.oasis-open.org/">OASIS</a>, in particular the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=legalruleml">LegalRuleML TC</a>.
+	</p>
+</section>
+
+
+	<closing>
+		<p>
+		Site Contact:
+		<a href="http://lpis.csd.auth.gr/people/nbassili/">Nick Bassiliades</a>.
+		Page Version: 2012-07-31
+		
+		<br/>
+		<br/>
+		<br/>
+		<a name="Practice-Preach"/>
+		<small>"Practice what you preach": <abbr>XML</abbr> source of this homepage at <a href="defeasible.xml">defeasible.xml</a>;
+	      <br/>
+	      transformed to HTML via the adaptation of <a href="http://www.dfki.uni-kl.de/~sintek/">Michael Sintek</a>'s SliML <a href="http://www.w3.org/TR/xslt"><abbr>XSLT</abbr></a> stylesheet at <a href="http://ruleml.org/homepage.xsl">homepage.xsl</a> (View | Page Source)
+	   </small>
+		</p>
+	</closing>
+
+</homepage>
