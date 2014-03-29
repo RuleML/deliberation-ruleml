@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Schema Specification of Modal RuleML Version 1.0 </title>
+<style type="text/css">
+       h1 { font-size: 32pt; font-weight: bold }
+       h2 { font-size: 16pt; font-weight: bold }
+       ul { line-height: 120% }
+       ol { line-height: 120% }
+       p { line-height: 100% }
+       dt { font-weight: bold }
+       abbr, acronym { cursor:help }
+     </style>
+</head>
+<body bgcolor="#FFFFFF">
+		<center>
+			<br>
+			<br>
+			<h1>Schema Specification of Modal RuleML Version 1.0</h1>
+
+
+                        <h2>
+                          <a href="http://www.cs.unb.ca/~boley/">Harold Boley</a>,
+			  <a href="http://www.athant.com/">Tara Athan</a>,
+                          <a href="http://www.corporate-semantic-web.de/">Adrian Paschke</a>,
+                          <a href="http://wyner.info/LanguageLogicLawSoftware/index.php/about/">Adam Wyner</a>,
+                          <a href="http://lpis.csd.auth.gr/people/nbassili/">Nick Bassiliades</a>,
+                          <a href="http://www.buildingbusinesscapability.com/agenda/2012_details/950/">John Hall</a>,
+  
+                          <a href="http://www.informatik.tu-cottbus.de/~agiurca/">Adrian Giurca</a>
+                        </h2>
+
+
+			<table border="0" align="center">
+			<tr><td colspan="2" align="center"><h2>Version history:</h2></td></tr>
+			<tr>
+<td align="right">2006-11-11 - </td>
+<td><a href="http://www.cs.unb.ca/~boley/papers/ruleml-family.pdf">Version 0.91</a></td>
+</tr>
+			<tr>
+<td align="right"><h3>2012-07-31 - </h3></td>
+<td><h3><a href="http://ruleml.org/1.0/modal/modal.xsd">Version 1.0 (REVIEW DRAFT)</a></h3></td>
+</tr>
+			</table>			
+
+			<h2>Latest version: <a href="http://ruleml.org/1.0/modal/modal.xsd">modal.ruleml.org/spec/</a>
+</h2>
+			<p></p>
+		</center>
+
+	  <p>This is the specification of Modal RuleML 1.0.</p>
+	<h2>Contents</h2>
+<ul>
+<li><a href="#Overview">Overview</a></li>
+<li><a href="#Examples">Examples</a></li>
+<li><a href="#XSDs"><abbr>XSD</abbr>s</a></li>
+<li><a href="#Acknowledgement">Acknowledgement</a></li>
+</ul>
+<h2><a name="Overview">Overview</a></h2>
+	
+  <p>Inspired by previous work on <a href="http://store.elsevier.com/Many-Dimensional-Modal-Logics-Theory-and-Applications/A_-Kurucz/isbn-9780444508263/">many-dimensional modal logic</a> and
+  <a href="http://plato.stanford.edu/entries/logic-epistemic/#4">multi-modal logic</a>,
+  Modal RuleML was first described in the <a href="http://www.cs.unb.ca/~boley/papers/ruleml-family.pdf">'Family' RuleML paper</a>
+  (<a href="http://ruleml.org/talks/RuleML-Family-PPSWR06-talk-up.pdf">'Family' RuleML slides</a>),
+  co-evolved with parallel efforts including <a href="http://www.omg.org/spec/SBVR/1.0/">Semantics of Business Vocabulary and Business Rules</a>, and revised for Modal RuleML 1.0.</p>
+  <p>Modal RuleML 1.0 uses (modal-)relationship <tt>Atom</tt>s applying a modal relation
+  <pre><b>&lt;Rel modal="http://ruleml.org/1.0/vocab/modal/logic#Operator"/&gt;</b></pre>
+  
+  to an optional agent argument and a mandatory embedded proposition
+  <pre><b>&lt;Atom per="instant" ...&gt; .  .  . &lt;/Atom&gt;</b></pre>
+  (hence the relation is unary or binary, i.e. polyadic). Here, <b><tt>http://ruleml.org/1.0/vocab/modal/</tt><em>logic</em><tt>#</tt><em>Operator</em></b> is a system of six reserved IRIs representing the modality of a
+  <em>logic</em> (currently, <tt>alethic</tt>, <tt>deontic</tt>, <tt>epistemic</tt>, and <tt>doxastic</tt>) and an <em>Operator</em> (e.g., for <tt>alethic</tt> being <tt>Necessary</tt> or <tt>Possible</tt>).
+  Moreover, <b><tt>per="instant"</tt></b> indicates the use of the inner atom 'per instantiation', so that free variables inside this embedded proposition can be quantified over from outside the modal relationship.
+  The six <em>logic</em><tt>#</tt><em>Operator</em> pairs introduced are
+  <tt>alethic</tt><tt>#</tt><tt>Necessary</tt>, <tt>alethic</tt><tt>#</tt><tt>Possible</tt>, <tt>deontic</tt><tt>#</tt><tt>Obligatory</tt>, <tt>deontic</tt><tt>#</tt><tt>Permitted</tt>, <tt>epistemic</tt><tt>#</tt><tt>Known</tt>, and <tt>doxastic</tt><tt>#</tt><tt>Believed</tt>.
+  Each can be used polyadically in a unary, 'absolute' fashion, i.e. applied to the embedded proposition only,
+  or in a binary, 'relativized' version, i.e. applied to an agent as well as to the embedded proposition.
+  The modal relationships can be defined both by facts and rules.
+  For example, the absolute "It is known that the material of the moon is rock" in Modal RuleML becomes the following unary <tt>epistemic</tt><tt>#</tt><tt>Known</tt> fact:
+  <pre><b>&lt;Atom&gt;
+  &lt;Rel modal="http://ruleml.org/1.0/vocab/modal/epistemic#Known"/&gt;
+  &lt;Atom per="instant"&gt;
+    &lt;Rel&gt;material&lt;/Rel&gt;
+    &lt;Ind&gt;moon&lt;/Ind&gt;
+    &lt;Ind&gt;rock&lt;/Ind&gt;
+  &lt;/Atom&gt;
+&lt;/Atom&gt;
+</b></pre>  
+  This can be relativized to Mary, as in "It is known by Mary that the material of the moon is rock", which in Modal RuleML's polyadic formalization becomes the binary <tt>epistemic</tt><tt>#</tt><tt>Known</tt> fact:
+  <pre><b>&lt;Atom&gt;
+  &lt;Rel modal="http://ruleml.org/1.0/vocab/modal/epistemic#Known"/&gt;
+  &lt;Ind&gt;Mary&lt;/Ind&gt;
+  &lt;Atom per="instant"&gt;
+    &lt;Rel&gt;material&lt;/Rel&gt;
+    &lt;Ind&gt;moon&lt;/Ind&gt;
+    &lt;Ind&gt;rock&lt;/Ind&gt;
+  &lt;/Atom&gt;
+&lt;/Atom&gt;
+</b></pre>
+   In English this would of course be normally expressed as "Mary knows that the material of the moon is rock".
+   The advantage of using relativizable modalities such as <tt>epistemic</tt><tt>#</tt><tt>Known</tt> polyadically rather than having both a unary and a binary version such as, respectively, <tt>epistemic</tt><tt>#</tt><tt>Known</tt> and <tt>epistemic</tt><tt>#</tt><tt>Knows</tt>
+   is that it cuts the number of reserved IRIs in half.
+  
+  
+  </p>
+  <p>
+  Following the same principles, extensions of Modal RuleML 1.0 are expected to introduce further modalities such as for spatio-temporal structures.
+  New modalities can initially be developed at RuleML-external IRIs ending with <em>logic</em><tt>#</tt><em>Operator</em>
+  and on approval by the <a href="http://wiki.ruleml.org/index.php/Priv:Organizational_Structure#Technical_Groups_.28TGs.29">Modal Logic in RuleML Technical Group</a>
+  become added as RuleML-internal reserved IRIs.
+  Note that the current release does not yet contain temporal logic, because of trade-offs between qualitative and quantitative treatments of time,
+  the many temporal-logic varieties (starting with the pairs of temporal operators for the past and for the future),
+  and ongoing related developments in <a href="http://ruleml.org/reaction/">Reaction RuleML</a>
+  (e.g., <a href="http://nparc.cisti-icist.nrc-cnrc.gc.ca/npsi/ctrl?action=shwart&amp;index=an&amp;req=16435934&amp;lang=en">CEP RuleML</a>)
+  and <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=legalruleml">LegalRuleML</a>.</p>
+  <p>A methodology for extending defeasible logic with modality for RuleML is described in the <a href="http://espace.uq.edu.au/eserv/UQ:152785/ModalRules.pdf">Modal Defeasible Logic paper</a>
+  (<a href="http://2008.ruleml.org/presentations/session3paper1.pdf">Modal Defeasible Logic slides</a>).
+  An extension of the defeasible reasoner <a href="http://lpis.csd.auth.gr/systems/dr-device.html">DR-DEVICE</a> with a mechanism for expressing modal (e.g., deontic) logic operators
+  is described in the <a href="http://www.igi-global.com/article/modal-defeasible-reasoner-deontic-logic/55390">Modal Defeasible Reasoner paper</a>.</p>
+
+<h2><a name="Examples">Examples</a></h2>
+	
+  <p>Various sample Modal RuleML documents have been prepared and maintained; some exemplify features of Modal RuleML and are useful didactically while others are mostly for testing puposes.</p>
+  
+  <p>A suite of instructive examples for Modal RuleML has been developed at <a href="http://wiki.ruleml.org/index.php/CombiningModalLogics.ruleml">CombiningModalLogics.ruleml</a>
+  (cf. wiki <a href="http://wiki.ruleml.org/index.php?title=CombiningModalLogics.ruleml&amp;action=history">history</a>).
+  </p>
+ 
+<h2><a name="XSDs"><abbr>XSD</abbr>s</a></h2>
+	
+	<p>The schema specification of Version 1.0 has been created at
+	<a href="modal.xsd">http://ruleml.org/1.0/modal/modal.xsd</a>
+	 </p>
+<h2><a name="Acknowledgement">Acknowledgement</a></h2>
+	
+	<p>Work on this specification has been initially in collaboration with the EU's <a href="http://rewerse.net/">REWERSE</a> Network of Excellence (modal and reactive logic),
+	ongoing with <a href="http://www.omg.org/">OMG</a>'s <a href="http://www.omg.org/spec/SBVR/1.0/">SBVR</a> Task Force (alethic and deontic logic),
+	and recently with <a href="https://www.oasis-open.org/">OASIS</a>' <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=legalruleml">LegalRuleML</a> Technical Committee (deontic and defeasible logic).
+	</p>
+<br>
+		<p>
+		Site Contact:
+		<a href="http://www.cs.unb.ca/~boley/">Harold Boley</a>.
+		Page Version: 2012-09-08
+		
+		<br>
+		<br>
+		<br>
+		<a name="Practice-Preach"></a>
+		<small>"Practice what you preach": <abbr>XML</abbr> source of this homepage at <a href="modal.xml">modal.xml</a>;
+	      <br>
+	      transformed to HTML via the adaptation of <a href="http://www.dfki.uni-kl.de/~sintek/">Michael Sintek</a>'s SliML <a href="http://www.w3.org/TR/xslt"><abbr>XSLT</abbr></a> stylesheet at <a href="http://ruleml.org/homepage.xsl">homepage.xsl</a> (View | Page Source)
+	   </small>
+		</p>
+	</body>
+</html>
