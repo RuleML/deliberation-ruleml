@@ -218,6 +218,9 @@
                 }
                 document.getElementById('schema_link').innerHTML = "";
                 document.getElementById('schema_link').href = "";
+                document.getElementById('schema_a_button').href = "";
+                document.getElementById('schema_a_button').setAttribute("class", "button-off");
+                document.getElementById('schema_button').setAttribute("class", "button-off");
                 document.getElementById('schema_text').innerHTML = "";
             }
             function constructParams(LanguageForm) {
@@ -365,6 +368,9 @@
                 document.getElementById('schema_text').innerHTML = schema_text;
                 document.getElementById('schema_link').innerHTML = sURL;
                 document.getElementById('schema_link').href = sURL;
+                document.getElementById('schema_a_button').href = sURL;
+                document.getElementById('schema_a_button').setAttribute("class", "button-on");
+                document.getElementById('schema_button').setAttribute("class", "button-on");
             }
             /*//]]> */
     </script>
@@ -381,6 +387,7 @@
       <div>
         <input type="button" value="Reset Form" onclick="window.location.reload()" />
         <input type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
+        <a id="schema_a_button" href="" class=button-off""><button id="schema_button" type="button" class="button-off">Download Schema</button></a>
         <br /><br />
       </div>
       <div> Schema URL = <a id="schema_link" href=""></a>
