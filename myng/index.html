@@ -5,6 +5,7 @@
   <head>
     <title>RuleML 1.01 Modular sYNtax ConfiGurator (MYNG)</title>
     <link rel="shortcut icon" href="http://ruleml.org/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="myng.css"/>
     <script type="text/javascript">
       /* <![CDATA[ */
             var php_path = "/1.01/relaxng/schema_rnc.php";
@@ -369,26 +370,26 @@
     </script>
   </head>
   <body>
-    <h1>Selection Form</h1>
+    <h1>MYNG 1.01 - the Deliberation RuleML Schema Selection Form</h1>
+    <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
-      <h2> Instructions</h2> Make a selection from the form below, then click "Refresh Schema" to
-      update the Schema URL. The main module is also displayed below the form. To reset the form to
+      <h2> Instructions</h2> Make selections from the form below, then click "Generate Schema" to
+      generate the Deliberation RuleML 1.01 Relax NG Schema URL corresponding to your selections. The Relax NG driver module is also displayed below the form. To reset the form to
       the default (supremum) values, click "Reset Form". <br /><br />
     </div>
     <form action="index.php" method="post">
       <div>
         <input type="button" value="Reset Form" onclick="window.location.reload()" />
-        <input type="button" value="Refresh Schema" onclick="refreshSchema(this.form)" />
+        <input type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
         <br /><br />
       </div>
       <div> Schema URL = <a id="schema_link" href=""></a>
         <br /><br />
       </div>
-      <div style="">
+      <div>
         <table>
-          <tr style="vertical-align:top">
-            <td style="padding:8px"> Expressivity <br /> "Backbone" <br /> (Check One) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+          <tr class="row">
+            <td class="facet"> <span class="facet-head">Expressivity <br /> "Backbone" <br /></span> (Select One) <ol>
                 <li><input type="radio" name="backbone" onclick="checkAll(this.form)" /> Atomic
                   Formulas </li>
                 <li><input type="radio" name="backbone" onclick="checkAll(this.form)" /> Ground Fact </li>
@@ -403,8 +404,8 @@
                   First-Order Logic </li>
               </ol>
             </td>
-            <td style="padding:8px"> Treatment of Attributes<br /> With Default Values <br /> (Check
-              One) <ol style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Treatment of Attributes<br /> With Default Values <br /></span> (Select
+              One) <ol>
                 <li>
                   <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
                   Absent </li>
@@ -414,8 +415,7 @@
                   <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Optional </li>
               </ol>
             </td>
-            <td style="padding:8px"> Term Sequences: <br /> Number of Terms <br /> (Check One) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Term Sequences: <br /> Number of Terms <br /></span> (Select One) <ol>
                 <li><input type="radio" name="termseq" onclick="checkAll(this.form)" /> None </li>
                 <li>
                   <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary (Zero
@@ -431,8 +431,8 @@
                   or More) </li>
               </ol>
             </td>
-            <td style="padding:8px"> Language <br /> (Check One)<br /><br />
-              <ol style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
+              <ol>
                 <li><input type="radio" name="lng" onclick="checkAll(this.form)" /> English
                   Abbreviated Names </li>
                 <li>
@@ -442,8 +442,7 @@
                    /> French Long Names </li>
               </ol>
             </td>
-            <td style="padding:8px"> Serialization<br /> Options <br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Serialization<br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="serial0" onclick="checkAll(this.form)"
                     checked="checked" /> Unordered Groups </li>
                 <li>
@@ -459,14 +458,13 @@
             </td>
 
           </tr>
-          <tr style="vertical-align:top">
-            <td style="padding:8px"> Propositional <br /> Options<br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+          <tr class="row">
+            <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
                     checked="checked" /> IRIs </li>
                 <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
                     checked="checked" /> Rulebases </li>
-                <li style="margin-left:16px">
+               <li class="dependent">
                   <input type="checkbox" name="propo2" onclick="checkAll(this.form)"
                     checked="checked" /> Entailments </li>
                 <li><input type="checkbox" name="propo3" onclick="checkAll(this.form)"
@@ -490,8 +488,7 @@
                 </li>
               </ol>
             </td>
-            <td style="padding:8px"> Implication <br /> Options <br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Implication <br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="implies0" onclick="checkAll(this.form)"
                     checked="checked" /> Equivalences </li>
                 <li>
@@ -506,7 +503,7 @@
               <li >
                 <input type="checkbox" name="implies4" onclick="checkAll(this.form)"
                   checked="checked" /> Negative Constraints </li>
-              <li style="margin-left:16px">
+              <li class="dependent">
                 <input type="checkbox" name="implies5" onclick="checkAll(this.form)"
                   checked="checked" /> Disjunctive Heads </li>
               <li>
@@ -514,22 +511,21 @@
                   checked="checked" /> Existential Heads</li>
             </ol>
             </td>
-            <td style="padding:8px"> Term <br /> Options <br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Term <br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="terms0" onclick="checkAll(this.form)"
                     checked="checked" /> Object Identifiers </li>
                 <li>
                   <input type="checkbox" name="terms1" onclick="checkAll(this.form)"
                     checked="checked" /> Slots </li>
-                <li style="margin-left:16px">
+               <li class="dependent">
                   <input type="checkbox" name="terms2" onclick="checkAll(this.form)"
                     checked="checked" /> Slot Cardinality </li>
-                <li style="margin-left:16px">
+               <li class="dependent">
                   <input type="checkbox" name="terms3" onclick="checkAll(this.form)"
                     checked="checked" /> Slot Weight </li>
                 <li><input type="checkbox" name="terms4" onclick="checkAll(this.form)"
                     checked="checked" /> Equations </li>
-                <li style="margin-left:16px">
+               <li class="dependent">
                   <input type="checkbox" name="terms5" onclick="checkAll(this.form)"
                     checked="checked" /> Oriented Equations </li>
                 <li><input type="checkbox" name="terms8" onclick="checkAll(this.form)"
@@ -542,8 +538,7 @@
                     checked="checked" /> Reified Terms </li>
               </ol>
             </td>
-            <td style="padding:8px"> Quantification<br /> Options <br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Quantification<br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
                     checked="checked" /> Implicit Closure </li>
                 <li>
@@ -554,8 +549,7 @@
                     checked="checked" /> Positional Rest Variables </li>
               </ol>
             </td>
-            <td style="padding:8px"> Expression<br /> Options <br /> (Check Zero or More) <ol
-                style="list-style-type:none;padding: 0px; margin: 0px;">
+            <td class="facet"> <span class="facet-head">Expression<br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="expr0" onclick="checkAll(this.form)"
                     checked="checked" /> Generalized Lists </li>
                 <li>
@@ -569,7 +563,7 @@
           </tr>
         </table>
       </div>
-      <h1>Usage</h1> The Schema URL may be used directly for online validation - copy and paste as
+      <h2>Usage</h2> The Schema URL may be used directly for online validation - copy and paste as
       required by the validator. For a demonstration of validation using the online service
       Validator.nu, see <a
         href="http://wiki.ruleml.org/index.php/Relax_NG#How_to_Validate_with_the_RuleML_Parameterized_Relax_NG_Schema"
@@ -577,9 +571,10 @@
       processing instructions may require that the character "&amp;" be replaced by "&amp;amp;".
       Clicking on the Schema URL downloads a copy of the schema driver into a file named
       "custom_driver.rnc". To use the schema driver locally (offline), a local copy of the modules
-      directory is also necessary - this may be downloaded as a zip archive from the <a
-        href="http://deliberation.ruleml.org/1.01/relaxng/">RuleML 1.01 Relax NG Directory</a>. <h1>Main
-        Module</h1>
+      directory is also necessary - for downloaded instructions, see the <a
+        href="http://deliberation.ruleml.org/1.01/relaxng/">Deliberation RuleML 1.01 Relax NG Directory</a>. 
+      <h2>Driver
+        Module</h2>
       <pre id="schema_text"></pre>
       <script type="text/javascript">
         /* <![CDATA[ */

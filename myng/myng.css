@@ -1,0 +1,11 @@
+table {border-collapse: separate; border-spacing: 12px;}
+td.facet {padding:8px; background-color : #CCCCFF;border: 1px solid black;}
+tr.row {padding:0px; margin:0px;vertical-align:top;}
+.facet-head {font-weight:bold; font-size:120%;}
+h1 {background-color : #CCCCFF;}
+input {background-color : #FF8040; color:white; font-weight:bold;}
+input[type="radio"]:after {
+    background-color: #b7b7e5;}
+.logo {float:right;}    
+ol {list-style-type:none;padding: 0px; margin: 0px; background-color : white;}
+li.dependent { margin-left:16px}
