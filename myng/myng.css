@@ -1,13 +1,14 @@
 table {border-collapse: separate; border-spacing: 12px;}
-td.facet {padding:8px; background-color : #CCCCFF;border: 1px solid black;}
+td.facet {padding:8px; background-color : #CCCCFF;border: 1px solid black; }
 tr.row {padding:0px; margin:0px;vertical-align:top;}
 .facet-head {font-weight:bold; font-size:120%;}
-h1 {background-color : #CCCCFF;}
-input {background-color : #FF8040; color:white; font-weight:bold; }
+h1 {background-color : #CCCCFF; padding:8px; border-radius: 8px;}
+input {background-color : #FF8040; color:white; font-weight:bold; padding:2px;}
 a.button-on {text-decoration:none; }
-button.button-on {background-color:#FF8040;color:white; font-weight:bold;}
+button.button-on {background-color:#FF8040;color:white; font-weight:bold;padding:2px;}
 a.button-off {text-decoration:none;}
-button.button-off {background-color:#AAAAAA;color:white; font-weight:bold;}
+button.button-off {background-color:#AAAAAA;color:white; font-weight:bold; padding:2px;}
 .logo {float:right;}    
-ol {list-style-type:none;padding: 0px; margin: 0px; background-color : white;}
+ol {list-style-type:none;padding: 8px; margin: 0px; background-color : white;}
+.facet li {padding:3px}
 li.dependent { margin-left:16px}

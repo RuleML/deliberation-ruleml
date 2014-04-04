@@ -378,14 +378,14 @@
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
       <h2> Instructions</h2> Make selections from the form below, then click "Generate Schema" to
-      generate the Deliberation RuleML 1.01 Relax NG Schema URL corresponding to your selections. The Relax NG driver module is also displayed below the form. To reset the form to
+      generate the Deliberation RuleML 1.01 Relax NG Schema URL corresponding to your selections. The Relax NG schema driver is also displayed below the form. To reset the form to
       the default (supremum) values, click "Reset Form". <br /><br />
     </div>
     <form action="index.php" method="post">
       <div>
         <input type="button" value="Reset Form" onclick="window.location.reload()" />
         <input type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
-        <a id="schema_a_button" href="" class=button-off""><button id="schema_button" type="button" class="button-off">Download Schema</button></a>
+        <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download Schema</button></a>
         <br /><br />
       </div>
       <div> Schema URL = <span id="schema_link"></span>
@@ -574,12 +574,12 @@
         href="http://wiki.ruleml.org/index.php/Relax_NG#How_to_Validate_with_the_RuleML_Parameterized_Relax_NG_Schema"
         >How to Validate with the RuleML Parameterized Relax NG Schema</a>. Some scripts and
       processing instructions may require that the character "&amp;" be replaced by "&amp;amp;".
-      Clicking on the Schema URL downloads a copy of the schema driver into a file named
-      "custom_driver.rnc". To use the schema driver locally (offline), a local copy of the modules
-      directory is also necessary - for downloaded instructions, see the <a
-        href="http://deliberation.ruleml.org/1.01/relaxng/">Deliberation RuleML 1.01 Relax NG Directory</a>. 
-      <h2>Driver
-        Module</h2>
+      Clicking on the "Download Schema" button downloads a copy of the schema driver  into a file named
+      "custom_driver.rnc". To use the schema driver  locally (offline), a local copy of the modules
+      directory is also necessary - for download instructions, see the <a
+        href="http://deliberation.ruleml.org/1.01/relaxng/">Deliberation RuleML 1.01 Relax NG Directory</a>.
+      For more information about the re-engineering of RuleML into Relax NG, which made this modularization possible, see the <a href="http://wiki.ruleml.org/index.php/MYNG">MYNG</a> page on the RuleML Wiki.
+      <h2>Schema Driver</h2>
       <pre id="schema_text"></pre>
       <script type="text/javascript">
         /* <![CDATA[ */
