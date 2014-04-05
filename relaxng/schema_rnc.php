@@ -2,16 +2,160 @@
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 //Assembler of RNC schema for RuleML 1.01
+//
+//Step 0000. Extract all GET parameters
+$backbone = "backbone";
+$backbone_andor = 0;
+$backbone_implies = 1;
+$backbone_quant = 2;
+$backbone_expr = 3;
+$backbone_dis = 4;
+$backbone_fo = 5;
+$bbackbone = processGETParameter ($backbone);
+$backboneParam = "x".dechex(bindec($bbackbone));
+//
+$default = "default";
+$default_absent = 0;
+$default_present = 1;
+$default_absent_fo = 2;
+$bdefault = processGETParameter ($default);
+$defaultParam = "x".dechex(bindec($bdefault));
+//
+$termseq = "termseq";
+$termseq_unary = 0;
+$termseq_binary = 1;
+$termseq_ternary_plus = 2;
+$btermseq = processGETParameter ($termseq);
+$termseqParam = "x".dechex(bindec($btermseq));
+//
+$lng = "lng";
+$lng_abbrev_en = 0;
+$lng_long_en = 1;
+//$lng_long_fr = 2;
+$blng = processGETParameter ($lng);
+$lngParam = "x".dechex(bindec($blng));
+//
+$propo = "propo";
+$propo_iri = 0;
+$propo_rulebase = 1;
+$propo_entails = 2;
+$propo_degree = 3;
+$propo_neg = 4;
+$propo_naf = 5;
+$propo_node = 6;
+$propo_meta = 7;
+$propo_xmlbase = 8;
+$propo_xmlid = 9;
+$bpropo = processGETParameter ($propo);
+$propoParam = "x".dechex(bindec($bpropo));
+//
+$implies = "implies";
+$implies_equivalent = 0;
+$implies_direction = 1;
+$implies_material = 2;
+$implies_and = 3;
+$implies_nc = 4;
+$implies_or = 5;
+$implies_ex = 6;
+$bimplies = processGETParameter ($implies);
+$impliesParam = "x".dechex(bindec($bimplies));
+//
+$terms = "terms";
+$terms_oid = 0;
+$terms_slot = 1;
+$terms_card = 2;
+$terms_weight = 3;
+$terms_equal = 4;
+$terms_oriented = 5;
+$terms_type = 8;
+$terms_data = 9;
+$terms_skolem = 10;
+$terms_reify = 11;
+$bterms = processGETParameter ($terms);
+$termsParam = "x".dechex(bindec($bterms));
+//
+$quant = "quant";
+$quant_closure = 0;
+$quant_resl = 1;
+$quant_repo = 2;
+$bquant = processGETParameter ($quant);
+$quantParam = "x".dechex(bindec($bquant));
+//
+$expr = "expr";
+$expr_val_absent = 0;
+$expr_plex = 1;
+$expr_val_nondefault = 2;
+$expr_in = 3;
+$bexpr = processGETParameter ($expr);
+$exprParam = "x".dechex(bindec($bexpr));
+$serialization = "serial";
+$serialization_unordered = 0;
+$serialization_stripeskip = 1;
+$serialization_datatyping = 2;
+$serialization_schemaLocation = 3;
+$bserialization = processGETParameter ($serialization);
+$serializationParam = "x".dechex(bindec($bserialization));
+
 // Step 000. Initialize some parameters
 header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
-header('Content-Disposition: attachment; filename="'.basename('custom_driver.rnc').'"');
+$rnc_filename = 'myng';
+$rnc_filename = $rnc_filename.'-b'.substr($backboneParam, 1);
+$rnc_filename = $rnc_filename.'-d'.substr($defaultParam, 1);
+$rnc_filename = $rnc_filename.'-a'.substr($termseqParam, 1);
+$rnc_filename = $rnc_filename.'-l'.substr($lngParam, 1);
+$rnc_filename = $rnc_filename.'-p'.substr($propoParam, 1);
+$rnc_filename = $rnc_filename.'-i'.substr($impliesParam, 1);
+$rnc_filename = $rnc_filename.'-t'.substr($termsParam, 1);
+$rnc_filename = $rnc_filename.'-q'.substr($quantParam, 1);
+$rnc_filename = $rnc_filename.'-e'.substr($exprParam, 1);
+$rnc_filename = $rnc_filename.'-s'.substr($serializationParam, 1);
+$rnc_filename = $rnc_filename.'.rnc';
+header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"');
 $schemaLocation='';
 $modulesLocation = $schemaLocation . 'modules/';
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
 $base_url = "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
+
+//
+// Step 00. Document the GET parameters and construct the URL
+$this_url = $base_url;
+$this_url = $this_url . "?";
+$call_fragment = $backbone."=".$backboneParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $default."=".$defaultParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $termseq."=".$termseqParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $lng."=".$lngParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $propo."=".$propoParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $implies."=".$impliesParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $terms."=".$termsParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $quant."=".$quantParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $expr."=".$exprParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment."&";
+$call_fragment = $serialization."=".$serializationParam;
+echo "# GET parameter: ".$call_fragment."\n";
+$this_url = $this_url . $call_fragment;
+
+
+
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
@@ -32,133 +176,7 @@ dcterms:rights [ "TBD" ]
 dc:relation [ "http://deliberation.ruleml.org/1.01" ]';
 echo "\n";
 echo "# Call parameters\n";
-$this_url = $base_url;
-$this_url = $this_url . "?";
 echo "# Base URL = $base_url \n";
-//
-//Step 0. Extract all GET parameters
-$backbone = "backbone";
-$backbone_andor = 0;
-$backbone_implies = 1;
-$backbone_quant = 2;
-$backbone_expr = 3;
-$backbone_dis = 4;
-$backbone_fo = 5;
-$bbackbone = processGETParameter ($backbone);
-$backboneParam = "x".dechex(bindec($bbackbone));
-$call_fragment = $backbone."=".$backboneParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$default = "default";
-$default_absent = 0;
-$default_present = 1;
-$default_absent_fo = 2;
-$bdefault = processGETParameter ($default);
-$defaultParam = "x".dechex(bindec($bdefault));
-$call_fragment = $default."=".$defaultParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$termseq = "termseq";
-$termseq_unary = 0;
-$termseq_binary = 1;
-$termseq_ternary_plus = 2;
-$btermseq = processGETParameter ($termseq);
-$termseqParam = "x".dechex(bindec($btermseq));
-$call_fragment = $termseq."=".$termseqParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$lng = "lng";
-$lng_abbrev_en = 0;
-$lng_long_en = 1;
-//$lng_long_fr = 2;
-$blng = processGETParameter ($lng);
-$lngParam = "x".dechex(bindec($blng));
-$call_fragment = $lng."=".$lngParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$propo = "propo";
-$propo_iri = 0;
-$propo_rulebase = 1;
-$propo_entails = 2;
-$propo_degree = 3;
-$propo_neg = 4;
-$propo_naf = 5;
-$propo_node = 6;
-$propo_meta = 7;
-$propo_xmlbase = 8;
-$propo_xmlid = 9;
-$bpropo = processGETParameter ($propo);
-$propoParam = "x".dechex(bindec($bpropo));
-$call_fragment = $propo."=".$propoParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$implies = "implies";
-$implies_equivalent = 0;
-$implies_direction = 1;
-$implies_material = 2;
-$implies_and = 3;
-$implies_nc = 4;
-$implies_or = 5;
-$implies_ex = 6;
-$bimplies = processGETParameter ($implies);
-$impliesParam = "x".dechex(bindec($bimplies));
-$call_fragment = $implies."=".$impliesParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$terms = "terms";
-$terms_oid = 0;
-$terms_slot = 1;
-$terms_card = 2;
-$terms_weight = 3;
-$terms_equal = 4;
-$terms_oriented = 5;
-$terms_type = 8;
-$terms_data = 9;
-$terms_skolem = 10;
-$terms_reify = 11;
-$bterms = processGETParameter ($terms);
-$termsParam = "x".dechex(bindec($bterms));
-$call_fragment = $terms."=".$termsParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$quant = "quant";
-$quant_closure = 0;
-$quant_resl = 1;
-$quant_repo = 2;
-$bquant = processGETParameter ($quant);
-$quantParam = "x".dechex(bindec($bquant));
-$call_fragment = $quant."=".$quantParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-//
-$expr = "expr";
-$expr_val_absent = 0;
-$expr_plex = 1;
-$expr_val_nondefault = 2;
-$expr_in = 3;
-$bexpr = processGETParameter ($expr);
-$exprParam = "x".dechex(bindec($bexpr));
-$call_fragment = $expr."=".$exprParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment."&";
-
-$serialization = "serial";
-$serialization_unordered = 0;
-$serialization_stripeskip = 1;
-$serialization_datatyping = 2;
-$serialization_schemaLocation = 3;
-$bserialization = processGETParameter ($serialization);
-$serializationParam = "x".dechex(bindec($bserialization));
-$call_fragment = $serialization."=".$serializationParam;
-echo "# GET parameter: ".$call_fragment."\n";
-$this_url = $this_url . $call_fragment;
 
 
 echo "# Complete URL = \n";
