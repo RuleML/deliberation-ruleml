@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="myng.css"/>
     <script type="text/javascript">
       /* <![CDATA[ */
+            "use strict";
             var php_path = "/1.01/relaxng/schema_rnc.php";
+            var xsd_path = "/1.01/xsd/";
             
             function initializeForm (LanguageForm) {
                 // One option must be checked for radio buttons
@@ -49,28 +51,18 @@
             function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
-                sequencesAllowed = ! LanguageForm.termseq[0].checked ||
-                LanguageForm.terms0.checked ||
-                LanguageForm.terms1.checked;
+                var sequencesAllowed = get_sequencesAllowed(LanguageForm);
                 // Terms are needed if sequences or equations are allowed
-                termsNeeded = sequencesAllowed ||
-                LanguageForm.terms4.checked;
+                var termsNeeded = get_termsNeeded(LanguageForm);
                 //
-                groundLogicAndUp = !(LanguageForm.backbone[0].checked ||
-                LanguageForm.backbone[1].checked);
+                var groundLogicAndUp = get_groundLogicAndUp(LanguageForm);
                 //
-                datalogAndUp = !(LanguageForm.backbone[0].checked ||
-                LanguageForm.backbone[1].checked ||
-                LanguageForm.backbone[2].checked);
+                var datalogAndUp = get_datalogAndUp(LanguageForm);
                 //
-                hornlogAndUp = !(LanguageForm.backbone[0].checked ||
-                LanguageForm.backbone[1].checked ||
-                LanguageForm.backbone[2].checked ||
-                LanguageForm.backbone[3].checked);
+                var hornlogAndUp = get_hornlogAndUp(LanguageForm);
                 //
-                hornlogeqAndUp = hornlogAndUp *
-                LanguageForm.terms4.checked;
-                fol = LanguageForm.backbone[5].checked;
+                var hornlogeqAndUp = get_hornlogEqAndUp(LanguageForm);
+                var fol = get_fol(LanguageForm)
                 // If rulebases are allowed, entailments are available
                 if (LanguageForm.propo1.checked) {
                     LanguageForm.propo2.removeAttribute('disabled');
@@ -220,25 +212,31 @@
                 document.getElementById('schema_a_button').href = "";
                 document.getElementById('schema_a_button').setAttribute("class", "button-off");
                 document.getElementById('schema_button').setAttribute("class", "button-off");
+                document.getElementById('xschema_link').innerHTML = "";
+                document.getElementById('xschema_a_button').href = "";
+                document.getElementById('xschema_a_button').setAttribute("class", "button-off");
+                document.getElementById('xschema_button').setAttribute("class", "button-off");
                 document.getElementById('schema_text').innerHTML = "";
             }
-            function constructParams(LanguageForm) {
-                // various obscure encoding formulas
-                var params = "?";
-                //
+            // Getters
+            function get_bb(LanguageForm) {
                 var bb = 0;
-                for (i = 0; i < 5; i = i + 1) {
+                for (var i = 0; i < 5; i = i + 1) {
                     if (LanguageForm.backbone[i].checked) {
                         bb = Math.pow(2, i) - 1;
                     }
                 }
                 // Modification of encoding for backbone due to omission of dishornlog
+                if ((LanguageForm.backbone[4].checked) && (LanguageForm.implies5.checked) ) {
+                        bb = Math.pow(2, 5) - 1;
+                }                
                 if (LanguageForm.backbone[5].checked) {
                         bb = Math.pow(2, 6) - 1;
                 }
-                params = params + "backbone=x" + bb.toString(16);
-                //
-                var df = 0;
+                return bb;
+            }
+            function get_df(LanguageForm) {
+                            var df = 0;
                 if (LanguageForm.deflt[0].checked) {
                     df = 5;
                 }
@@ -252,10 +250,12 @@
                 if (LanguageForm.deflt[2].checked) {
                     df = 7;
                 }
-                params = params + "&default=x" + df.toString(16);
-                //
+
+              return df;
+            }
+            function get_ts(LanguageForm) {
                 var ts = 0;
-                for (i = 0; i <= 4; i = i + 1) {
+                for (var i = 0; i <= 4; i = i + 1) {
                     if (LanguageForm.termseq[i].checked) {
                 			switch (i) {
                 			    case 0:
@@ -277,58 +277,66 @@
                 			}
                 	 }
                 }
-                params = params + "&termseq=x" + ts.toString(16);
-                //
+
+              return ts;
+            }
+            function get_lng(LanguageForm) {
                 var lng = 0;
-                for (i = 0; i <= 1; i = i + 1) {
+                for (var i = 0; i <= 1; i = i + 1) {
                     if (LanguageForm.lng[i].checked) {
                         lng = lng + Math.pow(2, i);
                     }
                 }
-                params = params + "&lng=x" + lng.toString(16);
-                //
-                var propo = 0;
-                for (i = 0; i <= 9; i = i + 1) {
+
+              return lng;
+            }
+            function get_propo(LanguageForm) {
+              var propo = 0;
+                for (var i = 0; i <= 9; i = i + 1) {
                     if (eval("LanguageForm.propo" + i + ".checked")) {
                         propo = propo + Math.pow(2, i);
                     }
                 }
-                params = params + "&propo=x" + propo.toString(16);
-                //
-                var implies = 0;
-                for (i = 0; i <= 6; i = i + 1) {
+              return propo;
+            }
+            function get_implies(LanguageForm) {
+              var implies = 0;
+                for (var i = 0; i <= 6; i = i + 1) {
                     if (eval("LanguageForm.implies" + i + ".checked")) {
                         implies = implies + Math.pow(2, i);
                     }
                 }
-                params = params + "&implies=x" + implies.toString(16);
-                //
+              return implies;
+            }
+            function get_terms(LanguageForm) {
                 var terms = 0;
-                for (i = 0; i <= 5; i = i + 1) {
+                for (var i = 0; i <= 5; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
                 }
-                for (i = 8; i <= 11; i = i + 1) {
+                for (var i = 8; i <= 11; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
                 }
-                params = params + "&terms=x" + terms.toString(16);
-                //
+              return terms;
+            }
+            function get_quant(LanguageForm) {
                 var quant = 0;
-                for (i = 0; i <= 2; i = i + 1) {
+                for (var i = 0; i <= 2; i = i + 1) {
                     if (eval("LanguageForm.quant" + i + ".checked")) {
                         quant = quant + Math.pow(2, i);
                     }
                 }
-                params = params + "&quant=x" + quant.toString(16);
-                //
-                if (!(hornlogAndUp)) {
-                    var expr = 0
-                } else {
-                    var expr = 1;
-                    for (i = 0; i <= 2; i = i + 1) {
+              return quant;
+            }
+            function get_ex(LanguageForm) {
+               var df = get_df(LanguageForm);
+                var expr = 0;
+                if (get_hornlogAndUp(LanguageForm)) {
+                    expr = 1;
+                    for (var i = 0; i <= 2; i = i + 1) {
                         if (eval("LanguageForm.expr" + i + ".checked")) {
                             expr = expr + Math.pow(2, i + 1);
                         }
@@ -337,14 +345,84 @@
                         }
                     }
                 }
-                params = params + "&expr=x" + expr.toString(16);
-                //
+              return expr;
+            }
+            function get_serial(LanguageForm) {
                 var serial = 0;
-                for (i = 0; i <= 3; i = i + 1) {
+                for (var i = 0; i <= 3; i = i + 1) {
                     if (eval("LanguageForm.serial" + i + ".checked")) {
                         serial = serial + Math.pow(2, i);
                     }
                 }
+              return serial;
+            }
+            function get_sequencesAllowed(LanguageForm) {
+              var result = ! LanguageForm.termseq[0].checked ||
+                  LanguageForm.terms0.checked ||
+                  LanguageForm.terms1.checked;
+              return result;
+            }
+            function get_termsNeeded(LanguageForm) {
+              var result = get_sequencesAllowed(LanguageForm) ||
+                  LanguageForm.terms4.checked;
+              return result;
+            }
+            function get_groundLogicAndUp(LanguageForm) {
+              var result = !(LanguageForm.backbone[0].checked ||
+                LanguageForm.backbone[1].checked);
+              return result;
+            }
+            function get_datalogAndUp(LanguageForm) {
+              var result = !(LanguageForm.backbone[0].checked ||
+                LanguageForm.backbone[1].checked ||
+                LanguageForm.backbone[2].checked);
+              return result;
+            }
+            function get_hornlogAndUp(LanguageForm) {
+              var result = !(LanguageForm.backbone[0].checked ||
+                LanguageForm.backbone[1].checked ||
+                LanguageForm.backbone[2].checked ||
+                LanguageForm.backbone[3].checked);
+              return result;
+            }
+            function get_hornlogEqAndUp(LanguageForm) {
+              var result = get_hornlogAndUp(LanguageForm) * 
+                LanguageForm.terms4.checked;
+              return result;
+            }
+            function get_fol(LanguageForm) {
+              var result  = LanguageForm.backbone[5].checked;
+              return result;
+            }
+            //
+            function constructParams(LanguageForm) {
+                // generate query string
+                var bb = get_bb(LanguageForm);
+                var df = get_df(LanguageForm);
+                var ts = get_ts(LanguageForm);
+                var lng = get_lng(LanguageForm);
+                var propo = get_propo(LanguageForm);
+                var implies = get_implies(LanguageForm);
+                var terms = get_terms(LanguageForm);
+                var quant = get_quant(LanguageForm);
+                var expr = get_ex(LanguageForm);
+                var serial = get_serial(LanguageForm);
+                return constructParams2(bb, df, ts, lng, propo, implies, terms,
+                  quant, expr, serial);
+            }
+            
+            function constructParams2(bb, df, ts, lng, propo, implies, terms, quant,
+              expr, serial) {
+                var params = "?";
+                params = params + "backbone=x" + bb.toString(16);
+                params = params + "&default=x" + df.toString(16);
+                params = params + "&termseq=x" + ts.toString(16);
+                params = params + "&lng=x" + lng.toString(16);
+                params = params + "&propo=x" + propo.toString(16);
+                params = params + "&implies=x" + implies.toString(16);
+                params = params + "&terms=x" + terms.toString(16);
+                params = params + "&quant=x" + quant.toString(16);
+                params = params + "&expr=x" + expr.toString(16);
                 params = params + "&serial=x" + serial.toString(16);
                 return params;
             }
@@ -354,9 +432,10 @@
                 //checkAll(LanguageForm);
                 var oRequest = new XMLHttpRequest();
                 var params = constructParams(LanguageForm);
+                var code = myngCode(params);
                 var sURL = "http://" +
-                self.location.hostname + php_path +
-                params;
+                  self.location.hostname + php_path +
+                  params;
                 oRequest.open("GET", sURL, false);
                 oRequest.setRequestHeader("User-Agent", navigator.userAgent);
                 oRequest.send(null);
@@ -364,11 +443,485 @@
                     alert("Error executing XMLHttpRequest call!");
                 }
                 var schema_text = oRequest.responseText;
+                // display RNC driver
                 document.getElementById('schema_text').innerHTML = schema_text;
+                // display URL for RNC driver
                 document.getElementById('schema_link').innerHTML = sURL;
+                // set link target to RNC driver
                 document.getElementById('schema_a_button').href = sURL;
+                // change style of button for RNC driver
                 document.getElementById('schema_a_button').setAttribute("class", "button-on");
                 document.getElementById('schema_button').setAttribute("class", "button-on");
+                //check for anchor
+                var xsd_name = anchorXSD(LanguageForm);
+                if (xsd_name.length > 0) {
+                  var xURL = "http://" + self.location.hostname + xsd_path + xsd_name + ".xsd";  
+                  // display URL for XSD anchor schema
+                  document.getElementById('xschema_link').innerHTML = xURL;
+                  // activate download button for XSD anchor schema
+                  document.getElementById('xschema_a_button').href = xURL;
+                  document.getElementById('xschema_a_button').setAttribute("class", "button-on");
+                  document.getElementById('xschema_button').setAttribute("class", "button-on");
+                  // fill in the text field with the name of the XSD anchor schema
+                  document.getElementById('xsd').setAttribute("value", xsd_name);
+                }
+                // fill in the text field with the name of the RNC driver
+                document.getElementById('driver').setAttribute("value", code);
+            }
+            
+            function compareBits(a, b) {
+              return ((a & b) == a);
+            }
+            // compare current selection with a specified parameter set
+            // (as array of bit strings)
+            function compareTo(LanguageForm, bb, df, ts, lng, propo, implies, 
+              terms, quant, expr, serial  ) {
+                  var LF_bb = get_bb(LanguageForm);
+                  var LF_df = get_df(LanguageForm);
+                  var LF_ts = get_ts(LanguageForm);
+                  var LF_lng = get_lng(LanguageForm);
+                  var LF_propo = get_propo(LanguageForm);
+                  var LF_implies = get_implies(LanguageForm);
+                  var LF_terms = get_terms(LanguageForm);
+                  var LF_quant = get_quant(LanguageForm);
+                  var LF_expr = get_ex(LanguageForm);
+                  var LF_serial = get_serial(LanguageForm);
+                  return (
+                      (compareBits(LF_bb, bb)) &&
+                      (compareBits(LF_df, df)) &&
+                      (compareBits(LF_ts, ts)) &&
+                      (compareBits(LF_lng, lng)) &&
+                      (compareBits(LF_propo, propo)) &&
+                      (compareBits(LF_implies, implies)) &&
+                      (compareBits(LF_terms, terms)) &&
+                      (compareBits(LF_quant, quant)) &&
+                      (compareBits(LF_expr, expr)) &&
+                      (compareBits(LF_serial, serial))
+                    ) ;
+            }
+            
+                 
+            function anchorXSD(LanguageForm) {
+                //bindatagroundfact
+                var bb = 7;
+                var df = 7;
+                var ts = 2;
+                var lng = 1;
+                var propo = parseInt("3cf", 16);
+                var implies = 6;
+                var terms = parseInt("f0f", 16);
+                var quant = 1;
+                var expr = 0;
+                var serial = 15;
+                var comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatagroundfact";
+                }
+                //bindatagroundlog
+                bb = 3;
+                df = 7;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatagroundlog";
+                }
+                //bindatalog
+                bb = 7;
+                df = 7;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatalog";
+                }
+                //datalog
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalog";
+                }
+                //datalogplus_min_normal
+                bb = 7;
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = 1;
+                implies = parseInt("58", 16);
+                terms = parseInt("310", 16);
+                quant = 0;
+                expr = 0;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalogplus_min";
+                }                  
+                //datalogplus_min
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = 1;
+                implies = parseInt("58", 16);
+                terms = parseInt("310", 16);
+                quant = 0;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalogplus_min";
+                }                  
+                //datalogplus_mid_normal
+                bb = 7;
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3c1", 16);
+                implies = parseInt("5e", 16);
+                terms = parseInt("f30", 16);
+                quant = 0;
+                expr = 0;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_mid_normal";
+                }                
+                //disdatalogplus_mid
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3c1", 16);
+                implies = parseInt("5e", 16);
+                terms = parseInt("f30", 16);
+                quant = 0;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_mid";
+                }                
+                //disdatalogplus_min_normal
+                bb = 7;
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = 1;
+                implies = parseInt("78", 16);
+                terms = parseInt("310", 16);
+                quant = 0;
+                expr = 0;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_min";
+                }                                
+                //disdatalogplus_min
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = 1;
+                implies = parseInt("78", 16);
+                terms = parseInt("310", 16);
+                quant = 0;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_min";
+                }                                
+                //disdatalogplus_mid_normal
+                bb = 7;
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3c1", 16);
+                implies = parseInt("7e", 16);
+                terms = parseInt("f30", 16);
+                quant = 0;
+                expr = 0;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_mid_normal";
+                }                
+                //disdatalogplus_mid
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3c1", 16);
+                implies = parseInt("7e", 16);
+                terms = parseInt("f30", 16);
+                quant = 0;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalogplus_mid";
+                }                
+                //nafdatalog
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ef", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafdatalog";
+                }
+                //negdatalog
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "negdatalog";
+                }
+                //nafnegdatalog
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafnegdatalog";
+                }
+                //hornlog
+                bb = parseInt("f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "hornlog";
+                }
+                //hornlogeq
+                bb = parseInt("f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 15;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "hornlogeq";
+                }
+                
+                //dishornlog
+                bb = parseInt("1f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("37", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "dishornlog";
+                }                 
+                //nafhornlog
+                bb = parseInt("f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ef", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafhornlog";
+                }  
+                //folog
+                bb = parseInt("3f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "folog"; 
+                 } 
+                //fologeq
+                bb = parseInt("3f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 15;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "fologeq";
+                }
+                //naffolog
+                bb = parseInt("3f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "naffolog";
+                }  
+                //naffologeq_normal
+                bb = parseInt("3f", 16);
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 15;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "naffologeq_normal";
+                }
+                //naffologeq
+                bb = parseInt("3f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 15;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "naffologeq";
+                }  
+                return "";  
+            }
+            // return the first value of the parameter
+            // named str in the URL query string params
+            function getParam(params, str) {              
+              var eqRegexp = new RegExp(str + '=x([^&]*)');
+              var match = eqRegexp.exec(params);
+              return match[1];
+            }
+            //
+            function myngCode(params) {
+              // kind of inverse to multi-argument constructParams
+              var code = "myng";
+              //extract each parameter value from query string
+              var bb = getParam(params, "backbone");
+              var df = getParam(params, "default");
+              var ts = getParam(params, "termseq");
+              var lng = getParam(params, "lng");
+              var propo = getParam(params, "propo");
+              var implies = getParam(params, "implies");
+              var terms = getParam(params, "terms");
+              var quant = getParam(params, "quant");
+              var expr = getParam(params, "expr");
+              var serial = getParam(params, "serial");
+              code = code + "-b" + bb;
+              code = code + "-d" + df;
+              code = code + "-a" + ts;
+              code = code + "-l" + lng;
+              code = code + "-p" + propo;
+              code = code + "-i" + implies;
+              code = code + "-t" + terms;
+              code = code + "-q" + quant;
+              code = code + "-e" + expr;
+              code = code + "-s" + serial;
+              return code;
             }
             /*//]]> */
     </script>
@@ -381,17 +934,27 @@
       generate the Deliberation RuleML 1.01 Relax NG Schema URL corresponding to your selections. The Relax NG schema driver is also displayed below the form. To reset the form to
       the default (supremum) values, click "Reset Form". <br /><br />
     </div>
-    <form action="index.php" method="post">
+    <form action="index.html" method="post">
       <div>
-        <input type="button" value="Reset Form" onclick="window.location.reload()" />
-        <input type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
-        <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download Schema</button></a>
+        <input class="button" type="button" value="Reset Form" onclick="window.location.reload(true)" />
+        <input class="button" type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
+        <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download RNC Schema</button></a>
+        <a id="xschema_a_button" href="" class="button-off"><button id="xschema_button" type="button" class="button-off">Download XSD Anchor Schema</button></a>
+        <br/><br/>
+        <label for="driver">RNC: </label>
+        <input class="text" name="driver" id="driver" type="text" size="45"  value="myng-"/>
+        <br/>
+        <label for="xsd">XSD: </label>
+        <input class="text" name="xsd" id="xsd" type="text" size="45"  value=""/>
         <br /><br />
       </div>
-      <div> Schema URL = <span id="schema_link"></span>
-        <br /><br />
+      <div> Relax NG Schema URL = <span id="schema_link"></span>
+        <br />
       </div>
-      <div>
+      <div> XSD Anchor Schema URL = <span id="xschema_link"></span>
+          <br /><br />
+        </div>
+        <div>
         <table>
           <tr class="row">
             <td class="facet"> <span class="facet-head">Expressivity <br /> "Backbone" <br /></span> (Select One) <ol>
