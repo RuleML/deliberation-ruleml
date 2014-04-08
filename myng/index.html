@@ -930,8 +930,7 @@
     <h1>MYNG 1.01 - the Deliberation RuleML Schema Selection Form</h1>
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
-      <h2> Instructions</h2> Make selections from the form below, then click "Generate Schema" to
-      generate the Deliberation RuleML 1.01 Relax NG Schema URL corresponding to your selections. The Relax NG schema driver is also displayed below the form. To reset the form to
+      <h2> Instructions</h2> Make selections from the form below, then click "Generate Schema". Click to Download the generated RNC schema or an approximating XSD anchor schema. To reset the form to
       the default (supremum) values, click "Reset Form". <br /><br />
     </div>
     <form action="index.html" method="post">
@@ -940,20 +939,15 @@
         <input class="button" type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
         <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download RNC Schema</button></a>
         <a id="xschema_a_button" href="" class="button-off"><button id="xschema_button" type="button" class="button-off">Download XSD Anchor Schema</button></a>
-        <br/><br/>
+        <div style="float:right">
         <label for="driver">RNC: </label>
         <input class="text" name="driver" id="driver" type="text" size="45"  value="myng-"/>
         <br/>
         <label for="xsd">XSD: </label>
         <input class="text" name="xsd" id="xsd" type="text" size="45"  value=""/>
-        <br /><br />
-      </div>
-      <div> Relax NG Schema URL = <span id="schema_link"></span>
-        <br />
-      </div>
-      <div> XSD Anchor Schema URL = <span id="xschema_link"></span>
-          <br /><br />
         </div>
+      </div>
+      <br /><br />
         <div>
         <table>
           <tr class="row">
@@ -972,99 +966,46 @@
                   First-Order Logic </li>
               </ol>
             </td>
-            <td class="facet"> <span class="facet-head">Treatment of Attributes<br /> With Default Values <br /></span> (Select
-              One) <ol>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Absent </li>
-                <li><input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Present </li>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Optional </li>
-              </ol>
-            </td>
-            <td class="facet"> <span class="facet-head">Term Sequences: <br /> Number of Terms <br /></span> (Select One) <ol>
-                <li><input type="radio" name="termseq" onclick="checkAll(this.form)" /> None </li>
-                <li>
-                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary (Zero
-                  or One) </li>
-                <li>
-                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Binary (Zero
-                  or Two) </li>
-                <li>
-                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary/Binary (Zero
-                  to Two) </li>
-                <li>
-                  <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Polyadic (Zero
-                  or More) </li>
-              </ol>
-            </td>
-            <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
-              <ol>
-                <li><input type="radio" name="lng" onclick="checkAll(this.form)" /> English
-                  Abbreviated Names </li>
-                <li>
-                  <input type="radio" name="lng" onclick="checkAll(this.form)" /> English Long Names </li>
-                <li>
-                  <input type="radio" name="lng" disabled="disabled" onclick="checkAll(this.form)"
-                   /> French Long Names </li>
-              </ol>
-            </td>
-            <td class="facet"> <span class="facet-head">Serialization<br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="serial0" onclick="checkAll(this.form)"
-                    checked="checked" /> Unordered Groups </li>
-                <li>
-                  <input type="checkbox" name="serial1" onclick="checkAll(this.form)"
-                    checked="checked" /> Stripe-Skipping </li>
-                <li>
-                  <input type="checkbox" name="serial2" onclick="checkAll(this.form)"
-                    checked="checked" /> Explicit Datatyping </li>
-                <li>
-                  <input type="checkbox" name="serial3" onclick="checkAll(this.form)"
-                    checked="checked" /> Schema Location Attribute </li>
-              </ol>
-            </td>
-
-          </tr>
-          <tr class="row">
             <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
-                    checked="checked" /> IRIs </li>
-                <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
-                    checked="checked" /> Rulebases </li>
-               <li class="dependent">
-                  <input type="checkbox" name="propo2" onclick="checkAll(this.form)"
-                    checked="checked" /> Entailments </li>
-                <li><input type="checkbox" name="propo3" onclick="checkAll(this.form)"
-                    checked="checked" /> Degree of Uncertainty </li>
-                <li><input type="checkbox" name="propo4" onclick="checkAll(this.form)"
-                    checked="checked" /> Strong Negation </li>
-                <li><input type="checkbox" name="propo5" onclick="checkAll(this.form)"
-                    checked="checked" /> Weak Negation <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Negation as Failure) </li>
-                <li><input type="checkbox" name="propo6" onclick="checkAll(this.form)"
-                    checked="checked" /> Node Identifiers <br />
-                </li>
-                <li><input type="checkbox" name="propo7" onclick="checkAll(this.form)"
-                    checked="checked" /> In-Place Annotation <br />
-                </li>
-                <li><input type="checkbox" name="propo8" onclick="checkAll(this.form)"
-                    checked="checked" /> XML base <br />
-                </li>
-                <li><input type="checkbox" name="propo9" onclick="checkAll(this.form)"
-                    checked="checked" /> XML id <br />
-                </li>
-              </ol>
+              <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
+                checked="checked" /> IRIs </li>
+              <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
+                checked="checked" /> Rulebases </li>
+              <li class="dependent">
+                <input type="checkbox" name="propo2" onclick="checkAll(this.form)"
+                  checked="checked" /> Entailments </li>
+              <li><input type="checkbox" name="propo3" onclick="checkAll(this.form)"
+                checked="checked" /> Degree of Uncertainty </li>
+              <li><input type="checkbox" name="propo4" onclick="checkAll(this.form)"
+                checked="checked" /> Strong Negation </li>
+              <li><input type="checkbox" name="propo5" onclick="checkAll(this.form)"
+                checked="checked" /> Weak Negation <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Negation as Failure) </li>
+              <li><input type="checkbox" name="propo6" onclick="checkAll(this.form)"
+                checked="checked" /> Node Identifiers <br />
+              </li>
+              <li><input type="checkbox" name="propo7" onclick="checkAll(this.form)"
+                checked="checked" /> In-Place Annotation <br />
+              </li>
+              <li><input type="checkbox" name="propo8" onclick="checkAll(this.form)"
+                checked="checked" /> XML base <br />
+              </li>
+              <li><input type="checkbox" name="propo9" onclick="checkAll(this.form)"
+                checked="checked" /> XML id <br />
+              </li>
+            </ol>
             </td>
+            
+            
             <td class="facet"> <span class="facet-head">Implication <br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="implies0" onclick="checkAll(this.form)"
-                    checked="checked" /> Equivalences </li>
-                <li>
-                  <input type="checkbox" name="implies1" onclick="checkAll(this.form)"
-                    checked="checked" /> Inference Direction </li>
-                <li>
-                  <input type="checkbox" name="implies2" onclick="checkAll(this.form)"
-                    checked="checked" /> Non-Material </li>
+              <li><input type="checkbox" name="implies0" onclick="checkAll(this.form)"
+                checked="checked" /> Equivalences </li>
+              <li>
+                <input type="checkbox" name="implies1" onclick="checkAll(this.form)"
+                  checked="checked" /> Inference Direction </li>
+              <li>
+                <input type="checkbox" name="implies2" onclick="checkAll(this.form)"
+                  checked="checked" /> Non-Material </li>
               <li>
                 <input type="checkbox" name="implies3" onclick="checkAll(this.form)"
                   checked="checked" /> Conjunctive Heads </li>
@@ -1079,33 +1020,55 @@
                   checked="checked" /> Existential Heads</li>
             </ol>
             </td>
-            <td class="facet"> <span class="facet-head">Term <br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="terms0" onclick="checkAll(this.form)"
-                    checked="checked" /> Object Identifiers </li>
-                <li>
-                  <input type="checkbox" name="terms1" onclick="checkAll(this.form)"
-                    checked="checked" /> Slots </li>
-               <li class="dependent">
-                  <input type="checkbox" name="terms2" onclick="checkAll(this.form)"
-                    checked="checked" /> Slot Cardinality </li>
-               <li class="dependent">
-                  <input type="checkbox" name="terms3" onclick="checkAll(this.form)"
-                    checked="checked" /> Slot Weight </li>
-                <li><input type="checkbox" name="terms4" onclick="checkAll(this.form)"
-                    checked="checked" /> Equations </li>
-               <li class="dependent">
-                  <input type="checkbox" name="terms5" onclick="checkAll(this.form)"
-                    checked="checked" /> Oriented Equations </li>
-                <li><input type="checkbox" name="terms8" onclick="checkAll(this.form)"
-                    checked="checked" /> Term Typing </li>
-                <li><input type="checkbox" name="terms9" onclick="checkAll(this.form)"
-                    checked="checked" /> Data Terms </li>
-                <li><input type="checkbox" name="terms10" onclick="checkAll(this.form)"
-                    checked="checked" /> Skolem Constants </li>
-                <li><input type="checkbox" name="terms11" onclick="checkAll(this.form)"
-                    checked="checked" /> Reified Terms </li>
-              </ol>
+            <td class="facet"> <span class="facet-head">Term Sequences: <br /> Number of Terms <br /></span> (Select One) <ol>
+              <li><input type="radio" name="termseq" onclick="checkAll(this.form)" /> None </li>
+              <li>
+                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary (Zero
+                or One) </li>
+              <li>
+                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Binary (Zero
+                or Two) </li>
+              <li>
+                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary/Binary (Zero
+                to Two) </li>
+              <li>
+                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Polyadic (Zero
+                or More) </li>
+            </ol>
             </td>
+            <td class="facet"> <span class="facet-head">Term <br /> Options <br /></span> (Check Zero or More) <ol>
+              <li><input type="checkbox" name="terms0" onclick="checkAll(this.form)"
+                checked="checked" /> Object Identifiers </li>
+              <li>
+                <input type="checkbox" name="terms1" onclick="checkAll(this.form)"
+                  checked="checked" /> Slots </li>
+              <li class="dependent">
+                <input type="checkbox" name="terms2" onclick="checkAll(this.form)"
+                  checked="checked" /> Slot Cardinality </li>
+              <li class="dependent">
+                <input type="checkbox" name="terms3" onclick="checkAll(this.form)"
+                  checked="checked" /> Slot Weight </li>
+              <li><input type="checkbox" name="terms4" onclick="checkAll(this.form)"
+                checked="checked" /> Equations </li>
+              <li class="dependent">
+                <input type="checkbox" name="terms5" onclick="checkAll(this.form)"
+                  checked="checked" /> Oriented Equations </li>
+              <li><input type="checkbox" name="terms8" onclick="checkAll(this.form)"
+                checked="checked" /> Term Typing </li>
+              <li><input type="checkbox" name="terms9" onclick="checkAll(this.form)"
+                checked="checked" /> Data Terms </li>
+              <li><input type="checkbox" name="terms10" onclick="checkAll(this.form)"
+                checked="checked" /> Skolem Constants </li>
+              <li><input type="checkbox" name="terms11" onclick="checkAll(this.form)"
+                checked="checked" /> Reified Terms </li>
+            </ol>
+            </td>
+
+          </tr>
+          <tr class="row">
+            
+            
+            
             <td class="facet"> <span class="facet-head">Quantification<br /> Options <br /></span> (Check Zero or More) <ol>
                 <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
                     checked="checked" /> Implicit Closure </li>
@@ -1128,20 +1091,65 @@
                     checked="checked" /> Interpreted Expressions </li>
               </ol>
             </td>
+            <td class="facet"> <span class="facet-head">Serialization<br /> Options <br /></span> (Check Zero or More) <ol>
+              <li><input type="checkbox" name="serial0" onclick="checkAll(this.form)"
+                checked="checked" /> Unordered Groups </li>
+              <li>
+                <input type="checkbox" name="serial1" onclick="checkAll(this.form)"
+                  checked="checked" /> Stripe-Skipping </li>
+              <li>
+                <input type="checkbox" name="serial2" onclick="checkAll(this.form)"
+                  checked="checked" /> Explicit Datatyping </li>
+              <li>
+                <input type="checkbox" name="serial3" onclick="checkAll(this.form)"
+                  checked="checked" /> Schema Location Attribute </li>
+            </ol>
+            </td>
+            <td class="facet"> <span class="facet-head">Treatment of Attributes<br /> With Default Values <br /></span> (Select
+              One) <ol>
+                <li>
+                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
+                  Absent </li>
+                <li><input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
+                  Present </li>
+                <li>
+                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Optional </li>
+              </ol>
+            </td>
+            <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
+              <ol>
+                <li><input type="radio" name="lng" onclick="checkAll(this.form)" /> English
+                  Abbreviated Names </li>
+                <li>
+                  <input type="radio" name="lng" onclick="checkAll(this.form)" /> English Long Names </li>
+                <li>
+                  <input type="radio" name="lng" disabled="disabled" onclick="checkAll(this.form)"
+                  /> French Long Names </li>
+              </ol>
+            </td>
           </tr>
         </table>
       </div>
-      <h2>Usage</h2> The Schema URL may be used directly for online validation - copy and paste as
-      required by the validator. For a demonstration of validation using the online service
+      <div> Relax NG Schema URL = <span id="schema_link"></span>
+        <br />
+      </div>
+      <div> XSD Anchor Schema URL = <span id="xschema_link"></span>
+        <br /><br />
+      </div>
+      <h2>Usage</h2> 
+      <p>The RNC and XSD Schema URLs may be used directly for online validation - copy and paste as
+      required by the validator. For a demonstration of RNC validation using the online service
       Validator.nu, see <a
         href="http://wiki.ruleml.org/index.php/Relax_NG#How_to_Validate_with_the_RuleML_Parameterized_Relax_NG_Schema"
         >How to Validate with the RuleML Parameterized Relax NG Schema</a>. Some scripts and
       processing instructions may require that the character "&amp;" be replaced by "&amp;amp;".
-      Clicking on the "Download Schema" button downloads a copy of the schema driver  into a file named
-      "custom_driver.rnc". To use the schema driver  locally (offline), a local copy of the modules
+      </p>
+      <p>
+      Clicking on the "Download RNC Schema" button downloads a copy of the schema driver into a file named according to the text labelled "RNC". To use the schema driver  locally (offline), a local copy of the modules
       directory is also necessary - for download instructions, see the <a
         href="http://deliberation.ruleml.org/1.01/relaxng/">Deliberation RuleML 1.01 Relax NG Directory</a>.
       For more information about the re-engineering of RuleML into Relax NG, which made this modularization possible, see the <a href="http://wiki.ruleml.org/index.php/MYNG">MYNG</a> page on the RuleML Wiki.
+      </p>
       <h2>Schema Driver</h2>
       <pre id="schema_text"></pre>
       <script type="text/javascript">
