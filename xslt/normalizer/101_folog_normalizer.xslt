@@ -649,14 +649,115 @@
             <xsl:apply-templates select="node() | @*" mode="phase-3"/>
         </xsl:copy>
     </xsl:template>
-    
-    <!-- Makes @val explicit. -->
-    <!-- Makes @per explicit. -->
-    <xsl:template match="r:Fun[not(@val)or not(@per)]" mode="phase-3">
+
+    <!-- Adds default attributes to Equivalent elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Equivalent[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
         <xsl:copy>
-            <xsl:if test="not (@val)">
-                <xsl:attribute name="val">0..</xsl:attribute>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
             </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to And elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:And[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to Or elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Or[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to Naf elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Naf[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to Neg elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Neg[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to Forall elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Forall[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Adds default attributes to Exists elements where this attribute is absent. -->
+    <!-- Makes @mapMaterial explicit. -->
+    <!-- Makes @mapDirection explicit. -->
+    <xsl:template match="r:Exists[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+        <xsl:copy>
+            <xsl:if test="not(@mapMaterial)">
+                <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+            </xsl:if>
+            <xsl:if test="not(@mapDirection)">
+                <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+        </xsl:copy>
+    </xsl:template>
+    
+    <!-- Makes @per explicit. -->
+    <xsl:template match="r:Fun[not(@per)]" mode="phase-3">
+        <xsl:copy>
             <xsl:if test="not(@per)">
                 <xsl:attribute name="per">copy</xsl:attribute>
             </xsl:if>
