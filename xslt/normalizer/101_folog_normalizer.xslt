@@ -754,7 +754,22 @@
             <xsl:apply-templates select="node() | @*" mode="phase-3"/>
         </xsl:copy>
     </xsl:template>
-    
+
+  <!-- Adds default attributes to Rulebase elements where this attribute is absent. -->
+  <!-- Makes @mapMaterial explicit. -->
+  <!-- Makes @mapDirection explicit. -->
+  <xsl:template match="r:Rulebase[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
+    <xsl:copy>
+      <xsl:if test="not(@mapMaterial)">
+        <xsl:attribute name="mapMaterial">yes</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="not(@mapDirection)">
+        <xsl:attribute name="mapDirection">bidirectional</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+    </xsl:copy>
+  </xsl:template>
+  
     <!-- Makes @per explicit. -->
     <xsl:template match="r:Fun[not(@per)]" mode="phase-3">
         <xsl:copy>
@@ -764,7 +779,15 @@
             <xsl:apply-templates select="node() | @*" mode="phase-3"/>
         </xsl:copy>
     </xsl:template>
-    
+  <xsl:template match="r:Expr[not(@per)]" mode="phase-3">
+    <xsl:copy>
+      <xsl:if test="not(@per)">
+        <xsl:attribute name="per">copy</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+    </xsl:copy>
+  </xsl:template>
+  
     <!-- Makes @oriented explicit. -->
     <xsl:template match="r:Equal[not(@oriented)]" mode="phase-3">
         <xsl:copy>
