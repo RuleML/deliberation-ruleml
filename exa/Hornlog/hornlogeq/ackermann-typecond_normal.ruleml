@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/hornlogeq_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/hornlogeq.xsd">
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!--
+  For non-negative integers m and n,      
+	Ackermann function:
+
+	Ackermann(m,n) = n+1   if m=0
+	               = Ackermann(m-1,1)   if m>0 and n=0
+	               = Ackermann(m-1,Ackermann(m,n-1))   if m>0 and n>0	
+		See for example: http://en.wikipedia.org/wiki/Ackermann_function
+
+    -->
+      <!--
+		Ackermann(0,n) = n+1
+    -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var type="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">n</Var>
+          </declare>
+          <formula>
+            <Equal oriented="yes">
+              <left>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">Ackermann</Fun></op>
+                  <arg index="1"><Data xsi:type="xs:nonNegativeInteger">0</Data></arg>
+                  <arg index="2"><Var>n</Var></arg>
+                </Expr>
+              </left>
+              <right>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">add</Fun></op>
+                  <arg index="1"><Var>n</Var></arg>
+                  <arg index="2"><Data xsi:type="xs:positiveInteger">1</Data></arg>
+                </Expr>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <!--
+		Ackermann(m,0) = Ackermann(m-1,1)   if m>0
+	-->
+      <formula>
+        <Forall>
+          <declare>
+            <Var type="http://www.w3.org/2001/XMLSchema#positiveInteger">m</Var>
+          </declare>
+          <formula>
+            <Equal oriented="yes">
+              <left>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">Ackermann</Fun></op>
+                  <arg index="1"><Var>m</Var></arg>
+                  <arg index="2"><Data xsi:type="xs:nonNegativeInteger">0</Data></arg>
+                </Expr>
+              </left>
+              <right>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">Ackermann</Fun></op>
+                  <arg index="1"><Expr per="copy"><op><Fun val="0.." per="value">subtract</Fun></op><arg index="1"><Var>m</Var></arg><arg index="2"><Data xsi:type="xs:positiveInteger">1</Data></arg></Expr></arg>
+                  <arg index="2"><Data xsi:type="xs:positiveInteger">1</Data></arg>
+                </Expr>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <!--
+		Ackermann(m,n) = Ackermann(m-1,Ackermann(m,n-1))   if m>0 and n>0	
+	-->
+      <formula>
+        <Forall>
+          <declare>
+            <Var type="http://www.w3.org/2001/XMLSchema#positiveInteger">m</Var>
+          </declare>
+          <declare>
+            <Var type="http://www.w3.org/2001/XMLSchema#positiveInteger">n</Var>
+          </declare>
+          <formula>
+            <Equal oriented="yes">
+              <left>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">Ackermann</Fun></op>
+                  <arg index="1"><Var>m</Var></arg>
+                  <arg index="2"><Var>n</Var></arg>
+                </Expr>
+              </left>
+              <right>
+                <Expr per="copy">
+                  <op><Fun val="0.." per="value">Ackermann</Fun></op>
+                  <arg index="1"><Expr per="copy"><op><Fun val="0.." per="value">subtract</Fun></op><arg index="1"><Var>m</Var></arg><arg index="2"><Data xsi:type="xs:positiveInteger">1</Data></arg></Expr></arg>
+                  <arg index="2"><Expr per="copy"><op><Fun val="0.." per="value">Ackermann</Fun></op><arg index="1"><Var>m</Var></arg><arg index="2"><Expr per="copy"><op><Fun val="0.." per="value">subtract</Fun></op><arg index="1"><Var>n</Var></arg><arg index="2"><Data xsi:type="xs:positiveInteger">1</Data></arg></Expr></arg></Expr></arg>
+                </Expr>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
