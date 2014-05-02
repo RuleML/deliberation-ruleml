@@ -581,6 +581,7 @@
         <xsl:apply-templates select="$phase-2-output" mode="phase-3"/>
     </xsl:variable>
     
+  <!-- Adds attributes with default values to Node elements where these attribute is absent. -->
   <!-- For Implies -->
   <!-- Makes @material explicit. -->
   <!-- Makes @direction explicit. -->
@@ -626,7 +627,7 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- Adds default attributes to Rulebase elements where this attribute is absent. -->
+  <!-- for Rulebase -->
   <!-- Makes @mapMaterial explicit. -->
   <!-- Makes @mapDirection explicit. -->
   <xsl:template match="r:Rulebase[not(@mapMaterial) or not(@mapDirection)]" mode="phase-3">
@@ -641,15 +642,19 @@
     </xsl:copy>
   </xsl:template>
   
-    <!-- Makes @per explicit. -->
-    <xsl:template match="r:Fun[not(@per)]" mode="phase-3">
+  <!-- for Fun -->
+  <!-- Makes @per explicit. -->
+  <xsl:template match="r:Fun[not(@per)]" mode="phase-3">
         <xsl:copy>
             <xsl:if test="not(@per)">
                 <xsl:attribute name="per">copy</xsl:attribute>
             </xsl:if>
             <xsl:apply-templates select="node() | @*" mode="phase-3"/>
         </xsl:copy>
-    </xsl:template>
+  </xsl:template>
+
+  <!-- for Expr -->
+  <!-- Makes @per explicit. -->
   <xsl:template match="r:Expr[not(@per)]" mode="phase-3">
     <xsl:copy>
       <xsl:if test="not(@per)">
@@ -657,14 +662,7 @@
       </xsl:if>
       <xsl:apply-templates select="node() | @*" mode="phase-3"/>
     </xsl:copy>
-  </xsl:template>    
-    <!-- Makes @oriented explicit. -->
-    <xsl:template match="r:Equal[not(@oriented)]" mode="phase-3">
-        <xsl:copy>
-            <xsl:attribute name="oriented">no</xsl:attribute>
-            <xsl:apply-templates select="node() | @*" mode="phase-3"/>
-        </xsl:copy>
-    </xsl:template>
+  </xsl:template>
     
     <!-- Adds the required index attribute to the arg tag 
         There are errors with the indexing when the argument is within a slot-->
