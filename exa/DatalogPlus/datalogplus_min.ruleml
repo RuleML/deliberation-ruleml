@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec">
-
-
-  <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalogplus_min.xsd">
 
   <Assert>
     <!-- Equations are allowed as facts-->
@@ -13,7 +12,8 @@
     </Equal>
 
     <!-- Equations may be universally quantified, although this is not very meaningful.
-         This is a degenerate case, corresponding to the body of an implication being empty.-->
+         This is a degenerate case, corresponding to the body of an implication being empty.
+         The following is the reflexive property of equality. -->
     <Forall>
       <Var>x</Var>
       <Equal>
@@ -58,18 +58,18 @@
       </Implies>
     </Forall>
 
-    <!-- Disjoint Classes -->
+    <!-- Pairwise Disjoint Classes -->
     <Forall>
       <Var>x</Var>
       <Implies>
         <if>
           <And>
             <Atom>
-              <Rel>P</Rel>
+              <Rel>Animal</Rel>
               <Var>x</Var>
             </Atom>
             <Atom>
-              <Rel>Q</Rel>
+              <Rel>Vegetable</Rel>
               <Var>x</Var>
             </Atom>
           </And>
@@ -80,7 +80,7 @@
       </Implies>
     </Forall>
 
-    <!-- Functionality Constraint: Everyone has at most one mother. -->
+    <!-- Functionality Constraint: Everyone (or everything) has at most one mother. -->
     <Forall>
       <Var>x</Var>
       <Var>y</Var>
@@ -110,7 +110,7 @@
     </Forall>
 
     <!-- Negative Constraints are allowed.
-         No one is their own mother. -->
+         No one (or no thing) is their own mother. -->
     <Forall>
       <Var>x</Var>
       <Implies>
@@ -133,8 +133,8 @@
     <Implies>
       <if>
         <Equal>
-          <Ind>a</Ind>
-          <Ind>b</Ind>
+          <Ind>Sue</Ind>
+          <Ind>Maria</Ind>
         </Equal>
       </if>
       <then>
@@ -208,9 +208,5 @@
         </then>
       </Implies>
     </Forall>
-
-
-
   </Assert>
-
 </RuleML>

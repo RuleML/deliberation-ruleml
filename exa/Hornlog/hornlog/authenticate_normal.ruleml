@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/hornlog_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/hornlog.xsd">
+  <!-- Tim Berners-Lee's authentication rule (without URI inspection):
+Any person who was some time in the last 2 months an employee of
+an organization which was some time in the last 2 months a W3C member
+may register -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
+      <formula>
+        <Implies material="yes" direction="bidirectional">
+          <if>
+            <And>
+              <formula>
+                <Atom>
+                  <op><Rel>person</Rel></op>
+                  <arg index="1"><Var>any</Var></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>organization</Rel></op>
+                  <arg index="1"><Var>org</Var></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>employee in</Rel></op>
+                  <arg index="1"><Var>any</Var></arg>
+                  <arg index="2"><Var>org</Var></arg>
+                  <arg index="3"><Expr per="copy"><op><Fun per="copy">last</Fun></op><arg index="1"><Expr per="copy"><op><Fun per="copy">month</Fun></op><arg index="1"><Data xsi:type="xs:positiveInteger">2</Data></arg></Expr></arg></Expr></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>member in</Rel></op>
+                  <arg index="1"><Var>org</Var></arg>
+                  <arg index="2"><Ind iri="http://www.w3.org/">W3C</Ind></arg>
+                  <arg index="3"><Expr per="copy"><op><Fun per="copy">last</Fun></op><arg index="1"><Expr per="copy"><op><Fun per="copy">month</Fun></op><arg index="1"><Data xsi:type="xs:positiveInteger">2</Data></arg></Expr></arg></Expr></arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <op><Rel>may register</Rel></op>
+              <arg index="1"><Var>any</Var></arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
