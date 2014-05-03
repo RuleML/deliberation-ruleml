@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec">
-  <!-- Some examples from
-  A general Datalog-based framework for tractable query answering 
-  over ontologies,
+  <!-- Some of these examples are from
+  "A general Datalog-based framework for tractable query answering 
+  over ontologies",
   Andrea Calì,
   Georg Gottlob
   Thomas Lukasiewicz  
@@ -16,31 +16,38 @@
        by providing (in the XML comments) the expected answer to the Query.
   -->
   <Assert>
-    <!-- Equations are allowed as facts-->
+    <!-- Equations are allowed as facts:
+         William is an employee.
+         "Bill" is an alias for "William".
+         -->
+    <Atom>
+      <Rel>E</Rel>
+      <Ind>William</Ind>
+    </Atom>
     <Equal>
       <Ind>Bill</Ind>
       <Ind>William</Ind>
     </Equal>
-    <Atom>
-      <Rel>E</Rel>
-      <Ind>Bill</Ind>
-    </Atom>  
   </Assert>
   <Query>
-    <!-- Answers: 
+    <!-- 
+      Who are the employees?
+      Answers: 
       x: <Ind>Bill</Ind>
       x: <Ind>William</Ind>
     -->
     <Atom>
       <Rel>E</Rel>
       <Var>x</Var>
-    </Atom>  
+    </Atom>
   </Query>
   <Assert>
 
     <!-- Equations may be universally quantified, although this is not very meaningful.
          This is a degenerate case, corresponding to the body of an implication being empty.
-         The following is the reflexive property of equality. -->
+         The following is the reflexive property of equality:
+         Everything is equal to itself.
+    -->
     <Forall>
       <Var>x</Var>
       <Equal>
@@ -50,7 +57,9 @@
     </Forall>
   </Assert>
   <Query>
-    <!-- 
+    <!--
+      What is equal to itself?
+      Answers:
       x: <Ind>Bill</Ind>
       x: <Ind>William</Ind>
     -->
@@ -61,38 +70,43 @@
   </Query>
 
   <Assert>
-    <!-- Non-ground facts are allowed. -->
+    <!-- Non-ground facts are allowed. 
+         John likes everything.
+    -->
     <Forall>
       <Var>x</Var>
-      <Var>y</Var>
       <Atom>
-        <Rel>P</Rel>
+        <Rel>likes</Rel>
+        <Ind>John</Ind>
         <Var>x</Var>
-        <Var>y</Var>
       </Atom>
     </Forall>
   </Assert>
   <Query>
     <!-- 
+      Does John like Bill?
+      Answers:
       Succeeds.
     -->
     <Atom>
-      <Rel>P</Rel>
+      <Rel>likes</Rel>
+      <Ind>John</Ind>
       <Ind>Bill</Ind>
-      <Ind>William</Ind>
     </Atom>
   </Query>
 
   <Assert>
     <!-- Equations are allowed in the body of (existential) implications, 
          but this also is not very meaningful,
-         as the equation could be removed by substitution. -->
+         as the equation could be removed by substitution. 
+         If someone is the same as Jane, then they have a son.   
+    -->
     <Forall>
       <Var>x</Var>
       <Implies>
         <if>
           <Equal>
-            <Ind>Jane</Ind>
+            <Ind>Margaret</Ind>
             <Var>x</Var>
           </Equal>
         </if>
@@ -111,20 +125,24 @@
   </Assert>
   <Query>
     <!-- 
+      Does Margaret have a son?
+      Answer:
       Succeeds      
     -->
     <Exists>
       <Var>y</Var>
       <Atom>
         <Rel>son</Rel>
-        <Var>Jane</Var>
+        <Ind>Margaret</Ind>
         <Var>y</Var>
       </Atom>
     </Exists>
   </Query>
 
   <Assert>
-    <!-- Pairwise Disjoint Classes -->
+    <!-- Pairwise Disjoint Classes
+         Nothing is both an Animal and a Vegetable.
+    -->
     <Forall>
       <Var>x</Var>
       <Implies>
@@ -148,25 +166,28 @@
   </Assert>
   <Query>
     <!-- 
+      What things are both Animal and Vegetable?
+      Answer:
       Fails.
+      Furthermore, any additional assertion that something is both
+      Animal and Vegetable will make the rulebase inconsistent.
     -->
-    <Exists>
-      <Var>x</Var>
-      <And>
-        <Atom>
-          <Rel>Animal</Rel>
-          <Var>x</Var>
-        </Atom>
-        <Atom>
-          <Rel>Vegetable</Rel>
-          <Var>x</Var>
-        </Atom>
-      </And>
-    </Exists>
+    <And>
+      <Atom>
+        <Rel>Animal</Rel>
+        <Var>x</Var>
+      </Atom>
+      <Atom>
+        <Rel>Vegetable</Rel>
+        <Var>x</Var>
+      </Atom>
+    </And>
   </Query>
 
   <Assert>
-    <!-- Functionality Constraint: Everyone (or everything) has at most one mother. -->
+    <!-- Functionality Constraint: 
+      Everyone (or everything) has at most one mother. 
+    -->
     <Forall>
       <Var>x</Var>
       <Var>y</Var>
@@ -194,10 +215,27 @@
         </then>
       </Implies>
     </Forall>
+    <Atom>
+      <Rel>mother</Rel>
+      <Ind>Bill</Ind>
+      <Ind>Margaret</Ind>
+    </Atom>
+    <Atom>
+      <Rel>mother</Rel>
+      <Ind>Bill</Ind>
+      <Ind>Peggy</Ind>
+    </Atom>
   </Assert>
   <Query>
     <!-- 
+      Is Peggy the same as Margaret?
+      Answer:
+      Succeeds.
     -->
+    <Equal>
+      <Ind>Peggy</Ind>
+      <Ind>Margaret</Ind>
+    </Equal>
   </Query>
 
   <Assert>
@@ -221,7 +259,17 @@
   </Assert>
   <Query>
     <!-- 
+      What thing is its own mother?
+      Answer: 
+      Fails.
+      Furthermore, any additional assertion that something is both
+      is its own mother will make the rulebase inconsistent.
     -->
+    <Atom>
+      <Rel>mother</Rel>
+      <Var>x</Var>
+      <Var>x</Var>
+    </Atom>
   </Query>
 
   <Assert>
@@ -242,7 +290,14 @@
   </Assert>
   <Query>
     <!-- 
+      Is Sue the same as Maria?
+      Answer:
+      Fails.
     -->
+    <Equal>
+      <Ind>Sue</Ind>
+      <Ind>Maria</Ind>
+    </Equal>
   </Query>
 
   <Assert>
@@ -254,7 +309,7 @@
         <if>
           <Atom>
             <Rel>manager</Rel>
-            <Ind>x</Ind>
+            <Var>M</Var>
           </Atom>
         </if>
         <then>
@@ -269,10 +324,25 @@
         </then>
       </Implies>
     </Forall>
+    <Atom>
+      <Rel>manager</Rel>
+      <Ind>Maria</Ind>
+    </Atom>
   </Assert>
   <Query>
     <!-- 
+      Does Maria direct a department?
+      Answer:
+      Succeeds.
     -->
+    <Exists>
+      <Var>P</Var>
+      <Atom>
+        <Rel>directs</Rel>
+        <Ind>Maria</Ind>
+        <Var>P</Var>
+      </Atom>
+    </Exists>
   </Query>
 
   <Assert>
@@ -321,6 +391,17 @@
   </Assert>
   <Query>
     <!-- 
+      Does Maria supervise someone?
+      Answer:
+      Succeeds.
     -->
+    <Exists>
+      <Var>E'</Var>
+      <Atom>
+        <Rel>supervises</Rel>
+        <Var>E</Var>
+        <Var>E'</Var>
+      </Atom>
+    </Exists>
   </Query>
 </RuleML>
