@@ -21,7 +21,7 @@
          "Bill" is an alias for "William".
          -->
     <Atom>
-      <Rel>E</Rel>
+      <Rel>employee</Rel>
       <Ind>William</Ind>
     </Atom>
     <Equal>
@@ -37,7 +37,7 @@
       x: <Ind>William</Ind>
     -->
     <Atom>
-      <Rel>E</Rel>
+      <Rel>employee</Rel>
       <Var>x</Var>
     </Atom>
   </Query>
@@ -99,7 +99,7 @@
     <!-- Equations are allowed in the body of (existential) implications, 
          but this also is not very meaningful,
          as the equation could be removed by substitution. 
-         If someone is the same as Jane, then they have a son.   
+         If someone is the same as Margaret, then they supervise someone.   
     -->
     <Forall>
       <Var>x</Var>
@@ -114,7 +114,7 @@
           <Exists>
             <Var>y</Var>
             <Atom>
-              <Rel>son</Rel>
+              <Rel>supervises</Rel>
               <Var>x</Var>
               <Var>y</Var>
             </Atom>
@@ -125,14 +125,14 @@
   </Assert>
   <Query>
     <!-- 
-      Does Margaret have a son?
+      Does Margaret supervise someone?
       Answer:
       Succeeds      
     -->
     <Exists>
       <Var>y</Var>
       <Atom>
-        <Rel>son</Rel>
+        <Rel>supervises</Rel>
         <Ind>Margaret</Ind>
         <Var>y</Var>
       </Atom>
@@ -141,7 +141,7 @@
 
   <Assert>
     <!-- Pairwise Disjoint Classes
-         Nothing is both an Animal and a Vegetable.
+         Nothing is both an employee and a department.
     -->
     <Forall>
       <Var>x</Var>
@@ -149,11 +149,11 @@
         <if>
           <And>
             <Atom>
-              <Rel>Animal</Rel>
+              <Rel>employee</Rel>
               <Var>x</Var>
             </Atom>
             <Atom>
-              <Rel>Vegetable</Rel>
+              <Rel>department</Rel>
               <Var>x</Var>
             </Atom>
           </And>
@@ -166,19 +166,19 @@
   </Assert>
   <Query>
     <!-- 
-      What things are both Animal and Vegetable?
+      What things are both employees and departments?
       Answer:
       Fails.
       Furthermore, any additional assertion that something is both
-      Animal and Vegetable will make the rulebase inconsistent.
+      employee and department will make the rulebase inconsistent.
     -->
     <And>
       <Atom>
-        <Rel>Animal</Rel>
+        <Rel>employee</Rel>
         <Var>x</Var>
       </Atom>
       <Atom>
-        <Rel>Vegetable</Rel>
+        <Rel>department</Rel>
         <Var>x</Var>
       </Atom>
     </And>
@@ -186,7 +186,7 @@
 
   <Assert>
     <!-- Functionality Constraint: 
-      Everyone (or everything) has at most one mother. 
+      Everyone (or everything) has at most one superviser. 
     -->
     <Forall>
       <Var>x</Var>
@@ -196,12 +196,12 @@
         <if>
           <And>
             <Atom>
-              <Rel>mother</Rel>
+              <Rel>supervises</Rel>
               <Var>x</Var>
               <Var>z</Var>
             </Atom>
             <Atom>
-              <Rel>mother</Rel>
+              <Rel>supervises</Rel>
               <Var>y</Var>
               <Var>z</Var>
             </Atom>
@@ -216,12 +216,12 @@
       </Implies>
     </Forall>
     <Atom>
-      <Rel>mother</Rel>
+      <Rel>supervises</Rel>
       <Ind>Bill</Ind>
       <Ind>Margaret</Ind>
     </Atom>
     <Atom>
-      <Rel>mother</Rel>
+      <Rel>supervises</Rel>
       <Ind>Bill</Ind>
       <Ind>Peggy</Ind>
     </Atom>
@@ -240,13 +240,13 @@
 
   <Assert>
     <!-- Negative Constraints are allowed.
-         No one (or no thing) is their own mother. -->
+         No one (or no thing) is their own supervisor. -->
     <Forall>
       <Var>x</Var>
       <Implies>
         <if>
           <Atom>
-            <Rel>mother</Rel>
+            <Rel>supervises</Rel>
             <Var>x</Var>
             <Var>x</Var>
           </Atom>
@@ -259,14 +259,14 @@
   </Assert>
   <Query>
     <!-- 
-      What thing is its own mother?
+      What thing is its own supervisor?
       Answer: 
       Fails.
-      Furthermore, any additional assertion that something is both
-      is its own mother will make the rulebase inconsistent.
+      Furthermore, any additional assertion that something is
+      its own supervisor will make the rulebase inconsistent.
     -->
     <Atom>
-      <Rel>mother</Rel>
+      <Rel>supervises</Rel>
       <Var>x</Var>
       <Var>x</Var>
     </Atom>
