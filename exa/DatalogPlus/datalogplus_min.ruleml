@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalogplus_min.xsd">
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- Some examples from
+  A general Datalog-based framework for tractable query answering 
+  over ontologies,
+  Andrea Calì,
+  Georg Gottlob
+  Thomas Lukasiewicz  
+  http://dx.doi.org/10.1016/j.websem.2012.03.001
+	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
+  -->
 
+  <!-- This "Rulebase" contains 20 rules: 10 Assert rules and 10 Query rule.
+       Each Query demonstrates the semantics of the previous Assert rule
+       by providing (in the XML comments) the expected answer to the Query.
+  -->
   <Assert>
     <!-- Equations are allowed as facts-->
     <Equal>
       <Ind>Bill</Ind>
       <Ind>William</Ind>
     </Equal>
+    <Atom>
+      <Rel>E</Rel>
+      <Ind>Bill</Ind>
+    </Atom>  
+  </Assert>
+  <Query>
+    <!-- Answers: 
+      x: <Ind>Bill</Ind>
+      x: <Ind>William</Ind>
+    -->
+    <Atom>
+      <Rel>E</Rel>
+      <Var>x</Var>
+    </Atom>  
+  </Query>
+  <Assert>
 
     <!-- Equations may be universally quantified, although this is not very meaningful.
          This is a degenerate case, corresponding to the body of an implication being empty.
@@ -21,7 +48,19 @@
         <Var>x</Var>
       </Equal>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+      x: <Ind>Bill</Ind>
+      x: <Ind>William</Ind>
+    -->
+    <Equal>
+      <Var>x</Var>
+      <Var>x</Var>
+    </Equal>
+  </Query>
 
+  <Assert>
     <!-- Non-ground facts are allowed. -->
     <Forall>
       <Var>x</Var>
@@ -32,7 +71,19 @@
         <Var>y</Var>
       </Atom>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+      Succeeds.
+    -->
+    <Atom>
+      <Rel>P</Rel>
+      <Ind>Bill</Ind>
+      <Ind>William</Ind>
+    </Atom>
+  </Query>
 
+  <Assert>
     <!-- Equations are allowed in the body of (existential) implications, 
          but this also is not very meaningful,
          as the equation could be removed by substitution. -->
@@ -57,7 +108,22 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+      Succeeds      
+    -->
+    <Exists>
+      <Var>y</Var>
+      <Atom>
+        <Rel>son</Rel>
+        <Var>Jane</Var>
+        <Var>y</Var>
+      </Atom>
+    </Exists>
+  </Query>
 
+  <Assert>
     <!-- Pairwise Disjoint Classes -->
     <Forall>
       <Var>x</Var>
@@ -79,7 +145,27 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+      Fails.
+    -->
+    <Exists>
+      <Var>x</Var>
+      <And>
+        <Atom>
+          <Rel>Animal</Rel>
+          <Var>x</Var>
+        </Atom>
+        <Atom>
+          <Rel>Vegetable</Rel>
+          <Var>x</Var>
+        </Atom>
+      </And>
+    </Exists>
+  </Query>
 
+  <Assert>
     <!-- Functionality Constraint: Everyone (or everything) has at most one mother. -->
     <Forall>
       <Var>x</Var>
@@ -108,7 +194,13 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+    -->
+  </Query>
 
+  <Assert>
     <!-- Negative Constraints are allowed.
          No one (or no thing) is their own mother. -->
     <Forall>
@@ -126,7 +218,13 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+    -->
+  </Query>
 
+  <Assert>
     <!-- Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
          are different.-->
@@ -141,7 +239,13 @@
         <Or/>
       </then>
     </Implies>
+  </Assert>
+  <Query>
+    <!-- 
+    -->
+  </Query>
 
+  <Assert>
     <!-- Existential Rules -->
     <!-- Every manager directs at least one department. -->
     <Forall>
@@ -165,7 +269,13 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+    -->
+  </Query>
 
+  <Assert>
     <!-- The heads and bodies of existential rules can contain conjunctions. -->
     <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->
     <Forall>
@@ -209,4 +319,8 @@
       </Implies>
     </Forall>
   </Assert>
+  <Query>
+    <!-- 
+    -->
+  </Query>
 </RuleML>
