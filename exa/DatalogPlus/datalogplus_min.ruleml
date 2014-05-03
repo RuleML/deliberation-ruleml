@@ -71,12 +71,17 @@
 
   <Assert>
     <!-- Non-ground facts are allowed. 
-         John likes everything.
+         John is the CEO. and
+         John is responsible for everything.
     -->
+    <Atom>
+      <Rel>CEO</Rel>
+      <Ind>John</Ind>
+    </Atom>
     <Forall>
       <Var>x</Var>
       <Atom>
-        <Rel>likes</Rel>
+        <Rel>responsible_for</Rel>
         <Ind>John</Ind>
         <Var>x</Var>
       </Atom>
@@ -84,12 +89,12 @@
   </Assert>
   <Query>
     <!-- 
-      Does John like Bill?
+      Is John responsible for Bill?
       Answers:
       Succeeds.
     -->
     <Atom>
-      <Rel>likes</Rel>
+      <Rel>responsible_for</Rel>
       <Ind>John</Ind>
       <Ind>Bill</Ind>
     </Atom>
