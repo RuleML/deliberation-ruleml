@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace"><xs:import namespace="http://ruleml.org/spec" schemaLocation="disdatalogplus_mid_normal.xsd"/><xs:attribute name="base" type="xs:anyURI"/><xs:attribute name="id" type="xs:ID"/></xs:schema>
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace">
+  <xs:import namespace="http://ruleml.org/spec" schemaLocation="naffologeq_normal.xsd"/>
+  <xs:attribute name="base" type="xs:anyURI"/>
+  <xs:attribute name="id" type="xs:ID"/>
+</xs:schema>

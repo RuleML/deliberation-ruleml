@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ruleml="http://ruleml.org/spec"
-  elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
   <xs:element name="RuleML">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:act"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:act"/>
       </xs:sequence>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
@@ -16,8 +14,8 @@
   <xs:element name="Assert">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       </xs:sequence>
       <xs:attribute name="mapMaterial" use="required">
         <xs:simpleType>
@@ -44,8 +42,8 @@
   <xs:element name="Retract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       </xs:sequence>
       <xs:attribute name="mapMaterial" use="required">
         <xs:simpleType>
@@ -72,8 +70,8 @@
   <xs:element name="Query">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_2"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_2"/>
       </xs:sequence>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
@@ -83,9 +81,9 @@
   <xs:element name="Atom">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:element ref="ruleml:op"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:arg"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element ref="spec:op"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:arg"/>
       </xs:sequence>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
@@ -105,8 +103,8 @@
       <xs:element name="And">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_3"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_3"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -120,8 +118,8 @@
       <xs:element name="Or">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_4"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -133,9 +131,9 @@
   <xs:element name="Implies">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:element ref="ruleml:if"/>
-        <xs:element ref="ruleml:then"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element ref="spec:if"/>
+        <xs:element ref="spec:then"/>
       </xs:sequence>
       <xs:attribute name="direction" use="required">
         <xs:simpleType>
@@ -162,9 +160,9 @@
   <xs:element name="Forall">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
-        <xs:group ref="ruleml:formula_5"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element maxOccurs="unbounded" ref="spec:declare"/>
+        <xs:group ref="spec:formula_5"/>
       </xs:sequence>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
@@ -176,9 +174,9 @@
       <xs:element name="Exists">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
-            <xs:group ref="ruleml:formula_6"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element maxOccurs="unbounded" ref="spec:declare"/>
+            <xs:group ref="spec:formula_6"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -190,9 +188,9 @@
   <xs:element name="Equal">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-        <xs:element ref="ruleml:left"/>
-        <xs:element ref="ruleml:right"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element ref="spec:left"/>
+        <xs:element ref="spec:right"/>
       </xs:sequence>
       <xs:attribute name="oriented" use="required">
         <xs:simpleType>
@@ -215,16 +213,7 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Reify">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
-      </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attribute name="node" type="xs:anyURI"/><xs:attribute ref="xml:base"/><xs:attribute ref="xml:id"/></xs:complexType></xs:element>
   <xs:element name="Ind">
     <xs:complexType mixed="true">
       <xs:attribute name="iri" type="xs:anyURI"/>
@@ -247,10 +236,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:element ref="ruleml:Implies"/>
-            <xs:element ref="ruleml:Forall"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Forall"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -263,11 +252,11 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:group ref="ruleml:And"/>
-            <xs:group ref="ruleml:Or"/>
-            <xs:group ref="ruleml:Exists"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And"/>
+            <xs:group ref="spec:Or"/>
+            <xs:group ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -278,7 +267,7 @@
   <xs:element name="op">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ruleml:Rel"/>
+        <xs:element ref="spec:Rel"/>
       </xs:sequence>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -289,10 +278,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:group ref="ruleml:And_2"/>
-            <xs:group ref="ruleml:Or_2"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -305,10 +294,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:group ref="ruleml:And_2"/>
-            <xs:group ref="ruleml:Or_2"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -319,11 +308,11 @@
   <xs:element name="then">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Atom"/>
-        <xs:element ref="ruleml:Equal"/>
-        <xs:group ref="ruleml:And_3"/>
-        <xs:group ref="ruleml:Or_3"/>
-        <xs:group ref="ruleml:Exists_2"/>
+        <xs:element ref="spec:Atom"/>
+        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_3"/>
+        <xs:group ref="spec:Or_3"/>
+        <xs:group ref="spec:Exists_2"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -332,10 +321,10 @@
   <xs:element name="if">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Atom"/>
-        <xs:element ref="ruleml:Equal"/>
-        <xs:group ref="ruleml:And_2"/>
-        <xs:group ref="ruleml:Or_2"/>
+        <xs:element ref="spec:Atom"/>
+        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -344,7 +333,7 @@
   <xs:element name="declare">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ruleml:Var"/>
+        <xs:element ref="spec:Var"/>
       </xs:sequence>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -355,10 +344,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:element ref="ruleml:Implies"/>
-            <xs:element ref="ruleml:Forall"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Forall"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -371,11 +360,11 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:element ref="ruleml:Equal"/>
-            <xs:group ref="ruleml:And_2"/>
-            <xs:group ref="ruleml:Or_2"/>
-            <xs:group ref="ruleml:Exists"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
+            <xs:group ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -386,10 +375,10 @@
   <xs:element name="meta">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Atom"/>
-        <xs:element ref="ruleml:Equal"/>
-        <xs:element ref="ruleml:Implies"/>
-        <xs:element ref="ruleml:Forall"/>
+        <xs:element ref="spec:Atom"/>
+        <xs:element ref="spec:Equal"/>
+        <xs:element ref="spec:Implies"/>
+        <xs:element ref="spec:Forall"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -398,11 +387,11 @@
   <xs:element name="left">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Skolem"/>
-        <xs:element ref="ruleml:Reify"/>
-        <xs:element ref="ruleml:Ind"/>
-        <xs:element ref="ruleml:Data"/>
-        <xs:element ref="ruleml:Var"/>
+        <xs:element ref="spec:Skolem"/>
+        <xs:element ref="spec:Reify"/>
+        <xs:element ref="spec:Ind"/>
+        <xs:element ref="spec:Data"/>
+        <xs:element ref="spec:Var"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -411,11 +400,11 @@
   <xs:element name="right">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Skolem"/>
-        <xs:element ref="ruleml:Reify"/>
-        <xs:element ref="ruleml:Ind"/>
-        <xs:element ref="ruleml:Data"/>
-        <xs:element ref="ruleml:Var"/>
+        <xs:element ref="spec:Skolem"/>
+        <xs:element ref="spec:Reify"/>
+        <xs:element ref="spec:Ind"/>
+        <xs:element ref="spec:Data"/>
+        <xs:element ref="spec:Var"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -424,11 +413,11 @@
   <xs:element name="arg">
     <xs:complexType>
       <xs:choice>
-        <xs:element ref="ruleml:Skolem"/>
-        <xs:element ref="ruleml:Reify"/>
-        <xs:element ref="ruleml:Ind"/>
-        <xs:element ref="ruleml:Data"/>
-        <xs:element ref="ruleml:Var"/>
+        <xs:element ref="spec:Skolem"/>
+        <xs:element ref="spec:Reify"/>
+        <xs:element ref="spec:Ind"/>
+        <xs:element ref="spec:Data"/>
+        <xs:element ref="spec:Var"/>
       </xs:choice>
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
       <xs:attribute ref="xml:base"/>
@@ -438,22 +427,24 @@
   <xs:element name="act">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="ruleml:Assert"/>
-        <xs:element ref="ruleml:Retract"/>
-        <xs:element ref="ruleml:Query"/>
+        <xs:element ref="spec:Assert"/>
+        <xs:element ref="spec:Retract"/>
+        <xs:element ref="spec:Query"/>
       </xs:choice>
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
+  
+  
   <xs:group name="And_2">
     <xs:sequence>
       <xs:element name="And">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_3"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_3"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -467,8 +458,8 @@
       <xs:element name="Or">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_4"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -482,8 +473,8 @@
       <xs:element name="And">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_7"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_7"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -497,8 +488,8 @@
       <xs:element name="Or">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ruleml:formula_8"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_8"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -512,9 +503,9 @@
       <xs:element name="Exists">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="ruleml:meta"/>
-            <xs:element maxOccurs="unbounded" ref="ruleml:declare"/>
-            <xs:group ref="ruleml:formula_9"/>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element maxOccurs="unbounded" ref="spec:declare"/>
+            <xs:group ref="spec:formula_9"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
@@ -528,10 +519,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:group ref="ruleml:And_3"/>
-            <xs:group ref="ruleml:Or_3"/>
-            <xs:group ref="ruleml:Exists_2"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:group ref="spec:And_3"/>
+            <xs:group ref="spec:Or_3"/>
+            <xs:group ref="spec:Exists_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -544,10 +535,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:group ref="ruleml:And_3"/>
-            <xs:group ref="ruleml:Or_3"/>
-            <xs:group ref="ruleml:Exists_2"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:group ref="spec:And_3"/>
+            <xs:group ref="spec:Or_3"/>
+            <xs:group ref="spec:Exists_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -560,10 +551,10 @@
       <xs:element name="formula">
         <xs:complexType>
           <xs:choice>
-            <xs:element ref="ruleml:Atom"/>
-            <xs:group ref="ruleml:And_3"/>
-            <xs:group ref="ruleml:Or_3"/>
-            <xs:group ref="ruleml:Exists_2"/>
+            <xs:element ref="spec:Atom"/>
+            <xs:group ref="spec:And_3"/>
+            <xs:group ref="spec:Or_3"/>
+            <xs:group ref="spec:Exists_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>

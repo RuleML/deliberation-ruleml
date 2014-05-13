@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec"
-  elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
   <xs:element name="RuleML">
     <xs:complexType>
       <xs:sequence>
@@ -305,6 +303,7 @@
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
     </xs:complexType>
   </xs:element>
+  
   <xs:group name="And_2">
     <xs:sequence>
       <xs:element name="And">
