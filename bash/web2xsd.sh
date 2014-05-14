@@ -35,7 +35,7 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 
 # http://deliberation.ruleml.org/1.01/xsd/nafneghornlogeq.xsd
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x2"  > ../relaxng/tmp-web2xsd.rnc 
-./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafneghornlogeq.xsd
+./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafnegdishornlogplus.xsd
 
 
 
