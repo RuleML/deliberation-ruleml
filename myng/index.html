@@ -568,19 +568,19 @@
                 }
                 //datalogplus_min_normal
                 bb = 7;
-                df = 2;
+                df = 6;
                 ts = 7;
                 lng = 1;
                 propo = 1;
                 implies = parseInt("58", 16);
-                terms = parseInt("310", 16);
+                terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
                 serial = 12;
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
-                  return "datalogplus_min";
+                  return "datalogplus_min_normal";
                 }                  
                 //datalogplus_min
                 bb = 7;
@@ -589,7 +589,7 @@
                 lng = 1;
                 propo = 1;
                 implies = parseInt("58", 16);
-                terms = parseInt("310", 16);
+                terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
                 serial = 15;
@@ -600,7 +600,7 @@
                 }                  
                 //datalogplus_mid_normal
                 bb = 7;
-                df = 2;
+                df = 6;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -612,7 +612,7 @@
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
-                  return "disdatalogplus_mid_normal";
+                  return "datalogplus_mid_normal";
                 }                
                 //disdatalogplus_mid
                 bb = 7;
@@ -632,19 +632,19 @@
                 }                
                 //disdatalogplus_min_normal
                 bb = 7;
-                df = 2;
+                df = 6;
                 ts = 7;
                 lng = 1;
                 propo = 1;
                 implies = parseInt("78", 16);
-                terms = parseInt("310", 16);
+                terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
                 serial = 12;
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
-                  return "disdatalogplus_min";
+                  return "disdatalogplus_min_normal";
                 }                                
                 //disdatalogplus_min
                 bb = 7;
@@ -653,7 +653,7 @@
                 lng = 1;
                 propo = 1;
                 implies = parseInt("78", 16);
-                terms = parseInt("310", 16);
+                terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
                 serial = 15;
@@ -664,7 +664,7 @@
                 }                                
                 //disdatalogplus_mid_normal
                 bb = 7;
-                df = 2;
+                df = 6;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -801,6 +801,22 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafhornlog";
+                }  
+                //nafneghornlogeq
+                bb = parseInt("1f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 15;
                 serial = 15;
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );

@@ -4,7 +4,7 @@
     
     <!-- Remove almost all white space between elements -->
     <xsl:preserve-space elements="RuleML"/>
-    <xsl:strip-space elements="*"/>
+    <!--<xsl:strip-space elements="*"/>-->
     
     <!-- Add the  <?xml version="1.0" ?> at the top of the result.-->
     <xsl:output method="xml" version="1.0" indent="no" exclude-result-prefixes="xs"/>
