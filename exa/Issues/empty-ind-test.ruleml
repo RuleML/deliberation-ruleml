@@ -2,15 +2,10 @@
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/hornlog_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.01/xsd/hornlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 
-<!-- <RuleML xmlns="http://ruleml.org/spec"
+<RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/hornlog.xsd">
-  
-<RuleML xmlns="http://ruleml.org/spec"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    >
     
   <Assert mapClosure="universal">
     <!-- POSL r(_]) -->

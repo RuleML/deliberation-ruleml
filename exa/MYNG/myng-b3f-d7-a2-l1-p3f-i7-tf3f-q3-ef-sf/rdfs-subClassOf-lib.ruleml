@@ -2,18 +2,18 @@
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
   <Assert xmlns="http://ruleml.org/spec">
     <!-- Structural Axioms for the RDFS predicate "subClassOf". 
-         CLASS1 is a subclass of CLASS2 if and only if
+         CLASS1 is a subclass of CLASS2 only if
          every individual of type CLASS1 is also of type CLASS2.-->
-    <Equivalent closure="universal">
-      <torso>
+    <Implies closure="universal">
+      <if>
         <Atom>
           <Var>?CLASS1</Var>
           <Rel
             iri="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
           <Var>?CLASS2</Var>
         </Atom>
-      </torso>
-      <torso>
+      </if>
+      <then>
         <Forall>
           <declare>
             <Var>?IND</Var>
@@ -36,6 +36,6 @@
               </Atom>
             </then>
           </Implies></Forall>
-      </torso>
-    </Equivalent>    
+      </then>
+    </Implies>    
   </Assert>
