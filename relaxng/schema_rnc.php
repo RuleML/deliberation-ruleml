@@ -71,6 +71,7 @@ $terms_type = 8;
 $terms_data = 9;
 $terms_skolem = 10;
 $terms_reify = 11;
+$terms_var = 12;
 $bterms = processGETParameter ($terms);
 $termsParam = "x".dechex(bindec($bterms));
 //
@@ -263,7 +264,7 @@ if ($bdefault==0){
   $needReify = extractBit($bterms, $terms_reify);
   $needInd = $btermseq + $needOid + $needSlot + $needEqual;
 
-  $needVar = $needQuant;   
+  $needVar = $needQuant + extractBit($bterms, $terms_var);   
   $needClosure = extractBit($bquant, $quant_closure);
   $needResl = extractBit($bquant, $quant_resl);
   $needRepo = extractBit($bquant, $quant_repo);
