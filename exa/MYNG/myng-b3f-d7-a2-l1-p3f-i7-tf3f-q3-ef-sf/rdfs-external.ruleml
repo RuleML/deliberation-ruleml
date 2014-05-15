@@ -8,8 +8,8 @@
 <!ENTITY import-1 SYSTEM  "rdfs-subClassOf-lib.ruleml">
 ]>
 
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3f&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
-
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3ff&amp;implies=x7&amp;terms=xf3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1&amp;default=x7&amp;termseq=x2&amp;lng=x1&amp;propo=x3ff&amp;implies=x7&amp;terms=x1f3f&amp;quant=x3&amp;expr=xf&amp;serial=xf" type="application/relax-ng-compact-syntax"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.01/xsd/naffologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 -->
 <RuleML xmlns="http://ruleml.org/spec"
@@ -48,7 +48,8 @@
        
        </rdf:RDF> 
   -->
-  <!-- This is a test to see if oXygen/Jing will resolve external entities (it does). -->
+  <!-- This is a test that can be used to determine if the validator resolves external entities:
+         oXygen/Jing: yes -->
   &import-1;
   <Assert>
     <!-- A simple taxonomy "The class horse is a subclass of class animal" -->
