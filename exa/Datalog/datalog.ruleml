@@ -24,7 +24,10 @@
 
             <Data xsi:type="xs:string">test</Data>
             <Data xsi:type="xs:integer">12</Data>
-            <Data node="#data1" xsi:type="xs:integer">12</Data>
+            <!-- Note: the following element will validate in Relax NG but not (yet)
+                 in XSD. It is necessary to add the definition of these RuleML
+                 types (allowing attributes like @node) to the online RuleML XSDs.-->
+            <Data node="#data1" xsi:type="integer">12</Data>
             <Data node="#data2">12a <xs:integer/></Data>
             <Data>tomorrow</Data>
             <Data xsi:type="xs:dateTime"

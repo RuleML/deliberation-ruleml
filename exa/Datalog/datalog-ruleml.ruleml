@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalog_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.01/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<ruleml:RuleML xmlns:ruleml="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalog.xsd">
+
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+
+  <!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage -->
+
+  <ruleml:Assert mapClosure="universal">
+
+    <ruleml:Implies node ="#rule1">
+      <ruleml:if>
+        <ruleml:And>
+          <ruleml:Atom>
+            <ruleml:op>
+              <ruleml:Rel>friend</ruleml:Rel>
+            </ruleml:op>
+            <ruleml:Ind>Jane</ruleml:Ind>
+            <ruleml:Skolem>constant b</ruleml:Skolem>
+
+            <ruleml:Data xsi:type="xs:string">test</ruleml:Data>
+            <ruleml:Data xsi:type="xs:integer">12</ruleml:Data>
+              <!-- Note: the following element will validate in Relax NG but not (yet)
+                 in XSD. It is necessary to add the definition of these RuleML
+                 types (allowing attributes like @node) to the online RuleML XSDs.-->
+              <ruleml:Data node="#data1" xsi:type="ruleml:integer">12</ruleml:Data>
+            <ruleml:Data node="#data2">12a <xs:integer/></ruleml:Data>
+            <ruleml:Data>tomorrow</ruleml:Data>
+            <ruleml:Data xsi:type="xs:dateTime"
+              >2002-10-10T17:00:00Z</ruleml:Data>
+            <ruleml:Data>test12</ruleml:Data>
+
+            <ruleml:Ind>Jack</ruleml:Ind>
+            <ruleml:Var>y</ruleml:Var>
+            <ruleml:Ind>Frank</ruleml:Ind>
+          </ruleml:Atom>
+        </ruleml:And>
+      </ruleml:if>
+      <ruleml:then>
+        <ruleml:Atom>
+          <ruleml:meta>
+            <ruleml:Atom><ruleml:Rel>P</ruleml:Rel></ruleml:Atom>
+          </ruleml:meta>
+          <ruleml:op>
+            <ruleml:Rel>friend</ruleml:Rel>
+          </ruleml:op>
+          <ruleml:slot>
+            <ruleml:Ind>t</ruleml:Ind>
+            <ruleml:Data xsi:type="xs:positiveInteger">1</ruleml:Data>
+          </ruleml:slot>
+          <ruleml:Var>x</ruleml:Var>
+          <ruleml:Var>y</ruleml:Var>
+          <ruleml:Ind>Steph</ruleml:Ind>
+          <ruleml:Reify>
+            <ruleml:Reify>
+              <ruleml:Implies>
+                <ruleml:And>
+                  <ruleml:Atom>
+                    <ruleml:Rel>buy</ruleml:Rel>
+                    <ruleml:Var>person</ruleml:Var>
+                    <ruleml:Var>merchant</ruleml:Var>
+                    <ruleml:Var>object</ruleml:Var>
+                  </ruleml:Atom>
+                  <ruleml:Atom>
+                    <ruleml:Rel>keep</ruleml:Rel>
+                    <ruleml:Var>person</ruleml:Var>
+                    <ruleml:Var>object</ruleml:Var>
+                  </ruleml:Atom>
+                </ruleml:And>
+                <ruleml:Atom>
+                  <ruleml:Rel>own</ruleml:Rel>
+                  <ruleml:Var>person</ruleml:Var>
+                  <ruleml:Var>object</ruleml:Var>
+                </ruleml:Atom>
+              </ruleml:Implies>
+            </ruleml:Reify>
+          </ruleml:Reify>
+        </ruleml:Atom>
+      </ruleml:then>
+    </ruleml:Implies>
+
+
+
+  </ruleml:Assert>
+
+</ruleml:RuleML>

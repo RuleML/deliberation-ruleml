@@ -38,7 +38,9 @@
   <xsl:template match="xs:attribute[@name='id']">
     <xs:attribute name="id" type="xs:ID"/>    
   </xsl:template>
-    
+
+<!-- Remove importations of schemas in the ruleml namespace -->
+  <xsl:template match="xs:import[@namespace='http://ruleml.org/spec']"></xsl:template>
     
     <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()">
