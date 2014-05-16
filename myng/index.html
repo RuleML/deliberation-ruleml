@@ -742,6 +742,38 @@
                 if ( comp) {
                   return "nafnegdatalog";
                 }
+                // nafnegdisdatalogplus_normal
+                bb = parseInt("f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 12;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafnegdisdatalogplus_normal";
+                }
+                // nafnegdisdatalogplus
+                bb = parseInt("f", 16);
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = 0;
+                serial = 15;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafnegdisdatalogplus";
+                }
                 //hornlog
                 bb = parseInt("f", 16);
                 df = 7;
