@@ -64,10 +64,10 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafnegdishornlogplus.xsd
 
 # naffologeq
-# b3f-d2-a7-l1-p3ff-i7f-tf3f-q7-ef-s0
+# b3f-d2-a7-l1-p3ff-i7f-tf3f-q7-ee-s0 (normal)
 # b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s0
 # http://deliberation.ruleml.org/1.01/xsd/naffologeq_normal.xsd
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x0"  > ../relaxng/tmp-web2xsd.rnc 
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xe&serial=x0"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/naffologeq_normal.xsd
 
 # http://deliberation.ruleml.org/1.01/xsd/naffologeq.xsd
