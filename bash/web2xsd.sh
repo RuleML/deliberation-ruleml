@@ -45,6 +45,17 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3c1&implies=x7e&terms=xf30&quant=x0&expr=x0&serial=x0"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/disdatalogplus_mid.xsd
 
+# nafnegdisdatalogplus
+# bf-d6-a7-l1-p3ff-i7f-tf3f-q7-e0-s0 (normal)
+# bf-d7-a7-l1-p3ff-i7f-tf3f-q7-e0-s0
+# http://deliberation.ruleml.org/1.01/xsd/nafnegdisdatalogplus_normal.xsd
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=x0&serial=x0"  > ../relaxng/tmp-web2xsd.rnc 
+./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafnegdisdatalogplus_normal.xsd
+# http://deliberation.ruleml.org/1.01/xsd/nafnegdisdatalogplus.xsd
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=x0&serial=x0"  > ../relaxng/tmp-web2xsd.rnc 
+./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafnegdisdatalogplus.xsd
+
+
 # nafhornlog
 # bf-d7-a7-l1-p3ef-i7-tf0f-q7-e3-s0
 # http://deliberation.ruleml.org/1.01/xsd/nafhornlog.xsd
