@@ -1,0 +1,10 @@
+# Rewrite rules
+Options +FollowSymLinks
+# ENABLE DIRECTORY VIEWS
+Options +Indexes
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README*
+
+
+RewriteEngine On
+
+HeaderName HEADER.html
