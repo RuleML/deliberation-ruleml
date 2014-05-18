@@ -94,6 +94,7 @@ $serialization_unordered = 0;
 $serialization_stripeskip = 1;
 $serialization_datatyping = 2;
 $serialization_schemaLocation = 3;
+$serialization_pivot = 4;
 $bserialization = processGETParameter ($serialization);
 $serializationParam = "x".dechex(bindec($bserialization));
 
@@ -220,6 +221,7 @@ if ($bdefault==0){
   $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
+  $notPivot = 1-extractBit($bserialization, $serialization_pivot);
 
   $needURI = extractBit($bpropo, $propo_iri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
@@ -390,13 +392,17 @@ if ($bdefault==0){
     }
     // Include stripe-skipping
     if ($needStripeSkip){
-      echo "#\n# STRIPE-SKIPPING MODE ENABLED\n";
+      echo "#\n# SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'stripe_skipping_expansion_module.rnc"'."$end\n";
+      if ($notPivot){ 
+      // not included when converting to XSD
+      echo "#\n# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'asynchronous_stripe_skipping_entailment_expansion_module.rnc"'."$end\n";
       echo "#\n".'include "' . $modulesLocation .
           'asynchronous_stripe_skipping_implication_expansion_module.rnc"'."$end\n";
+      }
     }
     
     // Include explicit datatyping
@@ -618,14 +624,12 @@ if ($bdefault==0){
     //             needed for conversion to XSD with process strict
     //             In that case, monotonicity is preserved.
     if ($needReify){
-      if ($needSchemaLocation){    
+      if ($notPivot){    
         echo "#\n# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
             'reify_expansion_module.rnc"'."$end\n";
       } else {
-        // FIXME: this module is needed for conversion of the reify syntax to XSD
-        // It is a HACK to use the "xsi:schemaLocation" selector to also switch the reification module.
-        // Instead, there should be an explicit option in MYNG for "pivot"
+        // just for conversion to XSD
         echo "#\n# REIFICATION TERMS INCLUDED, ANY CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
             'reify_any_expansion_module.rnc"'."$end\n";      
