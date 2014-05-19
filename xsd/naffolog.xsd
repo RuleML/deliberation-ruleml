@@ -25,11 +25,13 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
           <xs:element ref="spec:Entails"/>
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
@@ -71,11 +73,13 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
           <xs:element ref="spec:Entails"/>
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
@@ -117,17 +121,44 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:group ref="spec:formula_2"/>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
           <xs:group ref="spec:And"/>
           <xs:group ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Naf"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
           <xs:element ref="spec:Exists"/>
           <xs:element ref="spec:Entails"/>
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="universal"/>
@@ -194,14 +225,42 @@
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="mapMaterial">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapDirection">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+                <xs:enumeration value="forward"/>
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="closure">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapClosure">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="universal"/>
@@ -225,14 +284,42 @@
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="mapMaterial">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapDirection">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+                <xs:enumeration value="forward"/>
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="closure">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapClosure">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="universal"/>
@@ -259,16 +346,24 @@
           <xs:sequence>
             <xs:choice>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
             <xs:choice>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
+              <xs:group ref="spec:And_2"/>
+              <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
         </xs:choice>
@@ -290,7 +385,32 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="universal"/>
@@ -314,13 +434,40 @@
         <xs:choice>
           <xs:group ref="spec:formula_5"/>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -337,13 +484,40 @@
         <xs:choice>
           <xs:group ref="spec:formula_6"/>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
           <xs:group ref="spec:And_2"/>
           <xs:group ref="spec:Or_2"/>
           <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
           <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="node" type="xs:anyURI"/>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -376,8 +550,6 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
-            <xs:enumeration value="value"/>
-            <xs:enumeration value="open"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -393,16 +565,6 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
-            <xs:enumeration value="value"/>
-            <xs:enumeration value="open"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="val">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="1"/>
-            <xs:enumeration value="0.."/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -418,11 +580,13 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
           <xs:group ref="spec:formula_7"/>
         </xs:choice>
       </xs:sequence>
@@ -482,49 +646,34 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
           <xs:element ref="spec:strong"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Naf">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:choice>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
-          <xs:element ref="spec:weak"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Equivalent">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:choice>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
-          <xs:element ref="spec:torso"/>
-        </xs:choice>
-        <xs:choice>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
-          <xs:element ref="spec:torso"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="closure">
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="universal"/>
@@ -537,37 +686,109 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Equal">
+  <xs:element name="Naf">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
-          <xs:element ref="spec:Skolem"/>
-          <xs:element ref="spec:Reify"/>
-          <xs:element ref="spec:Ind"/>
-          <xs:element ref="spec:Data"/>
-          <xs:element ref="spec:Var"/>
-          <xs:element ref="spec:Expr"/>
-          <xs:group ref="spec:Plex"/>
-          <xs:element ref="spec:left"/>
-        </xs:choice>
-        <xs:choice>
-          <xs:element ref="spec:Skolem"/>
-          <xs:element ref="spec:Reify"/>
-          <xs:element ref="spec:Ind"/>
-          <xs:element ref="spec:Data"/>
-          <xs:element ref="spec:Var"/>
-          <xs:element ref="spec:Expr"/>
-          <xs:group ref="spec:Plex"/>
-          <xs:element ref="spec:right"/>
+          <xs:element ref="spec:Atom"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
+          <xs:element ref="spec:weak"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="oriented">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
-            <xs:enumeration value="no"/>
             <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node" type="xs:anyURI"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Equivalent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:choice>
+          <xs:element ref="spec:Atom"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
+          <xs:element ref="spec:torso"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:element ref="spec:Atom"/>
+          <xs:group ref="spec:And_2"/>
+          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
+          <xs:element ref="spec:torso"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+            <xs:enumeration value="forward"/>
+            <xs:enumeration value="backward"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="universal"/>
+            <xs:enumeration value="existential"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -636,11 +857,13 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
             <xs:element ref="spec:Entails"/>
             <xs:element ref="spec:Rulebase"/>
           </xs:choice>
@@ -656,11 +879,13 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And"/>
             <xs:group ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
             <xs:element ref="spec:Exists"/>
             <xs:element ref="spec:Entails"/>
             <xs:element ref="spec:Rulebase"/>
@@ -690,11 +915,14 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -708,11 +936,14 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -726,8 +957,13 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -741,11 +977,14 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -768,11 +1007,13 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -786,10 +1027,12 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
@@ -817,11 +1060,13 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -868,7 +1113,13 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:Neg"/>
+        <xs:element ref="spec:Implies"/>
+        <xs:element ref="spec:Equivalent"/>
+        <xs:element ref="spec:Forall"/>
+        <xs:element ref="spec:Exists"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -878,8 +1129,13 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
         <xs:element ref="spec:Neg"/>
+        <xs:element ref="spec:Implies"/>
+        <xs:element ref="spec:Equivalent"/>
+        <xs:element ref="spec:Forall"/>
+        <xs:element ref="spec:Exists"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -889,11 +1145,13 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
         <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
         <xs:element ref="spec:Forall"/>
+        <xs:element ref="spec:Exists"/>
         <xs:element ref="spec:Entails"/>
         <xs:element ref="spec:Rulebase"/>
       </xs:choice>
@@ -905,8 +1163,13 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
         <xs:element ref="spec:Neg"/>
+        <xs:element ref="spec:Implies"/>
+        <xs:element ref="spec:Equivalent"/>
+        <xs:element ref="spec:Forall"/>
+        <xs:element ref="spec:Exists"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -955,36 +1218,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="left">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Skolem"/>
-        <xs:element ref="spec:Reify"/>
-        <xs:element ref="spec:Ind"/>
-        <xs:element ref="spec:Data"/>
-        <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
-        <xs:group ref="spec:Plex"/>
-      </xs:choice>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="right">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Skolem"/>
-        <xs:element ref="spec:Reify"/>
-        <xs:element ref="spec:Ind"/>
-        <xs:element ref="spec:Data"/>
-        <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
-        <xs:group ref="spec:Plex"/>
-      </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
@@ -1046,13 +1279,41 @@
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="mapMaterial">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapDirection">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+                <xs:enumeration value="forward"/>
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapClosure">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -1069,13 +1330,41 @@
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+              <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
+          <xs:attribute name="mapMaterial">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapDirection">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+                <xs:enumeration value="forward"/>
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="mapClosure">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="node" type="xs:anyURI"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>

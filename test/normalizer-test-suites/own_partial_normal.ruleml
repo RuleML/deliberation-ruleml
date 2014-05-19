@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://ruleml.org/1.0/xsd/naffologeq.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../xsd/datalog.xsd">
   <!-- start XML comment ...
 
 Note: This is a partially normalized version.
@@ -34,14 +34,9 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ... end XML comment -->
   <act index="1">
-    <Assert mapClosure="universal">
+    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
       <formula>
-        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
-          <meta>
-            <Atom>
-              <op><Rel>P</Rel></op>
-            </Atom>
-          </meta>
+        <Implies material="yes" direction="bidirectional">
           <if>
             <And>
               <formula>
@@ -73,7 +68,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       <!-- The second rule implies that a person buys an object from a merchant
 if the merchant sells the object to the person. -->
       <formula>
-        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
+        <Implies material="yes" direction="bidirectional">
           <if>
             <Atom>
               <op><Rel>sell</Rel></op>

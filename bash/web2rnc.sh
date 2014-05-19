@@ -76,7 +76,7 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 # disdatalogplus_mid_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3c1&implies=x7e&terms=xf30&quant=x0&expr=x0&serial=xc"  > ../relaxng/disdatalogplus_mid_normal.rnc
 
-# unprop_relaxed.rnc
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x7&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=xb"  > ../relaxng/unprop_relaxed.rnc
-# unprop_normal.rnc
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x6&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x8"  > ../relaxng/unprop_normal.rnc
+# unprop_min)relaxed.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x7&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x200&quant=x0&expr=x0&serial=xc"  > ../relaxng/unprop_min_relaxed.rnc
+# unprop_min)normal.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x6&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/unprop_min_normal.rnc

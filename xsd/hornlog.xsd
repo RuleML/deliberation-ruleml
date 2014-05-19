@@ -26,7 +26,6 @@
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
@@ -72,7 +71,6 @@
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
@@ -120,8 +118,6 @@
           <xs:element ref="spec:Equal"/>
           <xs:group ref="spec:And"/>
           <xs:group ref="spec:Or"/>
-          <xs:element ref="spec:Neg"/>
-          <xs:element ref="spec:Naf"/>
           <xs:element ref="spec:Exists"/>
           <xs:element ref="spec:Entails"/>
           <xs:element ref="spec:Rulebase"/>
@@ -197,8 +193,6 @@
               <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="closure">
@@ -228,8 +222,6 @@
               <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="closure">
@@ -262,13 +254,10 @@
               <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
             </xs:choice>
             <xs:choice>
               <xs:element ref="spec:Atom"/>
               <xs:element ref="spec:Equal"/>
-              <xs:element ref="spec:Neg"/>
             </xs:choice>
           </xs:sequence>
         </xs:choice>
@@ -315,7 +304,6 @@
           <xs:group ref="spec:formula_5"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
@@ -340,7 +328,6 @@
           <xs:element ref="spec:Equal"/>
           <xs:group ref="spec:And_2"/>
           <xs:group ref="spec:Or_2"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
@@ -419,7 +406,6 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
           <xs:element ref="spec:Forall"/>
@@ -476,37 +462,6 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Neg">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:choice>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:strong"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Naf">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:choice>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
-          <xs:element ref="spec:weak"/>
-        </xs:choice>
-      </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Equivalent">
     <xs:complexType>
       <xs:sequence>
@@ -514,13 +469,11 @@
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:torso"/>
         </xs:choice>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:torso"/>
         </xs:choice>
       </xs:sequence>
@@ -637,7 +590,6 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -659,8 +611,6 @@
             <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And"/>
             <xs:group ref="spec:Or"/>
-            <xs:element ref="spec:Neg"/>
-            <xs:element ref="spec:Naf"/>
             <xs:element ref="spec:Exists"/>
             <xs:element ref="spec:Entails"/>
             <xs:element ref="spec:Rulebase"/>
@@ -693,8 +643,6 @@
             <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
-            <xs:element ref="spec:Neg"/>
-            <xs:element ref="spec:Naf"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -711,8 +659,6 @@
             <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
-            <xs:element ref="spec:Neg"/>
-            <xs:element ref="spec:Naf"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -727,7 +673,6 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:element ref="spec:Neg"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -744,8 +689,6 @@
             <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
-            <xs:element ref="spec:Neg"/>
-            <xs:element ref="spec:Naf"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -769,7 +712,6 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -789,7 +731,6 @@
             <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
-            <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
@@ -818,7 +759,6 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -864,33 +804,11 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="strong">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
-      </xs:choice>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="weak">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
-        <xs:element ref="spec:Neg"/>
-      </xs:choice>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="meta">
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
         <xs:element ref="spec:Forall"/>
@@ -906,7 +824,6 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:element ref="spec:Neg"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -1049,8 +966,6 @@
               <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
@@ -1072,8 +987,6 @@
               <xs:element ref="spec:Equal"/>
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
             </xs:choice>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>

@@ -502,8 +502,24 @@
             
                  
             function anchorXSD(LanguageForm) {
+                //bindatagroundfact_normal
+                var bb = 1;
+                var df = 6;
+                var ts = 2;
+                var lng = 1;
+                var propo = parseInt("3cf", 16);
+                var implies = 6;
+                var terms = parseInt("f0f", 16);
+                var quant = 1;
+                var expr = 0;
+                var serial = parseInt("c", 16);
+                var comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatagroundfact_normal";
+                }
                 //bindatagroundfact
-                var bb = 7;
+                var bb = 1;
                 var df = 7;
                 var ts = 2;
                 var lng = 1;
@@ -512,11 +528,27 @@
                 var terms = parseInt("f0f", 16);
                 var quant = 1;
                 var expr = 0;
-                var serial = 15;
+                var serial = parseInt("f", 16);
                 var comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "bindatagroundfact";
+                }
+                //bindatagroundlog_normal
+                bb = 3;
+                df = 6;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatagroundlog_normal";
                 }
                 //bindatagroundlog
                 bb = 3;
@@ -528,11 +560,27 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "bindatagroundlog";
+                }
+                //bindatalog_normal
+                bb = 7;
+                df = 6;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "bindatalog_normal";
                 }
                 //bindatalog
                 bb = 7;
@@ -544,11 +592,91 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "bindatalog";
+                }
+                //datalog_min_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("1", 16);
+                implies = parseInt("0", 16);
+                terms = parseInt("200", 16);
+                quant = 0;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalog_min_normal";
+                }
+                //datalog_min
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("1", 16);
+                implies = parseInt("0", 16);
+                terms = parseInt("200", 16);
+                quant = 0;
+                expr = 0;
+                serial = parseInt("f", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalog_min";
+                }
+                //disdatalog_min_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("1", 16);
+                implies = parseInt("30", 16);
+                terms = parseInt("200", 16);
+                quant = 0;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalog_min_normal";
+                }
+                //disdatalog_min
+                bb = 7;
+                df = 7;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("1", 16);
+                implies = parseInt("30", 16);
+                terms = parseInt("200", 16);
+                quant = 0;
+                expr = 0;
+                serial = parseInt("f", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "disdatalog_min";
+                }
+                //datalog_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "datalog_normal";
                 }
                 //datalog
                 bb = 7;
@@ -558,9 +686,9 @@
                 propo = parseInt("3cf", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f0f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -576,7 +704,7 @@
                 terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -592,7 +720,7 @@
                 terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -608,7 +736,7 @@
                 terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -624,7 +752,7 @@
                 terms = parseInt("210", 16);
                 quant = 0;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -640,7 +768,7 @@
                 terms = parseInt("f30", 16);
                 quant = 0;
                 expr = 0;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -656,7 +784,7 @@
                 terms = parseInt("f30", 16);
                 quant = 0;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -672,7 +800,7 @@
                 terms = parseInt("f30", 16);
                 quant = 0;
                 expr = 0;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -688,12 +816,28 @@
                 terms = parseInt("f30", 16);
                 quant = 0;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "disdatalogplus_mid";
                 }                
+                //nafdatalog_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ef", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafdatalog_normal";
+                }
                 //nafdatalog
                 bb = 7;
                 df = 7;
@@ -702,13 +846,29 @@
                 propo = parseInt("3ef", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f0f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "nafdatalog";
+                }
+                //negdatalog_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "negdatalog_normal";
                 }
                 //negdatalog
                 bb = 7;
@@ -718,13 +878,29 @@
                 propo = parseInt("3df", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f0f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "negdatalog";
+                }
+                //nafnegdatalog_normal
+                bb = 7;
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafnegdatalog_normal";
                 }
                 //nafnegdatalog
                 bb = 7;
@@ -734,9 +910,9 @@
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f0f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -750,9 +926,9 @@
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -766,13 +942,29 @@
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
-                quant = 7;
+                quant = 1;
                 expr = 0;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "nafnegdisdatalogplus";
+                }
+                //hornlog_normal
+                bb = parseInt("f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "hornlog_normal";
                 }
                 //hornlog
                 bb = parseInt("f", 16);
@@ -784,11 +976,27 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "hornlog";
+                }
+                //hornlogeq_normal
+                bb = parseInt("f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = parseInt("e", 16);
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "hornlogeq_normal";
                 }
                 //hornlogeq
                 bb = parseInt("f", 16);
@@ -799,14 +1007,30 @@
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = 15;
-                serial = 15;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "hornlogeq";
                 }
                 
+                //dishornlog_normal
+                bb = parseInt("1f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = parseInt("37", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "dishornlog_normal";
+                }                 
                 //dishornlog
                 bb = parseInt("1f", 16);
                 df = 7;
@@ -817,12 +1041,28 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "dishornlog";
                 }                 
+                //nafhornlog_normal
+                bb = parseInt("f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ef", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafhornlog_normal";
+                }  
                 //nafhornlog
                 bb = parseInt("f", 16);
                 df = 7;
@@ -833,11 +1073,27 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "nafhornlog";
+                }  
+                //nafneghornlogeq_normal
+                bb = parseInt("f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = parseInt("e", 16);;
+                serial = parseInt("c", 16);;
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafneghornlogeq_normal";
                 }  
                 //nafneghornlogeq
                 bb = parseInt("f", 16);
@@ -855,6 +1111,22 @@
                 if ( comp) {
                   return "nafneghornlogeq";
                 }  
+                //nafnegdishornlogplus_normal
+                bb = parseInt("1f", 16);
+                df = 6;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = parseInt("e", 16);
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "nafnegdishornlogplus_normal";
+                }  
                 //nafnegdishornlogplus
                 bb = parseInt("1f", 16);
                 df = 7;
@@ -864,13 +1136,29 @@
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = 15;
-                serial = 15;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "nafnegdishornlogplus";
                 }  
+                //folog_normal
+                bb = parseInt("3f", 16);
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "folog"; 
+                 } 
                 //folog
                 bb = parseInt("3f", 16);
                 df = 7;
@@ -881,12 +1169,28 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "folog"; 
                  } 
+                //fologeq_normal
+                bb = parseInt("3f", 16);
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3df", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f3f", 16);
+                quant = 7;
+                expr = parseInt("e", 16);
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "fologeq_normal";
+                }
                 //fologeq
                 bb = parseInt("3f", 16);
                 df = 7;
@@ -896,13 +1200,29 @@
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = 15;
-                serial = 15;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "fologeq";
                 }
+                //naffolog_normal
+                bb = parseInt("3f", 16);
+                df = 2;
+                ts = 7;
+                lng = 1;
+                propo = parseInt("3ff", 16);
+                implies = parseInt("7f", 16);
+                terms = parseInt("f0f", 16);
+                quant = 7;
+                expr = 3;
+                serial = parseInt("c", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                  propo, implies, terms, quant, expr, serial  );
+                if ( comp) {
+                  return "naffolog";
+                }  
                 //naffolog
                 bb = parseInt("3f", 16);
                 df = 7;
@@ -913,7 +1233,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = 15;
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -929,7 +1249,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("e", 16);;
-                serial = 12;
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -944,8 +1264,8 @@
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = 15;
-                serial = 15;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {

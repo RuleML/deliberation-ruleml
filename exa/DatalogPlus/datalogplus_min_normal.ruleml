@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_normal.rnc"?>
-<RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ruleml.org/spec" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalogplus_min_normal.xsd">
-  <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- Some of these examples are from
+  "A general Datalog-based framework for tractable query answering 
+  over ontologies",
+  Andrea Calì,
+  Georg Gottlob
+  Thomas Lukasiewicz  
+  http://dx.doi.org/10.1016/j.websem.2012.03.001
+	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
+  -->
+  <!-- This "Rulebase" contains 20 rules: 10 Assert rules and 10 Query rule.
+       Each Query demonstrates the semantics of the previous Assert rule
+       by providing (in the XML comments) the expected answer to the Query.
+  -->
   <act index="1">
     <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Equations are allowed as facts-->
+      <!-- Equations are allowed as facts:
+         William is an employee.
+         "Bill" is an alias for "William".
+         -->
+      <formula>
+        <Atom>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Ind>William</Ind></arg>
+        </Atom>
+      </formula>
       <formula>
         <Equal oriented="no">
           <left>
@@ -15,8 +35,25 @@
           </right>
         </Equal>
       </formula>
+    </Assert>
+  </act>
+  <act index="2">
+    <Query>
+      <formula>
+        <Atom>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Var>x</Var></arg>
+        </Atom>
+      </formula>
+    </Query>
+  </act>
+  <act index="3">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Equations may be universally quantified, although this is not very meaningful.
-         This is a degenerate case, corresponding to the body of an implication being empty.-->
+         This is a degenerate case, corresponding to the body of an implication being empty.
+         The following is the reflexive property of equality:
+         Everything is equal to itself.
+    -->
       <formula>
         <Forall>
           <declare>
@@ -34,27 +71,68 @@
           </formula>
         </Forall>
       </formula>
-      <!-- Non-ground facts are allowed. -->
+    </Assert>
+  </act>
+  <act index="4">
+    <Query>
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Var>x</Var>
+          </left>
+          <right>
+            <Var>x</Var>
+          </right>
+        </Equal>
+      </formula>
+    </Query>
+  </act>
+  <act index="5">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Non-ground facts are allowed. 
+         John is the CEO. and
+         John is responsible for everything.
+    -->
+      <formula>
+        <Atom>
+          <op><Rel>CEO</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
+        </Atom>
+      </formula>
       <formula>
         <Forall>
           <declare>
             <Var>x</Var>
           </declare>
-          <declare>
-            <Var>y</Var>
-          </declare>
           <formula>
             <Atom>
-              <op><Rel>P</Rel></op>
-              <arg index="1"><Var>x</Var></arg>
-              <arg index="2"><Var>y</Var></arg>
+              <op><Rel>responsible_for</Rel></op>
+              <arg index="1"><Ind>John</Ind></arg>
+              <arg index="2"><Var>x</Var></arg>
             </Atom>
           </formula>
         </Forall>
       </formula>
+    </Assert>
+  </act>
+  <act index="6">
+    <Query>
+      <formula>
+        <Atom>
+          <op><Rel>responsible_for</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
+          <arg index="2"><Ind>Bill</Ind></arg>
+        </Atom>
+      </formula>
+    </Query>
+  </act>
+  <act index="7">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Equations are allowed in the body of (existential) implications, 
          but this also is not very meaningful,
-         as the equation could be removed by substitution. -->
+         as the equation could be removed by substitution. 
+         If someone is the same as Margaret, then they supervise someone.   
+    -->
       <formula>
         <Forall>
           <declare>
@@ -65,7 +143,7 @@
               <if>
                 <Equal oriented="no">
                   <left>
-                    <Ind>Jane</Ind>
+                    <Ind>Margaret</Ind>
                   </left>
                   <right>
                     <Var>x</Var>
@@ -79,7 +157,7 @@
                   </declare>
                   <formula>
                     <Atom>
-                      <op><Rel>son</Rel></op>
+                      <op><Rel>supervises</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                       <arg index="2"><Var>y</Var></arg>
                     </Atom>
@@ -90,7 +168,31 @@
           </formula>
         </Forall>
       </formula>
-      <!-- Disjoint Classes -->
+    </Assert>
+  </act>
+  <act index="8">
+    <Query>
+      <formula>
+        <Exists>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>supervises</Rel></op>
+              <arg index="1"><Ind>Margaret</Ind></arg>
+              <arg index="2"><Var>y</Var></arg>
+            </Atom>
+          </formula>
+        </Exists>
+      </formula>
+    </Query>
+  </act>
+  <act index="9">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Pairwise Disjoint Classes
+         Nothing is both an employee and a department.
+    -->
       <formula>
         <Forall>
           <declare>
@@ -102,14 +204,14 @@
                 <And>
                   <formula>
                     <Atom>
-                      <op><Rel>P</Rel></op>
+                      <op><Rel>employee</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                     </Atom>
                   </formula>
                   <formula>
                     <Atom>
-                      <op><Rel>Q</Rel></op>
-                      <arg index="1"><Var>x</Var></arg>
+                      <op><Rel>department</Rel></op>
+f                      <arg index="1"><Var>x</Var></arg>
                     </Atom>
                   </formula>
                 </And>
@@ -121,7 +223,33 @@
           </formula>
         </Forall>
       </formula>
-      <!-- Functionality Constraint: Everyone has at most one mother. -->
+    </Assert>
+  </act>
+  <act index="10">
+    <Query>
+      <formula>
+        <And>
+          <formula>
+            <Atom>
+              <op><Rel>employee</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+            </Atom>
+          </formula>
+          <formula>
+            <Atom>
+              <op><Rel>department</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+            </Atom>
+          </formula>
+        </And>
+      </formula>
+    </Query>
+  </act>
+  <act index="11">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Functionality Constraint: 
+      Everyone (or everything) has at most one superviser. 
+    -->
       <formula>
         <Forall>
           <declare>
@@ -139,14 +267,14 @@
                 <And>
                   <formula>
                     <Atom>
-                      <op><Rel>mother</Rel></op>
+                      <op><Rel>supervises</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                       <arg index="2"><Var>z</Var></arg>
                     </Atom>
                   </formula>
                   <formula>
                     <Atom>
-                      <op><Rel>mother</Rel></op>
+                      <op><Rel>supervises</Rel></op>
                       <arg index="1"><Var>y</Var></arg>
                       <arg index="2"><Var>z</Var></arg>
                     </Atom>
@@ -167,8 +295,40 @@
           </formula>
         </Forall>
       </formula>
+      <formula>
+        <Atom>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Bill</Ind></arg>
+          <arg index="2"><Ind>Margaret</Ind></arg>
+        </Atom>
+      </formula>
+      <formula>
+        <Atom>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Bill</Ind></arg>
+          <arg index="2"><Ind>Peggy</Ind></arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </act>
+  <act index="12">
+    <Query>
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Ind>Peggy</Ind>
+          </left>
+          <right>
+            <Ind>Margaret</Ind>
+          </right>
+        </Equal>
+      </formula>
+    </Query>
+  </act>
+  <act index="13">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Negative Constraints are allowed.
-         No one is their own mother. -->
+         No one (or no thing) is their own supervisor. -->
       <formula>
         <Forall>
           <declare>
@@ -178,7 +338,7 @@
             <Implies material="yes" direction="bidirectional">
               <if>
                 <Atom>
-                  <op><Rel>mother</Rel></op>
+                  <op><Rel>supervises</Rel></op>
                   <arg index="1"><Var>x</Var></arg>
                   <arg index="2"><Var>x</Var></arg>
                 </Atom>
@@ -190,6 +350,21 @@
           </formula>
         </Forall>
       </formula>
+    </Assert>
+  </act>
+  <act index="14">
+    <Query>
+      <formula>
+        <Atom>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Var>x</Var></arg>
+          <arg index="2"><Var>x</Var></arg>
+        </Atom>
+      </formula>
+    </Query>
+  </act>
+  <act index="15">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
          are different.-->
@@ -198,10 +373,10 @@
           <if>
             <Equal oriented="no">
               <left>
-                <Ind>a</Ind>
+                <Ind>Sue</Ind>
               </left>
               <right>
-                <Ind>b</Ind>
+                <Ind>Maria</Ind>
               </right>
             </Equal>
           </if>
@@ -210,6 +385,24 @@
           </then>
         </Implies>
       </formula>
+    </Assert>
+  </act>
+  <act index="16">
+    <Query>
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Ind>Sue</Ind>
+          </left>
+          <right>
+            <Ind>Maria</Ind>
+          </right>
+        </Equal>
+      </formula>
+    </Query>
+  </act>
+  <act index="17">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Existential Rules -->
       <!-- Every manager directs at least one department. -->
       <formula>
@@ -222,7 +415,7 @@
               <if>
                 <Atom>
                   <op><Rel>manager</Rel></op>
-                  <arg index="1"><Ind>x</Ind></arg>
+                  <arg index="1"><Var>M</Var></arg>
                 </Atom>
               </if>
               <then>
@@ -243,6 +436,34 @@
           </formula>
         </Forall>
       </formula>
+      <formula>
+        <Atom>
+          <op><Rel>manager</Rel></op>
+          <arg index="1"><Ind>Maria</Ind></arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </act>
+  <act index="18">
+    <Query>
+      <formula>
+        <Exists>
+          <declare>
+            <Var>P</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>directs</Rel></op>
+              <arg index="1"><Ind>Maria</Ind></arg>
+              <arg index="2"><Var>P</Var></arg>
+            </Atom>
+          </formula>
+        </Exists>
+      </formula>
+    </Query>
+  </act>
+  <act index="19">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- The heads and bodies of existential rules can contain conjunctions. -->
       <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->
       <formula>
@@ -308,5 +529,23 @@
         </Forall>
       </formula>
     </Assert>
+  </act>
+  <act index="20">
+    <Query>
+      <formula>
+        <Exists>
+          <declare>
+            <Var>E'</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>supervises</Rel></op>
+              <arg index="1"><Var>E</Var></arg>
+              <arg index="2"><Var>E'</Var></arg>
+            </Atom>
+          </formula>
+        </Exists>
+      </formula>
+    </Query>
   </act>
 </RuleML>
