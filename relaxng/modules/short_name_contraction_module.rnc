@@ -15,7 +15,7 @@ dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 #
 card.attrib.def &= notAllowed
-in.attrib.def &= notAllowed
+per.attrib.def &= notAllowed
 val.attrib.def &= notAllowed
 Rel.Node.def &= notAllowed
 Expr.Node.def &= notAllowed

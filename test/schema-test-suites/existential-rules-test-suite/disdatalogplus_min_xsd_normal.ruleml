@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min.xsd">
+<RuleML xmlns="http://ruleml.org/spec"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min.xsd">
+  <!--<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min.xsd">-->
   <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->
   <act index="1">
-    <Assert>
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Equations are allowed as facts-->
       <formula>
         <Equal oriented="no">
@@ -60,9 +61,9 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies>
+            <Implies material="yes" direction="bidirectional">
               <if>
-                <Equal>
+                <Equal oriented="no">
                   <left>
                     <Ind>Jane</Ind>
                   </left>
@@ -96,7 +97,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies>
+            <Implies material="yes" direction="bidirectional">
               <if>
                 <And>
                   <formula>
@@ -133,7 +134,7 @@
             <Var>z</Var>
           </declare>
           <formula>
-            <Implies>
+            <Implies material="yes" direction="bidirectional">
               <if>
                 <And>
                   <formula>
