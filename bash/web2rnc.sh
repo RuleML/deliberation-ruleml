@@ -1,13 +1,17 @@
 #!/bin/bash
 # Download RNC schemas from MYNG for local testing
-# datalog_min_relaxed.rnc
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/datalog_min_relaxed.rnc 
-# disdatalog_min_relaxed.rnc
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x30&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/disdatalog_min_relaxed.rnc 
 # datalog_min_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xc"  > ../relaxng/datalog_min_normal.rnc 
+# datalog_min_relaxed.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/datalog_min_relaxed.rnc 
 # disdatalog_min_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x30&terms=x200&quant=x0&expr=x0&serial=xc"  > ../relaxng/disdatalog_min_normal.rnc 
+# disdatalog_min_relaxed.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x30&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/disdatalog_min_relaxed.rnc 
+# datalog_normal.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/datalog_normal.rnc"   > ../relaxng/datalog_normal.rnc 
+# datalog_relaxed.rnc
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/datalog_relaxed.rnc"  > ../relaxng/datalog_relaxed.rnc 
 
 # datalogeq_min_relaxed.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x210&quant=x0&expr=x0&serial=xf"  > ../relaxng/datalogeq_min_relaxed.rnc 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../../relaxng/datalog_relaxed.rnc"?>
+<!--<?xml-model href="../../../../xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/datalog.xsd">
+
+  <!--A personX has multi-addresses if the personX lives at address1 and address2 and we can prove (using the built-in relation lessThan over strings) that the two addresses are different.
+    Compare to ../../../../exa/NegationDatalog/nafdatalog/multi-address.ruleml where this rule is expressed in an equivalent fashion using Negation as failure.-->
+<Assert mapClosure="universal">
+<Implies>
+  <if>
+    <And>
+      <Atom>
+        <op><Rel>address</Rel></op>
+        <Var>personX</Var>
+        <Var type= "String">address1</Var>
+      </Atom>
+      <Atom>
+        <op><Rel>address</Rel></op>
+        <Var>personX</Var>
+        <Var type="String">address2</Var>
+      </Atom>
+      <Atom>
+        <Rel>lessThan</Rel>
+        <Var type="String">address1</Var>
+        <Var type="String">address2</Var>
+      </Atom>
+    </And>
+  </if>
+  <then>
+    <Atom>
+      <Rel>multi-address</Rel>
+      <Var>personX</Var>
+    </Atom>
+  </then>
+</Implies>
+
+<!--Jack lives at 655 Graham Avenue -->
+    <Atom>
+      <op><Rel>address</Rel></op>
+      <Ind>Jack</Ind>
+      <Ind type="String">655 Graham Avenue</Ind>
+    </Atom>
+
+<!--Jack lives at 552 Windsor -->	
+    <Atom>
+      <op><Rel>address</Rel></op>
+      <Ind>Jack</Ind>
+      <Ind type="String">552 Windsor</Ind>
+    </Atom>
+
+</Assert>
+</RuleML>
+
+
+
+
