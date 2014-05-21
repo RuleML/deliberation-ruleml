@@ -6,9 +6,8 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, negation, weak, formula" ]
 dc:description [ "The expansion module for weak negation formulas." ]
-dc:date [ "2012-02-23" ]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ]
+dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Naf.Node.def | weak.edge.def
 Node.choice |= Naf.Node.def
