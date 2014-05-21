@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:include schemaLocation="../datatypes/SimpleWithAttributes.xsd"/>
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
   <xs:element name="RuleML">
     <xs:complexType>
       <xs:sequence>
