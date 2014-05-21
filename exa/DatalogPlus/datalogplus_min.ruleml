@@ -2,24 +2,25 @@
 <?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- Some of these examples are from
-  "A general Datalog-based framework for tractable query answering 
-  over ontologies",
-  Andrea Calì,
-  Georg Gottlob
-  Thomas Lukasiewicz  
-  http://dx.doi.org/10.1016/j.websem.2012.03.001
-	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
-  -->
+    "A general Datalog-based framework for tractable query answering 
+    over ontologies",
+    Andrea Calì,
+    Georg Gottlob
+    Thomas Lukasiewicz  
+    http://dx.doi.org/10.1016/j.websem.2012.03.001
+  	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
+    -->
 
-  <!-- This "Rulebase" contains 20 rules: 10 Assert rules and 10 Query rule.
+  <!-- This RuleML Document incrementally asserts (within the <RuleML> element) 
+       20 rules: 10 Assert rules and 10 Query rules.
        Each Query demonstrates the semantics of the previous Assert rule
        by providing (in the XML comments) the expected answer to the Query.
-  -->
+    -->
   <Assert>
     <!-- Equations are allowed as facts:
          William is an employee.
          "Bill" is an alias for "William".
-         -->
+      -->
     <Atom>
       <Rel>employee</Rel>
       <Ind>William</Ind>
@@ -31,11 +32,11 @@
   </Assert>
   <Query>
     <!-- 
-      Who are the employees?
-      Answers: 
-      x: <Ind>Bill</Ind>
-      x: <Ind>William</Ind>
-    -->
+        Who are the employees?
+        Answers: 
+        x: <Ind>Bill</Ind>
+        x: <Ind>William</Ind>
+      -->
     <Atom>
       <Rel>employee</Rel>
       <Var>x</Var>
@@ -43,11 +44,11 @@
   </Query>
   <Assert>
 
-    <!-- Equations may be universally quantified, although this is not very meaningful.
+    <!-- Equations may be universally quantified.
          This is a degenerate case, corresponding to the body of an implication being empty.
          The following is the reflexive property of equality:
          Everything is equal to itself.
-    -->
+      -->
     <Forall>
       <Var>x</Var>
       <Equal>
@@ -58,11 +59,11 @@
   </Assert>
   <Query>
     <!--
-      What is equal to itself?
-      Answers:
-      x: <Ind>Bill</Ind>
-      x: <Ind>William</Ind>
-    -->
+        What is equal to itself?
+        Answers:
+        x: <Ind>Bill</Ind>
+        x: <Ind>William</Ind>
+      -->
     <Equal>
       <Var>x</Var>
       <Var>x</Var>
@@ -71,9 +72,9 @@
 
   <Assert>
     <!-- Non-ground facts are allowed. 
-         John is the CEO. and
+         John is the CEO.
          John is responsible for everything.
-    -->
+      -->
     <Atom>
       <Rel>CEO</Rel>
       <Ind>John</Ind>
@@ -89,10 +90,10 @@
   </Assert>
   <Query>
     <!-- 
-      Is John responsible for Bill?
-      Answers:
-      Succeeds.
-    -->
+        Is John responsible for Bill?
+        Answers:
+        Succeeds.
+      -->
     <Atom>
       <Rel>responsible_for</Rel>
       <Ind>John</Ind>
@@ -101,11 +102,11 @@
   </Query>
 
   <Assert>
-    <!-- Equations are allowed in the body of (existential) implications, 
-         but this also is not very meaningful,
-         as the equation could be removed by substitution. 
-         If someone is the same as Margaret, then they supervise someone.   
-    -->
+    <!-- Equations are allowed in the body of (existential) implications. 
+         If anyone is the same as Margaret, then they supervise someone.
+         (Note that this rule could be semantically simplified 
+         to an existential fact using the axioms of equality.)
+      -->
     <Forall>
       <Var>x</Var>
       <Implies>
@@ -130,10 +131,10 @@
   </Assert>
   <Query>
     <!-- 
-      Does Margaret supervise someone?
-      Answer:
-      Succeeds      
-    -->
+        Does Margaret supervise someone?
+        Answer:
+        Succeeds      
+      -->
     <Exists>
       <Var>y</Var>
       <Atom>
@@ -147,7 +148,7 @@
   <Assert>
     <!-- Pairwise Disjoint Classes
          Nothing is both an employee and a department.
-    -->
+      -->
     <Forall>
       <Var>x</Var>
       <Implies>
@@ -169,30 +170,43 @@
       </Implies>
     </Forall>
   </Assert>
+  <Assert>
+    <!-- HR is an employee.
+         HR is a department.
+         These facts together with the previous rule creates an inconsistency.
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+    <Atom>
+      <Rel>department</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+  </Assert>
   <Query>
-    <!-- 
-      What things are both employees and departments?
-      Answer:
-      Fails.
-      Furthermore, any additional assertion that something is both
-      employee and department will make the rulebase inconsistent.
-    -->
-    <And>
-      <Atom>
-        <Rel>employee</Rel>
-        <Var>x</Var>
-      </Atom>
-      <Atom>
-        <Rel>department</Rel>
-        <Var>x</Var>
-      </Atom>
-    </And>
+    <!-- Is there any inconsistency?
+        Succeeds, indicating inconsistency. 
+      -->
+    <Or/>
   </Query>
-
+  <Retract>
+    <!-- Remove that HR is an employee. -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+  </Retract>
+  <Query>
+    <!-- Is there any inconsistency?
+        Fails, indicating consistency. 
+      -->
+    <Or/>
+  </Query>
   <Assert>
     <!-- Functionality Constraint: 
-      Everyone (or everything) has at most one superviser. 
-    -->
+        Everyone (or everything) has at most one superviser. 
+      -->
     <Forall>
       <Var>x</Var>
       <Var>y</Var>
@@ -222,21 +236,21 @@
     </Forall>
     <Atom>
       <Rel>supervises</Rel>
-      <Ind>Bill</Ind>
       <Ind>Margaret</Ind>
+      <Ind>Bill</Ind>
     </Atom>
     <Atom>
       <Rel>supervises</Rel>
-      <Ind>Bill</Ind>
       <Ind>Peggy</Ind>
+      <Ind>Bill</Ind>
     </Atom>
   </Assert>
   <Query>
     <!-- 
-      Is Peggy the same as Margaret?
-      Answer:
-      Succeeds.
-    -->
+        Is Peggy the same as Margaret?
+        Answer:
+        Succeeds.
+      -->
     <Equal>
       <Ind>Peggy</Ind>
       <Ind>Margaret</Ind>
@@ -245,7 +259,8 @@
 
   <Assert>
     <!-- Negative Constraints are allowed.
-         No one (or no thing) is their own supervisor. -->
+         No one (or no thing) is their own supervisor. 
+      -->
     <Forall>
       <Var>x</Var>
       <Implies>
@@ -262,25 +277,37 @@
       </Implies>
     </Forall>
   </Assert>
-  <Query>
-    <!-- 
-      What thing is its own supervisor?
-      Answer: 
-      Fails.
-      Furthermore, any additional assertion that something is
-      its own supervisor will make the rulebase inconsistent.
-    -->
+  <Assert>
+    <!-- Margaret supervises Peggy. -->
     <Atom>
       <Rel>supervises</Rel>
-      <Var>x</Var>
-      <Var>x</Var>
+      <Var>Margaret</Var>
+      <Var>Peggy</Var>
     </Atom>
+  </Assert>
+  <Query>
+    <!-- Is there any inconsistency?
+        Succeeds, indicating inconsistency. -->
+    <Or/>
   </Query>
-
+  <Retract>
+    <!-- Remove that Margaret supervises Peggy. -->
+    <Atom>
+      <Rel>supervises</Rel>
+      <Var>Margaret</Var>
+      <Var>Peggy</Var>
+    </Atom>
+  </Retract>
+  <Query>
+    <!-- Is there any inconsistency?
+        Fails, indicating consistency. -->
+    <Or/>
+  </Query>
   <Assert>
     <!-- Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
-         are different.-->
+         are different.
+      -->
     <Implies>
       <if>
         <Equal>
@@ -295,10 +322,10 @@
   </Assert>
   <Query>
     <!-- 
-      Is Sue the same as Maria?
-      Answer:
-      Fails.
-    -->
+        Is Sue the same as Maria?
+        Answer:
+        Fails.
+      -->
     <Equal>
       <Ind>Sue</Ind>
       <Ind>Maria</Ind>
@@ -307,7 +334,9 @@
 
   <Assert>
     <!-- Existential Rules -->
-    <!-- Every manager directs at least one department. -->
+    <!-- Every manager directs at least one department.
+         Maria is a manager.
+      -->
     <Forall>
       <Var>M</Var>
       <Implies>
@@ -336,10 +365,10 @@
   </Assert>
   <Query>
     <!-- 
-      Does Maria direct a department?
-      Answer:
-      Succeeds.
-    -->
+        Does Maria direct a department?
+        Answer:
+        Succeeds.
+      -->
     <Exists>
       <Var>P</Var>
       <Atom>
@@ -351,8 +380,10 @@
   </Query>
 
   <Assert>
-    <!-- The heads and bodies of existential rules can contain conjunctions. -->
-    <!-- Every employee who directs a department is a manager, and supervises at least another employee who works in the same department -->
+    <!-- The heads and bodies of existential rules can contain conjunctions.
+         Every employee who directs a department is a manager, and supervises at 
+         least another employee who works in the same department.
+      -->
     <Forall>
       <Var>E</Var>
       <Var>P</Var>
@@ -396,10 +427,10 @@
   </Assert>
   <Query>
     <!-- 
-      Does Maria supervise someone?
-      Answer:
-      Succeeds.
-    -->
+        Does Maria supervise someone?
+        Answer:
+        Succeeds.
+      -->
     <Exists>
       <Var>E'</Var>
       <Atom>
