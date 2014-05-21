@@ -69,7 +69,7 @@ Redirect /1.01/relaxng/nafnegdatalog_normal.rnc http://deliberation.ruleml.org/1
 
 Redirect /1.01/relaxng/nafnegdatalog_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=xf
 
-Redirect /1.01/relaxng/nafnegdusdatalogplus_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x1&expr=x0&serial=xc
+Redirect /1.01/relaxng/nafnegdisdatalogplus_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x1&expr=x0&serial=xc
 
 Redirect /1.01/relaxng/nafnegdisdatalogplus_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x1&expr=x0&serial=xf
 
@@ -93,9 +93,15 @@ Redirect /1.01/relaxng/nafneghornlogeq_normal.rnc http://deliberation.ruleml.org
 
 Redirect /1.01/relaxng/nafneghornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7&terms=xf3f&quant=x7&expr=xf&serial=xf
 
-Redirect /1.01/relaxng/nafnegdishornlogplus_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xe&serial=xc
+# myng-b1f-d6-a7-l1-p3ff-i7f-tf0f-q7-e3-sc
+Redirect /1.01/relaxng/nafnegdishornlogexcon_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf0f&quant=x7&expr=x3&serial=xc
 
-Redirect /1.01/relaxng/nafnegdishornlogplus_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=xf
+# myng-b1f-d7-a7-l1-p3ff-i7f-tf0f-q7-e3-sf
+Redirect /1.01/relaxng/nafnegdishornlogexcon_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf0f&quant=x7&expr=x3&serial=xf
+
+Redirect /1.01/relaxng/nafnegdishornlogplus_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x6&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xe&serial=xc
+
+Redirect /1.01/relaxng/nafnegdishornlogplus_relaxed.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=xf
 
 Redirect /1.01/relaxng/folog_normal.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7f&terms=xf0f&quant=x7&expr=x3&serial=xc
 
