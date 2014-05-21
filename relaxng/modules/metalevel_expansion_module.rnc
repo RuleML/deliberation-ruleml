@@ -7,9 +7,8 @@ dc:version [ "1.0.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
-dc:date ["2012-02-23"]
 dc:language [ "en" ]
-dcterms:rights [ "LGPL-3.0" ] 
+dcterms:rights [ "TBD" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= Entails.Node.def | head_Entails.edge.def | body_Entails.edge.def
 Node.choice |= Entails.Node.def

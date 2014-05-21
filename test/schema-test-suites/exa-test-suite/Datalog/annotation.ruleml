@@ -5,7 +5,7 @@
 <!ENTITY rulemlmm "../../../../metamodel">  
 <!ENTITY dcterms "http://purl.org/dc/terms/">  
 ]>
-<?xml-model href="../../../../relaxng/test/test/datalog_relaxed.rnc" 
+<?xml-model href="../../../../relaxng/test/datalog_relaxed.rnc" 
   type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"

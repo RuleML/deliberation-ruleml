@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec"
   elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../xsd/xml.xsd"/>
   <xs:attributeGroup name="common">
     <xs:attribute name="node" type="xs:anyURI"/>
     <xs:attribute ref="xml:base"/>
