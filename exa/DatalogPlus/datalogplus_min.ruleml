@@ -11,9 +11,10 @@
   	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
     -->
 
-  <!-- This RuleML Document incrementally asserts (within the <RuleML> element) 
-       20 rules: 10 Assert rules and 10 Query rules.
-       Each Query demonstrates the semantics of the previous Assert rule
+  <!-- This RuleML Document incrementally asserts, retracts or queries 
+       (within the <RuleML> element) for a total of
+       28 transactions: 13 Asserts, 2 Retracts and 13 Queriess.
+       Each Query demonstrates the semantics of the previous Assert or Retract
        by providing (in the XML comments) the expected answer to the Query.
     -->
   <Assert>
@@ -42,11 +43,11 @@
       <Var>x</Var>
     </Atom>
   </Query>
+  
   <Assert>
-
     <!-- Equations may be universally quantified.
-         This is a degenerate case, corresponding to the body of an implication being empty.
-         The following is the reflexive property of equality:
+         This fact is a degenerate case, corresponding to the body of an implication being empty.
+         The following makes the reflexive property of equality explicit (as built into most systems):
          Everything is equal to itself.
       -->
     <Forall>
@@ -100,12 +101,53 @@
       <Ind>Bill</Ind>
     </Atom>
   </Query>
-
+  
+  <Assert>
+    <!-- Rules are expressed as universally-quantified implications.
+         A simple rules can be used to assert a subclass relationship:
+         Every manager is an employee.         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>manager</Rel>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Atom>
+            <Rel>employee</Rel>
+            <Var>x</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>manger</Rel>
+      <Ind>John</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!-- 
+        Who are the employees?
+        Answers: 
+        x: <Ind>Bill</Ind>
+        x: <Ind>William</Ind>
+        x: <Ind>John</Ind>
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Var>x</Var>
+    </Atom>
+  </Query>
+  
   <Assert>
     <!-- Equations are allowed in the body of (existential) implications. 
          If anyone is the same as Margaret, then they supervise someone.
          (Note that this rule could be semantically simplified 
-         to an existential fact using the axioms of equality.)
+         to an existential fact relying on axioms of equality.)
       -->
     <Forall>
       <Var>x</Var>
@@ -306,7 +348,7 @@
   <Assert>
     <!-- Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
-         are different.
+         are different (as built into systems making the unique name assumption).
       -->
     <Implies>
       <if>
