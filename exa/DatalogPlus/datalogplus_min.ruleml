@@ -11,8 +11,8 @@
   	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
     -->
 
-  <!-- This RuleML Document incrementally asserts, retracts or queries 
-       (within the <RuleML> element) for a total of
+  <!-- This RuleML Document incrementally asserts into, retracts from and 
+       queries a rulebase (within the <RuleML> element) for a total of
        28 transactions: 13 Asserts, 2 Retracts and 13 Queriess.
        Each Query demonstrates the semantics of the previous Assert or Retract
        by providing (in the XML comments) the expected answer to the Query.
@@ -247,7 +247,7 @@
   </Query>
   <Assert>
     <!-- Functionality Constraint: 
-        Everyone (or everything) has at most one superviser. 
+        Everyone (or everything) has at most one supervisor. 
       -->
     <Forall>
       <Var>x</Var>
@@ -323,8 +323,8 @@
     <!-- Margaret supervises Peggy. -->
     <Atom>
       <Rel>supervises</Rel>
-      <Var>Margaret</Var>
-      <Var>Peggy</Var>
+      <Ind>Margaret</Ind>
+      <Ind>Peggy</Ind>
     </Atom>
   </Assert>
   <Query>
@@ -336,8 +336,8 @@
     <!-- Remove that Margaret supervises Peggy. -->
     <Atom>
       <Rel>supervises</Rel>
-      <Var>Margaret</Var>
-      <Var>Peggy</Var>
+      <Ind>Margaret</Ind>
+      <Ind>Peggy</Ind>
     </Atom>
   </Retract>
   <Query>
@@ -477,7 +477,7 @@
       <Var>E'</Var>
       <Atom>
         <Rel>supervises</Rel>
-        <Var>E</Var>
+        <Ind>Maria</Ind>
         <Var>E'</Var>
       </Atom>
     </Exists>
