@@ -215,7 +215,7 @@
   <Assert>
     <!-- HR is an employee.
          HR is a department.
-         These facts together with the previous rule creates an inconsistency.
+         These facts together with the previous rule create an inconsistency.
       -->
     <Atom>
       <Rel>employee</Rel>
