@@ -104,7 +104,7 @@
   
   <Assert>
     <!-- Rules are expressed as universally-quantified implications.
-         A simple rules can be used to assert a subclass relationship:
+         A simple rule can be used to assert a subclass relationship:
          Every manager is an employee.         
       -->
     <Forall>
