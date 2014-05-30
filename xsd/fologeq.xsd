@@ -555,6 +555,8 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
+            <xs:enumeration value="value"/>
+            <xs:enumeration value="open"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -570,6 +572,8 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
+            <xs:enumeration value="value"/>
+            <xs:enumeration value="open"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>

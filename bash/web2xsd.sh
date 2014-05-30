@@ -1,5 +1,10 @@
 #!/bin/bash
 # Auto-generate XSD from MYNG RNC
+# Instructions:
+# run this script from the command line
+# then apply the XSLT transformations in rnc2xsd:
+#  1. 101_rnc2xsd.xslt to all the file in the xsd directory, in place
+#  2. 101_rnc2xsd_min.xslt to all the files in the xsd_min directory, write output into xsd directory
 # clear the /xsd directory
 rm ../xsd/*
 
@@ -191,11 +196,11 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/folog.xsd
 
 # fologeq
-# b3f-d2-a7-l1-p3df-i7f-tf3f-q7-e7-s10 (normal)
-# b3f-d7-a7-l1-p3df-i7f-tf3f-q7-e7-s12
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7f&terms=xf3f&quant=x7&expr=x7&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
+# b3f-d2-a7-l1-p3df-i7f-tf3f-q7-ee-s10 (normal)
+# b3f-d7-a7-l1-p3df-i7f-tf3f-q7-ef-s12
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x2&termseq=x7&lng=x1&propo=x3df&implies=x7f&terms=xf3f&quant=x7&expr=xe&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/fologeq_normal.xsd
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7f&terms=xf3f&quant=x7&expr=x7&serial=x12"  > ../relaxng/tmp-web2xsd.rnc 
+curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3df&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x12"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/fologeq.xsd
 
 # naffolog
