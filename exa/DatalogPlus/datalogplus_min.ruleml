@@ -18,9 +18,11 @@
        by providing (in the XML comments) the expected answer to the Query.
     -->
   <Assert>
-    <!-- Equations are allowed as facts:
+    <!-- 
+         Equations are allowed as facts:
          William is an employee.
          "Bill" is an alias for "William".
+         Sublanguage: datagroundfacteq
       -->
     <Atom>
       <Rel>employee</Rel>
@@ -33,10 +35,11 @@
   </Assert>
   <Query>
     <!-- 
-        Who are the employees?
-        Answers: 
-        x: <Ind>Bill</Ind>
-        x: <Ind>William</Ind>
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq
       -->
     <Atom>
       <Rel>employee</Rel>
@@ -45,10 +48,12 @@
   </Query>
   
   <Assert>
-    <!-- Equations may be universally quantified.
+    <!-- 
+         Equations may be universally quantified.
          This fact is a degenerate case, corresponding to the body of an implication being empty.
          The following makes the reflexive property of equality explicit (as built into most systems):
          Everything is equal to itself.
+         Sublanguage: datalogeq         
       -->
     <Forall>
       <Var>x</Var>
@@ -60,10 +65,11 @@
   </Assert>
   <Query>
     <!--
-        What is equal to itself?
-        Answers:
-        x: <Ind>Bill</Ind>
-        x: <Ind>William</Ind>
+         What is equal to itself?
+         Answers:
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq         
       -->
     <Equal>
       <Var>x</Var>
@@ -72,9 +78,11 @@
   </Query>
 
   <Assert>
-    <!-- Non-ground facts are allowed. 
+    <!-- 
+         Non-ground facts are allowed. 
          John is the CEO.
          John is responsible for everything.
+         Sublanguage: datalogeq         
       -->
     <Atom>
       <Rel>CEO</Rel>
@@ -91,9 +99,10 @@
   </Assert>
   <Query>
     <!-- 
-        Is John responsible for Bill?
-        Answers:
-        Succeeds.
+         Is John responsible for Bill?
+         Answers:
+         Succeeds.
+         Sublanguage: datalogeq         
       -->
     <Atom>
       <Rel>responsible_for</Rel>
@@ -103,9 +112,11 @@
   </Query>
   
   <Assert>
-    <!-- Rules are expressed as universally-quantified implications.
+    <!-- 
+         Rules are expressed as universally-quantified implications.
          A simple rule can be used to assert a subclass relationship:
          Every manager is an employee.         
+         Sublanguage: datalog         
       -->
     <Forall>
       <Var>x</Var>
@@ -131,11 +142,12 @@
   </Assert>
   <Query>
     <!-- 
-        Who are the employees?
-        Answers: 
-        x: <Ind>Bill</Ind>
-        x: <Ind>William</Ind>
-        x: <Ind>John</Ind>
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         x: <Ind>John</Ind>
+         Sublanguage: datalog         
       -->
     <Atom>
       <Rel>employee</Rel>
@@ -144,10 +156,12 @@
   </Query>
   
   <Assert>
-    <!-- Equations are allowed in the body of (existential) implications. 
+    <!-- 
+         Equations are allowed in the body of (existential) implications. 
          If anyone is the same as Margaret, then they supervise someone.
          (Note that this rule could be semantically simplified 
          to an existential fact relying on axioms of equality.)
+         Sublanguage: datalogexeq         
       -->
     <Forall>
       <Var>x</Var>
@@ -173,9 +187,10 @@
   </Assert>
   <Query>
     <!-- 
-        Does Margaret supervise someone?
-        Answer:
-        Succeeds      
+         Does Margaret supervise someone?
+         Answer:
+         Succeeds      
+         Sublanguage: datalogeq         
       -->
     <Exists>
       <Var>y</Var>
@@ -188,8 +203,10 @@
   </Query>
 
   <Assert>
-    <!-- Pairwise Disjoint Classes
+    <!-- 
+         Pairwise Disjoint Classes
          Nothing is both an employee and a department.
+         Sublanguage: ncdatalog         
       -->
     <Forall>
       <Var>x</Var>
@@ -216,6 +233,7 @@
     <!-- HR is an employee.
          HR is a department.
          These facts together with the previous rule create an inconsistency.
+         Sublanguage: datalog         
       -->
     <Atom>
       <Rel>employee</Rel>
@@ -227,27 +245,36 @@
     </Atom>
   </Assert>
   <Query>
-    <!-- Is there any inconsistency?
-        Succeeds, indicating inconsistency. 
+    <!-- 
+         Is there any inconsistency?
+         Succeeds, indicating inconsistency. 
+         Sublanguage: ncdatalog         
       -->
     <Or/>
   </Query>
   <Retract>
-    <!-- Remove that HR is an employee. -->
+    <!-- 
+         Remove that HR is an employee.
+         Sublanguage: datalog         
+    -->
     <Atom>
       <Rel>employee</Rel>
       <Ind>HR</Ind>
     </Atom>
   </Retract>
   <Query>
-    <!-- Is there any inconsistency?
-        Fails, indicating consistency. 
+    <!-- 
+         Is there any inconsistency?
+         Fails, indicating consistency. 
+         Sublanguage: ncdatalog         
       -->
     <Or/>
   </Query>
   <Assert>
-    <!-- Functionality Constraint: 
-        Everyone (or everything) has at most one supervisor. 
+    <!-- 
+         Functionality Constraint: 
+         Everyone (or everything) has at most one supervisor. 
+         Sublanguage: datalogeq         
       -->
     <Forall>
       <Var>x</Var>
@@ -289,10 +316,11 @@
   </Assert>
   <Query>
     <!-- 
-        Is Peggy the same as Margaret?
-        Answer:
-        Succeeds.
-      -->
+          Is Peggy the same as Margaret?
+          Answer:
+          Succeeds.
+          Sublanguage: datalogeq         
+     -->
     <Equal>
       <Ind>Peggy</Ind>
       <Ind>Margaret</Ind>
@@ -300,8 +328,10 @@
   </Query>
 
   <Assert>
-    <!-- Negative Constraints are allowed.
-         No one (or no thing) is their own supervisor. 
+    <!-- 
+          Negative Constraints are allowed.
+          No one (or no thing) is their own supervisor. 
+          Sublanguage: ncdatalog         
       -->
     <Forall>
       <Var>x</Var>
@@ -320,7 +350,10 @@
     </Forall>
   </Assert>
   <Assert>
-    <!-- Margaret supervises Peggy. -->
+    <!-- 
+          Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
     <Atom>
       <Rel>supervises</Rel>
       <Ind>Margaret</Ind>
@@ -328,12 +361,18 @@
     </Atom>
   </Assert>
   <Query>
-    <!-- Is there any inconsistency?
-        Succeeds, indicating inconsistency. -->
+    <!-- 
+          Is there any inconsistency?
+          Succeeds, indicating inconsistency.
+          Sublanguage: ncdatalog         
+    -->
     <Or/>
   </Query>
   <Retract>
-    <!-- Remove that Margaret supervises Peggy. -->
+    <!-- 
+          Remove that Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
     <Atom>
       <Rel>supervises</Rel>
       <Ind>Margaret</Ind>
@@ -341,14 +380,20 @@
     </Atom>
   </Retract>
   <Query>
-    <!-- Is there any inconsistency?
-        Fails, indicating consistency. -->
+    <!-- 
+          Is there any inconsistency?
+          Fails, indicating consistency.
+          Sublanguage: ncdatalog         
+    -->
     <Or/>
   </Query>
   <Assert>
-    <!-- Equations may appear in the body of negative constraints.
-         The simplest case is the assertion that two individuals
-         are different (as built into systems making the unique name assumption).
+    <!-- 
+          Equations may appear in the body of negative constraints.
+          The simplest case is the assertion that two individuals
+          are different (as built into systems making the unique name assumption).
+          Sublanguage: ncdatalogeq         
+         
       -->
     <Implies>
       <if>
@@ -364,9 +409,10 @@
   </Assert>
   <Query>
     <!-- 
-        Is Sue the same as Maria?
-        Answer:
-        Fails.
+          Is Sue the same as Maria?
+          Answer:
+          Fails.
+          Sublanguage: datalogeq         
       -->
     <Equal>
       <Ind>Sue</Ind>
@@ -375,9 +421,11 @@
   </Query>
 
   <Assert>
-    <!-- Existential Rules -->
-    <!-- Every manager directs at least one department.
-         Maria is a manager.
+    <!-- 
+          Existential (Head) Rules
+          Every manager directs at least one department.
+          Maria is a manager.
+          Sublanguage: datalogex         
       -->
     <Forall>
       <Var>M</Var>
@@ -407,9 +455,10 @@
   </Assert>
   <Query>
     <!-- 
-        Does Maria direct a department?
-        Answer:
-        Succeeds.
+          Does Maria direct a department?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
       -->
     <Exists>
       <Var>P</Var>
@@ -422,9 +471,11 @@
   </Query>
 
   <Assert>
-    <!-- The heads and bodies of existential rules can contain conjunctions.
-         Every employee who directs a department is a manager, and supervises at 
-         least another employee who works in the same department.
+    <!-- 
+          The heads and bodies of existential rules can contain conjunctions.
+          Every employee who directs a department is a manager, and supervises at 
+          least another employee who works in the same department.
+          Sublanguage: datalogexcon         
       -->
     <Forall>
       <Var>E</Var>
@@ -469,9 +520,10 @@
   </Assert>
   <Query>
     <!-- 
-        Does Maria supervise someone?
-        Answer:
-        Succeeds.
+          Does Maria supervise someone?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
       -->
     <Exists>
       <Var>E'</Var>
