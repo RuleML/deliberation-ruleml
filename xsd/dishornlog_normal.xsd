@@ -257,8 +257,6 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
-            <xs:enumeration value="value"/>
-            <xs:enumeration value="open"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -274,16 +272,6 @@
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
-            <xs:enumeration value="value"/>
-            <xs:enumeration value="open"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="val">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="1"/>
-            <xs:enumeration value="0.."/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
@@ -361,27 +349,6 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Equal">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:element minOccurs="0" ref="spec:degree"/>
-        <xs:element ref="spec:left"/>
-        <xs:element ref="spec:right"/>
-      </xs:sequence>
-      <xs:attribute name="oriented" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="no"/>
-            <xs:enumeration value="yes"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Data" type="xs:anyType"/>
   <xs:element name="Skolem">
     <xs:complexType mixed="true">
@@ -433,7 +400,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -452,7 +418,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And"/>
             <xs:group ref="spec:Or"/>
             <xs:element ref="spec:Exists"/>
@@ -484,7 +449,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
@@ -500,7 +464,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
@@ -516,7 +479,7 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:Or_3"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -530,7 +493,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
@@ -555,7 +517,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -572,7 +533,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
             <xs:element ref="spec:Exists"/>
@@ -602,7 +562,6 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:Equal"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
             <xs:element ref="spec:Forall"/>
@@ -652,7 +611,6 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
         <xs:element ref="spec:Forall"/>
@@ -667,7 +625,7 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Equal"/>
+        <xs:group ref="spec:Or_3"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -716,36 +674,6 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="left">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Skolem"/>
-        <xs:element ref="spec:Reify"/>
-        <xs:element ref="spec:Ind"/>
-        <xs:element ref="spec:Data"/>
-        <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
-        <xs:group ref="spec:Plex"/>
-      </xs:choice>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="right">
-    <xs:complexType>
-      <xs:choice>
-        <xs:element ref="spec:Skolem"/>
-        <xs:element ref="spec:Reify"/>
-        <xs:element ref="spec:Ind"/>
-        <xs:element ref="spec:Data"/>
-        <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
-        <xs:group ref="spec:Plex"/>
-      </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
@@ -830,6 +758,21 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:group name="Or_3">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_8"/>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   <xs:group name="Plex_2">
     <xs:sequence>
       <xs:element name="Plex">
@@ -856,6 +799,20 @@
             <xs:element minOccurs="0" ref="spec:repo"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_8">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="spec:Atom"/>
+            <xs:group ref="spec:Or_3"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
