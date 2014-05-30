@@ -249,7 +249,10 @@
               <xs:group ref="spec:And_2"/>
               <xs:group ref="spec:Or_2"/>
             </xs:choice>
-            <xs:element ref="spec:Atom"/>
+            <xs:choice>
+              <xs:element ref="spec:Atom"/>
+              <xs:group ref="spec:Or_3"/>
+            </xs:choice>
           </xs:sequence>
         </xs:choice>
       </xs:sequence>
@@ -444,10 +447,12 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
+          <xs:group ref="spec:Or_3"/>
           <xs:element ref="spec:torso"/>
         </xs:choice>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
+          <xs:group ref="spec:Or_3"/>
           <xs:element ref="spec:torso"/>
         </xs:choice>
       </xs:sequence>
@@ -601,9 +606,10 @@
     <xs:sequence>
       <xs:element name="then">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Atom"/>
-          </xs:sequence>
+            <xs:group ref="spec:Or_3"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -746,9 +752,10 @@
   </xs:element>
   <xs:element name="torso">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice>
         <xs:element ref="spec:Atom"/>
-      </xs:sequence>
+        <xs:group ref="spec:Or_3"/>
+      </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
@@ -888,6 +895,25 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
+  <xs:group name="Or_3">
+    <xs:sequence>
+      <xs:element name="Or">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:group ref="spec:formula_8"/>
+              <xs:element ref="spec:Atom"/>
+              <xs:group ref="spec:Or_3"/>
+            </xs:choice>
+          </xs:sequence>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
   
   
   <xs:group name="Plex_2">
@@ -925,6 +951,20 @@
             <xs:element minOccurs="0" ref="spec:repo"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="formula_8">
+    <xs:sequence>
+      <xs:element name="formula">
+        <xs:complexType>
+          <xs:choice>
+            <xs:element ref="spec:Atom"/>
+            <xs:group ref="spec:Or_3"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
