@@ -208,15 +208,16 @@
                     LanguageForm.expr2.checked = false;
                     LanguageForm.expr2.disabled = "disabled";
                 }
-                document.getElementById('schema_link').innerHTML = "";
-                document.getElementById('schema_a_button').href = "";
-                document.getElementById('schema_a_button').setAttribute("class", "button-off");
-                document.getElementById('schema_button').setAttribute("class", "button-off");
-                document.getElementById('xschema_link').innerHTML = "";
-                document.getElementById('xschema_a_button').href = "";
-                document.getElementById('xschema_a_button').setAttribute("class", "button-off");
-                document.getElementById('xschema_button').setAttribute("class", "button-off");
+                //document.getElementById('schema_link').innerHTML = "";
+                //document.getElementById('schema_a_button').href = "";
+                //document.getElementById('schema_a_button').setAttribute("class", "button-off");
+                //document.getElementById('schema_button').setAttribute("class", "button-off");
+                //document.getElementById('xschema_link').innerHTML = "";
+                //document.getElementById('xschema_a_button').href = "";
+                //document.getElementById('xschema_a_button').setAttribute("class", "button-off");
+                //document.getElementById('xschema_button').setAttribute("class", "button-off");
                 document.getElementById('schema_text').innerHTML = "";
+                refreshSchemaNames(LanguageForm);
             }
             // Getters
             function get_bb(LanguageForm) {
@@ -427,6 +428,38 @@
                 return params;
             }
             
+            function refreshSchemaNames(LanguageForm) {
+                //clean up the form
+                //checkAll(LanguageForm);
+                var params = constructParams(LanguageForm);
+                var code = myngCode(params);
+                var sURL = "http://" +
+                  self.location.hostname + php_path +
+                  params;
+                // display URL for RNC driver
+                document.getElementById('schema_link').innerHTML = sURL;
+                // set link target to RNC driver
+                document.getElementById('schema_a_button').href = sURL;
+                // change style of button for RNC driver
+                document.getElementById('schema_a_button').setAttribute("class", "button-on");
+                document.getElementById('schema_button').setAttribute("class", "button-on");
+                //check for anchor
+                var xsd_name = anchorXSD(LanguageForm);
+                if (xsd_name.length > 0) {
+                  var xURL = "http://" + self.location.hostname + xsd_path + xsd_name + ".xsd";  
+                  // display URL for XSD anchor schema
+                  document.getElementById('xschema_link').innerHTML = xURL;
+                  // activate download button for XSD anchor schema
+                  document.getElementById('xschema_a_button').href = xURL;
+                  document.getElementById('xschema_a_button').setAttribute("class", "button-on");
+                  document.getElementById('xschema_button').setAttribute("class", "button-on");
+                  // fill in the text field with the name of the XSD anchor schema
+                  document.getElementById('xsd').setAttribute("value", xsd_name);
+                }
+                // fill in the text field with the name of the RNC driver
+                document.getElementById('driver').setAttribute("value", code);
+            }
+
             function refreshSchema(LanguageForm) {
                 //clean up the form
                 //checkAll(LanguageForm);
@@ -468,7 +501,7 @@
                 // fill in the text field with the name of the RNC driver
                 document.getElementById('driver').setAttribute("value", code);
             }
-            
+
             function compareBits(a, b) {
               return ((a & b) == a);
             }
@@ -1314,7 +1347,7 @@
     <h1>MYNG 1.01 - the Deliberation RuleML Schema Selection Form</h1>
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
-      <h2> Instructions</h2> Make selections from the form below, then click "Generate Schema". Click to Download the generated RNC schema or an approximating XSD anchor schema. To reset the form to
+      <h2> Instructions</h2> Make selections from the form below. Click to Download the generated RNC schema or an approximating XSD anchor schema. To view the Relax NG driver schema, click "Generate Schema", then scroll down.  To reset the form to
       the default (supremum) values, click "Reset Form". <br /><br />
     </div>
     <form action="index.html" method="post">
@@ -1325,10 +1358,10 @@
         <a id="xschema_a_button" href="" class="button-off"><button id="xschema_button" type="button" class="button-off">Download XSD Anchor Schema</button></a>
         <div style="float:right">
         <label for="driver">RNC: </label>
-        <input class="text" name="driver" id="driver" type="text" size="45"  value="myng-"/>
+          <input readonly="readonly" class="text" name="driver" id="driver" type="text" size="45"  value="myng-"/>
         <br/>
         <label for="xsd">XSD: </label>
-        <input class="text" name="xsd" id="xsd" type="text" size="45"  value=""/>
+          <input readonly="readonly" class="text" name="xsd" id="xsd" type="text" size="45"  value=""/>
         </div>
       </div>
       <br /><br />
