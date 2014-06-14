@@ -1,3 +1,5 @@
+RewriteEngine on
+
 AddDefaultCharset UTF-8
 AddCharset UTF-8 .ruleml .rnc .rng .nvdl .xhtml .rdfs
 AddType application/relax-ng-compact-syntax .rnc
@@ -5,11 +7,24 @@ AddType text/xml .ruleml
 AddType application/rdf+xml .rdfs
 AddType text/xhtml+xml .xhtml
 AddType application/xml .nvdl .rng .sch
+
+
+
 Redirect /1.01/rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php
 Redirect /1.01/gui http://deliberation.ruleml.org/1.01/myng
 Redirect /1.01/xsd/framehohornlogeq.xsd http://ruleml.org/1.0/xsd/framehohornlogeq.xsd
 Redirect /1.01/xsd/hohornlogeq.xsd http://ruleml.org/1.0/xsd/hohornlogeq.xsd
 Redirect /1.01/xsd/hohornlog.xsd http://ruleml.org/1.0/xsd/hohornlog.xsd
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.01\/relaxng\/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf\.rnc$ "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php" [R=301,L]
+
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.01\/relaxng\/myng-b(.*?)-d(.*?)-a(.*?)-l(.*?)-p(.*?)-i(.*?)-t(.*?)-q(.*?)-e(.*?)-s(.*?)\.rnc$ "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x$1&default=x$2&termseq=x$3&lng=x$4&propo=x$5&implies=x$6&terms=x$7&quant=x$8&expr=x$9&serial=x$10" [R=301,L]
+
 
 HeaderName HEADER.html
 ReadmeName FOOTER.html
