@@ -18,10 +18,11 @@ Redirect /1.01/xsd/hohornlogeq.xsd http://ruleml.org/1.0/xsd/hohornlogeq.xsd
 Redirect /1.01/xsd/hohornlog.xsd http://ruleml.org/1.0/xsd/hohornlog.xsd
 
 RewriteEngine on
+Options +FollowSymLinks
 
 RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
-RewriteRule ^1\.01\/?$ "http\:\/\/wiki\.ruleml\.org\/index\.php\/Specification_of_Deliberation_RuleML_1\.01" [R=301,L]
+RewriteRule ^1\.01\/?$ http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.01" [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
