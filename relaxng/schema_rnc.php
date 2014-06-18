@@ -237,10 +237,10 @@ if ($bdefault==0){
   $needEquiv = extractBit($bimplies, $implies_equivalent);
   $needDirND =  extractBit($bimplies, $implies_direction);
   $needDirD =  $bdefault_present;
-  $needDirAtt = $needDirD + $needDirND;
+  $needDirAtt = max($needDirD , $needDirND);
   $needMatND =  extractBit($bimplies, $implies_material);
   $needMatD =  $bdefault_present;
-  $needMatAtt = $needMatD + $needMatND;
+  $needMatAtt = max($needMatD , $needMatND);
   //Apparent lack of monotonicity caused by containment of the
   // existential head module within the implementation of FOL.
   //Including the existential head module would be redundant in FOL.
@@ -258,15 +258,15 @@ if ($bdefault==0){
   $needEqual = extractBit($bterms, $terms_equal);
   $needOrientedND = extractBit($bterms, $terms_oriented);
   $needOrientedD = $bdefault_present * $needEqual;
-  $needOrientedAtt = $needOrientedD * $needEqual + $needOrientedND;
+  $needOrientedAtt = max($needOrientedD * $needEqual , $needOrientedND);
   $needType = extractBit($bterms, $terms_type);
   $needDataTerms = extractBit($bterms, $terms_data);
-  $needData = $needDataTerms + $needFuzzy;
+  $needData = max($needDataTerms , $needFuzzy);
   $needSkolem = extractBit($bterms, $terms_skolem);
   $needReify = extractBit($bterms, $terms_reify);
-  $needInd = $btermseq + $needOid + $needSlot + $needEqual;
+  $needInd = max($btermseq , $needOid , $needSlot , $needEqual);
 
-  $needVar = $needQuant + extractBit($bterms, $terms_var);   
+  $needVar = max($needQuant , extractBit($bterms, $terms_var));   
   $needClosure = extractBit($bquant, $quant_closure);
   $needResl = extractBit($bquant, $quant_resl);
   $needRepo = extractBit($bquant, $quant_repo);
@@ -275,16 +275,16 @@ if ($bdefault==0){
   $needPlex = extractBit($bexpr, $expr_plex);
   $needValND = extractBit($bexpr, $expr_val_nondefault);
   $needValD = $bdefault_present * $needExpr * $needEqual;
-  $needValAtt = $needValD + $needValND;
+  $needValAtt = max($needValD , $needValND);
   $needInND = extractBit($bexpr, $expr_in);
   $needInD = $bdefault_present * $needExpr;
-  $needInAtt = $needInD + $needInND;
+  $needInAtt = max($needInD , $needInND);
 
   $needPerformatives = 1;
   $needAtom = 1;
   $needInit = 1;
   
-  $needDefaultPresent =  $bdefault_present + $needDirND + $needMatND + $needInND + $needValND + $needOrientedND;    
+  $needDefaultPresent =  max($bdefault_present , $needDirND , $needMatND , $needInND , $needValND , $needOrientedND);    
   $needDefaultPresentFO = $needDefaultPresent * $needFO;
 
   //Step 1. Assemble the language foundation
