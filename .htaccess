@@ -10,7 +10,7 @@ AddType application/xml .nvdl .rng .sch
 HeaderName HEADER.html
 ReadmeName FOOTER.html
 
-
+Redirect /1.01/ http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.01
 Redirect /1.01/rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php
 Redirect /1.01/gui http://deliberation.ruleml.org/1.01/myng
 Redirect /1.01/xsd/framehohornlogeq.xsd http://ruleml.org/1.0/xsd/framehohornlogeq.xsd
