@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/><xs:include schemaLocation="../datatypes/SimpleWithAttributes.xsd"/>
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:include schemaLocation="http://deliberation.ruleml.org/1.01/datatypes/SimpleWithAttributes.xsd"/><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
   
   <xs:element name="RuleML">
     <xs:complexType>
@@ -29,7 +29,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial">
+      <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -37,7 +37,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection">
+      <xs:attribute name="mapDirection" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -70,7 +70,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial">
+      <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -78,7 +78,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection">
+      <xs:attribute name="mapDirection" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -240,7 +240,7 @@
           <xs:group ref="spec:formula_5"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial">
+      <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -248,7 +248,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection">
+      <xs:attribute name="mapDirection" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>

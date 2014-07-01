@@ -47,7 +47,7 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=x12"  > ../relaxng/tmp-web2xsd.rnc 
-./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min_normal.xsd
+./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min.xsd
 
 # disdatalog_min
 # b7-d6-a7-l1-p1-i30-t200-q0-e0-s10 (normal)
