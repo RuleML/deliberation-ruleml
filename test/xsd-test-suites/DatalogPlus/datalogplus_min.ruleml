@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min.xsd">
+  <!-- Some of these examples are from
+    "A general Datalog-based framework for tractable query answering 
+    over ontologies",
+    Andrea Calì,
+    Georg Gottlob
+    Thomas Lukasiewicz  
+    http://dx.doi.org/10.1016/j.websem.2012.03.001
+  	(preprint at http://www.websemanticsjournal.org/index.php/ps/article/view/289)
+    -->
+
+  <!-- This RuleML Document incrementally asserts into, retracts from and 
+       queries a rulebase (within the <RuleML> element) for a total of
+       28 transactions: 13 Asserts, 2 Retracts and 13 Queries.
+       Each Query demonstrates the semantics of the previous Assert or Retract
+       by providing (in the XML comments) the expected answer to the Query.
+    -->
+  <act index="1">
+  <Assert>
+    <!-- 
+         Equations are allowed as facts:
+         William is an employee.
+         "Bill" is an alias for "William".
+         Sublanguage: datagroundfacteq
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Ind>William</Ind>
+    </Atom>
+    <Equal>
+      <Ind>Bill</Ind>
+      <Ind>William</Ind>
+    </Equal>
+  </Assert>
+  </act>
+  <act index="2"><Query>
+    <!-- 
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Var>x</Var>
+    </Atom>
+  </Query></act>
+  
+  <act index="3"><Assert>
+    <!-- 
+         Equations may be universally quantified.
+         This fact is a degenerate case, corresponding to the body of an implication being empty.
+         The following makes the reflexive property of equality explicit (as built into most systems):
+         Everything is equal to itself.
+         Sublanguage: datalogeq         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Equal>
+        <Var>x</Var>
+        <Var>x</Var>
+      </Equal>
+    </Forall>
+  </Assert></act>
+  <act index="4"><Query>
+    <!--
+         What is equal to itself?
+         Answers:
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq         
+      -->
+    <Equal>
+      <Var>x</Var>
+      <Var>x</Var>
+    </Equal>
+  </Query></act>
+
+  <act index="5"><Assert>
+    <!-- 
+         Non-ground facts are allowed. 
+         John is the CEO.
+         John is responsible for everything.
+         Sublanguage: datalogeq         
+      -->
+    <Atom>
+      <Rel>CEO</Rel>
+      <Ind>John</Ind>
+    </Atom>
+    <Forall>
+      <Var>x</Var>
+      <Atom>
+        <Rel>responsible_for</Rel>
+        <Ind>John</Ind>
+        <Var>x</Var>
+      </Atom>
+    </Forall>
+  </Assert></act>
+  <act index="6"><Query>
+    <!-- 
+         Is John responsible for Bill?
+         Answers:
+         Succeeds.
+         Sublanguage: datalogeq         
+      -->
+    <Atom>
+      <Rel>responsible_for</Rel>
+      <Ind>John</Ind>
+      <Ind>Bill</Ind>
+    </Atom>
+  </Query></act>
+  
+  <act index="7"><Assert>
+    <!-- 
+         Rules are expressed as universally-quantified implications.
+         A simple rule can be used to assert a subclass relationship:
+         Every manager is an employee.         
+         Sublanguage: datalog         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>manager</Rel>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Atom>
+            <Rel>employee</Rel>
+            <Var>x</Var>
+          </Atom>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>manger</Rel>
+      <Ind>John</Ind>
+    </Atom>
+  </Assert></act>
+  <act index="8"><Query>
+    <!-- 
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         x: <Ind>John</Ind>
+         Sublanguage: datalog         
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Var>x</Var>
+    </Atom>
+  </Query></act>
+  
+  <act index="9"><Assert>
+    <!-- 
+         Equations are allowed in the body of (existential) implications. 
+         If anyone is the same as Margaret, then they supervise someone.
+         (Note that this rule could be semantically simplified 
+         to an existential fact relying on axioms of equality.)
+         Sublanguage: datalogexeq         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Equal>
+            <Ind>Margaret</Ind>
+            <Var>x</Var>
+          </Equal>
+        </if>
+        <then>
+          <Exists>
+            <Var>y</Var>
+            <Atom>
+              <Rel>supervises</Rel>
+              <Var>x</Var>
+              <Var>y</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert></act>
+  <act index="10"><Query>
+    <!-- 
+         Does Margaret supervise someone?
+         Answer:
+         Succeeds      
+         Sublanguage: datalogeq         
+      -->
+    <Exists>
+      <Var>y</Var>
+      <Atom>
+        <Rel>supervises</Rel>
+        <Ind>Margaret</Ind>
+        <Var>y</Var>
+      </Atom>
+    </Exists>
+  </Query></act>
+
+  <act index="11"><Assert>
+    <!-- 
+         Pairwise Disjoint Classes
+         Nothing is both an employee and a department.
+         Sublanguage: ncdatalog         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>department</Rel>
+              <Var>x</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert></act>
+  <act index="12"><Assert>
+    <!-- HR is an employee.
+         HR is a department.
+         These facts together with the previous rule create an inconsistency.
+         Sublanguage: datalog         
+      -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+    <Atom>
+      <Rel>department</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+  </Assert></act>
+  <act index="13"><Query>
+    <!-- 
+         Is there any inconsistency?
+         Succeeds, indicating inconsistency. 
+         Sublanguage: ncdatalog         
+      -->
+    <Or/>
+  </Query></act>
+  <act index="14"><Retract>
+    <!-- 
+         Remove that HR is an employee.
+         Sublanguage: datalog         
+    -->
+    <Atom>
+      <Rel>employee</Rel>
+      <Ind>HR</Ind>
+    </Atom>
+  </Retract></act>
+  <act index="15"><Query>
+    <!-- 
+         Is there any inconsistency?
+         Fails, indicating consistency. 
+         Sublanguage: ncdatalog         
+      -->
+    <Or/>
+  </Query></act>
+  <act index="16"><Assert>
+    <!-- 
+         Functionality Constraint: 
+         Everyone (or everything) has at most one supervisor. 
+         Sublanguage: datalogeq         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>supervises</Rel>
+              <Var>x</Var>
+              <Var>z</Var>
+            </Atom>
+            <Atom>
+              <Rel>supervises</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Margaret</Ind>
+      <Ind>Bill</Ind>
+    </Atom>
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Peggy</Ind>
+      <Ind>Bill</Ind>
+    </Atom>
+  </Assert></act>
+  <act index="17"><Query>
+    <!-- 
+          Is Peggy the same as Margaret?
+          Answer:
+          Succeeds.
+          Sublanguage: datalogeq         
+     -->
+    <Equal>
+      <Ind>Peggy</Ind>
+      <Ind>Margaret</Ind>
+    </Equal>
+  </Query></act>
+
+  <act index="18"><Assert>
+    <!-- 
+          Negative Constraints are allowed.
+          No one (or no thing) is their own supervisor. 
+          Sublanguage: ncdatalog         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>supervises</Rel>
+            <Var>x</Var>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert></act>
+  <act index="19"><Assert>
+    <!-- 
+          Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Margaret</Ind>
+      <Ind>Peggy</Ind>
+    </Atom>
+  </Assert></act>
+  <act><Query>
+    <!-- 
+          Is there any inconsistency?
+          Succeeds, indicating inconsistency.
+          Sublanguage: ncdatalog         
+    -->
+    <Or/>
+  </Query></act>
+  <act index="20"><Retract>
+    <!-- 
+          Remove that Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Margaret</Ind>
+      <Ind>Peggy</Ind>
+    </Atom>
+  </Retract></act>
+  <act index="21"><Query>
+    <!-- 
+          Is there any inconsistency?
+          Fails, indicating consistency.
+          Sublanguage: ncdatalog         
+    -->
+    <Or/>
+  </Query></act>
+  <act index="22"><Assert>
+    <!-- 
+          Equations may appear in the body of negative constraints.
+          The simplest case is the assertion that two individuals
+          are different (as built into systems making the unique name assumption).
+          Sublanguage: ncdatalogeq         
+         
+      -->
+    <Implies>
+      <if>
+        <Equal>
+          <Ind>Sue</Ind>
+          <Ind>Maria</Ind>
+        </Equal>
+      </if>
+      <then>
+        <Or/>
+      </then>
+    </Implies>
+  </Assert></act>
+  <act index="23"><Query>
+    <!-- 
+          Is Sue the same as Maria?
+          Answer:
+          Fails.
+          Sublanguage: datalogeq         
+      -->
+    <Equal>
+      <Ind>Sue</Ind>
+      <Ind>Maria</Ind>
+    </Equal>
+  </Query></act>
+
+  <act index="24"><Assert>
+    <!-- 
+          Existential (Head) Rules
+          Every manager directs at least one department.
+          Maria is a manager.
+          Sublanguage: datalogex         
+      -->
+    <Forall>
+      <Var>M</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>manager</Rel>
+            <Var>M</Var>
+          </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>P</Var>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>M</Var>
+              <Var>P</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>manager</Rel>
+      <Ind>Maria</Ind>
+    </Atom>
+  </Assert></act>
+  <act index="25"><Query>
+    <!-- 
+          Does Maria direct a department?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
+    <Exists>
+      <Var>P</Var>
+      <Atom>
+        <Rel>directs</Rel>
+        <Ind>Maria</Ind>
+        <Var>P</Var>
+      </Atom>
+    </Exists>
+  </Query></act>
+
+  <act index="26"><Assert>
+    <!-- 
+          The heads and bodies of existential rules can contain conjunctions.
+          Every employee who directs a department is a manager, and supervises at 
+          least another employee who works in the same department.
+          Sublanguage: datalogexcon         
+      -->
+    <Forall>
+      <Var>E</Var>
+      <Var>P</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>E</Var>
+            </Atom>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>E</Var>
+              <Var>P</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Exists>
+            <Var>E'</Var>
+            <And>
+              <Atom>
+                <Rel>manager</Rel>
+                <Var>E</Var>
+              </Atom>
+              <Atom>
+                <Rel>supervises</Rel>
+                <Var>E</Var>
+                <Var>E'</Var>
+              </Atom>
+              <Atom>
+                <Rel>works_in</Rel>
+                <Var>E'</Var>
+                <Var>P</Var>
+              </Atom>
+            </And>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert></act>
+  <act index="27"><Query>
+    <!-- 
+          Does Maria supervise someone?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
+    <Exists>
+      <Var>E'</Var>
+      <Atom>
+        <Rel>supervises</Rel>
+        <Ind>Maria</Ind>
+        <Var>E'</Var>
+      </Atom>
+    </Exists>
+  </Query></act>
+</RuleML>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/fologeq.xsd">
+  <!--<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >-->
+  <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapClosure="universal" mapDirection="bidirectional">
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Ind>some constant</Ind>
+          </left>
+          <right>
+            <Var>d</Var>
+          </right>
+        </Equal>
+      </formula>
+      <formula>
+        <Forall mapMaterial="yes" mapDirection="bidirectional">
+          <declare>
+            <Var>d</Var>
+          </declare>
+          <formula>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Exists mapMaterial="yes" mapDirection="bidirectional">
+          <declare>
+            <Var>d</Var>
+          </declare>
+          <formula>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </formula>
+        </Exists>
+      </formula>
+      <formula>
+        <Forall mapMaterial="yes" mapDirection="bidirectional">
+          <declare>
+            <Var>person</Var>
+          </declare>
+          <declare>
+            <Var>object</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
+              <if>
+                <Equal oriented="no">
+                  <left>
+                    <Ind>some constant</Ind>
+                  </left>
+                  <right>
+                    <Var>d</Var>
+                  </right>
+                </Equal>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>own</Rel></op>
+                  <arg index="1"><Var>person</Var></arg>
+                  <arg index="2"><Var>object</Var></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Neg mapMaterial="yes" mapDirection="bidirectional">
+          <strong>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </strong>
+        </Neg>
+      </formula>
+      <formula>
+        <Equivalent mapMaterial="yes" mapDirection="bidirectional">
+          <torso>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </torso>
+          <torso>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </torso>
+        </Equivalent>
+      </formula>
+      <formula>
+        <Equivalent mapMaterial="yes" mapDirection="bidirectional">
+          <torso>
+            <Atom>
+              <op><Rel>own</Rel></op>
+              <arg index="1"><Skolem>test</Skolem></arg>
+              <arg index="2"><Var>person</Var></arg>
+              <arg index="3"><Var>object</Var></arg>
+            </Atom>
+          </torso>
+          <torso>
+            <Atom>
+              <op><Rel>belongs</Rel></op>
+              <arg index="1"><Var>object</Var></arg>
+              <arg index="2"><Var>person</Var></arg>
+              <repo>
+                <Var>x</Var>
+              </repo>
+              <resl>
+                <Var>y</Var>
+              </resl>
+            </Atom>
+          </torso>
+        </Equivalent>
+      </formula>
+      <formula>
+        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#claiming-through-disclaimers">
+          <if>
+            <And mapMaterial="yes" mapDirection="bidirectional">
+              <formula>
+                <Forall mapMaterial="yes" mapDirection="bidirectional">
+                  <declare>
+                    <Var>x</Var>
+                  </declare>
+                  <formula>
+                    <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#disclaiming-of-other-persons">
+                      <if>
+                        <Atom>
+                          <op><Rel>unequal</Rel></op>
+                          <arg index="1"><Var>x</Var></arg>
+                          <arg index="2"><Var>person</Var></arg>
+                        </Atom>
+                      </if>
+                      <then>
+                        <Atom>
+                          <op><Rel>disclaim</Rel></op>
+                          <arg index="1"><Var>x</Var></arg>
+                          <arg index="2"><Skolem>test</Skolem></arg>
+                          <arg index="3"><Var>object</Var></arg>
+                        </Atom>
+                      </then>
+                    </Implies>
+                  </formula>
+                </Forall>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>keep</Rel></op>
+                  <arg index="1"><Var>person</Var></arg>
+                  <arg index="2"><Var>object</Var></arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <op><Rel>claim</Rel></op>
+              <arg index="1"><Var>person</Var></arg>
+              <arg index="2"><Var>object</Var></arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#claiming-or-relinquishing-through-disclaimers">
+          <if>
+            <Forall mapMaterial="yes" mapDirection="bidirectional">
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#disclaiming-of-other-persons">
+                  <if>
+                    <Atom>
+                      <op><Rel>unequal</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>person</Var></arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Atom>
+                      <op><Rel>disclaim</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>object</Var></arg>
+                      <repo>
+                        <Var>x</Var>
+                      </repo>
+                    </Atom>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </if>
+          <then>
+            <Equal oriented="no">
+              <left>
+                <Ind>some constant</Ind>
+              </left>
+              <right>
+                <Var>d</Var>
+              </right>
+            </Equal>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
+          <if>
+            <And mapMaterial="yes" mapDirection="bidirectional">
+              <formula>
+                <Equal oriented="no">
+                  <left>
+                    <Ind>some constant</Ind>
+                  </left>
+                  <right>
+                    <Var>d</Var>
+                  </right>
+                </Equal>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Ind>Jane</Ind></arg>
+                  <arg index="2"><Ind>Joan</Ind></arg>
+                  <arg index="3"><Skolem/></arg>
+                  <arg index="4"><Ind>Jack</Ind></arg>
+                  <arg index="5"><Var>y</Var></arg>
+                  <arg index="6"><Ind>Frank</Ind></arg>
+                  <arg index="7"><Plex><arg index="1"><Ind/></arg></Plex></arg>
+                  <repo>
+                    <Plex>
+                      <arg index="1"><Ind/></arg>
+                      <arg index="2"><Var/></arg>
+                    </Plex>
+                  </repo>
+                  <slot><Ind>yar</Ind><Expr per="copy"><op><Fun val="0.." per="copy">constructor</Fun></op><arg index="1"><Plex><arg index="1"><Var>z</Var></arg><slot><Ind>yar2</Ind><Ind>c</Ind></slot></Plex></arg></Expr></slot>
+                  <resl>
+                    <Plex>
+                      <slot><Ind/><Ind/></slot>
+                    </Plex>
+                  </resl>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Or mapMaterial="yes" mapDirection="bidirectional">
+              <formula>
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>y</Var></arg>
+                  <arg index="3"><Ind>Steph</Ind></arg>
+                  <slot><Ind>t</Ind><Ind>b</Ind></slot>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>y</Var></arg>
+                  <arg index="3"><Ind>Jill</Ind></arg>
+                  <slot><Ind>t</Ind><Ind>b</Ind></slot>
+                </Atom>
+              </formula>
+            </Or>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Atom>
+          <op><Rel>some relation</Rel></op>
+          <arg index="1"><Ind>constant a</Ind></arg>
+          <arg index="2"><Ind>constant b</Ind></arg>
+          <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
+          <slot><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
+        </Atom>
+      </formula>
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Expr per="copy">
+              <op><Fun val="0.." per="value">some function</Fun></op>
+              <arg index="1"><Ind>arg1</Ind></arg>
+              <arg index="2"><Ind>arg2</Ind></arg>
+              <arg index="3"><Ind>arg3</Ind></arg>
+            </Expr>
+          </left>
+          <right>
+            <Expr per="copy">
+              <op><Fun val="0.." per="value">some other function</Fun></op>
+              <arg index="1"><Ind>arg4</Ind></arg>
+              <arg index="2"><Ind>arg5</Ind></arg>
+              <arg index="3"><Ind>arg6</Ind></arg>
+            </Expr>
+          </right>
+        </Equal>
+      </formula>
+    </Assert>
+  </act>
+  <act index="2">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <Neg mapMaterial="yes" mapDirection="bidirectional">
+          <strong>
+            <Exists mapMaterial="yes" mapDirection="bidirectional">
+              <declare>
+                <Var>x</Var>
+              </declare>
+              <formula>
+                <Forall mapMaterial="yes" mapDirection="bidirectional">
+                  <declare>
+                    <Var>y</Var>
+                  </declare>
+                  <formula>
+                    <Equal oriented="no">
+                      <left>
+                        <Var>x</Var>
+                      </left>
+                      <right>
+                        <Var>y</Var>
+                      </right>
+                    </Equal>
+                  </formula>
+                </Forall>
+              </formula>
+            </Exists>
+          </strong>
+        </Neg>
+      </formula>
+    </Assert>
+  </act>
+  <act index="3">
+    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
+      <formula>
+        <Equal oriented="yes">
+          <left>
+            <Expr per="copy">
+              <op><Fun val="0.." per="value">fac</Fun></op>
+              <arg index="1"><Var type="http://www.w3.org/2001/XMLSchema#integer">0</Var></arg>
+            </Expr>
+          </left>
+          <right>
+            <Data xsi:type="xs:integer">1</Data>
+          </right>
+        </Equal>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

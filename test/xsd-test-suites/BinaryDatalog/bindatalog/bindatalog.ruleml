@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatalog.xsd">
+
+
+<!-- a syntactic example rulebase for testing the 'UR'-Centered Binary Datalog RuleML sublanguage -->
+
+
+<Assert mapClosure="universal">
+
+<!--<oid><Ind>test rulebase</Ind></oid>-->
+
+
+<Implies>
+  <if>
+    <And>
+    <Atom>
+      <op><Rel>friend</Rel></op>
+      <Var>y</Var>
+      <Ind iri="some_URI">Frank</Ind>
+    </Atom>
+    </And>
+  </if>
+  <then>
+    <Atom>
+      <op><Rel>friend</Rel></op>
+      <Var>x</Var>
+      <Var>y</Var>
+      <slot><Ind>t</Ind><Var>b</Var></slot>
+    </Atom>
+  </then>
+</Implies>
+
+    <Atom>
+      <op><Rel>yet another relation</Rel></op>
+      <Ind iri="URI">constant e</Ind>
+      <Ind>constant b</Ind>
+      <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
+    </Atom>
+
+</Assert>
+
+<Query node="#query1">
+    <And>
+      <Atom>
+        <op><Rel iri="some_URI">some relation</Rel></op>
+        <Ind>constant a</Ind>
+        <Ind iri="another_URI">constant b</Ind>
+        <slot><Ind>role_name1</Ind><Var>role 1 variable</Var></slot>
+        <slot><Ind>role_name2</Ind><Var>role 2 variable</Var></slot>
+      </Atom>
+      <Atom>
+        <op><Rel iri="some_URI">another relation</Rel></op>
+        <Ind>constant c</Ind>
+        <Ind>constant d</Ind>
+      </Atom>
+    </And>
+</Query>
+
+</RuleML>

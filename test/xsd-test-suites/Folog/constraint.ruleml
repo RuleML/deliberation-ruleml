@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/folog.xsd">
+
+<Assert>
+
+	<Entails>
+	
+		<Rulebase>
+		    <!-- a particular watch is gold -->
+		    <Atom>
+		      <Rel>gold</Rel>
+		      <Ind>watch17</Ind>
+		    </Atom>
+		
+			<!-- inconsistent -->
+		    <Atom>
+		      <Rel>rusty</Rel>
+		      <Ind>watch17</Ind>
+		    </Atom>
+			
+		    <Atom>
+		      <Rel>rusty</Rel>
+		      <Reify>
+		        <Implies material="yes">
+		          <if>
+		            <And>
+		              <Atom><Rel>wet</Rel><Var>object</Var></Atom>
+		              <Atom><Rel>metal</Rel><Var>object</Var></Atom>
+		            </And>
+		          </if>
+		          <then>
+		            <Atom><Rel>rusty</Rel><Var>object</Var></Atom>
+		          </then>
+		        </Implies>
+		      </Reify>
+		    </Atom>
+			
+		    <Atom>
+		      <Rel>rusty</Rel> 
+		      <Ind>car4</Ind>
+		    </Atom>
+		</Rulebase>
+		
+		<Rulebase>
+		    <Neg>
+		      <And>
+		        <Atom>
+		          <Rel>gold</Rel>
+		          <Var>object</Var>
+		        </Atom>
+		        <Atom>
+		          <Rel>rusty</Rel>
+		          <Var>object</Var>
+		        </Atom>       
+		      </And>
+		    </Neg>
+		</Rulebase>
+		
+	</Entails>
+
+</Assert>
+	
+</RuleML>

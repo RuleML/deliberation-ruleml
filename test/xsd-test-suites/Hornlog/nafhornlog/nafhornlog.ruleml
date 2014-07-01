@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/nafhornlog.xsd">
+
+  <Assert mapClosure="universal">
+
+    <Implies>
+      <if>
+        <And>
+          <Atom>
+            <Rel>buy</Rel>
+            <Var>person</Var>
+            <Var>merchant</Var>
+            <Expr>
+              <Fun>book</Fun>
+              <Var>title</Var>
+              <repo>
+                <Var>info</Var>
+              </repo>
+            </Expr>
+          </Atom>
+          <Naf>
+            <Atom>
+              <Rel>relinquish</Rel>
+              <Var>person</Var>
+              <Expr>
+                <Fun>book</Fun>
+                <Var>title</Var>
+                <repo>
+                  <Var>info</Var>
+                </repo>
+              </Expr>
+            </Atom>
+          </Naf>
+        </And>
+      </if>
+      <then>
+        <Atom>
+          <Rel>own</Rel>
+          <Var>person</Var>
+          <Expr>
+            <Fun>book</Fun>
+            <Var>title</Var>
+            <repo>
+              <Var>info</Var>
+            </repo>
+          </Expr>
+        </Atom>
+      </then>
+    </Implies>
+
+    <Atom>
+      <Rel>buy</Rel>
+      <Ind>Mary</Ind>
+      <Ind>John</Ind>
+      <Expr>
+        <Fun>book</Fun>
+        <Ind>XML Bible</Ind>
+        <Ind>Elliotte Rusty Harold</Ind>
+        <Data xsi:type="xs:positiveInteger">2001</Data>
+      </Expr>
+    </Atom>
+
+    <!-- No fact needed to fulfill second premise:
+    Naf relies on absence of relinquish fact. -->
+
+  </Assert>
+
+</RuleML>

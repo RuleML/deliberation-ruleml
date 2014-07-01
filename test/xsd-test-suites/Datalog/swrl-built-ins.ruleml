@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE RuleML [
+  <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb">
+]>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalog.xsd">
+
+<Query>
+
+<!-- An arithmetic query:  3 = 1 + 2
+  See http://www.daml.org/rules/proposal/builtins for a Reference of SWRL Built-In Relations. 
+  See http://www.w3.org/Submission/SWRL/#5.1 for examples of these built-ins in SWRL.-->
+  <Atom>
+    <Rel iri="&swrlb;#add"/>
+    <Data xsi:type="xs:integer">3</Data>
+    <Data xsi:type="xs:integer">1</Data>
+    <Data xsi:type="xs:integer">2</Data>
+  </Atom>
+</Query>
+
+</RuleML>
