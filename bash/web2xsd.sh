@@ -2,10 +2,13 @@
 # Auto-generate XSD from MYNG RNC
 # Instructions:
 # run this script from the command line
-# then apply the XSLT transformations in rnc2xsd:
+# then apply the XSLT transformations in xslt/rnc2xsd:
 #  1. 101_rnc2xsd.xslt to all the file in the xsd directory, in place
 #  2. 101_rnc2xsd_min.xslt to all the files in the xsd_min directory, write output into xsd directory
 # clear the /xsd directory
+#
+# Notes
+# 1. The parameter serial=x10 or serial=x12 includes a "pivot" bit for customizing the RNC schema for conversion to XSD. 
 rm ../xsd/*
 
 # bindatagroundfact
