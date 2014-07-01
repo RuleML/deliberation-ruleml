@@ -224,3 +224,4 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/naffologeq.xsd
 
 rm ../relaxng/tmp-web2xsd.rnc
+rm ../xsd/xml.xsd

@@ -48,6 +48,15 @@
   --> 
 
 <Implies>
+  <if>
+    <Equal oriented="no">
+      <Var>R</Var>
+      <Expr>
+        <Fun per="value">oddels</Fun> 
+          <Var>Z</Var> 
+      </Expr>
+    </Equal>
+  </if>
   <then>
     <Equal oriented="yes">
       <Expr>
@@ -71,15 +80,6 @@
     </Equal>
   </then>
 
-  <if>
-    <Equal oriented="no">
-      <Var>R</Var>
-      <Expr>
-        <Fun per="value">oddels</Fun> 
-          <Var>Z</Var> 
-      </Expr>
-    </Equal>
-  </if>
 </Implies>
 </Assert>
 </RuleML>

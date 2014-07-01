@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/naffolog_relaxed.rnc"?>
-<!--<?xml-model href="/naffolog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec /naffolog.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd//naffolog.xsd">
 
 	<!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
 
@@ -15,13 +13,6 @@
 			<Var>person</Var>
 			<Var>object</Var>
 			<Implies>
-				<then>
-					<Atom>
-						<Rel>own</Rel>
-						<Var>person</Var>
-						<Var>object</Var>
-					</Atom>
-				</then>
 				<if>
 					<Naf mapDirection="bidirectional">
 						<weak>
@@ -45,6 +36,13 @@
 						</weak>
 					</Naf>
 				</if>
+				<then>
+					<Atom>
+						<Rel>own</Rel>
+						<Var>person</Var>
+						<Var>object</Var>
+					</Atom>
+				</then>
 			</Implies>
 		</Forall>
 
@@ -73,13 +71,6 @@
 		</Equivalent>
 
 	  <Implies node="#claiming-through-disclaimers">
-			<then>
-				<Atom>
-					<Rel>claim</Rel>
-					<Var>person</Var>
-					<Var>object</Var>
-				</Atom>
-			</then>
 			<if>
 				<And>
 					<Naf mapClosure="existential">
@@ -127,23 +118,16 @@
 					</Atom>
 				</And>
 			</if>
+			<then>
+				<Atom>
+					<Rel>claim</Rel>
+					<Var>person</Var>
+					<Var>object</Var>
+				</Atom>
+			</then>
 		</Implies>
 
 	  <Implies node="#claiming-or-relinquishing-through-disclaimers">
-			<then>
-				<Or>	<Naf>
-					<Atom>
-						<Rel>claim</Rel>
-						<Var>person</Var>
-						<Var>object</Var>
-					</Atom></Naf>
-					<Atom>
-						<Rel>relinquish</Rel>
-						<Var>person</Var>
-						<Var>object</Var>
-					</Atom>
-				</Or>
-			</then>
 			<if>
 				<Forall>
 					<Var>x</Var>
@@ -168,26 +152,22 @@
 					</Implies>
 				</Forall>
 			</if>
+			<then>
+				<Or>	<Naf>
+					<Atom>
+						<Rel>claim</Rel>
+						<Var>person</Var>
+						<Var>object</Var>
+					</Atom></Naf>
+					<Atom>
+						<Rel>relinquish</Rel>
+						<Var>person</Var>
+						<Var>object</Var>
+					</Atom>
+				</Or>
+			</then>
 		</Implies>
 		<Implies>
-			<then>
-				<And> 
-					<Naf>
-					<Atom>
-						<op>
-							<Rel>friend</Rel>
-						</op>
-						<slot>
-							<Ind>t</Ind>
-							<Ind>b</Ind>
-						</slot>
-						<Var>x</Var>
-						<Var>y</Var>
-						<Ind>Steph</Ind>
-					</Atom>
-					</Naf>
-				</And>
-			</then>
 			<if>
 				<And>
 					<Atom>
@@ -235,18 +215,36 @@
 					</Atom>
 				</And>
 			</if>
+			<then>
+				<And> 
+					<Naf>
+					<Atom>
+						<op>
+							<Rel>friend</Rel>
+						</op>
+						<Var>x</Var>
+						<Var>y</Var>
+						<Ind>Steph</Ind>
+						<slot>
+							<Ind>t</Ind>
+							<Ind>b</Ind>
+						</slot>
+					</Atom>
+					</Naf>
+				</And>
+			</then>
 		</Implies>
 
 		<Atom>
 			<op>
 				<Rel>some relation</Rel>
 			</op>
+			<Ind>constant a</Ind>
+			<Ind>constant b</Ind>
 			<slot>
 				<Ind>role_name1</Ind>
 				<Ind>role 1</Ind>
 			</slot>
-			<Ind>constant a</Ind>
-			<Ind>constant b</Ind>
 			<slot>
 				<Ind>role_name2</Ind>
 				<Ind>role 2</Ind>
