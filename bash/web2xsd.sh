@@ -2,10 +2,13 @@
 # Auto-generate XSD from MYNG RNC
 # Instructions:
 # run this script from the command line
-# then apply the XSLT transformations in rnc2xsd:
+# then apply the XSLT transformations in xslt/rnc2xsd:
 #  1. 101_rnc2xsd.xslt to all the file in the xsd directory, in place
 #  2. 101_rnc2xsd_min.xslt to all the files in the xsd_min directory, write output into xsd directory
 # clear the /xsd directory
+#
+# Notes
+# 1. The parameter serial=x10 or serial=x12 includes a "pivot" bit for customizing the RNC schema for conversion to XSD. 
 rm ../xsd/*
 
 # bindatagroundfact
@@ -44,7 +47,7 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=x12"  > ../relaxng/tmp-web2xsd.rnc 
-./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min_normal.xsd
+./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalog_min.xsd
 
 # disdatalog_min
 # b7-d6-a7-l1-p1-i30-t200-q0-e0-s10 (normal)
@@ -221,3 +224,4 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/naffologeq.xsd
 
 rm ../relaxng/tmp-web2xsd.rnc
+rm ../xsd/xml.xsd

@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec"
+  elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
   <xs:element name="RuleML">
     <xs:complexType>
       <xs:sequence>
@@ -9,14 +11,14 @@
   <xs:element name="Assert">
     <xs:complexType>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
-      <xs:attribute name="mapMaterial">
+      <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection">
+      <xs:attribute name="mapDirection" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -28,14 +30,14 @@
   <xs:element name="Retract">
     <xs:complexType>
       <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
-      <xs:attribute name="mapMaterial">
+      <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection">
+      <xs:attribute name="mapDirection" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -86,14 +88,14 @@
         <xs:element ref="spec:if"/>
         <xs:element ref="spec:then"/>
       </xs:sequence>
-      <xs:attribute name="direction">
+      <xs:attribute name="direction" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="material">
+      <xs:attribute name="material" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -128,7 +130,7 @@
         <xs:element ref="spec:left"/>
         <xs:element ref="spec:right"/>
       </xs:sequence>
-      <xs:attribute name="oriented">
+      <xs:attribute name="oriented" default="no">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="no"/>
@@ -303,7 +305,7 @@
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:group name="And_2">
     <xs:sequence>
       <xs:element name="And">

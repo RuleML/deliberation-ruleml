@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE doc [
+  <!ENTITY vocab "http://ruleml.org/vocab">
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/">  
+  ]>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact.xsd">
+  <Assert>
+    <!-- Modality implemented through reification -->
+    <Rulebase>
+      <!-- It is possible that it may rain tomorrow. -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Possible"/>
+        <Reify>
+          <Atom>
+            <Rel iri="#hasWeather"/>
+            <Ind iri="#tomorrow"/>
+            <Ind iri="#rainy"/>
+          </Atom>
+        </Reify>
+      </Atom>
+      <!-- It is possible that Hesperus (the evening star) is Phosphorus (the morning star). -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Possible"/>
+        <Reify>
+          <Atom>
+            <Rel iri="&vocab;/core#Equal"/>
+            <Ind iri="#Hesperus"/>
+            <Ind iri="#Phosphorus"/>
+          </Atom>
+        </Reify>
+      </Atom>
+      <!-- It is necessary that Hesperus is Hesperus. -->
+      <Atom>
+        <Rel iri="&vocab;/ext#that"/>
+        <Ind iri="&vocab;/Kripke#Necessary"/>
+        <Reify>
+          <Atom>
+            <Rel iri="&vocab;/core#Equal"/>
+            <Ind iri="#Hesperus"/>
+            <Ind iri="#Hesperus"/>
+          </Atom>
+        </Reify>
+      </Atom>
+    </Rulebase>
+    <!-- Contextual metadata implemented through reification. -->
+    <Atom>
+      <Rel iri="&dc;creator"/>
+      <Reify>
+        <Atom>
+          <Rel iri="#hasWeather"/>
+          <Ind iri="#tomorrow"/>
+          <Ind iri="#rainy"/>
+        </Atom>
+      </Reify>
+      <Data xsi:type="xs:string">Tara Athan</Data>
+    </Atom>
+  </Assert>
+
+</RuleML>

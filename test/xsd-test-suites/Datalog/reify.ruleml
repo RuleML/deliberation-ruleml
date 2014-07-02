@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:ex="http://example.com"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalog.xsd">
+
+	<!--
+		<Reify> can be used to treat valid RuleML formulas as data, i.e. "quote" them
+		The reification can be reversed (i.e. data becoming formulas again) by an "eval"
+		primitive (not yet supported)
+	-->
+
+<Assert>
+
+	<Atom>
+	  <Rel>rusty</Rel>
+	  <Reify>
+		<Implies material="yes">
+		  <if>
+			<And>
+			  <Atom><Rel>wet</Rel><Var>object</Var></Atom>
+			  <Atom><Rel>metal</Rel><Var>object</Var></Atom>
+			</And>
+		  </if>
+		  <then>
+			<Atom><Rel>rusty</Rel><Var>object</Var></Atom>
+		  </then>
+		</Implies>
+	  </Reify>
+	  <Reify>
+		<Atom>
+			<Rel>wet</Rel>
+			<Var>object</Var>
+		</Atom>
+	  </Reify>
+	  
+	<!--
+		The following <Reify> is not valid because it contains non-RuleML XML.
+		
+		XSV complains as follows:
+			element {http://example.com}:object not allowed here (1) in element
+			{http://ruleml.org/spec}:Reify,
+			expecting [{Wildcard: [u'http://ruleml.org/spec']},$]
+	-->
+	<!--	
+		  <Reify>
+			<ex:object>
+				<ex:id>115897</ex:id>
+				<ex:owner>John Doe</ex:owner>
+			</ex:object>
+		  </Reify>
+	-->
+	
+	<!-- <Data>, on the other hand, supports arbitrary (not necessarily valid) XML. -->
+	  <Data>
+		<ex:object>
+			<ex:id>115897</ex:id>
+			<ex:owner>John Doe</ex:owner>
+		</ex:object>
+	  </Data>
+	  <Data xsi:type="xs:nonNegativeInteger">12</Data>
+	</Atom>
+	
+</Assert>
+
+</RuleML>

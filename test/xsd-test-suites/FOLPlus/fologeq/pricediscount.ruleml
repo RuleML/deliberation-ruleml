@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/fologeq.xsd">
+
+  <!--
+
+  Here are serialization examples from the SWSL Report
+  (http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous):
+
+-->
+
+  <Assert
+    node="http://www.daml.org/services/swsl/report/swsl.shtml#swsl-rules-courteous">
+
+    <Entails>
+
+      <Rulebase>
+
+        <Atom>
+          <Rel>gold</Rel>
+          <Ind>watch17</Ind>
+        </Atom>
+
+      </Rulebase>
+      <Rulebase>
+
+        <Neg>
+          <And>
+            <Atom>
+              <Rel>pricediscount</Rel>
+              <Var>CUST</Var>
+              <Ind>fivepercent</Ind>
+            </Atom>
+            <Atom>
+              <Rel>pricediscount</Rel>
+              <Var>CUST</Var>
+              <Ind>tenpercent</Ind>
+            </Atom>
+          </And>
+        </Neg>
+
+        <Implies material="yes">
+          <if>
+            <Neg>
+              <Equal>
+                <Var>Y</Var>
+                <Var>Z</Var>
+              </Equal>
+            </Neg>
+          </if>
+          <then>
+            <Neg>
+              <And>
+                <Atom>
+                  <Rel>pricediscount</Rel>
+                  <Var>CUST</Var>
+                  <Var>Y</Var>
+                </Atom>
+                <Atom>
+                  <Rel>pricediscount</Rel>
+                  <Var>CUST</Var>
+                  <Var>Z</Var>
+                </Atom>
+              </And>
+            </Neg>
+          </then>
+        </Implies>
+
+      </Rulebase>
+
+    </Entails>
+
+  </Assert>
+
+</RuleML>
