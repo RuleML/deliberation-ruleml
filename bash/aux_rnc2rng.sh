@@ -7,14 +7,4 @@ LIB=${APP_HOME}Java/Extensions/
 CP1=${LIB}jing-20091111/jing.jar
 CP2=${LIB}trang-20091111/trang.jar
 
-# convert all MYNG modules to RNG in preparation
-# for validation against the schema for the design pattern
-cd ../relaxng/modules/
-rm ../tmp/modules/*
-rmdir ../tmp/modules
-mkdir ../tmp/modules
-for file in *.rnc 
-do 
-  java -jar "${CP2}"  "${file}" "../tmp/modules/${file}.rng"
-done
-cd ../../bash
+java -jar "${CP2}"  $1 $2

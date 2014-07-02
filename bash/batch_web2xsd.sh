@@ -1,22 +1,29 @@
 #!/bin/bash
 # Auto-generate XSD from MYNG RNC
+# Prerequisites:
+#  Installation of curl
+#  See also rnc2xsd for additional dependencies.
+# This script will remove the contents of a sibling directory named /xsd.
 # Instructions:
 # run this script from the command line
-# then apply the XSLT transformations in xslt/rnc2xsd:
+# then apply the XSLT transformations in http://deliberation.ruleml.org/1.01/xslt/rnc2xsd:
 #  1. 101_rnc2xsd.xslt to all the file in the xsd directory, in place
 #  2. 101_rnc2xsd_min.xslt to all the files in the xsd_min directory, write output into xsd directory
-# clear the /xsd directory
 #
 # Notes
-# 1. The parameter serial=x10 or serial=x12 includes a "pivot" bit for customizing the RNC schema for conversion to XSD. 
+# 1. The parameter serial=x10 or serial=x12 includes a "pivot" bit for customizing the RNC schema for conversion to XSD.
+# 
+# creates the xsd directory if it doesn't exist, and clears it, in case it already has contents
+mkdir -p ../xsd
 rm ../xsd/*
 
 # bindatagroundfact
 # b1-d6-a2-l1-p3cf-i6-tf0f-q1-e0-s0 (normal)
 # b1-d7-a2-l1-p3cf-i6-tf0f-q1-e0-s2
 # http://deliberation.ruleml.org/1.01/xsd/bindatagroundfact_normal.xsd
-curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
-./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundfact_normal.xsd
+#curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
+#./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundfact_normal.xsd
+./aux_web2xsd.sh "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=x10" "../xsd/bindatagroundfact_normal.xsd"
 # http://deliberation.ruleml.org/1.01/xsd/bindatagroundfact.xsd
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x1&default=x7&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=x12"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundfact.xsd
@@ -224,4 +231,3 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x3f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/naffologeq.xsd
 
 rm ../relaxng/tmp-web2xsd.rnc
-rm ../xsd/xml.xsd

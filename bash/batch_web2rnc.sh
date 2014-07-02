@@ -1,4 +1,6 @@
 #!/bin/bash
+# Prerequisites:
+#   curl
 # Download RNC schemas from MYNG for local testing
 # datalog_min_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x200&quant=x0&expr=x0&serial=xc"  > ../relaxng/test/datalog_min_normal.rnc 
@@ -80,7 +82,7 @@ curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&
 # disdatalogplus_mid_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3c1&implies=x7e&terms=xf30&quant=x0&expr=x0&serial=xc"  > ../relaxng/test/disdatalogplus_mid_normal.rnc
 
-# unprop_min)relaxed.rnc
+# unprop_min_relaxed.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x7&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x200&quant=x0&expr=x0&serial=xc"  > ../relaxng/test/unprop_min_relaxed.rnc
-# unprop_min)normal.rnc
+# unprop_min_normal.rnc
 curl -L "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x6&termseq=x1&lng=x1&propo=x0&implies=x0&terms=x200&quant=x0&expr=x0&serial=xf"  > ../relaxng/test/unprop_min_normal.rnc
