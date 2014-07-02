@@ -96,6 +96,7 @@ $serialization_stripeskip = 1;
 $serialization_datatyping = 2;
 $serialization_schemaLocation = 3;
 $serialization_pivot = 4;
+$serialization_absolute = 5;
 $bserialization = processGETParameter ($serialization);
 $serializationParam = "x".dechex(bindec($bserialization));
 
@@ -115,8 +116,6 @@ $rnc_filename = $rnc_filename.'-e'.substr($exprParam, 1);
 $rnc_filename = $rnc_filename.'-s'.substr($serializationParam, 1);
 $rnc_filename = $rnc_filename.'.rnc';
 header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"');
-$schemaLocation='';
-$modulesLocation = $schemaLocation . 'modules/';
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
 $base_url = "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php";
@@ -223,6 +222,7 @@ if ($bdefault==0){
   $needDatatyping = extractBit($bserialization, $serialization_datatyping);
   $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
+  $absolute = extractBit($bserialization, $serialization_absolute);
 
   $needURI = extractBit($bpropo, $propo_iri);
   $needRulebase = extractBit($bpropo, $propo_rulebase);
@@ -289,6 +289,13 @@ if ($bdefault==0){
   $needDefaultPresentFO = $needDefaultPresent * $needFO;
 
   //Step 1. Assemble the language foundation
+  if ($absolute) {
+    $schemaLocation='http://deliberation.ruleml.org/1.01/relaxng/';  
+  } else {
+    $schemaLocation='';
+  }
+  $modulesLocation = $schemaLocation . 'modules/';
+
   //Step 1A. Assemble the propositional language 
   // Add the start statement
     echo $start;
