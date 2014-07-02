@@ -4,7 +4,7 @@
   <xs:include
     schemaLocation="http://deliberation.ruleml.org/1.01/datatypes/SimpleWithAttributes.xsd"/>
   <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-    schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+    schemaLocation="http://deliberation.ruleml.org/1.01/xsd/xml.xsd"/>
 
   <xs:element name="RuleML">
     <xs:complexType>
