@@ -20,9 +20,12 @@
 #   Take myng-code input instead of the full REST URL.
 #   Include arguments for batch or standalone options.
 #   Add the XSLT post-processing.
+#   delete the unneeded xml.xsd schema.
 #
 #   If the relaxng directory does not exist, create it.
 mkdir -p ../relaxng
 #   Download from the MYNG REST interface into the ../relaxng directory
 curl -l $1 > ../relaxng/tmp-web2xsd.rnc
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc $2
+# remove the temporary file
+rm ../relaxng/tmp-web2xsd.rnc
