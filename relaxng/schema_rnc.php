@@ -256,10 +256,11 @@ if ($bdefault==0){
   $needSlot = extractBit($bterms, $terms_slot);
   $needCard = extractBit($bterms, $terms_card);
   $needWeight = extractBit($bterms, $terms_weight);
-  $needEqual = extractBit($bterms, $terms_equal);
+  $needEqualBi = extractBit($bterms, $terms_equal);
   $needOrientedND = extractBit($bterms, $terms_oriented);
-  $needOrientedD = $bdefault_present * $needEqual;
-  $needOrientedAtt = max($needOrientedD * $needEqual , $needOrientedND);
+  $needEqual = max($needEqualBi, $needOrientedND);
+  $needOrientedAtt = max($needOrientedND, $bdefault_present) * $needEqual;
+  $needOrientedD = $bdefault_present * $needEqualBi;
   $needType = extractBit($bterms, $terms_type);
   $needDataTerms = extractBit($bterms, $terms_data);
   $needData = max($needDataTerms , $needFuzzy);
