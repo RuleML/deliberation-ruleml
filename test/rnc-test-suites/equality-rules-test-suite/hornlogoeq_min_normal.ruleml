@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model type="application/relax-ng-compact-syntax" href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc_test.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x1&implies=x0&terms=x220&quant=x0&expr=x2&serial=x0 "?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <!-- Oriented Equations are allowed as facts-->
+      <formula>
+        <Equal oriented="no">
+          <left>
+            <Ind>Bill</Ind>
+          </left>
+          <right>
+            <Ind>William</Ind>
+          </right>
+        </Equal>
+      </formula>
+      <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Equal oriented="no">
+              <left>
+                <Var>x</Var>
+              </left>
+              <right>
+                <Var>x</Var>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Equations are allowed in the body of implications, but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <Equal oriented="no">
+                  <left>
+                    <Var>x</Var>
+                  </left>
+                  <right>
+                    <Ind>Jane</Ind>
+                  </right>
+                </Equal>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>son</Rel></op>
+                  <arg index="1"><Var>Jack</Var></arg>
+                  <arg index="2"><Var>x</Var></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <!-- Functionality Constraint: Everyone has at most one mother. -->
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <declare>
+            <Var>z</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>y</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Equal oriented="no">
+                  <left>
+                    <Var>x</Var>
+                  </left>
+                  <right>
+                    <Var>y</Var>
+                  </right>
+                </Equal>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
