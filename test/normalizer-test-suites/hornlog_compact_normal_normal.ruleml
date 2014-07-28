@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../xsd/hornlog.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
   <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
   <act index="1">
     <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
       <formula>
         <Implies material="yes" direction="bidirectional">
+          <!-- a comment-->
           <if>
             <And>
               <formula>

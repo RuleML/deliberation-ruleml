@@ -49,7 +49,6 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ... end XML comment -->
   <Assert mapClosure="universal">
     <Implies>
-      <!-- explicit 'And' -->
       <then>
         <Atom>
           <Rel>own</Rel>
@@ -58,6 +57,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         </Atom>
       </then>
         <And>
+          <!-- explicit 'And' -->
           <Atom>
             <Rel>buy</Rel>
             <Var>person</Var>
@@ -71,9 +71,9 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           </Atom>
         </And>
     </Implies>
-    <!-- The second rule implies that a person buys an object from a merchant
-if the merchant sells the object to the person. -->
     <Implies>
+      <!-- The second rule implies that a person buys an object from a merchant
+if the merchant sells the object to the person. -->
       <Atom>
         <Rel>sell</Rel>
         <Var>merchant</Var>
@@ -87,23 +87,23 @@ if the merchant sells the object to the person. -->
         <Var>object</Var>
       </Atom>
     </Implies>
-    <!-- The third rule is a fact that asserts that
-John sells XMLBible to Mary. -->
     <Atom>
+      <!-- The third rule is a fact that asserts that
+John sells XMLBible to Mary. -->
       <Rel>sell</Rel>
       <Ind>John</Ind>
       <Ind>Mary</Ind>
       <Ind>XMLBible</Ind>
     </Atom>
-    <!-- The fourth rule is a fact that asserts that
+    <Atom>
+      <!-- The fourth rule is a fact that asserts that
 Mary keeps XMLBible.
 
 Observe that this fact is binary - i.e., there are two arguments
 for the relation. RDF viewed as a logical knowledge representation
 is, likewise, binary, although its arguments have type restrictions,
 e.g., the first must be a resource (basically, a URI). -->
-
-    <Atom>
+      
       <Rel>keep</Rel>
       <Ind>Mary</Ind>
       <Ind>XMLBible</Ind>

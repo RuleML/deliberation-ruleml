@@ -8,20 +8,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog
     <Assert mapClosure="universal">
       <formula>
         <Implies>
-          <then>
-            <Atom>
-              <op>
-                <Rel>asf</Rel>
-              </op>
-              <slot>
-                <Ind>t</Ind>
-                <Ind>b</Ind>
-              </slot>
-              <resl>
-                <Var>c</Var>
-              </resl>
-            </Atom>
-          </then>
+          <!-- a comment-->
           <if>
             <And>
               <formula>
@@ -67,6 +54,20 @@ xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog
               </formula>
             </And>
           </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>asf</Rel>
+              </op>
+              <slot>
+                <Ind>t</Ind>
+                <Ind>b</Ind>
+              </slot>
+              <resl>
+                <Var>c</Var>
+              </resl>
+            </Atom>
+          </then>
         </Implies>
       </formula>
       <formula>

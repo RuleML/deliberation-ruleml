@@ -187,7 +187,7 @@
     <xsl:template match="r:Implies/*[namespace-uri(.)='http://ruleml.org/spec' and position()=last()-1]|
      r:Entails/*[namespace-uri(.)='http://ruleml.org/spec'
        and position()=last()-1]" mode="phase-1">
-        <xsl:comment>second to last</xsl:comment>
+        <!--<xsl:comment>second to last</xsl:comment>-->
         <xsl:choose>
             <xsl:when test="local-name()='if' or local-name()='then'">
                 <xsl:call-template name="copy-1" />
@@ -209,7 +209,7 @@
     <xsl:template match="r:Implies/*[namespace-uri(.)='http://ruleml.org/spec' and position()=last()]|
      r:Entails/*[namespace-uri(.)='http://ruleml.org/spec'
        and position()=last()]" mode="phase-1">
-        <xsl:comment>last</xsl:comment>
+        <!--<xsl:comment>last</xsl:comment>-->
         <xsl:choose>
             <xsl:when test="local-name()='if' or local-name()='then'">
                 <xsl:call-template name="copy-1" />
@@ -321,10 +321,11 @@
        
     <!-- Note: Some of these templates may be combined. -->
     <!-- Builds canonically-ordered content of Retract. -->
-    <xsl:template match="r:Retract" mode="phase-2">
+    <xsl:template match="r:Retract|r:Assert" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -338,7 +339,8 @@
             <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -350,7 +352,8 @@
     <xsl:template match="r:Entails" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -364,7 +367,8 @@
     <xsl:template match="r:Rulebase" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -376,7 +380,8 @@
     <xsl:template match="r:Exists" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -388,7 +393,8 @@
     <xsl:template match="r:Forall" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -400,7 +406,8 @@
     <xsl:template match="r:Implies" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -414,7 +421,8 @@
     <xsl:template match="r:Equivalent" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -426,7 +434,8 @@
     <xsl:template match="r:And" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -438,7 +447,8 @@
     <xsl:template match="r:Or" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -450,7 +460,8 @@
     <xsl:template match="r:Atom" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="@*|*[
@@ -476,7 +487,8 @@
     <xsl:template match="r:Equal" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[
@@ -494,7 +506,8 @@
     <xsl:template match="r:Neg" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -506,7 +519,8 @@
     <xsl:template match="r:Naf" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[namespace-uri(.)='http://ruleml.org/spec' and
@@ -518,7 +532,8 @@
     <xsl:template match="r:Expr" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[
@@ -542,7 +557,8 @@
     <xsl:template match="r:Plex" mode="phase-2">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates 
+          <xsl:apply-templates select="comment()" mode="phase-2"/>
+          <xsl:apply-templates 
               select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
             <xsl:apply-templates select="r:meta" mode="phase-2"/>
             <xsl:apply-templates select="*[
@@ -559,10 +575,6 @@
             <xsl:apply-templates select="r:slot" mode="phase-2"/>
             <xsl:apply-templates select="r:resl" mode="phase-2"/>
         </xsl:copy>     
-    </xsl:template>
-    <!-- copy comments-->
-    <xsl:template match="comment()">
-        <xsl:copy/>
     </xsl:template>
     
     <!-- Copies everything else to the phase-2 output. Comments are preserved without escaping.

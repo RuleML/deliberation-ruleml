@@ -32,7 +32,8 @@
         </then>
       </Implies>
     </Forall>
-
+  </Assert>
+  <Assert>
     <!-- Existential Disjunctive Rules 
       Exceptions to subsumption.
       Every employee, other than the CEO, has a supervisor. -->

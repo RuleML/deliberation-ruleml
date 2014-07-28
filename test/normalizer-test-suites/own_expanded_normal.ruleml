@@ -38,6 +38,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       <formula>
         <Implies material="yes" direction="bidirectional">
           <if>
+            <!-- explicit 'And' -->
             <And>
               <formula>
                 <Atom>
@@ -65,9 +66,9 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           </then>
         </Implies>
       </formula>
-      <!-- The second rule implies that a person buys an object from a merchant
-if the merchant sells the object to the person. -->
       <formula>
+        <!-- The second rule implies that a person buys an object from a merchant
+if the merchant sells the object to the person. -->
         <Implies material="yes" direction="bidirectional">
           <if>
             <Atom>
@@ -87,9 +88,9 @@ if the merchant sells the object to the person. -->
           </then>
         </Implies>
       </formula>
-      <!-- The third rule is a fact that asserts that
-John sells XMLBible to Mary. -->
       <formula>
+        <!-- The third rule is a fact that asserts that
+John sells XMLBible to Mary. -->
         <Atom>
           <op><Rel>sell</Rel></op>
           <arg index="1"><Ind>John</Ind></arg>
@@ -97,14 +98,14 @@ John sells XMLBible to Mary. -->
           <arg index="3"><Ind>XMLBible</Ind></arg>
         </Atom>
       </formula>
-      <!-- The fourth rule is a fact that asserts that
+      <formula>
+        <!-- The fourth rule is a fact that asserts that
 Mary keeps XMLBible.
  
 Observe that this fact is binary - i.e., there are two arguments
 for the relation. RDF viewed as a logical knowledge representation
 is, likewise, binary, although its arguments have type restrictions,
 e.g., the first must be a resource (basically, a URI). -->
-      <formula>
         <Atom>
           <op><Rel>keep</Rel></op>
           <arg index="1"><Ind>Mary</Ind></arg>

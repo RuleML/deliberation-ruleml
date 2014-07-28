@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../xsd/datalog.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- start XML comment ...
 
-Note: This is a partially normalized version.
+Note: This is a compact (i.e. minimally-roled) version of this example,
+except in the first implication the premise and conclusion are switched.
+For validity against the XSD schemas, neither stripe would not be allowed to be skipped in this case.
+However, the relaxed serialization implemented in the Relax NG schemas is more permissive,
+and would allow one or the other of the stripes to be skipped, but not both.
 
 This example rulebase contains four rules.
 The first and second rules are implications; the third and fourth ones are facts.
@@ -34,12 +38,12 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ... end XML comment -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal" xml:id="assert1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
       <formula>
         <Implies material="yes" direction="bidirectional">
           <if>
-            <!-- explicit 'And' -->
             <And>
+              <!-- explicit 'And' -->
               <formula>
                 <Atom>
                   <op><Rel>buy</Rel></op>
@@ -67,9 +71,9 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         </Implies>
       </formula>
       <formula>
-        <!-- The second rule implies that a person buys an object from a merchant
-if the merchant sells the object to the person. -->
         <Implies material="yes" direction="bidirectional">
+          <!-- The second rule implies that a person buys an object from a merchant
+if the merchant sells the object to the person. -->
           <if>
             <Atom>
               <op><Rel>sell</Rel></op>
@@ -102,7 +106,7 @@ John sells XMLBible to Mary. -->
         <Atom>
           <!-- The fourth rule is a fact that asserts that
 Mary keeps XMLBible.
- 
+
 Observe that this fact is binary - i.e., there are two arguments
 for the relation. RDF viewed as a logical knowledge representation
 is, likewise, binary, although its arguments have type restrictions,
