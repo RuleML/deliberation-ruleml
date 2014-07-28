@@ -15,7 +15,6 @@ Redirect /1.01/gui http://deliberation.ruleml.org/1.01/myng
 Redirect /1.01/xsd/framehohornlogeq.xsd http://ruleml.org/1.0/xsd/framehohornlogeq.xsd
 Redirect /1.01/xsd/hohornlogeq.xsd http://ruleml.org/1.0/xsd/hohornlogeq.xsd
 Redirect /1.01/xsd/hohornlog.xsd http://ruleml.org/1.0/xsd/hohornlog.xsd
-RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
 Redirect /1.01/index.html http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.01
 
 RewriteEngine on
