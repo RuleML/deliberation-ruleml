@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns:carlo_rb="http://lpis.csd.auth.gr/systems/dr-device/1.0/carlo-rbase.ruleml#" xmlns:carlo="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#" xmlns="http://ruleml.org/spec" xmlns:n="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://ruleml.org/spec http://lpis.csd.auth.gr/systems/dr-device/1.0/dr-device.xsd" xml:base="http://lpis.csd.auth.gr/systems/dr-device/1.0/carlo-rbase.ruleml" node="carlo-rules">
+	<Assert>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#import-rdf"/>
+			</op>
+			<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo_ex.rdf"/>
+		</Atom>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#export-rdf"/>
+			</op>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#file"/>
+				<Ind iri="export-carlo.rdf"/>
+			</slot>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#class"/>
+				<Ind iri="#acceptable"/>
+			</slot>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#class"/>
+				<Ind iri="#rent"/>
+			</slot>
+		</Atom>
+		<Implies strength="defeasible" node="r1">
+			<then>
+				<Atom>
+					<op>
+						<Rel iri="#acceptable"/>
+					</op>
+					<slot>
+						<Ind iri="#apartment"/>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<Atom>
+					<op>
+						<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+					</op>
+					<slot>
+						<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="r2">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#bedrooms"/>
+							<Var>y</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&lt;</Fun>
+							<Var>y</Var>
+							<Ind>2</Ind>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r2"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="r3">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#size"/>
+							<Var>y</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&lt;</Fun>
+							<Var>y</Var>
+							<Ind>45</Ind>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r3"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="r4">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<Atom>
+					<op>
+						<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+					</op>
+					<slot>
+						<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+						<Var>x</Var>
+					</slot>
+					<slot>
+						<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#pets"/>
+						<Data xsi:type="xs:string">no</Data>
+					</slot>
+				</Atom>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r4"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="r5">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#lift"/>
+							<Data xsi:type="xs:string">no</Data>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#floor"/>
+							<Var>y</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&gt;</Fun>
+							<Var>y</Var>
+							<Ind>2</Ind>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r5"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="r6">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#price"/>
+							<Var>y</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&gt;</Fun>
+							<Var>y</Var>
+							<Ind>400</Ind>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r6"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="r7">
+			<then>
+				<Atom>
+					<op>
+						<Rel>offer</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>a</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#size"/>
+							<Var>y</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#gardenSize"/>
+							<Var>z</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#central"/>
+							<Data xsi:type="xs:string">yes</Data>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&gt;=</Fun>
+							<Var>y</Var>
+							<Ind>45</Ind>
+						</Expr>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#bind"/>
+						</op>
+						<Var>a</Var>
+						<Expr>
+							<Fun per="value">+</Fun>
+							<Ind>300</Ind>
+							<Expr>
+								<Fun per="value">*</Fun>
+								<Ind>2</Ind>
+								<Var>z</Var>
+							</Expr>
+							<Expr>
+								<Fun per="value">*</Fun>
+								<Ind>5</Ind>
+								<Expr>
+									<Fun per="value">-</Fun>
+									<Var>y</Var>
+									<Ind>45</Ind>
+								</Expr>
+							</Expr>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="r8">
+			<then>
+				<Atom>
+					<op>
+						<Rel>offer</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+					<slot>
+						<Ind>amount</Ind>
+						<Var>a</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#size"/>
+							<Var>y</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#gardenSize"/>
+							<Var>z</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#central"/>
+							<Data xsi:type="xs:string">no</Data>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&gt;=</Fun>
+							<Var>y</Var>
+							<Ind>45</Ind>
+						</Expr>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#bind"/>
+						</op>
+						<Var>a</Var>
+						<Expr>
+							<Fun per="value">+</Fun>
+							<Ind>250</Ind>
+							<Expr>
+								<Fun per="value">*</Fun>
+								<Ind>2</Ind>
+								<Var>z</Var>
+							</Expr>
+							<Expr>
+								<Fun per="value">*</Fun>
+								<Ind>5</Ind>
+								<Expr>
+									<Fun per="value">-</Fun>
+									<Var>y</Var>
+									<Ind>45</Ind>
+								</Expr>
+							</Expr>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="r9">
+			<then>
+				<Neg>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</Neg>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel>offer</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind>amount</Ind>
+							<Var>y</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#price"/>
+							<Var>z</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+						</op>
+						<Expr>
+							<Fun per="value">&lt;</Fun>
+							<Var>y</Var>
+							<Var>z</Var>
+						</Expr>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r9"/>
+			<Ind iri="r1"/>
+		</Atom>
+		<Implies strength="defeasible" node="find_cheapest">
+			<then>
+				<Atom>
+					<op>
+						<Rel>cheapest</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#price"/>
+							<Var>z</Var>
+						</slot>
+					</Atom>
+					<Naf>
+						<And>
+							<Atom>
+								<op>
+									<Rel iri="#acceptable"/>
+								</op>
+								<slot>
+									<Ind iri="#apartment"/>
+									<Var>y</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">neq</Fun>
+									<Var>y</Var>
+									<Var>x</Var>
+								</Expr>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+								</op>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+									<Var>y</Var>
+								</slot>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#price"/>
+									<Var>w</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">&lt;</Fun>
+									<Var>w</Var>
+									<Var>z</Var>
+								</Expr>
+							</Atom>
+						</And>
+					</Naf>
+				</And>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="find_largest">
+			<then>
+				<Atom>
+					<op>
+						<Rel>largest</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#size"/>
+							<Var>z</Var>
+						</slot>
+					</Atom>
+					<Naf>
+						<And>
+							<Atom>
+								<op>
+									<Rel iri="#acceptable"/>
+								</op>
+								<slot>
+									<Ind iri="#apartment"/>
+									<Var>y</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">neq</Fun>
+									<Var>y</Var>
+									<Var>x</Var>
+								</Expr>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+								</op>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+									<Var>y</Var>
+								</slot>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#size"/>
+									<Var>w</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">&gt;</Fun>
+									<Var>w</Var>
+									<Var>z</Var>
+								</Expr>
+							</Atom>
+						</And>
+					</Naf>
+				</And>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="find_largestGarden">
+			<then>
+				<Atom>
+					<op>
+						<Rel>largestGarden</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel iri="#acceptable"/>
+						</op>
+						<slot>
+							<Ind iri="#apartment"/>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+						</op>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+							<Var>x</Var>
+						</slot>
+						<slot>
+							<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#gardenSize"/>
+							<Var>z</Var>
+						</slot>
+					</Atom>
+					<Naf>
+						<And>
+							<Atom>
+								<op>
+									<Rel iri="#acceptable"/>
+								</op>
+								<slot>
+									<Ind iri="#apartment"/>
+									<Var>y</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">neq</Fun>
+									<Var>y</Var>
+									<Var>x</Var>
+								</Expr>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#apartment"/>
+								</op>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#name"/>
+									<Var>y</Var>
+								</slot>
+								<slot>
+									<Ind iri="http://lpis.csd.auth.gr/systems/dr-device/carlo/carlo.rdf#gardenSize"/>
+									<Var>w</Var>
+								</slot>
+							</Atom>
+							<Atom>
+								<op>
+									<Rel iri="http://ruleml.org/1.0/vocab/control#test"/>
+								</op>
+								<Expr>
+									<Fun per="value">&gt;</Fun>
+									<Var>w</Var>
+									<Var>z</Var>
+								</Expr>
+							</Atom>
+						</And>
+					</Naf>
+				</And>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="r10">
+			<then>
+				<Atom>
+					<op>
+						<Rel iri="#rent"/>
+					</op>
+					<slot>
+						<Ind iri="#apartment"/>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<Atom>
+					<op>
+						<Rel>cheapest</Rel>
+					</op>
+					<slot>
+						<Ind>apartment</Ind>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</if>
+		</Implies>
+		<Implies strength="defeasible" node="r11">
+			<then>
+				<Atom>
+					<op>
+						<Rel iri="#rent"/>
+					</op>
+					<slot>
+						<Ind iri="#apartment"/>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel>cheapest</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>largestGarden</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r11"/>
+			<Ind iri="r10"/>
+		</Atom>
+		<Implies strength="defeasible" node="r12">
+			<then>
+				<Atom>
+					<op>
+						<Rel iri="#rent"/>
+					</op>
+					<slot>
+						<Ind iri="#apartment"/>
+						<Var>x</Var>
+					</slot>
+				</Atom>
+			</then>
+			<if>
+				<And>
+					<Atom>
+						<op>
+							<Rel>cheapest</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>largestGarden</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+					<Atom>
+						<op>
+							<Rel>largest</Rel>
+						</op>
+						<slot>
+							<Ind>apartment</Ind>
+							<Var>x</Var>
+						</slot>
+					</Atom>
+				</And>
+			</if>
+		</Implies>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r12"/>
+			<Ind iri="r10"/>
+		</Atom>
+		<Atom>
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#Overrides"/>
+			</op>
+			<Ind iri="r12"/>
+			<Ind iri="r11"/>
+		</Atom>
+		<Atom node="cr1">
+			<op>
+				<Rel iri="http://ruleml.org/1.0/vocab/control#CompetingRules"/>
+			</op>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#CompetingRule"/>
+				<Ind iri="r10"/>
+			</slot>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#CompetingRule"/>
+				<Ind iri="r11"/>
+			</slot>
+			<slot>
+				<Ind iri="http://ruleml.org/1.0/vocab/control#CompetingRule"/>
+				<Ind iri="r12"/>
+			</slot>
+		</Atom>
+	</Assert>
+</RuleML>
