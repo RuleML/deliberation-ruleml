@@ -10,8 +10,47 @@ AddType application/xml .nvdl .rng .sch
 HeaderName HEADER.html
 ReadmeName FOOTER.html
 
-Redirect /1.01/rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php
-Redirect /1.01/gui http://deliberation.ruleml.org/1.01/myng
-Redirect /1.01/xsd/framehohornlogeq.xsd http://ruleml.org/1.0/xsd/framehohornlogeq.xsd
-Redirect /1.01/xsd/hohornlogeq.xsd http://ruleml.org/1.0/xsd/hohornlogeq.xsd
-Redirect /1.01/xsd/hohornlog.xsd http://ruleml.org/1.0/xsd/hohornlog.xsd
+Redirect /1.02/rnc http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php
+Redirect /1.02/gui http://deliberation.ruleml.org/1.02/myng
+Redirect /1.02/xsd/framehohornlogeq.xsd http://ruleml.org/1.0/xsd/framehohornlogeq.xsd
+Redirect /1.02/xsd/hohornlogeq.xsd http://ruleml.org/1.0/xsd/hohornlogeq.xsd
+Redirect /1.02/xsd/hohornlog.xsd http://ruleml.org/1.0/xsd/hohornlog.xsd
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/$ "http\:\/\/wiki\.ruleml\.org\/index\.php\/Specification_of_Deliberation_RuleML_1\.02" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^glossary\/1\.02\/$ "1\.02\/glossary" [R=301]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/glossary\/$ "http\:\/\/wiki\.ruleml\.org\/index\.php\/Glossary_of_Deliberation_RuleML_1\.02" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^content_models\/1\.02\/$ "1.02/doc" [R=301]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/content_models\/$ "1.02/doc" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^doc\/1\.02\/$ "1.02/doc" [R=301]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/timeline\/$ "http\:\/\/wiki\.ruleml\.org\/index\.php\/Timeline_of_Deliberation_RuleML_1\.02" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/xslt\/upgraded\/$ "1.0/xslt/upgrader/" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^deliberation\.ruleml\.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.deliberation\.ruleml\.org$
+RewriteRule ^1\.02\/myng\-b(.*)\-d(.*)\-a(.*)\-l1\-p(.*)\-i(.*)\-t(.*)\-q(.*)\-e(.*)\-s(.*)\.rnc$ "http\:\/\/deliberation\.ruleml\.org\/1\.02\/relaxng\/schema_rnc\.php\?backbone\=x$1\&default\=x$2\&termseq\=x$3\&lng\=x1\&propo\=x$4\&implies\=x$5\&terms\=x$6\&quant\=x$7\&expr\=x$8\&serial\=x$9" [R=302,L]
+

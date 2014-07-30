@@ -2,8 +2,8 @@ deliberation-ruleml
 ===================
  
  This repository contains:
-* schemas in Relax NG and XSD for Deliberation RuleML Version 1.01
-* XSLT stylesheets to normalize Deliberation RuleML Version 1.01
+* schemas in Relax NG and XSD for Deliberation RuleML Version 1.02
+* XSLT stylesheets to normalize Deliberation RuleML Version 1.02
 * schemas for the MYNG modular design pattern
 * example RuleML files
 * PHP scripts for MYNG
