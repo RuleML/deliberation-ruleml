@@ -9,7 +9,7 @@ dc:description [
 ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]
  start = Node.choice | edge.choice
 
 include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

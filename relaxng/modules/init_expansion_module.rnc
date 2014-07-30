@@ -2,13 +2,13 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Initializing Base Patterns" ]
-dc:version [ "1.01" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, initialize, base patterns" ]
 dc:description [ "expansion module for initializing base patterns." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]
 start |= notAllowed
 # 
 # .content

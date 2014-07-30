@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc_test.php?backbone=xf&amp;default=x6&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x220&amp;quant=x0&amp;expr=x2&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc_test.php?backbone=xf&amp;default=x6&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x220&amp;quant=x0&amp;expr=x2&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
   <act index="1">
     <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Oriented Equations are allowed as facts-->
       <formula>
-        <Equal oriented="yes">
+        <Equal oriented="no">
           <left>
             <Ind>Bill</Ind>
           </left>
@@ -23,7 +23,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Equal oriented="yes">
+            <Equal oriented="no">
               <left>
                 <Var>x</Var>
               </left>
@@ -44,7 +44,7 @@
           <formula>
             <Implies material="yes" direction="bidirectional">
               <if>
-                <Equal oriented="yes">
+                <Equal oriented="no">
                   <left>
                     <Var>x</Var>
                   </left>
@@ -97,7 +97,7 @@
                 </And>
               </if>
               <then>
-                <Equal oriented="yes">
+                <Equal oriented="no">
                   <left>
                     <Var>x</Var>
                   </left>

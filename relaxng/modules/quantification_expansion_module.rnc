@@ -4,13 +4,13 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Quantification" ]
-dc:version [ "1.01" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, quantify, quantification, universal, existential" ]
 dc:description [ "The expansion module for quantifications." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]
 start |= quantification.Node.defs | quantification.edge.defs
 Node.choice |= quantification.Node.defs
 edge.choice |= quantification.edge.defs

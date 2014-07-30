@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalog.xsd">
 
   <!--A personX has multi-addresses if the personX lives at address1 and address2 and we can prove (using the built-in relation lessThan over strings) that the two addresses are different.
-    Compare to http://deliberation.ruleml.org/1.01/exa/NegationDatalog/nafdatalog/multi-address.ruleml where this rule is expressed in an equivalent fashion using Negation as failure.-->
+    Compare to http://deliberation.ruleml.org/1.02/exa/NegationDatalog/nafdatalog/multi-address.ruleml where this rule is expressed in an equivalent fashion using Negation as failure.-->
 <Assert mapClosure="universal">
 <Implies>  
   <if>

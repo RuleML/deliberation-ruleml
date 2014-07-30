@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalog_relaxed.rnc" 
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc" 
   type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalog.xsd" >
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" >
   <!-- XML comments are always available for adding descriptive comments,
        which may include XML, XML fragments and non-well-formed XML.
        
@@ -46,7 +46,7 @@
                the parent element name and any attributes which define
                semantic variants, must be a subclass of the
                metamodel class appearing as the iri value of <Rel>-->
-          <Rel iri="http://deliberation.ruleml.org/1.01/metamodel#Implies"/>
+          <Rel iri="http://deliberation.ruleml.org/1.02/metamodel#Implies"/>
           <slot>
             <!-- Lexemes can be used to establish an internal
                  metadata system. Extra information must be
@@ -84,7 +84,7 @@
       <oid>
         <Ind iri="#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
       </oid>
-      <Rel iri="http://deliberation.ruleml.org/1.01/metamodel#Atom"/>
+      <Rel iri="http://deliberation.ruleml.org/1.02/metamodel#Atom"/>
       <slot>
         <Ind node="#ind1" iri="http://purl.org/dc/terms/created"/>
         <Data xsi:type="xs:date"> 2012-04-01</Data>

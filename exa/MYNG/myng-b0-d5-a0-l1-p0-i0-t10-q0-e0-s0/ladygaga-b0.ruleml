@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&amp;default=x5&amp;termseq=x0&amp;lng=x1&amp;propo=x0&amp;implies=x0&amp;terms=x10&amp;quant=x0&amp;expr=x0&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.01/xsd/hornlogeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x0&amp;default=x5&amp;termseq=x0&amp;lng=x1&amp;propo=x0&amp;implies=x0&amp;terms=x10&amp;quant=x0&amp;expr=x0&amp;serial=x0" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/hornlogeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- This example is taken from 
     "Design and Implementation of Highly Modular Schemas for XML: Customization of RuleML in Relax NG" (2011)
@@ -15,7 +15,7 @@
     formulas.
     
     To validate with respect to one of the original 15 sublanguages 
-    (formalized in the RuleML XSD schemas http://deliberation.ruleml.org/1.01/xsd/), the expressivity of
+    (formalized in the RuleML XSD schemas http://deliberation.ruleml.org/1.02/xsd/), the expressivity of
     Hornlog with Equations (hornlogeq) would be required.
     
     See http://ruleml.org/papers/RuleMLinRelaxNG/, http://ruleml.org/talks/RuleMLinRelaxNG/  -->

@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace ruleml = "http://www.ruleml.org/spec"
 
 dc:title [ "RuleML Custom-Built Schema" ]
-dc:version [ "1.01" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
 dc:subject [ "RuleML, all modules for validation" ]
 dc:description [
@@ -10,7 +10,7 @@ dc:description [
 ]
 dc:language [ "en" ]
 dc:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]
  start = Node.choice | edge.choice
 
 include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

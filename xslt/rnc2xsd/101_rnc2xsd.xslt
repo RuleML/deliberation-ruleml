@@ -12,8 +12,8 @@
   <xsl:template match="xs:schema[@targetNamespace='http://ruleml.org/spec']">
         <xsl:copy>
           <xsl:apply-templates select="@*"/>
-          <xs:include schemaLocation="http://deliberation.ruleml.org/1.01/datatypes/SimpleWithAttributes.xsd"/>
-          <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.01/xsd/xml.xsd"/>
+          <xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/>
+          <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.02/xsd/xml.xsd"/>
           <xsl:apply-templates select="node()[ name()!='xs:import']"/>
         </xsl:copy>
   </xsl:template>

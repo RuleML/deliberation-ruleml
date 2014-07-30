@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
-//Assembler of RNC schema for RuleML 1.01
+//Assembler of RNC schema for RuleML 1.02
 //
 //Step 0000. Extract all GET parameters
 $backbone = "backbone";
@@ -118,7 +118,7 @@ $rnc_filename = $rnc_filename.'.rnc';
 header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"');
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
-$base_url = "http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php";
+$base_url = "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
 
 //
@@ -164,7 +164,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
 dc:title [ "Deliberation RuleML Custom-Built Schema" ]
-dc:version [ "1.01" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
 dc:subject [ "Deliberation RuleML, custom-built" ]
 dc:description [
@@ -175,7 +175,7 @@ echo($now);
 echo '" ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.01" ]';
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]';
 echo "\n";
 echo "# Call parameters\n";
 echo "# Base URL = $base_url \n";
@@ -291,7 +291,7 @@ if ($bdefault==0){
 
   //Step 1. Assemble the language foundation
   if ($absolute) {
-    $schemaLocation='http://deliberation.ruleml.org/1.01/relaxng/';  
+    $schemaLocation='http://deliberation.ruleml.org/1.02/relaxng/';  
   } else {
     $schemaLocation='';
   }
