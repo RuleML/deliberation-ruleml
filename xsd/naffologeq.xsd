@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec"
-  elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
-  <xs:include
-    schemaLocation="http://deliberation.ruleml.org/1.01/datatypes/SimpleWithAttributes.xsd"/>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
-    schemaLocation="http://deliberation.ruleml.org/1.01/xsd/xml.xsd"/>
-
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:include schemaLocation="http://deliberation.ruleml.org/1.01/datatypes/SimpleWithAttributes.xsd"/><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.01/xsd/xml.xsd"/>
+  
   <xs:element name="RuleML">
     <xs:complexType>
       <xs:sequence>
@@ -877,16 +871,7 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Reify">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
-      </xs:sequence>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
+  <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attribute name="node" type="xs:anyURI"/><xs:attribute ref="xml:base"/><xs:attribute ref="xml:id"/></xs:complexType></xs:element>
   <xs:element name="Ind">
     <xs:complexType mixed="true">
       <xs:attribute name="iri" type="xs:anyURI"/>
@@ -1497,8 +1482,8 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
-
-
+  
+  
   <xs:group name="Plex_2">
     <xs:sequence>
       <xs:element name="Plex">

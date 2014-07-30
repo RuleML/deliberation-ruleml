@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spec="http://ruleml.org/spec" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec">
   <xs:element name="RuleML">
     <xs:complexType>
-      <xs:choice maxOccurs="unbounded">
-        <xs:element ref="spec:act"/>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="spec:Assert"/>
-          <xs:element ref="spec:Retract"/>
-          <xs:element ref="spec:Query"/>
-        </xs:choice>
-      </xs:choice>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:act"/>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Assert">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="spec:formula"/>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Implies"/>
-        <xs:element ref="spec:Forall"/>
-      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
@@ -37,12 +27,7 @@
   </xs:element>
   <xs:element name="Retract">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="spec:formula"/>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:Implies"/>
-        <xs:element ref="spec:Forall"/>
-      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       <xs:attribute name="mapMaterial" default="yes">
         <xs:simpleType>
           <xs:restriction base="xs:token">
@@ -61,28 +46,14 @@
   </xs:element>
   <xs:element name="Query">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="spec:formula_2"/>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:And"/>
-        <xs:group ref="spec:Or"/>
-        <xs:element ref="spec:Exists"/>
-      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_2"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Atom">
     <xs:complexType>
       <xs:sequence>
-        <xs:choice>
-          <xs:element ref="spec:op"/>
-          <xs:element ref="spec:Rel"/>
-        </xs:choice>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="spec:Ind"/>
-          <xs:element ref="spec:Data"/>
-          <xs:element ref="spec:Var"/>
-          <xs:element ref="spec:arg"/>
-        </xs:choice>
+        <xs:element ref="spec:op"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:arg"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -93,47 +64,24 @@
   </xs:element>
   <xs:element name="And">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:group ref="spec:formula_3"/>
-        <xs:element ref="spec:Atom"/>
-        <xs:element ref="spec:And"/>
-        <xs:group ref="spec:Or_2"/>
-      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_3"/>
     </xs:complexType>
   </xs:element>
   <xs:group name="Or">
     <xs:sequence>
       <xs:element name="Or">
         <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_4"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
-          </xs:choice>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:group>
   <xs:element name="Implies">
     <xs:complexType>
-      <xs:choice>
-        <xs:sequence>
-          <xs:element ref="spec:if"/>
-          <xs:element ref="spec:then"/>
-        </xs:sequence>
-        <xs:sequence>
-          <xs:choice>
-            <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
-          </xs:choice>
-          <xs:choice>
-            <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
-          </xs:choice>
-        </xs:sequence>
-      </xs:choice>
+      <xs:sequence>
+        <xs:element ref="spec:if"/>
+        <xs:element ref="spec:then"/>
+      </xs:sequence>
       <xs:attribute name="direction" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
@@ -153,33 +101,16 @@
   <xs:element name="Forall">
     <xs:complexType>
       <xs:sequence>
-        <xs:choice maxOccurs="unbounded">
-          <xs:element ref="spec:declare"/>
-          <xs:element ref="spec:Var"/>
-        </xs:choice>
-        <xs:choice>
-          <xs:group ref="spec:formula_5"/>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:Implies"/>
-          <xs:element ref="spec:Forall"/>
-        </xs:choice>
+        <xs:element maxOccurs="unbounded" ref="spec:declare"/>
+        <xs:group ref="spec:formula_5"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Exists">
     <xs:complexType>
       <xs:sequence>
-        <xs:choice maxOccurs="unbounded">
-          <xs:element ref="spec:declare"/>
-          <xs:element ref="spec:Var"/>
-        </xs:choice>
-        <xs:choice>
-          <xs:group ref="spec:formula_6"/>
-          <xs:element ref="spec:Atom"/>
-          <xs:element ref="spec:And"/>
-          <xs:group ref="spec:Or_2"/>
-          <xs:element ref="spec:Exists"/>
-        </xs:choice>
+        <xs:element maxOccurs="unbounded" ref="spec:declare"/>
+        <xs:group ref="spec:formula_6"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -321,16 +252,12 @@
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
     </xs:complexType>
   </xs:element>
+  
   <xs:group name="Or_2">
     <xs:sequence>
       <xs:element name="Or">
         <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_4"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
-          </xs:choice>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -339,16 +266,11 @@
     <xs:sequence>
       <xs:element name="Or">
         <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_7"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
-          </xs:choice>
+          <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_7"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:group>
-  
   <xs:group name="formula_7">
     <xs:sequence>
       <xs:element name="formula">

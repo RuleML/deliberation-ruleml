@@ -6,7 +6,7 @@
     <Assert mapMaterial="yes" mapDirection="bidirectional">
       <!-- Oriented Equations are allowed as facts-->
       <formula>
-        <Equal oriented="yes">
+        <Equal oriented="no">
           <left>
             <Ind>Bill</Ind>
           </left>
@@ -23,7 +23,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Equal oriented="yes">
+            <Equal oriented="no">
               <left>
                 <Var>x</Var>
               </left>
@@ -44,7 +44,7 @@
           <formula>
             <Implies material="yes" direction="bidirectional">
               <if>
-                <Equal oriented="yes">
+                <Equal oriented="no">
                   <left>
                     <Var>x</Var>
                   </left>
@@ -97,7 +97,7 @@
                 </And>
               </if>
               <then>
-                <Equal oriented="yes">
+                <Equal oriented="no">
                   <left>
                     <Var>x</Var>
                   </left>
