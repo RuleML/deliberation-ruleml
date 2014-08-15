@@ -3,7 +3,7 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all">
 
   <!-- Remove almost all white space between elements -->
-  <xsl:preserve-space elements="RuleML"/>
+  <xsl:preserve-space elements="xs:schema"/>
   <!--<xsl:strip-space elements="*"/>-->
 
   <!-- Add the  <?xml version="1.0" ?> at the top of the result.-->
@@ -12,9 +12,9 @@
   <xsl:template match="xs:schema[@targetNamespace='http://ruleml.org/spec']">
         <xsl:copy>
           <xsl:apply-templates select="@*"/>
-          <xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/>
           <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.02/xsd/xml.xsd"/>
-          <xsl:apply-templates select="node()[ name()!='xs:import']"/>
+          <xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/>
+          <xsl:apply-templates select="text()|processing-instruction()|*[ name()!='xs:import']"/>
         </xsl:copy>
   </xsl:template>
   

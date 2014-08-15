@@ -17,4 +17,10 @@ for file in *.rnc
 do 
   java -jar "${CP2}"  "${file}" "../tmp/modules/${file}.rng"
 done
+# Validate against ../designPattern/include_expansion_schema.rng
+#cd ../tmp/modules/
+#for file in *.rng
+#do
+#  java -jar "${CP1}" "../designPattern/include_expansion_schema.rng"  "${file}"
+#done
 cd ../../bash
