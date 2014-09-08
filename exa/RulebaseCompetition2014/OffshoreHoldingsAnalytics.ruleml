@@ -1,7 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/naffologeq_relaxed.rnc"
-  ?>
+﻿<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/fologeq_relaxed.rnc"
+            href="http://deliberation.ruleml.org/1.01/relaxng/naffologeq_relaxed.rnc"
+?>
 <RuleML xmlns="http://ruleml.org/spec">
+  <!-- The examples are takes from 
+    "Offshore Holdings Analytics Using Datalog+ RuleML Rule",
+    Mohammad Sadnan Al Manir, Christopher J.O. Baker
+    (http://ceur-ws.org/Vol-1211/paper6.pdf).
+    -->
+  <!-- This RuleML Document incrementally asserts into, retracts from and 
+       queries a rulebase (within the <RuleML> element) for a total of
+       37 transactions: 14 Asserts, 3 Retracts and 20 distinct Queries.
+    -->
   <Assert>
     <!--
         The president of Azerbaijan is Ilham.
@@ -51,7 +60,7 @@
   </Query>
   <Assert>
     <!--
-        No one is both the president and the prime minister of a country.
+        No one is both the president and the prime minister of a country (empty <Or/> used for falsity).
       -->
     <Forall>
       <Var>x</Var>
@@ -112,7 +121,9 @@
   </Query>
   <Assert>
     <!--
-        Two persons have family ties if they are either married to each other, or there is a parent-child relationship between them, or they are distant relatives.
+        Two persons have family ties if they are either married to each other, 
+        or there is a parent-child relationship between them, 
+        or they are distant relatives.
         Ilham is married to Mehriban.
         Ilham has a daughter Arzu.
         Ilham has a daughter Leyla.
@@ -182,7 +193,7 @@
   <Query>
     <!--
         Which individuals are tied to Mehriban as family members?
-        Answers:
+        Answer:
         x: <Ind>Ilham</Ind>
       -->
     <Atom>
@@ -194,7 +205,7 @@
   <Query>
     <!--
         Which individuals are tied to Leyla as family members?
-        Answers:
+        Answer:
         x: <Ind>Ilham</Ind>
       -->
     <Atom>
@@ -206,7 +217,7 @@
   <Query>
     <!--
         Which individuals are tied to Arzu as family members?
-        Answers:
+        Answer:
         x: <Ind>Ilham</Ind>
       -->
     <Atom>
@@ -217,7 +228,7 @@
   </Query>
   <Query>
     <!--
-        Find all individuals having family ties to each other
+        Find all individuals having family ties to each other.
         Answers:
         x: <Ind>Ilham</Ind>
         y: <Ind>Mehriban</Ind>
@@ -234,7 +245,8 @@
   </Query>
   <Assert>
     <!--
-        Everything which operates either as an intermediary company or as an offshore company is designated as a company.
+        Everything that operates either as an intermediary company 
+        or as an offshore company is designated as a company.
         ArborInvestmentsLtd operates as an intermediary company.
         NaziqAndPartners operates as an intermediary company.
         HarvardManagementLtd operates as an offshore company.
@@ -427,7 +439,7 @@
   <Assert>
     <!--
         Anyone is a shareholder of a company if and only if there exists a certain level of stocks of that 
-        company such as Small-cap level or Medium-cap level or Large-cap level, which he owns.
+        company such as Small-cap level or Medium-cap level or Large-cap level, which he/she owns.
         Arzu owns Medium-cap level of stocks in ArborInvestmentsLtd.
       -->
     <Forall>
@@ -533,7 +545,7 @@
   <Assert>
     <!--
         There is a link between a person and a company if the person is a
-        director or a shareholder of that company or he owns a level of stock in the company.
+        director or a shareholder of that company or he/she owns a level of stocks in the company.
       -->
     <Forall>
       <Var>x</Var>
@@ -587,9 +599,9 @@
   </Query>
   <Assert>
     <!--
-        If a company C1 manages assets of another company C2 and the
-        latter i.e. C2 manages assets of yet another company C3, then company C1 manages
-        the assets of the company C3.
+        If a company C1 manages assets of another company C2 and 
+        the latter i.e. C2 manages assets of yet another company C3, 
+        then company C1 manages the assets of the company C3.
         ArborInvestmentsLtd manages assets of NaziqAndPartners.
         NaziqAndPartners manages assets of HarvardManagementLtd.
       -->
@@ -652,9 +664,8 @@
   </Query>
   <Assert>
     <!--
-        The president of a country (possibly) has
-        offshore investments in a company if his family members have links to companies
-        managing assets in that offshore company
+        The president of a country (possibly) hasoffshore investments in a company
+         if his family members have links to companies managing assets in that offshore company
       -->
     <Forall>
       <Var>p</Var>
