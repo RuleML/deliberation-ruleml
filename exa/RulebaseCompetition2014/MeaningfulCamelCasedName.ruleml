@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/naffologeq_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/naffologeq.xsd">
+  <!-- Competition entries should include either 
+           an xml-model processing instruction or 
+           an xsi:schemaLocation attribute (or both)
+      to indicate the target sublanguage.     
+ --> 
+</RuleML> 
