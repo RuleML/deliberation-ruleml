@@ -12,8 +12,8 @@
 
 <!ELEMENT Assert (meta*,formula*)>
 <!ATTLIST Assert
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -21,8 +21,8 @@
 
 <!ELEMENT Retract (meta*,formula*)>
 <!ATTLIST Retract
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -75,8 +75,8 @@
 
 <!ELEMENT Implies (meta*,if,then)>
 <!ATTLIST Implies
-  direction (bidirectional|forward|backward) #REQUIRED
-  material (yes|no) #REQUIRED
+  direction (bidirectional|forward|backward) #IMPLIED
+  material (yes|no) #IMPLIED
   mapMaterial (yes|no) #IMPLIED
   mapDirection (bidirectional|forward|backward) #IMPLIED
   closure (universal|existential) #IMPLIED
@@ -106,7 +106,7 @@
 <!ELEMENT Expr (meta*,oid?,op,arg*,repo?,
                     slot*,resl?)>
 <!ATTLIST Expr
-  per (copy|value|open) #REQUIRED
+  per (copy|value|open) #IMPLIED
   type CDATA #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -114,7 +114,7 @@
 
 <!ELEMENT Fun (#PCDATA)>
 <!ATTLIST Fun
-  per (copy|value|open) #REQUIRED
+  per (copy|value|open) #IMPLIED
   val (1|0..) #IMPLIED
   iri CDATA #IMPLIED
   node CDATA #IMPLIED
@@ -123,8 +123,8 @@
 
 <!ELEMENT Rulebase (meta*,formula*)>
 <!ATTLIST Rulebase
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -138,8 +138,8 @@
 
 <!ELEMENT Neg (meta*,strong)>
 <!ATTLIST Neg
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -147,8 +147,8 @@
 
 <!ELEMENT Naf (meta*,weak)>
 <!ATTLIST Naf
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
@@ -156,8 +156,8 @@
 
 <!ELEMENT Equivalent (meta*,torso,torso)>
 <!ATTLIST Equivalent
-  mapMaterial (yes|no) #REQUIRED
-  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
   closure (universal|existential) #IMPLIED
   mapClosure (universal|existential) #IMPLIED
   node CDATA #IMPLIED
@@ -166,7 +166,7 @@
 
 <!ELEMENT Equal (meta*,degree?,left,right)>
 <!ATTLIST Equal
-  oriented (no|yes) #REQUIRED
+  oriented (no|yes) #IMPLIED
   node CDATA #IMPLIED
   xml:base CDATA #IMPLIED
   xml:id NMTOKEN #IMPLIED>
