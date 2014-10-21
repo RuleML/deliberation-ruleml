@@ -1,0 +1,329 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT RuleML (meta*,act*)>
+<!ATTLIST RuleML
+  xmlns CDATA #FIXED 'http://ruleml.org/spec'
+  xmlns:xs CDATA #FIXED 'http://www.w3.org/2001/XMLSchema'
+  xmlns:xsi CDATA #FIXED 'http://www.w3.org/2001/XMLSchema-instance'
+  xsi:schemaLocation CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Assert (meta*,formula*)>
+<!ATTLIST Assert
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Retract (meta*,formula*)>
+<!ATTLIST Retract
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Query (meta*,formula*)>
+<!ATTLIST Query
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  closure (universal|existential) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Atom (meta*,oid?,degree?,op,arg*,
+                    repo?,slot*,resl?)>
+<!ATTLIST Atom
+  closure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Rel (#PCDATA)>
+<!ATTLIST Rel
+  iri CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT And (meta*,formula*)>
+<!ATTLIST And
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  closure (universal|existential) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Or (meta*,formula*)>
+<!ATTLIST Or
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  closure (universal|existential) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Implies (meta*,if,then)>
+<!ATTLIST Implies
+  direction (bidirectional|forward|backward) #REQUIRED
+  material (yes|no) #REQUIRED
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  closure (universal|existential) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Forall (meta*,declare+,formula)>
+<!ATTLIST Forall
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Exists (meta*,declare+,formula)>
+<!ATTLIST Exists
+  mapMaterial (yes|no) #IMPLIED
+  mapDirection (bidirectional|forward|backward) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Expr (meta*,oid?,op,arg*,repo?,
+                    slot*,resl?)>
+<!ATTLIST Expr
+  per (copy|value|open) #REQUIRED
+  type CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Fun (#PCDATA)>
+<!ATTLIST Fun
+  per (copy|value|open) #REQUIRED
+  val (1|0..) #IMPLIED
+  iri CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Rulebase (meta*,formula*)>
+<!ATTLIST Rulebase
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Entails (meta*,if,then)>
+<!ATTLIST Entails
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Neg (meta*,strong)>
+<!ATTLIST Neg
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Naf (meta*,weak)>
+<!ATTLIST Naf
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Equivalent (meta*,torso,torso)>
+<!ATTLIST Equivalent
+  mapMaterial (yes|no) #REQUIRED
+  mapDirection (bidirectional|forward|backward) #REQUIRED
+  closure (universal|existential) #IMPLIED
+  mapClosure (universal|existential) #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Equal (meta*,degree?,left,right)>
+<!ATTLIST Equal
+  oriented (no|yes) #REQUIRED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Data (#PCDATA)>
+<!ATTLIST Data
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED
+  xsi:type CDATA #IMPLIED>
+
+<!ELEMENT Skolem (#PCDATA)>
+<!ATTLIST Skolem
+  type CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Reify (RuleML|Assert|Retract|Query
+                     |Atom|Rel|And|Or|Implies
+                     |Forall|Exists|Expr|Fun
+                     |Rulebase|Entails|Neg|Naf
+                     |Equivalent|Equal|Data|Skolem
+                     |Reify|Ind|Var|Plex)*>
+<!ATTLIST Reify
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Ind (#PCDATA)>
+<!ATTLIST Ind
+  iri CDATA #IMPLIED
+  type CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Var (#PCDATA)>
+<!ATTLIST Var
+  type CDATA #IMPLIED
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT Plex (meta*,arg*,repo?,slot*,resl?)>
+<!ATTLIST Plex
+  node CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT formula (Atom|Equal|And|Or|Neg|Naf
+                       |Implies|Equivalent|Forall|Exists
+                       |Entails|Rulebase)>
+<!ATTLIST formula
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT op (Rel|Fun)>
+<!ATTLIST op
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT then (Atom|Equal|And|Or|Neg
+                    |Implies|Equivalent|Forall|Exists|Rulebase)>
+<!ATTLIST then
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT if (Atom|Equal|And|Or|Neg|Naf
+                  |Implies|Equivalent|Forall|Exists
+                  |Rulebase)>
+<!ATTLIST if
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT declare (Var)>
+<!ATTLIST declare
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT degree (Data)>
+<!ATTLIST degree
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT strong (Atom|Equal|And|Or|Neg
+                      |Implies|Equivalent|Forall
+                      |Exists)>
+<!ATTLIST strong
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT weak (Atom|Equal|And|Or|Neg
+                    |Implies|Equivalent|Forall|Exists)>
+<!ATTLIST weak
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT meta (Atom|Equal|And|Or|Neg
+                    |Implies|Equivalent|Forall|Exists
+                    |Entails|Rulebase)>
+<!ATTLIST meta
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT torso (Atom|Equal|And|Or|Neg
+                     |Implies|Equivalent|Forall|Exists)>
+<!ATTLIST torso
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT oid (Skolem|Reify|Ind|Data|Var
+                   |Expr|Plex)>
+<!ATTLIST oid
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT slot ((Ind|Data|Expr|Plex),
+                    (Skolem|Reify|Ind|Data|Var
+                     |Expr|Plex))>
+<!ATTLIST slot
+  card CDATA #IMPLIED
+  weight CDATA #IMPLIED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT left (Skolem|Reify|Ind|Data|Var
+                    |Expr|Plex)>
+<!ATTLIST left
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT right (Skolem|Reify|Ind|Data|Var
+                     |Expr|Plex)>
+<!ATTLIST right
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT arg (Skolem|Reify|Ind|Data|Var
+                   |Expr|Plex)>
+<!ATTLIST arg
+  index CDATA #REQUIRED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT resl (Var|Plex)>
+<!ATTLIST resl
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT repo (Var|Plex)>
+<!ATTLIST repo
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
+
+<!ELEMENT act (Assert|Retract|Query)*>
+<!ATTLIST act
+  index CDATA #REQUIRED
+  xml:base CDATA #IMPLIED
+  xml:id NMTOKEN #IMPLIED>
