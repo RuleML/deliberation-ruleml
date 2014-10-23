@@ -4,7 +4,7 @@ namespace ruleml = "http://ruleml.org/spec"
 dc:title [ "RuleML Custom-Built Schema" ]
 dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "RuleML, all modules for validation" ]
+dc:subject [ "RuleML, all modules (except ordered_groups) for testing only" ]
 dc:description [
     "custom-built main module for a RuleML sublanguage."
 ]
