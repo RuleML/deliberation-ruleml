@@ -170,7 +170,7 @@ echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dc:description ['."\n";
 echo '    "custom-built main module for a Deliberation RuleML sublanguage."'."\n";
 echo ']'."\n";
-echo 'dc:date [ "'."\n";
+echo 'dc:date [ "';
 echo($now);
 echo '" ]'."\n";
 echo 'dc:language [ "en" ]'."\n";
