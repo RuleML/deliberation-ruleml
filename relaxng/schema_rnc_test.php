@@ -159,23 +159,23 @@ $this_url = $this_url . $call_fragment;
 
 
 //Step 00. Write the header
-echo 'namespace dc = "http://purl.org/dc/elements/1.1/"\n';
-echo 'namespace dcterms = "http://purl.org/dc/terms/"\n';
-echo 'namespace ruleml = "http://ruleml.org/spec"\n';
-echo '\n';
-echo 'dc:title [ "Deliberation RuleML Custom-Built Schema" ]\n';
-echo 'dc:version [ "1.01" ]\n';
-echo 'dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]\n';
-echo 'dc:subject [ "Deliberation RuleML, custom-built" ]\n';
-echo 'dc:description [\n';
-echo '    "custom-built main module for a Deliberation RuleML sublanguage."\n';
-echo ']\n';
-echo 'dc:date [ "\n';
+echo 'namespace dc = "http://purl.org/dc/elements/1.1/"'."\n";
+echo 'namespace dcterms = "http://purl.org/dc/terms/"'."\n";
+echo 'namespace ruleml = "http://ruleml.org/spec"'."\n";
+echo "\n";
+echo 'dc:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
+echo 'dc:version [ "1.01" ]'."\n";
+echo 'dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]'."\n";
+echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
+echo 'dc:description ['."\n";
+echo '    "custom-built main module for a Deliberation RuleML sublanguage."'."\n";
+echo ']'."\n";
+echo 'dc:date [ "'."\n";
 echo($now);
-echo '" ]\n';
-echo 'dc:language [ "en" ]\n';
-echo 'dcterms:rights [ "TBD" ]\n';
-echo 'dc:relation [ "http://deliberation.ruleml.org/1.01" ]\n';
+echo '" ]'."\n";
+echo 'dc:language [ "en" ]'."\n";
+echo 'dcterms:rights [ "TBD" ]'."\n";
+echo 'dc:relation [ "http://deliberation.ruleml.org/1.01" ]'."\n";
 echo "# Call parameters\n";
 echo "# Base URL = $base_url \n";
 
@@ -346,7 +346,7 @@ if ($bdefault==0){
 
   //Step 1C. Include the appropriate module(s) for default values present
   //         absent, or optional
-  echo '#\n# ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED\n';
+  echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED\n";
   echo "#\n".'include "' . $modulesLocation .
       'default_inf_expansion_module.rnc"'."$end\n";
   if ($needDefaultAbsent){
