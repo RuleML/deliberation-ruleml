@@ -49,12 +49,12 @@
                 }
             }
             function clearForm (LanguageForm) {
-                // One option must be checked for radio buttons
+                //Radio Buttons
                 LanguageForm.backbone[0].checked = true;
                 LanguageForm.deflt[1].checked  = true;
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
-                checkAll(LanguageForm);
+                //Nondependent check boxes
                 LanguageForm.propo0.checked = false;
                 LanguageForm.propo1.checked = false;
                 LanguageForm.propo3.checked = false;
@@ -64,7 +64,9 @@
                 LanguageForm.propo7.checked = false;
                 LanguageForm.propo8.checked = false;
                 LanguageForm.propo9.checked = false;
-                //Radio Buttons
+                LanguageForm.implies1.checked = false;
+                LanguageForm.implies2.checked = false;
+                checkAll(LanguageForm);
             }            
             function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
