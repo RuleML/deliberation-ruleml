@@ -86,6 +86,13 @@
                 checkAll(LanguageForm);
             }            
 
+            function fillOthers (LanguageForm) {
+              var bb = get_bb(LanguageForm);
+              window.location.reload(true);
+              LanguageForm.backbone[bb].checked = true;
+              checkAll(LanguageForm);
+            }            
+
 function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
@@ -1423,11 +1430,16 @@ function checkAll(LanguageForm) {
                   <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Full
                   First-Order Logic </li>
               <li>
-                <input class="button" type="button" value="Clear Others" onclick="clearOthers(this.form)" 
+                <input class="buttonOther" type="button" value="Clear Others" onclick="clearOthers(this.form)" 
                   title="Uncheck all boxes and switch to minimal alternative in other facets"
                 />
               </li>
-              </ol>
+              <li>
+                <input class="buttonOther" type="button" value="Fill Others" onclick="fillOthers(this.form)" 
+                  title="Check all enabled boxes and switch to maximal alternative in other facets"
+                />
+              </li>
+            </ol>
             </td>
             <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
               <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
