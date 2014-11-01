@@ -70,6 +70,7 @@
             function clearPropo (LanguageForm) {
                 LanguageForm.propo0.checked = false;
                 LanguageForm.propo1.checked = false;
+                LanguageForm.propo2.checked = false;
                 LanguageForm.propo3.checked = false;
                 LanguageForm.propo4.checked = false;
                 LanguageForm.propo5.checked = false;
@@ -85,13 +86,21 @@
                 LanguageForm.implies2.checked = false;
                 LanguageForm.implies3.checked = false;
                 LanguageForm.implies4.checked = false;
+                LanguageForm.implies5.checked = false;
                 LanguageForm.implies6.checked = false;
                 checkAll(LanguageForm);
             }            
             function clearTerms (LanguageForm) {
                 LanguageForm.terms0.checked = false;
                 LanguageForm.terms1.checked = false;
+                LanguageForm.terms2.checked = false;
+                LanguageForm.terms3.checked = false;
                 LanguageForm.terms4.checked = false;
+                LanguageForm.terms5.checked = false;
+                LanguageForm.terms8.checked = false;
+                LanguageForm.terms9.checked = false;
+                LanguageForm.terms10.checked = false;
+                LanguageForm.terms11.checked = false;
                 checkAll(LanguageForm);
             }            
             function clearQuant (LanguageForm) {
@@ -1531,6 +1540,14 @@
             </ol>
             </td>
             <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillPropo(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearPropo(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
                 checked="checked" /> IRIs </li>
               <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
@@ -1562,6 +1579,14 @@
             
             
             <td class="facet"> <span class="facet-head">Implication <br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillImplies(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearImplies(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="implies0" onclick="checkAll(this.form)"
                 checked="checked" /> Equivalences </li>
               <li>
@@ -1601,6 +1626,14 @@
             </ol>
             </td>
             <td class="facet"> <span class="facet-head">Term <br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillTerms(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearTerms(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="terms0" onclick="checkAll(this.form)"
                 checked="checked" /> Object Identifiers </li>
               <li>
@@ -1634,7 +1667,15 @@
             
             
             <td class="facet"> <span class="facet-head">Quantification<br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillQuant(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearQuant(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
+              <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
                     checked="checked" /> Implicit Closure </li>
                 <li>
                   <input type="checkbox" name="quant1" onclick="checkAll(this.form)"
@@ -1645,7 +1686,15 @@
               </ol>
             </td>
             <td class="facet"> <span class="facet-head">Expression<br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="expr0" onclick="checkAll(this.form)"
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillExpr(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearExpr(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
+              <li><input type="checkbox" name="expr0" onclick="checkAll(this.form)"
                     checked="checked" /> Generalized Lists </li>
                 <li>
                   <input type="checkbox" name="expr1" onclick="checkAll(this.form)"
@@ -1656,6 +1705,14 @@
               </ol>
             </td>
             <td class="facet"> <span class="facet-head">Serialization<br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillSerial(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearSerial(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="serial0" onclick="checkAll(this.form)"
                 checked="checked" /> Unordered Groups </li>
               <li>
