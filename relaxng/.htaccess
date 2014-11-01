@@ -1,7 +1,7 @@
 # Rewrite rules
 Options +FollowSymLinks
 #IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
-IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* schema_rnc.php error_log
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* schema_rnc.php schema_rnc_test.php phpinfo.php all_ordered.rnc all_unordered.rnc error_log
 
 
 RewriteEngine On

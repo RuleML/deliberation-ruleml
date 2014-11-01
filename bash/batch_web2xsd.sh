@@ -18,8 +18,8 @@ mkdir -p ../xsd
 rm ../xsd/*
 
 # bindatagroundfact
-# b1-d6-a2-l1-p3cf-i6-tf0f-q1-e0-s0 (normal)
-# b1-d7-a2-l1-p3cf-i6-tf0f-q1-e0-s2
+# b1-d6-a2-l1-p3cf-i6-tf0f-q1-e0-s10 (normal)
+# b1-d7-a2-l1-p3cf-i6-tf0f-q1-e0-s12
 # http://deliberation.ruleml.org/1.02/xsd/bindatagroundfact_normal.xsd
 #curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x1&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x6&terms=xf0f&quant=x1&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 #./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundfact_normal.xsd
@@ -29,8 +29,8 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x1&
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundfact.xsd
 
 # bindatagroundlog
-# b3-d6-a2-l1-p3cf-i7-tf0f-q1-e0-s0 (normal)
-# b3-d7-a2-l1-p3cf-i7-tf0f-q1-e0-s2
+# b3-d6-a2-l1-p3cf-i7-tf0f-q1-e0-s10 (normal)
+# b3-d7-a2-l1-p3cf-i7-tf0f-q1-e0-s12
 # http://deliberation.ruleml.org/1.02/xsd/bindatagroundlog_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x3&default=x6&termseq=x2&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x1&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/bindatagroundlog_normal.xsd
@@ -73,8 +73,8 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/datalog.xsd
 
 # datalogplus_min
-# b7-d6-a7-l1-p1-i58-t210-q0-e0-s0 (normal)
-# b7-d7-a7-l1-p1-i58-t210-q0-e0-s0
+# b7-d6-a7-l1-p1-i58-t210-q0-e0-s10 (normal)
+# b7-d7-a7-l1-p1-i58-t210-q0-e0-s10
 # http://deliberation.ruleml.org/1.02/xsd/datalogplus_min_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x58&terms=x210&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalogplus_min_normal.xsd
@@ -83,8 +83,8 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/datalogplus_min.xsd
 
 # disdatalogplus_min
-# b7-d6-a7-l1-p1-i78-t210-q0-e0-s0 (normal)
-# b7-d7-a7-l1-p1-i78-t210-q0-e0-s0
+# b7-d6-a7-l1-p1-i78-t210-q0-e0-s10 (normal)
+# b7-d7-a7-l1-p1-i78-t210-q0-e0-s10
 # http://deliberation.ruleml.org/1.02/xsd/disdatalogplus_min_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x1&implies=x78&terms=x210&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd_min/disdatalogplus_min_normal.xsd
@@ -95,8 +95,8 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&
 
 
 # datalogplus_mid
-# b7-d6-a7-l1-p3c1-i5e-tf30-q0-e0-s0 (normal)
-# b7-d7-a7-l1-p3c1-i5e-tf30-q0-e0-s0
+# b7-d6-a7-l1-p3c1-i5e-tf30-q0-e0-s10 (normal)
+# b7-d7-a7-l1-p3c1-i5e-tf30-q0-e0-s10
 # http://deliberation.ruleml.org/1.02/xsd/datalogplus_mid_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3c1&implies=x5e&terms=xf30&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/datalogplus_mid_normal.xsd
@@ -105,8 +105,8 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/datalogplus_mid.xsd
 
 # disdatalogplus_mid
-# b7-d6-a7-l1-p3c1-i7e-tf30-q0-e0-s0 (normal)
-# b7-d7-a7-l1-p3c1-i7e-tf30-q0-e0-s0
+# b7-d6-a7-l1-p3c1-i7e-tf30-q0-e0-s10 (normal)
+# b7-d7-a7-l1-p3c1-i7e-tf30-q0-e0-s10
 # http://deliberation.ruleml.org/1.02/xsd/disdatalogplus_mid_normal.xsd
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&default=x6&termseq=x7&lng=x1&propo=x3c1&implies=x7e&terms=xf30&quant=x0&expr=x0&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/disdatalogplus_mid_normal.xsd
@@ -173,7 +173,7 @@ curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x1f
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/dishornlog.xsd
 
 # nafhornlog
-# bf-d7-a6-l1-p3ef-i7-tf0f-q7-e3-s10 (normal)
+# bf-d6-a7-l1-p3ef-i7-tf0f-q7-e3-s10 (normal)
 # bf-d7-a7-l1-p3ef-i7-tf0f-q7-e3-s12
 curl -L "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=xf&default=x6&termseq=x7&lng=x1&propo=x3ef&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=x10"  > ../relaxng/tmp-web2xsd.rnc 
 ./rnc2xsd.sh ../relaxng/tmp-web2xsd.rnc ../xsd/nafhornlog_normal.xsd

@@ -1,11 +1,24 @@
-<h2>Validation Instructions in <a href="http://Validator.nu">Validator.nu</a></h2>
-Please see the <a href="http://wiki.ruleml.org/index.php/Relax_NG#Demo">MYNG Demo</a> for a tutorial on using the online tool Validator.nu to validate these examples against Relax NG schemas, XSD schemas or NVDL scripts.
-<h2>Validation Instructions in <a href="http://www.w3.org/2001/03/webdata/xsv">http://www.w3.org/2001/03/webdata/xsv</a></h2>
-Enter two addresses in the text field, the instance and the schema. For example
-<pre>
-http://deliberation.ruleml.org/1.02/exa/Hornlog/hornlogeq/hornlogeq.ruleml http://deliberation.ruleml.org/1.02/xsd/hornlogeq.xsd
-</pre>
-<h2>Validation Instructions in oXygen</h2>
+<h2>Using a Relax NG Schema to Validate Through <a href="http://Validator.nu">Validator.nu</a></h2>
+Please see the <a href="http://wiki.ruleml.org/index.php/Relax_NG#Using_Validator.nu">MYNG Demo</a> for a tutorial on using the online tool Validator.nu to validate these examples against Relax NG schemas, XSD schemas or NVDL scripts.
+<h2>Using an XSD schema to Validate Through <a href="http://www.validome.org/xml/validate">Validome</a></h2>
+<ol>
+  <li> Direct your browser to <a href="http://www.validome.org/xml/validate/">http://www.validome.org/xml/validate/</a>
+  </li>
+  <li> Enter the following:
+    <ol>
+      <li> <b>Source</b>: a URL such as <a href="http://deliberation.ruleml.org/1.02/exa/DatalogPlus/datalogplus_min_normal.ruleml">http://deliberation.ruleml.org/1.02/exa/DatalogPlus/datalogplus_min_normal.ruleml</a>, or upload a local RuleML file, or paste the Sourcecode into the text area.
+        <ol>
+          <li> Note: the RuleML file must contain an xsi:schemaLocation attribute referencing a RuleML XSD schema such as <a href="http://deliberation.ruleml.org/1.02/xsd/datalogplus_min_normal.xsd">http://deliberation.ruleml.org/1.02/xsd/datalogplus_min_normal.xsd</a>
+          </li>
+        </ol>
+      </li>
+      <li> Check the <b>View Sourcecode</b> checkbox.
+      </li>
+      <li> Click <b>Validate</b>.
+      </li>
+    </ol>
+  </li>
+</ol><h2>Validation Instructions in oXygen</h2>
 <p>
 In the instances in this examples directory, xml-model processing instructions (PIs) are used to indicate the minimal RNC and XSD schemas that the instances should validate against.
 An xml-model processing application, such as oXygen (http://oxygenxml.com) will use these PIs to determine the schemas to be used for validation.
