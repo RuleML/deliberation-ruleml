@@ -50,22 +50,17 @@
             }
             function clearForm (LanguageForm) {
                 // One option must be checked for radio buttons
-                if (!(
-                LanguageForm.backbone[0].checked *
-                LanguageForm.backbone[1].checked *
-                LanguageForm.backbone[2].checked *
-                LanguageForm.backbone[3].checked *
-                LanguageForm.backbone[4].checked *
-                LanguageForm.backbone[5].checked)) {
-                    // initialize to Full First-Order
-                    LanguageForm.backbone[5].checked = true;
+                LanguageForm.backbone[0].checked = true;
+                for (var i = 1; i < 6; i = i + 1) {
+                  LanguageForm.backbone[i].checked = false;                
                 }
+                checkAll(LanguageForm);
                 if (!(
                 LanguageForm.deflt[0].checked *
                 LanguageForm.deflt[1].checked *
                 LanguageForm.deflt[2].checked)) {
-                    // initialize to Optional
-                    LanguageForm.deflt[2].checked = true;
+                    // initialize to Required
+                    LanguageForm.deflt[1].checked = true;
                 }
                 if (!(
                 LanguageForm.termseq[0].checked *
@@ -73,8 +68,8 @@
                 LanguageForm.termseq[2].checked *
                 LanguageForm.termseq[3].checked *
                 LanguageForm.termseq[4].checked)) {
-                    // initialize to Polyadic
-                    LanguageForm.termseq[4].checked = true;
+                    // initialize to Nullary
+                    LanguageForm.termseq[0].checked = true;
                 }
                 if (!(
                 LanguageForm.lng[0].checked *
