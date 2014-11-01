@@ -60,6 +60,14 @@
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
                 //Nondependent check boxes
+                clearPropo(LanguageForm);
+                clearImplies(LanguageForm);
+                clearTerms(LanguageForm);
+                clearQuant(LanguageForm);
+                clearExpr(LanguageForm);
+                clearSerial(LanguageForm);
+            }            
+            function clearPropo (LanguageForm) {
                 LanguageForm.propo0.checked = false;
                 LanguageForm.propo1.checked = false;
                 LanguageForm.propo3.checked = false;
@@ -69,31 +77,112 @@
                 LanguageForm.propo7.checked = false;
                 LanguageForm.propo8.checked = false;
                 LanguageForm.propo9.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearImplies (LanguageForm) {
                 LanguageForm.implies0.checked = false;
                 LanguageForm.implies1.checked = false;
                 LanguageForm.implies2.checked = false;
                 LanguageForm.implies3.checked = false;
                 LanguageForm.implies4.checked = false;
                 LanguageForm.implies6.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearTerms (LanguageForm) {
                 LanguageForm.terms0.checked = false;
                 LanguageForm.terms1.checked = false;
                 LanguageForm.terms4.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearQuant (LanguageForm) {
                 LanguageForm.quant0.checked = false;
+                LanguageForm.quant1.checked = false;
+                LanguageForm.quant2.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearExpr (LanguageForm) {
+                LanguageForm.expr0.checked = false;
+                LanguageForm.expr1.checked = false;
+                LanguageForm.expr2.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearSerial (LanguageForm) {
                 LanguageForm.serial0.checked = false;
                 LanguageForm.serial1.checked = false;
                 LanguageForm.serial2.checked = false;
                 LanguageForm.serial3.checked = false;
                 checkAll(LanguageForm);
             }            
-
             function fillOthers (LanguageForm) {
-              var bb = get_bb(LanguageForm);
-              window.location.reload(true);
-              LanguageForm.backbone[bb].checked = true;
-              checkAll(LanguageForm);
+                //Radio Buttons
+                LanguageForm.deflt[2].checked  = true;
+                LanguageForm.termseq[4].checked = true;
+                LanguageForm.lng[0].checked = true;
+                //Nondependent check boxes
+                fillPropo(LanguageForm);
+                fillImplies(LanguageForm);
+                fillTerms(LanguageForm);
+                fillQuant(LanguageForm);
+                fillExpr(LanguageForm);
+                fillSerial(LanguageForm);
+            }            
+            function fillPropo (LanguageForm) {
+                LanguageForm.propo0.checked = true;
+                LanguageForm.propo1.checked = true;
+                LanguageForm.propo2.checked = true;
+                LanguageForm.propo3.checked = true;
+                LanguageForm.propo4.checked = true;
+                LanguageForm.propo5.checked = true;
+                LanguageForm.propo6.checked = true;
+                LanguageForm.propo7.checked = true;
+                LanguageForm.propo8.checked = true;
+                LanguageForm.propo9.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillImplies (LanguageForm) {
+                LanguageForm.implies0.checked = true;
+                LanguageForm.implies1.checked = true;
+                LanguageForm.implies2.checked = true;
+                LanguageForm.implies3.checked = true;
+                LanguageForm.implies4.checked = true;
+                LanguageForm.implies5.checked = true;
+                LanguageForm.implies6.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillTerms (LanguageForm) {
+                LanguageForm.terms0.checked = true;
+                LanguageForm.terms1.checked = true;
+                LanguageForm.terms2.checked = true;
+                LanguageForm.terms3.checked = true;
+                LanguageForm.terms4.checked = true;
+                LanguageForm.terms5.checked = true;
+                LanguageForm.terms8.checked = true;
+                LanguageForm.terms9.checked = true;
+                LanguageForm.terms10.checked = true;
+                LanguageForm.terms11.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillQuant (LanguageForm) {
+                LanguageForm.quant0.checked = true;
+                LanguageForm.quant1.checked = true;
+                LanguageForm.quant2.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillExpr (LanguageForm) {
+                LanguageForm.expr0.checked = true;
+                LanguageForm.expr1.checked = true;
+                LanguageForm.expr2.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillSerial (LanguageForm) {
+                LanguageForm.serial0.checked = true;
+                LanguageForm.serial1.checked = true;
+                LanguageForm.serial2.checked = true;
+                LanguageForm.serial3.checked = true;
+                checkAll(LanguageForm);
             }            
 
-function checkAll(LanguageForm) {
+            function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
                 var sequencesAllowed = get_sequencesAllowed(LanguageForm);
