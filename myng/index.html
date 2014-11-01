@@ -51,33 +51,20 @@
             function clearForm (LanguageForm) {
                 // One option must be checked for radio buttons
                 LanguageForm.backbone[0].checked = true;
-                for (var i = 1; i < 6; i = i + 1) {
-                  LanguageForm.backbone[i].checked = false;                
-                }
+                LanguageForm.deflt[1].checked  = true;
+                LanguageForm.termseq[0].checked = true;
+                LanguageForm.lng[0].checked = true;
                 checkAll(LanguageForm);
-                if (!(
-                LanguageForm.deflt[0].checked *
-                LanguageForm.deflt[1].checked *
-                LanguageForm.deflt[2].checked)) {
-                    // initialize to Required
-                    LanguageForm.deflt[1].checked = true;
-                }
-                if (!(
-                LanguageForm.termseq[0].checked *
-                LanguageForm.termseq[1].checked *
-                LanguageForm.termseq[2].checked *
-                LanguageForm.termseq[3].checked *
-                LanguageForm.termseq[4].checked)) {
-                    // initialize to Nullary
-                    LanguageForm.termseq[0].checked = true;
-                }
-                if (!(
-                LanguageForm.lng[0].checked *
-                LanguageForm.lng[1].checked *
-                LanguageForm.lng[2].checked)) {
-                    // initialize to English Abbreviated Names
-                    LanguageForm.lng[0].checked = true;
-                }
+                LanguageForm.propo0.checked = false;
+                LanguageForm.propo1.checked = false;
+                LanguageForm.propo3.checked = false;
+                LanguageForm.propo4.checked = false;
+                LanguageForm.propo5.checked = false;
+                LanguageForm.propo6.checked = false;
+                LanguageForm.propo7.checked = false;
+                LanguageForm.propo8.checked = false;
+                LanguageForm.propo9.checked = false;
+                //Radio Buttons
             }            
             function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
