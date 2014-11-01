@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Existential Rules" ]
+dc:title [ "RuleML Conjunctive Rules" ]
 dc:version [ "1.01" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, existential" ]
-dc:description [ "The expansion module for existential heads in implications." ]
+dc:subject [ "RuleML, conjunction" ]
+dc:description [ "The expansion module for conjunctive heads in implications." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://deliberation.ruleml.org/1.01" ]
