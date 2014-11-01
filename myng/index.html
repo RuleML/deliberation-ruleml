@@ -51,6 +51,11 @@
             function clearForm (LanguageForm) {
                 //Radio Buttons
                 LanguageForm.backbone[0].checked = true;
+                clearOthers(LanguageForm);
+                checkAll(LanguageForm);
+            }            
+            function clearOthers (LanguageForm) {
+                //Radio Buttons
                 LanguageForm.deflt[1].checked  = true;
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
@@ -64,8 +69,12 @@
                 LanguageForm.propo7.checked = false;
                 LanguageForm.propo8.checked = false;
                 LanguageForm.propo9.checked = false;
+                LanguageForm.implies0.checked = false;
                 LanguageForm.implies1.checked = false;
                 LanguageForm.implies2.checked = false;
+                LanguageForm.implies3.checked = false;
+                LanguageForm.implies4.checked = false;
+                LanguageForm.implies6.checked = false;
                 LanguageForm.terms0.checked = false;
                 LanguageForm.terms1.checked = false;
                 LanguageForm.terms4.checked = false;
@@ -76,7 +85,8 @@
                 LanguageForm.serial3.checked = false;
                 checkAll(LanguageForm);
             }            
-            function checkAll(LanguageForm) {
+
+function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
                 var sequencesAllowed = get_sequencesAllowed(LanguageForm);
@@ -1412,6 +1422,11 @@
                 <li>
                   <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Full
                   First-Order Logic </li>
+              <li>
+                <input class="button" type="button" value="Clear Others" onclick="clearOthers(this.form)" 
+                  title="Uncheck all boxes and switch to minimal alternative in other facets"
+                />
+              </li>
               </ol>
             </td>
             <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
