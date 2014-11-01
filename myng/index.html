@@ -48,6 +48,42 @@
                     LanguageForm.lng[0].checked = true;
                 }
             }
+            function clearForm (LanguageForm) {
+                // One option must be checked for radio buttons
+                if (!(
+                LanguageForm.backbone[0].checked *
+                LanguageForm.backbone[1].checked *
+                LanguageForm.backbone[2].checked *
+                LanguageForm.backbone[3].checked *
+                LanguageForm.backbone[4].checked *
+                LanguageForm.backbone[5].checked)) {
+                    // initialize to Full First-Order
+                    LanguageForm.backbone[5].checked = true;
+                }
+                if (!(
+                LanguageForm.deflt[0].checked *
+                LanguageForm.deflt[1].checked *
+                LanguageForm.deflt[2].checked)) {
+                    // initialize to Optional
+                    LanguageForm.deflt[2].checked = true;
+                }
+                if (!(
+                LanguageForm.termseq[0].checked *
+                LanguageForm.termseq[1].checked *
+                LanguageForm.termseq[2].checked *
+                LanguageForm.termseq[3].checked *
+                LanguageForm.termseq[4].checked)) {
+                    // initialize to Polyadic
+                    LanguageForm.termseq[4].checked = true;
+                }
+                if (!(
+                LanguageForm.lng[0].checked *
+                LanguageForm.lng[1].checked *
+                LanguageForm.lng[2].checked)) {
+                    // initialize to English Abbreviated Names
+                    LanguageForm.lng[0].checked = true;
+                }
+            }            
             function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
@@ -1353,6 +1389,7 @@
     <form action="index.html" method="post">
       <div>
         <input class="button" type="button" value="Reset Form" onclick="window.location.reload(true)" />
+        <input class="button" type="button" value="Clear Form" onclick="clearForm(this.form)" />
         <input class="button" type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
         <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download RNC Schema</button></a>
         <a id="xschema_a_button" href="" class="button-off"><button id="xschema_button" type="button" class="button-off">Download XSD Anchor Schema</button></a>
