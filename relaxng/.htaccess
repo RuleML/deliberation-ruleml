@@ -1,13 +1,15 @@
 # Rewrite rules
 Options +FollowSymLinks
-#IndexIgnore  temp HEADER.html FOOTER.html README.html robots.txt *.php *.bak
-IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* schema_rnc.php schema_rnc_test.php phpinfo.php all_ordered.rnc all_unordered.rnc error_log
-
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* phpinfo.php all_ordered.rnc all_unordered.rnc error_log indep_valid_modules
+IndexOptions +FancyIndexing +SuppressSize +SuppressLastModified
+#IndexOptions IgnoreCase FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble
+AddDescription "MYNG engine" schema_rnc.php
+AddDescription "Experimental MYNG engine" schema_rnc_test.php
+AddDescription "Relax NG schema extension modules for RuleML" modules
 
 RewriteEngine On
 
 HeaderName HEADER.html
-#IndexOptions IgnoreCase FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=* SuppressHTMLPreamble SuppressSize SuppressLastModified
 
 
 Redirect /1.01/relaxng/propatom_cl.rnc http://deliberation.ruleml.org/1.01/relaxng/schema_rnc.php?backbone=x0&default=x5&termseq=x0&lng=x1&propo=x0&implies=x0&terms=x0&quant=x0&expr=x0&serial=x0
