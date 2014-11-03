@@ -49,23 +49,42 @@
                 }
             }
             function clearForm (LanguageForm) {
-                //Radio Buttons
+                //set Expressivity to Atomic Sentences
                 LanguageForm.backbone[0].checked = true;
                 clearOthers(LanguageForm);
                 checkAll(LanguageForm);
             }            
+            function fillForm (LanguageForm) {
+                //set Expressivity to FOL
+                LanguageForm.backbone[5].checked = true;
+                fillOthers(LanguageForm);
+                checkAll(LanguageForm);
+            }            
             function clearOthers (LanguageForm) {
-                //Radio Buttons
+                //Set other radio buttons
                 LanguageForm.deflt[1].checked  = true;
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
-                //Nondependent check boxes
+                //Clear other checkbox facets
                 clearPropo(LanguageForm);
                 clearImplies(LanguageForm);
                 clearTerms(LanguageForm);
                 clearQuant(LanguageForm);
                 clearExpr(LanguageForm);
                 clearSerial(LanguageForm);
+            }            
+            function fillOthers (LanguageForm) {
+                //Set other radio buttons
+                LanguageForm.deflt[2].checked  = true;
+                LanguageForm.termseq[4].checked = true;
+                LanguageForm.lng[0].checked = true;
+                //Clear other checkbox facets
+                fillPropo(LanguageForm);
+                fillImplies(LanguageForm);
+                fillTerms(LanguageForm);
+                fillQuant(LanguageForm);
+                fillExpr(LanguageForm);
+                fillSerial(LanguageForm);
             }            
             function clearPropo (LanguageForm) {
                 LanguageForm.propo0.checked = false;
@@ -121,19 +140,6 @@
                 LanguageForm.serial2.checked = false;
                 LanguageForm.serial3.checked = false;
                 checkAll(LanguageForm);
-            }            
-            function fillOthers (LanguageForm) {
-                //Radio Buttons
-                LanguageForm.deflt[2].checked  = true;
-                LanguageForm.termseq[4].checked = true;
-                LanguageForm.lng[0].checked = true;
-                //Nondependent check boxes
-                fillPropo(LanguageForm);
-                fillImplies(LanguageForm);
-                fillTerms(LanguageForm);
-                fillQuant(LanguageForm);
-                fillExpr(LanguageForm);
-                fillSerial(LanguageForm);
             }            
             function fillPropo (LanguageForm) {
                 LanguageForm.propo0.checked = true;
@@ -1491,13 +1497,13 @@
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
       <h2> Instructions</h2> Make selections from the form below. Click to Download the generated RNC schema or an approximating XSD anchor schema. To view the Relax NG driver schema, click "Generate Schema", then scroll down.  
-      To reset the form to the default (supremum) values, click "Reset Form". 
-      To clear the form to specify a language with the fewest included modules, click "Clear Form". 
+      To fill the form to the initial (supremum) values, click "Fill Form". 
+      To clear the form, specifying a language with the fewest included modules, click "Clear Form". 
       <br /><br />
     </div>
     <form action="index.html" method="post">
       <div>
-        <input class="button" type="button" value="Reset Form" onclick="window.location.reload(true)" />
+        <input class="button" type="button" value="Fill Form" onclick="fillForm(this.form)" />
         <input class="button" type="button" value="Clear Form" onclick="clearForm(this.form)" />
         <input class="button" type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
         <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download RNC Schema</button></a>
