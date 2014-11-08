@@ -24,7 +24,7 @@ direction.attrib.def =
   
   ##  An attribute indicating the intended direction of an implication rule's (<Implies>) inferencing. 
   ## It has a neutral default value of "bidirectional". Other allowed values are "forward" and "forward".
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-@direction
+  ## See http://ruleml.org/1.02/glossary/#gloss-@direction
   attribute direction { direction.value }
 direction.value |=
   direction_default.value | direction_non-default.value
@@ -39,5 +39,5 @@ mapDirection.attrib.def =
   ##  An attribute indicating the intended direction of implication rule (<Implies>) inferencing of elements 
   ## falling within its scope (i.e. child elements). See attribute mapping for more details. This attribute has a 
   ## neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapDirection
+  ## See http://ruleml.org/1.02/glossary/#gloss-@mapDirection
   attribute mapDirection { direction.value }

@@ -21,7 +21,7 @@ Rulebase-node.choice |= Rulebase.Node.def
 Rulebase.Node.def =
   
   ## A collection of rules that can be ordered or unordered, without or with duplicates. 
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-Rulebase
+  ## See http://ruleml.org/1.02/glossary/#gloss-Rulebase
   element Rulebase {
     (Rulebase-datt.choice & reRulebase.attlist), Rulebase.header, Rulebase.main
   }
@@ -43,7 +43,7 @@ formula_Rulebase.edge.def =
   
   ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
+  ## See http://ruleml.org/1.02/glossary/#gloss-formula
   ## Within Rulebase ...
   element formula { formula_Rulebase.attlist? & formula_Rulebase.content }
 formula_Rulebase.content |= RulebaseFormula.choice

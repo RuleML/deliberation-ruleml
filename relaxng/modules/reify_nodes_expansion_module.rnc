@@ -22,7 +22,7 @@ Reify-node.Node.def =
   ## It allows any one RuleML Node tag available within the current sublanguage as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-Reify
+  ## See http://ruleml.org/1.02/glossary/#gloss-Reify
   element Reify { Reify-node.attlist?, Reify-node.content }
 
 Reify-node.content |= Node.choice?

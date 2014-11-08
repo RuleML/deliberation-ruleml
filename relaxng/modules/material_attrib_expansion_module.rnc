@@ -25,7 +25,7 @@ material-att.choice |= material.attrib.def
 material.attrib.def =
     
     ##  An attribute indicating the kind of an implication rule (<Implies>). Allowed values are "yes" (the default) and "no".
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@material
+    ## See http://ruleml.org/1.02/glossary/#gloss-@material
     attribute material { material.value }
 material.value |= material_default.value | material_non-default.value
 ## FIXME: move all such statements into initialization module.
@@ -38,5 +38,5 @@ mapMaterial.attrib.def =
     
     ##  An attribute indicating the kind of all implication rules (<Implies>) falling within its scope (i.e. child elements). 
     ##  Allowed values are "yes" (the default) and "no".
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapMaterial
+    ## See http://ruleml.org/1.02/glossary/#gloss-@mapMaterial
     attribute mapMaterial { material.value }

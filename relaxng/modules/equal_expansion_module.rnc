@@ -30,7 +30,7 @@ Equal-node.choice |= Equal.Node.def
 Equal.Node.def =
   
   ## <Equal>: an equation between two terms. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Equal
+  ## http://ruleml.org/1.02/glossary/#gloss-Equal
   element Equal {
     (Equal-datt.choice & reEqual.attlist),
     Equal.header,
@@ -46,7 +46,7 @@ leftSide-edge.choice |= left.edge.def
 left.edge.def =
   
   ## <left>: The left-hand side of an equation. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-left
+  ## http://ruleml.org/1.02/glossary/#gloss-left
   element left { left.attlist? & left.content }
 
 ## The left-hand side role in an equation is filled by a term.
@@ -57,7 +57,7 @@ rightSide-edge.choice |= right.edge.def
 right.edge.def =
   
   ## <right>: The right-hand side of an equation. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-right
+  ## http://ruleml.org/1.02/glossary/#gloss-right
   element right { right.attlist? & right.content }
 
 ## The right-hand side role in an equation is filled by a term.

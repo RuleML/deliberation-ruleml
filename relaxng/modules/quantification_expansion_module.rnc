@@ -32,7 +32,7 @@ Forall.Node.def =
     ## Explicit universal quantifier. It consists of a sequence of one or more 
     ## variables (<Var>), each optionally surrounded by a <declare> role, and a
     ## logical formula (optionally surrounded by a <formula> role).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-Forall
+    ## See http://ruleml.org/1.02/glossary/#gloss-Forall
     element Forall { (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main }
 ## The attribute list of the universal quantification formula 
 ##will accept a scoped closure attribute at full first-order logic.
@@ -52,7 +52,7 @@ Exists.Node.def =
     ## Explicit existential quantifier. It consists of one or more variables (<Var>),
     ## each optionally surrounded by a <declare> role, followed by a logical formula 
     ## (optionally surrounded by a <formula> role).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-Exists
+    ## See http://ruleml.org/1.02/glossary/#gloss-Exists
     element Exists { (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main }
 ## The attribute list of the existential quantification formula 
 ## will accept a scoped closure attribute at full first-order logic.
@@ -73,7 +73,7 @@ declare-edge.choice |= declare.edge.def
 declare.edge.def =
     
     ## A role used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-declare
+    ## See http://ruleml.org/1.02/glossary/#gloss-declare
     element declare { declare.attlist? & declare.content }
 
 ## a declaration element contains a single quantifiable term
@@ -85,7 +85,7 @@ formula_Forall.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
+    ## See http://ruleml.org/1.02/glossary/#gloss-formula
     ## within Forall...
     element formula { formula_Forall.attlist? & formula_Forall.content }
 
@@ -114,7 +114,7 @@ formula_Exists.edge.def =
     
     ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-formula
+    ## See http://ruleml.org/1.02/glossary/#gloss-formula
     ## Within Exists...
     element formula { formula_Exists.attlist? & formula_Exists.content }
 

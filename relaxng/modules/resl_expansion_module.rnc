@@ -22,7 +22,7 @@ resl.edge.def =
     
     ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
     ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-resl
+    ## See http://ruleml.org/1.02/glossary/#gloss-resl
     element resl { resl.attlist? & resl.content }
 
 ## The content model of a slotted rest variable is a single term.

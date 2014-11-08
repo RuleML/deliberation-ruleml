@@ -28,7 +28,7 @@ slotTermsForExpressions.sequence |= slot-edge.choice*
 slot-edge.choice |= slot.edge.def
 slot.edge.def =
     
-    ## A user-defined slot (property). See http://www.ruleml.org/1.0/glossary/#gloss-slot
+    ## A user-defined slot (property). See http://ruleml.org/1.02/glossary/#gloss-slot
     element slot { (slot-datt.choice & reslot.attlist), slot.content }
 
 ## The slot element accepts optional cardinality and  weight attributes. 

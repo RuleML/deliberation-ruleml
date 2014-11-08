@@ -23,7 +23,7 @@ start |= notAllowed
 Data_any.Node.choice |=
   
   ## <Data>: May contain arbitrary simple or complex content. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Data
+  ## http://ruleml.org/1.02/glossary/#gloss-Data
   element Data {(Data-datt.choice & reData.attlist) &
    attribute xsi:type { xsd:QName "xs:anyType" } &
   text & anyElement.choice* }

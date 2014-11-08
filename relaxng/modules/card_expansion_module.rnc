@@ -16,7 +16,7 @@ start |= notAllowed
 ## an extension point for alternate spellings and internationalization of the cardinality attribute name.  
 cardinality-att.choice |= card.attrib.def
 
-## An attribute optionally specifying a <slot>'s cardinality. See http://www.ruleml.org/1.0/glossary/#gloss-card
+## An attribute optionally specifying a <slot>'s cardinality. See http://ruleml.org/1.02/glossary/#gloss-card
 card.attrib.def =
     
     ## the cardinality of a slot.

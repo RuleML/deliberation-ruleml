@@ -22,7 +22,7 @@ val.attrib.def =
     
     ## This attribute is used to indicate whether a function (<Fun>) is deterministic or non-deterministic. 
     ## It has two values: "1" (deterministic: exactly one) and "0.." (set-valued: zero or more).    
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@val
+    ## See http://ruleml.org/1.02/glossary/#gloss-@val
     attribute val { val.value }
 val.value |= val_default.value | val_non-default.value
 ## FIXME: move all such statements into initialization module.

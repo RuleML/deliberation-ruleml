@@ -23,7 +23,7 @@ Plex_Any.Node.def =
     ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
     ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
     ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-    ##        See http://www.ruleml.org/1.0/glossary/#gloss-Plex
+    ##        See http://ruleml.org/1.02/glossary/#gloss-Plex
     ## within Atom
     element Plex { (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_Any.main }
 
@@ -43,7 +43,7 @@ Plex_repo.Node.def =
     ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
     ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
     ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-    ##        See http://www.ruleml.org/1.0/glossary/#gloss-Plex
+    ##        See http://ruleml.org/1.02/glossary/#gloss-Plex
     ## within repo
     element Plex { (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_repo.main }
 
@@ -59,7 +59,7 @@ Plex_resl.Node.def =
     ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
     ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
     ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-    ##        See http://www.ruleml.org/1.0/glossary/#gloss-Plex
+    ##        See http://ruleml.org/1.02/glossary/#gloss-Plex
     ## within resl
     element Plex { (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_resl.main }
 

@@ -23,7 +23,7 @@ oriented-att.choice |= oriented.attrib.def
 oriented.attrib.def =
     
     ## An attribute indicating whether an equation (<Equal>) is oriented (directed) or unoriented (symmetric).    
-    ##    See http://www.ruleml.org/1.0/glossary/#gloss-@oriented
+    ##    See http://ruleml.org/1.02/glossary/#gloss-@oriented
     attribute oriented { oriented.value }
 oriented.value |= oriented_default.value | oriented_non-default.value
 ## FIXME: move all such statements into initialization module.
