@@ -4,10 +4,11 @@ deliberation-ruleml
  This repository contains:
 * schemas in Relax NG and XSD for Deliberation RuleML Version 1.02
 * XSLT stylesheets to normalize Deliberation RuleML Version 1.02
-* schemas for the MYNG modular design pattern
-* example RuleML files
-* PHP scripts for MYNG
-* NVDL scripts for MYNG
+* schemas for the MYNG 1.02 modular design pattern
+* example RuleML 1.02 files
+* PHP scripts for MYNG 1.02
+* NVDL scripts for MYNG 1.02
+* bash scripts for building the RuleML 1.02 release
  
 Prerequisites
 -------------
@@ -33,7 +34,7 @@ You should replace "greenTara" with your Github user name.
 
 3. Enter the local repository
 
-    $ cd ruleml-website
+    $ cd deliberation-ruleml
 4. Add your forked repository as a read-write remote.([2])
 
     $ git remote add myFork https://github.com/greenTara/deliberation-ruleml.git
@@ -49,11 +50,11 @@ You should replace "greenTara" with your Github user name.
 
 Branching to Resolve Issues
 ---------------------------
-1. Switch to your master branch, if necessary.
+1. Switch the branch for the appropriate version, if necessary.
 
-    $ git checkout master
+    $ git checkout 1.02
 
-2. Update your master branch from the ruleml remote.([2])
+2. Update your 1.02 branch from the ruleml remote.([2])
     
     $ git pull
     
@@ -62,12 +63,12 @@ Branching to Resolve Issues
     
 3. Select an issue from the issue tracker to work on, or create a new issue.
 
-4. Create and switch to a new branch in your local repo, with name, say, Issue#45.([3])
+4. Create and switch to a new branch in your local repo, with name, say, issue45.([3])
 
-    $ git checkout -b Issue#45 
+    $ git checkout -b issue45 
 
 5. Modify your local clone:  
-  a) Make your changes in your usual working environment (plain text eclipse, oXygen, ...), and test your modifications  
+  a) Make your changes in your usual working environment (plain text editor, eclipse, oXygen, ...), and test your modifications  
   b) Optional: If you add or delete files or folders, use  
 
     $ git add -A
@@ -80,34 +81,26 @@ Branching to Resolve Issues
     
 6. When your fix is finished (or far enough along that you want some review), 
   update your repository (again) from the RuleML repo online.([2])
-  This time, instead of using "pull" (which is a shortcut for "fetch-merge"), we will use 
-  "fetch-rebase".
-  Rebase is an alternative to merge that re-writes history regarding the order and granularity of commits[5].
-
+  
   a) Fetch from the central RuleML repository:
   
-    $ git fetch
-    
-  b) If nothing was fetched, and you made only one or a few commits, you may continue with step 4.
-   Otherwise, rebase* interactively:
-   
-    $ git rebase -i
+    $ git pull
     
 7. Push your commits to a new branch in your remote fork.([2])
 
-    $ git push myFork Issue#45
+    $ git push myFork issue45
     
 8. Login to your Github account  and perform the following:  
   a) verify that everything got uploaded OK  
   b) submit a pull request to RuleML/deliberation-ruleml from your Github account. 
-     If the RuleML repo already has a branch for Issue#45, submit your pull-request to that branch,
-     otherwise submit to master.
+     If the RuleML repo already has a branch for issue45, submit your pull-request to that branch,
+     otherwise submit to the 1.02 branch.
 
 9. The RuleML maintainer and/or other developers will make comments on your pull-request if 
 anything needs to be changed.
-You can push new commits to your Issue#45 branch and they will automatically be added to the pull-request.
-If your submission is accepted, the RuleML/Issue#45 branch will be merged with RuleML/master.
-It will then be propagated on the master branch to all forks when Step #2 or Step #6 is 
+You can push new commits to your issue45 branch and they will automatically be added to the pull-request.
+If your submission is accepted, the RuleML/issue45 branch will be merged with RuleML/1.02, or possibly a later version.
+It will then be propagated to all forks when Step #2 or Step #6 is 
 executed by any user.
 
 [1]:http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository
