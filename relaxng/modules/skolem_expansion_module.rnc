@@ -27,7 +27,7 @@ Skolem.Node.def =
 ## Skolems optionally accept the attribute pattern of objects with user-defined types.
 reSkolem.attlist &= Type.attlist?
 
-## The content model for skolems is text.
-Skolem.content |= text
+## The content model for skolems is the XSD datatype token.
+Skolem.content |= xsd:token
 
 
