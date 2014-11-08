@@ -12,7 +12,7 @@ deliberation-ruleml
  
 Prerequisites
 -------------
-1. To contribute to this repository, You must have Git installed on your system. See [7].
+1. To contribute to this repository, You must have Git installed on your system. See [6].
 
 Training
 --------
