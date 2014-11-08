@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../relaxng/test/datalogplus_mid_relaxed.rnc"?>
 <RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_mid.xsd"
  xmlns="http://ruleml.org/spec"
  xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- a syntactic example rulebase for testing the RuleML Datalog Plus sublanguage -->

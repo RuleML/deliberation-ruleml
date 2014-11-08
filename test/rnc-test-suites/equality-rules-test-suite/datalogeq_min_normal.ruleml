@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../relaxng/test/datalogeq_min_normal.rnc"?>
-<RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd"
- xmlns="http://ruleml.org/spec">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
   <act index="1">
     <Assert mapMaterial="yes" mapDirection="bidirectional">
