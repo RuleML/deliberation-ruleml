@@ -61,7 +61,7 @@ Branching to Resolve Issues
     There should be no conflicts from this pull, because you have been following the
     workflow described here and doing all your development in temporary branches.
     
-3. Select an issue from the issue tracker to work on, or create a new issue.
+3. Select an issue from the issue tracker ([8]) to work on, or create a new issue.
 
 4. Create and switch to a new branch in your local repo, with name, say, issue45.([3])
 
@@ -110,4 +110,5 @@ executed by any user.
 [5]:http://git-scm.com/book/en/Git-Branching-Rebasing
 [6]:http://git-scm.com/book/en/Getting-Started-Git-Basics
 [7]:http://git-scm.com/downloads
+[8]:https://github.com/RuleML/issues-ruleml
 
