@@ -12,7 +12,7 @@
   <xsl:template match="xs:schema[@targetNamespace='http://ruleml.org/spec']">
         <xsl:copy>
           <xsl:apply-templates select="@*"/>
-          <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.02/xsd/xml.xsd"/>
+          <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/xml.xsd"/>
           <xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/>
           <xsl:apply-templates select="text()|processing-instruction()|*[ name()!='xs:import']"/>
         </xsl:copy>

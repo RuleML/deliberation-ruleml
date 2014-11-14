@@ -25,7 +25,7 @@ objectIdentifier-edge.choice |= oid.edge.def
 oid.edge.def =
   
   ## <oid>: a label for Node elements. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-oid
+  ## http://ruleml.org/1.02/glossary/#gloss-oid
   element oid { oid.attlist? & oid.content }
 
 ## The object descriptor content model consists of any single term.

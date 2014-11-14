@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Basic Terms" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, term, individual" ]
 dc:description [ "The expansion module for basic terms." ]
@@ -31,7 +31,7 @@ positionalArgument-edge.choice |= arg.edge.def
 arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-arg
+  ## http://ruleml.org/1.02/glossary/#gloss-arg
   element arg {
     
     ## The attribute @index is required for the positional argument role (property).
@@ -45,7 +45,7 @@ index-attrib.choice |= index.attrib.def
 index.attrib.def =
   
   ## A required attribute for specifying the position of a positional argument (<arg>) within a logical atom (<Atom>).
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-index
+  ## See http://ruleml.org/1.02/glossary/#gloss-index
   attribute index { index.value }
 index.value |= xsd:positiveInteger
 
@@ -94,7 +94,7 @@ Individual-node.choice |= Ind.Node.def
 Ind.Node.def =
   
   ## <Ind>: an individual constant. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Ind
+  ## http://ruleml.org/1.02/glossary/#gloss-Ind
   element Ind { (Ind-datt.choice & reInd.attlist), Ind.content }
 
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.

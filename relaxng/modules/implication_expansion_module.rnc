@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Implications" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
@@ -34,7 +34,7 @@ Implies-node.choice |= Implies.Node.def
 Implies.Node.def =
   
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Implies
+  ## http://ruleml.org/1.02/glossary/#gloss-Implies
   element Implies { (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main }
 
 ## Implications may have an optional closure attribute 
@@ -64,7 +64,7 @@ body_Implies.name.choice |= body_Implies.edge.def
 body_Implies.edge.def =
   
   ## <if>: contains the premise of the implication. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-if
+  ## http://ruleml.org/1.02/glossary/#gloss-if
   ## FIXME: replace body_ with if_ and head_ with then_
   element if { body_Implies.attlist? & body_Implies.content }
 
@@ -97,7 +97,7 @@ head_Implies.name.choice |= head_Implies.edge.def
 head_Implies.edge.def =
   
   ## <then>: contains the conclusion of the implication. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-then
+  ## http://ruleml.org/1.02/glossary/#gloss-then
   element then { head_Implies.attlist? & head_Implies.content }
 
 ## The conclusion of an implication consists of a single formula.

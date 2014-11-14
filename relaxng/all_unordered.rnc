@@ -73,7 +73,7 @@ include "modules/reify_nodes_expansion_module.rnc" inherit = ruleml {start |= no
 include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
+include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

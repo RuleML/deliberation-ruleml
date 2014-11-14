@@ -48,6 +48,155 @@
                     LanguageForm.lng[0].checked = true;
                 }
             }
+            function clearForm (LanguageForm) {
+                //set Expressivity to Atomic Sentences
+                LanguageForm.backbone[0].checked = true;
+                clearOthers(LanguageForm);
+                checkAll(LanguageForm);
+            }            
+            function fillForm (LanguageForm) {
+                //set Expressivity to FOL
+                LanguageForm.backbone[5].checked = true;
+                fillOthers(LanguageForm);
+                checkAll(LanguageForm);
+            }            
+            function clearOthers (LanguageForm) {
+                //Set other radio buttons
+                LanguageForm.deflt[1].checked  = true;
+                LanguageForm.termseq[0].checked = true;
+                LanguageForm.lng[0].checked = true;
+                //Clear other checkbox facets
+                clearPropo(LanguageForm);
+                clearImplies(LanguageForm);
+                clearTerms(LanguageForm);
+                clearQuant(LanguageForm);
+                clearExpr(LanguageForm);
+                clearSerial(LanguageForm);
+            }            
+            function fillOthers (LanguageForm) {
+                //Set other radio buttons
+                LanguageForm.deflt[2].checked  = true;
+                LanguageForm.termseq[4].checked = true;
+                LanguageForm.lng[0].checked = true;
+                //Clear other checkbox facets
+                fillPropo(LanguageForm);
+                fillImplies(LanguageForm);
+                fillTerms(LanguageForm);
+                fillQuant(LanguageForm);
+                fillExpr(LanguageForm);
+                fillSerial(LanguageForm);
+            }            
+            function clearPropo (LanguageForm) {
+                LanguageForm.propo0.checked = false;
+                LanguageForm.propo1.checked = false;
+                LanguageForm.propo2.checked = false;
+                LanguageForm.propo3.checked = false;
+                LanguageForm.propo4.checked = false;
+                LanguageForm.propo5.checked = false;
+                LanguageForm.propo6.checked = false;
+                LanguageForm.propo7.checked = false;
+                LanguageForm.propo8.checked = false;
+                LanguageForm.propo9.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearImplies (LanguageForm) {
+                LanguageForm.implies0.checked = false;
+                LanguageForm.implies1.checked = false;
+                LanguageForm.implies2.checked = false;
+                LanguageForm.implies3.checked = false;
+                LanguageForm.implies4.checked = false;
+                LanguageForm.implies5.checked = false;
+                LanguageForm.implies6.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearTerms (LanguageForm) {
+                LanguageForm.terms0.checked = false;
+                LanguageForm.terms1.checked = false;
+                LanguageForm.terms2.checked = false;
+                LanguageForm.terms3.checked = false;
+                LanguageForm.terms4.checked = false;
+                LanguageForm.terms5.checked = false;
+                LanguageForm.terms8.checked = false;
+                LanguageForm.terms9.checked = false;
+                LanguageForm.terms10.checked = false;
+                LanguageForm.terms11.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearQuant (LanguageForm) {
+                LanguageForm.quant0.checked = false;
+                LanguageForm.quant1.checked = false;
+                LanguageForm.quant2.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearExpr (LanguageForm) {
+                LanguageForm.expr0.checked = false;
+                LanguageForm.expr1.checked = false;
+                LanguageForm.expr2.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function clearSerial (LanguageForm) {
+                LanguageForm.serial0.checked = false;
+                LanguageForm.serial1.checked = false;
+                LanguageForm.serial2.checked = false;
+                LanguageForm.serial3.checked = false;
+                checkAll(LanguageForm);
+            }            
+            function fillPropo (LanguageForm) {
+                LanguageForm.propo0.checked = true;
+                LanguageForm.propo1.checked = true;
+                LanguageForm.propo2.checked = true;
+                LanguageForm.propo3.checked = true;
+                LanguageForm.propo4.checked = true;
+                LanguageForm.propo5.checked = true;
+                LanguageForm.propo6.checked = true;
+                LanguageForm.propo7.checked = true;
+                LanguageForm.propo8.checked = true;
+                LanguageForm.propo9.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillImplies (LanguageForm) {
+                LanguageForm.implies0.checked = true;
+                LanguageForm.implies1.checked = true;
+                LanguageForm.implies2.checked = true;
+                LanguageForm.implies3.checked = true;
+                LanguageForm.implies4.checked = true;
+                LanguageForm.implies5.checked = true;
+                LanguageForm.implies6.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillTerms (LanguageForm) {
+                LanguageForm.terms0.checked = true;
+                LanguageForm.terms1.checked = true;
+                LanguageForm.terms2.checked = true;
+                LanguageForm.terms3.checked = true;
+                LanguageForm.terms4.checked = true;
+                LanguageForm.terms5.checked = true;
+                LanguageForm.terms8.checked = true;
+                LanguageForm.terms9.checked = true;
+                LanguageForm.terms10.checked = true;
+                LanguageForm.terms11.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillQuant (LanguageForm) {
+                LanguageForm.quant0.checked = true;
+                LanguageForm.quant1.checked = true;
+                LanguageForm.quant2.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillExpr (LanguageForm) {
+                LanguageForm.expr0.checked = true;
+                LanguageForm.expr1.checked = true;
+                LanguageForm.expr2.checked = true;
+                checkAll(LanguageForm);
+            }            
+            function fillSerial (LanguageForm) {
+                LanguageForm.serial0.checked = true;
+                LanguageForm.serial1.checked = true;
+                LanguageForm.serial2.checked = true;
+                LanguageForm.serial3.checked = true;
+                checkAll(LanguageForm);
+            }            
+
             function checkAll(LanguageForm) {
                 // Sequences are allowed if positional arguments,
                 // object identifiers, or slots are allowed
@@ -1347,12 +1496,15 @@
     <h1>MYNG 1.02 - the Deliberation RuleML Schema Selection Form</h1>
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
-      <h2> Instructions</h2> Make selections from the form below. Click to Download the generated RNC schema or an approximating XSD anchor schema. To view the Relax NG driver schema, click "Generate Schema", then scroll down.  To reset the form to
-      the default (supremum) values, click "Reset Form". <br /><br />
+      <h2> Instructions</h2> Make selections from the form below. Click to Download the generated RNC schema or an approximating XSD anchor schema. To view the Relax NG driver schema, click "Generate Schema", then scroll down.  
+      To fill the form to the initial (supremum) values, click "Fill Form". 
+      To clear the form, specifying a language with the fewest included modules, click "Clear Form". 
+      <br /><br />
     </div>
     <form action="index.html" method="post">
       <div>
-        <input class="button" type="button" value="Reset Form" onclick="window.location.reload(true)" />
+        <input class="button" type="button" value="Fill Form" onclick="fillForm(this.form)" />
+        <input class="button" type="button" value="Clear Form" onclick="clearForm(this.form)" />
         <input class="button" type="button" value="Generate Schema" onclick="refreshSchema(this.form)" />
         <a id="schema_a_button" href="" class="button-off"><button id="schema_button" type="button" class="button-off">Download RNC Schema</button></a>
         <a id="xschema_a_button" href="" class="button-off"><button id="xschema_button" type="button" class="button-off">Download XSD Anchor Schema</button></a>
@@ -1381,9 +1533,27 @@
                 <li>
                   <input type="radio" name="backbone" onclick="checkAll(this.form)" /> Full
                   First-Order Logic </li>
-              </ol>
+              <li>
+                <input class="buttonOther" type="button" value="Clear Others" onclick="clearOthers(this.form)" 
+                  title="Uncheck all boxes and switch to minimal alternative in other facets"
+                />
+              </li>
+              <li>
+                <input class="buttonOther" type="button" value="Fill Others" onclick="fillOthers(this.form)" 
+                  title="Check all enabled boxes and switch to maximal alternative in other facets"
+                />
+              </li>
+            </ol>
             </td>
             <td class="facet"> <span class="facet-head">Propositional <br /> Options<br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillPropo(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearPropo(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="propo0" onclick="checkAll(this.form)"
                 checked="checked" /> IRIs </li>
               <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
@@ -1415,6 +1585,14 @@
             
             
             <td class="facet"> <span class="facet-head">Implication <br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillImplies(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearImplies(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="implies0" onclick="checkAll(this.form)"
                 checked="checked" /> Equivalences </li>
               <li>
@@ -1454,6 +1632,14 @@
             </ol>
             </td>
             <td class="facet"> <span class="facet-head">Term <br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillTerms(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearTerms(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="terms0" onclick="checkAll(this.form)"
                 checked="checked" /> Object Identifiers </li>
               <li>
@@ -1487,7 +1673,15 @@
             
             
             <td class="facet"> <span class="facet-head">Quantification<br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillQuant(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearQuant(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
+              <li><input type="checkbox" name="quant0" onclick="checkAll(this.form)"
                     checked="checked" /> Implicit Closure </li>
                 <li>
                   <input type="checkbox" name="quant1" onclick="checkAll(this.form)"
@@ -1498,7 +1692,15 @@
               </ol>
             </td>
             <td class="facet"> <span class="facet-head">Expression<br /> Options <br /></span> (Check Zero or More) <ol>
-                <li><input type="checkbox" name="expr0" onclick="checkAll(this.form)"
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillExpr(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearExpr(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
+              <li><input type="checkbox" name="expr0" onclick="checkAll(this.form)"
                     checked="checked" /> Generalized Lists </li>
                 <li>
                   <input type="checkbox" name="expr1" onclick="checkAll(this.form)"
@@ -1509,6 +1711,14 @@
               </ol>
             </td>
             <td class="facet"> <span class="facet-head">Serialization<br /> Options <br /></span> (Check Zero or More) <ol>
+              <li>
+                <input class="buttonFacet" type="button" value="Check All" onclick="fillSerial(this.form)" 
+                  title="Check all enabled boxes in this facet"
+                />
+                <input class="buttonFacet" type="button" value="Uncheck All" onclick="clearSerial(this.form)" 
+                  title="Uncheck all enabled boxes in this facet"
+                />
+              </li>
               <li><input type="checkbox" name="serial0" onclick="checkAll(this.form)"
                 checked="checked" /> Unordered Groups </li>
               <li>

@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 default namespace this = inherit
 
 dc:title [ "RuleML meta-logic Components" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
@@ -25,7 +25,7 @@ Entails.Node.def =
     
     ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
     ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-Entails 
+    ## See http://ruleml.org/1.02/glossary/#gloss-Entails 
     element Entails { (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main }
 
 ## Logical entailments accept the header pattern common to Nodes.
@@ -44,7 +44,7 @@ body_Entails.edge.def =
     
     ## The if of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" part of the rule. 
     ## Also used as the "antecedent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-if
+    ## See http://ruleml.org/1.02/glossary/#gloss-if
     ##  Within Entails...
     element if { body_Entails.attlist? & body_Entails.content }
 
@@ -57,7 +57,7 @@ head_Entails.edge.def =
     
     ## The then of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
     ## Also used as the "consequent" part of an entailment (<Entails>).
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-then
+    ## See http://ruleml.org/1.02/glossary/#gloss-then
     ##  within Entails
     element then { head_Entails.attlist? & head_Entails.content }
 

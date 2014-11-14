@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Atomic Formulas" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
 dc:description [ "The expansion module for atomic formulas." ]
@@ -30,7 +30,7 @@ Atom-node.choice |= Atom.Node.def
 Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Atom
+  ## http://ruleml.org/1.02/glossary/#gloss-Atom
   element Atom { (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main }
 
 ## Atomic formulas may have an optional closure attribute.
@@ -45,7 +45,7 @@ operatorForAtoms-edge.choice |= op_Atom.edge.def
 op_Atom.edge.def =
   
   ## <op>: edge (role) element for the predicate of an atomic formula. See
-  ## http://www.ruleml.org/1.0/glossary/#gloss-op
+  ## http://ruleml.org/1.02/glossary/#gloss-op
   element op { op_Atom.attlist? & op_Atom.content }
 
 ## The operator role in the context of an atomic formula is filled by a predicate.
@@ -58,7 +58,7 @@ Relation-node.choice |= Rel.Node.def
 Rel.Node.def =
   
   ## <Rel>: a category of name used as the predicate of an atomic formula. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Rel
+  ## http://ruleml.org/1.02/glossary/#gloss-Rel
   element Rel { (Rel-datt.choice & reRel.attlist), Rel.content }
 
 ## Relations accept the optional attribute pattern of resources.
