@@ -1,26 +1,48 @@
 #!/bin/bash
-# Prerequisites:
-#   Installation of Java and Jing/Trang. See https://code.google.com/p/jing-trang/
-# Note: change the APP_HOME path according to your path to the Jing/Trang library
-APP_HOME=/Users/taraathan/Library/
-LIB=${APP_HOME}Java/Extensions/
-CP1=${LIB}jing-20091111/jing.jar
-CP2=${LIB}trang-20091111/trang.jar
-
+# Prerequisites:see aux_rnc2rng.sh
+shopt -s nullglob
+BASH_HOME=~/Repositories/RuleML/Github/deliberation-ruleml/bash
+RNC_HOME=${BASH_HOME}/../relaxng
+TMP_HOME=${RNC_HOME}/tmp/modules
 # convert all MYNG modules to RNG in preparation
 # for validation against the schema for the design pattern
-cd ../relaxng/modules/
-rm ../tmp/modules/*
-rmdir ../tmp/modules
-mkdir ../tmp/modules
-for file in *.rnc 
+#
+# creates the output directories if they don't exist, and clears them of RNC files, in case they already have contents
+mkdir -p "${TMP_HOME}"
+rm "${TMP_HOME}/"*.rng >> /dev/null 2>&1
+
+# applies the auxiliary script aux_rnc2rng.sh to all RNC expansion modules
+for file in "${RNC_HOME}/modules/"*.rnc 
 do 
-  java -jar "${CP2}"  "${file}" "../tmp/modules/${file}.rng"
+  #filename=$(basename "$file")
+  #extension="${filename##*.}"
+  #filenameNE="${filename%.*}"
+  ${BASH_HOME}/aux_rnc2rng.sh "${file}" "${TMP_HOME}"
+   if [ "$?" -ne "0" ]; then
+     echo "Conversion Failed for " "${file}"
+     exit 1
+   fi
 done
+rngfiles=("${TMP_HOME}/"*.rng) # array initialization
+numrng=${#rngfiles[@]}
+#echo ${numrng}
+if [ "${numrng}" == "0" ]; then
+  echo "No Conversion"
+  exit 1
+fi
 # Validate against ../designPattern/include_expansion_schema.rng
-#cd ../tmp/modules/
-#for file in *.rng
-#do
-#  java -jar "${CP1}" "../designPattern/include_expansion_schema.rng"  "${file}"
-#done
-cd ../../bash
+for file in "${TMP_HOME}/"*.rng
+do
+  ${BASH_HOME}/aux_valdesign.sh "${file}" >> /dev/null 2>&1
+   if [ "$?" -ne "0" ]; then
+     echo "Validation Failed for " "${file}"
+     exit 1
+   fi
+done
+
+# remove the temporary files and directory
+function finish {
+  rm ${TMP_HOME}/*
+  rmdir ${TMP_HOME}
+}
+trap finish EXIT 
