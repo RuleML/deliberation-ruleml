@@ -79,8 +79,8 @@ Entails.main |=
 ## an optional header element sequence as defined in Node.header, interleaved with optional
 ## object identifier and degree
 ## This pattern can be translated accurately into XSD using xs:any, but is not correctly translated by the Trang software.
+TruthValuedConnective.header &= (Node.header? & degree-edge.choice?)?
 Atom.header &= (Node.header? & objectIdentifier-edge.choice? & degree-edge.choice?)?
-Equal.header &= (Node.header? & degree-edge.choice?)?
 Expr.header &= (Node.header? & objectIdentifier-edge.choice?)?
 # 
 # 

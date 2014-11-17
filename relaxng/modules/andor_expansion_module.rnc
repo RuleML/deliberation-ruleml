@@ -69,9 +69,9 @@ reAnd-Query.attlist &= closure-att.choice?
 reAnd-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Conjunctions accept the header patter common to Nodes.
-And.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Conjunctions accept the header patter common to truth-valued connectives.
+And.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 ## The main section of the conjunction content model contains zero or more formulas.
 And.main |= formula_And-edge.choice*
@@ -133,9 +133,9 @@ reOr-Query.attlist &= closure-att.choice?
 reOr-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Conjunctions accept the header patter common to Nodes.
-Or.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Disjunctions accept the header patter common to truth-valued connectives.
+Or.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 ## The main section of the disjunction content model contains zero or more formulas.
 Or.main |= formula_Or-edge.choice*

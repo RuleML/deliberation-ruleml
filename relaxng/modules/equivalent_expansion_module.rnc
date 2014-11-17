@@ -40,9 +40,10 @@ reEquivalent.attlist &= closure-att.choice?
 reEquivalent.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Equivalences optionally accept the header pattern common to Nodes.
-Equivalent.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Equivalences accept the header patter common to truth-valued connectives.
+Equivalent.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
+
 
 ## the main content model of equivalances consists of two "torso" formulas
 Equivalent.main |= torso-edge.choice, torso-edge.choice

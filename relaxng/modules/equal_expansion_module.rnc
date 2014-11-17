@@ -37,6 +37,9 @@ Equal.Node.def =
     Equal.main
   }
 
+## Equations accept the header of truth-valued connectives
+Equal.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 ## Equations contain a pair of terms, a left-hand side and a right-hand side.
 Equal.main |= leftSide-edge.choice, rightSide-edge.choice
