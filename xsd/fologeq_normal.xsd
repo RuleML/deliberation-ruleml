@@ -870,9 +870,18 @@
     <xs:sequence>
       <xs:element name="then">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -883,9 +892,18 @@
     <xs:sequence>
       <xs:element name="if">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+            <xs:element ref="spec:Exists"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
