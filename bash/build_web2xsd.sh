@@ -49,9 +49,5 @@ rm ${XSD_HOME}/xml.xsd
 # @@@
 # Validate Examples in Relax NG Test Suites
 exit
-${BASH_HOME}/batch_xsd-test-suite.sh
-if [ "$?" -ne "0" ]; then
-     echo "Local Testing of XSD Schemas Failed"
-     exit 1
-fi
+
 

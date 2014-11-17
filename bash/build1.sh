@@ -6,13 +6,13 @@ BASH_HOME=~/Repositories/RuleML/Github/deliberation-ruleml/bash
 ${BASH_HOME}/build_web2rnc.sh
 if [ "$?" -ne "0" ]; then
      echo "Local Testing of RNC Schemas Failed"
-     return
+     exit 1
 fi
 # Download RNC and convert to XSD
 ${BASH_HOME}/build_web2xsd.sh
 if [ "$?" -ne "0" ]; then
      echo "Local Testing of XSD Schemas Failed"
-     return
+     exit 1
 fi
 # If everything validates, then build the documentation
 # ${BASH_HOME}/build_xsd2doc.sh
