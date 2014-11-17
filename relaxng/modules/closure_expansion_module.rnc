@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML closure attribute" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, closure" ]
 dc:description [ "The expansion module for the optional closure attribute." ]
@@ -23,7 +23,7 @@ closure.attrib.def =
     
     ## An attribute indicating how the contained free variables are quantified. 
     ## Allowed values are "universal" and "existential".
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@closure
+    ## See http://ruleml.org/1.02/glossary/#gloss-@closure
     attribute closure { closure.value }
 closure.value |= "universal" | "existential"
 
@@ -33,6 +33,6 @@ mapClosure.attrib.def =
     
     ## An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified. 
     ## Allowed values are "universal" and "existential".
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@mapClosure
+    ## See http://ruleml.org/1.02/glossary/#gloss-@mapClosure
     attribute mapClosure { closure.value }
 #

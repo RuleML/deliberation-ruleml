@@ -21,6 +21,6 @@ node-att.choice |= node.attrib.def
 node.attrib.def =
     
     ## An attribute for referring to a IRI.    
-    ## See http://www.ruleml.org/1.0/glossary/#gloss-@node
+    ## See http://ruleml.org/1.02/glossary/#gloss-@node
     attribute node { node.value }
 node.value |= xsd:anyURI

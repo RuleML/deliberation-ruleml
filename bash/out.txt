@@ -1,0 +1,161 @@
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/attribute-text-test-suite/datalog_expanded_attributetext.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalog_relaxed.rnc" 
+Tail ../../../relaxng/test/datalog_relaxed.rnc" 
+URL ../../../relaxng/test/datalog_relaxed.rnc
+Schema datalog_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-fail-suite/hornlogoeq_min_normal_fail.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/hornlogeq_min_normal.rnc" 
+Tail ../../../relaxng/test/hornlogeq_min_normal.rnc" 
+URL ../../../relaxng/test/hornlogeq_min_normal.rnc
+Schema hornlogeq_min_normal.rnc
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-fail-suite/hornlogoeq_min_normal_fail.ruleml:27:34: error: value of attribute "oriented" is invalid; must be equal to "yes"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-fail-suite/hornlogoeq_min_normal_fail.ruleml:48:38: error: value of attribute "oriented" is invalid; must be equal to "yes"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-fail-suite/hornlogoeq_min_normal_fail.ruleml:101:38: error: value of attribute "oriented" is invalid; must be equal to "yes"
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-test-suite/datalogeq_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogeq_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogeq_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogeq_min_relaxed.rnc
+Schema datalogeq_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-test-suite/datalogeq_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogeq_min_normal.rnc"?>
+Tail ../../../relaxng/test/datalogeq_min_normal.rnc"?>
+URL ../../../relaxng/test/datalogeq_min_normal.rnc
+Schema datalogeq_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/equality-rules-test-suite/hornlogoeq_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/hornlogeq_min_normal.rnc" type="application/relax-ng-compact-syntax"?>
+Tail ../../../relaxng/test/hornlogeq_min_normal.rnc" type="application/relax-ng-compact-syntax"?>
+URL ../../../relaxng/test/hornlogeq_min_normal.rnc
+Schema hornlogeq_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalog_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalog_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalog_min_relaxed.rnc
+Schema datalog_min_relaxed.rnc
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:23:19: error: element "Exists" not allowed here; expected element "Atom"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:31:16: error: element "then" incomplete; missing required element "Atom"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:55:18: error: element "Equal" not allowed here; expected element "Atom"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:59:16: error: element "then" incomplete; missing required element "Atom"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:76:16: error: element "Or" not allowed here; expected element "Atom"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalog_min_fail.ruleml:77:16: error: element "then" incomplete; missing required element "Atom"
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogex_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogex_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogex_min_relaxed.rnc
+Schema datalogex_min_relaxed.rnc
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:23:17: error: element "Or" not allowed here; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:34:20: error: element "Exists" incomplete; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:53:22: error: element "Equal" not allowed here; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:57:20: error: element "Exists" incomplete; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:84:18: error: element "And" not allowed here; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogex_min_fail.ruleml:100:20: error: element "Exists" incomplete; expected element "Atom", "Exists", "Var", "declare" or "formula"
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogexeq_min_fail.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogexeq_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogexeq_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogexeq_min_relaxed.rnc
+Schema datalogexeq_min_relaxed.rnc
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogexeq_min_fail.ruleml:13:34: error: element "Equal" not allowed here; expected element "Atom", "Exists", "Var", "declare" or "formula"
+/Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-fail-suite/datalogexeq_min_fail.ruleml:13:75: error: element "Exists" incomplete; expected element "Atom", "Exists", "Var", "declare" or "formula"
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalog_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalog_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalog_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalog_min_relaxed.rnc
+Schema datalog_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalog_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalog_min_normal.rnc"?>
+Tail ../../../relaxng/test/datalog_min_normal.rnc"?>
+URL ../../../relaxng/test/datalog_min_normal.rnc
+Schema datalog_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogex_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogex_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogex_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogex_min_relaxed.rnc
+Schema datalogex_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogexand_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogexand_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogexand_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogexand_min_relaxed.rnc
+Schema datalogexand_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogexand_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogexand_min_normal.rnc"?>
+Tail ../../../relaxng/test/datalogexand_min_normal.rnc"?>
+URL ../../../relaxng/test/datalogexand_min_normal.rnc
+Schema datalogexand_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogexeq_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogexeq_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogexeq_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogexeq_min_relaxed.rnc
+Schema datalogexeq_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogplus_mid.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogplus_mid_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogplus_mid_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogplus_mid_relaxed.rnc
+Schema datalogplus_mid_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogplus_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogplus_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/datalogplus_min_relaxed.rnc"?>
+URL ../../../relaxng/test/datalogplus_min_relaxed.rnc
+Schema datalogplus_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/datalogplus_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/datalogplus_min_normal.rnc"?>
+Tail ../../../relaxng/test/datalogplus_min_normal.rnc"?>
+URL ../../../relaxng/test/datalogplus_min_normal.rnc
+Schema datalogplus_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/disdatalogplus_min.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/disdatalogplus_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/disdatalogplus_min_relaxed.rnc"?>
+URL ../../../relaxng/test/disdatalogplus_min_relaxed.rnc
+Schema disdatalogplus_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/existential-rules-test-suite/disdatalogplus_min_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/disdatalogplus_min_normal.rnc"?>
+Tail ../../../relaxng/test/disdatalogplus_min_normal.rnc"?>
+URL ../../../relaxng/test/disdatalogplus_min_normal.rnc
+Schema disdatalogplus_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/folplus-test-suite/naffologeq-anno_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/naffologeq_normal.rnc"?>
+Tail http://deliberation.ruleml.org/1.02/relaxng/naffologeq_normal.rnc"?>
+URL http://deliberation.ruleml.org/1.02/relaxng/naffologeq_normal.rnc
+Schema naffologeq_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/negative-constraints-test-suite/ncdatalog.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/ncdatalog_min_relaxed.rnc"?>
+Tail ../../../relaxng/test/ncdatalog_min_relaxed.rnc"?>
+URL ../../../relaxng/test/ncdatalog_min_relaxed.rnc
+Schema ncdatalog_min_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/negative-constraints-test-suite/ncdatalog_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/ncdatalog_min_normal.rnc"?>
+Tail ../../../relaxng/test/ncdatalog_min_normal.rnc"?>
+URL ../../../relaxng/test/ncdatalog_min_normal.rnc
+Schema ncdatalog_min_normal.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/unary-prop-test-suite/unprop.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/unprop_relaxed.rnc"?>
+Tail ../../../relaxng/test/unprop_relaxed.rnc"?>
+URL ../../../relaxng/test/unprop_relaxed.rnc
+Schema unprop_relaxed.rnc
+File /Users/taraathan/Repositories/RuleML/Github/deliberation-ruleml/bash/../relaxng/../test/rnc-test-suites/unary-prop-test-suite/unprop_normal.ruleml
+Line <?xml version="1.0" encoding="UTF-8"?>
+Line <?xml-model href="../../../relaxng/test/unprop_normal.rnc"?>
+Tail ../../../relaxng/test/unprop_normal.rnc"?>
+URL ../../../relaxng/test/unprop_normal.rnc
+Schema unprop_normal.rnc

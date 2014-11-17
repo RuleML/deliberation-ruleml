@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 
 
 dc:title [ "RuleML Expressions" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, expressions" ]
 dc:description [ "The expansion module for expressions." ]
@@ -29,7 +29,7 @@ Expression-node.choice |= Expr.Node.def
 Expr.Node.def =
   
   ## <Expr>: a functional expression. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Expr
+  ## http://ruleml.org/1.02/glossary/#gloss-Expr
   element Expr {
     (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
   }
@@ -43,7 +43,7 @@ operatorForExpressions-edge.choice |= op_Expr.edge.def
 
 ## (context sensitive: see Also atom_backbone_module and holog_module)
 ## An operator expression including a function name (<Fun>) of a (<Expr>).
-## http://www.ruleml.org/1.0/glossary/#gloss-op
+## http://ruleml.org/1.02/glossary/#gloss-op
 op_Expr.edge.def =
   
   ## Also an operator in functional expressions.
@@ -59,7 +59,7 @@ Function-node.choice |= Fun.Node.def
 Fun.Node.def =
   
   ## <Fun>: a type of name for functional operators. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Fun
+  ## http://ruleml.org/1.02/glossary/#gloss-Fun
   element Fun { (Fun-datt.choice & reFun.attlist), Fun.content }
 
 ## functors accept the resource attribute list

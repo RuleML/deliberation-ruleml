@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML equation orientation attribute" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, orientation, oriented, equation" ]
 dc:description [ "The expansion module for the orientation attribute, used for equations" ]
@@ -23,7 +23,7 @@ oriented-att.choice |= oriented.attrib.def
 oriented.attrib.def =
     
     ## An attribute indicating whether an equation (<Equal>) is oriented (directed) or unoriented (symmetric).    
-    ##    See http://www.ruleml.org/1.0/glossary/#gloss-@oriented
+    ##    See http://ruleml.org/1.02/glossary/#gloss-@oriented
     attribute oriented { oriented.value }
 oriented.value |= oriented_default.value | oriented_non-default.value
 ## FIXME: move all such statements into initialization module.

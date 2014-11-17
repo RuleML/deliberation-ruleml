@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Conjunctions and Disjunctions" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, conjunction, disjunction" ]
 dc:description [ "The expansion module for conjunctions and disjunctions." ]
@@ -47,7 +47,7 @@ And-node.choice |= And.Node.def
 And.Node.def =
   
   ## <And>: polyadic conjunction where <And/> is true. See
-  ## http://www.ruleml.org/1.0/glossary/#gloss-And
+  ## http://ruleml.org/1.02/glossary/#gloss-And
   element And { (And-datt.choice & reAnd.attlist), And.header, And.main }
 
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
@@ -84,7 +84,7 @@ formula_And-edge.choice |= formula_And.edge.def
 formula_And.edge.def =
   
   ## <formula>: contains a single formula. See  
-  ## http://www.ruleml.org/1.0/glossary/#gloss-formula
+  ## http://ruleml.org/1.02/glossary/#gloss-formula
   element formula { formula_And.attlist? & formula_And.content }
 
 ## Formulas within conjunctions consist of a single formula
@@ -113,7 +113,7 @@ Or-node.choice |= Or.Node.def
 Or.Node.def =
   
   ## <Or>: polyadic disjunction where <Or/> is false. See
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Or
+  ## http://ruleml.org/1.02/glossary/#gloss-Or
   element Or { (Or-datt.choice & reOr.attlist), Or.header, Or.main }
 
 ## The attribute list of the disjunction element will accept a scoped closure attribute at full first-order logic.

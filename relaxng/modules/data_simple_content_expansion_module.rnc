@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Data Element" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Data, Simple Content" ]
 dc:description [
@@ -25,12 +25,12 @@ Node.choice |= Data_simple.Node.def
 Data_simple-node.choice |= Data_simple.Node.def
 
 ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
-## See http://www.ruleml.org/1.0/glossary/#gloss-Data
+## See http://ruleml.org/1.02/glossary/#gloss-Data
 ## Data representing a complex datatype that includes xml elements can be represented by escaping for example <element/> becomes &lt;element/&gt;
 Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Data
+  ## http://ruleml.org/1.02/glossary/#gloss-Data
   element Data { Data_simple.attlist?,  Data_simple.Node.content }
 Data_simple.attlist &= commonNode.attlist?
 ## an extension point for explicit datatyping

@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Equivalences" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, equivalence" ]
 dc:description [ "The expansion module for equivalances." ]
@@ -23,11 +23,11 @@ Equivalent-node.choice |= Equivalent.Node.def
 ## An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
 ## It consists of a pair of (optionally skipped) <torso> roles. 
 ## For example, "A person owning an object is equivalent to an object belonging to a person":
-## See http://www.ruleml.org/1.0/glossary/#gloss-Equivalent 
+## See http://ruleml.org/1.02/glossary/#gloss-Equivalent 
 Equivalent.Node.def =
   
   ## <Equivalent>: Syntactic sugar for two implications. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-Equivalent 
+  ## http://ruleml.org/1.02/glossary/#gloss-Equivalent 
   element Equivalent {
     (Equivalent-datt.choice & reEquivalent.attlist),
     Equivalent.header,
@@ -54,7 +54,7 @@ torso-edge.choice |= torso.edge.def
 torso.edge.def =
   
   ## <torso>: contains one formula within an equivalence. See 
-  ## http://www.ruleml.org/1.0/glossary/#gloss-torso 
+  ## http://ruleml.org/1.02/glossary/#gloss-torso 
   element torso { torso.attlist? & torso.content }
 
 ## An equivalance is syntactic sugar for two implications.

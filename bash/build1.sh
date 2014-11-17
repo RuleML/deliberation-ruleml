@@ -1,18 +1,18 @@
 #!/bin/bash
-# Download RNC and convert to RNG
-source batch_rnc2rng.sh
-# Validate against Design Pattern
-# @@@
-# Download RNC for Testing
-source batch_web2rnc.sh
-# Validate Examples in Relax NG Test Suites
-# @@@
+shopt -s nullglob
+BASH_HOME=~/Repositories/RuleML/Github/deliberation-ruleml/bash
+
+# Download RNC and test
+${BASH_HOME}/build_web2rnc.sh
+if [ "$?" -ne "0" ]; then
+     echo "Local Testing of RNC Schemas Failed"
+     exit 1
+fi
 # Download RNC and convert to XSD
-source batch_web2xsd.sh
-# Apply XSLT transforamtions
-# @@@
-# Validate Examples XSD Test Suites
-# @@@
+${BASH_HOME}/build_web2xsd.sh
+if [ "$?" -ne "0" ]; then
+     echo "Local Testing of XSD Schemas Failed"
+     exit 1
+fi
 # If everything validates, then build the documentation
-#source batch_xsd2doc
-.sh
+# ${BASH_HOME}/build_xsd2doc.sh

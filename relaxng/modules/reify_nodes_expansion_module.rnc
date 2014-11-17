@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Reification" ]
-dc:version [ "1.0.01" ]
+dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, reify, reification" ]
 dc:description [ "The expansion module for reification of RuleML objects." ]
@@ -22,7 +22,7 @@ Reify-node.Node.def =
   ## It allows any one RuleML Node tag available within the current sublanguage as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
-  ## See http://www.ruleml.org/1.0/glossary/#gloss-Reify
+  ## See http://ruleml.org/1.02/glossary/#gloss-Reify
   element Reify { Reify-node.attlist?, Reify-node.content }
 
 Reify-node.content |= Node.choice?
