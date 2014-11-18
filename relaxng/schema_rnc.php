@@ -159,24 +159,23 @@ $this_url = $this_url . $call_fragment;
 
 
 //Step 00. Write the header
-echo 'namespace dc = "http://purl.org/dc/elements/1.1/"
-namespace dcterms = "http://purl.org/dc/terms/"
-namespace ruleml = "http://ruleml.org/spec"
-
-dc:title [ "Deliberation RuleML Custom-Built Schema" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "Deliberation RuleML, custom-built" ]
-dc:description [
-    "custom-built main module for a Deliberation RuleML sublanguage."
-]
-dc:date [ "';
-echo($now);
-echo '" ]
-dc:language [ "en" ]
-dcterms:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.02" ]';
+echo 'namespace dc = "http://purl.org/dc/elements/1.1/"'."\n";
+echo 'namespace dcterms = "http://purl.org/dc/terms/"'."\n";
+echo 'namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
+echo 'dc:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
+echo 'dc:version [ "1.02" ]'."\n";
+echo 'dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]'."\n";
+echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
+echo 'dc:description ['."\n";
+echo '    "custom-built main module for a Deliberation RuleML sublanguage."'."\n";
+echo ']'."\n";
+echo 'dc:date [ "';
+echo($now);
+echo '" ]'."\n";
+echo 'dc:language [ "en" ]'."\n";
+echo 'dcterms:rights [ "TBD" ]'."\n";
+echo 'dc:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
 echo "# Call parameters\n";
 echo "# Base URL = $base_url \n";
 
