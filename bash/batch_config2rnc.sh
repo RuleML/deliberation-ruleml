@@ -27,7 +27,7 @@ do
     tokens=( $line )
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[1]}" "${TEST_HOME}/${tokens[0]}_normal.rnc" >> /dev/null 2>&1
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[2]}" "${TEST_HOME}/${tokens[0]}_relaxed.rnc" >> /dev/null 2>&1
-done < config_rnc.txt
+done < ${BASH_HOME}/config_rnc.txt
 
 while read line
 do
@@ -35,7 +35,7 @@ do
     tokens=( $line )
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[1]}" "${TEST_HOME}/myng-${tokens[1]}.rnc" >> /dev/null 2>&1
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[2]}" "${TEST_HOME}/myng-${tokens[2]}.rnc" >> /dev/null 2>&1
-done < config_rnc_myng.txt
+done < ${BASH_HOME}/config_rnc_myng.txt
 
 for file in ${TEST_HOME}/*.rnc
 do

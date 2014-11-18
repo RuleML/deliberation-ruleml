@@ -27,7 +27,7 @@ do
     tokens=( $line )
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[1]}" "${RNC4XSD_HOME}/${tokens[0]}_normal.rnc" >> /dev/null 2>&1
     ${BASH_HOME}/aux_myng2rnc.sh "${tokens[2]}" "${RNC4XSD_HOME}/${tokens[0]}.rnc" >> /dev/null 2>&1
-done < config_xsd.txt
+done < ${BASH_HOME}/config_xsd.txt
 
 for file in ${RNC4XSD_HOME}/*.rnc
 do

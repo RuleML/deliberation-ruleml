@@ -25,17 +25,17 @@ TEST_SUITE_HOME=${RNC_HOME}/../test/rnc-test-suites
 
 for file in ${TEST_SUITE_HOME}/**/*.ruleml
 do
-  echo "File "${file}
+  #echo "File "${file}
   while read -r; do
-     echo "Line ${REPLY}"
+     #echo "Line ${REPLY}"
      if [[ ${REPLY} =~ ^..xml-model ]]
      then     
        tail=${REPLY#*\"}
-       echo "Tail ${tail}"
+       #echo "Tail ${tail}"
        url=${tail%%\"*}
-       echo "URL ${url}"
+       #echo "URL ${url}"
        schemaname=${url##*/}
-       echo "Schema ${schemaname}"       
+       #echo "Schema ${schemaname}"       
        ${BASH_HOME}/aux_valrnc.sh ${TEST_HOME}/${schemaname}
        exitvalue=$?
        if [ "${exitvalue}" -ne "0" ]; then
