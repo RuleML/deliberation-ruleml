@@ -45,7 +45,7 @@ if [ "$?" -ne "0" ]; then
      echo "Local Configuration of RNC Schemas for Simplification Failed"
      exit 1
 fi
-# Download RNC and simplify, and validate
+# Simplify, and validate
 ${BASH_HOME}/batch_rnc2simp.sh
 if [ "$?" -ne "0" ]; then
      echo "Simplification Failed"
