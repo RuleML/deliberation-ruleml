@@ -29,3 +29,13 @@ do
      exit 1
    fi
 done
+# Validate simplified RNC
+for file in ${SIMP_HOME}/*.rnc
+do
+  filename=$(basename "$1")
+  ${BASH_HOME}/aux_valrnc.sh ${file} >> /dev/null 2>&1
+  if [ "$?" -ne "0" ]; then
+     echo "Simplified RNC Validation Failed for " "${filename}"
+     exit 1
+  fi
+done
