@@ -22,7 +22,7 @@ rm {SIMP_HOME}/*.rnc
 
 for file in ${RNC4SIMP_HOME}/*.rnc
 do
-  filename=$(basename "$1")
+  filename=$(basename "$file")
   ${BASH_HOME}/rnc2simp.sh $file ${SIMP_HOME}/${filename}
   if [ "$?" -ne "0" ]; then
      echo "Simplification Failed for " "${filename}"
@@ -32,7 +32,7 @@ done
 # Validate simplified RNC
 for file in ${SIMP_HOME}/*.rnc
 do
-  filename=$(basename "$1")
+  filename=$(basename "$file")
   ${BASH_HOME}/aux_valrnc.sh ${file} >> /dev/null 2>&1
   if [ "$?" -ne "0" ]; then
      echo "Simplified RNC Validation Failed for " "${filename}"
