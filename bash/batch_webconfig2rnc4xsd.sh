@@ -1,6 +1,6 @@
 #!/bin/bash
 # Dependencies: 
-# aux_myng2rnc.sh
+# aux_web2rnc.sh
 # config_xsd.txt
 # config_xsd_min.txt
 # aux_valrnc.sh
@@ -21,8 +21,8 @@ while read line
 do
     echo "Text read from file - $line"
     tokens=( $line )
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[1]}" "${RNC4XSD_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[2]}" "${RNC4XSD_HOME}${tokens[0]}.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[1]}" "${RNC4XSD_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[2]}" "${RNC4XSD_HOME}${tokens[0]}.rnc" >> /dev/null 2>&1
 done < ${BASH_HOME}config_xsd.txt
 
 for file in ${RNC4XSD_HOME}*.rnc
@@ -39,8 +39,8 @@ while read line
 do
     echo "Text read from file - $line"
     tokens=( $line )
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[1]}" "${RNC4XSD_MIN_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[2]}" "${RNC4XSD_MIN_HOME}${tokens[0]}.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[1]}" "${RNC4XSD_MIN_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[2]}" "${RNC4XSD_MIN_HOME}${tokens[0]}.rnc" >> /dev/null 2>&1
 done < ${BASH_HOME}config_xsd_min.txt
 
 for file in ${RNC4XSD_MIN_HOME}*.rnc

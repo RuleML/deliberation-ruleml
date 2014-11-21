@@ -1,6 +1,6 @@
 #!/bin/bash
 # Dependencies: 
-# aux_myng2rnc.sh
+# aux_web2rnc.sh
 # config_rnc4simp.txt
 # aux_valrnc.sh
 shopt -s nullglob
@@ -16,8 +16,8 @@ while read line
 do
     echo "Text read from file - $line"
     tokens=( $line )
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[1]}" "${RNC4SIMP_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
-    ${BASH_HOME}aux_myng2rnc.sh "${tokens[2]}" "${RNC4SIMP_HOME}${tokens[0]}_relaxed.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[1]}" "${RNC4SIMP_HOME}${tokens[0]}_normal.rnc" >> /dev/null 2>&1
+    ${BASH_HOME}aux_web2rnc.sh "${tokens[2]}" "${RNC4SIMP_HOME}${tokens[0]}_relaxed.rnc" >> /dev/null 2>&1
 done < ${BASH_HOME}config_rnc4simp.txt
 
 

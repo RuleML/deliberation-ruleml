@@ -1,17 +1,13 @@
 #!/bin/bash
-# Fully cloud test script for RNC
-# FIXME Download modules from cloud to temporary directory
-# FIXME Download test suite from cloud to temporary directory
-# FIXME Download drivers from cloud to temporary directory
-# FIXME Output generated files into temporary directories
+# Fully local build script for RNC
 # Dependencies
+# indep_balud_modules/*.rnc
 # aux_valrnc.sh
 # batch_rnc2rng.sh
-# batch_webconfig2rnc.sh
-# batch_webconfig2rnc4simp.sh
+# batch_config2rnc.sh
+# batch_config2rnc4simp.sh
 # batch_rnc_test_suite.sh
 # batch_rnc2simp.sh
-# webserver
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
@@ -42,7 +38,7 @@ if [ "$?" -ne "0" ]; then
      exit 1
 fi
 # Generate RNC for Testing
-${BASH_HOME}batch_webconfig2rnc.sh  >> /dev/null 2>&1
+${BASH_HOME}batch_config2rnc.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
      echo "Local Configuration of RNC Schemas Failed"
      exit 1
@@ -54,7 +50,7 @@ if [ "$?" -ne "0" ]; then
      exit 1
 fi
 # Generate RNC for Simplification
-${BASH_HOME}batch_webconfig2rnc4simp.sh  >> /dev/null 2>&1
+${BASH_HOME}batch_config2rnc4simp.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
      echo "Local Configuration of RNC Schemas for Simplification Failed"
      exit 1
