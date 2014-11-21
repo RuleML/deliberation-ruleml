@@ -1,6 +1,8 @@
 <?php
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
+header('Content-Description: File Transfer');
+header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
 //Assembler of RNC schema for RuleML 1.02
 //
 //Step 0000. Extract all GET parameters
@@ -101,8 +103,6 @@ $bserialization = processGETParameter ($serialization);
 $serializationParam = "x".dechex(bindec($bserialization));
 
 // Step 000. Initialize some parameters
-header('Content-Description: File Transfer');
-header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
 $rnc_filename = 'myng';
 $rnc_filename = $rnc_filename.'-b'.substr($backboneParam, 1);
 $rnc_filename = $rnc_filename.'-d'.substr($defaultParam, 1);
