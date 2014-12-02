@@ -124,9 +124,9 @@ include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" 
 #
 # EXPLICIT DATATYPING ENABLED
 #
-include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml #{start |= notAllowed}
+#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start #|= notAllowed}
+#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml #{start |= notAllowed}
 #
 # xsi:schemaLocation ALLOWED IN RuleML
 #
