@@ -1,5 +1,5 @@
 #!/bin/bash
-# Fully loca test script for XSD
+# Fully local test script for XSD
 # Dependencies
 # batch_config2rnc4xsd.sh
 # batch_rnc2xsd.sh

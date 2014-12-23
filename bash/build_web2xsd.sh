@@ -20,14 +20,14 @@ fi
 # Generate XSD and validate
 ${BASH_HOME}batch_rnc2xsd.sh
 if [ "$?" -ne "0" ]; then
-     echo "Validation Against Design Failed"
+     echo "Generation of XSD Failed"
      exit 1
 fi
    
 # Validate Examples in XSD Test Suites
 ${BASH_HOME}batch_xsd-test-suite.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
-     echo "Local Testing of XSD Schemas Failed"
+     echo "Cloud Testing of XSD Schemas Failed"
      exit 1
 fi
 

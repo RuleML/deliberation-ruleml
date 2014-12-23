@@ -20,7 +20,7 @@ if [ "${extension}" != "xsd" ];then
 fi
 
 # Validate schema against JAXB
-  java -jar "${JAXB_HOME}lib/jaxb-xjc.jar" "$1" -d "${TMPDIR}"  >> /dev/null 2>&1
+  java -jar "${JAXB_HOME}lib/jaxb-xjc.jar" "$1" -disableXmlSecurity -d "${TMPDIR}"  >> /dev/null 2>&1
   if [ "$?" -ne "0" ]; then
      echo "Validation Failed for schema " "$1"
      exit 1
