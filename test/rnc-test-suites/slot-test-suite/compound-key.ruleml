@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/test/hornlog_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+
+
+  <!-- a syntactic example rulebase for testing compound slot keys in sublanguages with Horn logic expressivity -->
+
+  <Assert>
+
+    <!-- Transformation between positional and slot relations. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Equivalent>
+        <Atom>
+          <Rel>mother</Rel>
+          <Var>x</Var>
+          <Var>y</Var>
+        </Atom>
+        <Atom>
+          <oid>
+            <Var>x</Var>
+          </oid>
+          <Rel>person</Rel>
+          <slot>
+            <Expr>
+              <Fun>parent</Fun>
+              <Ind>female</Ind>
+            </Expr>
+            <Var>y</Var>
+          </slot>
+        </Atom>
+      </Equivalent>
+    </Forall>
+  </Assert>
+
+</RuleML>
