@@ -2,83 +2,83 @@
 Options +FollowSymLinks
 IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* schema_rnc.php schema_rnc_test.php phpinfo.php all_ordered.rnc all_unordered.rnc error_log
 
-Redirect /1.02/relaxng/bindatagroundfact_normal.rnc http://deliberation.ruleml.org/1.02/myng-b1-d6-a2-l1-p3cf-i6-tf0f-q1-e0-sc 
+Redirect /1.02/relaxng/bindatagroundfact_normal.rnc http://deliberation.ruleml.org/1.02/myng-b1-d6-a2-l1-p3cf-i6-tf0f-q1-e0-sc.rnc 
 
-Redirect /1.02/relaxng/bindatagroundfact_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1-d7-a2-l1-p3cf-i6-tf0f-q1-e0-sf
+Redirect /1.02/relaxng/bindatagroundfact_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1-d7-a2-l1-p3cf-i6-tf0f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/bindatagroundlog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b3-d6-a2-l1-p3cf-i7-tf0f-q1-e0-sc
+Redirect /1.02/relaxng/bindatagroundlog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b3-d6-a2-l1-p3cf-i7-tf0f-q1-e0-sc.rnc
 
-Redirect /1.02/relaxng/bindatagroundlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3-d7-a2-l1-p3cf-i7-tf0f-q1-e0-sf
+Redirect /1.02/relaxng/bindatagroundlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3-d7-a2-l1-p3cf-i7-tf0f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/bindatalog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a2-l1-p3cf-i7-tf0f-q3-e0-sc
+Redirect /1.02/relaxng/bindatalog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a2-l1-p3cf-i7-tf0f-q3-e0-sc.rnc
 
-Redirect /1.02/relaxng/bindatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a2-l1-p3cf-i7-tf0f-q3-e0-sf
+Redirect /1.02/relaxng/bindatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a2-l1-p3cf-i7-tf0f-q3-e0-sf.rnc
 
-Redirect /1.02/relaxng/datalog_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i0-t200-q0-e0-sc
+Redirect /1.02/relaxng/datalog_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i0-t200-q0-e0-sc.rnc
 
-Redirect /1.02/relaxng/datalog_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i0-t200-q0-e0-sf
+Redirect /1.02/relaxng/datalog_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i0-t200-q0-e0-sf.rnc
 
-Redirect /1.02/relaxng/disdatalog_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i30-t200-q0-e0-sc 
+Redirect /1.02/relaxng/disdatalog_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i30-t200-q0-e0-sc.rnc 
 
-Redirect /1.02/relaxng/disdatalog_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i30-t200-q0-e0-sf
+Redirect /1.02/relaxng/disdatalog_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i30-t200-q0-e0-sf.rnc
 
-Redirect /1.02/relaxng/datalog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3cf-i7-tf0f-q7-e0-sc
+Redirect /1.02/relaxng/datalog_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3cf-i7-tf0f-q7-e0-sc.rnc
 
-Redirect /1.02/relaxng/datalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3cf-i7-tf0f-q7-e0-sf
+Redirect /1.02/relaxng/datalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3cf-i7-tf0f-q7-e0-sf.rnc
 # checked to here
-Redirect /1.02/relaxng/datalogplus_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i58-t210-q0-e0-sc 
+Redirect /1.02/relaxng/datalogplus_min_normal.rnc http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i58-t210-q0-e0-sc.rnc 
 
-Redirect /1.02/relaxng/datalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i58-t210-q0-e0-sf  
+Redirect /1.02/relaxng/datalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i58-t210-q0-e0-sf.rnc  
 
-Redirect /1.02/relaxng/disdatalogplus_min_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i78-t210-q0-e0-sc   
-Redirect /1.02/relaxng/disdatalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i78-t210-q0-e0-sf  
+Redirect /1.02/relaxng/disdatalogplus_min_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p1-i78-t210-q0-e0-sc.rnc   
+Redirect /1.02/relaxng/disdatalogplus_min_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p1-i78-t210-q0-e0-sf.rnc  
 
-Redirect /1.02/relaxng/datalogplus_mid_normal.rnc    http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3c1-i5e-tf30-q0-e0-sc 
-Redirect /1.02/relaxng/datalogplus_mid_relaxed.rnc   http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3c1-i5e-tf30-q0-e0-sf  
+Redirect /1.02/relaxng/datalogplus_mid_normal.rnc    http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3c1-i5e-tf30-q0-e0-sc.rnc 
+Redirect /1.02/relaxng/datalogplus_mid_relaxed.rnc   http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3c1-i5e-tf30-q0-e0-sf.rnc  
 
-Redirect /1.02/relaxng/disdatalogplus_mid_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3c1-i7e-tf30-q0-e0-sc   
-Redirect /1.02/relaxng/disdatalogplus_mid_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3c1-i7e-tf30-q0-e0-sf  
+Redirect /1.02/relaxng/disdatalogplus_mid_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3c1-i7e-tf30-q0-e0-sc.rnc   
+Redirect /1.02/relaxng/disdatalogplus_mid_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3c1-i7e-tf30-q0-e0-sf.rnc  
 
-Redirect /1.02/relaxng/nafdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3ef-i7-tf0f-q1-e0-sc
-Redirect /1.02/relaxng/nafdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3ef-i7-tf0f-q1-e0-sf
+Redirect /1.02/relaxng/nafdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3ef-i7-tf0f-q1-e0-sc.rnc
+Redirect /1.02/relaxng/nafdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3ef-i7-tf0f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/negdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3df-i7-tf0f-q1-e0-sc
-Redirect /1.02/relaxng/negdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3df-i7-tf0f-q1-e0-sf
+Redirect /1.02/relaxng/negdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3df-i7-tf0f-q1-e0-sc.rnc
+Redirect /1.02/relaxng/negdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3df-i7-tf0f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/nafnegdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3ff-i7-tf0f-q1-e0-sc
-Redirect /1.02/relaxng/nafnegdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3ff-i7-tf0f-q1-e0-sf
+Redirect /1.02/relaxng/nafnegdatalog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b7-d6-a7-l1-p3ff-i7-tf0f-q1-e0-sc.rnc
+Redirect /1.02/relaxng/nafnegdatalog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b7-d7-a7-l1-p3ff-i7-tf0f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/nafnegdisdatalogplus_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ff-i7f-tf3f-q1-e0-sc
-Redirect /1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ff-i7f-tf3f-q1-e0-sf
+Redirect /1.02/relaxng/nafnegdisdatalogplus_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ff-i7f-tf3f-q1-e0-sc.rnc
+Redirect /1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ff-i7f-tf3f-q1-e0-sf.rnc
 
-Redirect /1.02/relaxng/hornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3cf-i7-tf0f-q7-e3-sc
-Redirect /1.02/relaxng/hornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3cf-i7-tf0f-q7-e3-sf
+Redirect /1.02/relaxng/hornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3cf-i7-tf0f-q7-e3-sc.rnc
+Redirect /1.02/relaxng/hornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3cf-i7-tf0f-q7-e3-sf.rnc
 
-Redirect /1.02/relaxng/hornlogeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3cf-i7-tf3f-q7-ee-sc
-Redirect /1.02/relaxng/hornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3cf-i7-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/hornlogeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3cf-i7-tf3f-q7-ee-sc.rnc
+Redirect /1.02/relaxng/hornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3cf-i7-tf3f-q7-ef-sf.rnc
 
-Redirect /1.02/relaxng/dishornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b1f-d6-a7-l1-p3cf-i37-tf0f-q7-e3-sc
-Redirect /1.02/relaxng/dishornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1f-d7-a7-l1-p3cf-i37-tf0f-q7-e3-sf
+Redirect /1.02/relaxng/dishornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b1f-d6-a7-l1-p3cf-i37-tf0f-q7-e3-sc.rnc
+Redirect /1.02/relaxng/dishornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1f-d7-a7-l1-p3cf-i37-tf0f-q7-e3-sf.rnc
 
-Redirect /1.02/relaxng/nafhornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ef-i7-tf0f-q7-e3-sc
-Redirect /1.02/relaxng/nafhornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ef-i7-tf0f-q7-e3-sf
+Redirect /1.02/relaxng/nafhornlog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ef-i7-tf0f-q7-e3-sc.rnc
+Redirect /1.02/relaxng/nafhornlog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ef-i7-tf0f-q7-e3-sf.rnc
 
-Redirect /1.02/relaxng/nafneghornlogeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ff-i7-tf3f-q7-ee-sc
-Redirect /1.02/relaxng/nafneghornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ff-i7-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/nafneghornlogeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-bf-d6-a7-l1-p3ff-i7-tf3f-q7-ee-sc.rnc.rnc
+Redirect /1.02/relaxng/nafneghornlogeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-bf-d7-a7-l1-p3ff-i7-tf3f-q7-ef-sf.rnc
 
-Redirect /1.02/relaxng/nafnegdishornlogplus_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b1f-d6-a7-l1-p3ff-i7f-tf3f-q7-ee-sc
-Redirect /1.02/relaxng/nafnegdishornlogplus_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/nafnegdishornlogplus_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b1f-d6-a7-l1-p3ff-i7f-tf3f-q7-ee-sc.rnc
+Redirect /1.02/relaxng/nafnegdishornlogplus_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b1f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf.rnc
 
-Redirect /1.02/relaxng/folog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3df-i7f-tf0f-q7-e3-sc
-Redirect /1.02/relaxng/folog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3df-i7f-tf0f-q7-e3-sf
+Redirect /1.02/relaxng/folog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3df-i7f-tf0f-q7-e3-sc.rnc
+Redirect /1.02/relaxng/folog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3df-i7f-tf0f-q7-e3-sf.rnc
 
-Redirect /1.02/relaxng/fologeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3df-i7f-tf3f-q7-ee-sc
-Redirect /1.02/relaxng/fologeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3df-i7f-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/fologeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3df-i7f-tf3f-q7-ee-sc.rnc
+Redirect /1.02/relaxng/fologeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3df-i7f-tf3f-q7-ef-sf.rnc
 
-Redirect /1.02/relaxng/naffolog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3ff-i7f-tf0f-q7-e3-sc
-Redirect /1.02/relaxng/naffolog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf0f-q7-e3-sf
+Redirect /1.02/relaxng/naffolog_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3ff-i7f-tf0f-q7-e3-sc.rnc
+Redirect /1.02/relaxng/naffolog_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf0f-q7-e3-sf.rnc
 
-Redirect /1.02/relaxng/naffologeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3ff-i7f-tf3f-q7-ee-sc
-Redirect /1.02/relaxng/naffologeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/naffologeq_normal.rnc  http://deliberation.ruleml.org/1.02/myng-b3f-d2-a7-l1-p3ff-i7f-tf3f-q7-ee-sc.rnc
+Redirect /1.02/relaxng/naffologeq_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf.rnc
 
-Redirect /1.02/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf
+Redirect /1.02/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-sf.rnc
