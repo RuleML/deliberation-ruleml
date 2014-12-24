@@ -108,7 +108,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:element minOccurs="0" ref="spec:oid"/>
         <xs:element minOccurs="0" ref="spec:degree"/>
-        <xs:group ref="spec:op"/>
+        <xs:element ref="spec:op"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:arg"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
       </xs:sequence>
@@ -244,50 +244,6 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
-  <xs:element name="Expr">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:element minOccurs="0" ref="spec:oid"/>
-        <xs:group ref="spec:op_2"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:arg"/>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
-      </xs:sequence>
-      <xs:attribute name="per" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="copy"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="type" type="xs:string"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Fun">
-    <xs:complexType mixed="true">
-      <xs:attribute name="per" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="copy"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="val" use="required">
-        <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="1"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute name="iri" type="xs:anyURI"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="Rulebase">
     <xs:complexType>
       <xs:sequence>
@@ -467,19 +423,15 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
-  <xs:group name="op">
-    <xs:sequence>
-      <xs:element name="op">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element ref="spec:Rel"/>
-          </xs:sequence>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
+  <xs:element name="op">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="spec:Rel"/>
+      </xs:sequence>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
   <xs:group name="formula_3">
     <xs:sequence>
       <xs:element name="formula">
@@ -591,19 +543,6 @@
             <xs:element ref="spec:Neg"/>
             <xs:group ref="spec:Exists"/>
           </xs:choice>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="op_2">
-    <xs:sequence>
-      <xs:element name="op">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element ref="spec:Fun"/>
-          </xs:sequence>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -734,7 +673,6 @@
         <xs:element ref="spec:Ind"/>
         <xs:element ref="spec:Data"/>
         <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -746,7 +684,6 @@
         <xs:choice>
           <xs:element ref="spec:Ind"/>
           <xs:element ref="spec:Data"/>
-          <xs:element ref="spec:Expr"/>
         </xs:choice>
         <xs:choice>
           <xs:element ref="spec:Skolem"/>
@@ -754,7 +691,6 @@
           <xs:element ref="spec:Ind"/>
           <xs:element ref="spec:Data"/>
           <xs:element ref="spec:Var"/>
-          <xs:element ref="spec:Expr"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute name="card" type="xs:nonNegativeInteger"/>
@@ -778,7 +714,6 @@
         <xs:element ref="spec:Ind"/>
         <xs:element ref="spec:Data"/>
         <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -792,7 +727,6 @@
         <xs:element ref="spec:Ind"/>
         <xs:element ref="spec:Data"/>
         <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -806,7 +740,6 @@
         <xs:element ref="spec:Ind"/>
         <xs:element ref="spec:Data"/>
         <xs:element ref="spec:Var"/>
-        <xs:element ref="spec:Expr"/>
       </xs:choice>
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
       <xs:attribute ref="xml:base"/>
