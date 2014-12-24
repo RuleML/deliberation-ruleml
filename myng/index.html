@@ -10,6 +10,7 @@
       /* <![CDATA[ */
             "use strict";
             var php_path = "/1.02/relaxng/schema_rnc.php";
+            var myng_path = "/1.02/";
             var xsd_path = "/1.02/xsd/";
             
             function initializeForm (LanguageForm) {
@@ -585,10 +586,15 @@
                 var sURL = "http://" +
                   self.location.hostname + php_path +
                   params;
-                // display URL for RNC driver
+                var mURL = "http://" +
+	                self.location.hostname + myng_path + code + ".rnc"; 
+	              // display URL for RNC driver
                 document.getElementById('schema_link').innerHTML = sURL;
+                 document.getElementById('myng_link').innerHTML = mURL;
                 // set link target to RNC driver
                 document.getElementById('schema_a_button').href = sURL;
+                document.getElementById('schema_link').href = sURL;
+	              document.getElementById('myng_link').href = mURL;
                 // change style of button for RNC driver
                 document.getElementById('schema_a_button').setAttribute("class", "button-on");
                 document.getElementById('schema_button').setAttribute("class", "button-on");
@@ -600,6 +606,7 @@
                   document.getElementById('xschema_link').innerHTML = xURL;
                   // activate download button for XSD anchor schema
                   document.getElementById('xschema_a_button').href = xURL;
+                  document.getElementById('xschema_link').href = xURL;
                   document.getElementById('xschema_a_button').setAttribute("class", "button-on");
                   document.getElementById('xschema_button').setAttribute("class", "button-on");
                   // fill in the text field with the name of the XSD anchor schema
@@ -1757,10 +1764,12 @@
           </tr>
         </table>
       </div>
-      <div> Relax NG Schema URL = <span id="schema_link"></span>
-        <br />
+      <div> Relax NG Schema
+        <br />Query String URL = <a id="schema_link" href=""></a><br />
+        Equivalent myng-code URL = <a id="myng_link" href=""></a><br />
+        <br/>
       </div>
-      <div> XSD Anchor Schema URL = <span id="xschema_link"></span>
+      <div> XSD Anchor Schema URL = <a id="xschema_link" href=""></a>
         <br /><br />
       </div>
       <h2>Usage</h2> 
