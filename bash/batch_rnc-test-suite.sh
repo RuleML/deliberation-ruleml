@@ -1,55 +1,49 @@
 #!/bin/bash
-# Prerequisites:
-#  curl
-# Download RNC schemas from MYNG for auto-generation of XSD
-# This script will remove the contents of a sibling directory named /relaxng/rnc4xsd.
+# Prerequisites: batch_config2rnc.sh
+# Dependecies: 
+# aux_valrnc.sh
+# test/rnc-test-suites/*.ruleml
+# relaxng/test/*.rnc
+#  Validate RuleML instances by RNC
 # Instructions:
-# run this script from the command line
-# Notes
-# 1. The parameter serial=x10 or serial=x12 includes a "pivot" bit for customizing the RNC schema for conversion to XSD.
-#
+# run this script from the command line or another script after batch_config2rnc.sh
+# FIXME use configuration script to validate test files against multiple schemas, including fail tests
+# This will remove the fragile schema detection method now implemented.
 shopt -s nullglob
-BASH_HOME=~/Repositories/RuleML/Github/deliberation-ruleml/bash
-RNC_HOME=${BASH_HOME}/../relaxng
-TEST_HOME=${RNC_HOME}/test
-TEST_SUITE_HOME=${RNC_HOME}/../test/rnc-test-suites
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
+REPO_HOME="${BASH_HOME}../"
+RNC_TEST_HOME=${REPO_HOME}relaxng/test/
+TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
 
-#for file in ${TEST_HOME}/*.rnc
-#do
-#  ${BASH_HOME}/aux_valrnc.sh $file
-#  if [ "$?" -ne "0" ]; then
-#     echo "Validation Failed for " "${file}"
-#     exit 1
-#   fi
-#done
-
-for file in ${TEST_SUITE_HOME}/**/*.ruleml
+for file in ${TEST_SUITE_HOME}**/*.ruleml
 do
-  echo "File "${file}
+  filename=$(basename "${file}")
+  #echo "File "${filename}
   while read -r; do
-     echo "Line ${REPLY}"
+     #echo "Line ${REPLY}"
      if [[ ${REPLY} =~ ^..xml-model ]]
      then     
        tail=${REPLY#*\"}
-       echo "Tail ${tail}"
+       #echo "Tail ${tail}"
        url=${tail%%\"*}
-       echo "URL ${url}"
+       #echo "URL ${url}"
        schemaname=${url##*/}
-       echo "Schema ${schemaname}"       
-       ${BASH_HOME}/aux_valrnc.sh ${TEST_HOME}/${schemaname}
+       #echo "Schema ${schemaname}"       
+       sfile=${RNC_TEST_HOME}${schemaname}       
+       ${BASH_HOME}aux_valrnc.sh "${sfile}"
        exitvalue=$?
        if [ "${exitvalue}" -ne "0" ]; then
-          echo "Schema Validation Failed for " "${file}"
+          echo "Schema Validation Failed for ${schemaname}"
           exit 1
        fi   
-       ${BASH_HOME}/aux_valrnc.sh ${TEST_HOME}/${schemaname} ${file}
+       ${BASH_HOME}aux_valrnc.sh "${sfile}" "${file}"
        exitvalue=$?
        if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
-          echo "Validation Failed for " "${file}"
+          echo "Validation Failed for ${filename}"
           exit 1
        else
          if [[ ${file} =~ fail ]] && [ "${exitvalue}" == "0" ]; then
-           echo "Validation Succeeded for Failure Test " "${file}"
+           echo "Validation Succeeded for Failure Test ${filename}"
            exit 1
          fi
        fi
