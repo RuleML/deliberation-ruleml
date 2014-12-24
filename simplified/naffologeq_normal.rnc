@@ -1,0 +1,787 @@
+default namespace = "http://ruleml.org/spec"
+namespace ns1 = "http://www.w3.org/2001/XMLSchema-instance"
+
+start =
+  RuleML
+  | Assert
+  | Retract
+  | Query
+  | Atom
+  | Rel
+  | And
+  | Or
+  | Implies
+  | Forall
+  | Exists
+  | Expr
+  | Fun
+  | Rulebase
+  | Entails
+  | Neg
+  | Naf
+  | Equivalent
+  | Equal
+  | Data
+  | Skolem
+  | Reify
+  | Ind
+  | Var
+  | Plex
+  | formula
+  | formula_2
+  | op
+  | formula_3
+  | formula_4
+  | then
+  | if
+  | declare
+  | formula_5
+  | formula_6
+  | op_2
+  | formula_7
+  | then_2
+  | if_2
+  | degree
+  | strong
+  | weak
+  | meta
+  | torso
+  | oid
+  | slot
+  | left
+  | right
+  | arg
+  | resl
+  | repo
+RuleML =
+  element RuleML {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    act*
+  }
+Assert =
+  element Assert {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula*
+  }
+Retract =
+  element Retract {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula*
+  }
+Query =
+  element Query {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute closure { "universal" | "existential" }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_2*
+  }
+Atom =
+  element Atom {
+    (attribute closure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    oid?,
+    degree?,
+    op,
+    arg*,
+    repo?,
+    slot*,
+    resl?
+  }
+Rel =
+  element Rel {
+    (attribute iri { xsd:anyURI }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    text
+  }
+And =
+  element And {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute closure { "universal" | "existential" }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_3*
+  }
+Or =
+  element Or {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute closure { "universal" | "existential" }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_4*
+  }
+Implies =
+  element Implies {
+    (attribute direction { "bidirectional" | "forward" | "backward" }
+     & attribute material { "yes" | "no" }
+     & attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute closure { "universal" | "existential" }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    if,
+    then
+  }
+Forall =
+  element Forall {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    declare+,
+    formula_5
+  }
+Exists =
+  element Exists {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    declare+,
+    formula_6
+  }
+Expr =
+  element Expr {
+    (attribute per { "copy" | "value" | "open" }
+     & attribute type { xsd:string }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    oid?,
+    op_2,
+    arg*,
+    repo?,
+    slot*,
+    resl?
+  }
+Fun =
+  element Fun {
+    (attribute per { "copy" | "value" | "open" }
+     & attribute val { "1" | "0.." }
+     & attribute iri { xsd:anyURI }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    text
+  }
+Rulebase =
+  element Rulebase {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_7*
+  }
+Entails =
+  element Entails {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    if_2,
+    then_2
+  }
+Neg =
+  element Neg {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    strong
+  }
+Naf =
+  element Naf {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    weak
+  }
+Equivalent =
+  element Equivalent {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute closure { "universal" | "existential" }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    torso,
+    torso
+  }
+Equal =
+  element Equal {
+    (attribute oriented { "no" | "yes" }
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    degree?,
+    left,
+    right
+  }
+Data =
+  element Data {
+    attribute node { xsd:anyURI }?
+    & attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & text
+    & _1*
+  }
+Skolem =
+  element Skolem {
+    (attribute type { xsd:string }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    text
+  }
+Reify =
+  element Reify {
+    attribute node { xsd:anyURI }?
+    & attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (RuleML
+       | Assert
+       | Retract
+       | Query
+       | Atom
+       | Rel
+       | And
+       | Or
+       | Implies
+       | Forall
+       | Exists
+       | Expr
+       | Fun
+       | Rulebase
+       | Entails
+       | Neg
+       | Naf
+       | Equivalent
+       | Equal
+       | Data
+       | Skolem
+       | Reify
+       | Ind
+       | Var
+       | Plex
+       | formula
+       | formula_2
+       | op
+       | formula_3
+       | formula_4
+       | then
+       | if
+       | declare
+       | formula_5
+       | formula_6
+       | op_2
+       | formula_7
+       | then_2
+       | if_2
+       | degree
+       | strong
+       | weak
+       | meta
+       | torso
+       | oid
+       | slot
+       | left
+       | right
+       | arg
+       | resl
+       | repo)*
+  }
+Ind =
+  element Ind {
+    (attribute iri { xsd:anyURI }?
+     & attribute type { xsd:string }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    text
+  }
+Var =
+  element Var {
+    (attribute type { xsd:string }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    text
+  }
+Plex =
+  element Plex {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    arg*,
+    repo?,
+    slot*,
+    resl?
+  }
+formula =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists
+       | Entails
+       | Rulebase)
+  }
+formula_2 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And
+       | Or
+       | Neg
+       | Naf
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists
+       | Entails
+       | Rulebase)
+  }
+op =
+  element op {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Rel
+  }
+formula_3 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Naf
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+formula_4 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Naf
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+then =
+  element then {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+if =
+  element if {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Naf
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+declare =
+  element declare {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Var
+  }
+formula_5 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+formula_6 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+op_2 =
+  element op {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Fun
+  }
+formula_7 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+then_2 =
+  element then {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Rulebase
+  }
+if_2 =
+  element if {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Rulebase
+  }
+degree =
+  element degree {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & Data
+  }
+strong =
+  element strong {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+weak =
+  element weak {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+meta =
+  element meta {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists
+       | Entails
+       | Rulebase)
+  }
+torso =
+  element torso {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom
+       | Equal
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
+  }
+oid =
+  element oid {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+slot =
+  element slot {
+    (attribute card { xsd:nonNegativeInteger }?
+     & attribute weight {
+         xsd:decimal { minInclusive = "0.0" maxInclusive = "1.0" }
+       }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    (Ind | Data | Expr | Plex),
+    (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+left =
+  element left {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+right =
+  element right {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+arg =
+  element arg {
+    (attribute index { xsd:positiveInteger }
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+resl =
+  element resl {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Var | Plex_2)
+  }
+repo =
+  element repo {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Var | Plex_3)
+  }
+act =
+  element act {
+    (attribute index { xsd:positiveInteger }
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    (Assert | Retract | Query)*
+  }
+_1 =
+  element * {
+    attribute * { text }*,
+    (text & _1*)
+  }
+And_2 =
+  element And {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_3*
+  }
+Or_2 =
+  element Or {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    formula_4*
+  }
+Plex_2 =
+  element Plex {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    slot*,
+    resl?
+  }
+Plex_3 =
+  element Plex {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    arg*,
+    repo?
+  }
