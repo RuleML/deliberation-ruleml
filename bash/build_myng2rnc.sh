@@ -1,7 +1,7 @@
 #!/bin/bash
 # Fully local build script for RNC
 # Dependencies
-# indep_balud_modules/*.rnc
+# indep_valid_modules/*.rnc
 # aux_valrnc.sh
 # batch_rnc2rng.sh
 # batch_config2rnc.sh
