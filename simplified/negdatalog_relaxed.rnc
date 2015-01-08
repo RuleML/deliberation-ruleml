@@ -270,27 +270,7 @@ Reify =
        | Skolem
        | Reify
        | Ind
-       | Var
-       | formula
-       | formula_2
-       | op
-       | formula_3
-       | formula_4
-       | then
-       | if
-       | declare
-       | formula_5
-       | formula_6
-       | formula_7
-       | then_2
-       | if_2
-       | degree
-       | strong
-       | meta
-       | torso
-       | oid
-       | slot
-       | arg)*
+       | Var)?
   }
 Ind =
   element Ind {

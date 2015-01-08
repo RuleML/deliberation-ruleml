@@ -180,20 +180,7 @@ Reify =
        | Data
        | Skolem
        | Reify
-       | Ind
-       | formula
-       | formula_2
-       | op
-       | formula_3
-       | formula_4
-       | formula_5
-       | then
-       | if
-       | degree
-       | meta
-       | oid
-       | slot
-       | arg)*
+       | Ind)?
   }
 Ind =
   element Ind {
