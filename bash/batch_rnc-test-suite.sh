@@ -39,11 +39,11 @@ do
        ${BASH_HOME}aux_valrnc.sh "${sfile}" "${file}"
        exitvalue=$?
        if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
-          echo "Validation Failed for ${filename}"
+          echo "Validation Failed for ${file}"
           exit 1
        else
          if [[ ${file} =~ fail ]] && [ "${exitvalue}" == "0" ]; then
-           echo "Validation Succeeded for Failure Test ${filename}"
+           echo "Validation Succeeded for Failure Test ${file}"
            exit 1
          fi
        fi
