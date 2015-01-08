@@ -541,14 +541,30 @@ then_2 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase
+       | Atom
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
   }
 if_2 =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase
+       | Atom
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
   }
 degree =
   element degree {
