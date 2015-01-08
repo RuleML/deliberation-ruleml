@@ -171,7 +171,7 @@ And =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3
      | Atom
      | Equal
@@ -195,7 +195,7 @@ Or =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4
      | Atom
      | Equal
@@ -221,7 +221,7 @@ Implies =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     ((if & then)
      | ((Atom
          | Equal
@@ -293,7 +293,7 @@ Forall =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_5
      | Atom
@@ -317,7 +317,7 @@ Exists =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_6
      | Atom
@@ -404,7 +404,7 @@ Neg =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom
      | Equal
      | And_2
@@ -428,7 +428,7 @@ Equivalent =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom
      | Equal
      | And_2
@@ -868,7 +868,7 @@ And_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3
      | Atom
      | Equal
@@ -891,7 +891,7 @@ Or_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4
      | Atom
      | Equal

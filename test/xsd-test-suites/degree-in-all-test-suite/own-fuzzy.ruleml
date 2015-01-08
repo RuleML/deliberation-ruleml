@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  >
+
+<Assert mapClosure="universal">
+
+<!-- start XML comment ...
+
+This example rulebase contains four rules.
+The first and second rules are implications; the third and fourth ones are facts.
+
+In English:
+
+The first rule implies that a person owns an object (with degree 0.87)
+if that person buys the object from a merchant and the person keeps the object.
+
+As an OrdLab Tree:
+
+Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      *                                                                     *
+   if *                                                                then * 
+      *                                                                     * 
+     And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                           Atom~~~~~~~~~~~~~~~~~~ 
+           |                                   |                                *     *     |     |   
+           |                                   |                        degree  * op  *     |     |  
+           |                                   |                                *     *     |     |   
+         Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~           Data   Rel   Var   Var  
+                  *     |      |       |              *     |     |             .     .     .     .   
+              op  *     |      |       |          op  *     |     |             .     .     .     .  
+                  *     |      |       |              *     |     |             .     .     .     .   
+                 Rel   Var    Var     Var            Rel   Var   Var          0.87   own  person object
+                  .     .      .       .              .     .     . 
+                  .     .      .       .              .     .     .
+                  .     .      .       .              .     .     .
+                 buy  person merchant object        keep  person object
+
+... end XML comment -->
+
+<Implies>
+  <degree><Data xsi:type="xs:decimal">1.0</Data></degree>
+  <if>
+    <!-- explicit 'And' -->
+    <And>
+      <degree><Data xsi:type="xs:integer">1</Data></degree>
+      <Atom>
+        <degree><Data xsi:type="xs:string">likely</Data></degree>
+        <op><Rel>buy</Rel></op>
+        <Var>person</Var>
+        <Var>merchant</Var>
+        <Var>object</Var>
+      </Atom>
+      <Atom>
+        <degree><Data xsi:type="xs:decimal">0.5</Data></degree>
+        <op><Rel>keep</Rel></op>
+        <Var>person</Var>
+        <Var>object</Var>
+      </Atom>
+    </And>
+  </if>
+  <then>
+    <Atom>
+      <oid>
+        <Ind>own rule</Ind>
+      </oid>
+      <degree>
+        <Data xsi:type="xs:float">0.87</Data>
+      </degree>
+      <op><Rel>own</Rel></op>
+      <Var>person</Var>
+      <Var>object</Var>
+    </Atom>
+  </then>
+</Implies>
+
+<!-- The second rule implies that a person buys an object from a merchant
+if the merchant sells the object to the person. -->
+
+<Forall>
+  <degree><Data xsi:type="xs:integer">1</Data></degree>
+  <Var>merchant</Var>  
+<Implies>
+  <if>
+    <Atom>
+      <op><Rel>sell</Rel></op>
+      <Var>merchant</Var>
+      <Var>person</Var>
+      <Var>object</Var>
+    </Atom>
+  </if>
+  <then>
+    <Atom>
+      <op><Rel>buy</Rel></op>
+      <Var>person</Var>
+      <Var>merchant</Var>
+      <Var>object</Var>
+    </Atom>
+  </then>
+</Implies>
+</Forall>
+  
+ 
+<!-- The third rule is a fact that asserts that
+John sells XMLBible to Mary. -->
+ 
+    <Atom>
+      <op><Rel>sell</Rel></op>
+      <Ind>John</Ind>
+      <Ind>Mary</Ind>
+      <Ind>XMLBible</Ind>
+    </Atom>
+
+ 
+<!-- The fourth rule is a fact that asserts that
+Mary keeps XMLBible.
+ 
+Observe that this fact is binary - i.e., there are two arguments
+for the relation. RDF viewed as a logical knowledge representation
+is, likewise, binary, although its arguments have type restrictions,
+e.g., the first must be a resource (basically, a URI). -->
+ 
+    <Atom>
+      <op><Rel>keep</Rel></op>
+      <Ind>Mary</Ind>
+      <Ind>XMLBible</Ind>
+    </Atom>
+  
+</Assert>
+  
+  <Query>
+    <Atom>
+      <degree><Data/></degree>
+      <op><Rel>buy</Rel></op>
+      <Var>person</Var>
+      <Var>merchant</Var>
+      <Var>object</Var>
+    </Atom>    
+    
+  </Query>
+
+  <Query>
+    <Exists>
+      <degree><Data xsi:type="xs:decimal">1.0</Data></degree>
+      <Var>object</Var>      
+      <Atom>
+        <degree><Data/></degree>
+        <op><Rel>buy</Rel></op>
+        <Var>person</Var>
+        <Var>merchant</Var>
+        <Var>object</Var>
+      </Atom>    
+    </Exists>    
+  </Query>
+  
+</RuleML>

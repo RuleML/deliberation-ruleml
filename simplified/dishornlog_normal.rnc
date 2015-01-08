@@ -126,6 +126,7 @@ And =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or =
@@ -136,6 +137,7 @@ Or =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }
 Implies =
@@ -148,6 +150,7 @@ Implies =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     if,
     then
   }
@@ -158,6 +161,7 @@ Forall =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     declare+,
     formula_5
   }
@@ -168,6 +172,7 @@ Exists =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     declare+,
     formula_6
   }
@@ -229,6 +234,7 @@ Equivalent =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     torso,
     torso
   }
@@ -512,6 +518,7 @@ And_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or_2 =
@@ -521,6 +528,7 @@ Or_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }
 Or_3 =
@@ -530,6 +538,7 @@ Or_3 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_8*
   }
 Plex_2 =

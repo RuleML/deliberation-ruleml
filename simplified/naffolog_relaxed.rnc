@@ -168,7 +168,7 @@ And =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3
      | Atom
      | And_2
@@ -192,7 +192,7 @@ Or =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4
      | Atom
      | And_2
@@ -218,7 +218,7 @@ Implies =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     ((if & then)
      | ((Atom
          | And_2
@@ -287,7 +287,7 @@ Forall =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_5
      | Atom
@@ -310,7 +310,7 @@ Exists =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_6
      | Atom
@@ -394,7 +394,7 @@ Neg =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom
      | And_2
      | Or_2
@@ -416,7 +416,7 @@ Naf =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom
      | And_2
      | Or_2
@@ -439,7 +439,7 @@ Equivalent =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom
      | And_2
      | Or_2
@@ -857,7 +857,7 @@ And_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3
      | Atom
      | And_2
@@ -880,7 +880,7 @@ Or_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4
      | Atom
      | And_2

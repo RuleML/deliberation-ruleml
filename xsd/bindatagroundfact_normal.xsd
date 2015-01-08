@@ -142,6 +142,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_3"/>
           </xs:sequence>
           <xs:attribute name="closure">
@@ -165,6 +166,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
           </xs:sequence>
           <xs:attribute name="closure">
@@ -443,6 +445,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_3"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
@@ -458,6 +461,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_4"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>

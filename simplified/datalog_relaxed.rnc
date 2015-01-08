@@ -131,7 +131,7 @@ And =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3 | Atom | And_2 | Or_2)*
   }
 Or =
@@ -141,7 +141,7 @@ Or =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4 | Atom | And_2 | Or_2)*
   }
 Implies =
@@ -153,7 +153,7 @@ Implies =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     ((if & then)
      | (Atom, if)
      | (then, (Atom | And_2 | Or_2))
@@ -167,7 +167,7 @@ Forall =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_5 | Atom | Implies | Equivalent | Forall)
   }
@@ -177,7 +177,7 @@ Exists =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_6 | Atom | And_2 | Or_2 | Exists)
   }
@@ -216,7 +216,7 @@ Equivalent =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom | torso),
     (Atom | torso)
   }
@@ -471,7 +471,7 @@ And_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3 | Atom | And_2 | Or_2)*
   }
 Or_2 =
@@ -480,7 +480,7 @@ Or_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4 | Atom | And_2 | Or_2)*
   }
 _1 =

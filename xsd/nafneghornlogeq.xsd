@@ -191,6 +191,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
@@ -222,6 +223,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>
@@ -251,6 +253,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:sequence>
             <xs:group ref="spec:if"/>
@@ -307,6 +310,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="spec:declare"/>
           <xs:element ref="spec:Var"/>
@@ -330,6 +334,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="spec:declare"/>
           <xs:element ref="spec:Var"/>
@@ -480,6 +485,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
@@ -495,6 +501,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
@@ -511,6 +518,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
@@ -1043,6 +1051,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
@@ -1066,6 +1075,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>
