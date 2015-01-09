@@ -6,7 +6,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
-XSD_HOME=${REPO_HOME}xsd 
+XSD_HOME=${REPO_HOME}xsd/
 OXY_HOME=/Applications/oxygen/
 DOC_HOME=${OXY_HOME}schemaDocumentationMac.sh
 
