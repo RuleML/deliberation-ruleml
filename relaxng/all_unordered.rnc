@@ -76,6 +76,7 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

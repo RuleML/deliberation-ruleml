@@ -126,6 +126,7 @@ $now =  date(DATE_ATOM,time());
 $this_url = $base_url;
 $this_url = $this_url . "?";
 $call_fragment = $backbone."=".$backboneParam;
+echo "# Call parameters\n";
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
 $call_fragment = $default."=".$defaultParam;
@@ -176,7 +177,6 @@ echo '" ]'."\n";
 echo 'dc:language [ "en" ]'."\n";
 echo 'dcterms:rights [ "TBD" ]'."\n";
 echo 'dc:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
-echo "# Call parameters\n";
 echo "# Base URL = $base_url \n";
 
 
@@ -250,6 +250,8 @@ if ($bdefault==0){
   $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
   $needOrHead = max($needDis , extractBit($bimplies, $implies_or))*(1-$needFO);
   $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needDis)*(1-$needOrHead);
+  $plus = max($needExHead, $needAndHead, $needOrHead, $needNegConstraint);
+  $notPlus = 1 - $plus;
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
@@ -287,6 +289,8 @@ if ($bdefault==0){
   
   $needDefaultPresent =  max($bdefault_present , $needDirND , $needMatND , $needInND , $needValND , $needOrientedND);    
   $needDefaultPresentFO = $needDefaultPresent * $needFO;
+  
+  $ifThenSkippable = max( $notPivot, $notPlus ); 
 
   //Step 1. Assemble the language foundation
   if ($absolute) {
@@ -403,6 +407,11 @@ if ($bdefault==0){
       echo "#\n# SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'stripe_skipping_expansion_module.rnc"'."$end\n";
+      if ($ifThenSkippable){    
+        echo "#\n# SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED\n";
+        echo "#\n".'include "' . $modulesLocation .
+            'stripe_skipping_ifthen_expansion_module.rnc"'."$end\n";
+       }
       if ($notPivot){ 
       // not included when converting to XSD
       echo "#\n# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
