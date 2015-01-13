@@ -33,6 +33,7 @@ include "modules/direction_attrib_expansion_module.rnc" inherit = ruleml {start 
 include "modules/direction_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/direction_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/dis_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/discon_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/existential_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
