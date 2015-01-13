@@ -9,7 +9,6 @@
 
 
     <Implies node="an_example_fact">
-      <if>
         <And>
           <Atom>
             <Rel>friend</Rel>
@@ -33,8 +32,6 @@
             </slot>
           </Atom>
         </And>
-      </if>
-      <then>
         <Or>
           <Atom>
             <Rel>friend</Rel>
@@ -57,7 +54,6 @@
             </slot>
           </Atom>
         </Or>
-      </then>
     </Implies>
 
 

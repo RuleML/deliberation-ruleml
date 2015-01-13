@@ -250,8 +250,9 @@ if ($bdefault==0){
   $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
   $needOrHead = max($needDis , extractBit($bimplies, $implies_or))*(1-$needFO);
   $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needDis)*(1-$needOrHead);
-  $plus = max($needExHead, $needAndHead, $needOrHead, $needNegConstraint);
+  $plus = max($needExHead, $needAndHead*(1 - $needOrHead), $needNegConstraint, $needOrHead*(1 - $needAndHead));
   $notPlus = 1 - $plus;
+  $needDisCon = $needAndHead*$needOrHead*$notPlus;
   
   $needOid = extractBit($bterms, $terms_oid);
   $needSlot = extractBit($bterms, $terms_slot);
@@ -334,10 +335,15 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'expr_expansion_module.rnc"'."$end\n";
     }
-    if ($needOrHead){
+    if ($needOrHead*(1-$needDisCon)){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'dis_expansion_module.rnc"'."$end\n";
+    }
+    if ($needDisCon){
+      echo "#\n# DIS- AND CON-JUNCTIONS IN CONCLUSIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'discon_expansion_module.rnc"'."$end\n";
     }
     if ($needFO){
       echo "#\n# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED \n";
@@ -556,7 +562,7 @@ if ($bdefault==0){
           'negative_constraint_expansion_module.rnc"'."$end\n";
     }
     // Include conjunctive heads in implications if needed
-    if ($needAndHead){
+    if ($needAndHead*(1-$needDisCon)){
       echo "#\n# CONJUNCTIVE HEADS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'conjunctive_head_expansion_module.rnc"'."$end\n";

@@ -65,7 +65,7 @@
         <xs:group ref="spec:formula_2"/>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:And"/>
-        <xs:group ref="spec:Or"/>
+        <xs:element ref="spec:Or"/>
         <xs:element ref="spec:Exists"/>
       </xs:choice>
     </xs:complexType>
@@ -97,30 +97,40 @@
         <xs:group ref="spec:formula_3"/>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:And"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:Or"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>
-  <xs:group name="Or">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_4"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
-          </xs:choice>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
+  <xs:element name="Or">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="spec:formula_4"/>
+        <xs:element ref="spec:Atom"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Implies">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element ref="spec:if"/>
-        <xs:element ref="spec:then"/>
-      </xs:sequence>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="spec:if"/>
+          <xs:element ref="spec:then"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
+          </xs:choice>
+          <xs:choice>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:choice>
       <xs:attribute name="direction" default="bidirectional">
         <xs:simpleType>
           <xs:restriction base="xs:token">
@@ -164,7 +174,7 @@
           <xs:group ref="spec:formula_6"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:And"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
@@ -197,7 +207,7 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
         </xs:complexType>
@@ -218,7 +228,7 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:Or"/>
           </xs:choice>
         </xs:complexType>
       </xs:element>
@@ -231,7 +241,7 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:Or"/>
           </xs:choice>
         </xs:complexType>
       </xs:element>
@@ -241,7 +251,8 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:group ref="spec:Or_3"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>
@@ -250,7 +261,7 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:And"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:Or"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>
@@ -281,7 +292,7 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
         </xs:complexType>
@@ -308,44 +319,5 @@
       <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
     </xs:complexType>
   </xs:element>
-  <xs:group name="Or_2">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_4"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:element ref="spec:And"/>
-            <xs:group ref="spec:Or_2"/>
-          </xs:choice>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
   
-  <xs:group name="Or_3">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:group ref="spec:formula_7"/>
-            <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
-          </xs:choice>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_7">
-    <xs:sequence>
-      <xs:element name="formula">
-        <xs:complexType>
-          <xs:choice>
-            <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
-          </xs:choice>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
 </xs:schema>
