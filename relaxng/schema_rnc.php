@@ -338,7 +338,7 @@ if ($bdefault==0){
     if ($needOrHead*(1-$needDisCon)){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'dis_expansion_module.rnc"'."$end\n";
+          'disjunctive_head_expansion_module.rnc"'."$end\n";
     }
     if ($needDisCon){
       echo "#\n# DIS- AND CON-JUNCTIONS IN CONCLUSIONS INCLUDED\n";
