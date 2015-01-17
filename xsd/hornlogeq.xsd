@@ -457,8 +457,22 @@
             <xs:group ref="spec:then_2"/>
           </xs:sequence>
           <xs:sequence>
-            <xs:element ref="spec:Rulebase"/>
-            <xs:element ref="spec:Rulebase"/>
+            <xs:choice>
+              <xs:element ref="spec:Rulebase"/>
+              <xs:element ref="spec:Atom"/>
+              <xs:element ref="spec:Equal"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+            </xs:choice>
+            <xs:choice>
+              <xs:element ref="spec:Rulebase"/>
+              <xs:element ref="spec:Atom"/>
+              <xs:element ref="spec:Equal"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+            </xs:choice>
           </xs:sequence>
         </xs:choice>
       </xs:sequence>
@@ -779,9 +793,14 @@
     <xs:sequence>
       <xs:element name="then">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -792,9 +811,14 @@
     <xs:sequence>
       <xs:element name="if">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Equal"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>

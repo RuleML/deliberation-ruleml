@@ -140,11 +140,11 @@ Entails =
      & attribute xml:id { xsd:NCName }?),
     meta*,
     ((if & then)
-     | (Rulebase, if)
-     | (then, Rulebase)
-     | (Rulebase, Rulebase)
-     | (Rulebase, then)
-     | (if, Rulebase))
+     | ((Rulebase | Atom), if)
+     | (then, (Rulebase | Atom))
+     | ((Rulebase | Atom), (Rulebase | Atom))
+     | ((Rulebase | Atom), then)
+     | (if, (Rulebase | Atom)))
   }
 Data =
   element Data {
@@ -255,14 +255,14 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom)
   }
 if =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom)
   }
 degree =
   element degree {

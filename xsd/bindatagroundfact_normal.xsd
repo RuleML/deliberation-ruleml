@@ -337,18 +337,20 @@
   </xs:group>
   <xs:element name="then">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice>
         <xs:element ref="spec:Rulebase"/>
-      </xs:sequence>
+        <xs:element ref="spec:Atom"/>
+      </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="if">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice>
         <xs:element ref="spec:Rulebase"/>
-      </xs:sequence>
+        <xs:element ref="spec:Atom"/>
+      </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
     </xs:complexType>

@@ -377,11 +377,64 @@ Entails =
      & attribute xml:id { xsd:NCName }?),
     meta*,
     ((if_2 & then_2)
-     | (Rulebase, if_2)
-     | (then_2, Rulebase)
-     | (Rulebase, Rulebase)
-     | (Rulebase, then_2)
-     | (if_2, Rulebase))
+     | ((Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists),
+        if_2)
+     | (then_2,
+        (Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists))
+     | ((Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists),
+        (Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists))
+     | ((Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists),
+        then_2)
+     | (if_2,
+        (Rulebase
+         | Atom
+         | And_2
+         | Or_2
+         | Neg
+         | Implies
+         | Equivalent
+         | Forall
+         | Exists)))
   }
 Neg =
   element Neg {
@@ -723,14 +776,30 @@ then_2 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase
+       | Atom
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
   }
 if_2 =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase
+       | Atom
+       | And_2
+       | Or_2
+       | Neg
+       | Implies
+       | Equivalent
+       | Forall
+       | Exists)
   }
 degree =
   element degree {
