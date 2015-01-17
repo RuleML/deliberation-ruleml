@@ -272,7 +272,7 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Equal | And_3 | Or_3 | Exists_2)
+    & (Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2)
   }
 if =
   element if {
@@ -380,6 +380,14 @@ Or_3 =
     meta*,
     formula_8*
   }
+Or_4 =
+  element Or {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*
+  }
 Exists_2 =
   element Exists {
     (attribute node { xsd:anyURI }?
@@ -395,19 +403,19 @@ formula_7 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_8 =
   element formula {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_9 =
   element formula {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }

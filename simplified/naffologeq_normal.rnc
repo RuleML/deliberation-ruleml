@@ -505,6 +505,7 @@ then =
        | Equal
        | And_2
        | Or_2
+       | Or_3
        | Neg
        | Implies
        | Equivalent
@@ -663,6 +664,7 @@ torso =
        | Equal
        | And_2
        | Or_2
+       | Or_3
        | Neg
        | Implies
        | Equivalent
@@ -764,6 +766,19 @@ Or_2 =
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_4*
+  }
+Or_3 =
+  element Or {
+    (attribute mapMaterial { "yes" | "no" }
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*
   }
 Plex_2 =
   element Plex {

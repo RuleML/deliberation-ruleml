@@ -81,12 +81,12 @@ Implies =
      & attribute material { "yes" }?
      & attribute ns1:schemaLocation { text }?),
     ((if & then)
-     | ((Atom | Equal | And_3 | Or_3 | Exists_2), if)
+     | ((Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2), if)
      | (then, (Atom | Equal | And_2 | Or_2))
      | ((Atom | Equal | And_2 | Or_2),
-        (Atom | Equal | And_3 | Or_3 | Exists_2))
+        (Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2))
      | ((Atom | Equal | And_2 | Or_2), then)
-     | (if, (Atom | Equal | And_3 | Or_3 | Exists_2)))
+     | (if, (Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2)))
   }
 Forall =
   element Forall {
@@ -152,7 +152,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Equal | And_3 | Or_3 | Exists_2)
+    & (Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2)
   }
 if =
   element if {
@@ -209,18 +209,22 @@ Or_2 =
 And_3 =
   element And {
     attribute ns1:schemaLocation { text }?,
-    (Atom | And_3 | Or_3 | Exists_2 | formula_7)*
+    (Atom | And_3 | Or_3 | Or_4 | Exists_2 | formula_7)*
   }
 Or_3 =
   element Or {
     attribute ns1:schemaLocation { text }?,
-    (formula_8 | Atom | And_3 | Or_3 | Exists_2)*
+    (formula_8 | Atom | And_3 | Or_3 | Or_4 | Exists_2)*
+  }
+Or_4 =
+  element Or {
+    attribute ns1:schemaLocation { text }?
   }
 Exists_2 =
   element Exists {
     attribute ns1:schemaLocation { text }?,
     (declare | Var)+,
-    (Atom | And_3 | Or_3 | Exists_2 | formula_9)
+    (Atom | And_3 | Or_3 | Or_4 | Exists_2 | formula_9)
   }
 _1 =
   element * {
@@ -230,15 +234,15 @@ _1 =
 formula_7 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_8 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_9 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }

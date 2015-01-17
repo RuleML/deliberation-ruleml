@@ -148,7 +148,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Equal | And_3 | Or_3 | Exists_2)
+    & (Atom | Equal | And_3 | Or_3 | Or_4 | Exists_2)
   }
 if =
   element if {
@@ -217,6 +217,10 @@ Or_3 =
     attribute ns1:schemaLocation { text }?,
     formula_8*
   }
+Or_4 =
+  element Or {
+    attribute ns1:schemaLocation { text }?
+  }
 Exists_2 =
   element Exists {
     attribute ns1:schemaLocation { text }?,
@@ -226,15 +230,15 @@ Exists_2 =
 formula_7 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_8 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }
 formula_9 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Exists_2)
   }

@@ -78,11 +78,11 @@ Implies =
      & attribute material { "yes" }?
      & attribute ns1:schemaLocation { text }?),
     ((if & then)
-     | ((Atom | Or_3), if)
+     | ((Atom | And_3 | Or_3 | Or_4), if)
      | (then, (Atom | And_2 | Or_2))
-     | ((Atom | And_2 | Or_2), (Atom | Or_3))
+     | ((Atom | And_2 | Or_2), (Atom | And_3 | Or_3 | Or_4))
      | ((Atom | And_2 | Or_2), then)
-     | (if, (Atom | Or_3)))
+     | (if, (Atom | And_3 | Or_3 | Or_4)))
   }
 Forall =
   element Forall {
@@ -141,7 +141,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
+    & (Atom | And_3 | Or_3 | Or_4)
   }
 if =
   element if {
@@ -185,10 +185,19 @@ Or_2 =
     attribute ns1:schemaLocation { text }?,
     (formula_4 | Atom | And_2 | Or_2)*
   }
+And_3 =
+  element And {
+    attribute ns1:schemaLocation { text }?,
+    (Atom | And_3 | Or_3 | Or_4 | formula_7)*
+  }
 Or_3 =
   element Or {
     attribute ns1:schemaLocation { text }?,
-    (formula_7 | Atom | Or_3)*
+    (formula_8 | Atom | And_3 | Or_3 | Or_4)*
+  }
+Or_4 =
+  element Or {
+    attribute ns1:schemaLocation { text }?
   }
 _1 =
   element * {
@@ -198,5 +207,10 @@ _1 =
 formula_7 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
+    & (Atom | And_3 | Or_3 | Or_4)
+  }
+formula_8 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & (Atom | And_3 | Or_3 | Or_4)
   }

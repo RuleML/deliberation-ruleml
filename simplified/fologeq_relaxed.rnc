@@ -227,6 +227,7 @@ Implies =
          | Equal
          | And_2
          | Or_2
+         | Or_3
          | Neg
          | Implies
          | Equivalent
@@ -256,6 +257,7 @@ Implies =
          | Equal
          | And_2
          | Or_2
+         | Or_3
          | Neg
          | Implies
          | Equivalent
@@ -276,6 +278,7 @@ Implies =
          | Equal
          | And_2
          | Or_2
+         | Or_3
          | Neg
          | Implies
          | Equivalent
@@ -433,6 +436,7 @@ Equivalent =
      | Equal
      | And_2
      | Or_2
+     | Or_3
      | Neg
      | Implies
      | Equivalent
@@ -443,6 +447,7 @@ Equivalent =
      | Equal
      | And_2
      | Or_2
+     | Or_3
      | Neg
      | Implies
      | Equivalent
@@ -646,6 +651,7 @@ then =
        | Equal
        | And_2
        | Or_2
+       | Or_3
        | Neg
        | Implies
        | Equivalent
@@ -788,6 +794,7 @@ torso =
        | Equal
        | And_2
        | Or_2
+       | Or_3
        | Neg
        | Implies
        | Equivalent
@@ -902,6 +909,19 @@ Or_2 =
      | Equivalent
      | Forall
      | Exists)*
+  }
+Or_3 =
+  element Or {
+    (attribute mapMaterial { "yes" | "no" }?
+     & attribute mapDirection {
+         "bidirectional" | "forward" | "backward"
+       }?
+     & attribute mapClosure { "universal" | "existential" }?
+     & attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*
   }
 _1 =
   element * {

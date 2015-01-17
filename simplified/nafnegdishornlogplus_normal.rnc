@@ -432,7 +432,7 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Equal | And_3 | Or_3 | Neg | Exists_2)
+    & (Atom | Equal | And_3 | Or_3 | Or_4 | Neg | Exists_2)
   }
 if =
   element if {
@@ -530,7 +530,7 @@ torso =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Equal | And_3 | Or_3 | Neg | Exists_2)
+    & (Atom | Equal | And_3 | Or_3 | Or_4 | Neg | Exists_2)
   }
 oid =
   element oid {
@@ -636,6 +636,14 @@ Or_3 =
     meta*,
     formula_9*
   }
+Or_4 =
+  element Or {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*
+  }
 Exists_2 =
   element Exists {
     (attribute node { xsd:anyURI }?
@@ -671,19 +679,19 @@ formula_8 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Neg | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Neg | Exists_2)
   }
 formula_9 =
   element formula {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Neg | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Neg | Exists_2)
   }
 formula_10 =
   element formula {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | And_3 | Or_3 | Neg | Exists_2)
+    & (Atom | And_3 | Or_3 | Or_4 | Neg | Exists_2)
   }

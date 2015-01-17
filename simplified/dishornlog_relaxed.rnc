@@ -159,11 +159,11 @@ Implies =
      & attribute xml:id { xsd:NCName }?),
     meta*,
     ((if & then)
-     | ((Atom | Or_3), if)
+     | ((Atom | And_3 | Or_3 | Or_4), if)
      | (then, (Atom | And_2 | Or_2))
-     | ((Atom | And_2 | Or_2), (Atom | Or_3))
+     | ((Atom | And_2 | Or_2), (Atom | And_3 | Or_3 | Or_4))
      | ((Atom | And_2 | Or_2), then)
-     | (if, (Atom | Or_3)))
+     | (if, (Atom | And_3 | Or_3 | Or_4)))
   }
 Forall =
   element Forall {
@@ -246,8 +246,8 @@ Equivalent =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
-    (Atom | Or_3 | torso),
-    (Atom | Or_3 | torso)
+    (Atom | And_3 | Or_3 | Or_4 | torso),
+    (Atom | And_3 | Or_3 | Or_4 | torso)
   }
 Data =
   element Data {
@@ -389,7 +389,7 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
+    & (Atom | And_3 | Or_3 | Or_4)
   }
 if =
   element if {
@@ -466,7 +466,7 @@ torso =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
+    & (Atom | And_3 | Or_3 | Or_4)
   }
 oid =
   element oid {
@@ -535,6 +535,15 @@ Or_2 =
     meta*,
     (formula_4 | Atom | And_2 | Or_2)*
   }
+And_3 =
+  element And {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*,
+    (Atom | And_3 | Or_3 | Or_4 | formula_8)*
+  }
 Or_3 =
   element Or {
     (attribute node { xsd:anyURI }?
@@ -542,7 +551,15 @@ Or_3 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
-    (formula_8 | Atom | Or_3)*
+    (formula_9 | Atom | And_3 | Or_3 | Or_4)*
+  }
+Or_4 =
+  element Or {
+    (attribute node { xsd:anyURI }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?),
+    meta*
   }
 _1 =
   element * {
@@ -572,5 +589,12 @@ formula_8 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
+    & (Atom | And_3 | Or_3 | Or_4)
+  }
+formula_9 =
+  element formula {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:base { xsd:anyURI }?
+    & attribute xml:id { xsd:NCName }?
+    & (Atom | And_3 | Or_3 | Or_4)
   }
