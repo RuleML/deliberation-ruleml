@@ -170,11 +170,15 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="Rel">
-    <xs:complexType mixed="true">
-      <xs:attribute name="iri" type="xs:anyURI"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="iri" type="xs:anyURI"/>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:group name="And">
@@ -183,6 +187,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
@@ -212,6 +217,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>
@@ -239,6 +245,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:sequence>
             <xs:group ref="spec:if"/>
@@ -292,6 +299,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="spec:declare"/>
           <xs:element ref="spec:Var"/>
@@ -314,6 +322,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice maxOccurs="unbounded">
           <xs:element ref="spec:declare"/>
           <xs:element ref="spec:Var"/>
@@ -385,8 +394,22 @@
             <xs:group ref="spec:then_2"/>
           </xs:sequence>
           <xs:sequence>
-            <xs:element ref="spec:Rulebase"/>
-            <xs:element ref="spec:Rulebase"/>
+            <xs:choice>
+              <xs:element ref="spec:Rulebase"/>
+              <xs:element ref="spec:Atom"/>
+              <xs:element ref="spec:Neg"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+            </xs:choice>
+            <xs:choice>
+              <xs:element ref="spec:Rulebase"/>
+              <xs:element ref="spec:Atom"/>
+              <xs:element ref="spec:Neg"/>
+              <xs:element ref="spec:Implies"/>
+              <xs:element ref="spec:Equivalent"/>
+              <xs:element ref="spec:Forall"/>
+            </xs:choice>
           </xs:sequence>
         </xs:choice>
       </xs:sequence>
@@ -399,6 +422,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:strong"/>
@@ -413,6 +437,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Neg"/>
@@ -439,29 +464,41 @@
   </xs:element>
   <xs:element name="Data" type="xs:anyType"/>
   <xs:element name="Skolem">
-    <xs:complexType mixed="true">
-      <xs:attribute name="type" type="xs:string"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attribute name="node" type="xs:anyURI"/><xs:attribute ref="xml:base"/><xs:attribute ref="xml:id"/></xs:complexType></xs:element>
   <xs:element name="Ind">
-    <xs:complexType mixed="true">
-      <xs:attribute name="iri" type="xs:anyURI"/>
-      <xs:attribute name="type" type="xs:string"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="iri" type="xs:anyURI"/>
+          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:element name="Var">
-    <xs:complexType mixed="true">
-      <xs:attribute name="type" type="xs:string"/>
-      <xs:attribute name="node" type="xs:anyURI"/>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="node" type="xs:anyURI"/>
+          <xs:attribute ref="xml:base"/>
+          <xs:attribute ref="xml:id"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:group name="formula">
@@ -637,9 +674,14 @@
     <xs:sequence>
       <xs:element name="then">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -650,9 +692,14 @@
     <xs:sequence>
       <xs:element name="if">
         <xs:complexType>
-          <xs:sequence>
+          <xs:choice>
             <xs:element ref="spec:Rulebase"/>
-          </xs:sequence>
+            <xs:element ref="spec:Atom"/>
+            <xs:element ref="spec:Neg"/>
+            <xs:element ref="spec:Implies"/>
+            <xs:element ref="spec:Equivalent"/>
+            <xs:element ref="spec:Forall"/>
+          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -775,6 +822,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_3"/>
               <xs:element ref="spec:Atom"/>
@@ -796,6 +844,7 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+            <xs:element minOccurs="0" ref="spec:degree"/>
             <xs:choice minOccurs="0" maxOccurs="unbounded">
               <xs:group ref="spec:formula_4"/>
               <xs:element ref="spec:Atom"/>

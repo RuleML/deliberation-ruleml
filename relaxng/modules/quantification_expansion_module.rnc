@@ -38,9 +38,9 @@ Forall.Node.def =
 ##will accept a scoped closure attribute at full first-order logic.
 reForall.attlist &= mapClosure-att-fo.choice?
 
-## Universally qualified formulas accept the header pattern common to Nodes.
-Forall.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Universally qualified formulas aaccept the header patter common to truth-valued connectives.
+Forall.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 ## Universally qualified formulas contain a sequence of bound variables and one formula.
 Forall.main |= boundVariables.choice, formula_Forall-edge.choice
@@ -58,9 +58,9 @@ Exists.Node.def =
 ## will accept a scoped closure attribute at full first-order logic.
 reExists.attlist &= mapClosure-att-fo.choice?
 
-## Existential quantifications accept the header pattern common to Nodes.
-Exists.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Existential quantifications accept the header patter common to truth-valued connectives.
+Exists.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 ## Existentially qualified formulas contain a sequence of bound variables and one formula.
 Exists.main |= boundVariables.choice, formula_Exists-edge.choice

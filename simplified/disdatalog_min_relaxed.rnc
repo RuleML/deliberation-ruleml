@@ -60,7 +60,7 @@ Rel =
   element Rel {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -78,11 +78,11 @@ Implies =
      & attribute material { "yes" }?
      & attribute ns1:schemaLocation { text }?),
     ((if & then)
-     | ((Atom | And_3 | Or_3 | Or_4), if)
+     | ((Atom | And_2 | Or_2), if)
      | (then, (Atom | And_2 | Or_2))
-     | ((Atom | And_2 | Or_2), (Atom | And_3 | Or_3 | Or_4))
+     | ((Atom | And_2 | Or_2), (Atom | And_2 | Or_2))
      | ((Atom | And_2 | Or_2), then)
-     | (if, (Atom | And_3 | Or_3 | Or_4)))
+     | (if, (Atom | And_2 | Or_2)))
   }
 Forall =
   element Forall {
@@ -106,12 +106,12 @@ Ind =
   element Ind {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 Var =
   element Var {
     attribute ns1:schemaLocation { text }?,
-    text
+    xsd:token
   }
 formula =
   element formula {
@@ -141,7 +141,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
+    & (Atom | And_2 | Or_2)
   }
 if =
   element if {
@@ -185,32 +185,8 @@ Or_2 =
     attribute ns1:schemaLocation { text }?,
     (formula_4 | Atom | And_2 | Or_2)*
   }
-And_3 =
-  element And {
-    attribute ns1:schemaLocation { text }?,
-    (Atom | And_3 | Or_3 | Or_4 | formula_7)*
-  }
-Or_3 =
-  element Or {
-    attribute ns1:schemaLocation { text }?,
-    (formula_8 | Atom | And_3 | Or_3 | Or_4)*
-  }
-Or_4 =
-  element Or {
-    attribute ns1:schemaLocation { text }?
-  }
 _1 =
   element * {
     attribute * { text }*,
     (text & _1*)
-  }
-formula_7 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
-  }
-formula_8 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
   }

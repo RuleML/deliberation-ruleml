@@ -90,8 +90,12 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="Rel">
-    <xs:complexType mixed="true">
-      <xs:attribute name="iri" type="xs:anyURI"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="iri" type="xs:anyURI"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
   <xs:group name="And">
@@ -212,11 +216,15 @@
   </xs:element>
   <xs:element name="Data" type="xs:anyType"/>
   <xs:element name="Ind">
-    <xs:complexType mixed="true">
-      <xs:attribute name="iri" type="xs:anyURI"/>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:token">
+          <xs:attribute name="iri" type="xs:anyURI"/>
+        </xs:extension>
+      </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Var" type="xs:string"/>
+  <xs:element name="Var" type="xs:token"/>
   <xs:group name="formula">
     <xs:sequence>
       <xs:element name="formula">

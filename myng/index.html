@@ -212,14 +212,7 @@
                 var hornlogAndUp = get_hornlogAndUp(LanguageForm);
                 //
                 var hornlogeqAndUp = get_hornlogEqAndUp(LanguageForm);
-                var fol = get_fol(LanguageForm)
-                // If rulebases are allowed, entailments are available
-                if (LanguageForm.propo1.checked) {
-                    LanguageForm.propo2.removeAttribute('disabled');
-                } else {
-                    LanguageForm.propo2.checked = false;
-                    LanguageForm.propo2.disabled = "disabled";
-                }
+                var fol = get_fol(LanguageForm);
                 // In RuleML 1.02, non-default values of scope implication attributes
                 // are allowed, even in fact languages with no implications
                 LanguageForm.implies1.removeAttribute('disabled');
@@ -1565,7 +1558,7 @@
                 checked="checked" /> IRIs </li>
               <li><input type="checkbox" name="propo1" onclick="checkAll(this.form)"
                 checked="checked" /> Rulebases </li>
-              <li class="dependent">
+              <li>
                 <input type="checkbox" name="propo2" onclick="checkAll(this.form)"
                   checked="checked" /> Entailments </li>
               <li><input type="checkbox" name="propo3" onclick="checkAll(this.form)"

@@ -1,14 +1,8 @@
-<<<<<<< HEAD:exa/RulebaseCompetition2014/OffshoreHoldingAnalytics.ruleml
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/naffologeq_relaxed.rnc"
   ?>
-=======
-﻿<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/fologeq_relaxed.rnc"
-            href="http://deliberation.ruleml.org/1.01/relaxng/naffologeq_relaxed.rnc"
-?>
->>>>>>> 091e4cbfd5d4dfab283d425d9d8415ab70f32c4d:exa/RulebaseCompetition2014/OffshoreHoldingsAnalytics.ruleml
 <RuleML xmlns="http://ruleml.org/spec">
-  <!-- The examples are takes from 
+  <!-- The examples are taken from 
     "Offshore Holdings Analytics Using Datalog+ RuleML Rule",
     Mohammad Sadnan Al Manir, Christopher J.O. Baker
     (http://ceur-ws.org/Vol-1211/paper6.pdf).

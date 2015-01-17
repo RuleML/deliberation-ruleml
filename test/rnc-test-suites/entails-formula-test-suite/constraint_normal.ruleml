@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/folog_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/folog.xsd">
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <Entails>
+          <if>
+            <And mapMaterial="yes" mapDirection="bidirectional">
+              <formula>
+                <Atom>
+                  <op><Rel>gold</Rel></op>
+                  <arg index="1"><Ind>watch17</Ind></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>rusty</Rel></op>
+                  <arg index="1"><Ind>watch17</Ind></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>rusty</Rel></op>
+                  <arg index="1"><Reify><Implies direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" material="yes"><if><And mapMaterial="yes" mapDirection="bidirectional"><formula><Atom><op><Rel>wet</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula><formula><Atom><op><Rel>metal</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>rusty</Rel></op><arg index="1"><Var>object</Var></arg></Atom></then></Implies></Reify></arg>
+                </Atom>
+              </formula>
+              <formula>
+                <Atom>
+                  <op><Rel>rusty</Rel></op>
+                  <arg index="1"><Ind>car4</Ind></arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+                <Neg mapMaterial="yes" mapDirection="bidirectional">
+                  <strong>
+                    <And mapMaterial="yes" mapDirection="bidirectional">
+                      <formula>
+                        <Atom>
+                          <op><Rel>gold</Rel></op>
+                          <arg index="1"><Var>object</Var></arg>
+                        </Atom>
+                      </formula>
+                      <formula>
+                        <Atom>
+                          <op><Rel>rusty</Rel></op>
+                          <arg index="1"><Var>object</Var></arg>
+                        </Atom>
+                      </formula>
+                    </And>
+                  </strong>
+                </Neg>
+          </then>
+        </Entails>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

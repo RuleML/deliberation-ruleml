@@ -61,7 +61,7 @@ Rel =
   element Rel {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -103,12 +103,12 @@ Ind =
   element Ind {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 Var =
   element Var {
     attribute ns1:schemaLocation { text }?,
-    text
+    xsd:token
   }
 formula =
   element formula {
@@ -138,7 +138,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
+    & (Atom | And_2 | Or_2)
   }
 if =
   element if {
@@ -186,28 +186,4 @@ Or_2 =
   element Or {
     attribute ns1:schemaLocation { text }?,
     formula_4*
-  }
-And_3 =
-  element And {
-    attribute ns1:schemaLocation { text }?,
-    formula_7*
-  }
-Or_3 =
-  element Or {
-    attribute ns1:schemaLocation { text }?,
-    formula_8*
-  }
-Or_4 =
-  element Or {
-    attribute ns1:schemaLocation { text }?
-  }
-formula_7 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
-  }
-formula_8 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | And_3 | Or_3 | Or_4)
   }

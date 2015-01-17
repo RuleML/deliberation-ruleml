@@ -43,9 +43,9 @@ reImplies.attlist &= closure-att.choice?
 reImplies.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Implications accept the header pattern common to Nodes.
-Implies.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+## Equations accept the header of truth-valued connectives
+Implies.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
 # 
 # Implies.main |= notAllowed is declared in the initialization module.
