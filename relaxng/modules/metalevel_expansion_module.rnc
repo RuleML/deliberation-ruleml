@@ -50,6 +50,8 @@ body_Entails.edge.def =
 
 ## The if of an entailment contains a single rulebase.
 body_Entails.content |= Rulebase-node.choice
+## The if of an entailment may contain a single formula that is allowed in a Rulebase.
+body_Entails.content |= RulebaseFormula.choice
 
 ## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in entailments.  
 head_Entails.name.choice |= head_Entails.edge.def
@@ -63,3 +65,5 @@ head_Entails.edge.def =
 
 ## The then of an entailment contains a single rulebase.
 head_Entails.content |= Rulebase-node.choice
+## The then of an entailment may contain a single formula that is allowed in a Rulebase.
+head_Entails.content |= RulebaseFormula.choice

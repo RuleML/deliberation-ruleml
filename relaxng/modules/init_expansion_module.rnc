@@ -132,6 +132,7 @@ argumentsForExpressions.sequence |= empty
 positionalArgumentsForExpressions.sequence |= empty
 # 
 # HEADERS
+TruthValuedConnective.header &= empty
 Node.header &= empty
 And.header &= empty
 Atom.header &= empty

@@ -119,7 +119,7 @@ Rel =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -129,6 +129,7 @@ And =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or =
@@ -139,6 +140,7 @@ Or =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }
 Implies =
@@ -151,6 +153,7 @@ Implies =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     if,
     then
   }
@@ -161,6 +164,7 @@ Forall =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     declare+,
     formula_5
   }
@@ -171,6 +175,7 @@ Exists =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     declare+,
     formula_6
   }
@@ -199,7 +204,7 @@ Fun =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Rulebase =
   element Rulebase {
@@ -233,6 +238,7 @@ Equivalent =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     torso,
     torso
   }
@@ -264,7 +270,7 @@ Skolem =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Reify =
   element Reify {
@@ -304,7 +310,7 @@ Ind =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Var =
   element Var {
@@ -313,7 +319,7 @@ Var =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Plex =
   element Plex {
@@ -422,14 +428,14 @@ then_2 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom | Equal | Implies | Equivalent | Forall)
   }
 if_2 =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom | Equal | Implies | Equivalent | Forall)
   }
 degree =
   element degree {
@@ -533,6 +539,7 @@ And_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or_2 =
@@ -542,6 +549,7 @@ Or_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }
 Plex_2 =

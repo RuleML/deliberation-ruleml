@@ -97,7 +97,7 @@ Rel =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -107,6 +107,7 @@ And =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or =
@@ -117,6 +118,7 @@ Or =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }
 Rulebase =
@@ -159,7 +161,7 @@ Skolem =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Reify =
   element Reify {
@@ -190,7 +192,7 @@ Ind =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 formula =
   element formula {
@@ -239,14 +241,14 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom)
   }
 if =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom)
   }
 degree =
   element degree {
@@ -309,6 +311,7 @@ And_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_3*
   }
 Or_2 =
@@ -318,5 +321,6 @@ Or_2 =
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
+    degree?,
     formula_4*
   }

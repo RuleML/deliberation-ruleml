@@ -131,7 +131,7 @@ Rel =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -140,7 +140,7 @@ And =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3 | Atom | Equal | And_2 | Or_2)*
   }
 Or =
@@ -150,7 +150,7 @@ Or =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4 | Atom | Equal | And_2 | Or_2)*
   }
 Implies =
@@ -162,7 +162,7 @@ Implies =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     ((if & then)
      | ((Atom | Equal), if)
      | (then, (Atom | Equal | And_2 | Or_2))
@@ -176,7 +176,7 @@ Forall =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_5 | Atom | Equal | Implies | Equivalent | Forall)
   }
@@ -186,7 +186,7 @@ Exists =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (declare | Var)+,
     (formula_6 | Atom | Equal | And_2 | Or_2 | Exists)
   }
@@ -214,7 +214,7 @@ Fun =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Rulebase =
   element Rulebase {
@@ -238,11 +238,15 @@ Entails =
      & attribute xml:id { xsd:NCName }?),
     meta*,
     ((if_2 & then_2)
-     | (Rulebase, if_2)
-     | (then_2, Rulebase)
-     | (Rulebase, Rulebase)
-     | (Rulebase, then_2)
-     | (if_2, Rulebase))
+     | ((Rulebase | Atom | Equal | Implies | Equivalent | Forall), if_2)
+     | (then_2,
+        (Rulebase | Atom | Equal | Implies | Equivalent | Forall))
+     | ((Rulebase | Atom | Equal | Implies | Equivalent | Forall),
+        (Rulebase | Atom | Equal | Implies | Equivalent | Forall))
+     | ((Rulebase | Atom | Equal | Implies | Equivalent | Forall),
+        then_2)
+     | (if_2,
+        (Rulebase | Atom | Equal | Implies | Equivalent | Forall)))
   }
 Equivalent =
   element Equivalent {
@@ -251,7 +255,7 @@ Equivalent =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (Atom | Equal | torso),
     (Atom | Equal | torso)
   }
@@ -282,7 +286,7 @@ Skolem =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Reify =
   element Reify {
@@ -322,7 +326,7 @@ Ind =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Var =
   element Var {
@@ -331,7 +335,7 @@ Var =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    text
+    xsd:token
   }
 Plex =
   element Plex {
@@ -440,14 +444,14 @@ then_2 =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom | Equal | Implies | Equivalent | Forall)
   }
 if_2 =
   element if {
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & Rulebase
+    & (Rulebase | Atom | Equal | Implies | Equivalent | Forall)
   }
 degree =
   element degree {
@@ -545,7 +549,7 @@ And_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_3 | Atom | Equal | And_2 | Or_2)*
   }
 Or_2 =
@@ -554,7 +558,7 @@ Or_2 =
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
-    meta*,
+    (meta* & degree?),
     (formula_4 | Atom | Equal | And_2 | Or_2)*
   }
 _1 =
