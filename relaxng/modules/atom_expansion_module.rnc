@@ -64,5 +64,5 @@ Rel.Node.def =
 ## Relations accept the optional attribute pattern of resources.
 reRel.attlist &= Resource.attlist?
 
-## The content model for relations is text.
-Rel.content |= text
+## The content model for relations is the XSD datatype token.
+Rel.content |= xsd:token

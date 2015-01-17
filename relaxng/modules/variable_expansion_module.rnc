@@ -30,5 +30,5 @@ Var.Node.def =
 ## Variables optionally accept the attribute pattern of objects with user-defined types.
 reVar.attlist &= Type.attlist?
 
-## The content model for variables is text.
-Var.content |= text
+## The content model for variables is the XSD datatype token.
+Var.content |= xsd:token

@@ -66,5 +66,5 @@ Fun.Node.def =
 reFun.attlist &= Resource.attlist?
 # Fun.attlist = interpretation-att.option & singlevalued-att.option & Resource.attlist?
 
-## A functor contains text.
-Fun.content |= text
+## A functor contains the XSD datatype token.
+Fun.content |= xsd:token

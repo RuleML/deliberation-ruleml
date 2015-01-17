@@ -61,7 +61,7 @@ Rel =
   element Rel {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 And =
   element And {
@@ -103,12 +103,12 @@ Ind =
   element Ind {
     (attribute iri { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?),
-    text
+    xsd:token
   }
 Var =
   element Var {
     attribute ns1:schemaLocation { text }?,
-    text
+    xsd:token
   }
 formula =
   element formula {
