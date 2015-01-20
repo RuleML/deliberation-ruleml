@@ -505,7 +505,8 @@
         <xs:complexType>
           <xs:choice>
             <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
+            <xs:group ref="spec:And_2"/>
+            <xs:group ref="spec:Or_2"/>
           </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
@@ -659,7 +660,8 @@
     <xs:complexType>
       <xs:choice>
         <xs:element ref="spec:Atom"/>
-        <xs:group ref="spec:Or_3"/>
+        <xs:group ref="spec:And_2"/>
+        <xs:group ref="spec:Or_2"/>
       </xs:choice>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
@@ -794,22 +796,6 @@
       </xs:element>
     </xs:sequence>
   </xs:group>
-  <xs:group name="Or_3">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-            <xs:element minOccurs="0" ref="spec:degree"/>
-            <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_8"/>
-          </xs:sequence>
-          <xs:attribute name="node" type="xs:anyURI"/>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
   <xs:group name="Plex_2">
     <xs:sequence>
       <xs:element name="Plex">
@@ -836,20 +822,6 @@
             <xs:element minOccurs="0" ref="spec:repo"/>
           </xs:sequence>
           <xs:attribute name="node" type="xs:anyURI"/>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_8">
-    <xs:sequence>
-      <xs:element name="formula">
-        <xs:complexType>
-          <xs:choice>
-            <xs:element ref="spec:Atom"/>
-            <xs:group ref="spec:Or_3"/>
-          </xs:choice>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>

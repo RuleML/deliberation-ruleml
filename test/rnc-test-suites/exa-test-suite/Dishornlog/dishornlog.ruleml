@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../../relaxng/test/dishornlog_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
+
+  <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
+
+  <Assert mapClosure="universal">
+
+
+    <Implies node="an_example_fact">
+        <And>
+          <Atom>
+            <Rel>friend</Rel>
+            <Ind>Jane</Ind>
+            <Ind>Joan</Ind>
+            <Ind>Jack</Ind>
+            <Var>y</Var>
+            <Ind>Frank</Ind>
+            <slot>
+              <Ind>yar</Ind>
+              <Expr>
+                <Fun>constructor</Fun>
+                <Plex>
+                  <Var>z</Var>
+                  <slot>
+                    <Ind>yar2</Ind>
+                    <Data>2</Data>
+                  </slot>
+                </Plex>
+              </Expr>
+            </slot>
+          </Atom>
+        </And>
+        <Or>
+          <Atom>
+            <Rel>friend</Rel>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+          </Atom>
+          <And/>
+          <Atom>
+            <Rel>friend</Rel>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Jill</Ind>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+          </Atom>
+        </Or>
+    </Implies>
+
+
+    <Atom>
+      <Rel>some relation</Rel>
+      <Ind>constant a</Ind>
+      <Ind>constant b</Ind>
+      <slot>
+        <Ind>role_name1</Ind>
+        <Ind>role 1</Ind>
+      </slot>
+      <slot>
+        <Ind>role_name2</Ind>
+        <Ind>role 2</Ind>
+      </slot>
+    </Atom>
+
+    <Atom>
+      <Rel>another relation</Rel>
+      <Ind>constant c</Ind>
+      <Ind>constant d</Ind>
+      <Expr>
+        <Fun>yac</Fun>
+        <Ind>constant g</Ind>
+        <Ind>constant h</Ind>
+        <Expr>
+          <Fun>empty</Fun>
+        </Expr>
+        <Ind>constant h</Ind>
+      </Expr>
+    </Atom>
+
+
+    <Atom>
+      <Rel>some relation</Rel>
+      <Ind>constant a</Ind>
+      <Ind>constant b</Ind>
+      <Skolem>constant b</Skolem>
+      <repo>
+        <Var>b</Var>
+      </repo>
+      <slot>
+        <Ind>role_name1</Ind>
+        <Ind>role 1</Ind>
+      </slot>
+      <slot>
+        <Ind>role_name2</Ind>
+        <Ind>role 2</Ind>
+      </slot>
+    </Atom>
+    <Atom>
+      <Rel>another relation</Rel>
+      <Ind>constant c</Ind>
+      <Ind>constant d</Ind>
+      <repo>
+        <Var>x</Var>
+      </repo>
+      <slot>
+        <Ind>role_name3</Ind>
+        <Ind>role 3</Ind>
+      </slot>
+      <resl>
+        <Plex>
+          <slot>
+            <Ind/>
+            <Ind>test</Ind>
+          </slot>
+        </Plex>
+      </resl>
+    </Atom>
+
+
+    <Atom>
+      <Rel>yet another relation</Rel>
+      <Skolem>constant b</Skolem>
+      <Ind>constant e</Ind>
+      <Ind>constant b</Ind>
+      <slot>
+        <Ind>role_name3</Ind>
+        <Ind>role 3</Ind>
+      </slot>
+      <resl>
+        <Var>b</Var>
+      </resl>
+    </Atom>
+
+  </Assert>
+
+</RuleML>

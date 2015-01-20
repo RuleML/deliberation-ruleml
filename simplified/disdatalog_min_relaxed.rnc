@@ -78,11 +78,11 @@ Implies =
      & attribute material { "yes" }?
      & attribute ns1:schemaLocation { text }?),
     ((if & then)
-     | ((Atom | Or_3), if)
+     | ((Atom | And_2 | Or_2), if)
      | (then, (Atom | And_2 | Or_2))
-     | ((Atom | And_2 | Or_2), (Atom | Or_3))
+     | ((Atom | And_2 | Or_2), (Atom | And_2 | Or_2))
      | ((Atom | And_2 | Or_2), then)
-     | (if, (Atom | Or_3)))
+     | (if, (Atom | And_2 | Or_2)))
   }
 Forall =
   element Forall {
@@ -141,7 +141,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
+    & (Atom | And_2 | Or_2)
   }
 if =
   element if {
@@ -185,18 +185,8 @@ Or_2 =
     attribute ns1:schemaLocation { text }?,
     (formula_4 | Atom | And_2 | Or_2)*
   }
-Or_3 =
-  element Or {
-    attribute ns1:schemaLocation { text }?,
-    (formula_7 | Atom | Or_3)*
-  }
 _1 =
   element * {
     attribute * { text }*,
     (text & _1*)
-  }
-formula_7 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
   }

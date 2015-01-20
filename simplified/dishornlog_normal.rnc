@@ -378,7 +378,7 @@ then =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
+    & (Atom | And_2 | Or_2)
   }
 if =
   element if {
@@ -455,7 +455,7 @@ torso =
     attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
+    & (Atom | And_2 | Or_2)
   }
 oid =
   element oid {
@@ -531,16 +531,6 @@ Or_2 =
     degree?,
     formula_4*
   }
-Or_3 =
-  element Or {
-    (attribute node { xsd:anyURI }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
-    meta*,
-    degree?,
-    formula_8*
-  }
 Plex_2 =
   element Plex {
     (attribute node { xsd:anyURI }?
@@ -560,11 +550,4 @@ Plex_3 =
     meta*,
     arg*,
     repo?
-  }
-formula_8 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
-    & attribute xml:id { xsd:NCName }?
-    & (Atom | Or_3)
   }
