@@ -392,7 +392,7 @@
                 			    case 3:
                 			        ts = 3;
                 			        break;
-                			    case 4:
+                			    default:
                 			        ts = 7;
                 			        break;
                 
@@ -432,12 +432,13 @@
             }
             function get_terms(LanguageForm) {
                 var terms = 0;
-                for (var i = 0; i <= 5; i = i + 1) {
+                var i;
+                for (i = 0; i <= 5; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
                 }
-                for (var i = 8; i <= 11; i = i + 1) {
+                for (i = 8; i <= 11; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
@@ -646,7 +647,7 @@
                   var LF_quant = get_quant(LanguageForm);
                   var LF_expr = get_ex(LanguageForm);
                   var LF_serial = get_serial(LanguageForm);
-                  return (
+                  var result =
                       (compareBits(LF_bb, bb)) &&
                       (compareBits(LF_df, df)) &&
                       (compareBits(LF_ts, ts)) &&
@@ -656,8 +657,8 @@
                       (compareBits(LF_terms, terms)) &&
                       (compareBits(LF_quant, quant)) &&
                       (compareBits(LF_expr, expr)) &&
-                      (compareBits(LF_serial, serial))
-                    ) ;
+                      (compareBits(LF_serial, serial));
+                  return result;  
             }
             
                  
@@ -679,17 +680,17 @@
                   return "bindatagroundfact_normal";
                 }
                 //bindatagroundfact
-                var bb = 1;
-                var df = 7;
-                var ts = 2;
-                var lng = 1;
-                var propo = parseInt("3cf", 16);
-                var implies = 6;
-                var terms = parseInt("f0f", 16);
-                var quant = 1;
-                var expr = 0;
-                var serial = parseInt("f", 16);
-                var comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                bb = 1;
+                df = 7;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = 6;
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("f", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "bindatagroundfact";
@@ -1248,8 +1249,8 @@
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);;
-                serial = parseInt("c", 16);;
+                expr = parseInt("e", 16);
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1264,8 +1265,8 @@
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("f", 16);;
-                serial = parseInt("f", 16);;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1408,7 +1409,7 @@
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);;
+                expr = parseInt("e", 16);
                 serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
