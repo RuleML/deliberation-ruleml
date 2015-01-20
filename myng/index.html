@@ -26,13 +26,6 @@
                     LanguageForm.backbone[5].checked = true;
                 }
                 if (!(
-                LanguageForm.deflt[0].checked *
-                LanguageForm.deflt[1].checked *
-                LanguageForm.deflt[2].checked)) {
-                    // initialize to Optional
-                    LanguageForm.deflt[2].checked = true;
-                }
-                if (!(
                 LanguageForm.termseq[0].checked *
                 LanguageForm.termseq[1].checked *
                 LanguageForm.termseq[2].checked *
@@ -380,22 +373,7 @@
                 return bb;
             }
             function get_df(LanguageForm) {
-                            var df = 0;
-                if (LanguageForm.deflt[0].checked) {
-                    df = 5;
-                }
-                if (LanguageForm.deflt[1].checked) {
-                    if (LanguageForm.backbone[5].checked) {
-                        df = 2;
-                    } else {
-                        df = 6;
-                    }
-                }
-                if (LanguageForm.deflt[2].checked) {
-                    df = 7;
-                }
-
-              return df;
+              return 7;
             }
             function get_ts(LanguageForm) {
                 var ts = 0;
@@ -686,7 +664,7 @@
             function anchorXSD(LanguageForm) {
                 //bindatagroundfact_normal
                 var bb = 1;
-                var df = 6;
+                var df = 7;
                 var ts = 2;
                 var lng = 1;
                 var propo = parseInt("3cf", 16);
@@ -718,7 +696,7 @@
                 }
                 //bindatagroundlog_normal
                 bb = 3;
-                df = 6;
+                df = 7;
                 ts = 2;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -750,7 +728,7 @@
                 }
                 //bindatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 2;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -782,7 +760,7 @@
                 }
                 //datalog_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("1", 16);
@@ -814,7 +792,7 @@
                 }
                 //disdatalog_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("1", 16);
@@ -846,7 +824,7 @@
                 }
                 //datalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -878,7 +856,7 @@
                 }
                 //datalogplus_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = 1;
@@ -910,7 +888,7 @@
                 }                  
                 //disdatalogplus_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = 1;
@@ -942,7 +920,7 @@
                 }                                
                 //datalogplus_mid_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -974,7 +952,7 @@
                 }                
                 //disdatalogplus_mid_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -1006,7 +984,7 @@
                 }                
                 //nafdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ef", 16);
@@ -1038,7 +1016,7 @@
                 }
                 //negdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
@@ -1070,7 +1048,7 @@
                 }
                 //nafnegdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1102,7 +1080,7 @@
                 }
                 // nafnegdisdatalogplus_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1134,7 +1112,7 @@
                 }
                 //hornlog_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -1166,7 +1144,7 @@
                 }
                 //hornlogeq_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -1199,7 +1177,7 @@
                 
                 //dishornlog_normal
                 bb = parseInt("1f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -1231,7 +1209,7 @@
                 }                 
                 //nafhornlog_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ef", 16);
@@ -1263,7 +1241,7 @@
                 }  
                 //nafneghornlogeq_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1295,7 +1273,7 @@
                 }  
                 //nafnegdishornlogplus_normal
                 bb = parseInt("1f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1327,7 +1305,7 @@
                 }  
                 //folog_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
@@ -1359,7 +1337,7 @@
                  } 
                 //fologeq_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
@@ -1391,7 +1369,7 @@
                 }
                 //naffolog_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1423,7 +1401,7 @@
                 }  
                 //naffologeq_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1731,17 +1709,6 @@
                 <input type="checkbox" name="serial3" onclick="checkAll(this.form)"
                   checked="checked" /> Schema Location Attribute </li>
             </ol>
-            </td>
-            <td class="facet"> <span class="facet-head">Treatment of Attributes<br /> With Default Values <br /></span> (Select
-              One) <ol>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Absent </li>
-                <li><input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Present </li>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Optional </li>
-              </ol>
             </td>
             <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
               <ol>
