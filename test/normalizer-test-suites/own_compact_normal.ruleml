@@ -34,9 +34,9 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ... end XML comment -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
+    <Assert mapClosure="universal">
       <formula>
-        <Implies material="yes" direction="bidirectional">
+        <Implies>
           <if>
             <And>
               <!-- explicit 'And' -->
@@ -67,7 +67,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         </Implies>
       </formula>
       <formula>
-        <Implies material="yes" direction="bidirectional">
+        <Implies>
           <!-- The second rule implies that a person buys an object from a merchant
 if the merchant sells the object to the person. -->
           <if>

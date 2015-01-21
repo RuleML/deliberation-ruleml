@@ -61,10 +61,10 @@ RuleML =
   }
 Assert =
   element Assert {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -75,10 +75,10 @@ Assert =
   }
 Retract =
   element Retract {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -144,8 +144,8 @@ Or =
   }
 Implies =
   element Implies {
-    (attribute direction { "bidirectional" | "forward" | "backward" }
-     & attribute material { "yes" | "no" }
+    (attribute direction { "bidirectional" | "forward" | "backward" }?
+     & attribute material { "yes" | "no" }?
      & attribute closure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -180,7 +180,7 @@ Exists =
   }
 Expr =
   element Expr {
-    (attribute per { "copy" }
+    (attribute per { "copy" }?
      & attribute type { xsd:string }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -194,8 +194,8 @@ Expr =
   }
 Fun =
   element Fun {
-    (attribute per { "copy" }
-     & attribute val { "1" }
+    (attribute per { "copy" }?
+     & attribute val { "1" }?
      & attribute iri { xsd:anyURI }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -205,10 +205,10 @@ Fun =
   }
 Rulebase =
   element Rulebase {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -261,7 +261,7 @@ Equivalent =
   }
 Equal =
   element Equal {
-    (attribute oriented { "no" | "yes" }
+    (attribute oriented { "no" | "yes" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?

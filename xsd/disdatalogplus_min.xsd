@@ -20,14 +20,14 @@
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Forall"/>
       </xs:choice>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -45,14 +45,14 @@
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Forall"/>
       </xs:choice>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -134,14 +134,14 @@
         <xs:element ref="spec:if"/>
         <xs:element ref="spec:then"/>
       </xs:sequence>
-      <xs:attribute name="direction" default="bidirectional">
+      <xs:attribute name="direction">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="material" default="yes">
+      <xs:attribute name="material">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -205,7 +205,7 @@
           <xs:element ref="spec:right"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="oriented" default="no">
+      <xs:attribute name="oriented">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="no"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://www.ruleml.org/1.0/xsd/hornlog.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../xsd/hornlog_normal.xsd">
   <!-- a trivial example rulebase for testing the Hornlog RuleML sublanguage -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
+    <Assert mapClosure="universal">
       <formula>
-        <Implies material="yes" direction="bidirectional">
+        <Implies>
           <!-- a comment-->
           <if>
             <And>
@@ -16,7 +16,7 @@
                   <arg index="3"><Ind>Jack</Ind></arg>
                   <arg index="4"><Var>y</Var></arg>
                   <arg index="5"><Ind>Frank</Ind></arg>
-                  <slot><Ind>yar</Ind><Expr per="copy"><op><Fun per="copy">constructor</Fun></op><arg index="1"><Plex><slot><Ind>yar2</Ind><Ind>c</Ind></slot><resl><Var>c</Var></resl></Plex></arg></Expr></slot>
+                  <slot><Ind>yar</Ind><Expr><op><Fun>constructor</Fun></op><arg index="1"><Plex><slot><Ind>yar2</Ind><Ind>c</Ind></slot><resl><Var>c</Var></resl></Plex></arg></Expr></slot>
                 </Atom>
               </formula>
             </And>
@@ -46,14 +46,14 @@
           <op><Rel>another relation</Rel></op>
           <arg index="1"><Ind>constant c</Ind></arg>
           <arg index="2"><Ind>constant d</Ind></arg>
-          <arg index="3"><Expr per="copy"><op><Fun per="copy">yac</Fun></op><repo><Var>b</Var></repo><resl><Plex><slot><Ind/><Ind>test</Ind></slot></Plex></resl></Expr></arg>
+          <arg index="3"><Expr><op><Fun>yac</Fun></op><repo><Var>b</Var></repo><resl><Plex><slot><Ind/><Ind>test</Ind></slot></Plex></resl></Expr></arg>
         </Atom>
       </formula>
       <formula>
         <Atom>
           <op><Rel>some relation</Rel></op>
           <arg index="1"><Ind>constant a</Ind></arg>
-          <arg index="2"><Expr per="copy"><op><Fun per="copy">empty</Fun></op></Expr></arg>
+          <arg index="2"><Expr><op><Fun>empty</Fun></op></Expr></arg>
           <arg index="3"><Ind>constant b</Ind></arg>
           <arg index="4"><Skolem>constant b</Skolem></arg>
           <repo>

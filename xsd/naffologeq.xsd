@@ -37,7 +37,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -45,7 +45,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -86,7 +86,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -94,7 +94,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -136,7 +136,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -144,7 +144,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -244,7 +244,7 @@
               <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
-          <xs:attribute name="mapMaterial" default="yes">
+          <xs:attribute name="mapMaterial">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="yes"/>
@@ -252,7 +252,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="mapDirection" default="bidirectional">
+          <xs:attribute name="mapDirection">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="bidirectional"/>
@@ -305,7 +305,7 @@
               <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
-          <xs:attribute name="mapMaterial" default="yes">
+          <xs:attribute name="mapMaterial">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="yes"/>
@@ -313,7 +313,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="mapDirection" default="bidirectional">
+          <xs:attribute name="mapDirection">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="bidirectional"/>
@@ -382,7 +382,7 @@
           </xs:sequence>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="direction" default="bidirectional">
+      <xs:attribute name="direction">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -391,7 +391,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="material" default="yes">
+      <xs:attribute name="material">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -399,7 +399,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -407,7 +407,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -459,7 +459,7 @@
           <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -467,7 +467,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -511,7 +511,7 @@
           <xs:element ref="spec:Exists"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -519,7 +519,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -564,7 +564,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         <xs:element minOccurs="0" ref="spec:resl"/>
       </xs:sequence>
-      <xs:attribute name="per" default="copy">
+      <xs:attribute name="per">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
@@ -583,7 +583,7 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:token">
-          <xs:attribute name="per" default="copy">
+          <xs:attribute name="per">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="copy"/>
@@ -592,7 +592,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="val" default="0..">
+          <xs:attribute name="val">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="1"/>
@@ -625,7 +625,7 @@
           <xs:group ref="spec:formula_7"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -633,7 +633,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -715,7 +715,7 @@
           <xs:element ref="spec:strong"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -723,7 +723,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -763,7 +763,7 @@
           <xs:element ref="spec:weak"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -771,7 +771,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -823,7 +823,7 @@
           <xs:element ref="spec:torso"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -831,7 +831,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -887,7 +887,7 @@
           <xs:element ref="spec:right"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="oriented" default="no">
+      <xs:attribute name="oriented">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="no"/>
@@ -1467,7 +1467,7 @@
               <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
-          <xs:attribute name="mapMaterial" default="yes">
+          <xs:attribute name="mapMaterial">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="yes"/>
@@ -1475,7 +1475,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="mapDirection" default="bidirectional">
+          <xs:attribute name="mapDirection">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="bidirectional"/>
@@ -1520,7 +1520,7 @@
               <xs:element ref="spec:Exists"/>
             </xs:choice>
           </xs:sequence>
-          <xs:attribute name="mapMaterial" default="yes">
+          <xs:attribute name="mapMaterial">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="yes"/>
@@ -1528,7 +1528,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="mapDirection" default="bidirectional">
+          <xs:attribute name="mapDirection">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="bidirectional"/>

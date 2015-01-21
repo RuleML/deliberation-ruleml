@@ -44,10 +44,10 @@ RuleML =
   }
 Assert =
   element Assert {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
@@ -57,10 +57,10 @@ Assert =
   }
 Retract =
   element Retract {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
@@ -116,8 +116,8 @@ Or =
   }
 Implies =
   element Implies {
-    (attribute direction { "bidirectional" | "forward" | "backward" }
-     & attribute material { "yes" | "no" }
+    (attribute direction { "bidirectional" | "forward" | "backward" }?
+     & attribute material { "yes" | "no" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
@@ -148,7 +148,7 @@ Exists =
   }
 Equal =
   element Equal {
-    (attribute oriented { "no" | "yes" }
+    (attribute oriented { "no" | "yes" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
