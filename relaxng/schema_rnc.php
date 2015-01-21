@@ -207,8 +207,9 @@ if ($bdefault==0){
   // Apparent lack of monotonicity caused by incomplete orthogonalization
   // of modules for binary and polyadic positional term sequences.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
-  $NeedBin = $enableTermseq_binary * (1-$NeedPoly);
-  $NeedUn  = $enableTermseq_unary  * (1-$NeedPoly);
+  $NeedUnBin = $enableTermseq_unary * $enableTermseq_binary * (1-$NeedPoly);
+  $NeedBin = $enableTermseq_binary * (1-$NeedUnBin) * (1-$NeedPoly);
+  $NeedUn  = $enableTermseq_unary  * (1-$NeedUnBin) * (1-$NeedPoly);
   
   $enableLongNames = extractBit($blng, $lng_long_en);
 
@@ -222,7 +223,7 @@ if ($bdefault==0){
   $enableDatatyping = extractBit($bserialization, $serialization_datatyping);
   $enableSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
   $enableAbsolute = extractBit($bserialization, $serialization_absolute);
-  // The pivot bit is truly non-monotonic.
+  // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
 
   $NeedURI = extractBit($bpropo, $propo_iri);
@@ -414,20 +415,34 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
         'termseq_bin_expansion_module.rnc"'."$end\n";
   }
+  if ($NeedUnBin){
+      echo "#\n# UNARY AND BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+        'termseq_unbin_expansion_module.rnc"'."$end\n";
+  }
   if ($NeedPoly){
       echo "#\n# POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'termseq_poly_expansion_module.rnc"'."$end\n";
   }
   //Step 3F. Include serialization modules 
-    // DOCUMENTME: apparent violation of monotonicity with else clause
+    // Apparent violation of monotonicity with else clause
     //       However, ordered groups is contained in unorder groups
     //       so it is redundant.
     // Include unordered groups
     if ($enableUnordered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS ENABLED\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'unordered_groups_expansion_module.rnc"'."$end\n";
+    // Apparent violation of monotonicity with else clause
+    //       However, unordered deterministic groups is contained in unordered groups
+    //       so it is redundant.
+      if ($notPivot){
+         echo "#\n".'include "' . $modulesLocation .
+            'unordered_groups_expansion_module.rnc"'."$end\n";
+      }  
+      else {
+         echo "#\n".'include "' . $modulesLocation .
+            'unordered_deterministic_groups_expansion_module.rnc"'."$end\n";
+      }  
     }
     if ($NeedOrdered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS DISABLED\n";

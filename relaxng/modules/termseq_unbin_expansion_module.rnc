@@ -17,5 +17,5 @@ start |= notAllowed
 #            * termsPlus.sequence
 
 ## In unary logics, a positional argument sequence has exactly zero or one positional arguments.
-termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice
-termsForExpressions.nonemptysequence.choice |= positionalArgument-edge.choice
+termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice?
+termsForExpressions.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice?

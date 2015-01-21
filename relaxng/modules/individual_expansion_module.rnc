@@ -105,3 +105,7 @@ reInd.attlist &= Type.attlist?
 
 ## The content model for individuals is the XSD datatype token.
 Ind.content |= xsd:token
+
+termsForAtoms.sequence |= termsForAtoms.nonemptysequence.choice?
+termsForExpressions.sequence |= termsForExpressions.nonemptysequence.choice?
+

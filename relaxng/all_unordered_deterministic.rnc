@@ -2,8 +2,9 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace ruleml = "http://ruleml.org/spec"
 
 dc:title [ "RuleML Custom-Built Schema" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "RuleML, all modules (except unordered_groups) for testing only" ]
+dc:subject [ "RuleML, all modules (except ordered_groups) for testing only" ]
 dc:description [
     "custom-built main module for a RuleML sublanguage."
 ]
@@ -57,7 +58,7 @@ include "modules/neg_expansion_module.rnc" inherit = ruleml {start |= notAllowed
 include "modules/negative_constraint_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/node_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/oriented_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/oriented_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/oriented_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -83,7 +84,7 @@ include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= 
 include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalogplus_min_normal.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- Some of these examples are from
     "A general Datalog-based framework for tractable query answering 
@@ -16,7 +17,7 @@
        by providing (in the XML comments) the expected answer to the Query.
     -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Equations are allowed as facts:
          William is an employee.
@@ -30,7 +31,7 @@
         </Atom>
       </formula>
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Bill</Ind>
           </left>
@@ -59,7 +60,7 @@
     </Query>
   </act>
   <act index="3">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Equations may be universally quantified.
          This fact is a degenerate case, corresponding to the body of an implication being empty.
@@ -73,7 +74,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Var>x</Var>
               </left>
@@ -96,7 +97,7 @@
          Sublanguage: datalogeq         
       -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Var>x</Var>
           </left>
@@ -108,7 +109,7 @@
     </Query>
   </act>
   <act index="5">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Non-ground facts are allowed. 
          John is the CEO.
@@ -155,7 +156,7 @@
     </Query>
   </act>
   <act index="7">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Rules are expressed as universally-quantified implications.
          A simple rule can be used to assert a subclass relationship:
@@ -168,7 +169,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
                   <op><Rel>manager</Rel></op>
@@ -212,7 +213,7 @@
     </Query>
   </act>
   <act index="9">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Equations are allowed in the body of (existential) implications. 
          If anyone is the same as Margaret, then they supervise someone.
@@ -226,9 +227,9 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Ind>Margaret</Ind>
                   </left>
@@ -282,7 +283,7 @@
     </Query>
   </act>
   <act index="11">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Pairwise Disjoint Classes
          Nothing is both an employee and a department.
@@ -294,7 +295,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
@@ -321,7 +322,7 @@
     </Assert>
   </act>
   <act index="12">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- HR is an employee.
          HR is a department.
          These facts together with the previous rule create an inconsistency.
@@ -354,7 +355,7 @@
     </Query>
   </act>
   <act index="14">
-    <Retract mapMaterial="yes" mapDirection="bidirectional">
+    <Retract>
       <!-- 
          Remove that HR is an employee.
          Sublanguage: datalog         
@@ -380,7 +381,7 @@
     </Query>
   </act>
   <act index="16">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
          Functionality Constraint: 
          Everyone (or everything) has at most one supervisor. 
@@ -398,7 +399,7 @@
             <Var>z</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
@@ -418,7 +419,7 @@
                 </And>
               </if>
               <then>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Var>x</Var>
                   </left>
@@ -456,7 +457,7 @@
           Sublanguage: datalogeq         
      -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Peggy</Ind>
           </left>
@@ -468,7 +469,7 @@
     </Query>
   </act>
   <act index="18">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
           Negative Constraints are allowed.
           No one (or no thing) is their own supervisor. 
@@ -480,7 +481,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
                   <op><Rel>supervises</Rel></op>
@@ -498,7 +499,7 @@
     </Assert>
   </act>
   <act index="19">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
           Margaret supervises Peggy.
           Sublanguage: datalog         
@@ -525,7 +526,7 @@
     </Query>
   </act>
   <act index="21">
-    <Retract mapMaterial="yes" mapDirection="bidirectional">
+    <Retract>
       <!-- 
           Remove that Margaret supervises Peggy.
           Sublanguage: datalog         
@@ -552,7 +553,7 @@
     </Query>
   </act>
   <act index="23">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
           Equations may appear in the body of negative constraints.
           The simplest case is the assertion that two individuals
@@ -561,9 +562,9 @@
          
       -->
       <formula>
-        <Implies material="yes" direction="bidirectional">
+        <Implies>
           <if>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>Sue</Ind>
               </left>
@@ -588,7 +589,7 @@
           Sublanguage: datalogeq         
       -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Sue</Ind>
           </left>
@@ -600,7 +601,7 @@
     </Query>
   </act>
   <act index="25">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
           Existential (Head) Rules
           Every manager directs at least one department.
@@ -613,7 +614,7 @@
             <Var>M</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
                   <op><Rel>manager</Rel></op>
@@ -671,7 +672,7 @@
     </Query>
   </act>
   <act index="27">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- 
           The heads and bodies of existential rules can contain conjunctions.
           Every employee who directs a department is a manager, and supervises at 
@@ -687,7 +688,7 @@
             <Var>P</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>

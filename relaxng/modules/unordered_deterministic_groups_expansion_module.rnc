@@ -1,0 +1,62 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+dc:title [ "RuleML Positional Independence" ]
+dc:version [ "1.0.2" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, positional independence" ]
+dc:description [
+  "The expansion module for positional independence."
+]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+
+## Pre-fix operator notation for atomic formulas is required in a normal-form serialization.
+Atom.main |=
+  operatorForAtoms-edge.choice, argumentsForAtoms.sequence
+
+## Slotted arguments follow positional arguments in atomic formulas
+## in the normal-form serialization. 
+argumentsForAtoms.sequence |=
+  slotTermsForAtoms.sequence, (((termsForAtoms.nonemptysequence.choice, repo?) | repo), slotTermsForAtoms.sequence)?, resl? 
+
+## FIXME import this definition from un, bin, poly, etc.
+#termsForAtoms.nonemptysequence |= positionalArgument-edge.choice+
+#termsForExpressions.nonemptysequence |= positionalArgument-edge.choice+
+
+  
+repo = restOfPositionalArguments-edge.choice
+
+## Slotted rest arguments follow the ordinary slots
+## in atomic formulas in the normal-form serialization. 
+#slotsForAtoms.sequence |=
+#  slotTermsForAtoms.sequence, 
+  
+  resl = restOfSlots-edge.choice
+
+## Pre-fix operator notation for expressions is required in the normal-form serialization.
+Expr.main |=
+  operatorForExpressions-edge.choice,
+  argumentsForExpressions.sequence
+
+## Slotted arguments follow positional arguments in expressions
+## in the normal-form serialization. 
+argumentsForExpressions.sequence |=
+  slotTermsForExpressions.sequence, (((termsForExpressions.nonemptysequence.choice, repo?) | repo), slotTermsForExpressions.sequence)?, resl? 
+
+## In the normal-form serialization, the if and then of an implication must occur in canonical order.
+Implies.main |= body_Implies.name.choice, head_Implies.name.choice
+
+## In the normal-form serialization, the if and then of a proof-theoretic entailment must occur canonical order.
+Entails.main |= body_Entails.name.choice, head_Entails.name.choice
+
+## In the normal-form serialization, the order of header elements is:
+## an optional header element sequence as defined in Node.header, followed by optional
+## object identifier and degree
+TruthValuedConnective.header &= (Node.header?, degree-edge.choice?)?
+Atom.header &= (Node.header?, objectIdentifier-edge.choice?, degree-edge.choice?)?
+Expr.header &= (Node.header?, objectIdentifier-edge.choice?)?
+
