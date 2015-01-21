@@ -184,8 +184,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-        <xs:element ref="spec:if"/>
-        <xs:element ref="spec:then"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="spec:if"/>
+          <xs:element ref="spec:then"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="direction">
         <xs:simpleType>

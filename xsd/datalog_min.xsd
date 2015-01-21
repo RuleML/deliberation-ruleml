@@ -118,10 +118,10 @@
   <xs:element name="Implies">
     <xs:complexType>
       <xs:choice>
-        <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="spec:if"/>
           <xs:element ref="spec:then"/>
-        </xs:sequence>
+        </xs:choice>
         <xs:sequence>
           <xs:choice>
             <xs:element ref="spec:Atom"/>

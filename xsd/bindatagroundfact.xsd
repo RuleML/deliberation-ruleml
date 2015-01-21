@@ -136,6 +136,7 @@
           <xs:element ref="spec:op"/>
           <xs:element ref="spec:Rel"/>
         </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         <xs:sequence minOccurs="0">
           <xs:choice>
             <xs:element ref="spec:Skolem"/>
@@ -151,8 +152,8 @@
             <xs:element ref="spec:Data"/>
             <xs:element ref="spec:arg"/>
           </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         </xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
       </xs:sequence>
       <xs:attribute name="closure">
         <xs:simpleType>
@@ -281,10 +282,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice>
-          <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="spec:if"/>
             <xs:element ref="spec:then"/>
-          </xs:sequence>
+          </xs:choice>
           <xs:sequence>
             <xs:choice>
               <xs:element ref="spec:Rulebase"/>

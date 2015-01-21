@@ -14,46 +14,51 @@ dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 
-## Pre-fix operator notation for atomic formulas is required in a normal-form serialization.
+## Pre-fix operator notation for atomic formulas is required in a deterministic serialization.
 Atom.main |=
   operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 
-## Slotted arguments follow positional arguments in atomic formulas
-## in the normal-form serialization. 
+## Slotted arguments may precede or  follow positional arguments 
+## in atomic formulas in the deterministic serialization. 
 argumentsForAtoms.sequence |=
   slotTermsForAtoms.sequence, (((termsForAtoms.nonemptysequence.choice, repo?) | repo), slotTermsForAtoms.sequence)?, resl? 
-
-## FIXME import this definition from un, bin, poly, etc.
-#termsForAtoms.nonemptysequence |= positionalArgument-edge.choice+
-#termsForExpressions.nonemptysequence |= positionalArgument-edge.choice+
-
   
 repo = restOfPositionalArguments-edge.choice
-
-## Slotted rest arguments follow the ordinary slots
-## in atomic formulas in the normal-form serialization. 
-#slotsForAtoms.sequence |=
-#  slotTermsForAtoms.sequence, 
   
-  resl = restOfSlots-edge.choice
+resl = restOfSlots-edge.choice
 
-## Pre-fix operator notation for expressions is required in the normal-form serialization.
+## Pre-fix operator notation for expressions is required in the deterministic serialization.
 Expr.main |=
   operatorForExpressions-edge.choice,
   argumentsForExpressions.sequence
 
-## Slotted arguments follow positional arguments in expressions
-## in the normal-form serialization. 
+## Slotted arguments may precede or  follow positional arguments 
+## in the deterministic serialization. 
 argumentsForExpressions.sequence |=
   slotTermsForExpressions.sequence, (((termsForExpressions.nonemptysequence.choice, repo?) | repo), slotTermsForExpressions.sequence)?, resl? 
+ 
+## Positional rest arguments follow the ordinary positional arguments
+## in expressions in the deterministic serialization. 
+positionalArgumentsForExpressions.sequence |=
+  termsForExpressions.sequence, restOfPositionalArguments-edge.choice?
+  
+## Slotted rest arguments follow the ordinary slots
+## in expressions in the deterministic serialization. 
+slotsForExpressions.sequence |=  slotTermsForExpressions.sequence, resl? 
 
-## In the normal-form serialization, the if and then of an implication must occur in canonical order.
-Implies.main |= body_Implies.name.choice, head_Implies.name.choice
+## In the deterministic serialization, the if and then 
+## of an implication can occur in either order if striped.
+## This pattern can be translated accurately into XSD.
+Implies.main |=
+  body_Implies.name.choice & head_Implies.name.choice
 
-## In the normal-form serialization, the if and then of a proof-theoretic entailment must occur canonical order.
-Entails.main |= body_Entails.name.choice, head_Entails.name.choice
+## In the deterministic serialization, the if and then 
+## of a proof-theoretic entailment can occur in either order if striped.
+## This pattern can be translated accurately into XSD.
+Entails.main |=
+  body_Entails.name.choice & head_Entails.name.choice
 
-## In the normal-form serialization, the order of header elements is:
+## In the deterministic serialization, the order of header elements is:
 ## an optional header element sequence as defined in Node.header, followed by optional
 ## object identifier and degree
 TruthValuedConnective.header &= (Node.header?, degree-edge.choice?)?

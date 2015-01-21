@@ -130,10 +130,10 @@
   </xs:group>
   <xs:element name="Implies">
     <xs:complexType>
-      <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element ref="spec:if"/>
         <xs:element ref="spec:then"/>
-      </xs:sequence>
+      </xs:choice>
       <xs:attribute name="direction">
         <xs:simpleType>
           <xs:restriction base="xs:token">

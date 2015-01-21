@@ -150,15 +150,18 @@
           <xs:element ref="spec:op"/>
           <xs:element ref="spec:Rel"/>
         </xs:choice>
-        <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element ref="spec:Skolem"/>
-          <xs:element ref="spec:Reify"/>
-          <xs:element ref="spec:Ind"/>
-          <xs:element ref="spec:Data"/>
-          <xs:element ref="spec:Var"/>
-          <xs:element ref="spec:arg"/>
-        </xs:choice>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
+        <xs:sequence minOccurs="0">
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="spec:Skolem"/>
+            <xs:element ref="spec:Reify"/>
+            <xs:element ref="spec:Ind"/>
+            <xs:element ref="spec:Data"/>
+            <xs:element ref="spec:Var"/>
+            <xs:element ref="spec:arg"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
+        </xs:sequence>
       </xs:sequence>
       <xs:attribute name="closure">
         <xs:simpleType>
@@ -254,8 +257,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:element minOccurs="0" ref="spec:degree"/>
-        <xs:group ref="spec:if"/>
-        <xs:group ref="spec:then"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="spec:if"/>
+          <xs:group ref="spec:then"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="direction">
         <xs:simpleType>
@@ -388,10 +393,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice>
-          <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:group ref="spec:if_2"/>
             <xs:group ref="spec:then_2"/>
-          </xs:sequence>
+          </xs:choice>
           <xs:sequence>
             <xs:choice>
               <xs:element ref="spec:Rulebase"/>
