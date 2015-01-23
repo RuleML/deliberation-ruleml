@@ -69,6 +69,7 @@ include "modules/per_attrib_expansion_module.rnc" inherit = ruleml {start |= not
 include "modules/per_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/per_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/performative_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/performative_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/quantification_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

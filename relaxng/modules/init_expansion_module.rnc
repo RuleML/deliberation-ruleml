@@ -285,6 +285,8 @@ NegationAsFailure-node.notallowed = notAllowed
 # FORMULA CHOICE PATTERNS
 ConclusionFormula.choice |= notAllowed
 RulebaseFormula.choice |= notAllowed
+QueryFormula.choice |= notAllowed
+AssertRetractFormula.choice |= notAllowed
 # 
 # role re-naming and stripe-skipping choice patterns
 operatorForAtoms-edge.choice |= notAllowed
