@@ -13,14 +13,13 @@ dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 # This module declares the following RuleML attributes:
-#    * @material
+#    * @mapMaterial
 
-## an extension point for alternate spellings and internationalization of the material implication attribute name.  
-material-att.choice |= material.attrib.def
-material.attrib.def =
+## an extension point for alternate spellings and internationalization of the scope material implication attribute name.  
+mapMaterial-att.choice |= mapMaterial.attrib.def
+mapMaterial.attrib.def =
     
-    ##  An attribute indicating the kind of an implication rule (<Implies>). Allowed values are "yes" (the default) and "no".
-    ## See http://ruleml.org/1.02/glossary/#gloss-@material
-    attribute material { material.value }
-material.value |= material_default.value | material_non-default.value
-
+    ##  An attribute indicating the kind of all implication rules (<Implies>) falling within its scope (i.e. child elements). 
+    ##  Allowed values are "yes" (the default) and "no".
+    ## See http://ruleml.org/1.02/glossary/#gloss-@mapMaterial
+    attribute mapMaterial { material.value }

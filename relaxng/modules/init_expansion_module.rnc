@@ -9,8 +9,17 @@ dc:description [ "expansion module for initializing base patterns." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://deliberation.ruleml.org/1.02" ]
+# The patterns defined in this module are extension points of the Deliberation RuleML syntax.
+# Those patterns defined using a choice definition symbol (|=) can be extended by alternatives.
+# Those patterns defined using an interleave definitoin symbol (&=) can be extended as an interleaved sequence.
 start |= notAllowed
 # 
+# Content Models of Edges
+# The name of the edge appears first, up to the first "_".
+# If the content model of the edge is context dependent, the name of the parent element
+# appears after the first "_", up to a "." or a "-".
+# Note that by convention, RuleML does not use "_" or "-" or "." in element names.
+# Patterns relevant to the same edge/parent combination are distinguished by a "-" following
 # .content
 act.content |= notAllowed
 arg.content |= notAllowed
@@ -295,8 +304,14 @@ boundVariables.choice |= notAllowed
 # 
 # ATTRIBUTE VALUES
 cardinality.value |= notAllowed
+closure.value |= notAllowed
+direction.value |= notAllowed
 interpretation.value |= notAllowed
+material.value |= notAllowed
+material_default.value |= notAllowed
+material_non-default.value |= notAllowed
 val.value |= notAllowed
+
 # 
 # Choice patterns for all Nodes, all edges.
 # Used for start and Reify

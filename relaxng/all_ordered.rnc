@@ -47,6 +47,9 @@ include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed
 include "modules/long_name_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/long_name_repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/long_name_resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/mapclosure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/mapdirection_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/mapmaterial_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/material_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/material_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/material_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
