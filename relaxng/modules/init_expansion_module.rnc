@@ -305,3 +305,7 @@ edge.choice |= notAllowed
 # 
 # -attrib.choice
 index-attrib.choice |= notAllowed
+# .nonemptysequence
+termsForAtoms.nonemptysequence.choice |= notAllowed
+termsForExpressions.nonemptysequence.choice |= notAllowed
+

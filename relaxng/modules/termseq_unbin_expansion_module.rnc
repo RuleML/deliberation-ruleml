@@ -1,0 +1,21 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+
+dc:title [ "RuleML Positional Argument Sequences: Unary" ]
+dc:version [ "1.02" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, positional argument sequence, unary" ]
+dc:description [
+    "The expansion module for unary positional argument sequences in predicate logics."
+]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ] 
+dc:relation [ "http://deliberation.ruleml.org/1.02" ]
+start |= notAllowed
+# This module declares the following RuleML choice pattern:
+#            * termsPlus.sequence
+
+## In unary logics, a positional argument sequence has exactly zero or one positional arguments.
+termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice?
+termsForExpressions.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice?

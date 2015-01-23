@@ -16,6 +16,7 @@
   xmlns:rdf="&rdf;"
   xmlns:xsi="&xs;-instance"
   xmlns:xs="&xs;"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/bindatagroundfact.xsd"
   >
   <!-- This example shows how a sublanguage of arbitrary expressivity 
        (in this case naffologeq)
@@ -49,11 +50,10 @@
        </rdf:RDF> 
   -->
   <!-- This is a test that can be used to determine if the validator resolves external entities:
-         oXygen/Jing: yes -->
+         oXygen/Jing: yes--> 
   &import-1;
   <Assert>
     <!-- A simple taxonomy "The class horse is a subclass of class animal" -->
-    <Rulebase>
       <Atom>
         <Ind iri="&this;animal"/>
         <Rel iri="&rdf;type"/>
@@ -69,7 +69,6 @@
         <Rel iri="&rdfs;subClassOf"/>
         <Ind iri="&this;animal"/>
       </Atom>
-    </Rulebase>
   </Assert>
   <Assert>
     <!-- A simple fact "Nellie is a horse" -->

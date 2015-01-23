@@ -11,12 +11,12 @@
       <op>
         <Rel iri="some_URI">some relation</Rel>
       </op>
-      <Ind>constant a</Ind>
-      <Ind iri="another_URI">constant b</Ind>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
       </slot>
+      <Ind>constant a</Ind>
+      <Ind iri="another_URI">constant b</Ind>
       <slot weight="0.4">
         <Ind>role_name2</Ind>
         <Ind>role 2</Ind>

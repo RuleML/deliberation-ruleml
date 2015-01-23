@@ -1,11 +1,11 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Stripe-Skipping Module" ]
+dc:title [ "RuleML General Stripe-Skipping Module" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, stripe-skipping" ]
-dc:description [ "expansion module for stripe-skipping." ]
+dc:description [ "expansion module for general stripe-skipping." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
@@ -14,9 +14,7 @@ start |= notAllowed
 #            * arg
 #            * op_Atom
 #            * op_Expr
-#            * body_Implies
 #            * body_Entails
-#            * head_Implies
 #            * head_Entails
 #            * torso
 #            * formula_And
@@ -45,15 +43,6 @@ operatorForAtoms-edge.choice |= op_Atom.content
 
 ## Stripe-skipping is allowed for operators in expressions.
 operatorForExpressions-edge.choice |= op_Expr.content
-# 
-#        *** <if> , <then> ***
-
-## In implications, both stripes may be skipped at the same time.
-Implies.main |= body_Implies-ss.content, head_Implies.content
-body_Implies-ss.content |= body_Implies.content
-head_Implies-ss.content |= head_Implies.content
-# Implies.main |= body_Implies-ss.content, head_Implies.name.choice
-# Implies.main |= body_Implies.name.choice, head_Implies-ss.content
 
 ## In entailments, both stripes may be skipped at the same time.
 Entails.main |= body_Entails-ss.content, head_Entails-ss.content
@@ -101,5 +90,5 @@ weak-edge.choice |= weak.content
 strong-edge.choice |= strong.content
 #
 
-## Stripe-skipping is allowed for actions.
+## Stripe-skipping is allowed for acts.
 act-edge.choice |= act.content

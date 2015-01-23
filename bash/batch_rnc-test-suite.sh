@@ -18,7 +18,7 @@ TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
 for file in ${TEST_SUITE_HOME}**/*.ruleml
 do
   filename=$(basename "${file}")
-  #echo "File "${filename}
+  echo "File "${filename}
   while read -r; do
      #echo "Line ${REPLY}"
      if [[ ${REPLY} =~ ^..xml-model ]]
@@ -33,7 +33,7 @@ do
        ${BASH_HOME}aux_valrnc.sh "${sfile}"
        exitvalue=$?
        if [ "${exitvalue}" -ne "0" ]; then
-          echo "Schema Validation Failed for ${schemaname}"
+          echo "Schema Validation Failed for ${schemaname} called in ${file}"
           exit 1
        fi   
        ${BASH_HOME}aux_valrnc.sh "${sfile}" "${file}"

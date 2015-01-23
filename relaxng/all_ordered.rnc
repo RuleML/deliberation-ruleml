@@ -31,7 +31,8 @@ include "modules/default_present_folog_expansion_module.rnc" inherit = ruleml {s
 include "modules/direction_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/direction_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/direction_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dis_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/disjunctive_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/discon_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/existential_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -75,8 +76,10 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

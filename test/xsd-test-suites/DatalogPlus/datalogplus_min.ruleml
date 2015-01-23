@@ -16,808 +16,401 @@
        Each Query demonstrates the semantics of the previous Assert or Retract
        by providing (in the XML comments) the expected answer to the Query.
     -->
-  <act index="1">
     <Assert>
       <!-- Equations are allowed as facts:
          William is an employee.
          "Bill" is an alias for "William".
       -->
-      <formula>
         <Atom>
-          <op>
             <Rel>employee</Rel>
-          </op>
-          <arg index="1">
             <Ind>William</Ind>
-          </arg>
         </Atom>
-      </formula>
-      <formula>
         <Equal >
-          <left>
             <Ind>Bill</Ind>
-          </left>
-          <right>
             <Ind>William</Ind>
-          </right>
         </Equal>
-      </formula>
     </Assert>
-  </act>
-  <act index="2">
     <Query>
-      <formula>
         <Atom>
-          <op>
             <Rel>employee</Rel>
-          </op>
-          <arg index="1">
             <Var>x</Var>
-          </arg>
         </Atom>
-      </formula>
     </Query>
-  </act>
-  <act index="3">
     <Assert>
       <!-- Equations may be universally quantified.
          This fact is a degenerate case, corresponding to the body of an implication being empty.
          The following makes the reflexive property of equality explicit (as built into most systems):
          Everything is equal to itself.
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Equal >
-              <left>
                 <Var>x</Var>
-              </left>
-              <right>
                 <Var>x</Var>
-              </right>
             </Equal>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="4">
     <Query>
-      <formula>
         <Equal >
-          <left>
             <Var>x</Var>
-          </left>
-          <right>
             <Var>x</Var>
-          </right>
         </Equal>
-      </formula>
     </Query>
-  </act>
-  <act index="5">
     <Assert>
       <!-- Non-ground facts are allowed. 
          John is the CEO.
          John is responsible for everything.
       -->
-      <formula>
         <Atom>
-          <op>
             <Rel>CEO</Rel>
-          </op>
-          <arg index="1">
             <Ind>John</Ind>
-          </arg>
         </Atom>
-      </formula>
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Atom>
-              <op>
                 <Rel>responsible_for</Rel>
-              </op>
-              <arg index="1">
                 <Ind>John</Ind>
-              </arg>
-              <arg index="2">
                 <Var>x</Var>
-              </arg>
             </Atom>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="6">
     <Query>
-      <formula>
         <Atom>
-          <op>
             <Rel>responsible_for</Rel>
-          </op>
-          <arg index="1">
             <Ind>John</Ind>
-          </arg>
-          <arg index="2">
             <Ind>Bill</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Query>
-  </act>
-  <act index="7">
     <Assert>
       <!-- Rules are expressed as universally-quantified implications.
          A simple rule can be used to assert a subclass relationship:
          Every manager is an employee.         
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Implies>
               <if>
                 <Atom>
-                  <op>
                     <Rel>manager</Rel>
-                  </op>
-                  <arg index="1">
                     <Var>x</Var>
-                  </arg>
                 </Atom>
               </if>
               <then>
                 <Atom>
-                  <op>
                     <Rel>employee</Rel>
-                  </op>
-                  <arg index="1">
                     <Var>x</Var>
-                  </arg>
                 </Atom>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
-      <formula>
         <Atom>
-          <op>
             <Rel>manger</Rel>
-          </op>
-          <arg index="1">
             <Ind>John</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Assert>
-  </act>
-  <act index="8">
     <Query>
-      <formula>
         <Atom>
-          <op>
             <Rel>employee</Rel>
-          </op>
-          <arg index="1">
             <Var>x</Var>
-          </arg>
         </Atom>
-      </formula>
     </Query>
-  </act>
-  <act index="9">
     <Assert  >
       <!-- Equations are allowed in the body of (existential) implications. 
          If anyone is the same as Margaret, then they supervise someone.
          (Note that this rule could be semantically simplified 
          to an existential fact relying on axioms of equality.)
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
                 <Equal >
-                  <left>
                     <Ind>Margaret</Ind>
-                  </left>
-                  <right>
                     <Var>x</Var>
-                  </right>
                 </Equal>
               </if>
               <then>
                 <Exists>
-                  <declare>
                     <Var>y</Var>
-                  </declare>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>x</Var>
-                      </arg>
-                      <arg index="2">
                         <Var>y</Var>
-                      </arg>
                     </Atom>
-                  </formula>
                 </Exists>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="10">
     <Query>
-      <formula>
         <Exists>
-          <declare>
             <Var>y</Var>
-          </declare>
-          <formula>
             <Atom>
-              <op>
                 <Rel>supervises</Rel>
-              </op>
-              <arg index="1">
                 <Ind>Margaret</Ind>
-              </arg>
-              <arg index="2">
                 <Var>y</Var>
-              </arg>
             </Atom>
-          </formula>
         </Exists>
-      </formula>
     </Query>
-  </act>
-  <act index="11">
     <Assert  >
       <!-- Pairwise Disjoint Classes
          Nothing is both an employee and a department.
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
+                
                 <And>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>employee</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>x</Var>
-                      </arg>
                     </Atom>
-                  </formula>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>department</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>x</Var>
-                      </arg>
                     </Atom>
-                  </formula>
                 </And>
               </if>
               <then>
                 <Or/>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="12">
     <Assert  >
       <!-- HR is an employee.
          HR is a department.
          These facts together with the previous rule create an inconsistency.
       -->
-      <formula>
         <Atom>
-          <op>
             <Rel>employee</Rel>
-          </op>
-          <arg index="1">
             <Ind>HR</Ind>
-          </arg>
         </Atom>
-      </formula>
-      <formula>
         <Atom>
-          <op>
             <Rel>department</Rel>
-          </op>
-          <arg index="1">
             <Ind>HR</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Assert>
-  </act>
-  <act index="13">
     <Query>
-      <formula>
         <Or/>
-      </formula>
     </Query>
-  </act>
-  <act index="14">
     <Retract  >
-      <formula>
         <Atom>
-          <op>
             <Rel>employee</Rel>
-          </op>
-          <arg index="1">
             <Ind>HR</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Retract>
-  </act>
-  <act index="15">
     <Query>
-      <formula>
         <Or/>
-      </formula>
     </Query>
-  </act>
-  <act index="16">
     <Assert  >
       <!-- Functionality Constraint: 
         Everyone (or everything) has at most one supervisor. 
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <declare>
             <Var>y</Var>
-          </declare>
-          <declare>
             <Var>z</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
                 <And>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>x</Var>
-                      </arg>
-                      <arg index="2">
                         <Var>z</Var>
-                      </arg>
                     </Atom>
-                  </formula>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>y</Var>
-                      </arg>
-                      <arg index="2">
                         <Var>z</Var>
-                      </arg>
                     </Atom>
-                  </formula>
                 </And>
               </if>
               <then>
                 <Equal >
-                  <left>
                     <Var>x</Var>
-                  </left>
-                  <right>
                     <Var>y</Var>
-                  </right>
                 </Equal>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
-      <formula>
         <Atom>
-          <op>
             <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
             <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
             <Ind>Bill</Ind>
-          </arg>
         </Atom>
-      </formula>
-      <formula>
         <Atom>
-          <op>
             <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
             <Ind>Peggy</Ind>
-          </arg>
-          <arg index="2">
             <Ind>Bill</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Assert>
-  </act>
-  <act index="17">
     <Query>
-      <formula>
         <Equal >
-          <left>
             <Ind>Peggy</Ind>
-          </left>
-          <right>
             <Ind>Margaret</Ind>
-          </right>
         </Equal>
-      </formula>
     </Query>
-  </act>
-  <act index="18">
     <Assert  >
       <!-- Negative Constraints are allowed.
          No one (or no thing) is their own supervisor. 
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>x</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
                 <Atom>
-                  <op>
                     <Rel>supervises</Rel>
-                  </op>
-                  <arg index="1">
                     <Var>x</Var>
-                  </arg>
-                  <arg index="2">
                     <Var>x</Var>
-                  </arg>
                 </Atom>
               </if>
               <then>
                 <Or/>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="19">
     <Assert  >
       <!-- Margaret supervises Peggy. -->
-      <formula>
         <Atom>
-          <op>
             <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
             <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
             <Ind>Peggy</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Assert>
-  </act>
-  <act index="20">
     <Query>
-      <formula>
         <Or/>
-      </formula>
     </Query>
-  </act>
-  <act index="21">
     <Retract  >
-      <formula>
         <Atom>
-          <op>
             <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
             <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
             <Ind>Peggy</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Retract>
-  </act>
-  <act index="22">
     <Query>
-      <formula>
         <Or/>
-      </formula>
     </Query>
-  </act>
-  <act index="23">
     <Assert  >
       <!-- Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
          are different (as built into systems making the unique name assumption).
       -->
-      <formula>
         <Implies  >
           <if>
             <Equal >
-              <left>
                 <Ind>Sue</Ind>
-              </left>
-              <right>
                 <Ind>Maria</Ind>
-              </right>
             </Equal>
           </if>
           <then>
             <Or/>
           </then>
         </Implies>
-      </formula>
     </Assert>
-  </act>
-  <act index="24">
     <Query>
-      <formula>
         <Equal >
-          <left>
             <Ind>Sue</Ind>
-          </left>
-          <right>
             <Ind>Maria</Ind>
-          </right>
         </Equal>
-      </formula>
     </Query>
-  </act>
-  <act index="25">
     <Assert  >
       <!-- Existential Rules -->
       <!-- Every manager directs at least one department.
          Maria is a manager.
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>M</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
                 <Atom>
-                  <op>
                     <Rel>manager</Rel>
-                  </op>
-                  <arg index="1">
                     <Var>M</Var>
-                  </arg>
                 </Atom>
               </if>
               <then>
                 <Exists>
-                  <declare>
                     <Var>P</Var>
-                  </declare>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>directs</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>M</Var>
-                      </arg>
-                      <arg index="2">
                         <Var>P</Var>
-                      </arg>
                     </Atom>
-                  </formula>
                 </Exists>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
-      <formula>
         <Atom>
-          <op>
             <Rel>manager</Rel>
-          </op>
-          <arg index="1">
             <Ind>Maria</Ind>
-          </arg>
         </Atom>
-      </formula>
     </Assert>
-  </act>
-  <act index="26">
     <Query>
-      <formula>
         <Exists>
-          <declare>
             <Var>P</Var>
-          </declare>
-          <formula>
             <Atom>
-              <op>
                 <Rel>directs</Rel>
-              </op>
-              <arg index="1">
                 <Ind>Maria</Ind>
-              </arg>
-              <arg index="2">
                 <Var>P</Var>
-              </arg>
             </Atom>
-          </formula>
         </Exists>
-      </formula>
     </Query>
-  </act>
-  <act index="27">
     <Assert  >
       <!-- The heads and bodies of existential rules can contain conjunctions.
          Every employee who directs a department is a manager, and supervises at 
          least another employee who works in the same department.
       -->
-      <formula>
         <Forall>
-          <declare>
             <Var>E</Var>
-          </declare>
-          <declare>
             <Var>P</Var>
-          </declare>
-          <formula>
             <Implies  >
               <if>
                 <And>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>employee</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>E</Var>
-                      </arg>
                     </Atom>
-                  </formula>
-                  <formula>
                     <Atom>
-                      <op>
                         <Rel>directs</Rel>
-                      </op>
-                      <arg index="1">
                         <Var>E</Var>
-                      </arg>
-                      <arg index="2">
                         <Var>P</Var>
-                      </arg>
                     </Atom>
-                  </formula>
                 </And>
               </if>
               <then>
                 <Exists>
-                  <declare>
                     <Var>E'</Var>
-                  </declare>
-                  <formula>
                     <And>
-                      <formula>
                         <Atom>
-                          <op>
                             <Rel>manager</Rel>
-                          </op>
-                          <arg index="1">
                             <Var>E</Var>
-                          </arg>
                         </Atom>
-                      </formula>
-                      <formula>
                         <Atom>
-                          <op>
                             <Rel>supervises</Rel>
-                          </op>
-                          <arg index="1">
                             <Var>E</Var>
-                          </arg>
-                          <arg index="2">
                             <Var>E'</Var>
-                          </arg>
                         </Atom>
-                      </formula>
-                      <formula>
                         <Atom>
-                          <op>
                             <Rel>works_in</Rel>
-                          </op>
-                          <arg index="1">
                             <Var>E'</Var>
-                          </arg>
-                          <arg index="2">
                             <Var>P</Var>
-                          </arg>
                         </Atom>
-                      </formula>
                     </And>
-                  </formula>
                 </Exists>
               </then>
             </Implies>
-          </formula>
         </Forall>
-      </formula>
     </Assert>
-  </act>
-  <act index="28">
     <Query>
-      <formula>
         <Exists>
-          <declare>
             <Var>E'</Var>
-          </declare>
-          <formula>
             <Atom>
-              <op>
                 <Rel>supervises</Rel>
-              </op>
-              <arg index="1">
                 <Ind>Maria</Ind>
-              </arg>
-              <arg index="2">
                 <Var>E'</Var>
-              </arg>
             </Atom>
-          </formula>
         </Exists>
-      </formula>
     </Query>
-  </act>
 </RuleML>

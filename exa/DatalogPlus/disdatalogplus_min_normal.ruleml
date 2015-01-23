@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/disdatalogplus_min_normal.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- a syntactic example rulebase for testing the RuleML Disjunctive Datalog Plus sublanguage -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- Disjuntive Rules 
       Union classes 
       Every employee is a manager or a worker (or both). -->
@@ -12,7 +13,7 @@
             <Var>E</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
                   <op><Rel>Employee</Rel></op>
@@ -42,7 +43,7 @@
     </Assert>
   </act>
   <act index="2">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- Existential Disjunctive Rules 
       Exceptions to subsumption.
       Every employee, other than the CEO, has a supervisor. -->
@@ -52,7 +53,7 @@
             <Var>E</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
                   <op><Rel>Employee</Rel></op>

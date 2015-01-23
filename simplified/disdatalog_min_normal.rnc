@@ -34,15 +34,15 @@ RuleML =
   }
 Assert =
   element Assert {
-    (attribute mapMaterial { "yes" }
-     & attribute mapDirection { "bidirectional" }
+    (attribute mapMaterial { "yes" }?
+     & attribute mapDirection { "bidirectional" }?
      & attribute ns1:schemaLocation { text }?),
     formula*
   }
 Retract =
   element Retract {
-    (attribute mapMaterial { "yes" }
-     & attribute mapDirection { "bidirectional" }
+    (attribute mapMaterial { "yes" }?
+     & attribute mapDirection { "bidirectional" }?
      & attribute ns1:schemaLocation { text }?),
     formula*
   }
@@ -75,8 +75,8 @@ Or =
   }
 Implies =
   element Implies {
-    (attribute direction { "bidirectional" }
-     & attribute material { "yes" }
+    (attribute direction { "bidirectional" }?
+     & attribute material { "yes" }?
      & attribute ns1:schemaLocation { text }?),
     if,
     then
@@ -138,7 +138,7 @@ formula_4 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
+    & (Atom | And_2 | Or_2)
   }
 if =
   element if {
@@ -186,14 +186,4 @@ Or_2 =
   element Or {
     attribute ns1:schemaLocation { text }?,
     formula_4*
-  }
-Or_3 =
-  element Or {
-    attribute ns1:schemaLocation { text }?,
-    formula_7*
-  }
-formula_7 =
-  element formula {
-    attribute ns1:schemaLocation { text }?
-    & (Atom | Or_3)
   }

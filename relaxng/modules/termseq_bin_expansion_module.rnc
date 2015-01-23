@@ -17,5 +17,5 @@ start |= notAllowed
 #            * termsPlus.sequence
 
 ## In binary logics, a positional argument sequence has exactly zero or two positional arguments.
-termsForAtoms.sequence |= (positionalArgument-edge.choice, positionalArgument-edge.choice)?
-termsForExpressions.sequence |= (positionalArgument-edge.choice, positionalArgument-edge.choice)?
+termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice
+termsForExpressions.nonemptysequence.choice |= positionalArgument-edge.choice, positionalArgument-edge.choice

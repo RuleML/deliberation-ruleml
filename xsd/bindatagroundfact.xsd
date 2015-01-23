@@ -29,7 +29,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -37,7 +37,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -70,7 +70,7 @@
           <xs:element ref="spec:Rulebase"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -78,7 +78,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -136,6 +136,7 @@
           <xs:element ref="spec:op"/>
           <xs:element ref="spec:Rel"/>
         </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         <xs:sequence minOccurs="0">
           <xs:choice>
             <xs:element ref="spec:Skolem"/>
@@ -151,8 +152,8 @@
             <xs:element ref="spec:Data"/>
             <xs:element ref="spec:arg"/>
           </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         </xs:sequence>
-        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
       </xs:sequence>
       <xs:attribute name="closure">
         <xs:simpleType>
@@ -246,7 +247,7 @@
           <xs:group ref="spec:formula_5"/>
         </xs:choice>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" default="yes">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -254,7 +255,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" default="bidirectional">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -281,10 +282,10 @@
       <xs:sequence>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:choice>
-          <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element ref="spec:if"/>
             <xs:element ref="spec:then"/>
-          </xs:sequence>
+          </xs:choice>
           <xs:sequence>
             <xs:choice>
               <xs:element ref="spec:Rulebase"/>

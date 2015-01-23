@@ -15,5 +15,5 @@ start |= notAllowed
 #            * positionalArguments.sequence
 
 ##
-termsForAtoms.sequence |= positionalArgument-edge.choice*
-termsForExpressions.sequence |= positionalArgument-edge.choice*
+termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice+
+termsForExpressions.nonemptysequence.choice |= positionalArgument-edge.choice+

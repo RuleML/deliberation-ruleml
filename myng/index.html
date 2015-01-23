@@ -26,13 +26,6 @@
                     LanguageForm.backbone[5].checked = true;
                 }
                 if (!(
-                LanguageForm.deflt[0].checked *
-                LanguageForm.deflt[1].checked *
-                LanguageForm.deflt[2].checked)) {
-                    // initialize to Optional
-                    LanguageForm.deflt[2].checked = true;
-                }
-                if (!(
                 LanguageForm.termseq[0].checked *
                 LanguageForm.termseq[1].checked *
                 LanguageForm.termseq[2].checked *
@@ -63,7 +56,6 @@
             }            
             function clearOthers (LanguageForm) {
                 //Set other radio buttons
-                LanguageForm.deflt[1].checked  = true;
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
                 //Clear other checkbox facets
@@ -76,7 +68,6 @@
             }            
             function fillOthers (LanguageForm) {
                 //Set other radio buttons
-                LanguageForm.deflt[2].checked  = true;
                 LanguageForm.termseq[4].checked = true;
                 LanguageForm.lng[0].checked = true;
                 //Clear other checkbox facets
@@ -380,22 +371,7 @@
                 return bb;
             }
             function get_df(LanguageForm) {
-                            var df = 0;
-                if (LanguageForm.deflt[0].checked) {
-                    df = 5;
-                }
-                if (LanguageForm.deflt[1].checked) {
-                    if (LanguageForm.backbone[5].checked) {
-                        df = 2;
-                    } else {
-                        df = 6;
-                    }
-                }
-                if (LanguageForm.deflt[2].checked) {
-                    df = 7;
-                }
-
-              return df;
+              return 7;
             }
             function get_ts(LanguageForm) {
                 var ts = 0;
@@ -414,7 +390,7 @@
                 			    case 3:
                 			        ts = 3;
                 			        break;
-                			    case 4:
+                			    default:
                 			        ts = 7;
                 			        break;
                 
@@ -454,12 +430,13 @@
             }
             function get_terms(LanguageForm) {
                 var terms = 0;
-                for (var i = 0; i <= 5; i = i + 1) {
+                var i;
+                for (i = 0; i <= 5; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
                 }
-                for (var i = 8; i <= 11; i = i + 1) {
+                for (i = 8; i <= 11; i = i + 1) {
                     if (eval("LanguageForm.terms" + i + ".checked")) {
                         terms = terms + Math.pow(2, i);
                     }
@@ -668,7 +645,7 @@
                   var LF_quant = get_quant(LanguageForm);
                   var LF_expr = get_ex(LanguageForm);
                   var LF_serial = get_serial(LanguageForm);
-                  return (
+                  var result =
                       (compareBits(LF_bb, bb)) &&
                       (compareBits(LF_df, df)) &&
                       (compareBits(LF_ts, ts)) &&
@@ -678,15 +655,15 @@
                       (compareBits(LF_terms, terms)) &&
                       (compareBits(LF_quant, quant)) &&
                       (compareBits(LF_expr, expr)) &&
-                      (compareBits(LF_serial, serial))
-                    ) ;
+                      (compareBits(LF_serial, serial));
+                  return result;  
             }
             
                  
             function anchorXSD(LanguageForm) {
                 //bindatagroundfact_normal
                 var bb = 1;
-                var df = 6;
+                var df = 7;
                 var ts = 2;
                 var lng = 1;
                 var propo = parseInt("3cf", 16);
@@ -701,24 +678,24 @@
                   return "bindatagroundfact_normal";
                 }
                 //bindatagroundfact
-                var bb = 1;
-                var df = 7;
-                var ts = 2;
-                var lng = 1;
-                var propo = parseInt("3cf", 16);
-                var implies = 6;
-                var terms = parseInt("f0f", 16);
-                var quant = 1;
-                var expr = 0;
-                var serial = parseInt("f", 16);
-                var comp = compareTo(LanguageForm, bb, df, ts, lng, 
+                bb = 1;
+                df = 7;
+                ts = 2;
+                lng = 1;
+                propo = parseInt("3cf", 16);
+                implies = 6;
+                terms = parseInt("f0f", 16);
+                quant = 1;
+                expr = 0;
+                serial = parseInt("f", 16);
+                comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
                   return "bindatagroundfact";
                 }
                 //bindatagroundlog_normal
                 bb = 3;
-                df = 6;
+                df = 7;
                 ts = 2;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -750,7 +727,7 @@
                 }
                 //bindatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 2;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -782,7 +759,7 @@
                 }
                 //datalog_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("1", 16);
@@ -814,11 +791,11 @@
                 }
                 //disdatalog_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("1", 16);
-                implies = parseInt("30", 16);
+                implies = parseInt("38", 16);
                 terms = parseInt("200", 16);
                 quant = 0;
                 expr = 0;
@@ -834,7 +811,7 @@
                 ts = 7;
                 lng = 1;
                 propo = parseInt("1", 16);
-                implies = parseInt("30", 16);
+                implies = parseInt("38", 16);
                 terms = parseInt("200", 16);
                 quant = 0;
                 expr = 0;
@@ -846,7 +823,7 @@
                 }
                 //datalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -878,7 +855,7 @@
                 }
                 //datalogplus_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = 1;
@@ -910,7 +887,7 @@
                 }                  
                 //disdatalogplus_min_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = 1;
@@ -942,7 +919,7 @@
                 }                                
                 //datalogplus_mid_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -974,7 +951,7 @@
                 }                
                 //disdatalogplus_mid_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3c1", 16);
@@ -1006,7 +983,7 @@
                 }                
                 //nafdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ef", 16);
@@ -1038,7 +1015,7 @@
                 }
                 //negdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
@@ -1070,7 +1047,7 @@
                 }
                 //nafnegdatalog_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1102,7 +1079,7 @@
                 }
                 // nafnegdisdatalogplus_normal
                 bb = 7;
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1134,7 +1111,7 @@
                 }
                 //hornlog_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
@@ -1166,14 +1143,14 @@
                 }
                 //hornlogeq_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);
+                expr = parseInt("f", 16);
                 serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
@@ -1199,11 +1176,11 @@
                 
                 //dishornlog_normal
                 bb = parseInt("1f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
-                implies = parseInt("37", 16);
+                implies = parseInt("3f", 16);
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
@@ -1219,7 +1196,7 @@
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3cf", 16);
-                implies = parseInt("37", 16);
+                implies = parseInt("3f", 16);
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
@@ -1231,7 +1208,7 @@
                 }                 
                 //nafhornlog_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ef", 16);
@@ -1263,15 +1240,15 @@
                 }  
                 //nafneghornlogeq_normal
                 bb = parseInt("f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);;
-                serial = parseInt("c", 16);;
+                expr = parseInt("f", 16);
+                serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1286,8 +1263,8 @@
                 implies = parseInt("7", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("f", 16);;
-                serial = parseInt("f", 16);;
+                expr = parseInt("f", 16);
+                serial = parseInt("f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1295,14 +1272,14 @@
                 }  
                 //nafnegdishornlogplus_normal
                 bb = parseInt("1f", 16);
-                df = 6;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);
+                expr = parseInt("f", 16);
                 serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
@@ -1327,7 +1304,7 @@
                 }  
                 //folog_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
@@ -1339,7 +1316,7 @@
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
-                  return "folog"; 
+                  return "folog_normal"; 
                  } 
                 //folog
                 bb = parseInt("3f", 16);
@@ -1359,14 +1336,14 @@
                  } 
                 //fologeq_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3df", 16);
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);
+                expr = parseInt("f", 16);
                 serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
@@ -1391,7 +1368,7 @@
                 }
                 //naffolog_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
@@ -1403,7 +1380,7 @@
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
-                  return "naffolog";
+                  return "naffolog_normal";
                 }  
                 //naffolog
                 bb = parseInt("3f", 16);
@@ -1423,14 +1400,14 @@
                 }  
                 //naffologeq_normal
                 bb = parseInt("3f", 16);
-                df = 2;
+                df = 7;
                 ts = 7;
                 lng = 1;
                 propo = parseInt("3ff", 16);
                 implies = parseInt("7f", 16);
                 terms = parseInt("f3f", 16);
                 quant = 7;
-                expr = parseInt("e", 16);;
+                expr = parseInt("f", 16);
                 serial = parseInt("c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
@@ -1731,17 +1708,6 @@
                 <input type="checkbox" name="serial3" onclick="checkAll(this.form)"
                   checked="checked" /> Schema Location Attribute </li>
             </ol>
-            </td>
-            <td class="facet"> <span class="facet-head">Treatment of Attributes<br /> With Default Values <br /></span> (Select
-              One) <ol>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Absent </li>
-                <li><input type="radio" name="deflt" onclick="checkAll(this.form)" /> Required to be
-                  Present </li>
-                <li>
-                  <input type="radio" name="deflt" onclick="checkAll(this.form)" /> Optional </li>
-              </ol>
             </td>
             <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
               <ol>

@@ -59,10 +59,10 @@ RuleML =
   }
 Assert =
   element Assert {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -73,10 +73,10 @@ Assert =
   }
 Retract =
   element Retract {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -87,10 +87,10 @@ Retract =
   }
 Query =
   element Query {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute closure { "universal" | "existential" }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
@@ -127,10 +127,10 @@ Rel =
   }
 And =
   element And {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute closure { "universal" | "existential" }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
@@ -143,10 +143,10 @@ And =
   }
 Or =
   element Or {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute closure { "universal" | "existential" }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
@@ -159,12 +159,12 @@ Or =
   }
 Implies =
   element Implies {
-    (attribute direction { "bidirectional" | "forward" | "backward" }
-     & attribute material { "yes" | "no" }
-     & attribute mapMaterial { "yes" | "no" }
+    (attribute direction { "bidirectional" | "forward" | "backward" }?
+     & attribute material { "yes" | "no" }?
+     & attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute closure { "universal" | "existential" }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
@@ -178,10 +178,10 @@ Implies =
   }
 Forall =
   element Forall {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -194,10 +194,10 @@ Forall =
   }
 Exists =
   element Exists {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -210,7 +210,7 @@ Exists =
   }
 Expr =
   element Expr {
-    (attribute per { "copy" }
+    (attribute per { "copy" }?
      & attribute type { xsd:string }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -226,7 +226,7 @@ Expr =
   }
 Fun =
   element Fun {
-    (attribute per { "copy" }
+    (attribute per { "copy" }?
      & attribute iri { xsd:anyURI }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -236,10 +236,10 @@ Fun =
   }
 Rulebase =
   element Rulebase {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -260,10 +260,10 @@ Entails =
   }
 Neg =
   element Neg {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -275,10 +275,10 @@ Neg =
   }
 Equivalent =
   element Equivalent {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute closure { "universal" | "existential" }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
@@ -657,10 +657,10 @@ _1 =
   }
 And_2 =
   element And {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?
@@ -672,10 +672,10 @@ And_2 =
   }
 Or_2 =
   element Or {
-    (attribute mapMaterial { "yes" | "no" }
+    (attribute mapMaterial { "yes" | "no" }?
      & attribute mapDirection {
          "bidirectional" | "forward" | "backward"
-       }
+       }?
      & attribute mapClosure { "universal" | "existential" }?
      & attribute node { xsd:anyURI }?
      & attribute ns1:schemaLocation { text }?

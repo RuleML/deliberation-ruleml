@@ -17,7 +17,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" use="required">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -25,7 +25,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" use="required">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -53,7 +53,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula"/>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" use="required">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -61,7 +61,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" use="required">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -195,7 +195,7 @@
         <xs:group ref="spec:if"/>
         <xs:group ref="spec:then"/>
       </xs:sequence>
-      <xs:attribute name="direction" use="required">
+      <xs:attribute name="direction">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -204,7 +204,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="material" use="required">
+      <xs:attribute name="material">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -262,7 +262,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:slot"/>
         <xs:element minOccurs="0" ref="spec:resl"/>
       </xs:sequence>
-      <xs:attribute name="per" use="required">
+      <xs:attribute name="per">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="copy"/>
@@ -281,7 +281,7 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:token">
-          <xs:attribute name="per" use="required">
+          <xs:attribute name="per">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="copy"/>
@@ -290,7 +290,7 @@
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="val" use="required">
+          <xs:attribute name="val">
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="1"/>
@@ -312,7 +312,7 @@
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
         <xs:group minOccurs="0" maxOccurs="unbounded" ref="spec:formula_7"/>
       </xs:sequence>
-      <xs:attribute name="mapMaterial" use="required">
+      <xs:attribute name="mapMaterial">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="yes"/>
@@ -320,7 +320,7 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="mapDirection" use="required">
+      <xs:attribute name="mapDirection">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="bidirectional"/>
@@ -383,7 +383,7 @@
         <xs:element ref="spec:left"/>
         <xs:element ref="spec:right"/>
       </xs:sequence>
-      <xs:attribute name="oriented" use="required">
+      <xs:attribute name="oriented">
         <xs:simpleType>
           <xs:restriction base="xs:token">
             <xs:enumeration value="no"/>

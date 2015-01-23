@@ -126,6 +126,7 @@ $now =  date(DATE_ATOM,time());
 $this_url = $base_url;
 $this_url = $this_url . "?";
 $call_fragment = $backbone."=".$backboneParam;
+echo "# Call parameters\n";
 echo "# GET parameter: ".$call_fragment."\n";
 $this_url = $this_url . $call_fragment."&";
 $call_fragment = $default."=".$defaultParam;
@@ -176,7 +177,6 @@ echo '" ]'."\n";
 echo 'dc:language [ "en" ]'."\n";
 echo 'dcterms:rights [ "TBD" ]'."\n";
 echo 'dc:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
-echo "# Call parameters\n";
 echo "# Base URL = $base_url \n";
 
 
@@ -186,48 +186,51 @@ if ($bdefault==0){
     echo "#\n# Error: The ".$default." parameter value ".$defaultParam." is not allowed.\n";
 } else {
   
-  $needAndOr = extractBit($bbackbone, $backbone_andor);
-  $needImp = extractBit($bbackbone, $backbone_implies);
-  $needQuant = extractBit($bbackbone, $backbone_quant);
-  $needExpr = extractBit($bbackbone, $backbone_expr);
+  $enableAndOr = extractBit($bbackbone, $backbone_andor);
+  $enableImp = extractBit($bbackbone, $backbone_implies);
+  $enableQuant = extractBit($bbackbone, $backbone_quant);
+  $enableExpr = extractBit($bbackbone, $backbone_expr);
   // Disjunctive Heads are now indicated from the implication options facets.
-  // However, we honor the backbone code for dishornlog for backward compatibility
-  $needDis = extractBit($bbackbone, $backbone_dis);
-  $needFO = extractBit($bbackbone, $backbone_fo);
+  // However, we also honor the backbone code for dishornlog for backward compatibility
+  $enableDis = max(extractBit($bbackbone, $backbone_dis) , extractBit($bimplies, $implies_or));
+  $enableFO = extractBit($bbackbone, $backbone_fo);
   
-  $needDefaultAbsent = extractBit($bdefault, $default_absent); 
-  $bdefault_present = extractBit($bdefault, $default_present);
-  $needDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);
+  $enableDefaultAbsent = extractBit($bdefault, $default_absent); 
+  $enableDefaultPresent = extractBit($bdefault, $default_present);
+  $enableDefaultAbsentFO = extractBit($bdefault, $default_absent_fo);
 
-  $btermseq_unary = extractBit($btermseq, $termseq_unary);
-  $btermseq_binary = extractBit($btermseq, $termseq_binary);
-  $btermseq_ternary_plus = extractBit($btermseq, $termseq_ternary_plus);
-  $needPoly = $btermseq_ternary_plus * $btermseq_binary * $btermseq_unary;
+  $enableTermseq_unary = extractBit($btermseq, $termseq_unary);
+  $enableTermseq_binary = extractBit($btermseq, $termseq_binary);
+  $enableTermseq_ternary_plus = extractBit($btermseq, $termseq_ternary_plus);
+  $NeedPoly = $enableTermseq_ternary_plus * $enableTermseq_binary * $enableTermseq_unary;
   
   // Apparent lack of monotonicity caused by incomplete orthogonalization
   // of modules for binary and polyadic positional term sequences.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
-  $needBin = $btermseq_binary * (1-$needPoly);
-  $needUn  = $btermseq_unary  * (1-$needPoly);
+  $NeedUnBin = $enableTermseq_unary * $enableTermseq_binary * (1-$NeedPoly);
+  $NeedBin = $enableTermseq_binary * (1-$NeedUnBin) * (1-$NeedPoly);
+  $NeedUn  = $enableTermseq_unary  * (1-$NeedUnBin) * (1-$NeedPoly);
   
-  $needLongNames = extractBit($blng, $lng_long_en);
+  $enableLongNames = extractBit($blng, $lng_long_en);
 
   // Apparent lack of monotonicity caused by incomplete orthogonalization
   // of modules for ordered and unordered groups.
   // Orthogonalization is possible but awkward, leading to complex and unreadable grammar rules.
-  $needUnordered = extractBit($bserialization, $serialization_unordered);
-  $needOrdered = (1-$needUnordered);
-  $needStripeSkip = extractBit($bserialization, $serialization_stripeskip);
-  $needDatatyping = extractBit($bserialization, $serialization_datatyping);
-  $needSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
+  $enableUnordered = extractBit($bserialization, $serialization_unordered);
+  $NeedOrdered = (1-$enableUnordered);
+  
+  $enabletripeSkip = extractBit($bserialization, $serialization_stripeskip);
+  $enableDatatyping = extractBit($bserialization, $serialization_datatyping);
+  $enableSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
+  $enableAbsolute = extractBit($bserialization, $serialization_absolute);
+  // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
-  $absolute = extractBit($bserialization, $serialization_absolute);
 
-  $needURI = extractBit($bpropo, $propo_iri);
-  $needRulebase = extractBit($bpropo, $propo_rulebase);
-  $needEntails = extractBit($bpropo, $propo_entails);
-  $needFuzzy = extractBit($bpropo, $propo_degree);
-  $needNeg = extractBit($bpropo, $propo_neg);
+  $NeedURI = extractBit($bpropo, $propo_iri);
+  $NeedRulebase = extractBit($bpropo, $propo_rulebase);
+  $NeedEntails = extractBit($bpropo, $propo_entails);
+  $NeedFuzzy = extractBit($bpropo, $propo_degree);
+  $NeedNeg = extractBit($bpropo, $propo_neg);
   $needNaf = extractBit($bpropo, $propo_naf);
   $needNode = extractBit($bpropo, $propo_node);
   $needMeta = extractBit($bpropo, $propo_meta);
@@ -236,60 +239,89 @@ if ($bdefault==0){
 
   $needEquiv = extractBit($bimplies, $implies_equivalent);
   $needDirND =  extractBit($bimplies, $implies_direction);
-  $needDirD =  $bdefault_present;
+  $needDirD =  $enableDefaultPresent;
   $needDirAtt = max($needDirD , $needDirND);
   $needMatND =  extractBit($bimplies, $implies_material);
-  $needMatD =  $bdefault_present;
+  $needMatD =  $enableDefaultPresent;
   $needMatAtt = max($needMatD , $needMatND);
+  
+  
+  $enableExHead = extractBit($bimplies, $implies_ex);
+  $enableAndHead = extractBit($bimplies, $implies_and);
+  $enableNegConstraint = extractBit($bimplies, $implies_nc);
   //Apparent lack of monotonicity caused by containment of the
   // existential head module within the implementation of FOL.
   //Including the existential head module would be redundant in FOL.
-  // Similar considerations hold for negative constraints and
-  // conjunctive heads.
-  $needExHead = extractBit($bimplies, $implies_ex)*(1-$needFO);
-  $needAndHead = extractBit($bimplies, $implies_and)*(1-$needFO);
-  $needOrHead = max($needDis , extractBit($bimplies, $implies_or))*(1-$needFO);
-  $needNegConstraint = extractBit($bimplies, $implies_nc)*(1-$needDis)*(1-$needOrHead);
+  // Similar considerations hold for negative constraints.
+  $NeedExHeadModule = $enableExHead*(1-$enableFO);
+  $NeedNegConstraintModule = $enableNegConstraint*(1-$enableDis);
+  // Apparent lack of monotonicity caused by the refactoring of head content model
+  // in order to achieving maximal stripe-skipping for if-then edges
+  // A language is considered a "plus" language if
+  //  * it requires the existential head module OR
+  //  * it requires the negative constraint module OR
+  //  * it requires the conjunctive head feature, or the disjunctive logic feature but not both
+  //  * AND it is not FO expressive
+  // The "plus" languages are the ones where skipping if-then stripes is not possible in XSD.
+  $plus = max($NeedExHeadModule, $NeedNegConstraintModule, $enableAndHead*(1 - $enableDis), $enableDis*(1 - $enableAndHead)) * (1- $enableFO);
+  $notPlus = 1 - $plus;
+  // The conjunctive head module is needed if the conjunctive head feature is needed
+  // and the language is a plus language..
+  $NeedConModule = $enableAndHead*$plus;
+  // The disjunctive head module is needed if the disjunctive head feature is needed
+  // and the language is a plus language.
+  $NeedOrHead = $enableDis*$plus;
+  // The dis-conjunctive logic module is needed if the disjunctive head feature is enabled
+  // AND the conjunctive head feature is enabled
+  // AND the expressivity is not first-order.
+  // AND the language is not a plus language.
+  $NeedDisCon = $enableDis * $enableAndHead * $notPlus * (1-$enableFO);
   
-  $needOid = extractBit($bterms, $terms_oid);
+  $enableOid = extractBit($bterms, $terms_oid);
+  // FIXME continute refactoring to distinguish between the variables directly extracted from
+  // a call to extractBit ($enable...), those that are used to include a particular module ($Need => $need)
+  // and those that are intermediate ($need => $flag)
+  // In those cases when the $enable variable is used directly to include a module, add an assignment.
   $needSlot = extractBit($bterms, $terms_slot);
   $needCard = extractBit($bterms, $terms_card);
   $needWeight = extractBit($bterms, $terms_weight);
   $needEqualBi = extractBit($bterms, $terms_equal);
   $needOrientedND = extractBit($bterms, $terms_oriented);
   $needEqual = max($needEqualBi, $needOrientedND);
-  $needOrientedAtt = max($needOrientedND, $bdefault_present) * $needEqual;
-  $needOrientedD = $bdefault_present * $needEqualBi;
+  $needOrientedAtt = max($needOrientedND, $enableDefaultPresent) * $needEqual;
+  $needOrientedD = $enableDefaultPresent * $needEqualBi;
   $needType = extractBit($bterms, $terms_type);
   $needDataTerms = extractBit($bterms, $terms_data);
-  $needData = max($needDataTerms , $needFuzzy);
+  $needData = max($needDataTerms , $NeedFuzzy);
   $needSkolem = extractBit($bterms, $terms_skolem);
   $needReify = extractBit($bterms, $terms_reify);
-  $needInd = max($btermseq , $needOid , $needSlot , $needEqual);
+  $needInd = max($btermseq , $enableOid , $needSlot , $needEqual);
 
-  $needVar = max($needQuant , extractBit($bterms, $terms_var));   
+  $needVar = max($enableQuant , extractBit($bterms, $terms_var));   
   $needClosure = extractBit($bquant, $quant_closure);
   $needResl = extractBit($bquant, $quant_resl);
-  $needRepo = extractBit($bquant, $quant_repo);
+  $enableRepo = extractBit($bquant, $quant_repo);
   
-  $needValAbsent = extractBit($bexpr, $expr_val_absent);
-  $needPlex = extractBit($bexpr, $expr_plex);
-  $needValND = extractBit($bexpr, $expr_val_nondefault);
-  $needValD = $bdefault_present * $needExpr * $needEqual;
-  $needValAtt = max($needValD , $needValND);
-  $needInND = extractBit($bexpr, $expr_in);
-  $needInD = $bdefault_present * $needExpr;
-  $needInAtt = max($needInD , $needInND);
+  $enableValAbsent = extractBit($bexpr, $expr_val_absent);
+  $enablePlex = extractBit($bexpr, $expr_plex);
+  $enableValND = extractBit($bexpr, $expr_val_nondefault);
+  $needValD = $enableDefaultPresent * $enableExpr * $needEqual;
+  $needValAtt = max($needValD , $enableValND);
+  $enableInND = extractBit($bexpr, $expr_in);
+  $needInD = $enableDefaultPresent * $enableExpr;
+  $needInAtt = max($needInD , $enableInND);
 
-  $needPerformatives = 1;
-  $needAtom = 1;
+  $NeedPerformatives = 1;
+  $NeedAtom = 1;
   $needInit = 1;
   
-  $needDefaultPresent =  max($bdefault_present , $needDirND , $needMatND , $needInND , $needValND , $needOrientedND);    
-  $needDefaultPresentFO = $needDefaultPresent * $needFO;
+  $needDefaultPresent =  max($enableDefaultPresent , $needDirND , $needMatND , $enableInND , $enableValND , $needOrientedND);    
+  $needDefaultPresentFO = $needDefaultPresent * $enableFO;
+  
+  $NeedIfThenSkippable = max( $notPivot, $notPlus ); 
 
   //Step 1. Assemble the language foundation
-  if ($absolute) {
+  if ($enableAbsolute) {
     $schemaLocation='http://deliberation.ruleml.org/1.02/relaxng/';  
   } else {
     $schemaLocation='';
@@ -300,44 +332,49 @@ if ($bdefault==0){
   // Add the start statement
     echo $start;
   // Include the root and performatives if needed
-    if ($needPerformatives) {    
+    if ($NeedPerformatives) {    
       echo "#\n# ROOT NODE AND PERFORMATIVES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .'performative_expansion_module.rnc"'."$end\n";
     }
   //Step 1B. Assemble the backbone expressivity from expansion modules 
-    if ($needAtom){    
+    if ($NeedAtom){    
       echo "#\n# ATOMIC FORMULAS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
         'atom_expansion_module.rnc"'."$end\n";
     }
-    if ($needAndOr){
+    if ($enableAndOr){
       echo "#\n# CONJUNCTIONS AND DISJUNCTIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'andor_expansion_module.rnc"'."$end\n";
     }
-    if ($needImp){
+    if ($enableImp){
       echo "#\n# IMPLICATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'implication_expansion_module.rnc"'."$end\n";
     }
-    if ($needQuant){
+    if ($enableQuant){
       echo "#\n# QUANTIFICATION OVER VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'quantification_expansion_module.rnc"'."$end\n";
     }
-    if ($needExpr){
+    if ($enableExpr){
       echo "#\n# EXPRESSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'expr_expansion_module.rnc"'."$end\n";
     }
-    if ($needOrHead){
+    if ($NeedOrHead){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'dis_expansion_module.rnc"'."$end\n";
+          'disjunctive_head_expansion_module.rnc"'."$end\n";
     }
-    if ($needFO){
+    if ($NeedDisCon){
+      echo "#\n# DIS- AND CON-JUNCTIONS IN CONCLUSIONS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'discon_expansion_module.rnc"'."$end\n";
+    }
+    if ($enableFO){
       echo "#\n# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED \n";
-      if ($needNeg){
+      if ($NeedNeg){
         echo "#   FULL FIRST-ORDER EXPRESSIVITY (INCLUDING NEGATION) IS AVAILABLE \n";
       }
       echo "#\n".'include "' . $modulesLocation .
@@ -349,12 +386,12 @@ if ($bdefault==0){
   echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED\n";
   echo "#\n".'include "' . $modulesLocation .
       'default_inf_expansion_module.rnc"'."$end\n";
-  if ($needDefaultAbsent){
+  if ($enableDefaultAbsent){
     echo "#\n# ATTRIBUTES WITH DEFAULT VALUES ARE ABSENT OR OPTIONAL\n";
     echo "#\n".'include "' . $modulesLocation .
         'default_absent_expansion_module.rnc"'."$end\n";
   }
-  if ($needDefaultAbsentFO){
+  if ($enableDefaultAbsentFO){
       echo 'include "' . $modulesLocation .
           'default_absent_folog_expansion_module.rnc"'."$end\n";
   } 
@@ -368,41 +405,60 @@ if ($bdefault==0){
               'default_present_folog_expansion_module.rnc"'."$end\n";
   }
   //Step 1D. Determine which module to include for positional arguments 
-  if ($needUn){
+  if ($NeedUn){
       echo "#\n# UNARY TERM (ONE TERM ONLY) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
         'termseq_un_expansion_module.rnc"'."$end\n";
   }
-  if ($needBin){
+  if ($NeedBin){
       echo "#\n# BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
         'termseq_bin_expansion_module.rnc"'."$end\n";
   }
-  if ($needPoly){
+  if ($NeedUnBin){
+      echo "#\n# UNARY AND BINARY TERM (TWO TERMS ONLY) SEQUENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+        'termseq_unbin_expansion_module.rnc"'."$end\n";
+  }
+  if ($NeedPoly){
       echo "#\n# POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'termseq_poly_expansion_module.rnc"'."$end\n";
   }
   //Step 3F. Include serialization modules 
-    // DOCUMENTME: apparent violation of monotonicity with else clause
+    // Apparent violation of monotonicity with else clause
     //       However, ordered groups is contained in unorder groups
     //       so it is redundant.
     // Include unordered groups
-    if ($needUnordered){
+    if ($enableUnordered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS ENABLED\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'unordered_groups_expansion_module.rnc"'."$end\n";
+    // Apparent violation of monotonicity with else clause
+    //       However, unordered deterministic groups is contained in unordered groups
+    //       so it is redundant.
+      if ($notPivot){
+         echo "#\n".'include "' . $modulesLocation .
+            'unordered_groups_expansion_module.rnc"'."$end\n";
+      }  
+      else {
+         echo "#\n".'include "' . $modulesLocation .
+            'unordered_deterministic_groups_expansion_module.rnc"'."$end\n";
+      }  
     }
-    if ($needOrdered){
+    if ($NeedOrdered){
       echo "#\n# ORDER MODE - UNORDERED GROUPS DISABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'ordered_groups_expansion_module.rnc"'."$end\n";
     }
     // Include stripe-skipping
-    if ($needStripeSkip){
+    if ($enabletripeSkip){
       echo "#\n# SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'stripe_skipping_expansion_module.rnc"'."$end\n";
+      if ($NeedIfThenSkippable){    
+        echo "#\n# SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED\n";
+        echo "#\n".'include "' . $modulesLocation .
+            'stripe_skipping_ifthen_expansion_module.rnc"'."$end\n";
+       }
       if ($notPivot){ 
       // not included when converting to XSD
       echo "#\n# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
@@ -414,7 +470,7 @@ if ($bdefault==0){
     }
     
     // Include explicit datatyping
-    if ($needDatatyping){
+    if ($enableDatatyping){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'explicit_datatyping_expansion_module.rnc"'."$end\n";
@@ -424,7 +480,7 @@ if ($bdefault==0){
           'data_simple_content_expansion_module.rnc"'."$end\n";
     }
     // Include xsi:schemaLocation
-  if ($needSchemaLocation){
+  if ($enableSchemaLocation){
       echo "#\n# xsi:schemaLocation ALLOWED IN RuleML\n";
       echo "#\n".'include "' . $modulesLocation .
           'xsi_schemalocation_expansion_module.rnc"'."$end\n";
@@ -432,31 +488,31 @@ if ($bdefault==0){
   //Step 4. Mix-in optional expansion modules
   //Step 4A. Include proposition-related modules 
     // Include universal resource identifiers (URIs) if needed
-    if ($needURI){
+    if ($NeedURI){
       echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'iri_expansion_module.rnc"'."$end\n";
     }
     // Include rulebases if needed
-    if ($needRulebase){
+    if ($NeedRulebase){
       echo "#\n# RULEBASES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'rulebase_expansion_module.rnc"'."$end\n";
     }
     // Include entailments if needed
-    if ($needEntails){
+    if ($NeedEntails){
       echo "#\n# ENTAILMENTS (PROVES) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'metalevel_expansion_module.rnc"'."$end\n";
     }
     // Include degree of uncertainty if needed
-    if ($needFuzzy){
+    if ($NeedFuzzy){
       echo "#\n# DEGREE OF UNCERTAINTY INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'fuzzy_expansion_module.rnc"'."$end\n";
     }
     // Include strong negations if needed
-    if ($needNeg){
+    if ($NeedNeg){
       echo "#\n# STRONG NEGATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'neg_expansion_module.rnc"'."$end\n";
@@ -535,19 +591,19 @@ if ($bdefault==0){
         'material_default_expansion_module.rnc"'."$end\n";
     }
     // Include existential heads in implications if needed
-    if ($needExHead){
+    if ($NeedExHeadModule){
       echo "#\n# EXISTENTIAL HEADS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'existential_head_expansion_module.rnc"'."$end\n";
     }    
     // Include negative constraints if needed
-    if ($needNegConstraint){
+    if ($NeedNegConstraintModule){
       echo "#\n# NEGATIVE CONSTRAINTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'negative_constraint_expansion_module.rnc"'."$end\n";
     }
     // Include conjunctive heads in implications if needed
-    if ($needAndHead){
+    if ($NeedConModule){
       echo "#\n# CONJUNCTIVE HEADS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'conjunctive_head_expansion_module.rnc"'."$end\n";
@@ -555,7 +611,7 @@ if ($bdefault==0){
     
   //Step 3C. Include term-related modules 
     // Include object identifiers
-    if ($needOid){
+    if ($enableOid){
       echo "#\n# OBJECT IDENTIFIERS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'oid_expansion_module.rnc"'."$end\n";
@@ -669,21 +725,21 @@ if ($bdefault==0){
           'resl_expansion_module.rnc"'."$end\n";
     }
     // Include positional rest variables if needed
-    if ($needRepo){
+    if ($enableRepo){
       echo "#\n# POSITIONAL REST VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'repo_expansion_module.rnc"'."$end\n";
     }
   //Step 3E. Include expression-related modules 
     // Include generalized lists
-    if ($needPlex){
+    if ($enablePlex){
       echo "#\n# GENERALIZED LISTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'plex_expansion_module.rnc"'."$end\n";
     }
 
   // Include empty initialization of set-valued attribute if needed
-  if ( $needValAbsent ){
+  if ( $enableValAbsent ){
       echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
       echo "#\n".'include "' . $modulesLocation .
           'val_absence_expansion_module.rnc"'."$end\n";
@@ -695,7 +751,7 @@ if ($bdefault==0){
         'val_attrib_expansion_module.rnc"'."$end\n";      
   }
   // Include non-default values of set-valued expression attribute if needed
-  if ($needValND){
+  if ($enableValND){
     echo "#\n# NON-DEFAULT VALUES OF THE SET-VALUED ATTRIBUTE INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
         'val_non-default_expansion_module.rnc"'."$end\n";
@@ -713,7 +769,7 @@ if ($bdefault==0){
         'per_attrib_expansion_module.rnc"'."$end\n";      
   }  
   // Include non-default values of interpretation of expressions if needed
-  if ($needInND){
+  if ($enableInND){
     echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
         'per_non-default_expansion_module.rnc"'."$end\n";
@@ -737,7 +793,7 @@ if ($bdefault==0){
   //        or simulataneous alternate element names allowed
   if ($blng){
     // Include long English element names
-    if ($needLongNames){
+    if ($enableLongNames){
       echo "#\n# LONG ENGLISH ELEMENT NAMES\n";
       echo "#\n".'include "' . $modulesLocation .
           'long_name_expansion_module.rnc"'."$end\n";
@@ -745,7 +801,7 @@ if ($bdefault==0){
       // where element xyz{notAllowed} is not simplified to notAllowed
       // with the result that we cannot rename abstract elements if
       // we want to be able to generate XSD or monolithic content-models    
-      if ($needRepo){
+      if ($enableRepo){
         echo "#\n".'include "' . $modulesLocation .
             'long_name_repo_expansion_module.rnc"'."$end\n";      
       }
