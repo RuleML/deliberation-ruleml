@@ -559,6 +559,8 @@ if ($bdefault==0){
       echo "#\n# INFERENCE DIRECTION ATTRIBUTE IS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'direction_attrib_expansion_module.rnc"'."$end\n";      
+      echo "#\n".'include "' . $modulesLocation .
+          'mapdirection_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-symmetric inference direction attribute value if needed
     if ($needDirND){
@@ -577,6 +579,8 @@ if ($bdefault==0){
       echo "#\n# MATERIAL IMPLICATION ATTRIBUTE IS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'material_attrib_expansion_module.rnc"'."$end\n";      
+      echo "#\n".'include "' . $modulesLocation .
+          'mapmaterial_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-material implication if needed
     if ($needMatND){
@@ -717,6 +721,8 @@ if ($bdefault==0){
       echo "#\n# IMPLICIT CLOSURE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'closure_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'mapClosure_expansion_module.rnc"'."$end\n";
     }
     // Include slotted rest variables if needed
     if ($needResl){
