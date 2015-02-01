@@ -93,6 +93,7 @@ include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= not
 include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/web_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/xml_base_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/xml_id_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:this="http://example.org/naffolog.ruleml"   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd//naffolog.xsd">
 
@@ -16,7 +16,7 @@
 				<if>
 					<Naf mapDirection="bidirectional">
 						<weak>
-						  <Implies node="#disclaiming-of-other-persons">
+						  <Implies node="this:#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -70,7 +70,7 @@
 			</torso>
 		</Equivalent>
 
-	  <Implies node="#claiming-through-disclaimers">
+	  <Implies node="this:#claiming-through-disclaimers">
 			<if>
 				<And>
 					<Naf mapClosure="existential">
@@ -93,7 +93,7 @@
 					</Naf>
 					<Forall>
 						<Var>x</Var>
-					  <Implies node="#disclaiming-of-other-persons">
+					  <Implies node="this:#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -127,11 +127,11 @@
 			</then>
 		</Implies>
 
-	  <Implies node="#claiming-or-relinquishing-through-disclaimers">
+	  <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
 			<if>
 				<Forall>
 					<Var>x</Var>
-				  <Implies node="#disclaiming-of-other-persons">
+				  <Implies node="this:#disclaiming-of-other-persons">
 						<if>
 							<Atom>
 								<Rel>unequal</Rel>

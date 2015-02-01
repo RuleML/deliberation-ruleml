@@ -226,16 +226,17 @@ if ($bdefault==0){
   // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
 
-  $NeedURI = extractBit($bpropo, $propo_iri);
+  $NeedIRI = extractBit($bpropo, $propo_iri);
   $NeedRulebase = extractBit($bpropo, $propo_rulebase);
   $NeedEntails = extractBit($bpropo, $propo_entails);
   $NeedFuzzy = extractBit($bpropo, $propo_degree);
   $NeedNeg = extractBit($bpropo, $propo_neg);
   $needNaf = extractBit($bpropo, $propo_naf);
-  $needNode = extractBit($bpropo, $propo_node);
-  $needMeta = extractBit($bpropo, $propo_meta);
-  $needBase = extractBit($bpropo, $propo_xmlbase);
-  $needId = extractBit($bpropo, $propo_xmlid);
+  $NeedNode = extractBit($bpropo, $propo_node);
+  $NeedMeta = extractBit($bpropo, $propo_meta);
+  $NeedBase = extractBit($bpropo, $propo_xmlbase);
+  $NeedId = extractBit($bpropo, $propo_xmlid);
+  $NeedWeb = max($NeedIRI, $NeedNode);
 
   $needEquiv = extractBit($bimplies, $implies_equivalent);
   $needDirND =  extractBit($bimplies, $implies_direction);
@@ -487,10 +488,16 @@ if ($bdefault==0){
           'xsi_schemalocation_expansion_module.rnc"'."$end\n";
   }
   //Step 4. Mix-in optional expansion modules
-  //Step 4A. Include proposition-related modules 
+  //Step 4A. Include proposition-related modules
+    // Include datatypes for webized references (IRIs and/or CURIEs) if needed
+    if ($NeedWeb){
+      echo "#\n# WEB REFERENCES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'web_expansion_module.rnc"'."$end\n";
+    }
     // Include universal resource identifiers (URIs) if needed
-    if ($NeedURI){
-      echo "#\n# UNIVERSAL RESOURCE IDENTIFIERS (URIs) INCLUDED\n";
+    if ($NeedIRI){
+      echo "#\n# INTERNATIONALIZED RESOURCE IDENTIFIERS (IRIs) INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'iri_expansion_module.rnc"'."$end\n";
     }
@@ -525,25 +532,25 @@ if ($bdefault==0){
           'naf_expansion_module.rnc"'."$end\n";
     }
     // Include node identifiers if needed
-    if ($needNode){
+    if ($NeedNode){
       echo "#\n# NODE IDENTIFIERS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'node_attribute_expansion_module.rnc"'."$end\n";
     }
     // Include in-place annotations if needed
-    if ($needMeta){
+    if ($NeedMeta){
       echo "#\n# IN-PLACE ANNOTATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'meta_expansion_module.rnc"'."$end\n";
     }
     // Include XML base attribute if needed
-    if ($needBase){
+    if ($NeedBase){
       echo "#\n# XML BASE ATTRIBUTE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'xml_base_expansion_module.rnc"'."$end\n";
     }
     // Include XML id attribute if needed
-    if ($needId){
+    if ($NeedId){
       echo "#\n# XML ID ATTRIBUTE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'xml_id_expansion_module.rnc"'."$end\n";
@@ -723,7 +730,7 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'closure_expansion_module.rnc"'."$end\n";
       echo "#\n".'include "' . $modulesLocation .
-          'mapClosure_expansion_module.rnc"'."$end\n";
+          'mapclosure_expansion_module.rnc"'."$end\n";
     }
     // Include slotted rest variables if needed
     if ($needResl){

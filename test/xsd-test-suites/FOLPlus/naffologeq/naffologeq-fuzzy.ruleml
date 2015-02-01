@@ -76,9 +76,9 @@
                 <!--disclaiming-of-other-persons-->
                 <meta xml:base="http://ruleml.org/">
                   <Atom>
-                    <Rel iri="Implies"/>
+                    <Rel iri=":#Implies"/>
                     <slot>
-                      <Ind iri="comment"/>
+                      <Ind iri=":#comment"/>
                       <Data>disclaiming-of-other-persons</Data>
                     </slot>
                   </Atom>

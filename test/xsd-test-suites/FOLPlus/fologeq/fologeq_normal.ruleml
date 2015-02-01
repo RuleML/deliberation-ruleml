@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/fologeq.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/fologeq.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/fologeq_normal.xsd">
   <!--<RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   >-->
   <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
   <act index="1">
-    <Assert mapMaterial="yes" mapClosure="universal" mapDirection="bidirectional">
+    <Assert mapClosure="universal" mapDirection="bidirectional">
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>some constant</Ind>
           </left>
@@ -18,12 +18,12 @@
         </Equal>
       </formula>
       <formula>
-        <Forall mapMaterial="yes" mapDirection="bidirectional">
+        <Forall>
           <declare>
             <Var>d</Var>
           </declare>
           <formula>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -35,12 +35,12 @@
         </Forall>
       </formula>
       <formula>
-        <Exists mapMaterial="yes" mapDirection="bidirectional">
+        <Exists>
           <declare>
             <Var>d</Var>
           </declare>
           <formula>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -52,7 +52,7 @@
         </Exists>
       </formula>
       <formula>
-        <Forall mapMaterial="yes" mapDirection="bidirectional">
+        <Forall>
           <declare>
             <Var>person</Var>
           </declare>
@@ -60,9 +60,9 @@
             <Var>object</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
+            <Implies>
               <if>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Ind>some constant</Ind>
                   </left>
@@ -83,9 +83,9 @@
         </Forall>
       </formula>
       <formula>
-        <Neg mapMaterial="yes" mapDirection="bidirectional">
+        <Neg>
           <strong>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -97,9 +97,9 @@
         </Neg>
       </formula>
       <formula>
-        <Equivalent mapMaterial="yes" mapDirection="bidirectional">
+        <Equivalent>
           <torso>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -109,7 +109,7 @@
             </Equal>
           </torso>
           <torso>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -121,7 +121,7 @@
         </Equivalent>
       </formula>
       <formula>
-        <Equivalent mapMaterial="yes" mapDirection="bidirectional">
+        <Equivalent>
           <torso>
             <Atom>
               <op><Rel>own</Rel></op>
@@ -146,16 +146,16 @@
         </Equivalent>
       </formula>
       <formula>
-        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#claiming-through-disclaimers">
+        <Implies node="this:#claiming-through-disclaimers">
           <if>
-            <And mapMaterial="yes" mapDirection="bidirectional">
+            <And>
               <formula>
-                <Forall mapMaterial="yes" mapDirection="bidirectional">
+                <Forall>
                   <declare>
                     <Var>x</Var>
                   </declare>
                   <formula>
-                    <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#disclaiming-of-other-persons">
+                    <Implies node="this:#disclaiming-of-other-persons">
                       <if>
                         <Atom>
                           <op><Rel>unequal</Rel></op>
@@ -194,14 +194,14 @@
         </Implies>
       </formula>
       <formula>
-        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#claiming-or-relinquishing-through-disclaimers">
+        <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
           <if>
-            <Forall mapMaterial="yes" mapDirection="bidirectional">
+            <Forall>
               <declare>
                 <Var>x</Var>
               </declare>
               <formula>
-                <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional" node="#disclaiming-of-other-persons">
+                <Implies node="this:#disclaiming-of-other-persons">
                   <if>
                     <Atom>
                       <op><Rel>unequal</Rel></op>
@@ -224,7 +224,7 @@
             </Forall>
           </if>
           <then>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>some constant</Ind>
               </left>
@@ -236,11 +236,11 @@
         </Implies>
       </formula>
       <formula>
-        <Implies material="yes" direction="bidirectional" mapMaterial="yes" mapDirection="bidirectional">
+        <Implies>
           <if>
-            <And mapMaterial="yes" mapDirection="bidirectional">
+            <And>
               <formula>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Ind>some constant</Ind>
                   </left>
@@ -265,7 +265,7 @@
                       <arg index="2"><Var/></arg>
                     </Plex>
                   </repo>
-                  <slot><Ind>yar</Ind><Expr per="copy"><op><Fun val="0.." per="copy">constructor</Fun></op><arg index="1"><Plex><arg index="1"><Var>z</Var></arg><slot><Ind>yar2</Ind><Ind>c</Ind></slot></Plex></arg></Expr></slot>
+                  <slot><Ind>yar</Ind><Expr><op><Fun>constructor</Fun></op><arg index="1"><Plex><arg index="1"><Var>z</Var></arg><slot><Ind>yar2</Ind><Ind>c</Ind></slot></Plex></arg></Expr></slot>
                   <resl>
                     <Plex>
                       <slot><Ind/><Ind/></slot>
@@ -276,7 +276,7 @@
             </And>
           </if>
           <then>
-            <Or mapMaterial="yes" mapDirection="bidirectional">
+            <Or>
               <formula>
                 <Atom>
                   <op><Rel>friend</Rel></op>
@@ -309,18 +309,18 @@
         </Atom>
       </formula>
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
-            <Expr per="copy">
-              <op><Fun val="0.." per="value">some function</Fun></op>
+            <Expr>
+              <op><Fun per="value">some function</Fun></op>
               <arg index="1"><Ind>arg1</Ind></arg>
               <arg index="2"><Ind>arg2</Ind></arg>
               <arg index="3"><Ind>arg3</Ind></arg>
             </Expr>
           </left>
           <right>
-            <Expr per="copy">
-              <op><Fun val="0.." per="value">some other function</Fun></op>
+            <Expr>
+              <op><Fun per="value">some other function</Fun></op>
               <arg index="1"><Ind>arg4</Ind></arg>
               <arg index="2"><Ind>arg5</Ind></arg>
               <arg index="3"><Ind>arg6</Ind></arg>
@@ -331,21 +331,21 @@
     </Assert>
   </act>
   <act index="2">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <formula>
-        <Neg mapMaterial="yes" mapDirection="bidirectional">
+        <Neg>
           <strong>
-            <Exists mapMaterial="yes" mapDirection="bidirectional">
+            <Exists>
               <declare>
                 <Var>x</Var>
               </declare>
               <formula>
-                <Forall mapMaterial="yes" mapDirection="bidirectional">
+                <Forall>
                   <declare>
                     <Var>y</Var>
                   </declare>
                   <formula>
-                    <Equal oriented="no">
+                    <Equal>
                       <left>
                         <Var>x</Var>
                       </left>
@@ -363,12 +363,12 @@
     </Assert>
   </act>
   <act index="3">
-    <Assert mapMaterial="yes" mapDirection="bidirectional" mapClosure="universal">
+    <Assert mapClosure="universal">
       <formula>
         <Equal oriented="yes">
           <left>
-            <Expr per="copy">
-              <op><Fun val="0.." per="value">fac</Fun></op>
+            <Expr>
+              <op><Fun per="value">fac</Fun></op>
               <arg index="1"><Var type="http://www.w3.org/2001/XMLSchema#integer">0</Var></arg>
             </Expr>
           </left>

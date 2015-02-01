@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/dishornlog.ruleml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/dishornlog.xsd">
 
@@ -8,7 +9,7 @@
   <Assert mapClosure="universal">
 
 
-    <Implies node="an_example_fact">
+    <Implies node="this:#an_example_fact">
         <And>
           <Atom>
             <Rel>friend</Rel>

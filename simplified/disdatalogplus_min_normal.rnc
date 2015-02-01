@@ -62,7 +62,14 @@ Atom =
   }
 Rel =
   element Rel {
-    (attribute iri { xsd:anyURI }?
+    (attribute iri {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute ns1:schemaLocation { text }?),
     xsd:token
   }
@@ -111,7 +118,14 @@ Data =
   }
 Ind =
   element Ind {
-    (attribute iri { xsd:anyURI }?
+    (attribute iri {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute ns1:schemaLocation { text }?),
     xsd:token
   }

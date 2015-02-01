@@ -309,10 +309,15 @@ cardinality.value |= notAllowed
 closure.value |= notAllowed
 direction.value |= notAllowed
 interpretation.value |= notAllowed
+iri.value |= notAllowed
 material.value |= notAllowed
 material_default.value |= notAllowed
 material_non-default.value |= notAllowed
 val.value |= notAllowed
+
+# .datatype
+AbsIRI.datatype |= notAllowed
+PrefixedCURIE.datatype |= notAllowed
 
 # 
 # Choice patterns for all Nodes, all edges.

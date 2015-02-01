@@ -12,7 +12,7 @@
 
   <ruleml:Assert mapClosure="universal">
 
-    <ruleml:Implies node ="#rule1">
+    <ruleml:Implies node =":#rule1">
       <ruleml:if>
         <ruleml:And>
           <ruleml:Atom>
@@ -27,8 +27,8 @@
               <!-- Note: the following element will validate in Relax NG but not (yet)
                  in XSD. It is necessary to add the definition of these RuleML
                  types (allowing attributes like @node) to the online RuleML XSDs.-->
-              <ruleml:Data node="#data1" xsi:type="ruleml:integer">12</ruleml:Data>
-            <ruleml:Data node="#data2">12a <xs:integer/></ruleml:Data>
+              <ruleml:Data node=":#data1" xsi:type="ruleml:integer">12</ruleml:Data>
+            <ruleml:Data node=":#data2">12a <xs:integer/></ruleml:Data>
             <ruleml:Data>tomorrow</ruleml:Data>
             <ruleml:Data xsi:type="xs:dateTime"
               >2002-10-10T17:00:00Z</ruleml:Data>
@@ -79,6 +79,10 @@
               </ruleml:Implies>
             </ruleml:Reify>
           </ruleml:Reify>
+        <ruleml:slot>
+            <ruleml:Ind>t</ruleml:Ind>
+            <ruleml:Data xsi:type="xs:positiveInteger">1</ruleml:Data>
+          </ruleml:slot>
         </ruleml:Atom>
       </ruleml:then>
     </ruleml:Implies>

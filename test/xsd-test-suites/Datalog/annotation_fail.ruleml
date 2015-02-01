@@ -21,8 +21,8 @@
        in general, distinct RuleML metaknowledge base, the <meta> element should
        be used.
   -->
-  <Assert node="#assert1" xml:base="http://example.org/myrulebase.ruleml">
-    <Implies node="#rule1">
+  <Assert node="this:#assert1" xml:base="http://example.org/myrulebase.ruleml">
+    <Implies node="this:#rule1">
       <!-- The @node attribute, which takes an IRI value, is used to "reify" a document, 
         metaformula, formula, or term. This IRI may then be used as a constant
         in formulas. There are two primary use cases for such an IRI
@@ -36,15 +36,15 @@
              allowed within <Assert>. Semantically, it is equivalent to
              asserting the enclosed formula or metaformula into the 
              metaknowledge base.-->
-        <Atom node="#meta1">
+        <Atom node="this:#meta1">
           <Rel>Author</Rel>
-          <Ind node="#ind1" iri="#rule1" xml:id="xml-id-2"/>
+          <Ind node="this:#ind1" iri="this:#rule1" xml:id="xml-id-2"/>
           <Data xsi:type="xs:string">Tara Athan</Data>
         </Atom>
       </meta>
       <meta>
-        <Atom node="#meta2">
-          <!-- Implicit <oid><Ind iri="#rule1"/></oid> here. 
+        <Atom node="this:#meta2">
+          <!-- Implicit <oid><Ind iri="this:#rule1"/></oid> here. 
                There must be a match between the <Rel> iri
                and the element name of the parent.
                In particular, the type of the node, as specified by
@@ -83,20 +83,20 @@
     </Implies>
   </Assert>
   <Assert xml:base="http://example.org/mymetarulebase.ruleml">
-    <Atom node="#meta3">
+    <Atom node="this:#meta3">
       <!-- Metaknowledge can be asserted "externally" by explicitly
            identifying the <oid>.-->
       <oid>
-        <Ind iri="#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
+        <Ind iri="this:#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
       </oid>
       <Rel iri="&rulemlmm;#Atom"/>
       <slot>
-        <Ind node="#ind1" iri = "&dcterms;created"/>
+        <Ind node="this:#ind1" iri = "&dcterms;created"/>
         <Data xsi:type="xs:date">2012-04-01</Data>
       </slot>
     </Atom>
   </Assert>
-  <Query node="query1" xml:base="http://example.org/myquery/">
+  <Query node="that:query1" xmlns:that="http://example.org/myquery/">
     <Atom node="?x" xml:base="http://example.org/myrulebase.ruleml">
       <!-- It is possible to query for the value of node identifiers
            using a naming convention where IRIs containing a query string

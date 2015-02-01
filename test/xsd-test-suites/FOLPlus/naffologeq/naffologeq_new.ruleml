@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:this="http://example.org/naffologeq-anno.ruleml"   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/naffologeq.xsd">
 
@@ -12,7 +12,7 @@
   <Assert mapClosure="universal" mapDirection="bidirectional">
     <Rulebase>
       <Or>
-        <Equal node="#equal-with-node">
+        <Equal node="this:#equal-with-node">
           <Ind>some constant</Ind>
           <Var>d</Var>
         </Equal>
@@ -85,7 +85,7 @@
         <if>
           <Naf mapDirection="bidirectional">
             <weak>
-              <Implies node="#disclaiming-of-other-persons">
+              <Implies node="this:#disclaiming-of-other-persons">
                 <if>
                   <Equal>
                     <Ind>some constant</Ind>
@@ -136,7 +136,7 @@
       </torso>
     </Equivalent>
 
-    <Implies node="#claiming-through-disclaimers">
+    <Implies node="this:#claiming-through-disclaimers">
       <if>
         <And>
           <Equal>
@@ -163,7 +163,7 @@
           </Naf>
           <Forall>
             <Var>x</Var>
-            <Implies node="#disclaiming-of-other-persons">
+            <Implies node="this:#disclaiming-of-other-persons">
               <if>
                 <Atom>
                   <Rel>unequal</Rel>
@@ -197,11 +197,11 @@
       </then>
     </Implies>
 
-    <Implies node="#claiming-or-relinquishing-through-disclaimers">
+    <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
       <if>
         <Forall>
           <Var>x</Var>
-          <Implies node="#disclaiming-of-other-persons">
+          <Implies node="this:#disclaiming-of-other-persons">
             <if>
               <Atom>
                 <Rel>unequal</Rel>

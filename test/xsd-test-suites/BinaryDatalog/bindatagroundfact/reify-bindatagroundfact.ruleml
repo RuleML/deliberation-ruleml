@@ -4,6 +4,7 @@
   <!ENTITY dc "http://purl.org/dc/elements/1.1/">  
   ]>
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:this="http://example.org/reify-bindatagroundfact.ruleml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact.xsd">
   <Assert>
@@ -15,9 +16,9 @@
         <Ind iri="&vocab;/Kripke#Possible"/>
         <Reify>
           <Atom>
-            <Rel iri="#hasWeather"/>
-            <Ind iri="#tomorrow"/>
-            <Ind iri="#rainy"/>
+            <Rel iri="this:#hasWeather"/>
+            <Ind iri="this:#tomorrow"/>
+            <Ind iri="this:#rainy"/>
           </Atom>
         </Reify>
       </Atom>
@@ -28,8 +29,8 @@
         <Reify>
           <Atom>
             <Rel iri="&vocab;/core#Equal"/>
-            <Ind iri="#Hesperus"/>
-            <Ind iri="#Phosphorus"/>
+            <Ind iri="this:#Hesperus"/>
+            <Ind iri="this:#Phosphorus"/>
           </Atom>
         </Reify>
       </Atom>
@@ -40,8 +41,8 @@
         <Reify>
           <Atom>
             <Rel iri="&vocab;/core#Equal"/>
-            <Ind iri="#Hesperus"/>
-            <Ind iri="#Hesperus"/>
+            <Ind iri="this:#Hesperus"/>
+            <Ind iri="this:#Hesperus"/>
           </Atom>
         </Reify>
       </Atom>
@@ -51,9 +52,9 @@
       <Rel iri="&dc;creator"/>
       <Reify>
         <Atom>
-          <Rel iri="#hasWeather"/>
-          <Ind iri="#tomorrow"/>
-          <Ind iri="#rainy"/>
+          <Rel iri="this:#hasWeather"/>
+          <Ind iri="this:#tomorrow"/>
+          <Ind iri="this:#rainy"/>
         </Atom>
       </Reify>
       <Data xsi:type="xs:string">Tara Athan</Data>
