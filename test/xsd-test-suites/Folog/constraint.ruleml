@@ -24,7 +24,7 @@
 		    <Atom>
 		      <Rel>rusty</Rel>
 		      <Reify>
-		        <Implies material="yes">
+		        <Implies>
 		          <if>
 		            <And>
 		              <Atom><Rel>wet</Rel><Var>object</Var></Atom>

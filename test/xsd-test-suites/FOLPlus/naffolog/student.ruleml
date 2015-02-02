@@ -27,7 +27,7 @@
 			 
 		   <!--a student is a fulltime-student if the student cannot be proved as a parttime-student -->
 		    
-		    <Implies material="yes">
+		    <Implies>
 		      <if>
 		        <And>
 		          <Atom><Rel>student</Rel><Var>person</Var></Atom>

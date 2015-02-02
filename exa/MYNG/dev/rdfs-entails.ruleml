@@ -33,19 +33,19 @@
     <!--  xml:base="http://www.animals.fake/animals#" -->
     <Rulebase>
       <Atom>
-        <Ind iri="#animal"/>
+        <Ind iri="http://www.animals.fake/animals#animal"/>
         <Rel iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
         <Ind iri="http://www.w3.org/2000/01/rdf-schema#Class"/>
       </Atom>
       <Atom>
-        <Ind iri="#horse"/>
+        <Ind iri="http://www.animals.fake/animals#horse"/>
         <Rel iri="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
         <Ind iri="http://www.w3.org/2000/01/rdf-schema#Class"/>
       </Atom>
       <Atom>
-        <Ind iri="#horse"/>
+        <Ind iri="http://www.animals.fake/animals#horse"/>
         <Rel iri="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
-        <Ind iri="#animal"/>
+        <Ind iri="http://www.animals.fake/animals#animal"/>
       </Atom>
     </Rulebase>
     <Entails>

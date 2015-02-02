@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd">
+  <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
+  <act index="1">
+    <Assert>
+      <!-- Equations are allowed as facts-->
+      <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+      <!-- Equations are allowed in the body of implications, but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+      <!-- Functionality Constraint: Everyone has at most one mother. -->
+      <formula>
+        <Equal>
+          <left>
+            <Ind>Bill</Ind>
+          </left>
+          <right>
+            <Ind>William</Ind>
+          </right>
+        </Equal>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Equal>
+              <left>
+                <Var>x</Var>
+              </left>
+              <right>
+                <Var>x</Var>
+              </right>
+            </Equal>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <formula>
+            <Implies>
+              <if>
+                <Equal>
+                  <left>
+                    <Ind>Jane</Ind>
+                  </left>
+                  <right>
+                    <Var>x</Var>
+                  </right>
+                </Equal>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>son</Rel></op>
+                  <arg index="1"><Var>Jack</Var></arg>
+                  <arg index="2"><Var>x</Var></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>x</Var>
+          </declare>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <declare>
+            <Var>z</Var>
+          </declare>
+          <formula>
+            <Implies>
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                  <formula>
+                    <Atom>
+                      <op><Rel>mother</Rel></op>
+                      <arg index="1"><Var>y</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Equal>
+                  <left>
+                    <Var>x</Var>
+                  </left>
+                  <right>
+                    <Var>y</Var>
+                  </right>
+                </Equal>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

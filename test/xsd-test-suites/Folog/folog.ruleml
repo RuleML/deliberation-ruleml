@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:this="http://example.org/folog.ruleml"   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/folog.xsd">
 
@@ -65,12 +65,12 @@
 			</torso>
 		</Equivalent>
 
-	  <Implies node="#claiming-through-disclaimers">
+	  <Implies node="this:#claiming-through-disclaimers">
 			<if>
 				<And>
 					<Forall>
 						<Var>x</Var>
-					  <Implies node="#disclaiming-of-other-persons">
+					  <Implies node="this:#disclaiming-of-other-persons">
 							<if>
 								<Atom>
 									<Rel>unequal</Rel>
@@ -104,11 +104,11 @@
 	    </then>
 	  </Implies>
 
-	  <Implies node="#claiming-or-relinquishing-through-disclaimers">
+	  <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
 			<if>
 				<Forall>
 					<Var>x</Var>
-				  <Implies node="#disclaiming-of-other-persons">
+				  <Implies node="this:#disclaiming-of-other-persons">
 						<if>
 							<Atom>
 								<Rel>unequal</Rel>
@@ -198,25 +198,25 @@
 		        <op>
 		          <Rel>friend</Rel>
 		        </op>
-		        <Var>x</Var>
-		        <Var>y</Var>
-		        <Ind>Steph</Ind>
 		        <slot>
 		          <Ind>t</Ind>
 		          <Ind>b</Ind>
 		        </slot>
+		        <Var>x</Var>
+		        <Var>y</Var>
+		        <Ind>Steph</Ind>
 		      </Atom>
 		      <Atom>
 		        <op>
 		          <Rel>friend</Rel>
 		        </op>
-		        <Var>x</Var>
-		        <Var>y</Var>
-		        <Ind>Jill</Ind>
 		        <slot>
 		          <Ind>t</Ind>
 		          <Ind>b</Ind>
 		        </slot>
+		        <Var>x</Var>
+		        <Var>y</Var>
+		        <Ind>Jill</Ind>
 		      </Atom>
 		    </Or>
 		  </then>
@@ -226,12 +226,12 @@
 			<op>
 				<Rel>some relation</Rel>
 			</op>
-			<Ind>constant a</Ind>
-			<Ind>constant b</Ind>
 		  <slot>
 		    <Ind>role_name1</Ind>
 		    <Ind>role 1</Ind>
 		  </slot>
+			<Ind>constant a</Ind>
+			<Ind>constant b</Ind>
 		  <slot>
 				<Ind>role_name2</Ind>
 				<Ind>role 2</Ind>

@@ -29,7 +29,23 @@
         <xs:sequence>
           <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
         </xs:sequence>
-        <xs:attribute name="node" type="xs:anyURI"/>
+        <xs:attribute name="node">
+          <xs:simpleType>
+            <xs:union>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                  <xs:minLength value="1"/>
+                </xs:restriction>
+              </xs:simpleType>
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:union>
+          </xs:simpleType>
+        </xs:attribute>
         <xs:attribute ref="xml:base"/>
         <xs:attribute ref="xml:id"/>
       </xs:complexType>

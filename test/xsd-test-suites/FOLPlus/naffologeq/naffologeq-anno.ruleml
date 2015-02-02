@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/naffologeq-anno.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/naffologeq.xsd">
 
   <Assert>
-    <Implies node="#rule1">
+    <Implies node="this:#rule1">
       <meta>
-        <Atom node="#meta1">
+        <Atom node="this:#meta1">
           <Rel>Author</Rel>
-          <Ind iri="#rule1"/>
+          <Ind iri="this:#rule1"/>
           <Data xsi:type="xs:string">Tara Athan</Data>
         </Atom>
       </meta>
       <meta>
-        <Atom node="#meta2">
+        <Atom node="this:#meta2">
           <Rel/>
           <slot>
             <Ind>Institution</Ind>
@@ -21,7 +21,7 @@
           </slot>
           <slot>
             <Ind>Date</Ind>
-            <!--<Data node="#date1" xsi:type="date">2012-03-20-06:00</Data>-->
+            <!--<Data node="this:#date1" xsi:type="date">2012-03-20-06:00</Data>-->
             <Data xsi:type="xs:date">2012-03-20-06:00</Data>
           </slot>
         </Atom>
@@ -37,19 +37,19 @@
         </Atom>
       </then>
     </Implies>
-    <Atom node="#meta3">
+    <Atom node="this:#meta3">
       <Rel iri="http://ruleml.org/Defeasible#Overrides"/>
-      <Ind iri="#rule1"/>
-      <Ind iri="#rule2"/>
+      <Ind iri="this:#rule1"/>
+      <Ind iri="this:#rule2"/>
     </Atom>
-    <Atom node="#meta4">
+    <Atom node="this:#meta4">
       <Rel iri="http://ruleml.org/Defeasible#Justification"/>
-      <Ind iri="#meta3"/>
+      <Ind iri="this:#meta3"/>
       <Ind iri="urn:legalruleml:lex-superior"/>
     </Atom>
   </Assert>
   <Query>
-    <Atom node="?x">
+    <Atom node="_:?x">
       <Rel>Author</Rel>
       <Var>y</Var>
       <Data xsi:type="xs:string">Tara Athan</Data>

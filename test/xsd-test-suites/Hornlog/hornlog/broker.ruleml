@@ -9,6 +9,13 @@
 <Assert mapClosure="universal">
 
 <Implies>
+ <then>
+  <Atom>
+    <op><Rel>buy</Rel></op>
+    <Var>broker</Var>
+    <Var>prod</Var>
+  </Atom>
+ </then>
  <if>
   <And>
     <Atom>
@@ -27,23 +34,9 @@
     </Atom>
   </And>
  </if>
- <then>
-  <Atom>
-    <op><Rel>buy</Rel></op>
-    <Var>broker</Var>
-    <Var>prod</Var>
-  </Atom>
- </then>
 </Implies>
 
 <Implies>
- <if>
-  <Atom>
-    <op><Rel>greater-or-equal</Rel></op>
-    <Var>benefit</Var>
-    <Var>cost</Var>
-  </Atom>
- </if>
  <then>
   <Atom>
     <op><Rel>deal</Rel></op>
@@ -52,18 +45,25 @@
     <Var>benefit</Var>
   </Atom>
  </then>
+ <if>
+  <Atom>
+    <op><Rel>greater-or-equal</Rel></op>
+    <Var>benefit</Var>
+    <Var>cost</Var>
+  </Atom>
+ </if>
 </Implies>
 
   <Atom>
     <op><Rel>want</Rel></op>
     <Ind>miller</Ind>
-    <Ind iri="www.stock.com/stock1"/>
+    <Ind iri="http://www.stock.com/stock1"/>
   </Atom>
 
   <Atom>
     <op><Rel>want</Rel></op>
     <Ind>miller</Ind>
-    <Ind iri="www.stock.com/stock2"/>
+    <Ind iri="http://www.stock.com/stock2"/>
   </Atom>
 
 </Assert>

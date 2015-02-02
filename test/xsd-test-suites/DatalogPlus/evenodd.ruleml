@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ruleml.org/spec"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min.xsd">
+  <Assert>
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>integer</Rel>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or>
+            <Atom>
+              <Rel>even</Rel>
+              <Var>x</Var>
+            </Atom>
+            <Atom>
+              <Rel>odd</Rel>
+              <Var>x</Var>
+            </Atom>
+          </Or>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+</RuleML>

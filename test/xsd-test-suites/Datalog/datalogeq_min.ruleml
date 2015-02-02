@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min.xsd">
+
+  <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
+
+    
+    <Assert>
+      <!-- Equations are allowed as facts-->
+      <Equal>
+        <Ind>Bill</Ind>
+        <Ind>William</Ind>
+      </Equal>
+      
+      <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+      <Forall>
+        <Var>x</Var>
+        <Equal>
+          <Var>x</Var>
+          <Var>x</Var>
+        </Equal>
+      </Forall>
+      
+      <!-- Equations are allowed in the body of implications, but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+      <Forall>
+        <Var>x</Var>
+        <Implies>
+          <if>
+            <Equal>
+              <Ind>Jane</Ind>
+              <Var>x</Var>
+            </Equal>
+          </if>
+          <then>
+              <Atom>
+                <Rel>son</Rel>
+                <Var>Jack</Var>
+                <Var>x</Var>
+              </Atom>
+          </then>
+        </Implies>
+      </Forall>
+      
+    
+    <!-- Functionality Constraint: Everyone has at most one mother. -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>x</Var>
+              <Var>z</Var>
+            </Atom>
+            <Atom>
+              <Rel>mother</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+
+</RuleML>

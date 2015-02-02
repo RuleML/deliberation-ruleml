@@ -7,13 +7,16 @@
 # run this script from the command line or another script after batch_rnc2xsd.sh
 # FIXME use configuration script to validate test files against multiple schemas, including fail tests
 # This will remove the fragile schema detection method now implemented.
+#
+# globstar is only available in bash 4
+#shopt -s globstar
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
 XSD_HOME=${REPO_HOME}xsd/
 TEST_SUITE_HOME=${REPO_HOME}test/xsd-test-suites/
 
-for file in ${TEST_SUITE_HOME}**/*.ruleml
+for file in ${TEST_SUITE_HOME}*/*.ruleml ${TEST_SUITE_HOME}*/*/*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"

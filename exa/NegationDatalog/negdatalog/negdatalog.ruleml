@@ -37,15 +37,6 @@
 </Implies>
 
 <Implies>
-  <then>
-     <Atom>
-      <op><Rel>friend</Rel></op>
-      <slot><Ind>t</Ind><Ind>b</Ind></slot>
-      <Var>x</Var>
-      <Var>y</Var>
-      <Ind>Steph</Ind>
-     </Atom>
-  </then>
   <if>
    <Or>
     <Neg>
@@ -60,6 +51,15 @@
     </Neg>
    </Or>
   </if>
+  <then>
+     <Atom>
+      <op><Rel>friend</Rel></op>
+      <slot><Ind>t</Ind><Ind>b</Ind></slot>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Ind>Steph</Ind>
+     </Atom>
+  </then>
 </Implies>
 
     <Forall>

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:rulemm="http://ruleml.org/metamodel"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/naffologeq.xsd">
 
   <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
 
-  <Assert mapClosure="universal" mapDirection="bidirectional">
+  <Assert mapClosure="universal">
 
     <Equal>
       <Ind>some constant</Ind>
@@ -70,15 +71,15 @@
       <Var>object</Var>
       <Implies>
         <if>
-          <Naf mapDirection="bidirectional">
+          <Naf>
             <weak>
               <Implies>
                 <!--disclaiming-of-other-persons-->
-                <meta xml:base="http://ruleml.org/">
+                <meta>
                   <Atom>
-                    <Rel iri="Implies"/>
+                    <Rel iri="rulemm:#Implies"/>
                     <slot>
-                      <Ind iri="comment"/>
+                      <Ind iri="rulemm:#comment"/>
                       <Data>disclaiming-of-other-persons</Data>
                     </slot>
                   </Atom>
@@ -307,25 +308,25 @@
             <op>
               <Rel>friend</Rel>
             </op>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Steph</Ind>
             <slot>
               <Ind>t</Ind>
               <Ind>b</Ind>
             </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
           </Atom>
           <Atom>
             <op>
               <Rel>friend</Rel>
             </op>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Jill</Ind>
             <slot>
               <Ind>t</Ind>
               <Ind>b</Ind>
             </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Jill</Ind>
           </Atom>
         </Or>
       </then>
@@ -335,12 +336,12 @@
       <op>
         <Rel>some relation</Rel>
       </op>
-      <Ind>constant a</Ind>
-      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
       </slot>
+      <Ind>constant a</Ind>
+      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name2</Ind>
         <Ind>role 2</Ind>

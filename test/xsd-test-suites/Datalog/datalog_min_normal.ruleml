@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalog_min_normal.xsd">
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
+  <act index="1">
+    <Assert>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <formula>
+            <Implies>
+              <if>
+                <And>
+                  <formula>
+                    <Atom>
+                      <op><Rel>friend</Rel></op>
+                      <arg index="1"><Ind>Jane</Ind></arg>
+                      <arg index="2"><Data xsi:type="xs:string">test</Data></arg>
+                      <arg index="3"><Data xsi:type="xs:integer">12</Data></arg>
+                      <arg index="4"><Data>tomorrow</Data></arg>
+                      <arg index="5"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
+                      <arg index="6"><Data> xsi:type="xs:anyType"&gt;<content/></Data></arg>
+                      <arg index="7"><Data>test12</Data></arg>
+                      <arg index="8"><Ind>Jack</Ind></arg>
+                      <arg index="9"><Var>y</Var></arg>
+                      <arg index="10"><Ind>Frank</Ind></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>y</Var></arg>
+                  <arg index="3"><Ind>Steph</Ind></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>X</Var>
+          </declare>
+          <formula>
+            <Forall>
+              <declare>
+                <Var>Y</Var>
+              </declare>
+              <formula>
+                <Implies>
+                  <if>
+                    <Atom>
+                      <op><Rel>P</Rel></op>
+                      <arg index="1"><Var>X</Var></arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Atom>
+                      <op><Rel>Q</Rel></op>
+                      <arg index="1"><Var>Y</Var></arg>
+                    </Atom>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>X</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>P</Rel></op>
+              <arg index="1"><Var>X</Var></arg>
+            </Atom>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

@@ -43,12 +43,6 @@ if [ "$?" -ne "0" ]; then
      echo "Local Configuration of RNC Schemas Failed"
      exit 1
 fi
-# Validate Examples in Relax NG Test Suites
-${BASH_HOME}batch_rnc-test-suite.sh  >> /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
-     echo "Local Testing of RNC Schemas Failed"
-     exit 1
-fi
 # Generate RNC for Simplification
 ${BASH_HOME}batch_config2rnc4simp.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
@@ -59,5 +53,11 @@ fi
 ${BASH_HOME}batch_rnc2simp.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
      echo "Simplification Failed"
+     exit 1
+fi
+# Validate Examples in Relax NG Test Suites
+${BASH_HOME}batch_rnc-test-suite.sh  >> /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
+     echo "Local Testing of RNC Schemas Failed"
      exit 1
 fi

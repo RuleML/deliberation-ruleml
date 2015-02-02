@@ -9,6 +9,17 @@
 <Assert mapClosure="universal">
 
 <Implies>
+  <then>
+
+     <Atom>
+      <op><Rel>friend</Rel></op>
+      <slot><Ind>t</Ind><Ind>b</Ind></slot>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Ind>Steph</Ind>
+     </Atom>
+
+  </then>
   <if>
    <Naf>
     <Atom>
@@ -21,17 +32,6 @@
     </Atom>
    </Naf>
   </if>
-  <then>
-
-     <Atom>
-      <op><Rel>friend</Rel></op>
-      <Var>x</Var>
-      <Var>y</Var>
-      <Ind>Steph</Ind>
-      <slot><Ind>t</Ind><Ind>b</Ind></slot>
-     </Atom>
-
-  </then>
 </Implies>
 
 <Implies>
@@ -52,10 +52,10 @@
   <then>
      <Atom>
       <op><Rel>friend</Rel></op>
+      <slot><Ind>t</Ind><Ind>b</Ind></slot>
       <Var>x</Var>
       <Var>y</Var>
       <Ind>Steph</Ind>
-      <slot><Ind>t</Ind><Ind>b</Ind></slot>
      </Atom>
   </then>
 </Implies>

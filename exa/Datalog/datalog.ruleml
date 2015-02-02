@@ -2,6 +2,7 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:this="http://example.org/datalog.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
@@ -12,7 +13,7 @@
 
   <Assert mapClosure="universal">
 
-    <Implies node ="#rule1">
+    <Implies node ="this:#rule1">
       <if>
         <And>
           <Atom>
@@ -24,11 +25,8 @@
 
             <Data xsi:type="xs:string">test</Data>
             <Data xsi:type="xs:integer">12</Data>
-            <!-- Note: the following element will validate in Relax NG but not (yet)
-                 in XSD. It is necessary to add the definition of these RuleML
-                 types (allowing attributes like @node) to the online RuleML XSDs.-->
-            <Data node="#data1" xsi:type="integer">12</Data>
-            <Data node="#data2">12a <xs:integer/></Data>
+            <Data node="this:#data1" xsi:type="integer">12</Data>
+            <Data node="this:#data2">12a <xs:integer/></Data>
             <Data>tomorrow</Data>
             <Data xsi:type="xs:dateTime"
               >2002-10-10T17:00:00Z</Data>
@@ -49,8 +47,8 @@
             <Rel>friend</Rel>
           </op>
           <slot>
-            <Ind>t</Ind>
-            <Data xsi:type="xs:positiveInteger">1</Data>
+            <Ind>time</Ind>
+            <Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data>
           </slot>
           <Var>x</Var>
           <Var>y</Var>
@@ -79,6 +77,10 @@
               </Implies>
             </Reify>
           </Reify>
+        <slot>
+            <Ind>location</Ind>
+            <Data xsi:type="xs:positiveInteger">2</Data>
+          </slot>
         </Atom>
       </then>
     </Implies>

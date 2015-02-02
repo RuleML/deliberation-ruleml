@@ -34,13 +34,6 @@
  -->
 
     <Implies>
-      <if>
-        <Atom>
-          <Rel>greaterThan</Rel>
-          <Var>a</Var>
-          <Var>b</Var>
-        </Atom>
-      </if>
       <then>
         <Equal oriented="yes">
           <Expr>
@@ -59,6 +52,13 @@
           </Expr>
         </Equal>
       </then>
+      <if>
+        <Atom>
+          <Rel>greaterThan</Rel>
+          <Var>a</Var>
+          <Var>b</Var>
+        </Atom>
+      </if>
     </Implies>
 
 
@@ -67,13 +67,6 @@
 	-->
 
     <Implies>
-      <if>
-        <Atom>
-          <Rel>lessThan</Rel>
-          <Var>a</Var>
-          <Var>b</Var>
-        </Atom>
-      </if>
       <then>
         <Equal oriented="yes">
           <Expr>
@@ -88,6 +81,13 @@
           </Expr>
         </Equal>
       </then>
+      <if>
+        <Atom>
+          <Rel>lessThan</Rel>
+          <Var>a</Var>
+          <Var>b</Var>
+        </Atom>
+      </if>
     </Implies>
   </Assert>
 </RuleML>

@@ -2,6 +2,7 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <ruleml:RuleML xmlns:ruleml="http://ruleml.org/spec"
+  xmlns="http://example.org/datalog-ruleml.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
@@ -12,7 +13,7 @@
 
   <ruleml:Assert mapClosure="universal">
 
-    <ruleml:Implies node ="#rule1">
+    <ruleml:Implies node =":#rule1">
       <ruleml:if>
         <ruleml:And>
           <ruleml:Atom>
@@ -27,8 +28,8 @@
               <!-- Note: the following element will validate in Relax NG but not (yet)
                  in XSD. It is necessary to add the definition of these RuleML
                  types (allowing attributes like @node) to the online RuleML XSDs.-->
-              <ruleml:Data node="#data1" xsi:type="ruleml:integer">12</ruleml:Data>
-            <ruleml:Data node="#data2">12a <xs:integer/></ruleml:Data>
+              <ruleml:Data node=":#data1" xsi:type="ruleml:integer">12</ruleml:Data>
+            <ruleml:Data node=":#data2">12a <xs:integer/></ruleml:Data>
             <ruleml:Data>tomorrow</ruleml:Data>
             <ruleml:Data xsi:type="xs:dateTime"
               >2002-10-10T17:00:00Z</ruleml:Data>
@@ -55,7 +56,7 @@
           <ruleml:Var>x</ruleml:Var>
           <ruleml:Var>y</ruleml:Var>
           <ruleml:Ind>Steph</ruleml:Ind>
-          <ruleml:Reify>
+          <ruleml:Reify node=":#reify1">
             <ruleml:Reify>
               <ruleml:Implies>
                 <ruleml:And>
@@ -79,6 +80,10 @@
               </ruleml:Implies>
             </ruleml:Reify>
           </ruleml:Reify>
+        <ruleml:slot>
+            <ruleml:Ind>t</ruleml:Ind>
+            <ruleml:Data xsi:type="xs:positiveInteger">1</ruleml:Data>
+          </ruleml:slot>
         </ruleml:Atom>
       </ruleml:then>
     </ruleml:Implies>

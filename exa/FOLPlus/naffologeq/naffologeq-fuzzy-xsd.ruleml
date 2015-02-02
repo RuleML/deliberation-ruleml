@@ -2,6 +2,7 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/naffologeq_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/naffologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:this="http://example.org/naffologeq-fuzzy-xsd.ruleml" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/naffologeq.xsd">
@@ -71,17 +72,10 @@
       <Var>person</Var>
       <Var>object</Var>
       <Implies>
-        <then>
-          <Atom>
-            <Rel>own</Rel>
-            <Var>person</Var>
-            <Var>object</Var>
-          </Atom>
-        </then>
         <if>
-          <Naf mapDirection="bidirectional">
+          <Naf>
             <weak>
-              <Implies node="#disclaiming-of-other-persons">
+              <Implies node="this:#disclaiming-of-other-persons">
                 <if>
                   <Equal>
                     <Ind>some constant</Ind>
@@ -98,6 +92,13 @@
             </weak>
           </Naf>
         </if>
+        <then>
+          <Atom>
+            <Rel>own</Rel>
+            <Var>person</Var>
+            <Var>object</Var>
+          </Atom>
+        </then>
       </Implies>
     </Forall>
 
@@ -128,14 +129,7 @@
       </torso>
     </Equivalent>
 
-    <Implies node="#claiming-through-disclaimers">
-      <then>
-        <Atom>
-          <Rel>claim</Rel>
-          <Var>person</Var>
-          <Var>object</Var>
-        </Atom>
-      </then>
+    <Implies node="this:#claiming-through-disclaimers">
       <if>
         <And>
           <Equal>
@@ -165,7 +159,7 @@
           </Naf>
           <Forall>
             <Var>x</Var>
-            <Implies node="#disclaiming-of-other-persons">
+            <Implies node="this:#disclaiming-of-other-persons">
               <if>
                 <Atom>
                   <degree>
@@ -196,27 +190,20 @@
           </Atom>
         </And>
       </if>
+      <then>
+        <Atom>
+          <Rel>claim</Rel>
+          <Var>person</Var>
+          <Var>object</Var>
+        </Atom>
+      </then>
     </Implies>
 
-    <Implies node="#claiming-or-relinquishing-through-disclaimers">
-      <then>
-        <Or>
-          <Atom>
-            <Rel>claim</Rel>
-            <Var>person</Var>
-            <Var>object</Var>
-          </Atom>
-          <Atom>
-            <Rel>relinquish</Rel>
-            <Var>person</Var>
-            <Var>object</Var>
-          </Atom>
-        </Or>
-      </then>
+    <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
       <if>
         <Forall>
           <Var>x</Var>
-          <Implies node="#disclaiming-of-other-persons">
+          <Implies node="this:#disclaiming-of-other-persons">
             <if>
               <Atom>
                 <Rel>unequal</Rel>
@@ -237,36 +224,22 @@
           </Implies>
         </Forall>
       </if>
-    </Implies>
-    <Implies>
       <then>
         <Or>
           <Atom>
-            <op>
-              <Rel>friend</Rel>
-            </op>
-            <slot>
-              <Ind>t</Ind>
-              <Ind>b</Ind>
-            </slot>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Steph</Ind>
+            <Rel>claim</Rel>
+            <Var>person</Var>
+            <Var>object</Var>
           </Atom>
           <Atom>
-            <op>
-              <Rel>friend</Rel>
-            </op>
-            <slot>
-              <Ind>t</Ind>
-              <Ind>b</Ind>
-            </slot>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Jill</Ind>
+            <Rel>relinquish</Rel>
+            <Var>person</Var>
+            <Var>object</Var>
           </Atom>
         </Or>
       </then>
+    </Implies>
+    <Implies>
       <if>
         <And>
           <Atom>
@@ -317,6 +290,34 @@
           </Atom>
         </And>
       </if>
+      <then>
+        <Or>
+          <Atom>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
+          </Atom>
+          <Atom>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Jill</Ind>
+          </Atom>
+        </Or>
+      </then>
     </Implies>
 
     <Atom>

@@ -20,6 +20,17 @@
 
 
 <Implies>
+  <then>
+    <Equal>
+      <Expr>
+        <op>
+          <Fun per="value">fac</Fun>
+        </op>
+        <Var>n</Var>
+      </Expr>
+      <Var>r</Var>
+    </Equal>
+  </then>
   <if>
     <And>
       <Atom>
@@ -60,17 +71,6 @@
       </Equal>
     </And>
   </if>
-  <then>
-    <Equal>
-      <Expr>
-        <op>
-          <Fun per="value">fac</Fun>
-        </op>
-        <Var>n</Var>
-      </Expr>
-      <Var>r</Var>
-    </Equal>
-  </then>
 </Implies>
 
 

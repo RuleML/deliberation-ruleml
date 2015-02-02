@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&amp;default=x6&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x210&amp;quant=x0&amp;expr=x0&amp;serial=xc"  type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalogplus_min_normal.xsd"
  xmlns="http://ruleml.org/spec">
   <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- Equations are allowed as facts-->
+      <!-- Equations may be universally quantified, although this is not very meaningful.
+         This is a degenerate case, corresponding to the body of an implication being empty.-->
+      <!-- Equations are allowed in the body of implications, but this also is not very meaningful,
+         as the equation could be removed by substitution. -->
+      <!-- Functionality Constraint: Everyone has at most one mother. -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Bill</Ind>
           </left>
@@ -17,15 +21,13 @@
           </right>
         </Equal>
       </formula>
-      <!-- Equations may be universally quantified, although this is not very meaningful.
-         This is a degenerate case, corresponding to the body of an implication being empty.-->
       <formula>
         <Forall>
           <declare>
             <Var>x</Var>
           </declare>
           <formula>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Var>x</Var>
               </left>
@@ -36,17 +38,15 @@
           </formula>
         </Forall>
       </formula>
-      <!-- Equations are allowed in the body of implications, but this also is not very meaningful,
-         as the equation could be removed by substitution. -->
       <formula>
         <Forall>
           <declare>
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Ind>Jane</Ind>
                   </left>
@@ -66,7 +66,6 @@
           </formula>
         </Forall>
       </formula>
-      <!-- Functionality Constraint: Everyone has at most one mother. -->
       <formula>
         <Forall>
           <declare>
@@ -79,7 +78,7 @@
             <Var>z</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
@@ -99,7 +98,7 @@
                 </And>
               </if>
               <then>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Var>x</Var>
                   </left>

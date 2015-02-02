@@ -7,6 +7,19 @@
   <Assert mapClosure="universal">
 
     <Implies>
+      <then>
+        <Atom>
+          <Rel>own</Rel>
+          <Var>person</Var>
+          <Expr>
+            <Fun>book</Fun>
+            <Var>title</Var>
+            <repo>
+              <Var>info</Var>
+            </repo>
+          </Expr>
+        </Atom>
+      </then>
       <if>
         <And>
           <Atom>
@@ -36,19 +49,6 @@
           </Naf>
         </And>
       </if>
-      <then>
-        <Atom>
-          <Rel>own</Rel>
-          <Var>person</Var>
-          <Expr>
-            <Fun>book</Fun>
-            <Var>title</Var>
-            <repo>
-              <Var>info</Var>
-            </repo>
-          </Expr>
-        </Atom>
-      </then>
     </Implies>
 
     <Atom>

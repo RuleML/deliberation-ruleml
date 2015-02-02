@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogplus_min_normal.xsd">
   <!-- Some of these examples are from
     "A general Datalog-based framework for tractable query answering 
     over ontologies",
@@ -17,23 +16,21 @@
        by providing (in the XML comments) the expected answer to the Query.
     -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Equations are allowed as facts:
+    <Assert>
+      <!-- 
+         Equations are allowed as facts:
          William is an employee.
          "Bill" is an alias for "William".
+         Sublanguage: datagroundfacteq
       -->
       <formula>
         <Atom>
-          <op>
-            <Rel>employee</Rel>
-          </op>
-          <arg index="1">
-            <Ind>William</Ind>
-          </arg>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Ind>William</Ind></arg>
         </Atom>
       </formula>
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Bill</Ind>
           </left>
@@ -46,24 +43,29 @@
   </act>
   <act index="2">
     <Query>
+      <!-- 
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq
+      -->
       <formula>
         <Atom>
-          <op>
-            <Rel>employee</Rel>
-          </op>
-          <arg index="1">
-            <Var>x</Var>
-          </arg>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Var>x</Var></arg>
         </Atom>
       </formula>
     </Query>
   </act>
   <act index="3">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Equations may be universally quantified.
+    <Assert>
+      <!-- 
+         Equations may be universally quantified.
          This fact is a degenerate case, corresponding to the body of an implication being empty.
          The following makes the reflexive property of equality explicit (as built into most systems):
          Everything is equal to itself.
+         Sublanguage: datalogeq         
       -->
       <formula>
         <Forall>
@@ -71,7 +73,7 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Var>x</Var>
               </left>
@@ -86,8 +88,15 @@
   </act>
   <act index="4">
     <Query>
+      <!--
+         What is equal to itself?
+         Answers:
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         Sublanguage: datalogeq         
+      -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Var>x</Var>
           </left>
@@ -99,19 +108,17 @@
     </Query>
   </act>
   <act index="5">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Non-ground facts are allowed. 
+    <Assert>
+      <!-- 
+         Non-ground facts are allowed. 
          John is the CEO.
          John is responsible for everything.
+         Sublanguage: datalogeq         
       -->
       <formula>
         <Atom>
-          <op>
-            <Rel>CEO</Rel>
-          </op>
-          <arg index="1">
-            <Ind>John</Ind>
-          </arg>
+          <op><Rel>CEO</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
         </Atom>
       </formula>
       <formula>
@@ -121,15 +128,9 @@
           </declare>
           <formula>
             <Atom>
-              <op>
-                <Rel>responsible_for</Rel>
-              </op>
-              <arg index="1">
-                <Ind>John</Ind>
-              </arg>
-              <arg index="2">
-                <Var>x</Var>
-              </arg>
+              <op><Rel>responsible_for</Rel></op>
+              <arg index="1"><Ind>John</Ind></arg>
+              <arg index="2"><Var>x</Var></arg>
             </Atom>
           </formula>
         </Forall>
@@ -138,26 +139,28 @@
   </act>
   <act index="6">
     <Query>
+      <!-- 
+         Is John responsible for Bill?
+         Answers:
+         Succeeds.
+         Sublanguage: datalogeq         
+      -->
       <formula>
         <Atom>
-          <op>
-            <Rel>responsible_for</Rel>
-          </op>
-          <arg index="1">
-            <Ind>John</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>Bill</Ind>
-          </arg>
+          <op><Rel>responsible_for</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
+          <arg index="2"><Ind>Bill</Ind></arg>
         </Atom>
       </formula>
     </Query>
   </act>
   <act index="7">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Rules are expressed as universally-quantified implications.
+    <Assert>
+      <!-- 
+         Rules are expressed as universally-quantified implications.
          A simple rule can be used to assert a subclass relationship:
          Every manager is an employee.         
+         Sublanguage: datalog         
       -->
       <formula>
         <Forall>
@@ -165,25 +168,17 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
-                  <op>
-                    <Rel>manager</Rel>
-                  </op>
-                  <arg index="1">
-                    <Var>x</Var>
-                  </arg>
+                  <op><Rel>manager</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
                 </Atom>
               </if>
               <then>
                 <Atom>
-                  <op>
-                    <Rel>employee</Rel>
-                  </op>
-                  <arg index="1">
-                    <Var>x</Var>
-                  </arg>
+                  <op><Rel>employee</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
                 </Atom>
               </then>
             </Implies>
@@ -192,36 +187,38 @@
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel>manger</Rel>
-          </op>
-          <arg index="1">
-            <Ind>John</Ind>
-          </arg>
+          <op><Rel>manger</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
         </Atom>
       </formula>
     </Assert>
   </act>
   <act index="8">
     <Query>
+      <!-- 
+         Who are the employees?
+         Answers: 
+         x: <Ind>Bill</Ind>
+         x: <Ind>William</Ind>
+         x: <Ind>John</Ind>
+         Sublanguage: datalog         
+      -->
       <formula>
         <Atom>
-          <op>
-            <Rel>employee</Rel>
-          </op>
-          <arg index="1">
-            <Var>x</Var>
-          </arg>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Var>x</Var></arg>
         </Atom>
       </formula>
     </Query>
   </act>
   <act index="9">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Equations are allowed in the body of (existential) implications. 
+    <Assert>
+      <!-- 
+         Equations are allowed in the body of (existential) implications. 
          If anyone is the same as Margaret, then they supervise someone.
          (Note that this rule could be semantically simplified 
          to an existential fact relying on axioms of equality.)
+         Sublanguage: datalogexeq         
       -->
       <formula>
         <Forall>
@@ -229,9 +226,9 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Ind>Margaret</Ind>
                   </left>
@@ -247,15 +244,9 @@
                   </declare>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>x</Var>
-                      </arg>
-                      <arg index="2">
-                        <Var>y</Var>
-                      </arg>
+                      <op><Rel>supervises</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>y</Var></arg>
                     </Atom>
                   </formula>
                 </Exists>
@@ -268,6 +259,12 @@
   </act>
   <act index="10">
     <Query>
+      <!-- 
+         Does Margaret supervise someone?
+         Answer:
+         Succeeds      
+         Sublanguage: datalogeq         
+      -->
       <formula>
         <Exists>
           <declare>
@@ -275,15 +272,9 @@
           </declare>
           <formula>
             <Atom>
-              <op>
-                <Rel>supervises</Rel>
-              </op>
-              <arg index="1">
-                <Ind>Margaret</Ind>
-              </arg>
-              <arg index="2">
-                <Var>y</Var>
-              </arg>
+              <op><Rel>supervises</Rel></op>
+              <arg index="1"><Ind>Margaret</Ind></arg>
+              <arg index="2"><Var>y</Var></arg>
             </Atom>
           </formula>
         </Exists>
@@ -291,9 +282,11 @@
     </Query>
   </act>
   <act index="11">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Pairwise Disjoint Classes
+    <Assert>
+      <!-- 
+         Pairwise Disjoint Classes
          Nothing is both an employee and a department.
+         Sublanguage: ncdatalog         
       -->
       <formula>
         <Forall>
@@ -301,27 +294,19 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>employee</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>x</Var>
-                      </arg>
+                      <op><Rel>employee</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
                     </Atom>
                   </formula>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>department</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>x</Var>
-                      </arg>
+                      <op><Rel>department</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
                     </Atom>
                   </formula>
                 </And>
@@ -336,65 +321,70 @@
     </Assert>
   </act>
   <act index="12">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <!-- HR is an employee.
          HR is a department.
          These facts together with the previous rule create an inconsistency.
+         Sublanguage: datalog         
       -->
       <formula>
         <Atom>
-          <op>
-            <Rel>employee</Rel>
-          </op>
-          <arg index="1">
-            <Ind>HR</Ind>
-          </arg>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Ind>HR</Ind></arg>
         </Atom>
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel>department</Rel>
-          </op>
-          <arg index="1">
-            <Ind>HR</Ind>
-          </arg>
+          <op><Rel>department</Rel></op>
+          <arg index="1"><Ind>HR</Ind></arg>
         </Atom>
       </formula>
     </Assert>
   </act>
   <act index="13">
     <Query>
+      <!-- 
+         Is there any inconsistency?
+         Succeeds, indicating inconsistency. 
+         Sublanguage: ncdatalog         
+      -->
       <formula>
         <Or/>
       </formula>
     </Query>
   </act>
   <act index="14">
-    <Retract mapMaterial="yes" mapDirection="bidirectional">
+    <Retract>
+      <!-- 
+         Remove that HR is an employee.
+         Sublanguage: datalog         
+    -->
       <formula>
         <Atom>
-          <op>
-            <Rel>employee</Rel>
-          </op>
-          <arg index="1">
-            <Ind>HR</Ind>
-          </arg>
+          <op><Rel>employee</Rel></op>
+          <arg index="1"><Ind>HR</Ind></arg>
         </Atom>
       </formula>
     </Retract>
   </act>
   <act index="15">
     <Query>
+      <!-- 
+         Is there any inconsistency?
+         Fails, indicating consistency. 
+         Sublanguage: ncdatalog         
+      -->
       <formula>
         <Or/>
       </formula>
     </Query>
   </act>
   <act index="16">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Functionality Constraint: 
+    <Assert>
+      <!-- 
+         Functionality Constraint: 
         Everyone (or everything) has at most one supervisor. 
+         Sublanguage: datalogeq         
       -->
       <formula>
         <Forall>
@@ -408,39 +398,27 @@
             <Var>z</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>x</Var>
-                      </arg>
-                      <arg index="2">
-                        <Var>z</Var>
-                      </arg>
+                      <op><Rel>supervises</Rel></op>
+                      <arg index="1"><Var>x</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
                     </Atom>
                   </formula>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>supervises</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>y</Var>
-                      </arg>
-                      <arg index="2">
-                        <Var>z</Var>
-                      </arg>
+                      <op><Rel>supervises</Rel></op>
+                      <arg index="1"><Var>y</Var></arg>
+                      <arg index="2"><Var>z</Var></arg>
                     </Atom>
                   </formula>
                 </And>
               </if>
               <then>
-                <Equal oriented="no">
+                <Equal>
                   <left>
                     <Var>x</Var>
                   </left>
@@ -455,36 +433,30 @@
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
-            <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>Bill</Ind>
-          </arg>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Margaret</Ind></arg>
+          <arg index="2"><Ind>Bill</Ind></arg>
         </Atom>
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
-            <Ind>Peggy</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>Bill</Ind>
-          </arg>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Peggy</Ind></arg>
+          <arg index="2"><Ind>Bill</Ind></arg>
         </Atom>
       </formula>
     </Assert>
   </act>
   <act index="17">
     <Query>
+      <!-- 
+          Is Peggy the same as Margaret?
+          Answer:
+          Succeeds.
+          Sublanguage: datalogeq         
+     -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Peggy</Ind>
           </left>
@@ -496,9 +468,11 @@
     </Query>
   </act>
   <act index="18">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Negative Constraints are allowed.
+    <Assert>
+      <!-- 
+          Negative Constraints are allowed.
          No one (or no thing) is their own supervisor. 
+          Sublanguage: ncdatalog         
       -->
       <formula>
         <Forall>
@@ -506,18 +480,12 @@
             <Var>x</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
-                  <op>
-                    <Rel>supervises</Rel>
-                  </op>
-                  <arg index="1">
-                    <Var>x</Var>
-                  </arg>
-                  <arg index="2">
-                    <Var>x</Var>
-                  </arg>
+                  <op><Rel>supervises</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>x</Var></arg>
                 </Atom>
               </if>
               <then>
@@ -530,64 +498,72 @@
     </Assert>
   </act>
   <act index="19">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Margaret supervises Peggy. -->
+    <Assert>
+      <!-- 
+          Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
       <formula>
         <Atom>
-          <op>
-            <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
-            <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>Peggy</Ind>
-          </arg>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Margaret</Ind></arg>
+          <arg index="2"><Ind>Peggy</Ind></arg>
         </Atom>
       </formula>
     </Assert>
   </act>
   <act index="20">
     <Query>
+      <!-- 
+          Is there any inconsistency?
+          Succeeds, indicating inconsistency.
+          Sublanguage: ncdatalog         
+    -->
       <formula>
         <Or/>
       </formula>
     </Query>
   </act>
   <act index="21">
-    <Retract mapMaterial="yes" mapDirection="bidirectional">
+    <Retract>
+      <!-- 
+          Remove that Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
       <formula>
         <Atom>
-          <op>
-            <Rel>supervises</Rel>
-          </op>
-          <arg index="1">
-            <Ind>Margaret</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>Peggy</Ind>
-          </arg>
+          <op><Rel>supervises</Rel></op>
+          <arg index="1"><Ind>Margaret</Ind></arg>
+          <arg index="2"><Ind>Peggy</Ind></arg>
         </Atom>
       </formula>
     </Retract>
   </act>
   <act index="22">
     <Query>
+      <!-- 
+          Is there any inconsistency?
+          Fails, indicating consistency.
+          Sublanguage: ncdatalog         
+    -->
       <formula>
         <Or/>
       </formula>
     </Query>
   </act>
   <act index="23">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Equations may appear in the body of negative constraints.
+    <Assert>
+      <!-- 
+          Equations may appear in the body of negative constraints.
          The simplest case is the assertion that two individuals
          are different (as built into systems making the unique name assumption).
+          Sublanguage: ncdatalogeq         
+         
       -->
       <formula>
-        <Implies material="yes" direction="bidirectional">
+        <Implies>
           <if>
-            <Equal oriented="no">
+            <Equal>
               <left>
                 <Ind>Sue</Ind>
               </left>
@@ -605,8 +581,14 @@
   </act>
   <act index="24">
     <Query>
+      <!-- 
+          Is Sue the same as Maria?
+          Answer:
+          Fails.
+          Sublanguage: datalogeq         
+      -->
       <formula>
-        <Equal oriented="no">
+        <Equal>
           <left>
             <Ind>Sue</Ind>
           </left>
@@ -618,10 +600,12 @@
     </Query>
   </act>
   <act index="25">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- Existential Rules -->
-      <!-- Every manager directs at least one department.
+    <Assert>
+      <!-- 
+          Existential (Head) Rules
+          Every manager directs at least one department.
          Maria is a manager.
+          Sublanguage: datalogex         
       -->
       <formula>
         <Forall>
@@ -629,15 +613,11 @@
             <Var>M</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <Atom>
-                  <op>
-                    <Rel>manager</Rel>
-                  </op>
-                  <arg index="1">
-                    <Var>M</Var>
-                  </arg>
+                  <op><Rel>manager</Rel></op>
+                  <arg index="1"><Var>M</Var></arg>
                 </Atom>
               </if>
               <then>
@@ -647,15 +627,9 @@
                   </declare>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>directs</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>M</Var>
-                      </arg>
-                      <arg index="2">
-                        <Var>P</Var>
-                      </arg>
+                      <op><Rel>directs</Rel></op>
+                      <arg index="1"><Var>M</Var></arg>
+                      <arg index="2"><Var>P</Var></arg>
                     </Atom>
                   </formula>
                 </Exists>
@@ -666,18 +640,20 @@
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel>manager</Rel>
-          </op>
-          <arg index="1">
-            <Ind>Maria</Ind>
-          </arg>
+          <op><Rel>manager</Rel></op>
+          <arg index="1"><Ind>Maria</Ind></arg>
         </Atom>
       </formula>
     </Assert>
   </act>
   <act index="26">
     <Query>
+      <!-- 
+          Does Maria direct a department?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
       <formula>
         <Exists>
           <declare>
@@ -685,15 +661,9 @@
           </declare>
           <formula>
             <Atom>
-              <op>
-                <Rel>directs</Rel>
-              </op>
-              <arg index="1">
-                <Ind>Maria</Ind>
-              </arg>
-              <arg index="2">
-                <Var>P</Var>
-              </arg>
+              <op><Rel>directs</Rel></op>
+              <arg index="1"><Ind>Maria</Ind></arg>
+              <arg index="2"><Var>P</Var></arg>
             </Atom>
           </formula>
         </Exists>
@@ -701,10 +671,12 @@
     </Query>
   </act>
   <act index="27">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
-      <!-- The heads and bodies of existential rules can contain conjunctions.
+    <Assert>
+      <!-- 
+          The heads and bodies of existential rules can contain conjunctions.
          Every employee who directs a department is a manager, and supervises at 
          least another employee who works in the same department.
+          Sublanguage: datalogexcon         
       -->
       <formula>
         <Forall>
@@ -715,30 +687,20 @@
             <Var>P</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>employee</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>E</Var>
-                      </arg>
+                      <op><Rel>employee</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
                     </Atom>
                   </formula>
                   <formula>
                     <Atom>
-                      <op>
-                        <Rel>directs</Rel>
-                      </op>
-                      <arg index="1">
-                        <Var>E</Var>
-                      </arg>
-                      <arg index="2">
-                        <Var>P</Var>
-                      </arg>
+                      <op><Rel>directs</Rel></op>
+                      <arg index="1"><Var>E</Var></arg>
+                      <arg index="2"><Var>P</Var></arg>
                     </Atom>
                   </formula>
                 </And>
@@ -752,38 +714,22 @@
                     <And>
                       <formula>
                         <Atom>
-                          <op>
-                            <Rel>manager</Rel>
-                          </op>
-                          <arg index="1">
-                            <Var>E</Var>
-                          </arg>
+                          <op><Rel>manager</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
                         </Atom>
                       </formula>
                       <formula>
                         <Atom>
-                          <op>
-                            <Rel>supervises</Rel>
-                          </op>
-                          <arg index="1">
-                            <Var>E</Var>
-                          </arg>
-                          <arg index="2">
-                            <Var>E'</Var>
-                          </arg>
+                          <op><Rel>supervises</Rel></op>
+                          <arg index="1"><Var>E</Var></arg>
+                          <arg index="2"><Var>E'</Var></arg>
                         </Atom>
                       </formula>
                       <formula>
                         <Atom>
-                          <op>
-                            <Rel>works_in</Rel>
-                          </op>
-                          <arg index="1">
-                            <Var>E'</Var>
-                          </arg>
-                          <arg index="2">
-                            <Var>P</Var>
-                          </arg>
+                          <op><Rel>works_in</Rel></op>
+                          <arg index="1"><Var>E'</Var></arg>
+                          <arg index="2"><Var>P</Var></arg>
                         </Atom>
                       </formula>
                     </And>
@@ -798,6 +744,12 @@
   </act>
   <act index="28">
     <Query>
+      <!-- 
+          Does Maria supervise someone?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
       <formula>
         <Exists>
           <declare>
@@ -805,15 +757,9 @@
           </declare>
           <formula>
             <Atom>
-              <op>
-                <Rel>supervises</Rel>
-              </op>
-              <arg index="1">
-                <Ind>Maria</Ind>
-              </arg>
-              <arg index="2">
-                <Var>E'</Var>
-              </arg>
+              <op><Rel>supervises</Rel></op>
+              <arg index="1"><Ind>Maria</Ind></arg>
+              <arg index="2"><Var>E'</Var></arg>
             </Atom>
           </formula>
         </Exists>

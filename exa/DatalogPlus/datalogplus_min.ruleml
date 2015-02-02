@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalogplus_min_relaxed.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalogplus_min.xsd">
   <!-- Some of these examples are from
     "A general Datalog-based framework for tractable query answering 
     over ontologies",

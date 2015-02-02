@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&amp;default=x6&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x200&amp;quant=x0&amp;expr=x0&amp;serial=xc" type="application/relax-ng-compact-syntax"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog_min_normal.xsd">
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
   <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
   <act index="1">
-    <Assert mapMaterial="yes" mapDirection="bidirectional">
+    <Assert>
       <formula>
         <Forall>
           <declare>
             <Var>y</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula>
@@ -54,7 +53,7 @@
                 <Var>Y</Var>
               </declare>
               <formula>
-                <Implies material="yes" direction="bidirectional">
+                <Implies>
                   <if>
                     <Atom>
                       <op><Rel>P</Rel></op>

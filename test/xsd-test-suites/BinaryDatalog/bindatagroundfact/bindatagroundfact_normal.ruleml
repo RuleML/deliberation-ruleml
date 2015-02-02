@@ -1,65 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact.xsd">
-
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/bindatagroundfact.ruleml" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact_normal.xsd">
   <act index="1">
     <Query>
       <!-- a syntactic example rulebase for testing the 'UR'-Centered Binary Ground-Datalog-Fact RuleML sublanguage -->
       <formula>
         <Atom>
-          <op>
-            <Rel iri="some_URI">some relation</Rel>
-          </op>
-          <arg index="1">
-            <Ind>constant a</Ind>
-          </arg>
-          <arg index="2">
-            <Ind iri="another_URI">constant b</Ind>
-          </arg>
-          <slot>
-            <Ind>role_name1</Ind>
-            <Ind>role 1</Ind>
-          </slot>
-          <slot weight="0.4">
-            <Ind>role_name2</Ind>
-            <Ind>role 2</Ind>
-          </slot>
+          <op><Rel iri="http://some_URI">some relation</Rel></op>
+          <arg index="1"><Ind>constant a</Ind></arg>
+          <arg index="2"><Ind iri="urn:another_URI">constant b</Ind></arg>
+          <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
+          <slot weight="0.4"><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
         </Atom>
       </formula>
       <formula>
         <Atom>
-          <op>
-            <Rel iri="some_URI">another relation</Rel>
-          </op>
-          <arg index="1">
-            <Ind>constant c</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>constant d</Ind>
-          </arg>
+          <op><Rel iri="http://some_URI">another relation</Rel></op>
+          <arg index="1"><Ind>constant c</Ind></arg>
+          <arg index="2"><Ind>constant d</Ind></arg>
         </Atom>
       </formula>
     </Query>
   </act>
   <act index="2">
-    <Assert mapDirection="bidirectional" mapMaterial="yes" node="#assert1">
+    <Assert node="this:#assert1">
       <formula>
         <Atom>
-          <op>
-            <Rel>yet another relation</Rel>
-          </op>
-          <arg index="1">
-            <Ind iri="URI">constant e</Ind>
-          </arg>
-          <arg index="2">
-            <Ind>constant b</Ind>
-          </arg>
-          <slot>
-            <Ind>role_name3</Ind>
-            <Ind>role 3</Ind>
-          </slot>
+          <op><Rel>yet another relation</Rel></op>
+          <arg index="1"><Ind iri="https://URI">constant e</Ind></arg>
+          <arg index="2"><Ind>constant b</Ind></arg>
+          <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
         </Atom>
       </formula>
     </Assert>

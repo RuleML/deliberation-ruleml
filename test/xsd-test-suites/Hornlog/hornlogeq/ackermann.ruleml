@@ -44,14 +44,6 @@
         type="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
         >m</Var>
       <Implies>
-        <if>
-          <Atom>
-            <Rel>greaterThan</Rel>
-            <Var>m</Var>
-            <Data xsi:type="xs:nonNegativeInteger">0</Data>
-          </Atom>
-
-        </if>
         <then>
           <Equal oriented="yes">
             <Expr>
@@ -70,6 +62,14 @@
             </Expr>
           </Equal>
         </then>
+        <if>
+          <Atom>
+            <Rel>greaterThan</Rel>
+            <Var>m</Var>
+            <Data xsi:type="xs:nonNegativeInteger">0</Data>
+          </Atom>
+
+        </if>
       </Implies>
     </Forall>
 
@@ -84,21 +84,6 @@
         type="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
         >n</Var>
       <Implies>
-        <if>
-          <And>
-            <Atom>
-              <Rel>greaterThan</Rel>
-              <Var>m</Var>
-              <Data xsi:type="xs:nonNegativeInteger">0</Data>
-            </Atom>
-            <Atom>
-              <Rel>greaterThan</Rel>
-              <Var>n</Var>
-              <Data xsi:type="xs:nonNegativeInteger">0</Data>
-            </Atom>
-          </And>
-
-        </if>
         <then>
           <Equal oriented="yes">
             <Expr>
@@ -125,6 +110,21 @@
             </Expr>
           </Equal>
         </then>
+        <if>
+          <And>
+            <Atom>
+              <Rel>greaterThan</Rel>
+              <Var>m</Var>
+              <Data xsi:type="xs:nonNegativeInteger">0</Data>
+            </Atom>
+            <Atom>
+              <Rel>greaterThan</Rel>
+              <Var>n</Var>
+              <Data xsi:type="xs:nonNegativeInteger">0</Data>
+            </Atom>
+          </And>
+
+        </if>
       </Implies>
     </Forall>
   </Assert>

@@ -3,11 +3,11 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/hornlogeq_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/hornogeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:rulemm="http://ruleml.org/metamodel"     xmlns:this="http://example.org/reify-evaluation-hornlogeq.ruleml"  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/naffologeq.xsd">
 
-  <Assert node="#KB1">
+  <Assert node="this:#KB1">
     <!-- A Knowledge Base with some function definitions. -->
     <Equal>
       <Expr>
@@ -167,7 +167,7 @@
 
   <!-- <RetractAll/> -->
 
-  <Assert node="#KB2">
+  <Assert node="this:#KB2">
     <!--
       This KB illustrates an "isTrue" predicate, which will "undo" reification.
     -->
@@ -176,7 +176,7 @@
       <Var>X</Var>
       <Equivalent>
         <Atom>
-          <Rel iri="#isTrue"/>
+          <Rel iri="this:#isTrue"/>
           <Reify>
             <Atom>
               <Rel>P</Rel>
@@ -201,7 +201,7 @@
   <Query>
     <!-- Query of KB2 for the reification of true formulas. -->
     <Atom>
-      <Rel iri="isTrue"/>
+      <Rel iri="rulemm:#isTrue"/>
       <Var>Z</Var>
     </Atom>
   </Query>
@@ -238,7 +238,7 @@
   
   while in RuleML
 -->
-  <Assert node="#KB3">
+  <Assert node="this:#KB3">
     <Equal>
       <Ind>Bill</Ind>
       <Ind>William</Ind>

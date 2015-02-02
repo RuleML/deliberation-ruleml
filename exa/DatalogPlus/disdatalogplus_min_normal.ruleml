@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/disdatalogplus_min_normal.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/disdatalogplus_min_normal.xsd">
   <!-- a syntactic example rulebase for testing the RuleML Disjunctive Datalog Plus sublanguage -->
   <act index="1">
     <Assert>
-      <!-- Disjuntive Rules 
+      <!-- Disjunctive Rules 
       Union classes 
       Every employee is a manager or a worker (or both). -->
       <formula>
