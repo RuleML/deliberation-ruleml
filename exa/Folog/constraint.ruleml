@@ -26,16 +26,16 @@
 		    <Atom>
 		      <Rel>rusty</Rel>
 		      <Reify>
-		        <Implies material="yes">
-		          <then>
-		            <Atom><Rel>rusty</Rel><Var>object</Var></Atom>
-		          </then>
+		        <Implies>
 		          <if>
 		            <And>
 		              <Atom><Rel>wet</Rel><Var>object</Var></Atom>
 		              <Atom><Rel>metal</Rel><Var>object</Var></Atom>
 		            </And>
 		          </if>
+		          <then>
+		            <Atom><Rel>rusty</Rel><Var>object</Var></Atom>
+		          </then>
 		        </Implies>
 		      </Reify>
 		    </Atom>

@@ -19,6 +19,12 @@
     
     <!-- Something is precious if it is wine and it is old -->
     <Implies>
+      <then>
+        <Atom>
+          <op><Rel>precious</Rel></op>
+          <Var>x</Var>
+        </Atom>
+      </then>
       <if>
         <And>
           <Atom>
@@ -31,12 +37,6 @@
           </Atom>
         </And>	 
       </if>
-      <then>
-        <Atom>
-          <op><Rel>precious</Rel></op>
-          <Var>x</Var>
-        </Atom>
-      </then>
     </Implies>
 
   </Assert>

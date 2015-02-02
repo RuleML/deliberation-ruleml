@@ -12,6 +12,14 @@ may register -->
 <Assert mapClosure="universal">
 
 <Implies>
+  <then>
+    <Atom>
+      <op>
+        <Rel>may register</Rel>
+      </op>
+      <Var>any</Var>
+    </Atom>
+  </then>
   <if>
     <And>
       <Atom>
@@ -64,14 +72,6 @@ may register -->
       </Atom>
     </And>
   </if>
-  <then>
-    <Atom>
-      <op>
-        <Rel>may register</Rel>
-      </op>
-      <Var>any</Var>
-    </Atom>
-  </then>
 </Implies>
 
 </Assert>

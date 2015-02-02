@@ -2,6 +2,7 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <ruleml:RuleML xmlns:ruleml="http://ruleml.org/spec"
+  xmlns="http://example.org/datalog-ruleml.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
@@ -55,7 +56,7 @@
           <ruleml:Var>x</ruleml:Var>
           <ruleml:Var>y</ruleml:Var>
           <ruleml:Ind>Steph</ruleml:Ind>
-          <ruleml:Reify>
+          <ruleml:Reify node=":#reify1">
             <ruleml:Reify>
               <ruleml:Implies>
                 <ruleml:And>

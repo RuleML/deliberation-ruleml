@@ -20,6 +20,14 @@
 <!-- A person is in an opposition party of countryX in a year if the person is a Member of Parliament (MP) but is not in the Government in that year -->
     
 <Implies>
+  <then>
+    <Atom>
+      <op><Rel>opposition</Rel></op>
+      <Var>countryX</Var>
+      <Var>person</Var>
+      <Var>year</Var>
+    </Atom>  
+  </then>
   <if>
     <And>
       <Atom>
@@ -40,14 +48,6 @@
       </Naf>
     </And>		
   </if>
-  <then>
-    <Atom>
-      <op><Rel>opposition</Rel></op>
-      <Var>countryX</Var>
-      <Var>person</Var>
-      <Var>year</Var>
-    </Atom>  
-  </then>
 </Implies>
   
 </Assert>

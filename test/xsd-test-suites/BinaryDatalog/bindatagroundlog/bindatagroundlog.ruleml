@@ -12,6 +12,13 @@
 <Assert mapClosure="universal">
 
 <Implies>
+  <then>
+    <Atom>
+      <op><Rel>friend</Rel></op>
+      <Ind>John</Ind>
+      <Ind>Bob</Ind>
+    </Atom>
+  </then>
   <if>
     <And>
     <Atom>
@@ -21,13 +28,6 @@
     </Atom>
     </And>
   </if>
-  <then>
-    <Atom>
-      <op><Rel>friend</Rel></op>
-      <Ind>John</Ind>
-      <Ind>Bob</Ind>
-    </Atom>
-  </then>
 </Implies>
 
 <Atom>

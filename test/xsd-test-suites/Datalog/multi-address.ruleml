@@ -8,6 +8,12 @@
     Compare to http://deliberation.ruleml.org/1.02/exa/NegationDatalog/nafdatalog/multi-address.ruleml where this rule is expressed in an equivalent fashion using Negation as failure.-->
 <Assert mapClosure="universal">
 <Implies>  
+  <then>
+    <Atom>
+      <Rel>multi-address</Rel>
+      <Var>personX</Var>
+    </Atom>
+  </then>
   <if>
     <And>
       <Atom>
@@ -27,12 +33,6 @@
       </Atom>
     </And>
   </if>
-  <then>
-    <Atom>
-      <Rel>multi-address</Rel>
-      <Var>personX</Var>
-    </Atom>
-  </then>
 </Implies>
 
 <!--Jack lives at 655 Graham Avenue -->

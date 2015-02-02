@@ -49,7 +49,7 @@
   <act index="2">
     <Query>
       <formula>
-        <Atom node="?x">
+        <Atom node="_:?x">
           <op><Rel>Author</Rel></op>
           <arg index="1"><Var>y</Var></arg>
           <arg index="2"><Data xsi:type="xs:string">Tara Athan</Data></arg>

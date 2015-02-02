@@ -15,16 +15,16 @@
       <!-- K: Necessary (A->B) -> (Necessary A -> Necessary B) -->
       <Forall>
         <declare>
-          <Var type="&vocab;core#Formula">?A</Var>
+          <Var type="vocab:core#Formula">?A</Var>
         </declare>
         <declare>
-          <Var type="&vocab;core#Formula">?B</Var>
+          <Var type="vocab:core#Formula">?B</Var>
         </declare>
         <Implies>
           <if>
             <Atom>
-              <Rel iri="&vocab;/ext#modal"/>
-              <Ind iri="&vocab;/kripke#Necessary"/>
+              <Rel iri="vocab:/ext#modal"/>
+              <Ind iri="vocab:/kripke#Necessary"/>
               <Reify>
                 <Implies>
                   <if>
@@ -32,8 +32,8 @@
                     therefore we use a construction equivalent to an "ist" (is true) operator:
                     
                     <Atom>
-                    <Rel iri="&vocab;/ext#truthValue"/>
-                    <Ind iri="&vocab;/ext#True"/>
+                    <Rel iri="vocab:/ext#truthValue"/>
+                    <Ind iri="vocab:/ext#True"/>
                     <Reify>P</Reify>
                     </Atom>
                     exactly when P is a true wff.
@@ -41,15 +41,15 @@
                     
                   -->
                     <Atom>
-                      <Rel iri="&vocab;/ext#truthValue"/>
-                      <Ind iri="&vocab;/ext#True"/>
+                      <Rel iri="vocab:/ext#truthValue"/>
+                      <Ind iri="vocab:/ext#True"/>
                       <Var>?A</Var>
                     </Atom>
                   </if>
                   <then>
                     <Atom>
-                      <Rel iri="&vocab;/ext#truthValue"/>
-                      <Ind iri="&vocab;/ext#True"/>
+                      <Rel iri="vocab:/ext#truthValue"/>
+                      <Ind iri="vocab:/ext#True"/>
                       <Var>?B</Var>
                     </Atom>
                   </then>
@@ -61,15 +61,15 @@
             <Implies>
               <if>
                 <Atom>
-                  <Rel iri="&vocab;/ext#modal"/>
-                  <Ind iri="&vocab;/kripke#Necessary"/>
+                  <Rel iri="vocab:/ext#modal"/>
+                  <Ind iri="vocab:/kripke#Necessary"/>
                   <Var>?A</Var>
                 </Atom>
               </if>
               <then>
                 <Atom>
-                  <Rel iri="&vocab;/ext#modal"/>
-                  <Ind iri="&vocab;/kripke#Necessary"/>
+                  <Rel iri="vocab:/ext#modal"/>
+                  <Ind iri="vocab:/kripke#Necessary"/>
                   <Var>?B</Var>
                 </Atom>
               </then>
@@ -80,20 +80,20 @@
       <!-- T: A is necessary implies A -->
       <Forall>
         <declare>
-          <Var type="&vocab;core#Formula">?A</Var>
+          <Var type="vocab:core#Formula">?A</Var>
         </declare>
         <Implies>
           <if>
             <Atom>
-              <Rel iri="&vocab;/ext#modal"/>
-              <Ind iri="&vocab;/kripke#Necessary"/>
+              <Rel iri="vocab:/ext#modal"/>
+              <Ind iri="vocab:/kripke#Necessary"/>
               <Var>?A</Var>
             </Atom>
           </if>
           <then>
             <Atom>
-              <Rel iri="&vocab;/ext#truthValue"/>
-              <Ind iri="&vocab;/ext#True"/>
+              <Rel iri="vocab:/ext#truthValue"/>
+              <Ind iri="vocab:/ext#True"/>
               <Var>?A</Var>
             </Atom>
           </then>
@@ -102,24 +102,24 @@
       <!-- 5: Possible A implies Necessary Possible A -->
       <Forall>
         <declare>
-          <Var type="&vocab;core#Formula">?A</Var>
+          <Var type="vocab:core#Formula">?A</Var>
         </declare>
         <Implies>
           <if>
             <Atom>
-              <Rel iri="&vocab;/ext#modal"/>
-              <Ind iri="&vocab;/kripke#Possible"/>
+              <Rel iri="vocab:/ext#modal"/>
+              <Ind iri="vocab:/kripke#Possible"/>
               <Var>?A</Var>
             </Atom>
           </if>
           <then>
             <Atom>
-              <Rel iri="&vocab;/ext#modal"/>
-              <Ind iri="&vocab;/kripke#Necessary"/>
+              <Rel iri="vocab:/ext#modal"/>
+              <Ind iri="vocab:/kripke#Necessary"/>
               <Reify>
                 <Atom>
-                  <Rel iri="&vocab;/ext#modal"/>
-                  <Ind iri="&vocab;/kripke#Possible"/>
+                  <Rel iri="vocab:/ext#modal"/>
+                  <Ind iri="vocab:/kripke#Possible"/>
                   <Var>?A</Var>
                 </Atom>
               </Reify>

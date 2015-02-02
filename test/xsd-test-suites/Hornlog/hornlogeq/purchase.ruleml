@@ -44,6 +44,13 @@ be marked up in the current RuleML as follows:
     </Equal>
 
 <Implies>
+ <then>
+  <Atom>
+    <op><Rel>buy</Rel></op>
+    <Var>person</Var>
+    <Var>object</Var>
+  </Atom>
+ </then>
  <if>
   <And>
     <Equal>
@@ -65,13 +72,6 @@ be marked up in the current RuleML as follows:
     </Atom>
   </And>
  </if>
- <then>
-  <Atom>
-    <op><Rel>buy</Rel></op>
-    <Var>person</Var>
-    <Var>object</Var>
-  </Atom>
- </then>
 </Implies>
 
 

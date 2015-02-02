@@ -185,7 +185,6 @@
     </Implies>
 
     <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
-      
       <if>
         <Forall>
           <Var>x</Var>
@@ -226,7 +225,6 @@
       </then>
     </Implies>
     <Implies>
-      
       <if>
         <And>
           <Atom>
@@ -280,27 +278,25 @@
             <op>
               <Rel>friend</Rel>
             </op>
-            
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Steph</Ind>
             <slot>
               <Ind>t</Ind>
               <Var>b</Var>
             </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
           </Atom>
           <Atom>
             <op>
               <Rel>friend</Rel>
             </op>
-            
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Jill</Ind>
             <slot>
               <Ind>t</Ind>
               <Var>b</Var>
             </slot>          
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Jill</Ind>
           </Atom>
         </Or>
       </then>
@@ -310,13 +306,12 @@
       <op>
         <Rel>some relation</Rel>
       </op>
-      
-      <Ind>constant a</Ind>
-      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
       </slot>
+      <Ind>constant a</Ind>
+      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name2</Ind>
         <Ind>role 2</Ind>

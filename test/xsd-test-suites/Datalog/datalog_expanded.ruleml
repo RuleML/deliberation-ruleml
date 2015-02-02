@@ -12,45 +12,19 @@
             <And>
               <formula>
                 <Atom>
-                  <op>
-                    <Rel>friend</Rel>
-                  </op>
-                  <arg index="1">
-                    <Ind>Jane</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Skolem>constant b</Skolem>
-                  </arg>
-                  <arg index="3">
-                    <Data xsi:type="xs:string">test</Data>
-                  </arg>
-                  <arg index="4">
-                    <Data xsi:type="xs:integer">12</Data>
-                  </arg>
-                  <arg index="5">
-                    <Data node="this:#data1" xsi:type="integer">12</Data>
-                  </arg>
-                  <arg index="6">
-                    <Data node="this:#data2">12a <xs:integer/></Data>
-                  </arg>
-                  <arg index="7">
-                    <Data>tomorrow</Data>
-                  </arg>
-                  <arg index="8">
-                    <Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data>
-                  </arg>
-                  <arg index="9">
-                    <Data>test12</Data>
-                  </arg>
-                  <arg index="10">
-                    <Ind>Jack</Ind>
-                  </arg>
-                  <arg index="11">
-                    <Var>y</Var>
-                  </arg>
-                  <arg index="12">
-                    <Ind>Frank</Ind>
-                  </arg>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Ind>Jane</Ind></arg>
+                  <arg index="2"><Skolem>constant b</Skolem></arg>
+                  <arg index="3"><Data xsi:type="xs:string">test</Data></arg>
+                  <arg index="4"><Data xsi:type="xs:integer">12</Data></arg>
+                  <arg index="5"><Data node="this:#data1" xsi:type="integer">12</Data></arg>
+                  <arg index="6"><Data node="this:#data2">12a <xs:integer/></Data></arg>
+                  <arg index="7"><Data>tomorrow</Data></arg>
+                  <arg index="8"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
+                  <arg index="9"><Data>test12</Data></arg>
+                  <arg index="10"><Ind>Jack</Ind></arg>
+                  <arg index="11"><Var>y</Var></arg>
+                  <arg index="12"><Ind>Frank</Ind></arg>
                 </Atom>
               </formula>
             </And>
@@ -59,81 +33,15 @@
             <Atom>
               <meta>
                 <Atom>
-                  <op>
-                    <Rel>P</Rel>
-                  </op>
+                  <op><Rel>P</Rel></op>
                 </Atom>
               </meta>
-              <op>
-                <Rel>friend</Rel>
-              </op>
-              <arg index="1">
-                <Var>x</Var>
-              </arg>
-              <arg index="2">
-                <Var>y</Var>
-              </arg>
-              <arg index="3">
-                <Ind>Steph</Ind>
-              </arg>
-              <arg index="4">
-                <Reify>
-                  <Reify>
-                    <Implies>
-                      <if>
-                        <And>
-                          <formula>
-                            <Atom>
-                              <op>
-                                <Rel>buy</Rel>
-                              </op>
-                              <arg index="1">
-                                <Var>person</Var>
-                              </arg>
-                              <arg index="2">
-                                <Var>merchant</Var>
-                              </arg>
-                              <arg index="3">
-                                <Var>object</Var>
-                              </arg>
-                            </Atom>
-                          </formula>
-                          <formula>
-                            <Atom>
-                              <op>
-                                <Rel>keep</Rel>
-                              </op>
-                              <arg index="1">
-                                <Var>person</Var>
-                              </arg>
-                              <arg index="2">
-                                <Var>object</Var>
-                              </arg>
-                            </Atom>
-                          </formula>
-                        </And>
-                      </if>
-                      <then>
-                        <Atom>
-                          <op>
-                            <Rel>own</Rel>
-                          </op>
-                          <arg index="1">
-                            <Var>person</Var>
-                          </arg>
-                          <arg index="2">
-                            <Var>object</Var>
-                          </arg>
-                        </Atom>
-                      </then>
-                    </Implies>
-                  </Reify>
-                </Reify>
-              </arg>
-              <slot>
-                <Ind>t</Ind>
-                <Data xsi:type="xs:positiveInteger">1</Data>
-              </slot>
+              <op><Rel>friend</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+              <arg index="2"><Var>y</Var></arg>
+              <arg index="3"><Ind>Steph</Ind></arg>
+              <arg index="4"><Reify><Reify><Implies><if><And><formula><Atom><op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula><Atom><op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></Reify></Reify></arg>
+              <slot><Ind>t</Ind><Data xsi:type="xs:positiveInteger">1</Data></slot>
             </Atom>
           </then>
         </Implies>

@@ -36,6 +36,14 @@
       </Neg>
 
       <Implies material="yes">
+        <if>
+          <Neg>
+            <Equal>
+              <Ind>year1</Ind>
+              <Ind>year2</Ind>
+            </Equal>
+          </Neg>
+        </if>
         <then>
           <Neg>
             <And>
@@ -52,15 +60,7 @@
             </And>
           </Neg>
         </then>
-        <if>
-          <Neg>
-            <Equal>
-              <Ind>year1</Ind>
-              <Ind>year2</Ind>
-            </Equal>
-          </Neg>
-        </if>
-      </Implies>
+        </Implies>
 
     </Rulebase>
 		

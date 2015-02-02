@@ -49,7 +49,7 @@
     </Atom>
   </Assert>
   <Query>
-    <Atom node="?x">
+    <Atom node="_:?x">
       <Rel>Author</Rel>
       <Var>y</Var>
       <Data xsi:type="xs:string">Tara Athan</Data>

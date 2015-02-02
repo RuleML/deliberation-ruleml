@@ -3,7 +3,7 @@
   xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/disdatalogplus_min.xsd">
   <!-- a syntactic example rulebase for testing the RuleML Disjunctive Datalog Plus sublanguage -->
   <Assert>
-    <!-- Disjuntive Rules 
+    <!-- Disjunctive Rules 
       Union classes 
       Every employee is a manager or a worker (or both). -->
     <Forall>
@@ -29,6 +29,8 @@
         </then>
       </Implies>
     </Forall>
+  </Assert>
+  <Assert>
     <!-- Existential Disjunctive Rules 
       Exceptions to subsumption.
       Every employee, other than the CEO, has a supervisor. -->

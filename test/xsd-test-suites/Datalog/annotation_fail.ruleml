@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE doc [
-<!ENTITY xs "http://www.w3.org/2001/XMLSchema">
-<!ENTITY ruleml "http://ruleml.org/spec">  
-<!ENTITY rulemlmm "http://deliberation.ruleml.org/1.02/metamodel">  
-<!ENTITY dcterms "http://purl.org/dc/terms/">  
-]>
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rulemm="http://deliberation.ruleml.org/1.02/metamodel"
+  xmlns:this="http://example.org/annotation.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalog.xsd">
@@ -51,7 +48,7 @@
                the parent element name and any attributes which define
                semantic variants, must be a subclass of the
                metamodel class appearing as the iri value of <Rel>-->
-          <Rel iri="&rulemlmm;#Implies"/>
+          <Rel iri="rulemm:#Implies"/>
           <slot>
             <!-- Lexemes can be used to establish an internal
                  metadata system. Extra information must be
@@ -67,7 +64,7 @@
           <slot>
             <!-- The slot key can be used to directly employ external metadata
                  systems that provide IRIs, such as Dublin Core.-->
-            <Ind iri="&dcterms;creator"/>
+            <Ind iri="dcterms:creator"/>
             <Ind iri="mailto:taraathan@gmail.com"/>
           </slot>
         </Atom>
@@ -82,16 +79,16 @@
       </then>
     </Implies>
   </Assert>
-  <Assert xml:base="http://example.org/mymetarulebase.ruleml">
-    <Atom node="this:#meta3">
+  <Assert xmlns:that="http://example.org/mymetarulebase.ruleml">
+    <Atom node="that:#meta3">
       <!-- Metaknowledge can be asserted "externally" by explicitly
            identifying the <oid>.-->
       <oid>
         <Ind iri="this:#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
       </oid>
-      <Rel iri="&rulemlmm;#Atom"/>
+      <Rel iri="rulemm:#Atom"/>
       <slot>
-        <Ind node="this:#ind1" iri = "&dcterms;created"/>
+        <Ind node="this:#ind1" iri = "dcterms:created"/>
         <Data xsi:type="xs:date">2012-04-01</Data>
       </slot>
     </Atom>

@@ -44,6 +44,14 @@
         </Neg>
 
         <Implies material="yes">
+          <if>
+            <Neg>
+              <Equal>
+                <Var>Y</Var>
+                <Var>Z</Var>
+              </Equal>
+            </Neg>
+          </if>
           <then>
             <Neg>
               <And>
@@ -60,15 +68,7 @@
               </And>
             </Neg>
           </then>
-          <if>
-            <Neg>
-              <Equal>
-                <Var>Y</Var>
-                <Var>Z</Var>
-              </Equal>
-            </Neg>
-          </if>
-        </Implies>
+          </Implies>
 
       </Rulebase>
 

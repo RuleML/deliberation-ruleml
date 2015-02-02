@@ -29,16 +29,16 @@
 			 
 		   <!--a student is a fulltime-student if the student cannot be proved as a parttime-student -->
 		    
-		    <Implies material="yes">
-		      <then>
-		        <Atom><Rel>fulltime-student</Rel><Var>person</Var></Atom>
-		      </then>
+		    <Implies>
 		      <if>
 		        <And>
 		          <Atom><Rel>student</Rel><Var>person</Var></Atom>
 		          <Naf><Atom><Rel>parttime-student</Rel><Var>person</Var></Atom></Naf>
 		        </And>
 		      </if>
+		      <then>
+		        <Atom><Rel>fulltime-student</Rel><Var>person</Var></Atom>
+		      </then>
 		    </Implies>
 		    
 		</Rulebase>

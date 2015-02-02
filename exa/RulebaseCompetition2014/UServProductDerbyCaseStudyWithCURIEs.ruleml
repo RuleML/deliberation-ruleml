@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafneghornlogeq_relaxed.rnc"
   ?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:us="http://userv.org/ontology/"
+<RuleML xmlns="http://ruleml.org/spec" xmlns:us="userv:"
   xmlns:pred="http://www.w3.org/2007/rif-builtin-predicate#"
   xmlns:prolog="http://prolog-language.org/predicates#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:userv="http://userv.org/ontology/"
+  xmlns:ui="http://userv.org/ontology/i/"
   xsi:schemaLocation="http://ruleml.org/spec 
   http://deliberation.ruleml.org/1.02/xsd/nafneghornlogeq.xsd">
 
@@ -32,12 +34,12 @@
       <Var>X</Var>
       <Implies>
         <Atom>
-          <Rel iri="http://userv.org/ontology/Driver">driver</Rel>
+          <Rel iri="userv:Driver">driver</Rel>
           <Var>X</Var>
         </Atom>
 
         <Atom>
-          <Rel iri="http://userv.org/ontology/Person">person</Rel>
+          <Rel iri="userv:Person">person</Rel>
           <Var>X</Var>
         </Atom>
       </Implies>
@@ -48,12 +50,12 @@
       <Var>X</Var>
       <Implies>
         <Atom>
-          <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+          <Rel iri="userv:YoungDriver">youngDriver</Rel>
           <Var>X</Var>
         </Atom>
 
         <Atom>
-          <Rel iri="http://userv.org/ontology/Driver">driver</Rel>
+          <Rel iri="userv:Driver">driver</Rel>
           <Var>X</Var>
         </Atom>
       </Implies>
@@ -64,12 +66,12 @@
       <Var>X</Var>
       <Implies>
         <Atom>
-          <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+          <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
           <Var>X</Var>
         </Atom>
 
         <Atom>
-          <Rel iri="http://userv.org/ontology/Driver">driver</Rel>
+          <Rel iri="userv:Driver">driver</Rel>
           <Var>X</Var>
         </Atom>
       </Implies>
@@ -80,12 +82,12 @@
       <Var>X</Var>
       <Implies>
         <Atom>
-          <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+          <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
           <Var>X</Var>
         </Atom>
         <Neg>
           <Atom>
-            <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+            <Rel iri="userv:YoungDriver">youngDriver</Rel>
             <Var>X</Var>
           </Atom>
         </Neg>
@@ -97,12 +99,12 @@
       <Var>X</Var>
       <Implies>
         <Atom>
-          <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+          <Rel iri="userv:YoungDriver">youngDriver</Rel>
           <Var>X</Var>
         </Atom>
         <Neg>
           <Atom>
-            <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+            <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
             <Var>X</Var>
           </Atom>
         </Neg>
@@ -114,26 +116,26 @@
   <Assert>
     <Rulebase>
       <Atom>
-        <Rel iri="http://userv.org/ontology/carModel"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15ba"
-          type="http://userv.org/ontology/LuxuryCar">car4</Ind>
+        <Rel iri="userv:carModel"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15ba"
+          type="userv:LuxuryCar">car4</Ind>
         <Data xsi:type="xs:string">Honda Odyssey</Data>
       </Atom>
       <Atom>
-        <Rel iri="http://userv.org/ontology/price">price</Rel>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15ba"
-          type="http://userv.org/ontology/LuxuryCar">car4</Ind>
+        <Rel iri="userv:price">price</Rel>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15ba"
+          type="userv:LuxuryCar">car4</Ind>
         <Data xsi:type="xs:positiveInteger">39000</Data>
       </Atom>
       <Atom>
-        <Rel iri="http://userv.org/ontology/hasAlarm"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15ba"
-          type="http://userv.org/ontology/LuxuryCar">car4</Ind>
+        <Rel iri="userv:hasAlarm"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15ba"
+          type="userv:LuxuryCar">car4</Ind>
       </Atom>
       <Atom>
-        <Rel iri="http://userv.org/ontology/airbags"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15ba"
-          type="http://userv.org/ontology/LuxuryCar">car4</Ind>
+        <Rel iri="userv:airbags"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15ba"
+          type="userv:LuxuryCar">car4</Ind>
         <Plex>
           <Data xsi:type="xs:string">driverAirbag</Data>
           <Data xsi:type="xs:string">frontPassengerAirbag</Data>
@@ -144,50 +146,50 @@
 
     <Rulebase>
       <Atom>
-        <Rel iri="http://userv.org/ontology/gender"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Person">Sara</Ind>
+        <Rel iri="userv:gender"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Person">Sara</Ind>
         <Data xsi:type="xs:string">female</Data>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/age"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Person">Sara</Ind>
+        <Rel iri="userv:age"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Person">Sara</Ind>
         <Data xsi:type="xs:positiveInteger">38</Data>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/isMarried"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Person">Sara</Ind>
+        <Rel iri="userv:isMarried"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Person">Sara</Ind>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/placeOfLiving"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Person">Sara</Ind>
+        <Rel iri="userv:placeOfLiving"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Person">Sara</Ind>
         <Data xsi:type="xs:string">Arizona</Data>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/noOfAccidents"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Driver">Sara</Ind>
+        <Rel iri="userv:noOfAccidents"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Driver">Sara</Ind>
         <Data xsi:type="xs:integer">0</Data>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/noOfMovingViolations"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Driver">Sara</Ind>
+        <Rel iri="userv:noOfMovingViolations"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Driver">Sara</Ind>
         <Data xsi:type="xs:integer">1</Data>
       </Atom>
 
       <Atom>
-        <Rel iri="http://userv.org/ontology/noOfDUI"/>
-        <Ind iri="http://userv.org/ontology/i/a9fccd3a-a851-4e80-de3a8c2e15bb"
-          type="http://userv.org/ontology/Driver">Sara</Ind>
+        <Rel iri="userv:noOfDUI"/>
+        <Ind iri="ui:a9fccd3a-a851-4e80-de3a8c2e15bb"
+          type="userv:Driver">Sara</Ind>
         <Data xsi:type="xs:integer">0</Data>
       </Atom>
     </Rulebase>
@@ -199,24 +201,24 @@
       <!--  Processing car's theftRating    -->
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
+          <Rel iri="userv:theftRating">theftRating</Rel>
         </Atom>
       </meta>
  
       <!-- If the car is a convertible, then the car’s potential theft rating is high. -->
       <Forall>
-        <Var type="http://userv.org/ontology/ConvertibleCar">C</Var>
+        <Var type="userv:ConvertibleCar">C</Var>
         <Implies direction="backward">
           <if>
             <Atom>
-              <Rel iri="http://userv.org/ontology/convertibleCar">convertibleCar</Rel>
+              <Rel iri="userv:convertibleCar">convertibleCar</Rel>
               <Var>C</Var>
             </Atom>
           </if>
           <then>
             <Atom>
-              <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
-              <Var type="http://userv.org/ontology/ConvertibleCar">C</Var>
+              <Rel iri="userv:theftRating">theftRating</Rel>
+              <Var type="userv:ConvertibleCar">C</Var>
               <Data>
                 <!-- <Data type = "us:Rating"> -->
                 <us:ratingValue xsi:type="xs:positiveInteger">4</us:ratingValue>
@@ -232,11 +234,11 @@
          then the car’s potential theft rating is high. 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/price">price</Rel>
+              <Rel iri="userv:price">price</Rel>
               <Var>C</Var>
               <Var type="xs:positiveInteger">P</Var>
             </Atom>
@@ -247,7 +249,7 @@
             </Atom>
           </And>
           <Atom>
-            <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
+            <Rel iri="userv:theftRating">theftRating</Rel>
             <Var>C</Var>
             <Data>
               <!-- @type = "us:Rating"-->
@@ -263,11 +265,11 @@
          theft rating is high. 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/carModel">carModel</Rel>
+              <Rel iri="userv:carModel">carModel</Rel>
               <Var>C</Var>
               <Var type="xs:string">M</Var>
             </Atom>
@@ -278,8 +280,8 @@
             </Atom>
           </And>
           <Atom>
-            <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
-            <Var type="http://userv.org/ontology/Car">C</Var>
+            <Rel iri="userv:theftRating">theftRating</Rel>
+            <Var type="userv:Car">C</Var>
             <Data>
               <!-- @type = "us:Rating"-->
               <us:ratingValue xsi:type="xs:positiveInteger">4</us:ratingValue>
@@ -294,12 +296,12 @@
         - car model is not on the list of “High Theft Probability Auto”
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <if>
             <And>
               <Atom>
-                <Rel iri="http://userv.org/ontology/price">price</Rel>
+                <Rel iri="userv:price">price</Rel>
                 <Var>C</Var>
                 <Var type="xs:positiveInteger">P</Var>
               </Atom>
@@ -314,8 +316,8 @@
                 <Data xsi:type="xs:integer">45000</Data>
               </Atom>
               <Atom>
-                <Rel iri="http://userv.org/ontology/carModel">carModel</Rel>
-                <Var type="http://userv.org/ontology/Car">C</Var>
+                <Rel iri="userv:carModel">carModel</Rel>
+                <Var type="userv:Car">C</Var>
                 <Var type="xs:string">M</Var>
               </Atom>
               <Naf>
@@ -329,8 +331,8 @@
           </if>
           <then>
             <Atom>
-              <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
-              <Var type="http://userv.org/ontology/Car">C</Var>
+              <Rel iri="userv:theftRating">theftRating</Rel>
+              <Var type="userv:Car">C</Var>
               <Data>
                 <!-- @type = "us:Rating"-->
                 <us:ratingValue xsi:type="xs:positiveInteger">3</us:ratingValue>
@@ -347,19 +349,19 @@
         - car model is not on the list of “High Theft Probability Auto”
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <if>
             <And>
               <Atom>
-                <Rel iri="http://userv.org/ontology/price">price</Rel>
+                <Rel iri="userv:price">price</Rel>
                 <Var>C</Var>
                 <Var type="xs:positiveInteger">P</Var>
               </Atom>
 
               <Atom>
-                <Rel iri="http://userv.org/ontology/carModel">carModel</Rel>
-                <Var type="http://userv.org/ontology/Car">C</Var>
+                <Rel iri="userv:carModel">carModel</Rel>
+                <Var type="userv:Car">C</Var>
                 <Var type="xs:string">M</Var>
               </Atom>
 
@@ -371,7 +373,7 @@
 
               <Naf>
                 <Atom>
-                  <Rel iri="http://userv.org/ontology/member">member</Rel>
+                  <Rel iri="userv:member">member</Rel>
                   <Var type="xs:string">M</Var>
                   <Ind type="rdf:Bag">HighTheftProbabilityAutoList</Ind>
                 </Atom>
@@ -380,8 +382,8 @@
           </if>
           <then>
             <Atom>
-              <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
-              <Var type="http://userv.org/ontology/Car">C</Var>
+              <Rel iri="userv:theftRating">theftRating</Rel>
+              <Var type="userv:Car">C</Var>
               <Data>
                 <!-- @type = "us:Rating"-->
                 <us:ratingValue xsi:type="xs:positiveInteger">1</us:ratingValue>
@@ -396,7 +398,7 @@
     <Rulebase xml:id="injuryRating">
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+          <Rel iri="userv:injuryRating">injuryRating</Rel>
         </Atom>
       </meta>
 
@@ -405,17 +407,17 @@
         rating is extremely high. 
       -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/airbag">airbags</Rel>
+            <Rel iri="userv:airbag">airbags</Rel>
             <Var>C</Var>
             <Data>
               <!-- @type = rdf:Bag -->
             </Data>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">5</us:value>
@@ -430,16 +432,16 @@
         extremely high. 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/ConvertibleCar">C</Var>
+        <Var type="userv:ConvertibleCar">C</Var>
         <Implies direction="backward">
           <Naf>
             <Atom>
-              <Rel iri="http://userv.org/ontology/hasRollBar">hasRollBar</Rel>
-              <Var type="http://userv.org/ontology/ConvertibleCar">C</Var>
+              <Rel iri="userv:hasRollBar">hasRollBar</Rel>
+              <Var type="userv:ConvertibleCar">C</Var>
             </Atom>
           </Naf>
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">5</us:value>
@@ -454,17 +456,17 @@
         injury rating is high.
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/airbag">airbags</Rel>
+            <Rel iri="userv:airbag">airbags</Rel>
             <Var>C</Var>
             <Plex>
               <Data xsi:type="xs:string">driver</Data>
             </Plex>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">4</us:value>
@@ -479,10 +481,10 @@
         injury rating is moderate.
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/airbag">airbags</Rel>
+            <Rel iri="userv:airbag">airbags</Rel>
             <Var>C</Var>
             <Plex>
               <Data xsi:type="xs:string">driver</Data>
@@ -490,7 +492,7 @@
             </Plex>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">3</us:value>
@@ -505,10 +507,10 @@
         occupant injury is low.
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/airbag">airbags</Rel>
+            <Rel iri="userv:airbag">airbags</Rel>
             <Var>C</Var>
             <Plex>
               <Data xsi:type="xs:string">driver</Data>
@@ -517,7 +519,7 @@
             </Plex>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">1</us:value>
@@ -533,7 +535,7 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+          <Rel iri="userv:autoEligibility">eligibility</Rel>
         </Atom>
       </meta>
 
@@ -542,17 +544,17 @@
          eligibility is “not eligible" 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">5</us:value>
             </Data>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+            <Rel iri="userv:autoEligibility">eligibility</Rel>
             <Var>C</Var>
             <Data>
               <us:eligibilityValue>0</us:eligibilityValue>
@@ -566,17 +568,17 @@
          If the Potential Occupant Injury Rating is high, then the auto eligibility is “provisional”. 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/injuryRating">injuryRating</Rel>
+            <Rel iri="userv:injuryRating">injuryRating</Rel>
             <Var>C</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">4</us:value>
             </Data>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+            <Rel iri="userv:autoEligibility">eligibility</Rel>
             <Var>C</Var>
             <Data>
               <us:eligibilityValue>1</us:eligibilityValue>
@@ -588,18 +590,18 @@
 
       <!-- If the Potential Theft Rating is high, then the auto eligibility is “provisional”. -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/theftRating">theftRating</Rel>
-            <Var type="http://userv.org/ontology/Car">C</Var>
+            <Rel iri="userv:theftRating">theftRating</Rel>
+            <Var type="userv:Car">C</Var>
             <Data>
               <!-- @type = "us:Rating"-->
               <us:ratingValue xsi:type="xs:positiveInteger">4</us:ratingValue>
             </Data>
           </Atom>
           <Atom>
-            <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+            <Rel iri="userv:autoEligibility">eligibility</Rel>
             <Var>C</Var>
             <Data>
               <us:eligibilityValue>1</us:eligibilityValue>
@@ -616,12 +618,12 @@
            - Auto eligibility is “provisional
         -->
       <Forall>
-        <Var type="http://userv.org/ontology/Car">C</Var>
+        <Var type="userv:Car">C</Var>
         <Implies direction="backward">
           <And>
             <Naf>
               <Atom>
-                <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+                <Rel iri="userv:autoEligibility">eligibility</Rel>
                 <Var>C</Var>
                 <Data>
                   <us:eligibilityValue>0</us:eligibilityValue>
@@ -630,7 +632,7 @@
             </Naf>
             <Naf>
               <Atom>
-                <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+                <Rel iri="userv:autoEligibility">eligibility</Rel>
                 <Var>C</Var>
                 <Data>
                   <us:eligibilityValue>1</us:eligibilityValue>
@@ -639,7 +641,7 @@
             </Naf>
           </And>
           <Atom>
-            <Rel iri="http://userv.org/ontology/autoEligibility">eligibility</Rel>
+            <Rel iri="userv:autoEligibility">eligibility</Rel>
             <Var>C</Var>
             <Data>
               <us:eligibilityValue>2</us:eligibilityValue>
@@ -655,23 +657,23 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+          <Rel iri="userv:YoungDriver">youngDriver</Rel>
         </Atom>
       </meta>
 
       <!-- If the driver is male and is under the age of 25, then young driver. -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/gender">male</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:gender">male</Rel>
+              <Var type="userv:Driver">D</Var>
               <Data xsi:type="xs:string">male</Data>
             </Atom>
             <Atom>
-              <Rel iri="http://userv.org/ontology/age">age</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:age">age</Rel>
+              <Var type="userv:Driver">D</Var>
               <Var>A</Var>
             </Atom>
             <Atom>
@@ -681,24 +683,24 @@
             </Atom>
           </And>
           <Atom>
-            <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+            <Rel iri="userv:YoungDriver">youngDriver</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
       </Forall>
 
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/gender">female</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:gender">female</Rel>
+              <Var type="userv:Driver">D</Var>
               <Data xsi:type="xs:string">female</Data>
             </Atom>
             <Atom>
-              <Rel iri="http://userv.org/ontology/age">age</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:age">age</Rel>
+              <Var type="userv:Driver">D</Var>
               <Var>A</Var>
             </Atom>
             <Atom>
@@ -709,7 +711,7 @@
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+            <Rel iri="userv:YoungDriver">youngDriver</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
@@ -721,18 +723,18 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+          <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
         </Atom>
       </meta>
 
       <!-- If the driver is over the age of 70, then senior driver. -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/age">age</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:age">age</Rel>
+              <Var type="userv:Driver">D</Var>
               <Var>A</Var>
             </Atom>
 
@@ -744,7 +746,7 @@
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+            <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
@@ -756,30 +758,30 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/isEligible">isEligible</Rel>
+          <Rel iri="userv:isEligible">isEligible</Rel>
         </Atom>
       </meta>
 
       <!-- If young driver and driver has training certification, then eligible driver. -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/hasTrainingCertification">
+              <Rel iri="userv:hasTrainingCertification">
                 trainingCertifcation
               </Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Var type="userv:Driver">D</Var>
             </Atom>
 
             <Atom>
-              <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+              <Rel iri="userv:YoungDriver">youngDriver</Rel>
               <Var>D</Var>
             </Atom>
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/isEligible">isEligible</Rel>
+            <Rel iri="userv:isEligible">isEligible</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
@@ -787,24 +789,24 @@
 
       <!--If senior driver and driver has training certification, then eligible driver. -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/hasTrainingCertification">
+              <Rel iri="userv:hasTrainingCertification">
                 hasTrainingCertifcation
               </Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Var type="userv:Driver">D</Var>
             </Atom>
 
             <Atom>
-              <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+              <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
               <Var>D</Var>
             </Atom>
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/isEligible">isEligible</Rel>
+            <Rel iri="userv:isEligible">isEligible</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
@@ -816,31 +818,31 @@
             - Senior driver
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/Driver">Driver</Rel>
+              <Rel iri="userv:Driver">Driver</Rel>
               <Var>D</Var>
             </Atom>
 
             <Naf>
               <Atom>
-                <Rel iri="http://userv.org/ontology/YoungDriver">youngDriver</Rel>
+                <Rel iri="userv:YoungDriver">youngDriver</Rel>
                 <Var>D</Var>
               </Atom>
             </Naf>
 
             <Naf>
               <Atom>
-                <Rel iri="http://userv.org/ontology/SeniorDriver">seniorDriver</Rel>
+                <Rel iri="userv:SeniorDriver">seniorDriver</Rel>
                 <Var>D</Var>
               </Atom>
             </Naf>
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/isEligible">isEligible</Rel>
+            <Rel iri="userv:isEligible">isEligible</Rel>
             <Var>D</Var>
           </Atom>
         </Implies>
@@ -852,7 +854,7 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/hasTrainingCertification"> 
+          <Rel iri="userv:hasTrainingCertification"> 
             hasTrainingCertification
           </Rel>
         </Atom>
@@ -862,20 +864,20 @@
         If driver has taken driver’s training from school then driver has training certification
       -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasTrainingFromSchool">
+            <Rel iri="userv:hasTrainingFromSchool">
                 hasTrainingFromSchool
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasTrainingCertification">
+            <Rel iri="userv:hasTrainingCertification">
                 hasTrainingCertifcation
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
         </Implies>
       </Forall>
@@ -885,20 +887,20 @@
           then driver has training certification 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasTrainingFromLicensedDriverTrainingCompany">
+            <Rel iri="userv:hasTrainingFromLicensedDriverTrainingCompany">
               hasTrainingFromLicensedDriverTrainingCompany
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasTrainingCertification">
+            <Rel iri="userv:hasTrainingCertification">
                 hasTrainingCertifcation
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
         </Implies>
       </Forall>
@@ -908,20 +910,20 @@
          then driver has training certification.
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasSeniorDriverRefresherCourse">
+            <Rel iri="userv:hasSeniorDriverRefresherCourse">
               hasSeniorDriverRefresherCourse 
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/hasTrainingCertification">
+            <Rel iri="userv:hasTrainingCertification">
                 hasTrainingCertifcation
             </Rel>
-            <Var type="http://userv.org/ontology/Driver">D</Var>
+            <Var type="userv:Driver">D</Var>
           </Atom>
         </Implies>
       </Forall>
@@ -932,7 +934,7 @@
     <Rulebase>
       <meta>
         <Atom>
-          <Rel iri="http://userv.org/ontology/DriverRiskRating">driverRiskRating</Rel>
+          <Rel iri="userv:DriverRiskRating">driverRiskRating</Rel>
         </Atom>
       </meta>
 
@@ -940,12 +942,12 @@
          If the driver has been convicted of a DUI, then the driver qualifies as a High Risk Driver 
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/noOfDUI">noOfDUI</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:noOfDUI">noOfDUI</Rel>
+              <Var type="userv:Driver">D</Var>
               <Var>DUI</Var>
             </Atom>
 
@@ -957,7 +959,7 @@
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/DriverRiskRating">driverRiskRating</Rel>
+            <Rel iri="userv:DriverRiskRating">driverRiskRating</Rel>
             <Var>D</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">4</us:value>
@@ -972,12 +974,12 @@
         then the driver qualifies as a High Risk Driver.
        -->
       <Forall>
-        <Var type="http://userv.org/ontology/Driver">D</Var>
+        <Var type="userv:Driver">D</Var>
         <Implies direction="backward">
           <And>
             <Atom>
-              <Rel iri="http://userv.org/ontology/noOfAccidentsI">noOfAccidents</Rel>
-              <Var type="http://userv.org/ontology/Driver">D</Var>
+              <Rel iri="userv:noOfAccidentsI">noOfAccidents</Rel>
+              <Var type="userv:Driver">D</Var>
               <Var>accidents</Var>
             </Atom>
 
@@ -989,7 +991,7 @@
           </And>
 
           <Atom>
-            <Rel iri="http://userv.org/ontology/DriverRiskRating">driverRiskRating</Rel>
+            <Rel iri="userv:DriverRiskRating">driverRiskRating</Rel>
             <Var>D</Var>
             <Data>
               <us:value xsi:type="xs:positiveInteger">4</us:value>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/bindatagroundfact.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact_normal.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/bindatagroundfact.ruleml" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/bindatagroundfact_normal.xsd">
   <act index="1">
     <Query>
       <!-- a syntactic example rulebase for testing the 'UR'-Centered Binary Ground-Datalog-Fact RuleML sublanguage -->

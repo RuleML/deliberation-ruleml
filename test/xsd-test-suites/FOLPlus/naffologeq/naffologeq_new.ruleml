@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:this="http://example.org/naffologeq-anno.ruleml"   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:this="http://example.org/naffologeq-new.ruleml"   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/naffologeq.xsd">
 
@@ -9,7 +9,7 @@
   <!-- a syntactic example rulebase for testing the Naffolog RuleML sublanguage without fuzzy logic -->
 
 
-  <Assert mapClosure="universal" mapDirection="bidirectional">
+  <Assert mapClosure="universal">
     <Rulebase>
       <Or>
         <Equal node="this:#equal-with-node">
@@ -83,7 +83,7 @@
       <Var>object</Var>
       <Implies>        
         <if>
-          <Naf mapDirection="bidirectional">
+          <Naf>
             <weak>
               <Implies node="this:#disclaiming-of-other-persons">
                 <if>
@@ -319,12 +319,12 @@
       <op>
         <Rel>some relation</Rel>
       </op>
-      <Ind>constant a</Ind>
-      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
       </slot>
+      <Ind>constant a</Ind>
+      <Ind>constant b</Ind>
       <slot>
         <Ind>role_name2</Ind>
         <Ind>role 2</Ind>

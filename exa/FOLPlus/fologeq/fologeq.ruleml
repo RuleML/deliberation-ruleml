@@ -2,16 +2,13 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/fologeq_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/fologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:this="http://example.org/fologeq.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/fologeq.xsd">
-<!--<RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  >-->
-  <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
+  <!-- a syntactic example rulebase for testing the fologeq (first-order logic with equations) RuleML sublanguage -->
 
-  <Assert mapClosure="universal" mapDirection="bidirectional">
+  <Assert mapClosure="universal">
 
 
 
@@ -40,6 +37,12 @@
       <Var>person</Var>
       <Var>object</Var>
       <Implies>
+        <if>
+          <Equal>
+            <Ind>some constant</Ind>
+            <Var>d</Var>
+          </Equal>
+        </if>
         <then>
           <Atom>
             <Rel>own</Rel>
@@ -47,12 +50,6 @@
             <Var>object</Var>
           </Atom>
         </then>
-        <if>
-          <Equal>
-            <Ind>some constant</Ind>
-            <Var>d</Var>
-          </Equal>
-        </if>
       </Implies>
     </Forall>
 
@@ -102,19 +99,12 @@
       </torso>
     </Equivalent>
 
-    <Implies node="#claiming-through-disclaimers">
-      <then>
-        <Atom>
-          <Rel>claim</Rel>
-          <Var>person</Var>
-          <Var>object</Var>
-        </Atom>
-      </then>
+    <Implies node="this:#claiming-through-disclaimers">
       <if>
         <And>
           <Forall>
             <Var>x</Var>
-            <Implies node="#disclaiming-of-other-persons">
+            <Implies node="this:#disclaiming-of-other-persons">
               <if>
                 <Atom>
                   <Rel>unequal</Rel>
@@ -139,19 +129,20 @@
           </Atom>
         </And>
       </if>
+      <then>
+        <Atom>
+          <Rel>claim</Rel>
+          <Var>person</Var>
+          <Var>object</Var>
+        </Atom>
+      </then>
     </Implies>
 
-    <Implies node="#claiming-or-relinquishing-through-disclaimers">
-      <then>
-        <Equal>
-          <Ind>some constant</Ind>
-          <Var>d</Var>
-        </Equal>
-      </then>
+    <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
       <if>
         <Forall>
           <Var>x</Var>
-          <Implies node="#disclaiming-of-other-persons">
+          <Implies node="this:#disclaiming-of-other-persons">
             <if>
               <Atom>
                 <Rel>unequal</Rel>
@@ -172,36 +163,14 @@
           </Implies>
         </Forall>
       </if>
+      <then>
+        <Equal>
+          <Ind>some constant</Ind>
+          <Var>d</Var>
+        </Equal>
+      </then>
     </Implies>
     <Implies>
-      <then>
-        <Or>
-          <Atom>
-            <op>
-              <Rel>friend</Rel>
-            </op>
-            <slot>
-              <Ind>t</Ind>
-              <Ind>b</Ind>
-            </slot>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Steph</Ind>
-          </Atom>
-          <Atom>
-            <op>
-              <Rel>friend</Rel>
-            </op>
-            <slot>
-              <Ind>t</Ind>
-              <Ind>b</Ind>
-            </slot>
-            <Var>x</Var>
-            <Var>y</Var>
-            <Ind>Jill</Ind>
-          </Atom>
-        </Or>
-      </then>
       <if>
         <And>
           <Equal>
@@ -253,12 +222,38 @@
           </Atom>
         </And>
       </if>
+      <then>
+        <Or>
+          <Atom>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Steph</Ind>
+          </Atom>
+          <Atom>
+            <op>
+              <Rel>friend</Rel>
+            </op>
+            <slot>
+              <Ind>t</Ind>
+              <Ind>b</Ind>
+            </slot>
+            <Var>x</Var>
+            <Var>y</Var>
+            <Ind>Jill</Ind>
+          </Atom>
+        </Or>
+      </then>
     </Implies>
 
     <Atom>
-      <op>
-        <Rel>some relation</Rel>
-      </op>
+      <Rel>some relation</Rel>
       <slot>
         <Ind>role_name1</Ind>
         <Ind>role 1</Ind>
