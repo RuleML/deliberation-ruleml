@@ -2,11 +2,11 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 
-dc:title [ "The RuleML node identifier attribute" ]
+dc:title [ "The RuleML Node Identifier" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, node identifier" ]
 dc:description [
-  "This is the Core Schema module for the node identifier attribute in RuleML."
+  "This is the Core Schema module for the node identifier in RuleML."
 ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 

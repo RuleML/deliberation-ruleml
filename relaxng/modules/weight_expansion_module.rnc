@@ -5,7 +5,7 @@ default namespace this = inherit
 namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dc:title [ "RuleML weight" ]
+dc:title [ "RuleML Weight" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, uncertainty, fuzzy, weight" ]

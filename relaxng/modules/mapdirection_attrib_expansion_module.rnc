@@ -2,12 +2,12 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 
-dc:title [ "RuleML inference direction attribute" ]
+dc:title [ "RuleML Scope Inference Direction" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, inference, direction" ]
+dc:subject [ "RuleML, scope, inference, direction" ]
 dc:description [
-  "The expansion module for the inference direction attribute."
+  "The expansion module for the optional scope inference direction attribute."
 ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
