@@ -3,11 +3,11 @@ namespace dcterms = "http://purl.org/dc/terms/"
 default namespace this = inherit
 
 
-dc:title [ "RuleML material implication attribute" ]
+dc:title [ "RuleML Scope Material Implication" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, material, implication" ]
-dc:description [ "The expansion module for the material implication attribute." ]
+dc:subject [ "RuleML, scope, material, implication" ]
+dc:description [ "The expansion module for the optional scope material implication attribute." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]

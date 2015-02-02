@@ -2,12 +2,12 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 
-dc:title [ "RuleML interpretation attribute" ]
+dc:title [ "RuleML Interpretation" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, interpretation" ]
 dc:description [
-  "The expansion module for the interpretation attribute."
+  "The expansion module for interpretation, e.g. call-by-value."
 ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 

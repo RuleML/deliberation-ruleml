@@ -2,12 +2,12 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 
-dc:title [ "RuleML First-Order Logic Extension" ]
+dc:title [ "RuleML Present Default-Valued Attributes - FOL" ]
 dc:version [ "1.0.2" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, first-order logic" ]
+dc:subject [ "RuleML, first-order logic, default" ]
 dc:description [
-  "The expansion module for the first-order logic extensions."
+  "The expansion module to allow the default value of attributes to be present in FOL."
 ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
