@@ -7,17 +7,16 @@
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
   <!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage -->
   <act index="1">
-    <Assert mapMaterial=" yes" mapDirection="bidirectional " mapClosure=" universal ">
+    <Assert node="this:#assert1">
       <formula>
-        <Implies material=" yes" direction="
-          bidirectional" node="http://example.org#rule1">
+        <Implies node="http://example.org#rule1">
           <if>
             <And>
               <formula>
                 <Atom>
-                  <op><Rel>friend</Rel></op>
-                  <arg index=" 1"><Ind>Jane</Ind></arg>
-                  <arg index="2 "><Skolem>constant b</Skolem></arg>
+                  <op><Rel iri="_:" node="this:#rel1">friend</Rel></op>
+                  <arg index=" 1"><Ind iri="d:e" node="e:f">Jane</Ind></arg>
+                  <arg index="2 "><Skolem node="this:#sk1">constant b</Skolem></arg>
                   <arg index=" 3 "><Data xsi:type="xs:string">test</Data></arg>
                   <arg index="4"><Data xsi:type="xs:integer">12</Data></arg>
                   <arg index="5"><Data node="this:#data1" xsi:type="integer">12</Data></arg>
@@ -39,12 +38,11 @@
                   <op><Rel>P</Rel></op>
                 </Atom>
               </meta>
-              <op><Rel>friend</Rel></op>
+              <op><Rel iri="b:c">friend</Rel></op>
               <arg index="1"><Var>x</Var></arg>
               <arg index="2"><Var>y</Var></arg>
               <arg index="3"><Ind>Steph</Ind></arg>
-              <arg index="4"><Reify><Reify><Implies material="yes" direction="bidirectional"><if><And><formula><Atom><op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula><Atom><op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></Reify></Reify></arg>
-              <slot><Ind>t</Ind><Data xsi:type="xs:positiveInteger">1</Data></slot>
+              <slot><Ind iri="a:b">t</Ind><Data xsi:type="xs:positiveInteger">1</Data></slot>
             </Atom>
           </then>
         </Implies>
