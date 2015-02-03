@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/hornlog_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/hornlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/hornlog.xsd"
-  xml:base="http://example.org/schemas/vehicles/">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/hornlog.xsd">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
@@ -102,7 +98,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="Car"/>
+        <Var type="http://example.org/schemas/vehicles/Car"/>
       </slot>
       <slot>
         <Ind>price</Ind>
@@ -125,7 +121,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="Car"/>
+        <Var type="http://example.org/schemas/vehicles/Car"/>
       </slot>
       <slot>
         <Ind>price</Ind>
@@ -148,7 +144,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="Van"/>
+        <Var type="http://example.org/schemas/vehicles/Van"/>
       </slot>
       <slot>
         <Ind>price</Ind>
@@ -171,7 +167,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="Van"/>
+        <Var type="http://example.org/schemas/vehicles/Van"/>
       </slot>
       <slot>
         <Ind>price</Ind>
@@ -183,12 +179,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">16</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">16</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">21</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">21</Ind>
         </Atom>
       </And>
       <Atom>
@@ -211,7 +207,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -228,12 +224,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">16</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">16</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">21</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">21</Ind>
         </Atom>
       </And>
       <Atom>
@@ -256,7 +252,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -273,12 +269,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">22</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">22</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">25</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">25</Ind>
         </Atom>
       </And>
       <Atom>
@@ -301,7 +297,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -318,12 +314,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">22</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">22</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">25</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">25</Ind>
         </Atom>
       </And>
       <Atom>
@@ -346,7 +342,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -363,12 +359,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">26</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">26</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">50</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">50</Ind>
         </Atom>
       </And>
       <Atom>
@@ -391,7 +387,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -408,12 +404,12 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">26</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">26</Ind>
         </Atom>
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>age0</Var>
-          <Ind type="Integer">60</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">60</Ind>
         </Atom>
       </And>
       <Atom>
@@ -436,7 +432,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -452,7 +448,7 @@ See http://www.jdrew.org/oojdrew for details.
       <Atom>
         <Rel>greaterThanOrEqual</Rel>
         <Var>age0</Var>
-        <Ind type="Integer">51</Ind>
+        <Ind type="http://example.org/schemas/vehicles/Integer">51</Ind>
       </Atom>
       <Atom>
         <Rel>age_adjustment</Rel>
@@ -474,7 +470,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -490,7 +486,7 @@ See http://www.jdrew.org/oojdrew for details.
       <Atom>
         <Rel>greaterThanOrEqual</Rel>
         <Var>age0</Var>
-        <Ind type="Integer">61</Ind>
+        <Ind type="http://example.org/schemas/vehicles/Integer">61</Ind>
       </Atom>
       <Atom>
         <Rel>age_adjustment</Rel>
@@ -512,7 +508,7 @@ See http://www.jdrew.org/oojdrew for details.
         </slot>
         <slot>
           <Ind>vehicle</Ind>
-          <Var type="Vehicle"/>
+          <Var type="http://example.org/schemas/vehicles/Vehicle"/>
         </slot>
         <slot>
           <Ind>amount</Ind>
@@ -532,7 +528,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="Sedan"/>
+        <Var type="http://example.org/schemas/vehicles/Sedan"/>
       </slot>
       <slot>
         <Ind>amount</Ind>
@@ -551,7 +547,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="SportsCoupe"/>
+        <Var type="http://example.org/schemas/vehicles/SportsCoupe"/>
       </slot>
       <slot>
         <Ind>amount</Ind>
@@ -570,7 +566,7 @@ See http://www.jdrew.org/oojdrew for details.
       </slot>
       <slot>
         <Ind>vehicle</Ind>
-        <Var type="MiniVan"/>
+        <Var type="http://example.org/schemas/vehicles/MiniVan"/>
       </slot>
       <slot>
         <Ind>amount</Ind>
@@ -585,11 +581,11 @@ See http://www.jdrew.org/oojdrew for details.
       <Atom>
         <Rel>lessThanOrEqual</Rel>
         <Var>year1</Var>
-        <Ind type="Integer">1975</Ind>
+        <Ind type="http://example.org/schemas/vehicles/Integer">1975</Ind>
       </Atom>
       <Atom>
         <Rel>year_adjustment</Rel>
-        <Expr type="Vehicle">
+        <Expr type="http://example.org/schemas/vehicles/Vehicle">
           <Fun>vehicle</Fun>
           <slot>
             <Ind>year</Ind>
@@ -618,17 +614,17 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>year1</Var>
-          <Ind type="Integer">1980</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">1980</Ind>
         </Atom>
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>year1</Var>
-          <Ind type="Integer">1976</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">1976</Ind>
         </Atom>
       </And>
       <Atom>
         <Rel>year_adjustment</Rel>
-        <Expr type="Vehicle">
+        <Expr type="http://example.org/schemas/vehicles/Vehicle">
           <Fun>vehicle</Fun>
           <slot>
             <Ind>year</Ind>
@@ -657,17 +653,17 @@ See http://www.jdrew.org/oojdrew for details.
         <Atom>
           <Rel>lessThanOrEqual</Rel>
           <Var>year1</Var>
-          <Ind type="Integer">1999</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">1999</Ind>
         </Atom>
         <Atom>
           <Rel>greaterThanOrEqual</Rel>
           <Var>year1</Var>
-          <Ind type="Integer">1981</Ind>
+          <Ind type="http://example.org/schemas/vehicles/Integer">1981</Ind>
         </Atom>
       </And>
       <Atom>
         <Rel>year_adjustment</Rel>
-        <Expr type="Vehicle">
+        <Expr type="http://example.org/schemas/vehicles/Vehicle">
           <Fun>vehicle</Fun>
           <slot>
             <Ind>year</Ind>
@@ -695,11 +691,11 @@ See http://www.jdrew.org/oojdrew for details.
       <Atom>
         <Rel>greaterThanOrEqual</Rel>
         <Var>year1</Var>
-        <Ind type="Integer">2000</Ind>
+        <Ind type="http://example.org/schemas/vehicles/Integer">2000</Ind>
       </Atom>
       <Atom>
         <Rel>year_adjustment</Rel>
-        <Expr type="Vehicle">
+        <Expr type="http://example.org/schemas/vehicles/Vehicle">
           <Fun>vehicle</Fun>
           <slot>
             <Ind>year</Ind>
