@@ -54,27 +54,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -118,27 +179,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -183,35 +305,115 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="closure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -269,10 +471,29 @@
       </xs:sequence>
       <xs:attribute name="closure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -362,35 +583,115 @@
           </xs:sequence>
           <xs:attribute name="mapMaterial">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="yes"/>
-                <xs:enumeration value="no"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="no"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="bidirectional"/>
-                <xs:enumeration value="forward"/>
-                <xs:enumeration value="backward"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="bidirectional"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="forward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="backward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="closure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="node">
@@ -438,35 +739,115 @@
           </xs:sequence>
           <xs:attribute name="mapMaterial">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="yes"/>
-                <xs:enumeration value="no"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="no"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="bidirectional"/>
-                <xs:enumeration value="forward"/>
-                <xs:enumeration value="backward"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="bidirectional"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="forward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="backward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="closure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="node">
@@ -529,52 +910,174 @@
       </xs:sequence>
       <xs:attribute name="direction">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="material">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="closure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -621,27 +1124,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -688,27 +1252,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -770,7 +1395,23 @@
           </xs:restriction>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="type" type="xs:string"/>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="node">
         <xs:simpleType>
           <xs:union>
@@ -861,27 +1502,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -980,27 +1682,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -1043,27 +1806,88 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -1117,35 +1941,115 @@
       </xs:sequence>
       <xs:attribute name="mapMaterial">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="yes"/>
-            <xs:enumeration value="no"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapDirection">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="bidirectional"/>
-            <xs:enumeration value="forward"/>
-            <xs:enumeration value="backward"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="closure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="mapClosure">
         <xs:simpleType>
-          <xs:restriction base="xs:token">
-            <xs:enumeration value="universal"/>
-            <xs:enumeration value="existential"/>
-          </xs:restriction>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
         </xs:simpleType>
       </xs:attribute>
       <xs:attribute name="node">
@@ -1174,7 +2078,23 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:token">
-          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="node">
             <xs:simpleType>
               <xs:union>
@@ -1220,7 +2140,23 @@
               </xs:union>
             </xs:simpleType>
           </xs:attribute>
-          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="node">
             <xs:simpleType>
               <xs:union>
@@ -1248,7 +2184,23 @@
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:token">
-          <xs:attribute name="type" type="xs:string"/>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
+            </xs:simpleType>
+          </xs:attribute>
           <xs:attribute name="node">
             <xs:simpleType>
               <xs:union>
@@ -1780,27 +2732,88 @@
           </xs:sequence>
           <xs:attribute name="mapMaterial">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="yes"/>
-                <xs:enumeration value="no"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="no"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="bidirectional"/>
-                <xs:enumeration value="forward"/>
-                <xs:enumeration value="backward"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="bidirectional"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="forward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="backward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="node">
@@ -1848,27 +2861,88 @@
           </xs:sequence>
           <xs:attribute name="mapMaterial">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="yes"/>
-                <xs:enumeration value="no"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="no"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="bidirectional"/>
-                <xs:enumeration value="forward"/>
-                <xs:enumeration value="backward"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="bidirectional"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="forward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="backward"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:restriction base="xs:token">
-                <xs:enumeration value="universal"/>
-                <xs:enumeration value="existential"/>
-              </xs:restriction>
+              <xs:union>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="universal"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="existential"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                    <xs:minLength value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
             </xs:simpleType>
           </xs:attribute>
           <xs:attribute name="node">
