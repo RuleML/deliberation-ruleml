@@ -16,3 +16,5 @@ start |= notAllowed
 #    * material_non-default.value
 #
 material_non-default.value |= "no"
+material_non-default.value |= PrefixedCURIE.datatype
+material_non-default.value |= AbsIRI.datatype

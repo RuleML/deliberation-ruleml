@@ -226,25 +226,33 @@ if ($bdefault==0){
   // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
 
-  $NeedIRI = extractBit($bpropo, $propo_iri);
-  $NeedRulebase = extractBit($bpropo, $propo_rulebase);
-  $NeedEntails = extractBit($bpropo, $propo_entails);
-  $NeedFuzzy = extractBit($bpropo, $propo_degree);
-  $NeedNeg = extractBit($bpropo, $propo_neg);
-  $needNaf = extractBit($bpropo, $propo_naf);
+  $enableIRI = extractBit($bpropo, $propo_iri);
+  $enableRulebase = extractBit($bpropo, $propo_rulebase);
+  $enableEntails = extractBit($bpropo, $propo_entails);
+  $enableFuzzy = extractBit($bpropo, $propo_degree);
+  $enableNeg = extractBit($bpropo, $propo_neg);
+  $enableNaf = extractBit($bpropo, $propo_naf);
   $NeedNode = extractBit($bpropo, $propo_node);
   $NeedMeta = extractBit($bpropo, $propo_meta);
   $NeedBase = extractBit($bpropo, $propo_xmlbase);
   $NeedId = extractBit($bpropo, $propo_xmlid);
-  $NeedWeb = max($NeedIRI, $NeedNode);
-
+  
+  $NeedIRI = $enableIRI;
+  $NeedRulebase = $enableRulebase;
+  $NeedEntails = $enableEntails;
+  $NeedFuzzy = $enableFuzzy;
+  $NeedNeg = $enableNeg;
+  $NeedNaf = $enableNaf;
+  
   $needEquiv = extractBit($bimplies, $implies_equivalent);
-  $needDirND =  extractBit($bimplies, $implies_direction);
+  $enableDirND =  extractBit($bimplies, $implies_direction);
+  $NeedDirND = $enableDirND;
   $needDirD =  $enableDefaultPresent;
-  $needDirAtt = max($needDirD , $needDirND);
-  $needMatND =  extractBit($bimplies, $implies_material);
+  $needDirAtt = max($needDirD , $enableDirND);
+  $enableMatND =  extractBit($bimplies, $implies_material);
+  $NeedMatND = $enableMatND;
   $needMatD =  $enableDefaultPresent;
-  $needMatAtt = max($needMatD , $needMatND);
+  $needMatAtt = max($needMatD , $enableMatND);
   
   
   $enableExHead = extractBit($bimplies, $implies_ex);
@@ -287,9 +295,10 @@ if ($bdefault==0){
   $needCard = extractBit($bterms, $terms_card);
   $needWeight = extractBit($bterms, $terms_weight);
   $needEqualBi = extractBit($bterms, $terms_equal);
-  $needOrientedND = extractBit($bterms, $terms_oriented);
-  $needEqual = max($needEqualBi, $needOrientedND);
-  $needOrientedAtt = max($needOrientedND, $enableDefaultPresent) * $needEqual;
+  $enableOrientedND = extractBit($bterms, $terms_oriented);
+  $NeedOrientedND = $enableOrientedND;
+  $needEqual = max($needEqualBi, $enableOrientedND);
+  $needOrientedAtt = max($enableOrientedND, $enableDefaultPresent) * $needEqual;
   $needOrientedD = $enableDefaultPresent * $needEqualBi;
   $needType = extractBit($bterms, $terms_type);
   $needDataTerms = extractBit($bterms, $terms_data);
@@ -299,16 +308,19 @@ if ($bdefault==0){
   $needInd = max($btermseq , $enableOid , $needSlot , $needEqual);
 
   $needVar = max($enableQuant , extractBit($bterms, $terms_var));   
-  $needClosure = extractBit($bquant, $quant_closure);
+  $enableClosure = extractBit($bquant, $quant_closure);
+  $NeedClosure = $enableClosure;
   $needResl = extractBit($bquant, $quant_resl);
   $enableRepo = extractBit($bquant, $quant_repo);
   
   $enableValAbsent = extractBit($bexpr, $expr_val_absent);
   $enablePlex = extractBit($bexpr, $expr_plex);
   $enableValND = extractBit($bexpr, $expr_val_nondefault);
+  $NeedValND = $enableValND;
   $needValD = $enableDefaultPresent * $enableExpr * $needEqual;
   $needValAtt = max($needValD , $enableValND);
   $enableInND = extractBit($bexpr, $expr_in);
+  $NeedInND = $enableInND;
   $needInD = $enableDefaultPresent * $enableExpr;
   $needInAtt = max($needInD , $enableInND);
 
@@ -316,10 +328,11 @@ if ($bdefault==0){
   $NeedAtom = 1;
   $needInit = 1;
   
-  $needDefaultPresent =  max($enableDefaultPresent , $needDirND , $needMatND , $enableInND , $enableValND , $needOrientedND);    
+  $needDefaultPresent =  max($enableDefaultPresent , $enableDirND , $enableMatND , $enableInND , $enableValND , $enableOrientedND);    
   $needDefaultPresentFO = $needDefaultPresent * $enableFO;
   
   $NeedIfThenSkippable = max( $notPivot, $notPlus ); 
+  $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND);
 
   //Step 1. Assemble the language foundation
   if ($enableAbsolute) {
@@ -526,7 +539,7 @@ if ($bdefault==0){
           'neg_expansion_module.rnc"'."$end\n";
     }
     // Include weak negations if needed
-    if ($needNaf){
+    if ($NeedNaf){
       echo "#\n# WEAK NEGATIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'naf_expansion_module.rnc"'."$end\n";
@@ -571,7 +584,7 @@ if ($bdefault==0){
           'mapdirection_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-symmetric inference direction attribute value if needed
-    if ($needDirND){
+    if ($NeedDirND){
       echo "#\n# NON-DEFAULT VALUES OF INFERENCE DIRECTION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
             'direction_non-default_expansion_module.rnc"'."$end\n";
@@ -591,7 +604,7 @@ if ($bdefault==0){
           'mapmaterial_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-material implication if needed
-    if ($needMatND){
+    if ($NeedMatND){
       echo "#\n# NON-DEFAULT VALUES OF MATERIAL IMPLICATION INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
             'material_non-default_expansion_module.rnc"'."$end\n";
@@ -659,7 +672,7 @@ if ($bdefault==0){
            'oriented_attrib_expansion_module.rnc"'."$end\n";      
     }
     // Include non-symmetric equality attribute values if needed
-    if ($needOrientedND){
+    if ($NeedOrientedND){
       echo "#\n# NON-DEFAULT VALUES OF ORIENTED EQUALITY ATTRIBUTE INCLUDED\n";
         echo "#\n".'include "' . $modulesLocation .
             'oriented_non-default_expansion_module.rnc"'."$end\n";
@@ -725,7 +738,7 @@ if ($bdefault==0){
     }
   //Step 3D. Include quantification-related modules if needed
     // Include implicit closure if needed
-    if ($needClosure){
+    if ($NeedClosure){
       echo "#\n# IMPLICIT CLOSURE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'closure_expansion_module.rnc"'."$end\n";
@@ -765,7 +778,7 @@ if ($bdefault==0){
         'val_attrib_expansion_module.rnc"'."$end\n";      
   }
   // Include non-default values of set-valued expression attribute if needed
-  if ($enableValND){
+  if ($NeedValND){
     echo "#\n# NON-DEFAULT VALUES OF THE SET-VALUED ATTRIBUTE INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
         'val_non-default_expansion_module.rnc"'."$end\n";
@@ -783,7 +796,7 @@ if ($bdefault==0){
         'per_attrib_expansion_module.rnc"'."$end\n";      
   }  
   // Include non-default values of interpretation of expressions if needed
-  if ($enableInND){
+  if ($NeedInND){
     echo "#\n# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED\n";
     echo "#\n".'include "' . $modulesLocation .
         'per_non-default_expansion_module.rnc"'."$end\n";

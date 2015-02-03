@@ -26,4 +26,5 @@ mapDirection.attrib.def =
   ## falling within its scope (i.e. child elements). See attribute mapping for more details. This attribute has a 
   ## neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
   ## See http://ruleml.org/1.02/glossary/#gloss-@mapDirection
-  attribute mapDirection { direction.value }
+  attribute mapDirection { mapDirection.value }
+  mapDirection.value |= direction.value

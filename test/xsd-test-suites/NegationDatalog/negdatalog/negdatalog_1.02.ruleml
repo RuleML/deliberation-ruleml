@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafdatalog_relaxed.rnc"?><!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/nafdatalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>--><RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:base="http://example.org/ontology#" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/nafdatalog.xsd">
+<?xml version="1.0" encoding="UTF-8"?><RuleML xml:base="http://example.org/ontology#" xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/negdatalog.xsd">
 
-<!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage, with negation as failure -->
+<!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage, with strong/classical negation -->
 
 <Assert mapClosure="universal">
 
 <Implies>
   <then>
-
+    <Neg>
      <Atom>
       <op><Rel>friend</Rel></op>
       <slot><Ind>t</Ind><Ind>b</Ind></slot>
@@ -14,10 +14,10 @@
       <Var>y</Var>
       <Ind>Steph</Ind>
      </Atom>
-
+    </Neg>
   </then>
   <if>
-   <Naf>
+   <Neg>
     <Atom>
       <op><Rel>friend</Rel></op>
       <Ind>Jane</Ind>
@@ -26,14 +26,14 @@
       <Var>y</Var>
       <Ind>Frank</Ind>
     </Atom>
-   </Naf>
+   </Neg>
   </if>
 </Implies>
 
 <Implies>
   <if>
    <Or>
-    <Naf>
+    <Neg>
      <Atom>
       <op><Rel>friend</Rel></op>
       <Ind>Jane</Ind>
@@ -42,7 +42,7 @@
       <Var>y</Var>
       <Ind>Frank</Ind>
      </Atom>
-    </Naf>
+    </Neg>
    </Or>
   </if>
   <then>
@@ -56,20 +56,11 @@
   </then>
 </Implies>
 
-
     <Forall>
 	<Var type="http://example.org/Person">x1</Var>
 	<Var type="http://example.org/Person">x2</Var>
 	<Var type="http://example.org/Person">x3</Var>
 	<Var type="http://example.org/Person">x4</Var>
-	<Implies>
-           <Atom>
-               <op><Rel>rel1</Rel></op>
-               <Data xsi:type="xs:positiveInteger">1</Data>
-               <Data xsi:type="xs:positiveInteger">2</Data>
-               <Data xsi:type="xs:positiveInteger">3</Data>
-               <Var>x5</Var>
-           </Atom>
            <Atom>
                <op><Rel>rel2</Rel></op>
                <Data xsi:type="xs:positiveInteger">4</Data>
@@ -77,7 +68,6 @@
                <Var>x6</Var>
                <Data xsi:type="xs:positiveInteger">6</Data>
            </Atom>
-	</Implies>
    </Forall>
 
 

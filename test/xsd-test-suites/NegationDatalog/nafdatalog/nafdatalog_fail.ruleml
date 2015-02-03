@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RuleML xmlns="http://ruleml.org/spec"
+  xml:base="http://example.org/ontology#"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/negdatalog.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/nafdatalog.xsd">
 
-<!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage, with strong/classical negation -->
+<!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage, with negation as failure -->
 
 <Assert mapClosure="universal">
 
 <Implies>
   <then>
-    <Neg>
+
      <Atom>
       <op><Rel>friend</Rel></op>
       <slot><Ind>t</Ind><Ind>b</Ind></slot>
@@ -18,10 +19,10 @@
       <Var>y</Var>
       <Ind>Steph</Ind>
      </Atom>
-    </Neg>
+
   </then>
   <if>
-   <Neg>
+   <Naf>
     <Atom>
       <op><Rel>friend</Rel></op>
       <Ind>Jane</Ind>
@@ -30,14 +31,14 @@
       <Var>y</Var>
       <Ind>Frank</Ind>
     </Atom>
-   </Neg>
+   </Naf>
   </if>
 </Implies>
 
 <Implies>
   <if>
    <Or>
-    <Neg>
+    <Naf>
      <Atom>
       <op><Rel>friend</Rel></op>
       <Ind>Jane</Ind>
@@ -46,7 +47,7 @@
       <Var>y</Var>
       <Ind>Frank</Ind>
      </Atom>
-    </Neg>
+    </Naf>
    </Or>
   </if>
   <then>
@@ -60,11 +61,20 @@
   </then>
 </Implies>
 
+
     <Forall>
 	<Var type="Person">x1</Var>
 	<Var type="Person">x2</Var>
 	<Var type="Person">x3</Var>
 	<Var type="Person">x4</Var>
+	<Implies>
+           <Atom>
+               <op><Rel>rel1</Rel></op>
+               <Data xsi:type="xs:positiveInteger">1</Data>
+               <Data xsi:type="xs:positiveInteger">2</Data>
+               <Data xsi:type="xs:positiveInteger">3</Data>
+               <Var>x5</Var>
+           </Atom>
            <Atom>
                <op><Rel>rel2</Rel></op>
                <Data xsi:type="xs:positiveInteger">4</Data>
@@ -72,6 +82,7 @@
                <Var>x6</Var>
                <Data xsi:type="xs:positiveInteger">6</Data>
            </Atom>
+	</Implies>
    </Forall>
 
 

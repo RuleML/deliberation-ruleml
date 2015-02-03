@@ -15,7 +15,7 @@ REPO_HOME="${BASH_HOME}../"
 RNC_TEST_HOME=${REPO_HOME}relaxng/test/
 TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
 
-for file in ${TEST_SUITE_HOME}**/*.ruleml
+for file in ${TEST_SUITE_HOME}*/*.ruleml ${TEST_SUITE_HOME}*/*/*.ruleml
 do
   filename=$(basename "${file}")
   echo "File "${filename}

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../../relaxng/test/datalog_relaxed.rnc"?>
-<!--<?xml-model href="../../../../xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<!--<?xml-model href="../../../../xsd/datalog.xsd" type="sorts:application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:sorts="http://example.org/ontology#"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   >
@@ -15,17 +16,17 @@
       <Atom>
         <op><Rel>address</Rel></op>
         <Var>personX</Var>
-        <Var type= "String">address1</Var>
+        <Var type="sorts:String">address1</Var>
       </Atom>
       <Atom>
         <op><Rel>address</Rel></op>
         <Var>personX</Var>
-        <Var type="String">address2</Var>
+        <Var type="sorts:String">address2</Var>
       </Atom>
       <Atom>
         <Rel>lessThan</Rel>
-        <Var type="String">address1</Var>
-        <Var type="String">address2</Var>
+        <Var type="sorts:String">address1</Var>
+        <Var type="sorts:String">address2</Var>
       </Atom>
     </And>
   </if>
@@ -41,14 +42,14 @@
     <Atom>
       <op><Rel>address</Rel></op>
       <Ind>Jack</Ind>
-      <Ind type="String">655 Graham Avenue</Ind>
+      <Ind type="sorts:String">655 Graham Avenue</Ind>
     </Atom>
 
 <!--Jack lives at 552 Windsor -->	
     <Atom>
       <op><Rel>address</Rel></op>
       <Ind>Jack</Ind>
-      <Ind type="String">552 Windsor</Ind>
+      <Ind type="sorts:String">552 Windsor</Ind>
     </Atom>
 
 </Assert>

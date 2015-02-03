@@ -71,11 +71,37 @@ RuleML =
   }
 Assert =
   element Assert {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -92,11 +118,37 @@ Assert =
   }
 Retract =
   element Retract {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -113,12 +165,47 @@ Retract =
   }
 Query =
   element Query {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure { "universal" | "existential" }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -135,7 +222,16 @@ Query =
   }
 Atom =
   element Atom {
-    (attribute closure { "universal" | "existential" }?
+    (attribute closure {
+       "universal"
+       | "existential"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute node {
          xsd:string {
            pattern =
@@ -181,12 +277,47 @@ Rel =
   }
 And =
   element And {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure { "universal" | "existential" }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -204,12 +335,47 @@ And =
   }
 Or =
   element Or {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure { "universal" | "existential" }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -227,14 +393,68 @@ Or =
   }
 Implies =
   element Implies {
-    (attribute direction { "bidirectional" | "forward" | "backward" }?
-     & attribute material { "yes" | "no" }?
-     & attribute mapMaterial { "yes" | "no" }?
-     & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+    (attribute direction {
+       "bidirectional"
+       | "forward"
+       | "backward"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute material {
+         "yes"
+         | "no"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure { "universal" | "existential" }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapMaterial {
+         "yes"
+         | "no"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapDirection {
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -253,11 +473,37 @@ Implies =
   }
 Forall =
   element Forall {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -276,11 +522,37 @@ Forall =
   }
 Exists =
   element Exists {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -299,8 +571,25 @@ Exists =
   }
 Expr =
   element Expr {
-    (attribute per { "copy" | "value" | "open" }?
-     & attribute type { xsd:string }?
+    (attribute per {
+       "copy"
+       | "value"
+       | "open"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute type {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -322,8 +611,27 @@ Expr =
   }
 Fun =
   element Fun {
-    (attribute per { "copy" | "value" | "open" }?
-     & attribute val { "1" | "0.." }?
+    (attribute per {
+       "copy"
+       | "value"
+       | "open"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute val {
+         "1"
+         | "0.."
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute iri {
          xsd:string {
            pattern =
@@ -347,11 +655,37 @@ Fun =
   }
 Rulebase =
   element Rulebase {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -385,11 +719,37 @@ Entails =
   }
 Neg =
   element Neg {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -407,11 +767,37 @@ Neg =
   }
 Naf =
   element Naf {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -429,12 +815,47 @@ Naf =
   }
 Equivalent =
   element Equivalent {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure { "universal" | "existential" }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -453,7 +874,16 @@ Equivalent =
   }
 Equal =
   element Equal {
-    (attribute oriented { "no" | "yes" }?
+    (attribute oriented {
+       "no"
+       | "yes"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute node {
          xsd:string {
            pattern =
@@ -488,7 +918,14 @@ Data =
   }
 Skolem =
   element Skolem {
-    (attribute type { xsd:string }?
+    (attribute type {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute node {
          xsd:string {
            pattern =
@@ -551,7 +988,14 @@ Ind =
        }
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
-     & attribute type { xsd:string }?
+     & attribute type {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -567,7 +1011,14 @@ Ind =
   }
 Var =
   element Var {
-    (attribute type { xsd:string }?
+    (attribute type {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute node {
          xsd:string {
            pattern =
@@ -935,11 +1386,37 @@ _1 =
   }
 And_2 =
   element And {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -957,11 +1434,37 @@ And_2 =
   }
 Or_2 =
   element Or {
-    (attribute mapMaterial { "yes" | "no" }?
+    (attribute mapMaterial {
+       "yes"
+       | "no"
+       | xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
      & attribute mapDirection {
-         "bidirectional" | "forward" | "backward"
+         "bidirectional"
+         | "forward"
+         | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure { "universal" | "existential" }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute node {
          xsd:string {
            pattern =

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   version="2.0">
-  <xsl:template match="@iri|@node|@type">
+  <xsl:template match="@iri|@node">
     <xsl:attribute name="{name()}">
       <xsl:value-of select="resolve-uri(., base-uri(.))"/>  
+    </xsl:attribute>
+  </xsl:template>
+  <xsl:template match="@type">
+    <xsl:attribute name="{name()}">
+      <xsl:value-of select="resolve-uri(concat('#',.), base-uri(.))"/>  
     </xsl:attribute>
   </xsl:template>
   <!-- Copies everything to the transformation output -->

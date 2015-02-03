@@ -24,4 +24,6 @@ closure.attrib.def =
     ## Allowed values are "universal" and "existential".
     ## See http://ruleml.org/1.02/glossary/#gloss-@closure
     attribute closure { closure.value }
-closure.value |= "universal" | "existential"
+closure.value |=  "universal" | "existential"
+closure.value |= PrefixedCURIE.datatype
+closure.value |= AbsIRI.datatype

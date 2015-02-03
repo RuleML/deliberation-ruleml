@@ -16,3 +16,5 @@ start |= notAllowed
 #            * @oriented
 #
 oriented_non-default.value |= "yes"
+oriented_non-default.value |= PrefixedCURIE.datatype
+oriented_non-default.value |= AbsIRI.datatype

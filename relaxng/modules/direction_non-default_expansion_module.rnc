@@ -16,3 +16,6 @@ start |= notAllowed
 #    * direction_non-default.value
 #
 direction_non-default.value |= "forward" | "backward"
+direction_non-default.value |= PrefixedCURIE.datatype
+direction_non-default.value |= AbsIRI.datatype
+

@@ -16,3 +16,5 @@ start |= notAllowed
 #    * interpretation_non-default.value
 #
 interpretation_non-default.value |= "value" | "open"
+interpretation_non-default.value |= PrefixedCURIE.datatype
+interpretation_non-default.value |= AbsIRI.datatype
