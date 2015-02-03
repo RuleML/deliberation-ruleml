@@ -24,10 +24,11 @@ meta.edge.def =
   ## <meta>: a container for meta-knowledge. See 
   ## http://ruleml.org/1.02/glossary/#gloss-meta
   element meta {
-    formula_AssertRetract.attlist? & formula_AssertRetract.content
+    meta.attlist? & AssertRetractFormula.choice
   }
+meta.attlist &= commonInit.attlist?  
 # The meta-knowledge content model is equivalent to that of <formula> in <Assert>.
-# See performative_expansion_module .
+# See performative_content_expansion_module .
 
 ## The header for Nodes allows an arbitrary number of <meta> elements.
 Node.header &= metaKnowledge-edge.choice*

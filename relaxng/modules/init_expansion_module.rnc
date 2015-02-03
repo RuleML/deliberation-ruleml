@@ -301,6 +301,7 @@ head_Entails.name.choice |= notAllowed
 restOfPositionalArguments-edge.choice |= notAllowed
 restOfSlots-edge.choice |= notAllowed
 positionalArgument-edge.choice |= notAllowed
+slot-edge.choice |= notAllowed
 #
 boundVariables.choice |= notAllowed
 # 
