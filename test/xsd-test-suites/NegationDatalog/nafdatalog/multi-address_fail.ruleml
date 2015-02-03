@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec"
+<RuleML 
+  xml:base="http://example.org/datatypes#"
+  xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/nafdatalog.xsd">

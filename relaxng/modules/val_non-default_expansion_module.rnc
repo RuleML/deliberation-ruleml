@@ -16,3 +16,5 @@ start |= notAllowed
 #            * val_non-default.value
 #
 val_non-default.value |= "0.."
+val_non-default.value |= PrefixedCURIE.datatype
+val_non-default.value |= AbsIRI.datatype

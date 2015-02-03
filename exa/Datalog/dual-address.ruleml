@@ -2,68 +2,65 @@
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
+  xmlns:sorts="http://example.org/ontology#"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
-
-
-<!--A personX is dually-addressed if the personX lives at address1 and address2, and the two addresses are not the same -->
-
-<Assert mapClosure="universal">
-<Implies>
-  <if>
-    <And>
+    
+    
+    <!--A personX is dually-addressed if the personX lives at address1 and address2, and the two addresses are not the same -->
+    
+    <Assert mapClosure="universal">
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <op><Rel>address</Rel></op>
+              <Var>personX</Var>
+              <Var type= "sorts:String">address1</Var>
+            </Atom>
+            <Atom>
+              <op><Rel>address</Rel></op>
+              <Var>personX</Var>
+              <Var type="sorts:String">address2</Var>
+            </Atom>
+            <Atom>
+              <Rel>lessThan</Rel>
+              <Var type="sorts:String">address1</Var>
+              <Var type="sorts:String">address2</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Atom>
+            <Rel>dual-address</Rel>
+            <Var>personX</Var>
+            <Var type="sorts:String">address1</Var>
+            <Var type="sorts:String">address2</Var>
+          </Atom>
+        </then>
+      </Implies>
+      
+      <!--Jack lives at 655 Graham Avenue -->
       <Atom>
         <op><Rel>address</Rel></op>
-        <Var>personX</Var>
-        <Var type= "String">address1</Var>
+        <Ind>Jack</Ind>
+        <Ind type="sorts:String">655 Graham Avenue</Ind>
       </Atom>
+      
+      <!--Jack lives at 552 Windsor -->	
       <Atom>
         <op><Rel>address</Rel></op>
-        <Var>personX</Var>
-        <Var type="String">address2</Var>
+        <Ind>Jack</Ind>
+        <Ind type="sorts:String">552 Windsor</Ind>
       </Atom>
+    </Assert>
+    <Query>
       <Atom>
-        <Rel>lessThan</Rel>
-        <Var type="String">address1</Var>
-        <Var type="String">address2</Var>
+        <Rel>dual-address</Rel>
+        <Var>personX</Var>
+        <Var type="sorts:String">address1</Var>
+        <Var type="sorts:String">address2</Var>
       </Atom>
-    </And>
-  </if>
-  <then>
-    <Atom>
-     <Rel>dual-address</Rel>
-     <Var>personX</Var>
-     <Var type="String">address1</Var>
-     <Var type="String">address2</Var>
-   </Atom>
-  </then>
-</Implies>
-
-<!--Jack lives at 655 Graham Avenue -->
-    <Atom>
-      <op><Rel>address</Rel></op>
-      <Ind>Jack</Ind>
-      <Ind type="String">655 Graham Avenue</Ind>
-    </Atom>
-
-<!--Jack lives at 552 Windsor -->	
-    <Atom>
-      <op><Rel>address</Rel></op>
-      <Ind>Jack</Ind>
-      <Ind type="String">552 Windsor</Ind>
-    </Atom>
-</Assert>
-<Query>
-  <Atom>
-    <Rel>dual-address</Rel>
-    <Var>personX</Var>
-    <Var type="String">address1</Var>
-    <Var type="String">address2</Var>
-  </Atom>
-</Query>  
-</RuleML>
-
-
-
-
+    </Query>  
+  </RuleML>

@@ -24,5 +24,6 @@ mapClosure.attrib.def =
     ## An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified. 
     ## Allowed values are "universal" and "existential".
     ## See http://ruleml.org/1.02/glossary/#gloss-@mapClosure
-    attribute mapClosure { closure.value }
+    attribute mapClosure { mapClosure.value }
+ mapClosure.value |= closure.value   
 #
