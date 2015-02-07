@@ -23,4 +23,8 @@ material.attrib.def =
     ## See http://ruleml.org/1.02/glossary/#gloss-@material
     attribute material { material.value }
 material.value |= material_default.value | material_non-default.value
+#
+# a dummy element to assist in XSD conversion
+#
+DummyMaterialElement.def = element Material { material-att.choice }
 

@@ -62,8 +62,11 @@
   </xsl:template>
 
   <!-- Remove dummy elements -->
+  <xsl:template match="xs:element[@name='Base']"></xsl:template>
   <xsl:template match="xs:element[@name='Closure']"></xsl:template>
   <xsl:template match="xs:element[@name='Common']"></xsl:template>
+  <xsl:template match="xs:element[@name='Material']"></xsl:template>
+  <xsl:template match="xs:element[@name='Per']"></xsl:template>
   <xsl:template match="xs:element[@name='Type']"></xsl:template>
   
   <!-- Remove existing includes -->

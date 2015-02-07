@@ -22,3 +22,7 @@ card.attrib.def =
     ## the cardinality of a slot.
     attribute card { cardinality.value }
 cardinality.value |= xsd:nonNegativeInteger
+#
+# a dummy element to assist in XSD conversion
+#
+DummyCardElement.def = element Card { cardinality-att.choice }
