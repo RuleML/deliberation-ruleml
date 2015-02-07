@@ -18,7 +18,7 @@ start |= notAllowed
 #
 
 
-## an extension point for alternate spellings and internationalization of the scope inference direction attribute name.  
+## an extension point for specializations of the scope inference direction attribute name.  
 mapDirection-att.choice |= mapDirection.attrib.def
 mapDirection.attrib.def =
   

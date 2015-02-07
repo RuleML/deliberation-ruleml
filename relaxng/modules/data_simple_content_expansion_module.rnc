@@ -21,7 +21,7 @@ Node.choice |= Data_simple.Node.def
 ## this module should not be included when translating from RNC to XSD.
 ##
 
-## an extension point for alternate spellings and internationalization of the data tag name.  
+## an extension point for specializations of the data tag name.  
 Data_simple-node.choice |= Data_simple.Node.def
 
 ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.

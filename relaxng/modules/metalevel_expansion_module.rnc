@@ -19,7 +19,7 @@ edge.choice |= head_Entails.edge.def | body_Entails.edge.def
 #            * <if>
 #            * <then>
 
-## an extension point for alternate spellings and internationalization of the entailment tag name.  
+## an extension point for specializations of the entailment tag name.  
 Entails-node.choice |= Entails.Node.def
 Entails.Node.def =
     
@@ -38,7 +38,7 @@ Entails.header &= Node.header?
 # but it will contain exactly one if and one then.
 # For the declaration of the main content of entailments, see the serialization modules (orderstrict_module or orderlax_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the if tag name in entailments.  
+## an extension point for stripe skipping as well as specializations of the if tag name in entailments.  
 body_Entails.name.choice |= body_Entails.edge.def
 body_Entails.edge.def =
     
@@ -53,7 +53,7 @@ body_Entails.content |= Rulebase-node.choice
 ## The if of an entailment may contain a single formula that is allowed in a Rulebase.
 body_Entails.content |= RulebaseFormula.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in entailments.  
+## an extension point for stripe skipping as well as specializations of the then tag name in entailments.  
 head_Entails.name.choice |= head_Entails.edge.def
 head_Entails.edge.def =
     

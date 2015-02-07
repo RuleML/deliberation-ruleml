@@ -68,7 +68,7 @@ Exists.main |= boundVariables.choice, formula_Exists-edge.choice
 ## declaration of one or more bound quantifiable terms.
 boundVariables.choice |= declare-edge.choice+
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the declare tag name in quantified formulas.  
+## an extension point for stripe skipping as well as specializations of the declare tag name in quantified formulas.  
 declare-edge.choice |= declare.edge.def
 declare.edge.def =
     
@@ -79,7 +79,7 @@ declare.edge.def =
 ## a declaration element contains a single quantifiable term
 declare.content |= SimpleQuantifiableTerm.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in universal quantifications. 
+## an extension point for stripe skipping as well as specializations of the formula tag name in universal quantifications. 
 formula_Forall-edge.choice |= formula_Forall.edge.def
 formula_Forall.edge.def =
     
@@ -108,7 +108,7 @@ ForallFormula.choice |=
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in existential quantifications. 
+## an extension point for stripe skipping as well as specializations of the formula tag name in existential quantifications. 
 formula_Exists-edge.choice |= formula_Exists.edge.def
 formula_Exists.edge.def =
     

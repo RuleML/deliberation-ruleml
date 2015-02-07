@@ -25,7 +25,7 @@ atom.edge.defs |= op_Atom.edge.def
 ## atomic formulas are a kind of simple formula
 SimpleFormula-node.choice |= Atom-node.choice | Equal-node.choice
 
-## an extension point for alternate spellings and internationalization of the atomic formula tag name.  
+## an extension point for specializations of the atomic formula tag name.  
 Atom-node.choice |= Atom.Node.def
 Atom.Node.def =
   
@@ -37,7 +37,7 @@ Atom.Node.def =
 reAtom.attlist &= closure-att.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in atomic formulas.  
+## an extension point for stripe skipping as well as specializations of the operator tag name in atomic formulas.  
 operatorForAtoms-edge.choice |= op_Atom.edge.def
 
 ## (context sensitive: see also expr_module and holog_module)

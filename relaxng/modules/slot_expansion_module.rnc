@@ -24,7 +24,7 @@ slotTermsForAtoms.sequence |= slot-edge.choice*
 slotTermsForExpressions.sequence |= slot-edge.choice*
 # For the declaration of slotted rest variables, see the slotted rest variable module (resl_module).
 
-## an extension point for alternate spellings and internationalization of the slot tag name.  
+## an extension point for specializations of the slot tag name.  
 slot-edge.choice |= slot.edge.def
 slot.edge.def =
     

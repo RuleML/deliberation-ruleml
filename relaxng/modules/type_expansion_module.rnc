@@ -18,7 +18,7 @@ start |= notAllowed
 ## attribute list for objects that can have user-defined types, includes an optional type attribute.
 Type.attlist &= type-att.choice?
 
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 type-att.choice |= type.attrib.def
 type.attrib.def =
     

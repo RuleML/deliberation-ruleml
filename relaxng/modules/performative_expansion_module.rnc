@@ -38,7 +38,7 @@ RuleML.header &= Node.header?
 ## The RuleML root element contains zero or more performatives.
 RuleML.main |= act-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in assertions and retractions.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in assertions and retractions.  
 act-edge.choice |= act.edge.def
 act.edge.def =
   
@@ -62,7 +62,7 @@ Performative.choice |= AssertRetract-node.choice | Query-node.choice
 ## a convenience pattern combining assertions and retractions
 AssertRetract-node.choice |= Assert-node.choice | Retract-node.choice
 
-## an extension point for alternate spellings and internationalization of the assertion tag name.  
+## an extension point for specializations of the assertion tag name.  
 Assert-node.choice |= Assert.Node.def
 Assert.Node.def =
   
@@ -75,7 +75,7 @@ Assert.Node.def =
     AssertRetract.main
   }
 
-## an extension point for alternate spellings and internationalization of the retraction tag name.  
+## an extension point for specializations of the retraction tag name.  
 Retract-node.choice |= Retract.Node.def
 Retract.Node.def =
   
@@ -99,7 +99,7 @@ AssertRetract.header &= Node.header?
 ## Assertions and retractions contain zero or more formulas.
 AssertRetract.main |= formula_AssertRetract-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in assertions and retractions.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in assertions and retractions.  
 formula_AssertRetract-edge.choice |= formula_AssertRetract.edge.def
 formula_AssertRetract.edge.def =
   
@@ -115,7 +115,7 @@ formula_AssertRetract.edge.def =
 formula_AssertRetract.content |= AssertRetractFormula.choice
 
 
-## an extension point for alternate spellings and internationalization of the query tag name.  
+## an extension point for specializations of the query tag name.  
 Query-node.choice |= Query.Node.def
 Query.Node.def =
   
@@ -140,7 +140,7 @@ Query.header &= Node.header?
 ## The content model of queries consists of zero or more formulas.
 Query.main |= formula_Query-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in queries.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in queries.  
 formula_Query-edge.choice |= formula_Query.edge.def
 formula_Query.edge.def =
   

@@ -19,7 +19,7 @@ edge.choice |= weak.edge.def
 #            * NegationAsFailure-node.choice
 #            * NafFormula.choice
 
-## an extension point for alternate spellings and internationalization of the weak negation tag name.  
+## an extension point for specializations of the weak negation tag name.  
 NegationAsFailure-node.choice |= Naf.Node.def
 Naf.Node.def =
   # A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
@@ -36,7 +36,7 @@ Naf.header &= TruthValuedConnective.header?
 ## Negation As Failure formulas contain a single role.
 Naf.main |= weak-edge.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the weak tag name in weak negations. 
+## an extension point for stripe skipping as well as specializations of the weak tag name in weak negations. 
 weak-edge.choice |= weak.edge.def
 weak.edge.def =
   # A role used for negation as failure (<Naf>).

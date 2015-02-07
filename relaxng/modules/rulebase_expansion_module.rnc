@@ -16,7 +16,7 @@ edge.choice |= formula_Rulebase.edge.def
 #            * <Rulebase>
 #            * <formula>
 
-## an extension point for alternate spellings and internationalization of the rulebase tag name.  
+## an extension point for specializations of the rulebase tag name.  
 Rulebase-node.choice |= Rulebase.Node.def
 Rulebase.Node.def =
   
@@ -37,7 +37,7 @@ Rulebase.header &= Node.header?
 ## Rulebases contain zero or more formulas.
 Rulebase.main |= formula_Rulebase-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in rulebases.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in rulebases.  
 formula_Rulebase-edge.choice |= formula_Rulebase.edge.def
 formula_Rulebase.edge.def =
   

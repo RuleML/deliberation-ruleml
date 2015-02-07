@@ -19,7 +19,7 @@ Node.choice |= Var.Node.def
 ## terms that can be bound by a quantifier include variables.
 SimpleQuantifiableTerm.choice |= Variable-node.choice
 
-## an extension point for alternate spellings and internationalization of the variable tag name. 
+## an extension point for specializations of the variable tag name. 
 Variable-node.choice |= Var.Node.def
 Var.Node.def =
     

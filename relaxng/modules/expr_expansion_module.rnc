@@ -19,7 +19,7 @@ edge.choice |= op_Expr.edge.def
 #            * <op>
 #            * <Fun>
 
-## an extension point for alternate spellings and internationalization of the expression tag name. 
+## an extension point for specializations of the expression tag name. 
 Expression-node.choice |= Expr.Node.def
 
 ## A logical function of the form "f(...)" where f is a function name. 
@@ -38,7 +38,7 @@ Expr.Node.def =
 reExpr.attlist &= Type.attlist?
 
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in expressions. 
+## an extension point for stripe skipping as well as specializations of the operator tag name in expressions. 
 operatorForExpressions-edge.choice |= op_Expr.edge.def
 
 ## (context sensitive: see Also atom_backbone_module and holog_module)
@@ -52,7 +52,7 @@ op_Expr.edge.def =
 ## The operator role of an expression is filled by a functor.
 op_Expr.content |= Function-node.choice
 
-## an extension point for alternate spellings and internationalization of the function operator tag name. 
+## an extension point for specializations of the function operator tag name. 
 Function-node.choice |= Fun.Node.def
 
 ## A user-defined function name of an <Expr>. It is optionally surrounded by an operator (<op>).

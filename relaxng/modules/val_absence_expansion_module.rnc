@@ -13,5 +13,5 @@ dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 
-## an extension point for alternate spellings and internationalization of the attribute for set-valued functions.  
+## an extension point for specializations of the attribute for set-valued functions.  
 singlevalued-att.choice |= empty

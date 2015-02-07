@@ -18,7 +18,7 @@ start |= iri.edge.def
 ## attribute list for resources includes and optional iri attribute.
 Resource.attlist &= iri-att.choice?
 
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 iri-att.choice |= iri.attrib.def
 iri.attrib.def =
     

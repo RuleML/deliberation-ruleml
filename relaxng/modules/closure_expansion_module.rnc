@@ -16,7 +16,7 @@ start |= notAllowed
 #    * @closure
 # Schema Design Pattern Key: see andor_expansion_module
 
-## an extension point for alternate spellings and internationalization of the implicit closure attribute name.  
+## an extension point for specializations of the implicit closure attribute name.  
 closure-att.choice |= closure.attrib.def
 closure.attrib.def =
     

@@ -16,7 +16,7 @@ edge.choice |= repo.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <repo>
 
-## an extension point for alternate spellings and internationalization of the positional rest tag name. 
+## an extension point for specializations of the positional rest tag name. 
 ## Stripe-skipping is not allowed for positional rest variables.  
 restOfPositionalArguments-edge.choice |= repo.edge.def
 repo.edge.def =

@@ -19,7 +19,7 @@ edge.choice |= strong.edge.def
 #            * Negation-node.choice
 #            * NegFormula.choice
 
-## an extension point for alternate spellings and internationalization of the strong negation tag name.  
+## an extension point for specializations of the strong negation tag name.  
 Negation-node.choice |= Neg.Node.def
 Neg.Node.def =
   
@@ -37,7 +37,7 @@ Neg.header &= TruthValuedConnective.header?
 ## Negation formulas contain a single role.
 Neg.main |= strong-edge.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the strong tag name in strong negations. 
+## an extension point for stripe skipping as well as specializations of the strong tag name in strong negations. 
 strong-edge.choice |= strong.edge.def
 strong.edge.def =
   

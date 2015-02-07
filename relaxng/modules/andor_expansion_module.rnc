@@ -28,7 +28,7 @@ edge.choice |= andor.edge.defs
 # re ... .attlist : interleave pattern for optional attributes of Node elements, must be defined using interleave combine (&=)
 # .header : modifying elements that precede the main content of Node elements, defined using interleave combine
 # .main : the main content of a Node element, defined using choice combine
-# -node.choice : an extension point for alternate spellings and internationalization of the conjunction tag name
+# -node.choice : an extension point for specializations of the conjunction tag name
 # -fo.choice : a pattern that is notAllowed for all languages except those with full first-order expressive power
 # -edge.choice : a pattern that matches an edge (role) element, and may match the content of that element (stripe-skipping) 
 # .content : content of an edge element
@@ -53,7 +53,7 @@ And.Node.def =
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
 reAnd.attlist &= mapClosure-att-fo.choice?
 
-## an extension point for alternate spellings and internationalization of the conjunction tag name in queries.  
+## an extension point for specializations of the conjunction tag name in queries.  
 And-Query-node.choice |= And-Query.Node.def
 
 ## Within Query...
@@ -76,7 +76,7 @@ And.header &= TruthValuedConnective.header?
 ## The main section of the conjunction content model contains zero or more formulas.
 And.main |= formula_And-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in conjunctions.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in conjunctions.  
 formula_And-edge.choice |= formula_And.edge.def
 
 ## The formula role of a conjunctive (<And>) expression, 
@@ -106,7 +106,7 @@ AndFormula.choice |=
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 
-## an extension point for alternate spellings and internationalization of the disjunction tag name.  
+## an extension point for specializations of the disjunction tag name.  
 Or-node.choice |= Or.Node.def
 
 ## A polyadic disjunctive expression, 
@@ -119,7 +119,7 @@ Or.Node.def =
 ## The attribute list of the disjunction element will accept a scoped closure attribute at full first-order logic.
 reOr.attlist &= mapClosure-att-fo.choice?
 
-## an extension point for alternate spellings and internationalization of the disjunction tag name in queries.  
+## an extension point for specializations of the disjunction tag name in queries.  
 Or-Query-node.choice |= Or-Query.Node.def
 
 ## Within Query...
@@ -140,7 +140,7 @@ Or.header &= TruthValuedConnective.header?
 ## The main section of the disjunction content model contains zero or more formulas.
 Or.main |= formula_Or-edge.choice*
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in disjunctions.  
+## an extension point for stripe skipping as well as specializations of the formula tag name in disjunctions.  
 formula_Or-edge.choice |= formula_Or.edge.def
 
 ## The formula role of a disjunctive (<Or>) expression, 

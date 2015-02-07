@@ -55,7 +55,7 @@ Implies.header &= TruthValuedConnective.header?
 # For the declaration of the main content of implications, see the serialization modules (orderstrict_module or orderlax_module)
 
 ## 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the if tag name in implications.  
+## an extension point for stripe skipping as well as specializations of the if tag name in implications.  
 body_Implies.name.choice |= body_Implies.edge.def
 
 ## The if of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" part of the rule. 
@@ -88,7 +88,7 @@ PremiseFormula.choice |=
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in implications.  
+## an extension point for stripe skipping as well as specializations of the then tag name in implications.  
 head_Implies.name.choice |= head_Implies.edge.def
 
 ## The then of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 

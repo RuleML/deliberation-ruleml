@@ -13,7 +13,7 @@ dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
 
-## an extension point for alternate spellings and internationalization of the cardinality attribute name.  
+## an extension point for specializations of the cardinality attribute name.  
 cardinality-att.choice |= card.attrib.def
 
 ## An attribute optionally specifying a <slot>'s cardinality. See http://ruleml.org/1.02/glossary/#gloss-card

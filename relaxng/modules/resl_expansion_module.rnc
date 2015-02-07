@@ -15,7 +15,7 @@ start |= resl.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <resl>
 
-## an extension point for alternate spellings and internationalization of the slotted rest tag name. 
+## an extension point for specializations of the slotted rest tag name. 
 ## Stripe-skipping is not allowed for slotted rest variables.  
 restOfSlots-edge.choice |= resl.edge.def
 resl.edge.def =

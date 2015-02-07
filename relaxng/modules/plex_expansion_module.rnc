@@ -16,7 +16,7 @@ Node.choice |= Plex_Any.Node.def
 # This module declares the following RuleML elements and attributes:
 #            * <Plex>
 
-## an extension point for alternate spellings and internationalization of the generalized list tag name.  
+## an extension point for specializations of the generalized list tag name.  
 Plex_Any-node.choice |= Plex_Any.Node.def
 Plex_Any.Node.def =
     
@@ -36,7 +36,7 @@ Plex_Any.main |= argumentsForExpressions.sequence
 # The pattern for argument sequences is serialization-dependent, 
 # see the serialization modules (orderlax_module, orderstrict_module, ordermix_module).
 
-## an extension point for alternate spellings and internationalization of the generalized list tag name.  
+## an extension point for specializations of the generalized list tag name.  
 Plex_repo-node.choice |= Plex_repo.Node.def
 Plex_repo.Node.def =
     
@@ -52,7 +52,7 @@ Plex_repo.main |= positionalArgumentsForExpressions.sequence
 # The pattern for positional argument sequences is arity-dependent,
 # see the arity modules (posseq_bin_module, posseq_module).
 
-## an extension point for alternate spellings and internationalization of the generalized list tag name.  
+## an extension point for specializations of the generalized list tag name.  
 Plex_resl-node.choice |= Plex_resl.Node.def
 Plex_resl.Node.def =
     

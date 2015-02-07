@@ -15,7 +15,7 @@ start |= notAllowed
 # This module declares the following RuleML attributes:
 #    * @material
 
-## an extension point for alternate spellings and internationalization of the material implication attribute name.  
+## an extension point for specializations of the material implication attribute name.  
 material-att.choice |= material.attrib.def
 material.attrib.def =
     

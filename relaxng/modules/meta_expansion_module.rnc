@@ -15,7 +15,7 @@ edge.choice |= meta.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <meta>
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the meta-knowledge tag name.  
+## an extension point for stripe skipping as well as specializations of the meta-knowledge tag name.  
 metaKnowledge-edge.choice |= meta.edge.def
 
 ## An optional container for meta-knowledge about a Node.

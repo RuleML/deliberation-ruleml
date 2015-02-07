@@ -20,7 +20,7 @@ edge.choice |= left.edge.def | right.edge.def
 #             leftTerm.choice
 #             rightTerm.choice
 
-## an extension point for alternate spellings and internationalization of the equation tag name.  
+## an extension point for specializations of the equation tag name.  
 Equal-node.choice |= Equal.Node.def
 
 ## An equational formula consisting of two expressions, each of which contains an argument and may be optionally surrounded 
@@ -44,7 +44,7 @@ Equal.header &= TruthValuedConnective.header?
 ## Equations contain a pair of terms, a left-hand side and a right-hand side.
 Equal.main |= leftSide-edge.choice, rightSide-edge.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the left-hand side tag name in equations.  
+## an extension point for stripe skipping as well as specializations of the left-hand side tag name in equations.  
 leftSide-edge.choice |= left.edge.def
 left.edge.def =
   
@@ -55,7 +55,7 @@ left.edge.def =
 ## The left-hand side role in an equation is filled by a term.
 left.content |= leftTerm.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the right-hand side tag name in equations.  
+## an extension point for stripe skipping as well as specializations of the right-hand side tag name in equations.  
 rightSide-edge.choice |= right.edge.def
 right.edge.def =
   

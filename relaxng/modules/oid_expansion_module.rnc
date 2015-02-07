@@ -16,7 +16,7 @@ edge.choice |= oid.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <oid>
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the object identifier tag name.  
+## an extension point for stripe skipping as well as specializations of the object identifier tag name.  
 objectIdentifier-edge.choice |= oid.edge.def
 
 ## An optional object identifier for an atomic formula, expression or the unifed terms

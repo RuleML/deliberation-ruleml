@@ -24,7 +24,7 @@ edge.choice |= arg.edge.def
 #            CompoundTerm.choice
 #            DataTerm.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the positional argument tag name. 
+## an extension point for stripe skipping as well as specializations of the positional argument tag name. 
 positionalArgument-edge.choice |= arg.edge.def
 
 ## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog sublanguages).
@@ -87,7 +87,7 @@ CompoundTerm.choice |= Expression-node.choice
 CompoundTerm.choice |= Plex_Any-node.choice
 # For the declaration of generalized list terms, see the generalized list module (plex_module).
 
-## an extension point for alternate spellings and internationalization of the individual tag name. 
+## an extension point for specializations of the individual tag name. 
 Individual-node.choice |= Ind.Node.def
 
 ## An individual constant, as in Predicate logic, which can also be considered to be a fixed argument like RDF resources.

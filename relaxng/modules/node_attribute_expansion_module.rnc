@@ -16,7 +16,7 @@ start |= notAllowed
 #            * @node
 
 commonNode.attlist &= node-att.choice?
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 node-att.choice |= node.attrib.def
 node.attrib.def =
     

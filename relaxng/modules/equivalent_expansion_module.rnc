@@ -17,7 +17,7 @@ edge.choice |= torso.edge.def
 #           * <Equivalent>
 #           * <torso>
 
-## an extension point for alternate spellings and internationalization of the equivalence tag name.  
+## an extension point for specializations of the equivalence tag name.  
 Equivalent-node.choice |= Equivalent.Node.def
 
 ## An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
@@ -48,7 +48,7 @@ Equivalent.header &= TruthValuedConnective.header?
 ## the main content model of equivalances consists of two "torso" formulas
 Equivalent.main |= torso-edge.choice, torso-edge.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the torso tag name in equivalences.  
+## an extension point for stripe skipping as well as specializations of the torso tag name in equivalences.  
 torso-edge.choice |= torso.edge.def
 
 ##  A symmetric role used in an equivalence expression (<Equivalent>) combining the asymmetric <then> and <if>.

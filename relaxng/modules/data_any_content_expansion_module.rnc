@@ -18,7 +18,7 @@ Node.choice |= Data_any.Node.def
 # This module declares the following RuleML elements, attributes and patterns:
 #            * <Data>
 
-## an extension point for alternate spellings and internationalization of the data tag name.  
+## an extension point for specializations of the data tag name.  
 Data_any-node.choice |= Data_any.Node.def
 
 ## A fixed argument like RDF literals.
