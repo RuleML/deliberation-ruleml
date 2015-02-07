@@ -1,0 +1,179 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+namespace xs = "http://www.w3.org/2001/XMLSchema"
+namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+dc:title [ "RuleML Explicit Datatype Emulation with Annotation" ]
+dc:version [ "1.0.2" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, explicit datatype, annotation" ]
+dc:description [
+  "The expansion module for explicit datatyping for the complete-form serialization."
+]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+
+# Derived Datatypes
+duration.datatype.node.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "duration" },
+  xsd:duration
+dateTime.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "dateTime" },
+  xsd:dateTime
+time.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "time" },
+  xsd:time
+date.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "date" },
+  xsd:date
+gYearMonth.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "gYearMonth" },
+  xsd:gYearMonth
+gYear.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "gYear" },
+  xsd:gYear
+gMonthDay.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "gMonthDay" },
+  xsd:gMonthDay
+gDay.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "gDay" },
+  xsd:gDay
+gMonth.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "gMonth" },
+  xsd:gMonth
+boolean.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "boolean" },
+  xsd:boolean
+base64Binary.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "base64Binary" },
+  xsd:base64Binary
+hexBinary.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "hexBinary" },
+  xsd:hexBinary
+float.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "float" },
+  xsd:float
+decimal.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "decimal" },
+  xsd:decimal
+double.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "double" },
+  xsd:double
+anyURI.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "anyURI" },
+  xsd:anyURI
+QName.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "QName" },
+  xsd:QName
+NOTATION.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "NOTATION" },
+  xsd:NOTATION
+String.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "string" },
+  xsd:string
+# Derived Types
+normalizedString.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "normalizedString" },
+  xsd:normalizedString
+Token.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "token" },
+  xsd:token
+language.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "language" },
+  xsd:language
+Name.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "Name" },
+  xsd:Name
+NCName.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "NCName" },
+  xsd:NCName
+NMTOKEN.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "NMTOKEN" },
+  xsd:NMTOKEN
+NMTOKENS.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "NMTOKENS" },
+  xsd:NMTOKENS
+ENTITY.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "ENTITY" },
+  xsd:ENTITY
+ENTITIES.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "ENTITIES" },
+  xsd:ENTITIES
+integer.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "integer" },
+  xsd:integer
+nonPositiveInteger.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "nonPositiveInteger" },
+  xsd:nonPositiveInteger
+negativeInteger.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "negativeInteger" },
+  xsd:negativeInteger
+long.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "long" },
+  xsd:long
+int.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "int" },
+  xsd:int
+short.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "short" },
+  xsd:short
+byte.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "byte" },
+  xsd:byte
+nonNegativeInteger.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "nonNegativeInteger" },
+  xsd:nonNegativeInteger
+unsignedLong.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "unsignedLong" },
+  xsd:unsignedLong
+unsignedInt.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "unsignedInt" },
+  xsd:unsignedInt
+unsignedByte.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "unsignedByte" },
+  xsd:unsignedByte
+positiveInteger.datatype.choice |=
+  commonNode.attlist,
+  attribute xsi:type { xsd:QName "positiveInteger" },
+  xsd:positiveInteger

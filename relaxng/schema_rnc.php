@@ -489,6 +489,9 @@ if ($bdefault==0){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'explicit_datatyping_expansion_module.rnc"'."$end\n";
+          //FIXME make inclusion of this module conditional on having attributes on Data
+      echo "#\n".'include "' . $modulesLocation .
+          'explicit_datatyping_annotation_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .
           'dataterm_simple_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .
