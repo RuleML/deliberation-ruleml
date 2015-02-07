@@ -306,7 +306,7 @@
     <Equal oriented="yes">
       <Expr>
         <Fun per="value">fac</Fun>
-        <Var type="http://www.w3.org/2001/XMLSchema#integer">0</Var>
+        <Data xsi:type="xs:integer">0</Data>
       </Expr>
       <Data xsi:type="xs:integer">1</Data>
     </Equal>
