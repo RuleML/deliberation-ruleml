@@ -8,7 +8,6 @@
 # Jing
 # Trang
 # FIXME use configuration script to set path variables
-# FIXME use named pipe instead of temporary file
 APP_HOME=/Users/taraathan/Library/
 LIB=${APP_HOME}Java/Extensions/
 CP1=${LIB}jing-20091111/jing.jar
