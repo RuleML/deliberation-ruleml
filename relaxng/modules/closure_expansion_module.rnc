@@ -27,3 +27,7 @@ closure.attrib.def =
 closure.value |=  "universal" | "existential"
 closure.value |= PrefixedCURIE.datatype
 closure.value |= AbsIRI.datatype
+#
+# a dummy element to assist in XSD conversion
+#
+DummyClosureElement.def = element closure { closure.value }

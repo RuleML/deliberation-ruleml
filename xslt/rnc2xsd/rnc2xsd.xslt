@@ -61,9 +61,10 @@
     <xs:attribute name="id" type="xs:ID"/>
   </xsl:template>
 
-  <!-- Remove importations of schemas in the ruleml namespace -->
-  <!--<xsl:template match="xs:import[@namespace='http://ruleml.org/spec']"/>-->
-
+  <!-- Remove dummy elements -->
+  <xsl:template match="xs:element[@name='Closure']"></xsl:template>
+  <xsl:template match="xs:element[@name='Type']"></xsl:template>
+  
   <!-- Remove existing includes -->
   <xsl:template match="xs:include"/>
     

@@ -27,3 +27,7 @@ type.attrib.def =
     attribute type { type.value }
 type.value |= PrefixedCURIE.datatype
 type.value |= AbsIRI.datatype
+#
+# a dummy element to assist in XSD conversion
+#
+DummyTypeElement.def = element type { type.value }
