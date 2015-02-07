@@ -18,6 +18,9 @@
   <xs:group name="_1">-->
   <xsl:template match="xs:group[@name='_1']"> </xsl:template>
   <xsl:template match="xs:group[@name='_2']"> </xsl:template>
+  
+  <!-- Remove dummy elements -->
+  <xsl:template match="xs:element[@name='Common']"></xsl:template>
    
   <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()">

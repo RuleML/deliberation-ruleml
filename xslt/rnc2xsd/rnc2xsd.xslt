@@ -63,6 +63,7 @@
 
   <!-- Remove dummy elements -->
   <xsl:template match="xs:element[@name='Closure']"></xsl:template>
+  <xsl:template match="xs:element[@name='Common']"></xsl:template>
   <xsl:template match="xs:element[@name='Type']"></xsl:template>
   
   <!-- Remove existing includes -->

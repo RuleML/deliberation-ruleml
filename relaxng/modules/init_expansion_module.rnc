@@ -333,3 +333,8 @@ index-attrib.choice |= notAllowed
 termsForAtoms.nonemptysequence.choice |= notAllowed
 termsForExpressions.nonemptysequence.choice |= notAllowed
 
+#
+# a dummy element to assist in XSD conversion
+#
+DummyCommonElement.def = element Common { commonInit.attlist }
+

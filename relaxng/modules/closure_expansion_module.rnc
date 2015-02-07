@@ -30,4 +30,4 @@ closure.value |= AbsIRI.datatype
 #
 # a dummy element to assist in XSD conversion
 #
-DummyClosureElement.def = element closure { closure.value }
+DummyClosureElement.def = element Closure { closure-att.choice }
