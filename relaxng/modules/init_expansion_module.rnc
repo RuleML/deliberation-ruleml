@@ -291,6 +291,7 @@ AssertRetractFormula.choice |= notAllowed
 # role re-naming and stripe-skipping choice patterns
 operatorForAtoms-edge.choice |= notAllowed
 objectIdentifier-edge.choice |= notAllowed
+exprObjectIdentifier-edge.choice |= notAllowed
 metaKnowledge-edge.choice |= notAllowed
 operatorForExpressions-edge.choice |= notAllowed
 degree-edge.choice |= notAllowed

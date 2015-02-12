@@ -63,5 +63,5 @@ Entails.main |=
 ## object identifier and degree
 TruthValuedConnective.header &= (Node.header?, degree-edge.choice?)?
 Atom.header &= (Node.header?, objectIdentifier-edge.choice?, degree-edge.choice?)?
-Expr.header &= (Node.header?, objectIdentifier-edge.choice?)?
+Expr.header &= (Node.header?, exprObjectIdentifier-edge.choice?)?
 
