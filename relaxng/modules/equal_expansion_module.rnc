@@ -36,7 +36,7 @@ Equal.Node.def =
     Equal.header,
     Equal.main
   }
-
+reEqual.attlist &= closure-att-fo.choice?
 ## Equations accept the header of truth-valued connectives
 Equal.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).

@@ -36,6 +36,7 @@ Forall.Node.def =
     element Forall { (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main }
 ## The attribute list of the universal quantification formula 
 ##will accept a scoped closure attribute at full first-order logic.
+reForall.attlist &= closure-att-fo.choice?
 reForall.attlist &= mapClosure-att-fo.choice?
 
 ## Universally qualified formulas aaccept the header patter common to truth-valued connectives.
@@ -56,6 +57,7 @@ Exists.Node.def =
     element Exists { (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main }
 ## The attribute list of the existential quantification formula 
 ## will accept a scoped closure attribute at full first-order logic.
+reExists.attlist &= closure-att-fo.choice?
 reExists.attlist &= mapClosure-att-fo.choice?
 
 ## Existential quantifications accept the header patter common to truth-valued connectives.

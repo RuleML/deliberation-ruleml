@@ -27,6 +27,7 @@ Naf.Node.def =
   #        See http://ruleml.org/1.02/glossary/#gloss-Naf
   element Naf { (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main }
 # The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
+reNaf.attlist &= closure-att-fo.choice?
 reNaf.attlist &= mapClosure-att-fo.choice?
 
 ## Negation As Failure formulas accept the header patter common to truth-valued connectives.

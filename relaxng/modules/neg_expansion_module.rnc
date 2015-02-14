@@ -28,6 +28,7 @@ Neg.Node.def =
   ##        See http://ruleml.org/1.02/glossary/#gloss-Neg
   element Neg { (Neg-datt.choice & reNeg.attlist), Neg.header, Neg.main }
 # The attribute list of the strong negation element will accept a scoped closure attribute at full first-order logic.
+reNeg.attlist &= closure-att-fo.choice?
 reNeg.attlist &= mapClosure-att-fo.choice?
 
 ## Negation formulas accept the header patter common to truth-valued connectives.

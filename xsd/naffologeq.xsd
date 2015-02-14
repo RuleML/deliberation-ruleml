@@ -42,8 +42,8 @@
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -168,8 +168,8 @@
           <xs:group ref="spec:formula"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -294,8 +294,8 @@
           <xs:group ref="spec:formula_2"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And"/>
-          <xs:group ref="spec:Or"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Naf"/>
           <xs:element ref="spec:Implies"/>
@@ -564,320 +564,312 @@
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:group name="And">
-    <xs:sequence>
-      <xs:element name="And">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-            <xs:element minOccurs="0" ref="spec:degree"/>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:group ref="spec:formula_3"/>
-              <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
-              <xs:element ref="spec:Implies"/>
-              <xs:element ref="spec:Equivalent"/>
-              <xs:element ref="spec:Forall"/>
-              <xs:element ref="spec:Exists"/>
-            </xs:choice>
-          </xs:sequence>
-          <xs:attribute name="mapMaterial">
+  <xs:element name="And">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="spec:formula_3"/>
+          <xs:element ref="spec:Atom"/>
+          <xs:element ref="spec:Equal"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Naf"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:union>
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="yes"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="no"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="bidirectional"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="forward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="backward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="closure">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="node">
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:union>
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Or">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-            <xs:element minOccurs="0" ref="spec:degree"/>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:group ref="spec:formula_4"/>
-              <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
-              <xs:element ref="spec:Implies"/>
-              <xs:element ref="spec:Equivalent"/>
-              <xs:element ref="spec:Forall"/>
-              <xs:element ref="spec:Exists"/>
-            </xs:choice>
-          </xs:sequence>
-          <xs:attribute name="mapMaterial">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="yes"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="no"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapDirection">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="bidirectional"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="forward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="backward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="closure">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapClosure">
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="node">
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
             <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
             </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Or">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
+        <xs:element minOccurs="0" ref="spec:degree"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="spec:formula_4"/>
+          <xs:element ref="spec:Atom"/>
+          <xs:element ref="spec:Equal"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
+          <xs:element ref="spec:Neg"/>
+          <xs:element ref="spec:Naf"/>
+          <xs:element ref="spec:Implies"/>
+          <xs:element ref="spec:Equivalent"/>
+          <xs:element ref="spec:Forall"/>
+          <xs:element ref="spec:Exists"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="mapMaterial">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="no"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapDirection">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="bidirectional"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="forward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mapClosure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Implies">
     <xs:complexType>
       <xs:sequence>
@@ -892,8 +884,8 @@
             <xs:choice>
               <xs:element ref="spec:Atom"/>
               <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
+              <xs:element ref="spec:And"/>
+              <xs:element ref="spec:Or"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Naf"/>
               <xs:element ref="spec:Implies"/>
@@ -904,8 +896,8 @@
             <xs:choice>
               <xs:element ref="spec:Atom"/>
               <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
+              <xs:element ref="spec:And"/>
+              <xs:element ref="spec:Or"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Implies"/>
               <xs:element ref="spec:Equivalent"/>
@@ -1121,8 +1113,8 @@
           <xs:group ref="spec:formula_5"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -1173,6 +1165,33 @@
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
               </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
@@ -1250,8 +1269,8 @@
           <xs:group ref="spec:formula_6"/>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -1302,6 +1321,33 @@
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
               </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
@@ -1577,8 +1623,8 @@
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -1708,8 +1754,8 @@
               <xs:element ref="spec:Rulebase"/>
               <xs:element ref="spec:Atom"/>
               <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
+              <xs:element ref="spec:And"/>
+              <xs:element ref="spec:Or"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Implies"/>
               <xs:element ref="spec:Equivalent"/>
@@ -1720,8 +1766,8 @@
               <xs:element ref="spec:Rulebase"/>
               <xs:element ref="spec:Atom"/>
               <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
+              <xs:element ref="spec:And"/>
+              <xs:element ref="spec:Or"/>
               <xs:element ref="spec:Neg"/>
               <xs:element ref="spec:Implies"/>
               <xs:element ref="spec:Equivalent"/>
@@ -1760,8 +1806,8 @@
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -1813,6 +1859,33 @@
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
               </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
@@ -1885,8 +1958,8 @@
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -1938,6 +2011,33 @@
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="backward"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
               </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
@@ -2010,8 +2110,8 @@
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -2022,8 +2122,8 @@
         <xs:choice>
           <xs:element ref="spec:Atom"/>
           <xs:element ref="spec:Equal"/>
-          <xs:group ref="spec:And_2"/>
-          <xs:group ref="spec:Or_2"/>
+          <xs:element ref="spec:And"/>
+          <xs:element ref="spec:Or"/>
           <xs:element ref="spec:Neg"/>
           <xs:element ref="spec:Implies"/>
           <xs:element ref="spec:Equivalent"/>
@@ -2203,6 +2303,33 @@
             <xs:simpleType>
               <xs:restriction base="xs:token">
                 <xs:enumeration value="yes"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="closure">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="universal"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="existential"/>
               </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
@@ -2449,8 +2576,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2472,8 +2599,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And"/>
-            <xs:group ref="spec:Or"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
             <xs:element ref="spec:Implies"/>
@@ -2509,8 +2636,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
             <xs:element ref="spec:Implies"/>
@@ -2531,8 +2658,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
             <xs:element ref="spec:Implies"/>
@@ -2553,8 +2680,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2574,8 +2701,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
             <xs:element ref="spec:Implies"/>
@@ -2605,8 +2732,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2626,8 +2753,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2660,8 +2787,8 @@
           <xs:choice>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2682,8 +2809,8 @@
             <xs:element ref="spec:Rulebase"/>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2704,8 +2831,8 @@
             <xs:element ref="spec:Rulebase"/>
             <xs:element ref="spec:Atom"/>
             <xs:element ref="spec:Equal"/>
-            <xs:group ref="spec:And_2"/>
-            <xs:group ref="spec:Or_2"/>
+            <xs:element ref="spec:And"/>
+            <xs:element ref="spec:Or"/>
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Implies"/>
             <xs:element ref="spec:Equivalent"/>
@@ -2732,8 +2859,8 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:group ref="spec:And_2"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
         <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
@@ -2749,8 +2876,8 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:group ref="spec:And_2"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
         <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
@@ -2766,8 +2893,8 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:group ref="spec:And_2"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
         <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
@@ -2785,8 +2912,8 @@
       <xs:choice>
         <xs:element ref="spec:Atom"/>
         <xs:element ref="spec:Equal"/>
-        <xs:group ref="spec:And_2"/>
-        <xs:group ref="spec:Or_2"/>
+        <xs:element ref="spec:And"/>
+        <xs:element ref="spec:Or"/>
         <xs:element ref="spec:Neg"/>
         <xs:element ref="spec:Implies"/>
         <xs:element ref="spec:Equivalent"/>
@@ -2922,266 +3049,6 @@
       <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
-  <xs:group name="And_2">
-    <xs:sequence>
-      <xs:element name="And">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-            <xs:element minOccurs="0" ref="spec:degree"/>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:group ref="spec:formula_3"/>
-              <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
-              <xs:element ref="spec:Implies"/>
-              <xs:element ref="spec:Equivalent"/>
-              <xs:element ref="spec:Forall"/>
-              <xs:element ref="spec:Exists"/>
-            </xs:choice>
-          </xs:sequence>
-          <xs:attribute name="mapMaterial">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="yes"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="no"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapDirection">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="bidirectional"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="forward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="backward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapClosure">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="node">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Or_2">
-    <xs:sequence>
-      <xs:element name="Or">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" ref="spec:meta"/>
-            <xs:element minOccurs="0" ref="spec:degree"/>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:group ref="spec:formula_4"/>
-              <xs:element ref="spec:Atom"/>
-              <xs:element ref="spec:Equal"/>
-              <xs:group ref="spec:And_2"/>
-              <xs:group ref="spec:Or_2"/>
-              <xs:element ref="spec:Neg"/>
-              <xs:element ref="spec:Naf"/>
-              <xs:element ref="spec:Implies"/>
-              <xs:element ref="spec:Equivalent"/>
-              <xs:element ref="spec:Forall"/>
-              <xs:element ref="spec:Exists"/>
-            </xs:choice>
-          </xs:sequence>
-          <xs:attribute name="mapMaterial">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="yes"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="no"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapDirection">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="bidirectional"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="forward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="backward"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="mapClosure">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="universal"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:token">
-                    <xs:enumeration value="existential"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="node">
-            <xs:simpleType>
-              <xs:union>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                    <xs:minLength value="1"/>
-                  </xs:restriction>
-                </xs:simpleType>
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:union>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute ref="xml:base"/>
-          <xs:attribute ref="xml:id"/>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
   
   
   <xs:group name="Plex_2">

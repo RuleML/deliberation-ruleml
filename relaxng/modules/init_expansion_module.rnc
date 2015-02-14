@@ -172,6 +172,7 @@ Or.main |= notAllowed
 # ATTRIBUTES
 cardinality-att.choice |= notAllowed
 closure-att.choice |= notAllowed
+closure-att-fo.choice |= notAllowed
 mapClosure-att.choice |= notAllowed
 mapClosure-att-fo.choice |= notAllowed
 direction-att.choice |= notAllowed

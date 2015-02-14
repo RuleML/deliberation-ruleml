@@ -51,6 +51,7 @@ And.Node.def =
   element And { (And-datt.choice & reAnd.attlist), And.header, And.main }
 
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
+reAnd.attlist &= closure-att-fo.choice?
 reAnd.attlist &= mapClosure-att-fo.choice?
 
 ## an extension point for specializations of the conjunction tag name in queries.  
@@ -116,7 +117,8 @@ Or.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-Or
   element Or { (Or-datt.choice & reOr.attlist), Or.header, Or.main }
 
-## The attribute list of the disjunction element will accept a scoped closure attribute at full first-order logic.
+## The attribute list of the disjunction element will accept a (scoped) closure attribute at full first-order logic.
+reOr.attlist &= closure-att-fo.choice?
 reOr.attlist &= mapClosure-att-fo.choice?
 
 ## an extension point for specializations of the disjunction tag name in queries.  
