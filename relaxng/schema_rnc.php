@@ -360,7 +360,7 @@ if ($bdefault==0){
     if ($enableAndOr){
       echo "#\n# CONJUNCTIONS AND DISJUNCTIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'andor_expansion_module.rnc"'."$end\n";
+          'andor_query_expansion_module.rnc"'."$end\n";
     }
     if ($enableImp){
       echo "#\n# IMPLICATIONS INCLUDED\n";

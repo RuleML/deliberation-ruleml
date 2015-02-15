@@ -36,7 +36,7 @@ edge.choice |= andor.edge.defs
 # .edge.def : definition of dummy elements for workaround to bug in translation to XSD of modules with only attributes
 
 ##
-andor.Node.defs |= And-Query.Node.def | Or-Query.Node.def
+andor.Node.defs |= And.Node.def | Or.Node.def
 andor.edge.defs |= formula_And.edge.def | formula_Or.edge.def
 
 ##
@@ -53,22 +53,6 @@ And.Node.def =
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
 reAnd.attlist &= closure-att-fo.choice?
 reAnd.attlist &= mapClosure-att-fo.choice?
-
-## an extension point for specializations of the conjunction tag name in queries.  
-And-Query-node.choice |= And-Query.Node.def
-
-## Within Query...
-And-Query.Node.def =
-  
-  ##
-  element And {
-    (And-Query-datt.choice & reAnd-Query.attlist), And.header, And.main
-  }
-
-## Within query, conjunctions may have an optional existential closure attribute.
-reAnd-Query.attlist &= closure-att.choice?
-reAnd-Query.attlist &= mapClosure-att-fo.choice?
-# For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## Conjunctions accept the header patter common to truth-valued connectives.
 And.header &= TruthValuedConnective.header?
@@ -120,20 +104,6 @@ Or.Node.def =
 ## The attribute list of the disjunction element will accept a (scoped) closure attribute at full first-order logic.
 reOr.attlist &= closure-att-fo.choice?
 reOr.attlist &= mapClosure-att-fo.choice?
-
-## an extension point for specializations of the disjunction tag name in queries.  
-Or-Query-node.choice |= Or-Query.Node.def
-
-## Within Query...
-Or-Query.Node.def =
-  
-  ##
-  element Or { (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main }
-
-## Within query, disjunctions may have an optional existential closure attribute.
-reOr-Query.attlist &= closure-att.choice?
-reOr-Query.attlist &= mapClosure-att-fo.choice?
-# For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
 ## Disjunctions accept the header patter common to truth-valued connectives.
 Or.header &= TruthValuedConnective.header?
