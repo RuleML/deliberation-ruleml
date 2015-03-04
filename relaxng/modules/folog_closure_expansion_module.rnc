@@ -13,10 +13,6 @@ dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
-# This module extends patterns from Disjunctive Horn Logic to First-Order Logic
-And-fo-node.choice |= And-node.choice
-Or-fo-node.choice |= Or-node.choice
-Negation-fo-node.choice |= Negation-node.choice
-Implication-fo-node.choice |= Implication-node.choice
-Forall-fo-node.choice |= Forall-node.choice
-Exists-fo-node.choice |= Exists-node.choice
+# This module allows closure attributes on all formulas
+mapClosure-att-fo.choice |= mapClosure-att.choice
+closure-att-fo.choice |= closure-att.choice

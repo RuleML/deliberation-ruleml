@@ -396,6 +396,8 @@ if ($bdefault==0){
       }
       echo "#\n".'include "' . $modulesLocation .
           'folog_cl_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'folog_closure_expansion_module.rnc"'."$end\n";
     }
 
   //Step 1C. Include the appropriate module(s) for default values present
