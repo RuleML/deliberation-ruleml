@@ -34,10 +34,6 @@ Expr.Node.def =
     (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
   }
 
-## Expressions optionally accept the attribute pattern of objects with user-defined types.
-reExpr.attlist &= Type.attlist?
-
-
 ## an extension point for stripe skipping as well as specializations of the operator tag name in expressions. 
 operatorForExpressions-edge.choice |= op_Expr.edge.def
 

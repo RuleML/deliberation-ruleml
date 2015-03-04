@@ -378,6 +378,8 @@ if ($bdefault==0){
           'expr_expansion_module.rnc"'."$end\n";
       echo "#\n".'include "' . $modulesLocation .
           'expr_oid_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'expr_type_expansion_module.rnc"'."$end\n";
     }
     if ($NeedOrHead){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
