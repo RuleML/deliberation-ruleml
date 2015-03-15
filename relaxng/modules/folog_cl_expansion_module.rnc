@@ -13,7 +13,7 @@ dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
-# This module extends patterns from Disjunctive Horn Logic to First-Order Logic
+# This module extends the nesting of formulas from Horn Logic to First-Order Logic
 And-fo-node.choice |= And-node.choice
 Or-fo-node.choice |= Or-node.choice
 Negation-fo-node.choice |= Negation-node.choice

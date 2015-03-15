@@ -11,11 +11,9 @@ dc:description [ "The expansion module for quantifications." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://deliberation.ruleml.org/1.02" ]
-start |= quantification.Node.defs | quantification.edge.defs
-Node.choice |= quantification.Node.defs
-edge.choice |= quantification.edge.defs
-quantification.Node.defs |= Forall.Node.def | Exists.Node.def
-quantification.edge.defs |= declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
+start |= Forall.Node.def | Exists.Node.def | declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
+Node.choice |= Forall.Node.def | Exists.Node.def
+edge.choice |= declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <Forall> !
 #            * <Exists> !

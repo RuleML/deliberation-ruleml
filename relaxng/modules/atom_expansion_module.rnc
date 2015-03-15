@@ -9,9 +9,9 @@ dc:description [ "The expansion module for atomic formulas." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= atom.Node.defs | atom.edge.defs
-Node.choice |= atom.Node.defs
-edge.choice |= atom.edge.defs
+start |= Atom.Node.def | Rel.Node.def | Atom.Node.def | Rel.Node.def |op_Atom.edge.def
+Node.choice |= Atom.Node.def | Rel.Node.def
+edge.choice |= op_Atom.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <Atom>
 #            * <Rel>
@@ -19,8 +19,6 @@ edge.choice |= atom.edge.defs
 # This module also declares the following RuleML choice pattern:
 #            * SimpleFormula-node.choice
 # Schema Design Pattern Key: see andor_expansion_module
-atom.Node.defs |= Atom.Node.def | Rel.Node.def
-atom.edge.defs |= op_Atom.edge.def
 
 ## atomic formulas are a kind of simple formula
 SimpleFormula-node.choice |= Atom-node.choice | Equal-node.choice

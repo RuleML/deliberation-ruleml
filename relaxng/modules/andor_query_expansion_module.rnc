@@ -9,13 +9,11 @@ dc:description [ "The expansion module for conjunctions and disjunctions." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= andor.Node.defs | andor.edge.defs
-Node.choice |= andor.Node.defs
-andor.Node.defs |= And-Query-node.choice|Or-Query-node.choice
+start |= And-Query-node.choice|Or-Query-node.choice|formula_And.edge.def | formula_Or.edge.def
+Node.choice |= And-Query-node.choice|Or-Query-node.choice
 include "andor_expansion_module.rnc"{
   start |= notAllowed
   Node.choice |= notAllowed
-  andor.Node.defs |= notAllowed
 }
 ## an extension point for specializations of the conjunction tag name in queries.  
 And-Query-node.choice |= And-Query.Node.def

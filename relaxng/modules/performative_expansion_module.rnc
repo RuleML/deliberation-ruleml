@@ -9,9 +9,9 @@ dc:description [ "The expansion module for performative components." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= performative.Node.defs | performative.edge.defs
-Node.choice |= performative.Node.defs
-edge.choice |= performative.edge.defs
+start |= RuleML.def | Assert.Node.def | Retract.Node.def | Query.Node.def | formula_AssertRetract.edge.def | formula_Query.edge.def
+Node.choice |= RuleML.def | Assert.Node.def | Retract.Node.def | Query.Node.def
+edge.choice |= formula_AssertRetract.edge.def | formula_Query.edge.def
 # This module declares the following RuleML elements and attribute:
 #            * <RuleML> !
 #            * <Assert> !
@@ -21,10 +21,6 @@ edge.choice |= performative.edge.defs
 #            * <formula>
 
 ##
-performative.Node.defs |=
-  RuleML.def | Assert.Node.def | Retract.Node.def | Query.Node.def
-performative.edge.defs |=
-  formula_AssertRetract.edge.def | formula_Query.edge.def
 RuleML.def =
   
   ## The polyadic top_level of a RuleML document.

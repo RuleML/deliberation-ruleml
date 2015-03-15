@@ -9,9 +9,9 @@ dc:description [ "The expansion module for conjunctions and disjunctions." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
-start |= andor.Node.defs | andor.edge.defs
-Node.choice |= andor.Node.defs
-edge.choice |= andor.edge.defs
+start |= And.Node.def | Or.Node.def | formula_And.edge.def | formula_Or.edge.def
+Node.choice |= And.Node.def | Or.Node.def
+edge.choice |= formula_And.edge.def | formula_Or.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <And>
 #            * <Or>
@@ -34,10 +34,6 @@ edge.choice |= andor.edge.defs
 # .content : content of an edge element
 # Formula.choice : a choice pattern of zero to many patterns matching formulas 
 # .edge.def : definition of dummy elements for workaround to bug in translation to XSD of modules with only attributes
-
-##
-andor.Node.defs |= And.Node.def | Or.Node.def
-andor.edge.defs |= formula_And.edge.def | formula_Or.edge.def
 
 ##
 And-node.choice |= And.Node.def
