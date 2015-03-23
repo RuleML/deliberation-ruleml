@@ -24,4 +24,5 @@ Reify.Node.def =
   ## <Reify><Ind>John Doe</Ind></Reify>
   ## See http://ruleml.org/1.02/glossary/#gloss-Reify
   element Reify { Reify.attlist? & Reify.content }
+Reify.attlist &= commonNode.attlist?
 Reify.content |= (Node.choice | edge.choice)*

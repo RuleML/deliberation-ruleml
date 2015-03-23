@@ -26,6 +26,8 @@ Reify-any.Node.def =
     ## <Reify><Ind>John Doe</Ind></Reify>
     ## See http://ruleml.org/1.02/glossary/#gloss-Reify
     element Reify { Reify-any.attlist? & Reify-any.content }
+Reify-any.attlist &= commonNode.attlist?
+
 # This version of Reify is needed for conversion to XSD.
 Reify-any.content |= AnyThis.def?
 AnyThis.def =
