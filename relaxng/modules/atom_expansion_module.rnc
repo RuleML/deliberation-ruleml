@@ -45,6 +45,7 @@ op_Atom.edge.def =
   ## <op>: edge (role) element for the predicate of an atomic formula. See
   ## http://ruleml.org/1.02/glossary/#gloss-op
   element op { op_Atom.attlist? & op_Atom.content }
+op_Atom.attlist &= commonInit.attlist?
 
 ## The operator role in the context of an atomic formula is filled by a predicate.
 op_Atom.content |= Relation-node.choice
@@ -64,3 +65,5 @@ reRel.attlist &= Resource.attlist?
 
 ## The content model for relations is the XSD datatype token.
 Rel.content |= xsd:token
+reAtom.attlist &= commonNode.attlist?
+reRel.attlist &= commonNode.attlist?

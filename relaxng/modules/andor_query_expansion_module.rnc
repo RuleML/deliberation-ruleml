@@ -27,6 +27,7 @@ And-Query.Node.def =
   }
 
 ## Within query, conjunctions may have an optional existential closure attribute.
+reAnd-Query.attlist &= commonNode.attlist?
 reAnd-Query.attlist &= closure-att.choice?
 reAnd-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
@@ -42,6 +43,7 @@ Or-Query.Node.def =
   element Or { (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main }
 
 ## Within query, disjunctions may have an optional existential closure attribute.
+reOr-Query.attlist &= commonNode.attlist?
 reOr-Query.attlist &= closure-att.choice?
 reOr-Query.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)

@@ -16,3 +16,4 @@ start |= notAllowed
 ##
 restOfSlots-edge.choice |= restOfSlots.edge.def
 restOfSlots.edge.def = element restOfSlots { resl.attlist? & resl.content }
+resl.attlist &= empty

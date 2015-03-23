@@ -65,3 +65,5 @@ RulebaseFormula.choice |=
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
+formula_Rulebase.attlist &= commonInit.attlist?
+reRulebase.attlist &= commonNode.attlist?

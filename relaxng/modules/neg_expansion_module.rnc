@@ -28,6 +28,7 @@ Neg.Node.def =
   ##        See http://ruleml.org/1.02/glossary/#gloss-Neg
   element Neg { (Neg-datt.choice & reNeg.attlist), Neg.header, Neg.main }
 # The attribute list of the strong negation element will accept a scoped closure attribute at full first-order logic.
+reNeg.attlist &= commonNode.attlist?
 reNeg.attlist &= closure-att-fo.choice?
 reNeg.attlist &= mapClosure-att-fo.choice?
 
@@ -45,6 +46,7 @@ strong.edge.def =
   ## A role used for logical negation (<Neg>).
   ##        See http://ruleml.org/1.02/glossary/#gloss-strong
   element strong { strong.attlist? & strong.content }
+strong.attlist &= commonInit.attlist?
 
 ## The negation role contains a single formula. 
 strong.content |= NegFormula.choice

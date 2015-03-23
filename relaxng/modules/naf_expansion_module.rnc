@@ -27,6 +27,7 @@ Naf.Node.def =
   #        See http://ruleml.org/1.02/glossary/#gloss-Naf
   element Naf { (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main }
 # The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
+reNaf.attlist &= commonNode.attlist?
 reNaf.attlist &= closure-att-fo.choice?
 reNaf.attlist &= mapClosure-att-fo.choice?
 
@@ -43,6 +44,7 @@ weak.edge.def =
   # A role used for negation as failure (<Naf>).
   #        See http://ruleml.org/1.02/glossary/#gloss-weak
   element weak { weak.attlist? & weak.content }
+weak.attlist &= commonInit.attlist?
 
 ## The negation role contains a single formula. 
 weak.content |= NafFormula.choice

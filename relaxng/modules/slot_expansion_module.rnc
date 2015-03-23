@@ -47,6 +47,4 @@ slotFillerTerm.choice |= AnyTerm.choice
 # For the declaration of term patterns, see the term module (individual_expansion_module).
 edge.choice |= slot.edge.def
 # 
-
-
-
+reslot.attlist &= commonInit.attlist?

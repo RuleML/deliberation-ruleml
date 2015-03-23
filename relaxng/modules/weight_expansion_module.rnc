@@ -30,3 +30,4 @@ weight.attrib.def =
     ## When representing a weight or probability, the content of the Data element is constrained to values between 0 and 1, inclusive. 
 
 weight.datatype |= xsd:decimal { minInclusive = "0.0" maxInclusive = "1.0" }
+weight.attlist &= commonInit.attlist?

@@ -29,5 +29,4 @@ reSkolem.attlist &= Type.attlist?
 
 ## The content model for skolems is the XSD datatype token.
 Skolem.content |= xsd:token
-
-
+reSkolem.attlist &= commonNode.attlist?

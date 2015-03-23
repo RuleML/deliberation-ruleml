@@ -149,3 +149,9 @@ formula_Query.edge.def =
 ## The content model of a forumula within queries is a single formula.
 formula_Query.content |= QueryFormula.choice
 
+reRuleML.attlist &= commonNode.attlist?
+react.attlist &= commonInit.attlist?
+reAssertRetract.attlist &= commonNode.attlist?
+reQuery.attlist &= commonNode.attlist?
+formula_AssertRetract.attlist &= commonInit.attlist?
+formula_Query.attlist &= commonInit.attlist?

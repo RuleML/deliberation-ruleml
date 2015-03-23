@@ -39,6 +39,7 @@ arg.edge.def =
     arg.content
   }
 arg-datt.choice |= index-attrib.choice
+rearg.attlist &= commonInit.attlist?
 
 ##
 index-attrib.choice |= index.attrib.def
@@ -109,3 +110,4 @@ Ind.content |= xsd:token
 termsForAtoms.sequence |= termsForAtoms.nonemptysequence.choice?
 termsForExpressions.sequence |= termsForExpressions.nonemptysequence.choice?
 
+reInd.attlist &= commonNode.attlist?

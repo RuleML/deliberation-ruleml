@@ -16,3 +16,4 @@ start |= notAllowed
 ##
 restOfPositionalArguments-edge.choice |= restOfPositionalArguments.edge.def
 restOfPositionalArguments.edge.def = element restOfPositionalArguments { repo.attlist? & repo.content }
+repo.attlist &= empty

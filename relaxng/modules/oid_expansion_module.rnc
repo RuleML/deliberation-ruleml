@@ -27,6 +27,7 @@ oid.edge.def =
   ## <oid>: a label for Node elements. See 
   ## http://ruleml.org/1.02/glossary/#gloss-oid
   element oid { oid.attlist? & oid.content }
+oid.attlist &= commonInit.attlist?
 
 ## The object descriptor content model consists of any single term.
 ## Note: this corrects an error in the oid content model of RuleML 1.0,

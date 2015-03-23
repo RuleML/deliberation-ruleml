@@ -26,6 +26,7 @@ Plex_Any.Node.def =
     ##        See http://ruleml.org/1.02/glossary/#gloss-Plex
     ## within Atom
     element Plex { (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_Any.main }
+rePlex.attlist &= commonNode.attlist?
 
 ## Generalized lists accept the header pattern common to Nodes.
 Plex.header &= Node.header?

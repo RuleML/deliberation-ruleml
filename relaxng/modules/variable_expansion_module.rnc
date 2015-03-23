@@ -32,3 +32,4 @@ reVar.attlist &= Type.attlist?
 
 ## The content model for variables is the XSD datatype token.
 Var.content |= xsd:token
+reVar.attlist &= commonNode.attlist?

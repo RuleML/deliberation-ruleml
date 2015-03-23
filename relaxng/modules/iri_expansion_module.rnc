@@ -28,5 +28,5 @@ iri.attrib.def =
 iri.value |= PrefixedCURIE.datatype
 iri.value |= AbsIRI.datatype
 #
-iri.edge.def = element iri { iri.attlist? & iri.content }
+iri.edge.def = element iri { iri.content }
 iri.content |= iri.value

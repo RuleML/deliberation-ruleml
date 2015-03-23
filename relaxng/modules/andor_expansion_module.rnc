@@ -47,6 +47,7 @@ And.Node.def =
   element And { (And-datt.choice & reAnd.attlist), And.header, And.main }
 
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
+reAnd.attlist &= commonNode.attlist?
 reAnd.attlist &= closure-att-fo.choice?
 reAnd.attlist &= mapClosure-att-fo.choice?
 
@@ -67,6 +68,7 @@ formula_And.edge.def =
   ## <formula>: contains a single formula. See  
   ## http://ruleml.org/1.02/glossary/#gloss-formula
   element formula { formula_And.attlist? & formula_And.content }
+formula_And.attlist &= commonInit.attlist?
 
 ## Formulas within conjunctions consist of a single formula
 formula_And.content |= AndFormula.choice
@@ -98,6 +100,7 @@ Or.Node.def =
   element Or { (Or-datt.choice & reOr.attlist), Or.header, Or.main }
 
 ## The attribute list of the disjunction element will accept a (scoped) closure attribute at full first-order logic.
+reOr.attlist &= commonNode.attlist?
 reOr.attlist &= closure-att-fo.choice?
 reOr.attlist &= mapClosure-att-fo.choice?
 
@@ -116,6 +119,7 @@ formula_Or.edge.def =
   
   ##
   element formula { formula_Or.attlist? & formula_Or.content }
+formula_Or.attlist &= commonInit.attlist?
 
 ## Formulas within disjunctions consist of a single formula
 formula_Or.content |= OrFormula.choice

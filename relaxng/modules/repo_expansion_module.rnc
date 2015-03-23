@@ -39,3 +39,4 @@ repoTerm.choice |= Plex_repo-node.choice
 ## Sequence markers are represented as ordinary variables.
 SequenceMarker.choice |= Variable-node.choice
 # For the declaration of variables, see the quantification module (quantifier-module).
+repo.attlist &= commonInit.attlist?

@@ -27,6 +27,7 @@ Entails.Node.def =
     ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
     ## See http://ruleml.org/1.02/glossary/#gloss-Entails 
     element Entails { (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main }
+reEntails.attlist &= commonNode.attlist?
 
 ## Logical entailments accept the header pattern common to Nodes.
 Entails.header &= Node.header?
@@ -47,6 +48,7 @@ body_Entails.edge.def =
     ## See http://ruleml.org/1.02/glossary/#gloss-if
     ##  Within Entails...
     element if { body_Entails.attlist? & body_Entails.content }
+body_Entails.attlist &= commonInit.attlist?
 
 ## The if of an entailment contains a single rulebase.
 body_Entails.content |= Rulebase-node.choice
@@ -62,6 +64,7 @@ head_Entails.edge.def =
     ## See http://ruleml.org/1.02/glossary/#gloss-then
     ##  within Entails
     element then { head_Entails.attlist? & head_Entails.content }
+head_Entails.attlist &= commonInit.attlist?
 
 ## The then of an entailment contains a single rulebase.
 head_Entails.content |= Rulebase-node.choice

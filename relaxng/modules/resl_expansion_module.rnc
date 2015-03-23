@@ -40,6 +40,4 @@ SlotSequenceMarker.choice |= Variable-node.choice
 # For the declaration of variables, see the quantification module (quantifier-module).
 #
 edge.choice |= resl.edge.def
-
-
-
+resl.attlist &= commonInit.attlist?

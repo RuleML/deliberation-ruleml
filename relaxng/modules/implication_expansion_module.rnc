@@ -39,6 +39,7 @@ Implies.Node.def =
 
 ## Implications may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
+reImplies.attlist &= commonNode.attlist?
 reImplies.attlist &= closure-att.choice?
 reImplies.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
@@ -67,6 +68,7 @@ body_Implies.edge.def =
   ## http://ruleml.org/1.02/glossary/#gloss-if
   ## FIXME: replace body_ with if_ and head_ with then_
   element if { body_Implies.attlist? & body_Implies.content }
+body_Implies.attlist &= commonInit.attlist?
 
 ## The premise of an implication consists of a single formula
 body_Implies.content |= PremiseFormula.choice
@@ -99,6 +101,7 @@ head_Implies.edge.def =
   ## <then>: contains the conclusion of the implication. See 
   ## http://ruleml.org/1.02/glossary/#gloss-then
   element then { head_Implies.attlist? & head_Implies.content }
+head_Implies.attlist &= commonInit.attlist?
 
 ## The conclusion of an implication consists of a single formula.
 head_Implies.content |= ConclusionFormula.choice

@@ -136,3 +136,8 @@ ExistsFormula.choice |=
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+reForall.attlist &= commonNode.attlist?
+reExists.attlist &= commonNode.attlist?
+declare.attlist &= commonInit.attlist?
+formula_Forall.attlist &= commonInit.attlist?
+formula_Exists.attlist &= commonInit.attlist?

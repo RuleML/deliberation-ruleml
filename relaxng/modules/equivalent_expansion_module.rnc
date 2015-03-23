@@ -57,6 +57,7 @@ torso.edge.def =
   ## <torso>: contains one formula within an equivalence. See 
   ## http://ruleml.org/1.02/glossary/#gloss-torso 
   element torso { torso.attlist? & torso.content }
+torso.attlist &= commonInit.attlist?
 
 ## An equivalance is syntactic sugar for two implications.
 ## In all RuleML languages, formulas allowed as premises are the same or more general than those allowed as conclusions,
@@ -64,3 +65,4 @@ torso.edge.def =
 ## Therefore, formulas allowed in equivalences are the same as those allowed in conclusions.
 torso.content |= ConclusionFormula.choice
 # For the declaration of the conclusion pattern, see the implication module (implication_expansion_module).
+reEquivalent.attlist &= commonNode.attlist?

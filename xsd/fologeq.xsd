@@ -640,6 +640,25 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
       <xs:attribute name="closure">
         <xs:simpleType>
           <xs:union>
@@ -694,25 +713,6 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="node">
-        <xs:simpleType>
-          <xs:union>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                <xs:minLength value="1"/>
-              </xs:restriction>
-            </xs:simpleType>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:union>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Or">
@@ -792,6 +792,25 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
       <xs:attribute name="closure">
         <xs:simpleType>
           <xs:union>
@@ -846,25 +865,6 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="node">
-        <xs:simpleType>
-          <xs:union>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                <xs:minLength value="1"/>
-              </xs:restriction>
-            </xs:simpleType>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:union>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Implies">
@@ -1021,6 +1021,25 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
       <xs:attribute name="closure">
         <xs:simpleType>
           <xs:union>
@@ -1075,25 +1094,6 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="node">
-        <xs:simpleType>
-          <xs:union>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                <xs:minLength value="1"/>
-              </xs:restriction>
-            </xs:simpleType>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:union>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Forall">
@@ -1471,23 +1471,6 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="type">
-        <xs:simpleType>
-          <xs:union>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                <xs:minLength value="1"/>
-              </xs:restriction>
-            </xs:simpleType>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:union>
-        </xs:simpleType>
-      </xs:attribute>
       <xs:attribute name="node">
         <xs:simpleType>
           <xs:union>
@@ -1507,6 +1490,23 @@
       </xs:attribute>
       <xs:attribute ref="xml:base"/>
       <xs:attribute ref="xml:id"/>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="Fun">
@@ -1871,6 +1871,25 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
+      <xs:attribute name="node">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+                <xs:minLength value="1"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:id"/>
       <xs:attribute name="closure">
         <xs:simpleType>
           <xs:union>
@@ -1925,25 +1944,6 @@
           </xs:union>
         </xs:simpleType>
       </xs:attribute>
-      <xs:attribute name="node">
-        <xs:simpleType>
-          <xs:union>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                <xs:minLength value="1"/>
-              </xs:restriction>
-            </xs:simpleType>
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:union>
-        </xs:simpleType>
-      </xs:attribute>
-      <xs:attribute ref="xml:base"/>
-      <xs:attribute ref="xml:id"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="Equivalent">
