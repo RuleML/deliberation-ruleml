@@ -29,8 +29,8 @@ Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
   ## http://ruleml.org/1.02/glossary/#gloss-Atom
-  element Atom { (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main }
-
+  element Atom { Atom.type.def }
+Atom.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 ## Atomic formulas may have an optional closure attribute.
 reAtom.attlist &= closure-att.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)

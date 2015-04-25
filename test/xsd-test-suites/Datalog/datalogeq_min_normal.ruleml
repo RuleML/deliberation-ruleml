@@ -79,14 +79,14 @@
             <Implies>
               <if>
                 <And>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>mother</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                       <arg index="2"><Var>z</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Atom>
                       <op><Rel>mother</Rel></op>
                       <arg index="1"><Var>y</Var></arg>

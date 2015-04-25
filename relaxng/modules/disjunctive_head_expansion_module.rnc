@@ -27,7 +27,7 @@ formula_Or-head-edge.choice |= formula_Or-head.edge.def
 formula_Or-head.edge.def =
   
   ##
-  element formula { formula_Or.attlist? & formula_Or-head.content }
+  element formula { formulat_Or-datt.choice &  formula_Or.attlist? & formula_Or-head.content }
 formula_Or-head.content |= OrHeadFormula.choice
 OrHeadFormula.choice |=
   Atom-node.choice

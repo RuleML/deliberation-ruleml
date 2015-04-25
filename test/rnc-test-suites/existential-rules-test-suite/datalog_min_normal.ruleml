@@ -15,7 +15,7 @@
             <Implies material="yes" direction="bidirectional">
               <if>
                 <And>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>friend</Rel></op>
                       <arg index="1"><Ind>Jane</Ind></arg>

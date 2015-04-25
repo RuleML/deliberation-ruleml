@@ -303,6 +303,7 @@
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -317,6 +318,7 @@
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -508,6 +510,7 @@
             <xs:group ref="spec:Or_3"/>
             <xs:group ref="spec:Exists_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -522,6 +525,7 @@
             <xs:group ref="spec:Or_3"/>
             <xs:group ref="spec:Exists_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

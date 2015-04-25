@@ -785,14 +785,16 @@ op =
   }
 formula_3 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2)
   }
 formula_4 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2)

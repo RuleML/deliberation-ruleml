@@ -1,0 +1,14 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML General Attribute-Skipping Module" ]
+dc:version [ "1.02" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, stripe-skipping" ]
+dc:description [ "expansion module for general attribute-skipping." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+formulat_And-datt.choice |= empty
+formulat_Or-datt.choice |= empty

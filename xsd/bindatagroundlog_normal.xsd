@@ -1001,6 +1001,7 @@
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
+          <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -1016,6 +1017,7 @@
             <xs:group ref="spec:And_2"/>
             <xs:group ref="spec:Or_2"/>
           </xs:choice>
+          <xs:attribute name="index" use="required" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>

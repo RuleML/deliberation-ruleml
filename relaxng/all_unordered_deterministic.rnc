@@ -17,6 +17,7 @@ include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllow
 include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/conjunctive_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

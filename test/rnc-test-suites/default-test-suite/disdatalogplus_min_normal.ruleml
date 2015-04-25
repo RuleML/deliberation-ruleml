@@ -23,13 +23,13 @@
               </if>
               <then>
                 <Or>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>Manager</Rel></op>
                       <arg index="1"><Var>E</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Atom>
                       <op><Rel>Worker</Rel></op>
                       <arg index="1"><Var>E</Var></arg>
@@ -63,13 +63,13 @@
               </if>
               <then>
                 <Or>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>CEO</Rel></op>
                       <arg index="1"><Var>E</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Exists>
                       <declare>
                         <Var>S</Var>

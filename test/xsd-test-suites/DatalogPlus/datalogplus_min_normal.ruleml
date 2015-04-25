@@ -297,13 +297,13 @@
             <Implies>
               <if>
                 <And>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>employee</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Atom>
                       <op><Rel>department</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
@@ -401,14 +401,14 @@
             <Implies>
               <if>
                 <And>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>supervises</Rel></op>
                       <arg index="1"><Var>x</Var></arg>
                       <arg index="2"><Var>z</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Atom>
                       <op><Rel>supervises</Rel></op>
                       <arg index="1"><Var>y</Var></arg>
@@ -690,13 +690,13 @@
             <Implies>
               <if>
                 <And>
-                  <formula>
+                  <formula index="1">
                     <Atom>
                       <op><Rel>employee</Rel></op>
                       <arg index="1"><Var>E</Var></arg>
                     </Atom>
                   </formula>
-                  <formula>
+                  <formula index="2">
                     <Atom>
                       <op><Rel>directs</Rel></op>
                       <arg index="1"><Var>E</Var></arg>
@@ -712,20 +712,20 @@
                   </declare>
                   <formula>
                     <And>
-                      <formula>
+                      <formula index="1">
                         <Atom>
                           <op><Rel>manager</Rel></op>
                           <arg index="1"><Var>E</Var></arg>
                         </Atom>
                       </formula>
-                      <formula>
+                      <formula index="2">
                         <Atom>
                           <op><Rel>supervises</Rel></op>
                           <arg index="1"><Var>E</Var></arg>
                           <arg index="2"><Var>E'</Var></arg>
                         </Atom>
                       </formula>
-                      <formula>
+                      <formula index="3">
                         <Atom>
                           <op><Rel>works_in</Rel></op>
                           <arg index="1"><Var>E'</Var></arg>

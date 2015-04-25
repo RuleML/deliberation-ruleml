@@ -488,6 +488,9 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'asynchronous_stripe_skipping_implication_expansion_module.rnc"'."$end\n";
       }
+      echo "#\n# ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'attribute_skipping_expansion_module.rnc"'."$end\n";
     }
     
     // Include explicit datatyping

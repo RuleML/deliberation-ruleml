@@ -1095,7 +1095,8 @@ op =
   }
 formula_3 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom
@@ -1110,7 +1111,8 @@ formula_3 =
   }
 formula_4 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom

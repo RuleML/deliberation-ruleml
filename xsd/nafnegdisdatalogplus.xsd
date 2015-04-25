@@ -1388,6 +1388,7 @@
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -1406,6 +1407,7 @@
             <xs:element ref="spec:Neg"/>
             <xs:element ref="spec:Naf"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -1916,6 +1918,7 @@
             <xs:element ref="spec:Neg"/>
             <xs:group ref="spec:Exists_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -1933,6 +1936,7 @@
             <xs:element ref="spec:Neg"/>
             <xs:group ref="spec:Exists_2"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>

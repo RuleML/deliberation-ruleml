@@ -2291,6 +2291,7 @@
             <xs:element ref="spec:Forall"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
@@ -2311,6 +2312,7 @@
             <xs:element ref="spec:Forall"/>
             <xs:element ref="spec:Exists"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
           <xs:attribute ref="xml:base"/>
           <xs:attribute ref="xml:id"/>
         </xs:complexType>
