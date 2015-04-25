@@ -22,7 +22,7 @@ formula_And-head-edge.choice |= formula_And-head.edge.def
 formula_And-head.edge.def =
   
   ##
-  element formula { formulat_And-datt.choice & formula_And.attlist? & formula_And-head.content }
+  element formula { formula_And-datt.choice & formula_And.attlist? & formula_And-head.content }
 formula_And-head.content |= AndHeadFormula.choice
 AndHeadFormula.choice |=
   Atom-node.choice

@@ -211,8 +211,8 @@ Skolem-datt.choice |= empty
 arg-datt.choice |= notAllowed
 #
 # EDGE ATTRIBUTE CHOICE PATTERNS
-formulat_Or-datt.choice |= notAllowed
-formulat_And-datt.choice |= notAllowed
+formula_Or-datt.choice |= notAllowed
+formula_And-datt.choice |= notAllowed
 # 
 # TERM CHOICE PATTERNS
 DataTerm.choice |= notAllowed
