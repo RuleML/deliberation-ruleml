@@ -6,13 +6,16 @@
       <title>Schema documentation for component spec:formula</title>
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
-        var propertiesBoxes= new Array('properties_formula_3_formula');
+        var propertiesBoxes= new Array('properties_formula_3_formula', 
+				'properties_formula_3_formula_3_formula_index');
 
         
         
-        var usedByBoxes= new Array('usedBy_formula_3');
+        var usedByBoxes= new Array('usedBy_formula_3_formula_3_formula_index', 
+				'usedBy_formula_3');
 
         var sourceBoxes= new Array('source_formula_3_formula', 
+				'source_formula_3_formula_3_formula_index', 
 				'source_formula_3');
 
         var instanceBoxes= new Array('instance_formula_3_formula');
@@ -325,7 +328,7 @@
                            <div class="floatRight"><input id="button_diagram_formula_3_formula" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_formula_3_formula');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_formula_3_formula" style="display:block"><object border="0" data="img/disdatalogplus_mid_normal_xsd_Element_spec_formula_7.svg" type="image/svg+xml"></object></div>
+                           <div id="diagram_formula_3_formula" style="display:block"><object border="0" data="img/disdatalogplus_mid_normal_xsd_Element_spec_formula_6.svg" type="image/svg+xml"></object></div>
                         </td>
                      </tr>
                      <tr>
@@ -365,7 +368,7 @@
                            <div id="instance_formula_3_formula" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;spec:formula</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;spec:formula</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">index=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;spec:Atom</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:Atom&gt;</span><span class="tI">
   </span><span class="tEl">&lt;spec:Equal</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">oriented=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:Equal&gt;</span><span class="tI">
   </span><span class="tEl">&lt;spec:And</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:And&gt;</span><span class="tI">
@@ -392,6 +395,14 @@
                                        <th></th>
                                     </tr>
                                  </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_3.html#formula_3_formula_3_formula_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component index')">index</a></b></td>
+                                    <td><b>xs:positiveInteger</b></td>
+                                    <td>required</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
                                  <tr>
                                     <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:base')">xml:base</a></b></td>
                                     <td><b>xs:anyURI</b></td>
@@ -429,10 +440,88 @@
       </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"spec:And_2"</span><span class="tEl">/&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"spec:Or_2"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:choice&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"index"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tAN"> type=</span><span class="tAV">"xs:positiveInteger"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="formula_3_formula_3_formula_index"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_3.html#formula_3" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula_3')">spec:formula_3</a></b> / <b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_3.html#formula_3_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula')">spec:formula</a></b> / @index</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:positiveInteger</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_formula_3_formula_3_formula_index" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_formula_3_formula_3_formula_index');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_formula_3_formula_3_formula_index" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">use</td>
+                                    <td><b>required</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_formula_3_formula_3_formula_index" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_formula_3_formula_3_formula_index');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_formula_3_formula_3_formula_index" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_3.html#formula_3_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula_3/spec:formula')">spec:formula_3/spec:formula</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_formula_3_formula_3_formula_index" type="image" src="img/btM.gif" value="-" onclick="switchState('source_formula_3_formula_3_formula_index');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_formula_3_formula_3_formula_index" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"index"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tAN"> type=</span><span class="tAV">"xs:positiveInteger"</span><span class="tEl">/&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
@@ -519,6 +608,7 @@
           </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"spec:And_2"</span><span class="tEl">/&gt;</span><span class="tI">
           </span><span class="tEl">&lt;xs:group</span><span class="tAN"> ref=</span><span class="tAV">"spec:Or_2"</span><span class="tEl">/&gt;</span><span class="tI">
         </span><span class="tEl">&lt;/xs:choice&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"index"</span><span class="tAN"> use=</span><span class="tAV">"required"</span><span class="tAN"> type=</span><span class="tAV">"xs:positiveInteger"</span><span class="tEl">/&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
