@@ -30,9 +30,8 @@ Expr.Node.def =
   
   ## <Expr>: a functional expression. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Expr
-  element Expr {
-    (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
-  }
+  element Expr { Expr.type.def }
+Expr.type.def = (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
 reExpr.attlist &= commonNode.attlist?
 
 ## an extension point for stripe skipping as well as specializations of the operator tag name in expressions. 
@@ -44,7 +43,8 @@ operatorForExpressions-edge.choice |= op_Expr.edge.def
 op_Expr.edge.def =
   
   ## Also an operator in functional expressions.
-  element op { op_Expr.attlist? & op_Expr.content }
+  element op { op_Expr.type.def }
+op_Expr.type.def = op_Expr.attlist? & op_Expr.content
 op_Expr.attlist &= commonInit.attlist?
 
 ## The operator role of an expression is filled by a functor.
@@ -58,7 +58,8 @@ Fun.Node.def =
   
   ## <Fun>: a type of name for functional operators. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Fun
-  element Fun { (Fun-datt.choice & reFun.attlist), Fun.content }
+  element Fun { Fun.type.def }
+Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.content
 
 ## functors accept the resource attribute list
 reFun.attlist &= Resource.attlist?

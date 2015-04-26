@@ -25,7 +25,8 @@ Naf.Node.def =
   # A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
   # The negated atom may be optionally surrounded by a <weak> role.
   #        See http://ruleml.org/1.02/glossary/#gloss-Naf
-  element Naf { (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main }
+  element Naf { Naf.type.def }
+Naf.type.def = (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main
 # The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
 reNaf.attlist &= commonNode.attlist?
 reNaf.attlist &= closure-att-fo.choice?
@@ -43,7 +44,8 @@ weak-edge.choice |= weak.edge.def
 weak.edge.def =
   # A role used for negation as failure (<Naf>).
   #        See http://ruleml.org/1.02/glossary/#gloss-weak
-  element weak { weak.attlist? & weak.content }
+  element weak { weak.type.def }
+weak.type.def = weak.attlist? & weak.content
 weak.attlist &= commonInit.attlist?
 
 ## The negation role contains a single formula. 

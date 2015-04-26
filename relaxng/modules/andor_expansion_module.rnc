@@ -44,8 +44,8 @@ And.Node.def =
   
   ## <And>: polyadic conjunction where <And/> is true. See
   ## http://ruleml.org/1.02/glossary/#gloss-And
-  element And { (And-datt.choice & reAnd.attlist), And.header, And.main }
-
+  element And { And.type.def }
+And.type.def = (And-datt.choice & reAnd.attlist), And.header, And.main
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
 reAnd.attlist &= commonNode.attlist?
 reAnd.attlist &= closure-att-fo.choice?
@@ -67,7 +67,8 @@ formula_And.edge.def =
   
   ## <formula>: contains a single formula. See  
   ## http://ruleml.org/1.02/glossary/#gloss-formula
-  element formula { formula_And-datt.choice & formula_And.attlist? & formula_And.content }
+  element formula { formula_And.type.def }
+formula_And.type.def =   formula_And-datt.choice & formula_And.attlist? & formula_And.content
 formula_And-datt.choice |= index-attrib.choice
 formula_And.attlist &= commonInit.attlist?
 
@@ -98,8 +99,8 @@ Or.Node.def =
   
   ## <Or>: polyadic disjunction where <Or/> is false. See
   ## http://ruleml.org/1.02/glossary/#gloss-Or
-  element Or { (Or-datt.choice & reOr.attlist), Or.header, Or.main }
-
+  element Or { Or.type.def }
+Or.type.def = (Or-datt.choice & reOr.attlist), Or.header, Or.main
 ## The attribute list of the disjunction element will accept a (scoped) closure attribute at full first-order logic.
 reOr.attlist &= commonNode.attlist?
 reOr.attlist &= closure-att-fo.choice?
@@ -119,7 +120,8 @@ formula_Or-edge.choice |= formula_Or.edge.def
 formula_Or.edge.def =
   
   ##
-  element formula { formula_Or-datt.choice & formula_Or.attlist? & formula_Or.content }
+  element formula { formula_Or.type.def }
+formula_Or.type.def = formula_Or-datt.choice & formula_Or.attlist? & formula_Or.content
 formula_Or-datt.choice |= index-attrib.choice
 formula_Or.attlist &= commonInit.attlist?
 

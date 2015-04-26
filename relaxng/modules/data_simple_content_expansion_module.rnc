@@ -31,7 +31,8 @@ Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Data
-  element Data { Data_simple.attlist?,  Data_simple.Node.content }
+  element Data { Data_simple.type.def }
+Data_simple.type.def = Data_simple.attlist?,  Data_simple.Node.content
 Data_simple.attlist &= commonNode.attlist?
 ## an extension point for explicit datatyping
 Data_simple.Node.content |=

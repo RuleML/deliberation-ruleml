@@ -31,11 +31,11 @@ Equal.Node.def =
   
   ## <Equal>: an equation between two terms. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Equal
-  element Equal {
-    (Equal-datt.choice & reEqual.attlist),
+  element Equal { Equal.type.def }
+Equal.type.def = (Equal-datt.choice & reEqual.attlist),
     Equal.header,
     Equal.main
-  }
+
 reEqual.attlist &= closure-att-fo.choice?
 ## Equations accept the header of truth-valued connectives
 Equal.header &= TruthValuedConnective.header?

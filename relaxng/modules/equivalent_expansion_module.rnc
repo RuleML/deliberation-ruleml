@@ -28,11 +28,10 @@ Equivalent.Node.def =
   
   ## <Equivalent>: Syntactic sugar for two implications. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Equivalent 
-  element Equivalent {
-    (Equivalent-datt.choice & reEquivalent.attlist),
+  element Equivalent { Equivalent.type.def }
+Equivalent.type.def = (Equivalent-datt.choice & reEquivalent.attlist),
     Equivalent.header,
     Equivalent.main
-  }
 
 ## Equivalences may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.

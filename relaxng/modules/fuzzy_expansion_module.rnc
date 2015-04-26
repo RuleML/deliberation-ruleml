@@ -22,7 +22,8 @@ degree.edge.def =
   
   ## An optional uncertainty value (between 0.0 and 1.0) that may be assigned to simple formulas.
   ## See http://ruleml.org/1.02/glossary/#gloss-degree
-  element degree { degree.attlist? & degree.content }
+  element degree { degree.type.def }
+degree.type.def = degree.attlist? & degree.content
 degree.attlist &= commonInit.attlist?
 
 ## The degree edge element contains a single data term.

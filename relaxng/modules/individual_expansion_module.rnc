@@ -32,12 +32,11 @@ arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
   ## http://ruleml.org/1.02/glossary/#gloss-arg
-  element arg {
-    
-    ## The attribute @index is required for the positional argument role (property).
-    (arg-datt.choice & rearg.attlist),
+  element arg { arg.type.def  }
+## The attribute @index is required for the positional argument role (property).
+arg.type.def = (arg-datt.choice & rearg.attlist),
     arg.content
-  }
+
 arg-datt.choice |= index-attrib.choice
 rearg.attlist &= commonInit.attlist?
 
@@ -96,7 +95,8 @@ Ind.Node.def =
   
   ## <Ind>: an individual constant. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Ind
-  element Ind { (Ind-datt.choice & reInd.attlist), Ind.content }
+  element Ind { Ind.type.def }
+Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.content
 
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.
 reInd.attlist &= Resource.attlist?

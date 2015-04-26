@@ -44,7 +44,8 @@ op_Atom.edge.def =
   
   ## <op>: edge (role) element for the predicate of an atomic formula. See
   ## http://ruleml.org/1.02/glossary/#gloss-op
-  element op { op_Atom.attlist? & op_Atom.content }
+  element op { op.type.def }
+op.type.def = op_Atom.attlist? & op_Atom.content
 op_Atom.attlist &= commonInit.attlist?
 
 ## The operator role in the context of an atomic formula is filled by a predicate.
@@ -58,8 +59,8 @@ Rel.Node.def =
   
   ## <Rel>: a category of name used as the predicate of an atomic formula. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Rel
-  element Rel { (Rel-datt.choice & reRel.attlist), Rel.content }
-
+  element Rel { Rel.type.def }
+Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.content
 ## Relations accept the optional attribute pattern of resources.
 reRel.attlist &= Resource.attlist?
 

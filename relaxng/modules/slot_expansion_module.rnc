@@ -29,7 +29,8 @@ slot-edge.choice |= slot.edge.def
 slot.edge.def =
     
     ## A user-defined slot (property). See http://ruleml.org/1.02/glossary/#gloss-slot
-    element slot { (slot-datt.choice & reslot.attlist), slot.content }
+    element slot { slot.type.def }
+slot.type.def = (slot-datt.choice & reslot.attlist), slot.content
 
 ## The slot element accepts optional cardinality and  weight attributes. 
 reslot.attlist &= cardinality-att.choice?
