@@ -1,0 +1,19 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.rnc text eol=lf
+*.rng text eol=lf
+*.rrml text eol=lf
+*.ruleml text eol=lf
+*.sh text eol=lf
+*.svg  text eol=lf
+*.xml text eol=lf
+*.xsd text eol=lf
+*.xslt text eol=lf
+
+*.gif binary
+*.jpg binary
+*.png binary
