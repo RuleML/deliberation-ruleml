@@ -46,7 +46,7 @@ strong.edge.def =
   
   ## A role used for logical negation (<Neg>).
   ##        See http://ruleml.org/1.02/glossary/#gloss-strong
-  element strong { strong.attlist? & strong.content }
+  element strong { strong.type.def }
 strong.type.def = strong.attlist? & strong.content
 strong.attlist &= commonInit.attlist?
 

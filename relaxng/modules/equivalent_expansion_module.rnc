@@ -55,7 +55,8 @@ torso.edge.def =
   
   ## <torso>: contains one formula within an equivalence. See 
   ## http://ruleml.org/1.02/glossary/#gloss-torso 
-  element torso { torso.attlist? & torso.content }
+  element torso { torso.type.def }
+torso.type.def = torso.attlist? & torso.content
 torso.attlist &= commonInit.attlist?
 
 ## An equivalance is syntactic sugar for two implications.

@@ -50,7 +50,8 @@ left.edge.def =
   
   ## <left>: The left-hand side of an equation. See 
   ## http://ruleml.org/1.02/glossary/#gloss-left
-  element left { left.attlist? & left.content }
+  element left { left.type.def }
+left.type.def = left.attlist? & left.content
 left.attlist &= commonInit.attlist?
 
 ## The left-hand side role in an equation is filled by a term.
@@ -62,7 +63,8 @@ right.edge.def =
   
   ## <right>: The right-hand side of an equation. See 
   ## http://ruleml.org/1.02/glossary/#gloss-right
-  element right { right.attlist? & right.content }
+  element right { right.type.def }
+right.type.def = right.attlist? & right.content
 right.attlist &= commonInit.attlist?
 
 ## The right-hand side role in an equation is filled by a term.
