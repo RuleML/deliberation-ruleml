@@ -8,7 +8,7 @@ dc:subject [ "RuleML, equivalence" ]
 dc:description [ "The expansion module for equivalances." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Equivalent.Node.def | torso.edge.def
 Node.choice |= Equivalent.Node.def
 edge.choice |= torso.edge.def

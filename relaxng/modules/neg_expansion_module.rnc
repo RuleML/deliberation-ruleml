@@ -8,7 +8,7 @@ dc:subject [ "RuleML, negation, strong, formula" ]
 dc:description [ "The expansion module for strong negation formulas." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Neg.Node.def | strong.edge.def
 Node.choice |= Neg.Node.def
 edge.choice |= strong.edge.def

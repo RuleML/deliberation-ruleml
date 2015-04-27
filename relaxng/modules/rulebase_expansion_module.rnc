@@ -8,7 +8,7 @@ dc:subject [ "RuleML, rulebase" ]
 dc:description [ "The expansion module for the rulebase component." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Rulebase.Node.def
 Node.choice |= Rulebase.Node.def
 edge.choice |= formula_Rulebase.edge.def

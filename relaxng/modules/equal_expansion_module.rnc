@@ -9,7 +9,7 @@ dc:subject [ "RuleML, equals, equality, equations" ]
 dc:description [ "The expansion module for equations." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Equal.Node.def | left.edge.def | right.edge.def
 Node.choice |= Equal.Node.def
 edge.choice |= left.edge.def | right.edge.def

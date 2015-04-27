@@ -8,7 +8,7 @@ dc:subject [ "RuleML, performative, assert, retract, query" ]
 dc:description [ "The expansion module for performative components." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= RuleML.def | Assert.Node.def | Retract.Node.def | Query.Node.def | formula_AssertRetract.edge.def | formula_Query.edge.def
 Node.choice |= RuleML.def | Assert.Node.def | Retract.Node.def | Query.Node.def
 edge.choice |= formula_AssertRetract.edge.def | formula_Query.edge.def

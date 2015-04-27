@@ -10,7 +10,7 @@ dc:subject [ "RuleML, plex, generalized lists" ]
 dc:description [ "The expansion module for generalized lists." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Plex_Any.Node.def
 Node.choice |= Plex_Any.Node.def
 # This module declares the following RuleML elements and attributes:

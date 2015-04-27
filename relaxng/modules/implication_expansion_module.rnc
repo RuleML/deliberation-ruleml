@@ -8,7 +8,7 @@ dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Implies.Node.def | head_Implies.edge.def | body_Implies.edge.def
 Node.choice |= Implies.Node.def
 edge.choice |= head_Implies.edge.def | body_Implies.edge.def

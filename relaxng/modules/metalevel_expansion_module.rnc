@@ -9,7 +9,7 @@ dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Entails.Node.def | head_Entails.edge.def | body_Entails.edge.def
 Node.choice |= Entails.Node.def
 edge.choice |= head_Entails.edge.def | body_Entails.edge.def

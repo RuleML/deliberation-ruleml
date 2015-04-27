@@ -10,7 +10,7 @@ dc:subject [ "RuleML, variables, interpretable names" ]
 dc:description [ "The expansion module for variables." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Var.Node.def
 Node.choice |= Var.Node.def
 # This module declares the following RuleML elements and attributes:

@@ -10,7 +10,7 @@ dc:description [
 ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= oid.edge.def
 edge.choice |= oid.edge.def
 # This module declares the following RuleML elements and attributes:

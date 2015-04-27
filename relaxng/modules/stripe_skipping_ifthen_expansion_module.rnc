@@ -8,7 +8,7 @@ dc:subject [ "RuleML, stripe-skipping" ]
 dc:description [ "expansion module for if-then stripe-skipping." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ]
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module extends the following RuleML choice patterns:
 #            * body_Implies

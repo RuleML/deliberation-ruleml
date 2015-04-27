@@ -10,7 +10,7 @@ dc:subject [ "RuleML, absent default-valued attributes for FOL" ]
 dc:description [ "The expansion module to allow attributes with default values to be absent or optional at FOL expressivity." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
-dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+dc:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 #
 mapMaterial-att-fo.choice |= empty
