@@ -306,7 +306,7 @@
     </xsl:call-template>
   </xsl:template>
 
-
+  
 
   <!-- Named template that wraps an element in the element given by the tag parameter. -->
   <xsl:template name="wrap">
@@ -496,7 +496,7 @@
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
       <xsl:apply-templates
-        select="@*|*[
+        select="*[
               namespace-uri(.)='http://ruleml.org/spec' and 
               local-name()!= 'meta' and 
               local-name()!= 'oid' and 
@@ -618,9 +618,9 @@
         Order is preserved.
         Foreign elements are preserved.
         Because this is the most general of all templates, any more specific template in phase-2 will over-ride this one.  -->
-  <xsl:template match="node() | @*" mode="phase-2">
+  <xsl:template match="@* | node() " mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="node() | @*" mode="phase-2"/>
+      <xsl:apply-templates select="@* | node()" mode="phase-2"/>
     </xsl:copy>
   </xsl:template>
 
@@ -657,6 +657,19 @@
     </act>
   </xsl:template>
 
+  <!-- Adds the required index attribute to the formula tag in And and Or -->
+  <xsl:template match="r:*[name() = 'And' or name()='Or']/r:formula[namespace-uri(.)='http://ruleml.org/spec']" mode="phase-3">
+    <xsl:variable name="index_value">
+      <xsl:value-of select="count(preceding-sibling::r:formula)+1"/>
+    </xsl:variable>
+    <formula>
+      <xsl:attribute name="index">
+        <xsl:value-of select="$index_value"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+    </formula>
+  </xsl:template>
+  
   <!-- Copies everything else to the phase-3 output. Comments are preserved without escaping.
         Order is preserved.
         Foreign elements are preserved.

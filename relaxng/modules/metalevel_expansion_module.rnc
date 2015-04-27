@@ -26,7 +26,8 @@ Entails.Node.def =
     ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
     ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
     ## See http://ruleml.org/1.02/glossary/#gloss-Entails 
-    element Entails { (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main }
+    element Entails { Entails.type.def }
+Entails.type.def = (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main
 reEntails.attlist &= commonNode.attlist?
 
 ## Logical entailments accept the header pattern common to Nodes.
@@ -47,7 +48,8 @@ body_Entails.edge.def =
     ## Also used as the "antecedent" part of an entailment (<Entails>).
     ## See http://ruleml.org/1.02/glossary/#gloss-if
     ##  Within Entails...
-    element if { body_Entails.attlist? & body_Entails.content }
+    element if { body_Entails.type.def }
+body_Entails.type.def = body_Entails.attlist? & body_Entails.content
 body_Entails.attlist &= commonInit.attlist?
 
 ## The if of an entailment contains a single rulebase.
@@ -63,7 +65,8 @@ head_Entails.edge.def =
     ## Also used as the "consequent" part of an entailment (<Entails>).
     ## See http://ruleml.org/1.02/glossary/#gloss-then
     ##  within Entails
-    element then { head_Entails.attlist? & head_Entails.content }
+    element then { head_Entails.type.def }
+head_Entails.type.def = head_Entails.attlist? & head_Entails.content
 head_Entails.attlist &= commonInit.attlist?
 
 ## The then of an entailment contains a single rulebase.

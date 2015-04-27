@@ -23,6 +23,7 @@ Reify-node.Node.def =
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
   ## See http://ruleml.org/1.02/glossary/#gloss-Reify
-  element Reify { Reify-node.attlist?, Reify-node.content }
+  element Reify { Reify-node.type.def }
+Reify-node.type.def = Reify-node.attlist?, Reify-node.content
 Reify-node.attlist &= commonNode.attlist?
 Reify-node.content |= Node.choice?

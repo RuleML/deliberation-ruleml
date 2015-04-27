@@ -23,9 +23,8 @@ meta.edge.def =
   
   ## <meta>: a container for meta-knowledge. See 
   ## http://ruleml.org/1.02/glossary/#gloss-meta
-  element meta {
-    meta.attlist? & AssertRetractFormula.choice
-  }
+  element meta { meta.type.def }
+meta.type.def = meta.attlist? & AssertRetractFormula.choice
 meta.attlist &= commonInit.attlist?  
 # The meta-knowledge content model is equivalent to that of <formula> in <Assert>.
 # See performative_content_expansion_module .

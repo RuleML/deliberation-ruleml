@@ -22,9 +22,8 @@ And-Query-node.choice |= And-Query.Node.def
 And-Query.Node.def =
   
   ##
-  element And {
-    (And-Query-datt.choice & reAnd-Query.attlist), And.header, And.main
-  }
+  element And { And-Query.type.def }
+And-Query.type.def = (And-Query-datt.choice & reAnd-Query.attlist), And.header, And.main
 
 ## Within query, conjunctions may have an optional existential closure attribute.
 reAnd-Query.attlist &= commonNode.attlist?
@@ -40,7 +39,8 @@ Or-Query-node.choice |= Or-Query.Node.def
 Or-Query.Node.def =
   
   ##
-  element Or { (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main }
+  element Or { Or-Query.type.def }
+Or-Query.type.def =  (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main
 
 ## Within query, disjunctions may have an optional existential closure attribute.
 reOr-Query.attlist &= commonNode.attlist?

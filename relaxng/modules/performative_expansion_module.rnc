@@ -25,9 +25,9 @@ RuleML.def =
   
   ## The polyadic top_level of a RuleML document.
   ## See http://ruleml.org/1.02/glossary/#gloss-RuleML
-  element RuleML {
-    (RuleML-datt.choice & reRuleML.attlist), RuleML.header, RuleML.main
-  }
+  element RuleML { RuleML.type.def }
+RuleML.type.def = (RuleML-datt.choice & reRuleML.attlist), RuleML.header, RuleML.main
+
 # The RuleML root element accepts the header patter common to Nodes.
 RuleML.header &= Node.header?
 
@@ -40,12 +40,10 @@ act.edge.def =
   
   ## The action edge of a RuleML root which associates zero to many performatives with the root.
   ## See http://ruleml.org/1.02/glossary/#gloss-act
-  element act {
-    
+  element act { act.type.def }
     ## The attribute @index is required for the positional argument role (property).
-    (act-datt.choice & react.attlist),
-    act.content
-  }
+act.type.def = (act-datt.choice & react.attlist), act.content
+
 act-datt.choice |= index-attrib.choice
 react.attlist &= empty
 
@@ -65,11 +63,11 @@ Assert.Node.def =
   ## A KQML-like performative acting as a wrapper specifying that its content is 
   ## asserted, making an 'implicit <Rulebase>' assumption.
   ## See http://ruleml.org/1.02/glossary/#gloss-Assert
-  element Assert {
+  element Assert { Assert.type.def }
+Assert.type.def =
     (AssertRetract-datt.choice & reAssertRetract.attlist),
     AssertRetract.header,
     AssertRetract.main
-  }
 
 ## an extension point for specializations of the retraction tag name.  
 Retract-node.choice |= Retract.Node.def
@@ -78,11 +76,11 @@ Retract.Node.def =
   ## A performative similar to KQML's 'untell' that acts as a wrapper specifying that its
   ## content is to be deleted, making an 'implicit <Rulebase>' assumption.
   ## See http://ruleml.org/1.02/glossary/#gloss-Retract
-  element Retract {
+  element Retract { Retract.type.def }
+Retract.type.def =
     (AssertRetract-datt.choice & reAssertRetract.attlist),
     AssertRetract.header,
     AssertRetract.main
-  }
 
 ## Assertions and retractions may have an optional scope closure attribute.
 reAssertRetract.attlist &= mapClosure-att.choice?
@@ -103,9 +101,9 @@ formula_AssertRetract.edge.def =
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://ruleml.org/1.02/glossary/#gloss-formula
   ## Within Assert or Retract...
-  element formula {
+  element formula { formula_AssertRetract.type.def }
+formula_AssertRetract.type.def =
     formula_AssertRetract.attlist? & formula_AssertRetract.content
-  }
 
 ## Forumulas within assertions and retractions contain a single formula.
 formula_AssertRetract.content |= AssertRetractFormula.choice
@@ -118,9 +116,9 @@ Query.Node.def =
   ## A KQML-like performative acting as a wrapper specifying that its content is
   ## queried, making an 'implicit <Rulebase>' assumption.
   ## See http://ruleml.org/1.02/glossary/#gloss-Query
-  element Query {
+  element Query { Query.type.def }
+Query.type.def =
     (Query-datt.choice & reQuery.attlist), Query.header, Query.main
-  }
 
 ## Queries may have an optional map closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
@@ -144,7 +142,8 @@ formula_Query.edge.def =
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://ruleml.org/1.02/glossary/#gloss-formula
   ## Within Query ...
-  element formula { formula_Query.attlist? & formula_Query.content }
+  element formula { formula_Query.type.def }
+formula_Query.type.def = formula_Query.attlist? & formula_Query.content
 
 ## The content model of a forumula within queries is a single formula.
 formula_Query.content |= QueryFormula.choice
