@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Typee" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, type" ]
 dc:description [ "The expansion module for the optional type attribute." ]
@@ -18,7 +18,7 @@ start |= notAllowed
 ## attribute list for objects that can have user-defined types, includes an optional type attribute.
 Type.attlist &= type-att.choice?
 
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 type-att.choice |= type.attrib.def
 type.attrib.def =
     
@@ -27,3 +27,7 @@ type.attrib.def =
     attribute type { type.value }
 type.value |= PrefixedCURIE.datatype
 type.value |= AbsIRI.datatype
+#
+# a dummy element to assist in XSD conversion
+#
+DummyTypeElement.def = element Type { type-att.choice }

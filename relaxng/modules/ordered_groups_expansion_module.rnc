@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dc:title [ "RuleML Positional Independence" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, positional independence" ]
 dc:description [
@@ -66,5 +66,5 @@ Entails.main |= body_Entails.name.choice, head_Entails.name.choice
 ## object identifier and degree
 TruthValuedConnective.header &= (Node.header?, degree-edge.choice?)?
 Atom.header &= (Node.header?, objectIdentifier-edge.choice?, degree-edge.choice?)?
-Expr.header &= (Node.header?, objectIdentifier-edge.choice?)?
+Expr.header &= (Node.header?, exprObjectIdentifier-edge.choice?)?
 

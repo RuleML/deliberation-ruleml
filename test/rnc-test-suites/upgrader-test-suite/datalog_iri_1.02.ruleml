@@ -18,7 +18,7 @@
                   <arg index="5"><Data node="http://example.org/mydoc.ruleml#data1" xsi:type="integer">12</Data></arg>
                   <arg index="6"><Data node="http://example.org/mydoc.ruleml#data2">12a <xs:integer/></Data></arg>
                   <arg index="7"><Data>tomorrow</Data></arg>
-                  <arg index="8"><Data xsi:type=" xs:dateTime ">2002-10-10T17:00:00Z</Data></arg>
+                  <arg index="8"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
                   <arg index="9"><Data>test12</Data></arg>
                   <arg index="10"><Ind>Jack</Ind></arg>
                   <arg index="11"><Var>y</Var></arg>

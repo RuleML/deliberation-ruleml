@@ -360,7 +360,7 @@ if ($bdefault==0){
     if ($enableAndOr){
       echo "#\n# CONJUNCTIONS AND DISJUNCTIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
-          'andor_expansion_module.rnc"'."$end\n";
+          'andor_query_expansion_module.rnc"'."$end\n";
     }
     if ($enableImp){
       echo "#\n# IMPLICATIONS INCLUDED\n";
@@ -376,6 +376,10 @@ if ($bdefault==0){
       echo "#\n# EXPRESSIONS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'expr_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'expr_oid_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'expr_type_expansion_module.rnc"'."$end\n";
     }
     if ($NeedOrHead){
       echo "#\n# DISJUNCTIONS IN CONCLUSIONS INCLUDED\n";
@@ -394,6 +398,8 @@ if ($bdefault==0){
       }
       echo "#\n".'include "' . $modulesLocation .
           'folog_cl_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'folog_closure_expansion_module.rnc"'."$end\n";
     }
 
   //Step 1C. Include the appropriate module(s) for default values present
@@ -482,6 +488,9 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'asynchronous_stripe_skipping_implication_expansion_module.rnc"'."$end\n";
       }
+      echo "#\n# ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'attribute_skipping_expansion_module.rnc"'."$end\n";
     }
     
     // Include explicit datatyping
@@ -489,6 +498,9 @@ if ($bdefault==0){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'explicit_datatyping_expansion_module.rnc"'."$end\n";
+          //FIXME make inclusion of this module conditional on having attributes on Data
+      echo "#\n".'include "' . $modulesLocation .
+          'explicit_datatyping_annotation_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .
           'dataterm_simple_expansion_module.rnc"'."$end\n";
       echo 'include "' . $modulesLocation .

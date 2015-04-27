@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Weak Negation (Negation as Failure) Formulas" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, negation, weak, formula" ]
 dc:description [ "The expansion module for weak negation formulas." ]
@@ -19,14 +19,17 @@ edge.choice |= weak.edge.def
 #            * NegationAsFailure-node.choice
 #            * NafFormula.choice
 
-## an extension point for alternate spellings and internationalization of the weak negation tag name.  
+## an extension point for specializations of the weak negation tag name.  
 NegationAsFailure-node.choice |= Naf.Node.def
 Naf.Node.def =
   # A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
   # The negated atom may be optionally surrounded by a <weak> role.
   #        See http://ruleml.org/1.02/glossary/#gloss-Naf
-  element Naf { (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main }
+  element Naf { Naf.type.def }
+Naf.type.def = (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main
 # The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
+reNaf.attlist &= commonNode.attlist?
+reNaf.attlist &= closure-att-fo.choice?
 reNaf.attlist &= mapClosure-att-fo.choice?
 
 ## Negation As Failure formulas accept the header patter common to truth-valued connectives.
@@ -36,12 +39,14 @@ Naf.header &= TruthValuedConnective.header?
 ## Negation As Failure formulas contain a single role.
 Naf.main |= weak-edge.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the weak tag name in weak negations. 
+## an extension point for stripe skipping as well as specializations of the weak tag name in weak negations. 
 weak-edge.choice |= weak.edge.def
 weak.edge.def =
   # A role used for negation as failure (<Naf>).
   #        See http://ruleml.org/1.02/glossary/#gloss-weak
-  element weak { weak.attlist? & weak.content }
+  element weak { weak.type.def }
+weak.type.def = weak.attlist? & weak.content
+weak.attlist &= commonInit.attlist?
 
 ## The negation role contains a single formula. 
 weak.content |= NafFormula.choice

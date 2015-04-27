@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Implications" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, implication" ]
 dc:description [ "The expansion module for implications." ]
@@ -35,10 +35,11 @@ Implies.Node.def =
   
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Implies
-  element Implies { (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main }
-
+  element Implies { Implies.type.def }
+Implies.type.def = (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main
 ## Implications may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
+reImplies.attlist &= commonNode.attlist?
 reImplies.attlist &= closure-att.choice?
 reImplies.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
@@ -55,7 +56,7 @@ Implies.header &= TruthValuedConnective.header?
 # For the declaration of the main content of implications, see the serialization modules (orderstrict_module or orderlax_module)
 
 ## 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the if tag name in implications.  
+## an extension point for stripe skipping as well as specializations of the if tag name in implications.  
 body_Implies.name.choice |= body_Implies.edge.def
 
 ## The if of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" part of the rule. 
@@ -66,7 +67,9 @@ body_Implies.edge.def =
   ## <if>: contains the premise of the implication. See 
   ## http://ruleml.org/1.02/glossary/#gloss-if
   ## FIXME: replace body_ with if_ and head_ with then_
-  element if { body_Implies.attlist? & body_Implies.content }
+  element if { body_Implies.type.def }
+body_Implies.type.def =  body_Implies.attlist? & body_Implies.content
+body_Implies.attlist &= commonInit.attlist?
 
 ## The premise of an implication consists of a single formula
 body_Implies.content |= PremiseFormula.choice
@@ -88,7 +91,7 @@ PremiseFormula.choice |=
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in implications.  
+## an extension point for stripe skipping as well as specializations of the then tag name in implications.  
 head_Implies.name.choice |= head_Implies.edge.def
 
 ## The then of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
@@ -98,7 +101,9 @@ head_Implies.edge.def =
   
   ## <then>: contains the conclusion of the implication. See 
   ## http://ruleml.org/1.02/glossary/#gloss-then
-  element then { head_Implies.attlist? & head_Implies.content }
+  element then { head_Implies.type.def }
+head_Implies.type.def = head_Implies.attlist? & head_Implies.content
+head_Implies.attlist &= commonInit.attlist?
 
 ## The conclusion of an implication consists of a single formula.
 head_Implies.content |= ConclusionFormula.choice

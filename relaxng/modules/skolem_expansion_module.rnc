@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Skolems" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, skolem" ]
 dc:description [ "The expansion module for skolems." ]
@@ -22,12 +22,12 @@ Skolem.Node.def =
     
     ## A Skolem individual constant, like RDF's blank nodes.
     ## See http://ruleml.org/1.02/glossary/#gloss-Skolem
-    element Skolem { (Skolem-datt.choice & reSkolem.attlist), Skolem.content }
+    element Skolem { Skolem.type.def }
+Skolem.type.def = (Skolem-datt.choice & reSkolem.attlist), Skolem.content
 
 ## Skolems optionally accept the attribute pattern of objects with user-defined types.
 reSkolem.attlist &= Type.attlist?
 
 ## The content model for skolems is the XSD datatype token.
 Skolem.content |= xsd:token
-
-
+reSkolem.attlist &= commonNode.attlist?

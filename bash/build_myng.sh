@@ -5,13 +5,13 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 
-# Download RNC and test
+# Test RNC locally
 ${BASH_HOME}build_myng2rnc.sh
 if [ "$?" -ne "0" ]; then
      echo "Local Testing of RNC Schemas Failed"
      exit 1
 fi
-# Download RNC and convert to XSD
+# Build XSD locally and test
 ${BASH_HOME}build_myng2xsd.sh
 if [ "$?" -ne "0" ]; then
      echo "Local Testing of XSD Schemas Failed"

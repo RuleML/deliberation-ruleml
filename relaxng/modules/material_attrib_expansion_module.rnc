@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Material Implication" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, material, implication" ]
 dc:description [ "The expansion module for the material implication attribute." ]
@@ -15,7 +15,7 @@ start |= notAllowed
 # This module declares the following RuleML attributes:
 #    * @material
 
-## an extension point for alternate spellings and internationalization of the material implication attribute name.  
+## an extension point for specializations of the material implication attribute name.  
 material-att.choice |= material.attrib.def
 material.attrib.def =
     
@@ -23,4 +23,8 @@ material.attrib.def =
     ## See http://ruleml.org/1.02/glossary/#gloss-@material
     attribute material { material.value }
 material.value |= material_default.value | material_non-default.value
+#
+# a dummy element to assist in XSD conversion
+#
+DummyMaterialElement.def = element Material { material-att.choice }
 

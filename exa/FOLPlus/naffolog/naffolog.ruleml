@@ -6,7 +6,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/naffolog.xsd">
 
-	<!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
+	<!-- a syntactic example rulebase for testing the First-Order Logic RuleML sublanguage with weak negation (naffolog) -->
 
 	<Assert mapClosure="universal" mapDirection="bidirectional">
 
@@ -75,7 +75,7 @@
 	  <Implies node="this:#claiming-through-disclaimers">
 			<if>
 				<And>
-					<Naf mapClosure="existential">
+					<Naf>
 						<Exists>
 							<Var>merchant</Var>
 							<And>
@@ -252,7 +252,7 @@
 				<Ind>role 2</Ind>
 			</slot>
 		</Atom>
-		
+	  		
 
 </Assert>
 

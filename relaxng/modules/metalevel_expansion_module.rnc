@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 default namespace this = inherit
 
 dc:title [ "RuleML Meta-Logic" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
@@ -19,14 +19,16 @@ edge.choice |= head_Entails.edge.def | body_Entails.edge.def
 #            * <if>
 #            * <then>
 
-## an extension point for alternate spellings and internationalization of the entailment tag name.  
+## an extension point for specializations of the entailment tag name.  
 Entails-node.choice |= Entails.Node.def
 Entails.Node.def =
     
     ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
     ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
     ## See http://ruleml.org/1.02/glossary/#gloss-Entails 
-    element Entails { (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main }
+    element Entails { Entails.type.def }
+Entails.type.def = (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main
+reEntails.attlist &= commonNode.attlist?
 
 ## Logical entailments accept the header pattern common to Nodes.
 Entails.header &= Node.header?
@@ -38,7 +40,7 @@ Entails.header &= Node.header?
 # but it will contain exactly one if and one then.
 # For the declaration of the main content of entailments, see the serialization modules (orderstrict_module or orderlax_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the if tag name in entailments.  
+## an extension point for stripe skipping as well as specializations of the if tag name in entailments.  
 body_Entails.name.choice |= body_Entails.edge.def
 body_Entails.edge.def =
     
@@ -46,14 +48,16 @@ body_Entails.edge.def =
     ## Also used as the "antecedent" part of an entailment (<Entails>).
     ## See http://ruleml.org/1.02/glossary/#gloss-if
     ##  Within Entails...
-    element if { body_Entails.attlist? & body_Entails.content }
+    element if { body_Entails.type.def }
+body_Entails.type.def = body_Entails.attlist? & body_Entails.content
+body_Entails.attlist &= commonInit.attlist?
 
 ## The if of an entailment contains a single rulebase.
 body_Entails.content |= Rulebase-node.choice
 ## The if of an entailment may contain a single formula that is allowed in a Rulebase.
 body_Entails.content |= RulebaseFormula.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the then tag name in entailments.  
+## an extension point for stripe skipping as well as specializations of the then tag name in entailments.  
 head_Entails.name.choice |= head_Entails.edge.def
 head_Entails.edge.def =
     
@@ -61,7 +65,9 @@ head_Entails.edge.def =
     ## Also used as the "consequent" part of an entailment (<Entails>).
     ## See http://ruleml.org/1.02/glossary/#gloss-then
     ##  within Entails
-    element then { head_Entails.attlist? & head_Entails.content }
+    element then { head_Entails.type.def }
+head_Entails.type.def = head_Entails.attlist? & head_Entails.content
+head_Entails.attlist &= commonInit.attlist?
 
 ## The then of an entailment contains a single rulebase.
 head_Entails.content |= Rulebase-node.choice

@@ -11,11 +11,9 @@ dc:description [ "The expansion module for quantifications." ]
 dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://deliberation.ruleml.org/1.02" ]
-start |= quantification.Node.defs | quantification.edge.defs
-Node.choice |= quantification.Node.defs
-edge.choice |= quantification.edge.defs
-quantification.Node.defs |= Forall.Node.def | Exists.Node.def
-quantification.edge.defs |= declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
+start |= Forall.Node.def | Exists.Node.def | declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
+Node.choice |= Forall.Node.def | Exists.Node.def
+edge.choice |= declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <Forall> !
 #            * <Exists> !
@@ -33,9 +31,11 @@ Forall.Node.def =
     ## variables (<Var>), each optionally surrounded by a <declare> role, and a
     ## logical formula (optionally surrounded by a <formula> role).
     ## See http://ruleml.org/1.02/glossary/#gloss-Forall
-    element Forall { (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main }
+    element Forall { Forall.type.def }
+Forall.type.def = (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main
 ## The attribute list of the universal quantification formula 
 ##will accept a scoped closure attribute at full first-order logic.
+reForall.attlist &= closure-att-fo.choice?
 reForall.attlist &= mapClosure-att-fo.choice?
 
 ## Universally qualified formulas aaccept the header patter common to truth-valued connectives.
@@ -53,9 +53,11 @@ Exists.Node.def =
     ## each optionally surrounded by a <declare> role, followed by a logical formula 
     ## (optionally surrounded by a <formula> role).
     ## See http://ruleml.org/1.02/glossary/#gloss-Exists
-    element Exists { (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main }
+    element Exists { Exists.type.def }
+Exists.type.def = (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main
 ## The attribute list of the existential quantification formula 
 ## will accept a scoped closure attribute at full first-order logic.
+reExists.attlist &= closure-att-fo.choice?
 reExists.attlist &= mapClosure-att-fo.choice?
 
 ## Existential quantifications accept the header patter common to truth-valued connectives.
@@ -68,18 +70,18 @@ Exists.main |= boundVariables.choice, formula_Exists-edge.choice
 ## declaration of one or more bound quantifiable terms.
 boundVariables.choice |= declare-edge.choice+
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the declare tag name in quantified formulas.  
+## an extension point for stripe skipping as well as specializations of the declare tag name in quantified formulas.  
 declare-edge.choice |= declare.edge.def
 declare.edge.def =
     
     ## A role used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
     ## See http://ruleml.org/1.02/glossary/#gloss-declare
-    element declare { declare.attlist? & declare.content }
-
+    element declare { declare.type.def }
+declare.type.def = declare.attlist? & declare.content
 ## a declaration element contains a single quantifiable term
 declare.content |= SimpleQuantifiableTerm.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in universal quantifications. 
+## an extension point for stripe skipping as well as specializations of the formula tag name in universal quantifications. 
 formula_Forall-edge.choice |= formula_Forall.edge.def
 formula_Forall.edge.def =
     
@@ -87,8 +89,8 @@ formula_Forall.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://ruleml.org/1.02/glossary/#gloss-formula
     ## within Forall...
-    element formula { formula_Forall.attlist? & formula_Forall.content }
-
+    element formula { formula_Forall.type.def }
+formula_Forall.type.def = formula_Forall.attlist? & formula_Forall.content
 ## The formula role of universal quantifications contains a single formula. 
 formula_Forall.content |= ForallFormula.choice
 
@@ -108,7 +110,7 @@ ForallFormula.choice |=
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the formula tag name in existential quantifications. 
+## an extension point for stripe skipping as well as specializations of the formula tag name in existential quantifications. 
 formula_Exists-edge.choice |= formula_Exists.edge.def
 formula_Exists.edge.def =
     
@@ -116,7 +118,8 @@ formula_Exists.edge.def =
     ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
     ## See http://ruleml.org/1.02/glossary/#gloss-formula
     ## Within Exists...
-    element formula { formula_Exists.attlist? & formula_Exists.content }
+    element formula { formula_Exists.type.def }
+formula_Exists.type.def = formula_Exists.attlist? & formula_Exists.content
 
 ## The formula role of existential quantifications contains a single formula.
 formula_Exists.content |= ExistsFormula.choice
@@ -136,3 +139,8 @@ ExistsFormula.choice |=
 # For the declaration of the strong negation formula pattern, see the strong negation module ( neg_expansion_module) 
 # For the declaration of the weak negation formula pattern, see the weak negation module ( naf_expansion_module) 
 # For the declaration of the implication pattern, see the implication modules (implication_expansion_module and equivalence_expansion_module)
+reForall.attlist &= commonNode.attlist?
+reExists.attlist &= commonNode.attlist?
+declare.attlist &= commonInit.attlist?
+formula_Forall.attlist &= commonInit.attlist?
+formula_Exists.attlist &= commonInit.attlist?

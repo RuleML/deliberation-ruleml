@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Slots" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, slot" ]
 dc:description [ "The expansion module for slots." ]
@@ -24,12 +24,13 @@ slotTermsForAtoms.sequence |= slot-edge.choice*
 slotTermsForExpressions.sequence |= slot-edge.choice*
 # For the declaration of slotted rest variables, see the slotted rest variable module (resl_module).
 
-## an extension point for alternate spellings and internationalization of the slot tag name.  
+## an extension point for specializations of the slot tag name.  
 slot-edge.choice |= slot.edge.def
 slot.edge.def =
     
     ## A user-defined slot (property). See http://ruleml.org/1.02/glossary/#gloss-slot
-    element slot { (slot-datt.choice & reslot.attlist), slot.content }
+    element slot { slot.type.def }
+slot.type.def = (slot-datt.choice & reslot.attlist), slot.content
 
 ## The slot element accepts optional cardinality and  weight attributes. 
 reslot.attlist &= cardinality-att.choice?
@@ -47,6 +48,4 @@ slotFillerTerm.choice |= AnyTerm.choice
 # For the declaration of term patterns, see the term module (individual_expansion_module).
 edge.choice |= slot.edge.def
 # 
-
-
-
+reslot.attlist &= commonInit.attlist?

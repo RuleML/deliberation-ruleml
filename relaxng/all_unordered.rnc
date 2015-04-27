@@ -17,6 +17,7 @@ include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllow
 include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/conjunctive_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -39,7 +40,9 @@ include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= not
 include "modules/existential_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/folog_closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

@@ -270,6 +270,7 @@
             <xs:element ref="spec:And"/>
             <xs:element ref="spec:Or"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
@@ -283,6 +284,7 @@
             <xs:element ref="spec:And"/>
             <xs:element ref="spec:Or"/>
           </xs:choice>
+          <xs:attribute name="index" type="xs:positiveInteger"/>
         </xs:complexType>
       </xs:element>
     </xs:sequence>

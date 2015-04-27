@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/hornlog.xsd">
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/hornlog_normal.xsd">
   <!-- Tim Berners-Lee's authentication rule (without URI inspection):
 Any person who was some time in the last 2 months an employee of
 an organization which was some time in the last 2 months a W3C member
@@ -10,19 +10,19 @@ may register -->
         <Implies material="yes" direction="bidirectional">
           <if>
             <And>
-              <formula>
+              <formula index="1">
                 <Atom>
                   <op><Rel>person</Rel></op>
                   <arg index="1"><Var>any</Var></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="2">
                 <Atom>
                   <op><Rel>organization</Rel></op>
                   <arg index="1"><Var>org</Var></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="3">
                 <Atom>
                   <op><Rel>employee in</Rel></op>
                   <arg index="1"><Var>any</Var></arg>
@@ -30,7 +30,7 @@ may register -->
                   <arg index="3"><Expr per="copy"><op><Fun per="copy">last</Fun></op><arg index="1"><Expr per="copy"><op><Fun per="copy">month</Fun></op><arg index="1"><Data xsi:type="xs:positiveInteger">2</Data></arg></Expr></arg></Expr></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="4">
                 <Atom>
                   <op><Rel>member in</Rel></op>
                   <arg index="1"><Var>org</Var></arg>

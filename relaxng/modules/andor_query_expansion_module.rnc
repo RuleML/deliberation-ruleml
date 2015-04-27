@@ -1,0 +1,49 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dc:title [ "RuleML Conjunctions and Disjunctions" ]
+dc:version [ "1.02" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, conjunction, disjunction" ]
+dc:description [ "The expansion module for conjunctions and disjunctions." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ]
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= And-Query-node.choice|Or-Query-node.choice|formula_And.edge.def | formula_Or.edge.def
+Node.choice |= And-Query-node.choice|Or-Query-node.choice
+include "andor_expansion_module.rnc"{
+  start |= notAllowed
+  Node.choice |= notAllowed
+}
+## an extension point for specializations of the conjunction tag name in queries.  
+And-Query-node.choice |= And-Query.Node.def
+
+## Within Query...
+And-Query.Node.def =
+  
+  ##
+  element And { And-Query.type.def }
+And-Query.type.def = (And-Query-datt.choice & reAnd-Query.attlist), And.header, And.main
+
+## Within query, conjunctions may have an optional existential closure attribute.
+reAnd-Query.attlist &= commonNode.attlist?
+reAnd-Query.attlist &= closure-att.choice?
+reAnd-Query.attlist &= mapClosure-att-fo.choice?
+# For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
+
+
+## an extension point for specializations of the disjunction tag name in queries.  
+Or-Query-node.choice |= Or-Query.Node.def
+
+## Within Query...
+Or-Query.Node.def =
+  
+  ##
+  element Or { Or-Query.type.def }
+Or-Query.type.def =  (Or-Query-datt.choice & reOr-Query.attlist), Or.header, Or.main
+
+## Within query, disjunctions may have an optional existential closure attribute.
+reOr-Query.attlist &= commonNode.attlist?
+reOr-Query.attlist &= closure-att.choice?
+reOr-Query.attlist &= mapClosure-att-fo.choice?
+# For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)

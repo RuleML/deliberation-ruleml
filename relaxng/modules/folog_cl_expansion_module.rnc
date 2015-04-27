@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 
 
 dc:title [ "RuleML First-Order Logic Extension" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, first-order logic" ]
 dc:description [
@@ -13,11 +13,10 @@ dc:language [ "en" ]
 dcterms:rights [ "TBD" ] 
 dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
 start |= notAllowed
-# This module extends patterns from Disjunctive Horn Logic to First-Order Logic
+# This module extends the nesting of formulas from Horn Logic to First-Order Logic
 And-fo-node.choice |= And-node.choice
 Or-fo-node.choice |= Or-node.choice
 Negation-fo-node.choice |= Negation-node.choice
 Implication-fo-node.choice |= Implication-node.choice
 Forall-fo-node.choice |= Forall-node.choice
 Exists-fo-node.choice |= Exists-node.choice
-mapClosure-att-fo.choice |= mapClosure-att.choice

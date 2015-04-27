@@ -23,7 +23,7 @@
               <formula>
                 <Atom>
                   <op><Rel>rusty</Rel></op>
-                  <arg index="1"><Reify><Implies><if><And><formula><Atom><op><Rel>wet</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula><formula><Atom><op><Rel>metal</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>rusty</Rel></op><arg index="1"><Var>object</Var></arg></Atom></then></Implies></Reify></arg>
+                  <arg index="1"><Reify><Implies><if><And><formula index="1"><Atom><op><Rel>wet</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula><formula index="2"><Atom><op><Rel>metal</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>rusty</Rel></op><arg index="1"><Var>object</Var></arg></Atom></then></Implies></Reify></arg>
                 </Atom>
               </formula>
               <formula>
@@ -40,13 +40,13 @@
                 <Neg>
                   <strong>
                     <And>
-                      <formula>
+                      <formula index="1">
                         <Atom>
                           <op><Rel>gold</Rel></op>
                           <arg index="1"><Var>object</Var></arg>
                         </Atom>
                       </formula>
-                      <formula>
+                      <formula index="2">
                         <Atom>
                           <op><Rel>rusty</Rel></op>
                           <arg index="1"><Var>object</Var></arg>

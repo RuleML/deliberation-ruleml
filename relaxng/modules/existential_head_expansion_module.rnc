@@ -15,14 +15,16 @@ start |= notAllowed
   Exists-head.Node.def =
     
     ## within the head of implications
-    element Exists { (Exists-datt.choice & reExists.attlist), Exists.header, Exists-head.main }
-  Exists-head.main |= boundVariables.choice, formula_Exists-head-edge.choice
+    element Exists { Exists-head.type.def }
+  Exists-head.type.def = (Exists-datt.choice & reExists.attlist), Exists.header, Exists-head.main
+Exists-head.main |= boundVariables.choice, formula_Exists-head-edge.choice
   formula_Exists-head-edge.choice |= formula_Exists-head.edge.def
   formula_Exists-head.edge.def =
     
     ## within the head of implications
-    element formula { formula_Exists.attlist? & formula_Exists-head.content }
-  
+    element formula { formula_Exists-head.type.def }
+  formula_Exists-head.type.def = formula_Exists.attlist? & formula_Exists-head.content
+
   ##    
   formula_Exists-head.content |= ExistsHeadFormula.choice
   

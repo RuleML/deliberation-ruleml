@@ -145,7 +145,7 @@
         <Implies node="this:#claiming-through-disclaimers">
           <if>
             <And>
-              <formula>
+              <formula index="1">
                 <Forall>
                   <declare>
                     <Var>x</Var>
@@ -171,7 +171,7 @@
                   </formula>
                 </Forall>
               </formula>
-              <formula>
+              <formula index="2">
                 <Atom>
                   <op><Rel>keep</Rel></op>
                   <arg index="1"><Var>person</Var></arg>
@@ -235,7 +235,7 @@
         <Implies>
           <if>
             <And>
-              <formula>
+              <formula index="1">
                 <Equal>
                   <left>
                     <Ind>some constant</Ind>
@@ -245,7 +245,7 @@
                   </right>
                 </Equal>
               </formula>
-              <formula>
+              <formula index="2">
                 <Atom>
                   <op><Rel>friend</Rel></op>
                   <arg index="1"><Ind>Jane</Ind></arg>
@@ -273,7 +273,7 @@
           </if>
           <then>
             <Or>
-              <formula>
+              <formula index="1">
                 <Atom>
                   <op><Rel>friend</Rel></op>
                   <arg index="1"><Var>x</Var></arg>
@@ -282,7 +282,7 @@
                   <slot><Ind>t</Ind><Ind>b</Ind></slot>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="2">
                 <Atom>
                   <op><Rel>friend</Rel></op>
                   <arg index="1"><Var>x</Var></arg>

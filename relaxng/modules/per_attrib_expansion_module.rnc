@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 
 
 dc:title [ "RuleML Interpretation" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, interpretation" ]
 dc:description [
@@ -16,7 +16,7 @@ start |= notAllowed
 # This module declares the following RuleML attribute:
 #    * @per
 
-## an extension point for alternate spellings and internationalization of the interpretation attribute name.  
+## an extension point for specializations of the interpretation attribute name.  
 interpretation-att.choice |= per.attrib.def
 per.attrib.def =
   #
@@ -31,3 +31,7 @@ interpretation.value |=
 interpretation_default.value |= notAllowed
 interpretation_non-default.value |= notAllowed
 #
+#
+# a dummy element to assist in XSD conversion
+#
+DummyInterpretationElement.def = element Per { interpretation-att.choice }

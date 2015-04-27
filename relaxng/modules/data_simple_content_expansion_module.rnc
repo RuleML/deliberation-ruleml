@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Data" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Data, Simple Content" ]
 dc:description [
@@ -21,7 +21,7 @@ Node.choice |= Data_simple.Node.def
 ## this module should not be included when translating from RNC to XSD.
 ##
 
-## an extension point for alternate spellings and internationalization of the data tag name.  
+## an extension point for specializations of the data tag name.  
 Data_simple-node.choice |= Data_simple.Node.def
 
 ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
@@ -31,7 +31,8 @@ Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Data
-  element Data { Data_simple.attlist?,  Data_simple.Node.content }
+  element Data { Data_simple.type.def }
+Data_simple.type.def = Data_simple.attlist?,  Data_simple.Node.content
 Data_simple.attlist &= commonNode.attlist?
 ## an extension point for explicit datatyping
 Data_simple.Node.content |=

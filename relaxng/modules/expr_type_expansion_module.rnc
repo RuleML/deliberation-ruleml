@@ -1,0 +1,19 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+
+dc:title [ "RuleML Functional Expressions" ]
+dc:version [ "1.02" ]
+dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dc:subject [ "RuleML, function, expression" ]
+dc:description [ "The expansion module with type attribute." ]
+dc:language [ "en" ]
+dcterms:rights [ "TBD" ] 
+dc:relation [ "http://wiki.ruleml.org/index.php/Relax_NG" ]
+start |= notAllowed
+# 
+# This module modifies the following RuleML elements and attributes:
+#            * <Expr>
+
+## Expressions optionally accept the attribute pattern of objects with user-defined types.
+reExpr.attlist &= Type.attlist?

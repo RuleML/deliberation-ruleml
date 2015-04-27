@@ -10,7 +10,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec 
   http://deliberation.ruleml.org/1.02/xsd/nafneghornlogeq.xsd">
-
+  <!--
+  Matthias Tylkowski, Martin Müller, Experiences Using Deliberation RuleML 1.01 as Rule Interchange Language,
+  In T. Patkos, et al(Eds.) Proceedings of the RuleML 2014 Challenge and the RuleML 2014 Doctoral Consortium,  
+  Prague, Czech Republic, August 18-20, 2014. http://ceur-ws.org/Vol-1211/paper8.pdf, http://de.slideshare.net/binarypark/ruleml2014f
+-->
   <!-- Axioms -->
   <Assert>
     <!-- 

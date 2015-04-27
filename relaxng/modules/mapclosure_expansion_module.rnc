@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Scope Closure" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, scope,  closure" ]
 dc:description [ "The expansion module for the optional scope closure attribute." ]
@@ -17,7 +17,7 @@ start |= notAllowed
 # Schema Design Pattern Key: see andor_expansion_module
 
 
-## an extension point for alternate spellings and internationalization of the scope implicit closure attribute name.  
+## an extension point for specializations of the scope implicit closure attribute name.  
 mapClosure-att.choice |= mapClosure.attrib.def
 mapClosure.attrib.def =
     

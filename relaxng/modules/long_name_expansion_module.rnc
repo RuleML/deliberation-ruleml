@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Long Names" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, long names" ]
 dc:description [ "The expansion module for human-readable names." ]
@@ -63,3 +63,16 @@ leftHandSide.edge.def = element leftHandSide { left.attlist? & left.content }
 #
 rightSide-edge.choice |= rightHandSide.edge.def
 rightHandSide.edge.def = element rightHandSide { right.attlist? & right.content }
+reEqual.attlist &= empty
+oid.attlist &= empty
+reNaf.attlist &= empty
+rearg.attlist &= empty
+reRel.attlist &= empty
+reInd.attlist &= empty
+op_Atom.attlist &= empty
+reFun.attlist &= empty
+left.attlist &= empty
+right.attlist &= empty
+reNeg.attlist &= empty
+reVar.attlist &= empty
+op_Expr.attlist &= empty

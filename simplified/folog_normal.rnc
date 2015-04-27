@@ -293,6 +293,17 @@ And =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
+     & attribute node {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?
      & attribute closure {
          "universal"
          | "existential"
@@ -312,18 +323,7 @@ And =
              minLength = "1"
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute node {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+       }?),
     meta*,
     degree?,
     formula_3*
@@ -351,6 +351,17 @@ Or =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
+     & attribute node {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?
      & attribute closure {
          "universal"
          | "existential"
@@ -370,18 +381,7 @@ Or =
              minLength = "1"
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute node {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+       }?),
     meta*,
     degree?,
     formula_4*
@@ -430,6 +430,17 @@ Implies =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
+     & attribute node {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:base { xsd:anyURI }?
+     & attribute xml:id { xsd:NCName }?
      & attribute closure {
          "universal"
          | "existential"
@@ -449,18 +460,7 @@ Implies =
              minLength = "1"
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute node {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+       }?),
     meta*,
     degree?,
     if,
@@ -482,6 +482,16 @@ Forall =
          "bidirectional"
          | "forward"
          | "backward"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute closure {
+         "universal"
+         | "existential"
          | xsd:string {
              pattern =
                "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
@@ -538,6 +548,16 @@ Exists =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
      & attribute mapClosure {
          "universal"
          | "existential"
@@ -567,14 +587,6 @@ Exists =
 Expr =
   element Expr {
     (attribute per { "copy" }?
-     & attribute type {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -585,7 +597,15 @@ Expr =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute type {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     meta*,
     oid?,
     op_2,
@@ -705,16 +725,6 @@ Neg =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure {
-         "universal"
-         | "existential"
-         | xsd:string {
-             pattern =
-               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-             minLength = "1"
-           }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -725,7 +735,27 @@ Neg =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     meta*,
     degree?,
     strong
@@ -979,7 +1009,8 @@ op =
   }
 formula_3 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom
@@ -993,7 +1024,8 @@ formula_3 =
   }
 formula_4 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom
@@ -1247,16 +1279,6 @@ And_2 =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure {
-         "universal"
-         | "existential"
-         | xsd:string {
-             pattern =
-               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-             minLength = "1"
-           }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -1267,7 +1289,27 @@ And_2 =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     meta*,
     degree?,
     formula_3*
@@ -1295,16 +1337,6 @@ Or_2 =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute mapClosure {
-         "universal"
-         | "existential"
-         | xsd:string {
-             pattern =
-               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-             minLength = "1"
-           }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -1315,7 +1347,27 @@ Or_2 =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute mapClosure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     meta*,
     degree?,
     formula_4*

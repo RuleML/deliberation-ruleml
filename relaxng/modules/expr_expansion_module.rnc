@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 
 
 dc:title [ "RuleML Functional Expressions" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, function, expression" ]
 dc:description [ "The expansion module for functional expressions." ]
@@ -19,7 +19,7 @@ edge.choice |= op_Expr.edge.def
 #            * <op>
 #            * <Fun>
 
-## an extension point for alternate spellings and internationalization of the expression tag name. 
+## an extension point for specializations of the expression tag name. 
 Expression-node.choice |= Expr.Node.def
 
 ## A logical function of the form "f(...)" where f is a function name. 
@@ -30,15 +30,11 @@ Expr.Node.def =
   
   ## <Expr>: a functional expression. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Expr
-  element Expr {
-    (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
-  }
+  element Expr { Expr.type.def }
+Expr.type.def = (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
+reExpr.attlist &= commonNode.attlist?
 
-## Expressions optionally accept the attribute pattern of objects with user-defined types.
-reExpr.attlist &= Type.attlist?
-
-
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the operator tag name in expressions. 
+## an extension point for stripe skipping as well as specializations of the operator tag name in expressions. 
 operatorForExpressions-edge.choice |= op_Expr.edge.def
 
 ## (context sensitive: see Also atom_backbone_module and holog_module)
@@ -47,12 +43,14 @@ operatorForExpressions-edge.choice |= op_Expr.edge.def
 op_Expr.edge.def =
   
   ## Also an operator in functional expressions.
-  element op { op_Expr.attlist? & op_Expr.content }
+  element op { op_Expr.type.def }
+op_Expr.type.def = op_Expr.attlist? & op_Expr.content
+op_Expr.attlist &= commonInit.attlist?
 
 ## The operator role of an expression is filled by a functor.
 op_Expr.content |= Function-node.choice
 
-## an extension point for alternate spellings and internationalization of the function operator tag name. 
+## an extension point for specializations of the function operator tag name. 
 Function-node.choice |= Fun.Node.def
 
 ## A user-defined function name of an <Expr>. It is optionally surrounded by an operator (<op>).
@@ -60,7 +58,8 @@ Fun.Node.def =
   
   ## <Fun>: a type of name for functional operators. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Fun
-  element Fun { (Fun-datt.choice & reFun.attlist), Fun.content }
+  element Fun { Fun.type.def }
+Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.content
 
 ## functors accept the resource attribute list
 reFun.attlist &= Resource.attlist?
@@ -68,3 +67,4 @@ reFun.attlist &= Resource.attlist?
 
 ## A functor contains the XSD datatype token.
 Fun.content |= xsd:token
+reFun.attlist &= commonNode.attlist?

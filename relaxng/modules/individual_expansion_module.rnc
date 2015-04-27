@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dc:title [ "RuleML Basic Terms" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, term, individual" ]
 dc:description [ "The expansion module for basic terms." ]
@@ -24,7 +24,7 @@ edge.choice |= arg.edge.def
 #            CompoundTerm.choice
 #            DataTerm.choice
 
-## an extension point for stripe skipping as well as alternate spellings and internationalization of the positional argument tag name. 
+## an extension point for stripe skipping as well as specializations of the positional argument tag name. 
 positionalArgument-edge.choice |= arg.edge.def
 
 ## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog sublanguages).
@@ -32,13 +32,13 @@ arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
   ## http://ruleml.org/1.02/glossary/#gloss-arg
-  element arg {
-    
-    ## The attribute @index is required for the positional argument role (property).
-    (arg-datt.choice & rearg.attlist),
+  element arg { arg.type.def  }
+## The attribute @index is required for the positional argument role (property).
+arg.type.def = (arg-datt.choice & rearg.attlist),
     arg.content
-  }
+
 arg-datt.choice |= index-attrib.choice
+rearg.attlist &= commonInit.attlist?
 
 ##
 index-attrib.choice |= index.attrib.def
@@ -87,7 +87,7 @@ CompoundTerm.choice |= Expression-node.choice
 CompoundTerm.choice |= Plex_Any-node.choice
 # For the declaration of generalized list terms, see the generalized list module (plex_module).
 
-## an extension point for alternate spellings and internationalization of the individual tag name. 
+## an extension point for specializations of the individual tag name. 
 Individual-node.choice |= Ind.Node.def
 
 ## An individual constant, as in Predicate logic, which can also be considered to be a fixed argument like RDF resources.
@@ -95,7 +95,8 @@ Ind.Node.def =
   
   ## <Ind>: an individual constant. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Ind
-  element Ind { (Ind-datt.choice & reInd.attlist), Ind.content }
+  element Ind { Ind.type.def }
+Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.content
 
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.
 reInd.attlist &= Resource.attlist?
@@ -109,3 +110,4 @@ Ind.content |= xsd:token
 termsForAtoms.sequence |= termsForAtoms.nonemptysequence.choice?
 termsForExpressions.sequence |= termsForExpressions.nonemptysequence.choice?
 
+reInd.attlist &= commonNode.attlist?

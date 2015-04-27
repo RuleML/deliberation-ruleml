@@ -249,53 +249,53 @@ Rel =
   }
 And =
   element And {
-    (attribute closure {
-       "universal"
-       | "existential"
-       | xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
-     & attribute node {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (meta* & degree?),
     (formula_3 | Atom | And_2 | Or_2)*
   }
 Or =
   element Or {
-    (attribute closure {
-       "universal"
-       | "existential"
-       | xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
-     & attribute node {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (meta* & degree?),
     (formula_4 | Atom | And_2 | Or_2)*
   }
@@ -322,16 +322,6 @@ Implies =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
-     & attribute closure {
-         "universal"
-         | "existential"
-         | xsd:string {
-             pattern =
-               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-             minLength = "1"
-           }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -342,7 +332,17 @@ Implies =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute closure {
+         "universal"
+         | "existential"
+         | xsd:string {
+             pattern =
+               "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+             minLength = "1"
+           }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (meta* & degree?),
     ((if & then)
      | ((Atom | And_2 | Or_2), if)
@@ -388,14 +388,6 @@ Exists =
 Expr =
   element Expr {
     (attribute per { "copy" }?
-     & attribute type {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
      & attribute node {
          xsd:string {
            pattern =
@@ -406,7 +398,15 @@ Expr =
        }?
      & attribute ns1:schemaLocation { text }?
      & attribute xml:base { xsd:anyURI }?
-     & attribute xml:id { xsd:NCName }?),
+     & attribute xml:id { xsd:NCName }?
+     & attribute type {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (meta* & oid?),
     ((op_2 | Fun)
      & (Skolem | Reify | Ind | Data | Var | Expr | Plex | arg)*
@@ -705,14 +705,16 @@ op =
   }
 formula_3 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }?
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | And_2 | Or_2)
   }
 formula_4 =
   element formula {
-    attribute ns1:schemaLocation { text }?
+    attribute index { xsd:positiveInteger }?
+    & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | And_2 | Or_2)

@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML IRIs" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, IRI" ]
 dc:description [ "The expansion module for International Resource Identifiers (IRI)." ]
@@ -18,7 +18,7 @@ start |= iri.edge.def
 ## attribute list for resources includes and optional iri attribute.
 Resource.attlist &= iri-att.choice?
 
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 iri-att.choice |= iri.attrib.def
 iri.attrib.def =
     
@@ -28,5 +28,5 @@ iri.attrib.def =
 iri.value |= PrefixedCURIE.datatype
 iri.value |= AbsIRI.datatype
 #
-iri.edge.def = element iri { iri.attlist? & iri.content }
+iri.edge.def = element iri { iri.content }
 iri.content |= iri.value

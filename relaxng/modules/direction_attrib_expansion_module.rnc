@@ -3,7 +3,7 @@ namespace dcterms = "http://purl.org/dc/terms/"
 
 
 dc:title [ "RuleML Inference Direction" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, inference, direction" ]
 dc:description [
@@ -17,7 +17,7 @@ start |= notAllowed
 #    * @direction
 #
 
-## an extension point for alternate spellings and internationalization of the inference direction attribute name.  
+## an extension point for specializations of the inference direction attribute name.  
 direction-att.choice |= direction.attrib.def
 direction.attrib.def =
   

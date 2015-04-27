@@ -10,7 +10,7 @@
         <Implies node="this:#rule1">
           <if>
             <And>
-              <formula>
+              <formula index="1">
                 <Atom>
                   <op><Rel>friend</Rel></op>
                   <arg index="1"><Ind>Jane</Ind></arg>
@@ -40,7 +40,7 @@
               <arg index="1"><Var>x</Var></arg>
               <arg index="2"><Var>y</Var></arg>
               <arg index="3"><Ind>Steph</Ind></arg>
-              <arg index="4"><Reify><Reify><Implies><if><And><formula><Atom><op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula><Atom><op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></Reify></Reify></arg>
+              <arg index="4"><Reify><Reify><Implies><if><And><formula index="1"><Atom><op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula index="2"><Atom><op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></Reify></Reify></arg>
               <slot><Ind>t</Ind><Data xsi:type="xs:positiveInteger">1</Data></slot>
             </Atom>
           </then>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<?xml-model href="http://deliberation.ruleml.org/1.02/nvdl/xhtml.nvdl" type="application/xml" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    
+  <head>
+          
+      <title>XTML+XML Template</title>
+    <meta name="description" content="XHTML+XML Template" />
+      <meta name="author" content="Tara Athan"  />
+          <h2>Testing RuleML Embedded in HTML</h2>
+          <b>            
+          <ruleml:RuleML xmlns:ruleml="http://ruleml.org/spec">
+            <ruleml:Assert>
+              <ruleml:Implies>
+                <ruleml:if>
+                  <ruleml:Atom><ruleml:Rel>P</ruleml:Rel><ruleml:Ind>x</ruleml:Ind></ruleml:Atom>
+                </ruleml:if>
+                <ruleml:then>
+                  <ruleml:And>
+                    <ruleml:Equal><ruleml:Ind>x</ruleml:Ind><ruleml:Ind>y</ruleml:Ind></ruleml:Equal>
+                    <ruleml:Atom><ruleml:Rel>Q</ruleml:Rel><ruleml:Ind>z</ruleml:Ind></ruleml:Atom>
+                  </ruleml:And>
+                </ruleml:then>
+              </ruleml:Implies>
+            </ruleml:Assert>
+          </ruleml:RuleML>
+          </b>
+    
+  </head>
+  
+  <body></body>
+</html>

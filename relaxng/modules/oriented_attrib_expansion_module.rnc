@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Equation Orientation" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, orientation, oriented, equation" ]
 dc:description [ "The expansion module for the orientation attribute, used for equations" ]
@@ -18,7 +18,7 @@ start |= notAllowed
 # oriented-att.choice
 # oriented.value
 
-## an extension point for alternate spellings and internationalization of the oriented equation attribute name.  
+## an extension point for specializations of the oriented equation attribute name.  
 oriented-att.choice |= oriented.attrib.def
 oriented.attrib.def =
     

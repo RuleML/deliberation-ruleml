@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Slotted Rest Variables" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, rest, slot" ]
 dc:description [ "The expansion module for slotted rest variables." ]
@@ -15,7 +15,7 @@ start |= resl.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <resl>
 
-## an extension point for alternate spellings and internationalization of the slotted rest tag name. 
+## an extension point for specializations of the slotted rest tag name. 
 ## Stripe-skipping is not allowed for slotted rest variables.  
 restOfSlots-edge.choice |= resl.edge.def
 resl.edge.def =
@@ -23,7 +23,8 @@ resl.edge.def =
     ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
     ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
     ## See http://ruleml.org/1.02/glossary/#gloss-resl
-    element resl { resl.attlist? & resl.content }
+    element resl { resl.type.def }
+resl.type.def = resl.attlist? & resl.content
 
 ## The content model of a slotted rest variable is a single term.
 resl.content |= reslTerm.choice
@@ -40,6 +41,4 @@ SlotSequenceMarker.choice |= Variable-node.choice
 # For the declaration of variables, see the quantification module (quantifier-module).
 #
 edge.choice |= resl.edge.def
-
-
-
+resl.attlist &= commonInit.attlist?

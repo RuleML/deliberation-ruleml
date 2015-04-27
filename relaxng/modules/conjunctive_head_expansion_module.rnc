@@ -16,13 +16,15 @@ And-head-node.choice |= And-head.Node.def
 And-head.Node.def =
   
   ## within the head of implications
-  element And { (And-datt.choice & reAnd.attlist), And.header, And-head.main }
+  element And { And-head.type.def }
+And-head.type.def = (And-datt.choice & reAnd.attlist), And.header, And-head.main
 And-head.main |= formula_And-head-edge.choice*
 formula_And-head-edge.choice |= formula_And-head.edge.def
 formula_And-head.edge.def =
   
   ##
-  element formula { formula_And.attlist? & formula_And-head.content }
+  element formula { formula_And-head.type.def }
+formula_And-head.type.def = formula_And-datt.choice & formula_And.attlist? & formula_And-head.content
 formula_And-head.content |= AndHeadFormula.choice
 AndHeadFormula.choice |=
   Atom-node.choice

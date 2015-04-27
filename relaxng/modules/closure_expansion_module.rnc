@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Closure" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, closure" ]
 dc:description [ "The expansion module for the optional closure attribute." ]
@@ -16,7 +16,7 @@ start |= notAllowed
 #    * @closure
 # Schema Design Pattern Key: see andor_expansion_module
 
-## an extension point for alternate spellings and internationalization of the implicit closure attribute name.  
+## an extension point for specializations of the implicit closure attribute name.  
 closure-att.choice |= closure.attrib.def
 closure.attrib.def =
     
@@ -27,3 +27,7 @@ closure.attrib.def =
 closure.value |=  "universal" | "existential"
 closure.value |= PrefixedCURIE.datatype
 closure.value |= AbsIRI.datatype
+#
+# a dummy element to assist in XSD conversion
+#
+DummyClosureElement.def = element Closure { closure-att.choice }

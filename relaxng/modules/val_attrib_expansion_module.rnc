@@ -4,7 +4,7 @@ default namespace this = inherit
 
 
 dc:title [ "RuleML Set-Valued Functions" ]
-dc:version [ "1.0.2" ]
+dc:version [ "1.02" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, set-valued" ]
 dc:description [ "The expansion module for the set-valued attribute." ]
@@ -15,7 +15,7 @@ start |= notAllowed
 # This module declares the following RuleML elements and attributes:
 #            * @val
 
-## an extension point for alternate spellings and internationalization of the attribute for set-valued functions.  
+## an extension point for specializations of the attribute for set-valued functions.  
 singlevalued-att.choice |= val.attrib.def
 val.attrib.def =
     #
