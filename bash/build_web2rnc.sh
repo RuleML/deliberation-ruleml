@@ -20,12 +20,12 @@ RNC_HOME=${REPO_HOME}relaxng/
 # Generate RNC for Testing
 ${BASH_HOME}batch_webconfig2rnc.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
-     echo "Local Configuration of RNC Schemas Failed"
+     echo "Local Configuration and Caching of Online MYNG-Generated RNC Schemas Failed"
      exit 1
 fi
 # Validate Examples in Relax NG Test Suites
 ${BASH_HOME}batch_rnc-test-suite.sh  >> /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
-     echo "Local Testing of RNC Schemas Failed"
+     echo "Local Testing of RuleML Instances against (Cached) Online MYNG-Generated RNC Schemas Failed"
      exit 1
 fi
