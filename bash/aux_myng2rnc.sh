@@ -1,4 +1,5 @@
 #!/bin/bash
+# dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 # Prerequisites: PHP (bundled with Mac OSX and CLI enabled by default)
 # Dependencies:
 # schema_rnc.php
@@ -31,6 +32,6 @@ query="$b $d $a $l $p $i $t $q $e $s"
 echo "$query"
 php -f "${MYNG_BACK_END}" -c "${PHP_CLI_INI}" ${query} > "$2"
 if [ "$?" -ne "0" ]; then
-     echo "Download Failed for myng-code " "$1"
+     echo "Download Failed for myng-code " "$1" " output file " "$2"
      exit 1
 fi

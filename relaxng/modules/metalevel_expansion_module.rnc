@@ -1,5 +1,4 @@
-namespace dc = "http://purl.org/dc/elements/1.1/"
-namespace dcterms = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/terms/"
 default namespace this = inherit
 
 dc:title [ "RuleML Meta-Logic" ]
@@ -8,7 +7,7 @@ dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
 dc:subject [ "RuleML, Meta-logic, entails" ]
 dc:description [ "The expansion module for the meta-logic components." ]
 dc:language [ "en" ]
-dcterms:rights [ "TBD" ] 
+dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
 dc:relation [ "http://deliberation.ruleml.org" ]
 start |= Entails.Node.def | head_Entails.edge.def | body_Entails.edge.def
 Node.choice |= Entails.Node.def

@@ -160,8 +160,7 @@ $this_url = $this_url . $call_fragment;
 
 
 //Step 00. Write the header
-echo 'namespace dc = "http://purl.org/dc/elements/1.1/"'."\n";
-echo 'namespace dcterms = "http://purl.org/dc/terms/"'."\n";
+echo 'namespace dc = "http://purl.org/dc/terms/"'."\n";
 echo 'namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dc:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
@@ -175,7 +174,7 @@ echo 'dc:date [ "';
 echo($now);
 echo '" ]'."\n";
 echo 'dc:language [ "en" ]'."\n";
-echo 'dcterms:rights [ "TBD" ]'."\n";
+echo 'dc:rights [ \'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.\' ]'."\n";
 echo 'dc:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
 echo "# Base URL = $base_url \n";
 

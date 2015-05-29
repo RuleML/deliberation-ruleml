@@ -1,5 +1,4 @@
-namespace dc = "http://purl.org/dc/elements/1.1/"
-namespace dcterms = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/terms/"
 
 dc:title [ "The RuleML Object Meta-Knowledge" ]
 dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
@@ -8,7 +7,7 @@ dc:description [
   "This is the Core Schema module for in-place meta-knowledge in RuleML."
 ]
 dc:language [ "en" ]
-dcterms:rights [ "TBD" ]
+dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dc:relation [ "http://deliberation.ruleml.org" ]
 start |= meta.edge.def
 edge.choice |= meta.edge.def
