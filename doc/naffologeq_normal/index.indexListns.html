@@ -1,0 +1,726 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for </title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    --></script></head>
+   <body>
+      <h2><a id="INDEX">Table of Contents</a></h2>
+      <p><a href="index.indexList.html">Components</a><span> | </span><a href="schHierarchy.html">Resource Hierarchy</a></p>
+      <hr />
+      <div class="toc">
+         <form action="none">
+            <div><span> Group by: <select id="selectTOC" onchange="selectTOCGroupBy(this.options[this.selectedIndex].value, true, 'index.indexList.html', 'index.indexListns.html', 'index.indexListcomp.html');">
+                     <option value="toc_group_by_namespace" selected="selected">Namespace</option>
+                     <option value="toc_group_by_location">Location</option>
+                     <option value="toc_group_by_component_type">Component Type</option></select></span></div>
+         </form>
+         <div class="level1" id="toc_group_by_namespace" style="display:block">
+            <div>
+               <div class="level2">
+                  <p><input id="button_boxIdNamespace1" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1');" class="control" /><span class="indexGroupTitle">http://ruleml.org/spec</span></p>
+                  <div id="boxIdNamespace1" style="display:block">
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Element" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Element');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Elements</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Element" class="componentGroup" style="display:block">
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And')">ruleml:And/ruleml:And</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2_And" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And_2/ruleml:And')">ruleml:And_2/ruleml:And</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Assert.html#Assert" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Assert')">ruleml:Assert</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Atom.html#Atom" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom')">ruleml:Atom</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Data.html#Data" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Data')">ruleml:Data</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Entails.html#Entails" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails')">ruleml:Entails</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equal.html#Equal" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equal')">ruleml:Equal</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent')">ruleml:Equivalent</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists')">ruleml:Exists</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Expr.html#Expr" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Expr')">ruleml:Expr</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Forall.html#Forall" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall')">ruleml:Forall</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Fun.html#Fun" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Fun')">ruleml:Fun</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies')">ruleml:Implies</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Ind.html#Ind" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Ind')">ruleml:Ind</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Naf.html#Naf" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Naf')">ruleml:Naf</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Neg.html#Neg" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Neg')">ruleml:Neg</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or')">ruleml:Or/ruleml:Or</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2_Or" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2/ruleml:Or')">ruleml:Or_2/ruleml:Or</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex.html#Plex_Plex" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex/ruleml:Plex')">ruleml:Plex/ruleml:Plex</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_2.html#Plex_2_Plex" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_2/ruleml:Plex')">ruleml:Plex_2/ruleml:Plex</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_3.html#Plex_3_Plex" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_3/ruleml:Plex')">ruleml:Plex_3/ruleml:Plex</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query')">ruleml:Query</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Reify.html#Reify" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify')">ruleml:Reify</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rel.html#Rel" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rel')">ruleml:Rel</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Retract.html#Retract" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Retract')">ruleml:Retract</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_RuleML.html#RuleML" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML')">ruleml:RuleML</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rulebase.html#Rulebase" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase')">ruleml:Rulebase</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem')">ruleml:Skolem</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Var.html#Var" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Var')">ruleml:Var</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_act.html#act" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act')">ruleml:act</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_arg.html#arg" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:arg')">ruleml:arg</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_declare.html#declare" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare')">ruleml:declare</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_degree.html#degree" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:degree')">ruleml:degree</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula.html#formula_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula/ruleml:formula')">ruleml:formula/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_2.html#formula_2_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_2/ruleml:formula')">ruleml:formula_2/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_3.html#formula_3_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_3/ruleml:formula')">ruleml:formula_3/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_4.html#formula_4_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_4/ruleml:formula')">ruleml:formula_4/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_5.html#formula_5_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_5/ruleml:formula')">ruleml:formula_5/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_6.html#formula_6_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_6/ruleml:formula')">ruleml:formula_6/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_7.html#formula_7_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_7/ruleml:formula')">ruleml:formula_7/ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_if.html#if_if" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:if/ruleml:if')">ruleml:if/ruleml:if</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_if_2.html#if_2_if" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:if_2/ruleml:if')">ruleml:if_2/ruleml:if</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_left.html#left" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:left')">ruleml:left</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_meta.html#meta" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:meta')">ruleml:meta</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_oid.html#oid" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:oid')">ruleml:oid</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_op.html#op_op" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op/ruleml:op')">ruleml:op/ruleml:op</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_op_2.html#op_2_op" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op_2/ruleml:op')">ruleml:op_2/ruleml:op</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_repo.html#repo" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:repo')">ruleml:repo</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_resl.html#resl" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:resl')">ruleml:resl</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_right.html#right" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:right')">ruleml:right</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_slot.html#slot" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slot')">ruleml:slot</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_strong.html#strong" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:strong')">ruleml:strong</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_then.html#then_then" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:then/ruleml:then')">ruleml:then/ruleml:then</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_then_2.html#then_2_then" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:then_2/ruleml:then')">ruleml:then_2/ruleml:then</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_torso.html#torso" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso')">ruleml:torso</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_weak.html#weak" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:weak')">ruleml:weak</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Complex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Complex_Type');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Complex Types</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Complex_Type" class="componentGroup" style="display:block">
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_ENTITIES.html#ENTITIES" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:ENTITIES')">spec:ENTITIES</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_ENTITY.html#ENTITY" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:ENTITY')">spec:ENTITY</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NCName.html#NCName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NCName')">spec:NCName</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NMTOKEN.html#NMTOKEN" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NMTOKEN')">spec:NMTOKEN</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NMTOKENS.html#NMTOKENS" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NMTOKENS')">spec:NMTOKENS</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NOTATION.html#NOTATION" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NOTATION')">spec:NOTATION</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_Name.html#Name" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Name')">spec:Name</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_QName.html#QName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:QName')">spec:QName</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_String.html#String" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:String')">spec:String</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_Token.html#Token" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Token')">spec:Token</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_anySimpleType.html#anySimpleType" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:anySimpleType')">spec:anySimpleType</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_anyURI.html#anyURI" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:anyURI')">spec:anyURI</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_base64Binary.html#base64Binary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:base64Binary')">spec:base64Binary</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_boolean.html#boolean" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:boolean')">spec:boolean</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_byte.html#byte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:byte')">spec:byte</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_date.html#date" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:date')">spec:date</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_dateTime.html#dateTime" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:dateTime')">spec:dateTime</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_decimal.html#decimal" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:decimal')">spec:decimal</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_double.html#double" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:double')">spec:double</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_duration.html#duration" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:duration')">spec:duration</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_float.html#float" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:float')">spec:float</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gDay.html#gDay" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gDay')">spec:gDay</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gMonth.html#gMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gMonth')">spec:gMonth</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gYear.html#gYear" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gYear')">spec:gYear</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gYearMonth.html#gYearMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gYearMonth')">spec:gYearMonth</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_hexBinary.html#hexBinary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:hexBinary')">spec:hexBinary</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_int.html#int" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:int')">spec:int</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_integer.html#integer" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:integer')">spec:integer</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_language.html#language" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:language')">spec:language</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_long.html#long" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:long')">spec:long</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_negativeInteger.html#negativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:negativeInteger')">spec:negativeInteger</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_nonNegativeInteger.html#nonNegativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:nonNegativeInteger')">spec:nonNegativeInteger</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_nonPositiveInteger.html#nonPositiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:nonPositiveInteger')">spec:nonPositiveInteger</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_normalizedString.html#normalizedString" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:normalizedString')">spec:normalizedString</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_positiveInteger.html#positiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:positiveInteger')">spec:positiveInteger</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_short.html#short" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:short')">spec:short</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_time.html#time" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:time')">spec:time</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedByte.html#unsignedByte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedByte')">spec:unsignedByte</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedInt.html#unsignedInt" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedInt')">spec:unsignedInt</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedLong.html#unsignedLong" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedLong')">spec:unsignedLong</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Element_Group" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Element_Group');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Element Groups</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Element_Group" class="componentGroup" style="display:block">
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And')">ruleml:And</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And_2')">ruleml:And_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or')">ruleml:Or</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2')">ruleml:Or_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex.html#Plex" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex')">ruleml:Plex</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_2.html#Plex_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_2')">ruleml:Plex_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_3.html#Plex_3" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_3')">ruleml:Plex_3</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula.html#formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula')">ruleml:formula</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_2.html#formula_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_2')">ruleml:formula_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_3.html#formula_3" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_3')">ruleml:formula_3</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_4.html#formula_4" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_4')">ruleml:formula_4</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_5.html#formula_5" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_5')">ruleml:formula_5</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_6.html#formula_6" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_6')">ruleml:formula_6</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_formula_7.html#formula_7" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_7')">ruleml:formula_7</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_if.html#if" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:if')">ruleml:if</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_if_2.html#if_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:if_2')">ruleml:if_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_op.html#op" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op')">ruleml:op</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_op_2.html#op_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op_2')">ruleml:op_2</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_then.html#then" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:then')">ruleml:then</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_then_2.html#then_2" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:then_2')">ruleml:then_2</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace1Attribute_Group" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace1Attribute_Group');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Attribute Groups</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace1Attribute_Group" class="componentGroup" style="display:block">
+                                                <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_spec_common.html#common" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:common')">spec:common</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div style="clear:left"></div>
+                  </div>
+               </div>
+               <div class="level2">
+                  <p><input id="button_boxIdNamespace2" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace2');" class="control" /><span class="indexGroupTitle">No namespace</span></p>
+                  <div id="boxIdNamespace2" style="display:block">
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace2Attribute" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace2Attribute');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Attributes</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace2Attribute" class="componentGroup" style="display:block">
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And_And_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And/@closure')">ruleml:And/ruleml:And/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And_And_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And/@mapClosure')">ruleml:And/ruleml:And/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And_And_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And/@mapDirection')">ruleml:And/ruleml:And/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And_And_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And/@mapMaterial')">ruleml:And/ruleml:And/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And.html#And_And_And_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And/ruleml:And/@node')">ruleml:And/ruleml:And/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2_And_2_And_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And_2/ruleml:And/@mapClosure')">ruleml:And_2/ruleml:And/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2_And_2_And_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And_2/ruleml:And/@mapDirection')">ruleml:And_2/ruleml:And/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2_And_2_And_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And_2/ruleml:And/@mapMaterial')">ruleml:And_2/ruleml:And/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_And_2.html#And_2_And_2_And_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:And_2/ruleml:And/@node')">ruleml:And_2/ruleml:And/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Assert.html#Assert_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Assert/@mapClosure')">ruleml:Assert/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Assert.html#Assert_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Assert/@mapDirection')">ruleml:Assert/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Assert.html#Assert_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Assert/@mapMaterial')">ruleml:Assert/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Assert.html#Assert_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Assert/@node')">ruleml:Assert/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Atom.html#Atom_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Atom/@closure')">ruleml:Atom/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Atom.html#Atom_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Atom/@node')">ruleml:Atom/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Entails.html#Entails_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Entails/@node')">ruleml:Entails/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equal.html#Equal_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equal/@node')">ruleml:Equal/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equal.html#Equal_oriented" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equal/@oriented')">ruleml:Equal/@oriented</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent/@closure')">ruleml:Equivalent/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent/@mapClosure')">ruleml:Equivalent/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent/@mapDirection')">ruleml:Equivalent/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent/@mapMaterial')">ruleml:Equivalent/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Equivalent.html#Equivalent_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent/@node')">ruleml:Equivalent/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Exists.html#Exists_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Exists/@mapClosure')">ruleml:Exists/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Exists.html#Exists_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Exists/@mapDirection')">ruleml:Exists/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Exists.html#Exists_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Exists/@mapMaterial')">ruleml:Exists/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Exists.html#Exists_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Exists/@node')">ruleml:Exists/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Expr.html#Expr_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Expr/@node')">ruleml:Expr/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Expr.html#Expr_per" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Expr/@per')">ruleml:Expr/@per</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Expr.html#Expr_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Expr/@type')">ruleml:Expr/@type</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Forall.html#Forall_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Forall/@mapClosure')">ruleml:Forall/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Forall.html#Forall_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Forall/@mapDirection')">ruleml:Forall/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Forall.html#Forall_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Forall/@mapMaterial')">ruleml:Forall/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Forall.html#Forall_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Forall/@node')">ruleml:Forall/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Fun.html#Fun_iri" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Fun/@iri')">ruleml:Fun/@iri</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Fun.html#Fun_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Fun/@node')">ruleml:Fun/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Fun.html#Fun_per" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Fun/@per')">ruleml:Fun/@per</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Fun.html#Fun_val" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Fun/@val')">ruleml:Fun/@val</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@closure')">ruleml:Implies/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_direction" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@direction')">ruleml:Implies/@direction</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@mapClosure')">ruleml:Implies/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@mapDirection')">ruleml:Implies/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@mapMaterial')">ruleml:Implies/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_material" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@material')">ruleml:Implies/@material</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Implies.html#Implies_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Implies/@node')">ruleml:Implies/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Ind.html#Ind_iri" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Ind/@iri')">ruleml:Ind/@iri</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Ind.html#Ind_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Ind/@node')">ruleml:Ind/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Ind.html#Ind_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Ind/@type')">ruleml:Ind/@type</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Naf.html#Naf_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Naf/@mapClosure')">ruleml:Naf/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Naf.html#Naf_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Naf/@mapDirection')">ruleml:Naf/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Naf.html#Naf_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Naf/@mapMaterial')">ruleml:Naf/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Naf.html#Naf_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Naf/@node')">ruleml:Naf/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Neg.html#Neg_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Neg/@mapClosure')">ruleml:Neg/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Neg.html#Neg_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Neg/@mapDirection')">ruleml:Neg/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Neg.html#Neg_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Neg/@mapMaterial')">ruleml:Neg/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Neg.html#Neg_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Neg/@node')">ruleml:Neg/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or_Or_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or/@closure')">ruleml:Or/ruleml:Or/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or_Or_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or/@mapClosure')">ruleml:Or/ruleml:Or/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or_Or_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or/@mapDirection')">ruleml:Or/ruleml:Or/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or_Or_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or/@mapMaterial')">ruleml:Or/ruleml:Or/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or.html#Or_Or_Or_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or/ruleml:Or/@node')">ruleml:Or/ruleml:Or/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2_Or_2_Or_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2/ruleml:Or/@mapClosure')">ruleml:Or_2/ruleml:Or/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2_Or_2_Or_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2/ruleml:Or/@mapDirection')">ruleml:Or_2/ruleml:Or/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2_Or_2_Or_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2/ruleml:Or/@mapMaterial')">ruleml:Or_2/ruleml:Or/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Or_2.html#Or_2_Or_2_Or_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Or_2/ruleml:Or/@node')">ruleml:Or_2/ruleml:Or/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex.html#Plex_Plex_Plex_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Plex/ruleml:Plex/@node')">ruleml:Plex/ruleml:Plex/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_2.html#Plex_2_Plex_2_Plex_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_2/ruleml:Plex/@node')">ruleml:Plex_2/ruleml:Plex/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_Group_ruleml_Plex_3.html#Plex_3_Plex_3_Plex_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Plex_3/ruleml:Plex/@node')">ruleml:Plex_3/ruleml:Plex/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Query/@closure')">ruleml:Query/@closure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Query/@mapClosure')">ruleml:Query/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Query/@mapDirection')">ruleml:Query/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Query/@mapMaterial')">ruleml:Query/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Query.html#Query_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Query/@node')">ruleml:Query/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Reify.html#Reify_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Reify/@node')">ruleml:Reify/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rel.html#Rel_iri" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rel/@iri')">ruleml:Rel/@iri</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rel.html#Rel_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rel/@node')">ruleml:Rel/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Retract.html#Retract_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Retract/@mapClosure')">ruleml:Retract/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Retract.html#Retract_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Retract/@mapDirection')">ruleml:Retract/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Retract.html#Retract_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Retract/@mapMaterial')">ruleml:Retract/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Retract.html#Retract_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Retract/@node')">ruleml:Retract/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_RuleML.html#RuleML_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML/@node')">ruleml:RuleML/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rulebase.html#Rulebase_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase/@mapClosure')">ruleml:Rulebase/@mapClosure</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rulebase.html#Rulebase_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase/@mapDirection')">ruleml:Rulebase/@mapDirection</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rulebase.html#Rulebase_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase/@mapMaterial')">ruleml:Rulebase/@mapMaterial</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Rulebase.html#Rulebase_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase/@node')">ruleml:Rulebase/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Skolem.html#Skolem_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem/@node')">ruleml:Skolem/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Skolem.html#Skolem_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem/@type')">ruleml:Skolem/@type</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Var.html#Var_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Var/@node')">ruleml:Var/@node</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_Var.html#Var_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Var/@type')">ruleml:Var/@type</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_act.html#act_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:act/@index')">ruleml:act/@index</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_arg.html#arg_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:arg/@index')">ruleml:arg/@index</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_slot.html#slot_card" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:slot/@card')">ruleml:slot/@card</a></b></div>
+                                                <div><b><a href="naffologeq_normal_xsd_Element_ruleml_slot.html#slot_weight" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:slot/@weight')">ruleml:slot/@weight</a></b></div>
+                                                <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_spec_common.html#common_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:common/@node')">spec:common/@node</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div style="clear:left"></div>
+                  </div>
+               </div>
+               <div class="level2">
+                  <p><input id="button_boxIdNamespace3" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace3');" class="control" /><span class="indexGroupTitle">http://www.w3.org/XML/1998/namespace</span></p>
+                  <div id="boxIdNamespace3" style="display:block">
+                     <div class="horizontalLayout">
+                        <table class="rt">
+                           <tr>
+                              <td class="rt_cornerTopLeft"></td>
+                              <td class="rt_lineTop"></td>
+                              <td class="rt_cornerTopRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_lineLeft"></td>
+                              <td class="rt_content">
+                                 <table class="componentGroup">
+                                    <tbody>
+                                       <tr>
+                                          <td class="componentGroup"><input id="button_boxIdNamespace3Attribute" type="image" value="-" src="img/btM.gif" onclick="switchState('boxIdNamespace3Attribute');" class="control" /></td>
+                                          <td class="componentGroup">
+                                             <div class="componentGroupTitle">Attributes</div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <td class="componentGroup"></td>
+                                          <td class="componentGroup">
+                                             <div id="boxIdNamespace3Attribute" class="componentGroup" style="display:block">
+                                                <div><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:base')">@xml:base</a></b></div>
+                                                <div><b><a href="xml_xsd_Attribute_xml_id.html#id" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:id')">@xml:id</a></b></div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </td>
+                              <td class="rt_lineRight"></td>
+                           </tr>
+                           <tr>
+                              <td class="rt_cornerBottomLeft"></td>
+                              <td class="rt_lineBottom"></td>
+                              <td class="rt_cornerBottomRight"></td>
+                           </tr>
+                        </table>
+                     </div>
+                     <div style="clear:left"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div>
+   </body>
+</html>
