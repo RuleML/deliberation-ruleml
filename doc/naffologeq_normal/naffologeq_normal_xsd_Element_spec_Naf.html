@@ -392,10 +392,10 @@
                            <div id="instance_Naf" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;spec:Naf</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:weak</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:weak&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;spec:Naf</span><span class="tT"> </span><span class="tAN">base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:weak</span><span class="tT"> </span><span class="tAN">base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:weak&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/spec:Naf&gt;</span></pre></td>
                                  </tr>
                               </table>
@@ -419,9 +419,25 @@
                                     </tr>
                                  </thead>
                                  <tr>
+                                    <td class="firstColumn"><b>base</b></td>
+                                    <td></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
                                     <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Naf.html#Naf_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component closure')">closure</a></b></td>
                                     <td>union of(restriction of <b>xs:token</b>, restriction of <b>xs:token</b>, restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
                                     </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b>id</b></td>
+                                    <td></td>
                                     <td>optional</td>
                                     <td>
                                        <div class="annotation"></div>
@@ -458,22 +474,6 @@
                                     <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Naf.html#Naf_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component node')">node</a></b></td>
                                     <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
                                     </td>
-                                    <td>optional</td>
-                                    <td>
-                                       <div class="annotation"></div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:base')">xml:base</a></b></td>
-                                    <td><b>xs:anyURI</b></td>
-                                    <td>optional</td>
-                                    <td>
-                                       <div class="annotation"></div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_id.html#id" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:id')">xml:id</a></b></td>
-                                    <td><b>xs:ID</b></td>
                                     <td>optional</td>
                                     <td>
                                        <div class="annotation"></div>
