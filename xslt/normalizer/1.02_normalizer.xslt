@@ -680,6 +680,8 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Pretty Print -->
+
   <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()"  mode="pretty-print">
     <xsl:copy>
@@ -688,7 +690,6 @@
   </xsl:template>
   
 
-  <!-- Pretty Print -->
   <!--Makes sure everything is printed nicely-->
   <xsl:variable name="pretty-print-output">
     <xsl:apply-templates select="$phase-3-output" mode="pretty-print">
