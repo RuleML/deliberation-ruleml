@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://ruleml.org/spec" xmlns:r="http://ruleml.org/spec" exclude-result-prefixes="#all">
-
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] -->    
   <!-- Remove almost all white space between elements -->
   <xsl:preserve-space elements="RuleML"/>
   <xsl:strip-space elements="*"/>
@@ -346,7 +346,7 @@
   <!-- Builds canonically-ordered content of Retract. -->
   <xsl:template match="r:Retract|r:Assert" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -361,7 +361,7 @@
   <xsl:template match="r:Query" mode="phase-2">
     <xsl:copy>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -375,7 +375,7 @@
   <!-- Builds canonically-ordered content of Entails. -->
   <xsl:template match="r:Entails" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -391,7 +391,7 @@
   <!-- Builds canonically-ordered content of Rulebase. -->
   <xsl:template match="r:Rulebase" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -405,7 +405,7 @@
   <!-- Builds canonically-ordered content of Exists. -->
   <xsl:template match="r:Exists" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -419,7 +419,7 @@
   <!-- Builds canonically-ordered content of Forall. -->
   <xsl:template match="r:Forall" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -433,7 +433,7 @@
   <!-- Builds canonically-ordered content of Implies. -->
   <xsl:template match="r:Implies" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -449,7 +449,7 @@
   <!-- Builds canonically-ordered content of Equivalent. -->
   <xsl:template match="r:Equivalent" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -463,7 +463,7 @@
   <!-- Builds canonically-ordered content of And.-->
   <xsl:template match="r:And" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -477,7 +477,7 @@
   <!-- Builds canonically-ordered content of Or. -->
   <xsl:template match="r:Or" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -491,7 +491,7 @@
   <!-- Builds canonically-ordered content of Atom. -->
   <xsl:template match="r:Atom" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -519,7 +519,7 @@
   <!-- Builds canonically-ordered content of Equal. -->
   <xsl:template match="r:Equal" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -539,7 +539,7 @@
   <!-- Builds canonically-ordered content of Neg. -->
   <xsl:template match="r:Neg" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -553,7 +553,7 @@
   <!-- Builds canonically-ordered content of Naf. -->
   <xsl:template match="r:Naf" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -567,7 +567,7 @@
   <!-- Builds canonically-ordered content of Expr. -->
   <xsl:template match="r:Expr" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -593,7 +593,7 @@
   <!-- Builds canonically-ordered content of Plex. -->
   <xsl:template match="r:Plex" mode="phase-2">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
       <xsl:apply-templates select="comment()" mode="phase-2"/>
       <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
       <xsl:apply-templates select="r:meta" mode="phase-2"/>
@@ -632,7 +632,7 @@
 
   <!-- Adds the required index attribute to the arg tag 
         There are errors with the indexing when the argument is within a slot-->
-  <xsl:template match="r:arg[namespace-uri(.)='http://ruleml.org/spec']" mode="phase-3">
+  <xsl:template match="r:arg[not(@index)]" mode="phase-3">
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:arg)+1"/>
     </xsl:variable>
@@ -640,12 +640,12 @@
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
-      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+      <xsl:apply-templates select="@*|node()" mode="phase-3"/>
     </arg>
   </xsl:template>
 
   <!-- Adds the required index attribute to the act tag -->
-  <xsl:template match="r:act[namespace-uri(.)='http://ruleml.org/spec']" mode="phase-3">
+  <xsl:template match="r:act[not(@index)]" mode="phase-3">
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:act)+1"/>
     </xsl:variable>
@@ -653,12 +653,12 @@
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
-      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+      <xsl:apply-templates select="@*|node()" mode="phase-3"/>
     </act>
   </xsl:template>
 
   <!-- Adds the required index attribute to the formula tag in And and Or -->
-  <xsl:template match="r:*[name() = 'And' or name()='Or']/r:formula[namespace-uri(.)='http://ruleml.org/spec']" mode="phase-3">
+  <xsl:template match="*[self::r:And or self::r:Or]/r:formula[not(@index)]" mode="phase-3">
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:formula)+1"/>
     </xsl:variable>
@@ -666,7 +666,7 @@
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
-      <xsl:apply-templates select="node() | @*" mode="phase-3"/>
+      <xsl:apply-templates select="@*|node()" mode="phase-3"/>
     </formula>
   </xsl:template>
   
@@ -681,12 +681,12 @@
   </xsl:template>
 
   <!-- Copies everything to the transformation output -->
-  <xsl:template match="@*|node()">
+  <xsl:template match="@*|node()"  mode="pretty-print">
     <xsl:copy>
-      <xsl:apply-templates select="@*|node()" mode="phase-3"/>
+      <xsl:apply-templates select="@*|node()" mode="pretty-print"/>
     </xsl:copy>
   </xsl:template>
-
+  
 
   <!-- Pretty Print -->
   <!--Makes sure everything is printed nicely-->

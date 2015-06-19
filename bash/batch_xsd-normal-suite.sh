@@ -22,7 +22,7 @@ NORMAL_XSLT_HOME=${XSLT_HOME}normalizer/
 OXY_HOME=/Applications/oxygen/
 SAX_HOME=${OXY_HOME}lib/
 
-# creates the xsd directory if they doesn't exist, and clears them, in case they already have contents
+# creates the normalization test directory if they doesn't exist, and clears it, in case it already has contents
 mkdir -p ${NORMAL_SUITE_HOME}
 rm ${NORMAL_SUITE_HOME}* >> /dev/null 2>&1
 
