@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleml:RuleML xmlns:ruleml="http://ruleml.org/spec" xmlns="http://example.org/datalog-ruleml.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage -->
+  <act xmlns="http://ruleml.org/spec" index="1">
+    <ruleml:Assert xmlns="http://example.org/datalog-ruleml.ruleml" mapClosure="universal">
+      <formula xmlns="http://ruleml.org/spec">
+        <ruleml:Implies xmlns="http://example.org/datalog-ruleml.ruleml" node=":#rule1">
+          <ruleml:if>
+            <ruleml:And>
+              <formula xmlns="http://ruleml.org/spec">
+                <ruleml:Atom xmlns="http://example.org/datalog-ruleml.ruleml">
+                  <!-- Note: the following element will validate in Relax NG but not (yet)
+                 in XSD. It is necessary to add the definition of these RuleML
+                 types (allowing attributes like @node) to the online RuleML XSDs.-->
+                  <ruleml:op><ruleml:Rel>friend</ruleml:Rel></ruleml:op>
+                  <arg xmlns="http://ruleml.org/spec" index="1"><ruleml:Ind xmlns="http://example.org/datalog-ruleml.ruleml">Jane</ruleml:Ind></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="2"><ruleml:Skolem xmlns="http://example.org/datalog-ruleml.ruleml">constant b</ruleml:Skolem></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="3"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml" xsi:type="xs:string">test</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="4"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml" xsi:type="xs:integer">12</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="5"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml" node=":#data1" xsi:type="ruleml:integer">12</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="6"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml" node=":#data2">12a <xs:integer/></ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="7"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml">tomorrow</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="8"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml" xsi:type="xs:dateTime">2002-10-10T17:00:00Z</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="9"><ruleml:Data xmlns="http://example.org/datalog-ruleml.ruleml">test12</ruleml:Data></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="10"><ruleml:Ind xmlns="http://example.org/datalog-ruleml.ruleml">Jack</ruleml:Ind></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="11"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">y</ruleml:Var></arg>
+                  <arg xmlns="http://ruleml.org/spec" index="12"><ruleml:Ind xmlns="http://example.org/datalog-ruleml.ruleml">Frank</ruleml:Ind></arg>
+                </ruleml:Atom>
+              </formula>
+            </ruleml:And>
+          </ruleml:if>
+          <ruleml:then>
+            <ruleml:Atom>
+              <ruleml:meta>
+                <ruleml:Atom>
+                  <op xmlns="http://ruleml.org/spec"><ruleml:Rel xmlns="http://example.org/datalog-ruleml.ruleml">P</ruleml:Rel></op>
+                </ruleml:Atom>
+              </ruleml:meta>
+              <ruleml:op><ruleml:Rel>friend</ruleml:Rel></ruleml:op>
+              <arg xmlns="http://ruleml.org/spec" index="1"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">x</ruleml:Var></arg>
+              <arg xmlns="http://ruleml.org/spec" index="2"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">y</ruleml:Var></arg>
+              <arg xmlns="http://ruleml.org/spec" index="3"><ruleml:Ind xmlns="http://example.org/datalog-ruleml.ruleml">Steph</ruleml:Ind></arg>
+              <arg xmlns="http://ruleml.org/spec" index="4"><ruleml:Reify xmlns="http://example.org/datalog-ruleml.ruleml" node=":#reify1"><ruleml:Reify><ruleml:Implies><if xmlns="http://ruleml.org/spec"><ruleml:And xmlns="http://example.org/datalog-ruleml.ruleml"><formula xmlns="http://ruleml.org/spec"><ruleml:Atom xmlns="http://example.org/datalog-ruleml.ruleml"><op xmlns="http://ruleml.org/spec"><ruleml:Rel xmlns="http://example.org/datalog-ruleml.ruleml">buy</ruleml:Rel></op><arg xmlns="http://ruleml.org/spec" index="1"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">person</ruleml:Var></arg><arg xmlns="http://ruleml.org/spec" index="2"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">merchant</ruleml:Var></arg><arg xmlns="http://ruleml.org/spec" index="3"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">object</ruleml:Var></arg></ruleml:Atom></formula><formula xmlns="http://ruleml.org/spec"><ruleml:Atom xmlns="http://example.org/datalog-ruleml.ruleml"><op xmlns="http://ruleml.org/spec"><ruleml:Rel xmlns="http://example.org/datalog-ruleml.ruleml">keep</ruleml:Rel></op><arg xmlns="http://ruleml.org/spec" index="1"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">person</ruleml:Var></arg><arg xmlns="http://ruleml.org/spec" index="2"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">object</ruleml:Var></arg></ruleml:Atom></formula></ruleml:And></if><then xmlns="http://ruleml.org/spec"><ruleml:Atom xmlns="http://example.org/datalog-ruleml.ruleml"><op xmlns="http://ruleml.org/spec"><ruleml:Rel xmlns="http://example.org/datalog-ruleml.ruleml">own</ruleml:Rel></op><arg xmlns="http://ruleml.org/spec" index="1"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">person</ruleml:Var></arg><arg xmlns="http://ruleml.org/spec" index="2"><ruleml:Var xmlns="http://example.org/datalog-ruleml.ruleml">object</ruleml:Var></arg></ruleml:Atom></then></ruleml:Implies></ruleml:Reify></ruleml:Reify></arg>
+              <ruleml:slot><ruleml:Ind>t</ruleml:Ind><ruleml:Data xsi:type="xs:positiveInteger">1</ruleml:Data></ruleml:slot>
+              <ruleml:slot><ruleml:Ind>t</ruleml:Ind><ruleml:Data xsi:type="xs:positiveInteger">1</ruleml:Data></ruleml:slot>
+            </ruleml:Atom>
+          </ruleml:then>
+        </ruleml:Implies>
+      </formula>
+    </ruleml:Assert>
+  </act>
+</ruleml:RuleML>

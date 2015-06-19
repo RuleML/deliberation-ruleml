@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:ex="http://example.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+  <!--
+		<Reify> can be used to treat valid RuleML formulas as data, i.e. "quote" them
+		The reification can be reversed (i.e. data becoming formulas again) by an "eval"
+		primitive (not yet supported)
+	-->
+  <act index="1">
+    <Assert>
+      <formula>
+        <Atom>
+          <!--
+		The following <Reify> is not valid because it contains non-RuleML XML.
+		
+		XSV complains as follows:
+			element {http://example.com}:object not allowed here (1) in element
+			{http://ruleml.org/spec}:Reify,
+			expecting [{Wildcard: [u'http://ruleml.org/spec']},$]
+	-->
+          <!--	
+		  <Reify>
+			<ex:object>
+				<ex:id>115897</ex:id>
+				<ex:owner>John Doe</ex:owner>
+			</ex:object>
+		  </Reify>
+	-->
+          <!-- <Data>, on the other hand, supports arbitrary (not necessarily valid) XML. -->
+          <op><Rel>rusty</Rel></op>
+          <arg index="1"><Reify><Implies material="yes"><if><And><formula index="1"><Atom><op><Rel>wet</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula><formula index="2"><Atom><op><Rel>metal</Rel></op><arg index="1"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>rusty</Rel></op><arg index="1"><Var>object</Var></arg></Atom></then></Implies></Reify></arg>
+          <arg index="2"><Reify><Atom><op><Rel>wet</Rel></op><arg index="1"><Var>object</Var></arg></Atom></Reify></arg>
+          <arg index="3"><Data><ex:object><ex:id>115897</ex:id><ex:owner>John Doe</ex:owner></ex:object></Data></arg>
+          <arg index="4"><Data xsi:type="xs:nonNegativeInteger">12</Data></arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalog.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage -->
+  <act index="1">
+    <Assert mapClosure="universal">
+      <formula>
+        <Implies node="this:#rule1">
+          <if>
+            <And>
+              <formula index="1">
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Ind>Jane</Ind></arg>
+                  <arg index="2"><Skolem>constant b</Skolem></arg>
+                  <arg index="3"><Data xsi:type="xs:string">test</Data></arg>
+                  <arg index="4"><Data xsi:type="xs:integer">12</Data></arg>
+                  <arg index="5"><Data node="this:#data1" xsi:type="integer">12</Data></arg>
+                  <arg index="6"><Data node="this:#data2">12a <xs:integer/></Data></arg>
+                  <arg index="7"><Data>tomorrow</Data></arg>
+                  <arg index="8"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
+                  <arg index="9"><Data>test12</Data></arg>
+                  <arg index="10"><Ind>Jack</Ind></arg>
+                  <arg index="11"><Var>y</Var></arg>
+                  <arg index="12"><Ind>Frank</Ind></arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <meta>
+                <Atom>
+                  <op><Rel>P</Rel></op>
+                </Atom>
+              </meta>
+              <op><Rel>friend</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+              <arg index="2"><Var>y</Var></arg>
+              <arg index="3"><Ind>Steph</Ind></arg>
+              <arg index="4"><Reify><Reify><Implies><if><And><formula index="1"><Atom><op><Rel>buy</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>merchant</Var></arg><arg index="3"><Var>object</Var></arg></Atom></formula><formula index="2"><Atom><op><Rel>keep</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></formula></And></if><then><Atom><op><Rel>own</Rel></op><arg index="1"><Var>person</Var></arg><arg index="2"><Var>object</Var></arg></Atom></then></Implies></Reify></Reify></arg>
+              <slot><Ind>time</Ind><Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data></slot>
+              <slot><Ind>location</Ind><Data xsi:type="xs:positiveInteger">2</Data></slot>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

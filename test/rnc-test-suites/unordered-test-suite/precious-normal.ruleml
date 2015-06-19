@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+  <!-- A Simple example to test Unary predicates in datalog -->
+  <act index="1">
+    <Assert mapClosure="universal">
+      <!-- wine08 is precious -->
+      <!-- Something is precious if it is wine and it is old -->
+      <formula>
+        <Atom>
+          <op><Rel>precious</Rel></op>
+          <arg index="1"><Ind>wine08</Ind></arg>
+        </Atom>
+      </formula>
+      <formula>
+        <Implies>
+          <if>
+            <And>
+              <formula index="1">
+                <Atom>
+                  <op><Rel>wine</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                </Atom>
+              </formula>
+              <formula index="2">
+                <Atom>
+                  <op><Rel>old</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                </Atom>
+              </formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <op><Rel>precious</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+    </Assert>
+  </act>
+  <!--
+      Can retract a fact which doesnot exist.The fact that goldwatch17 
+      is precious which doesnot exist is retracted.                                                         
+    -->
+  <act index="2">
+    <Retract>
+      <formula>
+        <Atom>
+          <op><Rel>precious</Rel></op>
+          <arg index="1"><Ind>goldwatch17</Ind></arg>
+        </Atom>
+      </formula>
+    </Retract>
+  </act>
+</RuleML>
