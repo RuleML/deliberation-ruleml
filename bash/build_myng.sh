@@ -18,6 +18,18 @@ if [ "$?" -ne "0" ]; then
      echo "Local Testing of XSD Schemas Failed"
      exit 1
 fi
+# Test Normalizer
+${BASH_HOME}batch_xslt_test-normal.sh
+if [ "$?" -ne "0" ]; then
+     echo "Local Testing of XSLT Normalizer Failed"
+     exit 1
+fi
+# Test Compactifier
+${BASH_HOME}batch_xslt_test-compact.sh
+if [ "$?" -ne "0" ]; then
+     echo "Local Testing of XSLT Compactifier Failed"
+     exit 1
+fi
 # Build zip files
 ${BASH_HOME}build_zip.sh
 if [ "$?" -ne "0" ]; then

@@ -14,6 +14,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
+RNC_HOME=${REPO_HOME}relaxng/
 XSD_HOME=${REPO_HOME}xsd/
 TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
 COMPACT_SUITE_HOME=${REPO_HOME}test/compactifier-test-suites/
@@ -36,9 +37,9 @@ rm ${COMPACT_SUITE_HOME}* >> /dev/null 2>&1
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
-schemaname2="naffologeq.xsd"
-  sfile2=${XSD_HOME}${schemaname2}       
-  ${BASH_HOME}aux_valxsd.sh "${sfile2}"
+schemaname2="naffologeq_compact.rnc"
+  sfile2=${RNC_HOME}${schemaname2}       
+  ${BASH_HOME}aux_valrnc.sh "${sfile2}"
   exitvalue=$?
   echo ${exitvalue}
   if [ "${exitvalue}" -ne "0" ]; then
@@ -71,7 +72,7 @@ do
           echo "Normal Validation Succeeded for Compact ${file}"
           exit 1
     fi       
-    ${BASH_HOME}aux_valxsd.sh "${sfile2}" "${file}" >> /dev/null 2>&1
+    ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}" >> /dev/null 2>&1
     exitvalue=$?
     if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for Compact ${file}"
