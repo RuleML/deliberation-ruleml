@@ -250,6 +250,8 @@
     --></script></head>
    <body>
       <h2><a id="INDEX">Table of Contents</a></h2>
+      <p><a href="index.indexList.html">Components</a><span> | </span><a href="schHierarchy.html">Resource Hierarchy</a></p>
+      <hr />
       <div class="toc">
          <form action="none">
             <div><span> Group by: <select id="selectTOC" onchange="selectTOCGroupBy(this.options[this.selectedIndex].value, true, 'index.indexList.html', 'index.indexListns.html', 'index.indexListcomp.html');">
@@ -349,6 +351,83 @@
                            <table class="componentGroup">
                               <tbody>
                                  <tr>
+                                    <td class="componentGroup"><input id="button_Complex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('Complex_Type');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Complex Types</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Complex_Type" class="componentGroup" style="display:block">
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_ENTITIES.html#ENTITIES" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:ENTITIES')">spec:ENTITIES</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_ENTITY.html#ENTITY" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:ENTITY')">spec:ENTITY</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NCName.html#NCName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NCName')">spec:NCName</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NMTOKEN.html#NMTOKEN" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NMTOKEN')">spec:NMTOKEN</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NMTOKENS.html#NMTOKENS" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NMTOKENS')">spec:NMTOKENS</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_NOTATION.html#NOTATION" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:NOTATION')">spec:NOTATION</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_Name.html#Name" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Name')">spec:Name</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_QName.html#QName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:QName')">spec:QName</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_String.html#String" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:String')">spec:String</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_Token.html#Token" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Token')">spec:Token</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_anySimpleType.html#anySimpleType" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:anySimpleType')">spec:anySimpleType</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_anyURI.html#anyURI" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:anyURI')">spec:anyURI</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_base64Binary.html#base64Binary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:base64Binary')">spec:base64Binary</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_boolean.html#boolean" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:boolean')">spec:boolean</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_byte.html#byte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:byte')">spec:byte</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_date.html#date" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:date')">spec:date</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_dateTime.html#dateTime" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:dateTime')">spec:dateTime</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_decimal.html#decimal" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:decimal')">spec:decimal</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_double.html#double" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:double')">spec:double</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_duration.html#duration" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:duration')">spec:duration</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_float.html#float" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:float')">spec:float</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gDay.html#gDay" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gDay')">spec:gDay</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gMonth.html#gMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gMonth')">spec:gMonth</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gYear.html#gYear" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gYear')">spec:gYear</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_gYearMonth.html#gYearMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:gYearMonth')">spec:gYearMonth</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_hexBinary.html#hexBinary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:hexBinary')">spec:hexBinary</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_int.html#int" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:int')">spec:int</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_integer.html#integer" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:integer')">spec:integer</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_language.html#language" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:language')">spec:language</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_long.html#long" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:long')">spec:long</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_negativeInteger.html#negativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:negativeInteger')">spec:negativeInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_nonNegativeInteger.html#nonNegativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:nonNegativeInteger')">spec:nonNegativeInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_nonPositiveInteger.html#nonPositiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:nonPositiveInteger')">spec:nonPositiveInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_normalizedString.html#normalizedString" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:normalizedString')">spec:normalizedString</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_positiveInteger.html#positiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:positiveInteger')">spec:positiveInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_short.html#short" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:short')">spec:short</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_time.html#time" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:time')">spec:time</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedByte.html#unsignedByte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedByte')">spec:unsignedByte</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedInt.html#unsignedInt" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedInt')">spec:unsignedInt</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_spec_unsignedLong.html#unsignedLong" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:unsignedLong')">spec:unsignedLong</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
                                     <td class="componentGroup"><input id="button_Attribute" type="image" value="-" src="img/btM.gif" onclick="switchState('Attribute');" class="control" /></td>
                                     <td class="componentGroup">
                                        <div class="componentGroupTitle">Attributes</div>
@@ -358,6 +437,10 @@
                                     <td class="componentGroup"></td>
                                     <td class="componentGroup">
                                        <div id="Attribute" class="componentGroup" style="display:block">
+                                          <div><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:base')">@xml:base</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_id.html#id" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:id')">@xml:id</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_lang.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:lang')">@xml:lang</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_space.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:space')">@xml:space</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_And.html#And_And_And_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:And/spec:And/@node')">spec:And/spec:And/@node</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_And_2.html#And_2_And_2_And_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:And_2/spec:And/@node')">spec:And_2/spec:And/@node</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_And_3.html#And_3_And_3_And_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:And_3/spec:And/@node')">spec:And_3/spec:And/@node</a></b></div>
@@ -393,6 +476,7 @@
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_spec_Var.html#Var_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:Var/@type')">spec:Var/@type</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_spec_act.html#act_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:act/@index')">spec:act/@index</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_spec_arg.html#arg_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:arg/@index')">spec:arg/@index</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_spec_common.html#common_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:common/@node')">spec:common/@node</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_3.html#formula_3_formula_3_formula_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:formula_3/spec:formula/@index')">spec:formula_3/spec:formula/@index</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_4.html#formula_4_formula_4_formula_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:formula_4/spec:formula/@index')">spec:formula_4/spec:formula/@index</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_7.html#formula_7_formula_7_formula_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component spec:formula_7/spec:formula/@index')">spec:formula_7/spec:formula/@index</a></b></div>
@@ -451,6 +535,45 @@
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_7.html#formula_7" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula_7')">spec:formula_7</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_8.html#formula_8" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula_8')">spec:formula_8</a></b></div>
                                           <div><b><a href="disdatalogplus_mid_normal_xsd_Element_Group_spec_formula_9.html#formula_9" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:formula_9')">spec:formula_9</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Attribute_Group" type="image" value="-" src="img/btM.gif" onclick="switchState('Attribute_Group');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Attribute Groups</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Attribute_Group" class="componentGroup" style="display:block">
+                                          <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_spec_common.html#common" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:common')">spec:common</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_Group_xml_specialAttrs.html#specialAttrs" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:specialAttrs')">xml:specialAttrs</a></b></div>
                                        </div>
                                     </td>
                                  </tr>
