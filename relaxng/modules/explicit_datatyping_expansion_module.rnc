@@ -1,5 +1,6 @@
 namespace dc = "http://purl.org/dc/terms/"
 namespace xs = "http://www.w3.org/2001/XMLSchema"
+namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dc:title [ "RuleML Explicit Datatype Emulation" ]
@@ -79,128 +80,129 @@ Data_simple_typed.Node.content |=
   
 # ur type
 anySimpleType.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:anySimpleType"},
+  attribute xsi:type { anySimpleType.value},
   text
-
 # Primitive Datatypes
 duration.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:duration" },
+  attribute xsi:type { duration.value },
   xsd:duration
 dateTime.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:dateTime" },
+  attribute xsi:type { dateTime.value },
   xsd:dateTime
 time.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:time" },
+  attribute xsi:type { time.value },
   xsd:time
 date.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:date" },
+  attribute xsi:type { date.value },
   xsd:date
 gYearMonth.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:gYearMonth" },
+  attribute xsi:type { gYearMonth.value },
   xsd:gYearMonth
 gYear.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:gYear" },
+  attribute xsi:type { gYear.value },
   xsd:gYear
 gMonthDay.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:gMonthDay" },
+  attribute xsi:type { gMonthDay.value },
   xsd:gMonthDay
 gDay.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:gDay" },
+  attribute xsi:type { gDay.value },
   xsd:gDay
 gMonth.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:gMonth" },
+  attribute xsi:type { gMonth.value },
   xsd:gMonth
 boolean.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:boolean" },
+  attribute xsi:type { boolean.value },
   xsd:boolean
 base64Binary.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:base64Binary" },
+  attribute xsi:type { base64Binary.value },
   xsd:base64Binary
 hexBinary.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:hexBinary" },
+  attribute xsi:type { hexBinary.value },
   xsd:hexBinary
 float.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:float" },
+  attribute xsi:type { float.value },
   xsd:float
 decimal.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:decimal" },
+  attribute xsi:type { decimal.value },
   xsd:decimal
 double.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:double" },
+  attribute xsi:type { double.value },
   xsd:double
 anyURI.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:anyURI" },
+  attribute xsi:type { anyURI.value },
   xsd:anyURI
 QName.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:QName" },
+  attribute xsi:type { QName.value },
   xsd:QName
 NOTATION.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:NOTATION" },
+  attribute xsi:type { NOTATION.value },
   xsd:NOTATION
 String.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:string" },
+  attribute xsi:type { String.value },
   xsd:string
 # Derived Types
 normalizedString.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:normalizedString" },
+  attribute xsi:type { normalizedString.value },
   xsd:normalizedString
 Token.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:token" },
+  attribute xsi:type { Token.value },
   xsd:token
 language.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:language" },
+  attribute xsi:type { language.value },
   xsd:language
 Name.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:Name" },
+  attribute xsi:type { Name.value },
   xsd:Name
 NCName.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:NCName" },
+  attribute xsi:type { NCName.value },
   xsd:NCName
 NMTOKEN.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:NMTOKEN" },
+  attribute xsi:type { NMTOKEN.value },
   xsd:NMTOKEN
 NMTOKENS.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:NMTOKENS" },
+  attribute xsi:type { NMTOKENS.value },
   xsd:NMTOKENS
 ENTITY.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:ENTITY" },
+  attribute xsi:type { ENTITY.value },
   xsd:ENTITY
 ENTITIES.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:ENTITIES" },
+  attribute xsi:type { ENTITIES.value },
   xsd:ENTITIES
 integer.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:integer" },
+  attribute xsi:type { integer.value },
   xsd:integer
 nonPositiveInteger.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:nonPositiveInteger" },
+  attribute xsi:type { nonPositiveInteger.value },
   xsd:nonPositiveInteger
 negativeInteger.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:negativeInteger" },
+  attribute xsi:type { negativeInteger.value },
   xsd:negativeInteger
 long.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:long" },
+  attribute xsi:type { long.value },
   xsd:long
 int.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:int" },
+  attribute xsi:type { int.value },
   xsd:int
 short.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:short" },
+  attribute xsi:type { short.value },
   xsd:short
 byte.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:byte" },
+  attribute xsi:type { byte.value },
   xsd:byte
 nonNegativeInteger.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:nonNegativeInteger" },
+  attribute xsi:type { nonNegativeInteger.value },
   xsd:nonNegativeInteger
 unsignedLong.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:unsignedLong" },
+  attribute xsi:type { unsignedLong.value },
   xsd:unsignedLong
 unsignedInt.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:unsignedInt" },
+  attribute xsi:type { unsignedInt.value },
   xsd:unsignedInt
 unsignedByte.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:unsignedByte" },
+  attribute xsi:type { unsignedByte.value },
   xsd:unsignedByte
 positiveInteger.datatype.choice |=
-  attribute xsi:type { xsd:QName "xs:positiveInteger" },
+  attribute xsi:type { positiveInteger.value },
   xsd:positiveInteger
+
+  

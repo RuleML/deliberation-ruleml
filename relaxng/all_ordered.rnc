@@ -38,6 +38,8 @@ include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllow
 include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/existential_head_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

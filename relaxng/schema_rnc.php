@@ -1,4 +1,5 @@
 <?php
+// dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 header('Content-Description: File Transfer');
@@ -497,6 +498,8 @@ if ($bdefault==0){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'explicit_datatyping_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'explicit_datatyping_value_expansion_module.rnc"'."$end\n";
           //FIXME make inclusion of this module conditional on having attributes on Data
       echo "#\n".'include "' . $modulesLocation .
           'explicit_datatyping_annotation_expansion_module.rnc"'."$end\n";

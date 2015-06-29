@@ -106,7 +106,7 @@ Entails.main |= notAllowed
 # EXPLICIT DATATYPING ENABLED
 #
 include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
+include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

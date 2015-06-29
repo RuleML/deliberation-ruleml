@@ -13,166 +13,211 @@ dc:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dc:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
+include "explicit_datatyping_value_expansion_module.rnc"
 
 # Derived Datatypes
 duration.datatype.node.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "duration" },
+  attribute xsi:type { duration.ruleml.value},
   xsd:duration
 dateTime.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "dateTime" },
+  attribute xsi:type { dateTime.ruleml.value},
   xsd:dateTime
 time.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "time" },
+  attribute xsi:type { time.ruleml.value},
   xsd:time
 date.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "date" },
+  attribute xsi:type { date.ruleml.value},
   xsd:date
 gYearMonth.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "gYearMonth" },
+  attribute xsi:type { gYearMonth.ruleml.value},
   xsd:gYearMonth
 gYear.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "gYear" },
+  attribute xsi:type { gYear.ruleml.value},
   xsd:gYear
 gMonthDay.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "gMonthDay" },
+  attribute xsi:type { gMonthDay.ruleml.value},
   xsd:gMonthDay
 gDay.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "gDay" },
+  attribute xsi:type { gDay.ruleml.value},
   xsd:gDay
 gMonth.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "gMonth" },
+  attribute xsi:type { gMonth.ruleml.value},
   xsd:gMonth
 boolean.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "boolean" },
+  attribute xsi:type { boolean.ruleml.value},
   xsd:boolean
 base64Binary.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "base64Binary" },
+  attribute xsi:type { base64Binary.ruleml.value},
   xsd:base64Binary
 hexBinary.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "hexBinary" },
+  attribute xsi:type { hexBinary.ruleml.value},
   xsd:hexBinary
 float.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "float" },
+  attribute xsi:type { float.ruleml.value},
   xsd:float
 decimal.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "decimal" },
+  attribute xsi:type { decimal.ruleml.value},
   xsd:decimal
 double.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "double" },
+  attribute xsi:type { double.ruleml.value},
   xsd:double
 anyURI.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "anyURI" },
+  attribute xsi:type { anyURI.ruleml.value},
   xsd:anyURI
 QName.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "QName" },
+  attribute xsi:type { QName.ruleml.value},
   xsd:QName
 NOTATION.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "NOTATION" },
+  attribute xsi:type { NOTATION.ruleml.value},
   xsd:NOTATION
 String.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "string" },
+  attribute xsi:type { String.ruleml.value},
   xsd:string
 # Derived Types
 normalizedString.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "normalizedString" },
+  attribute xsi:type { normalizedString.ruleml.value},
   xsd:normalizedString
 Token.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "token" },
+  attribute xsi:type { Token.ruleml.value},
   xsd:token
 language.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "language" },
+  attribute xsi:type { language.ruleml.value},
   xsd:language
 Name.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "Name" },
+  attribute xsi:type { Name.ruleml.value},
   xsd:Name
 NCName.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "NCName" },
+  attribute xsi:type { NCName.ruleml.value},
   xsd:NCName
 NMTOKEN.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "NMTOKEN" },
+  attribute xsi:type { NMTOKEN.ruleml.value},
   xsd:NMTOKEN
 NMTOKENS.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "NMTOKENS" },
+  attribute xsi:type { NMTOKENS.ruleml.value},
   xsd:NMTOKENS
 ENTITY.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "ENTITY" },
+  attribute xsi:type { ENTITY.ruleml.value},
   xsd:ENTITY
 ENTITIES.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "ENTITIES" },
+  attribute xsi:type { ENTITIES.ruleml.value},
   xsd:ENTITIES
 integer.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "integer" },
+  attribute xsi:type { integer.ruleml.value},
   xsd:integer
 nonPositiveInteger.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "nonPositiveInteger" },
+  attribute xsi:type { nonPositiveInteger.ruleml.value},
   xsd:nonPositiveInteger
 negativeInteger.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "negativeInteger" },
+  attribute xsi:type { negativeInteger.ruleml.value},
   xsd:negativeInteger
 long.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "long" },
+  attribute xsi:type { long.ruleml.value},
   xsd:long
 int.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "int" },
+  attribute xsi:type { int.ruleml.value},
   xsd:int
 short.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "short" },
+  attribute xsi:type { short.ruleml.value},
   xsd:short
 byte.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "byte" },
+  attribute xsi:type { byte.ruleml.value},
   xsd:byte
 nonNegativeInteger.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "nonNegativeInteger" },
+  attribute xsi:type { nonNegativeInteger.ruleml.value},
   xsd:nonNegativeInteger
 unsignedLong.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "unsignedLong" },
+  attribute xsi:type { unsignedLong.ruleml.value},
   xsd:unsignedLong
 unsignedInt.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "unsignedInt" },
+  attribute xsi:type { unsignedInt.ruleml.value},
   xsd:unsignedInt
 unsignedByte.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "unsignedByte" },
+  attribute xsi:type { unsignedByte.ruleml.value},
   xsd:unsignedByte
 positiveInteger.datatype.choice |=
   commonNode.attlist,
-  attribute xsi:type { xsd:QName "positiveInteger" },
+  attribute xsi:type { positiveInteger.ruleml.value},
   xsd:positiveInteger
+  
+anySimpleType.ruleml.value |= xsd:QName  "anySimpleType"
+duration.ruleml.value |= xsd:QName "duration"
+dateTime.ruleml.value |= xsd:QName "dateTime"
+time.ruleml.value |= xsd:QName "time"
+date.ruleml.value |= xsd:QName "date"
+gYearMonth.ruleml.value |= xsd:QName "gYearMonth"
+gYear.ruleml.value |= xsd:QName "gYear"
+gMonthDay.ruleml.value |= xsd:QName "gMonthDay"
+gDay.ruleml.value |= xsd:QName "gDay"
+gMonth.ruleml.value |= xsd:QName "gMonth"
+boolean.ruleml.value |= xsd:QName "boolean"
+base64Binary.ruleml.value |= xsd:QName "base64Binary"
+hexBinary.ruleml.value |= xsd:QName "hexBinary"
+float.ruleml.value |= xsd:QName "float"
+decimal.ruleml.value |= xsd:QName "decimal"
+double.ruleml.value |= xsd:QName "double"
+anyURI.ruleml.value |= xsd:QName "anyURI"
+QName.ruleml.value |= xsd:QName "QName"
+NOTATION.ruleml.value |= xsd:QName "NOTATION"
+String.ruleml.value |= xsd:QName "string"
+normalizedString.ruleml.value |= xsd:QName "normalizedString"
+Token.ruleml.value |= xsd:QName "token"
+language.ruleml.value |= xsd:QName "language"
+Name.ruleml.value |= xsd:QName "Name"
+NCName.ruleml.value |= xsd:QName "NCName"
+NMTOKEN.ruleml.value |= xsd:QName "NMTOKEN"
+NMTOKENS.ruleml.value |= xsd:QName "NMTOKENS"
+ENTITY.ruleml.value |= xsd:QName "ENTITY"
+ENTITIES.ruleml.value |= xsd:QName "ENTITIES"
+integer.ruleml.value |= xsd:QName "integer"
+nonPositiveInteger.ruleml.value |= xsd:QName "nonPositiveInteger"
+negativeInteger.ruleml.value |= xsd:QName "negativeInteger"
+long.ruleml.value |= xsd:QName "long"
+int.ruleml.value |= xsd:QName "int"
+short.ruleml.value |= xsd:QName "short"
+byte.ruleml.value |= xsd:QName "byte"
+nonNegativeInteger.ruleml.value |= xsd:QName "nonNegativeInteger"
+unsignedLong.ruleml.value |= xsd:QName "unsignedLong"
+unsignedInt.ruleml.value |= xsd:QName "unsignedInt"
+unsignedByte.ruleml.value |= xsd:QName "unsignedByte"
+positiveInteger.ruleml.value |= xsd:QName "positiveInteger"
+
+

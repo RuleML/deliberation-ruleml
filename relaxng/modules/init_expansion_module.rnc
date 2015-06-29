@@ -326,6 +326,50 @@ index-attrib.choice |= notAllowed
 termsForAtoms.nonemptysequence.choice |= notAllowed
 termsForExpressions.nonemptysequence.choice |= notAllowed
 
+anySimpleType.value |= notAllowed
+duration.value |= notAllowed
+dateTime.value |= notAllowed
+time.value |= notAllowed
+date.value |= notAllowed
+gYearMonth.value |= notAllowed
+gYear.value |= notAllowed
+gMonthDay.value |= notAllowed
+gDay.value |= notAllowed
+gMonth.value |= notAllowed
+boolean.value |= notAllowed
+base64Binary.value |= notAllowed
+hexBinary.value |= notAllowed
+float.value |= notAllowed
+decimal.value |= notAllowed
+double.value |= notAllowed
+anyURI.value |= notAllowed
+QName.value |= notAllowed
+NOTATION.value |= notAllowed
+String.value |= notAllowed
+normalizedString.value |= notAllowed
+Token.value |= notAllowed
+language.value |= notAllowed
+Name.value |= notAllowed
+NCName.value |= notAllowed
+NMTOKEN.value |= notAllowed
+NMTOKENS.value |= notAllowed
+ENTITY.value |= notAllowed
+ENTITIES.value |= notAllowed
+integer.value |= notAllowed
+nonPositiveInteger.value |= notAllowed
+negativeInteger.value |= notAllowed
+long.value |= notAllowed
+int.value |= notAllowed
+short.value |= notAllowed
+byte.value |= notAllowed
+nonNegativeInteger.value |= notAllowed
+unsignedLong.value |= notAllowed
+unsignedInt.value |= notAllowed
+unsignedByte.value |= notAllowed
+positiveInteger.value |= notAllowed
+
+
+
 #
 # a dummy element to assist in XSD conversion
 #
