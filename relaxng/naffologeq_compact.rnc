@@ -329,3 +329,8 @@ include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" 
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
 include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# KEY/KEYREF ATTRIBUTES ENABLED
+#
+include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_module.rnc"  inherit = ruleml {start |= notAllowed}
+

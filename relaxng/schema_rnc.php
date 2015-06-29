@@ -100,6 +100,7 @@ $serialization_datatyping = 2;
 $serialization_schemaLocation = 3;
 $serialization_pivot = 4;
 $serialization_absolute = 5;
+$serialization_key = 6;
 $bserialization = processGETParameter ($serialization);
 $serializationParam = "x".dechex(bindec($bserialization));
 
@@ -219,13 +220,14 @@ if ($bdefault==0){
   $enableUnordered = extractBit($bserialization, $serialization_unordered);
   $NeedOrdered = (1-$enableUnordered);
   
-  $enabletripeSkip = extractBit($bserialization, $serialization_stripeskip);
+  $enableStripeSkip = extractBit($bserialization, $serialization_stripeskip);
   $enableDatatyping = extractBit($bserialization, $serialization_datatyping);
   $enableSchemaLocation = extractBit($bserialization, $serialization_schemaLocation);
   $enableAbsolute = extractBit($bserialization, $serialization_absolute);
   // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
-
+  $enableKey = extractBit($bserialization, $serialization_key);
+  
   $enableIRI = extractBit($bpropo, $propo_iri);
   $enableRulebase = extractBit($bpropo, $propo_rulebase);
   $enableEntails = extractBit($bpropo, $propo_entails);
@@ -341,6 +343,7 @@ if ($bdefault==0){
     $schemaLocation='';
   }
   $modulesLocation = $schemaLocation . 'modules/';
+  $consumerModulesLocation = 'http://consumer.ruleml.org/1.02/relaxng/modules/';
 
   //Step 1A. Assemble the propositional language 
   // Add the start statement
@@ -471,7 +474,7 @@ if ($bdefault==0){
           'ordered_groups_expansion_module.rnc"'."$end\n";
     }
     // Include stripe-skipping
-    if ($enabletripeSkip){
+    if ($enableStripeSkip){
       echo "#\n# SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'stripe_skipping_expansion_module.rnc"'."$end\n";
@@ -827,6 +830,13 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'init_expansion_module.rnc"'."$end\n";
     }
+  //Step 4C. Include Consumer modules  
+  // Include key and keyref attributes
+  if ($enableKey){
+      echo "#\n# KEY/KEYREF ATTRIBUTES ENABLED\n";
+      echo "#\n".'include "' . $consumerModulesLocation .
+          'consumer_key_expansion_module.rnc"'."$end\n";
+  }
 
 
   //Step 4A. Translate to requested xs:lang

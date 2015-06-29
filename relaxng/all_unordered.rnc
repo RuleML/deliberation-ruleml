@@ -106,4 +106,6 @@ include "modules/xml_id_expansion_module.rnc" inherit = ruleml {start |= notAllo
 include "modules/xml_lang_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/xml_space_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "../../consumer-ruleml/relaxng/modules/consumer_key_expansion_module.rnc"
     
