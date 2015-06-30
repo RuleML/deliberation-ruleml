@@ -13,7 +13,7 @@
             var myng_path = "/1.02/";
             var xsd_path = "/1.02/xsd/";
             
-            function initializeForm (LanguageForm) {
+            function initializeForm(LanguageForm) {
                 // One option must be checked for radio buttons
                 if (!(
                 LanguageForm.backbone[0].checked *
@@ -42,19 +42,19 @@
                     LanguageForm.lng[0].checked = true;
                 }
             }
-            function clearForm (LanguageForm) {
+            function clearForm(LanguageForm) {
                 //set Expressivity to Atomic Sentences
                 LanguageForm.backbone[0].checked = true;
                 clearOthers(LanguageForm);
                 checkAll(LanguageForm);
             }            
-            function fillForm (LanguageForm) {
+            function fillForm(LanguageForm) {
                 //set Expressivity to FOL
                 LanguageForm.backbone[5].checked = true;
                 fillOthers(LanguageForm);
                 checkAll(LanguageForm);
             }            
-            function clearOthers (LanguageForm) {
+            function clearOthers(LanguageForm) {
                 //Set other radio buttons
                 LanguageForm.termseq[0].checked = true;
                 LanguageForm.lng[0].checked = true;
@@ -66,7 +66,7 @@
                 clearExpr(LanguageForm);
                 clearSerial(LanguageForm);
             }            
-            function fillOthers (LanguageForm) {
+            function fillOthers(LanguageForm) {
                 //Set other radio buttons
                 LanguageForm.termseq[4].checked = true;
                 LanguageForm.lng[0].checked = true;
@@ -78,7 +78,7 @@
                 fillExpr(LanguageForm);
                 fillSerial(LanguageForm);
             }            
-            function clearPropo (LanguageForm) {
+            function clearPropo(LanguageForm) {
                 LanguageForm.propo0.checked = false;
                 LanguageForm.propo1.checked = false;
                 LanguageForm.propo2.checked = false;
@@ -91,7 +91,7 @@
                 LanguageForm.propo9.checked = false;
                 checkAll(LanguageForm);
             }            
-            function clearImplies (LanguageForm) {
+            function clearImplies(LanguageForm) {
                 LanguageForm.implies0.checked = false;
                 LanguageForm.implies1.checked = false;
                 LanguageForm.implies2.checked = false;
@@ -101,7 +101,7 @@
                 LanguageForm.implies6.checked = false;
                 checkAll(LanguageForm);
             }            
-            function clearTerms (LanguageForm) {
+            function clearTerms(LanguageForm) {
                 LanguageForm.terms0.checked = false;
                 LanguageForm.terms1.checked = false;
                 LanguageForm.terms2.checked = false;
@@ -114,19 +114,19 @@
                 LanguageForm.terms11.checked = false;
                 checkAll(LanguageForm);
             }            
-            function clearQuant (LanguageForm) {
+            function clearQuant(LanguageForm) {
                 LanguageForm.quant0.checked = false;
                 LanguageForm.quant1.checked = false;
                 LanguageForm.quant2.checked = false;
                 checkAll(LanguageForm);
             }            
-            function clearExpr (LanguageForm) {
+            function clearExpr(LanguageForm) {
                 LanguageForm.expr0.checked = false;
                 LanguageForm.expr1.checked = false;
                 LanguageForm.expr2.checked = false;
                 checkAll(LanguageForm);
             }            
-            function clearSerial (LanguageForm) {
+            function clearSerial(LanguageForm) {
                 LanguageForm.serial0.checked = false;
                 LanguageForm.serial1.checked = false;
                 LanguageForm.serial2.checked = false;
@@ -134,7 +134,7 @@
                 LanguageForm.serial4.checked = false;
                 checkAll(LanguageForm);
             }            
-            function fillPropo (LanguageForm) {
+            function fillPropo(LanguageForm) {
                 LanguageForm.propo0.checked = true;
                 LanguageForm.propo1.checked = true;
                 LanguageForm.propo2.checked = true;
@@ -147,7 +147,7 @@
                 LanguageForm.propo9.checked = true;
                 checkAll(LanguageForm);
             }            
-            function fillImplies (LanguageForm) {
+            function fillImplies(LanguageForm) {
                 LanguageForm.implies0.checked = true;
                 LanguageForm.implies1.checked = true;
                 LanguageForm.implies2.checked = true;
@@ -157,7 +157,7 @@
                 LanguageForm.implies6.checked = true;
                 checkAll(LanguageForm);
             }            
-            function fillTerms (LanguageForm) {
+            function fillTerms(LanguageForm) {
                 LanguageForm.terms0.checked = true;
                 LanguageForm.terms1.checked = true;
                 LanguageForm.terms2.checked = true;
@@ -170,19 +170,19 @@
                 LanguageForm.terms11.checked = true;
                 checkAll(LanguageForm);
             }            
-            function fillQuant (LanguageForm) {
+            function fillQuant(LanguageForm) {
                 LanguageForm.quant0.checked = true;
                 LanguageForm.quant1.checked = true;
                 LanguageForm.quant2.checked = true;
                 checkAll(LanguageForm);
             }            
-            function fillExpr (LanguageForm) {
+            function fillExpr(LanguageForm) {
                 LanguageForm.expr0.checked = true;
                 LanguageForm.expr1.checked = true;
                 LanguageForm.expr2.checked = true;
                 checkAll(LanguageForm);
             }            
-            function fillSerial (LanguageForm) {
+            function fillSerial(LanguageForm) {
                 LanguageForm.serial0.checked = true;
                 LanguageForm.serial1.checked = true;
                 LanguageForm.serial2.checked = true;
@@ -473,9 +473,9 @@
             function get_serial(LanguageForm) {
                 var serial = 0;
                 for (var i = 0; i <= 4; i = i + 1) {
-                    value = i<4 ? Math.pow(2, i) : Math.pow(2, i+2);
+                    var ds = ((i<4) ? Math.pow(2, i) : Math.pow(2, i+2));
                     if (eval("LanguageForm.serial" + i + ".checked")) {
-                        serial = serial + value;
+                        serial = serial + ds;
                     }
                 }
               return serial;
