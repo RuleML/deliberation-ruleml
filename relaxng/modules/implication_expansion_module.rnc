@@ -1,13 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Implications" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Implications" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/implication_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, implication" ]
-dc:description [ "The expansion module for implications." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for implications." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= Implies.Node.def | head_Implies.edge.def | body_Implies.edge.def
 Node.choice |= Implies.Node.def
 edge.choice |= head_Implies.edge.def | body_Implies.edge.def
@@ -36,6 +41,7 @@ Implies.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-Implies
   element Implies { Implies.type.def }
 Implies.type.def = (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main
+
 ## Implications may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
 reImplies.attlist &= commonNode.attlist?
@@ -67,7 +73,7 @@ body_Implies.edge.def =
   ## http://ruleml.org/1.02/glossary/#gloss-if
   ## FIXME: replace body_ with if_ and head_ with then_
   element if { body_Implies.type.def }
-body_Implies.type.def =  body_Implies.attlist? & body_Implies.content
+body_Implies.type.def = body_Implies.attlist? & body_Implies.content
 body_Implies.attlist &= commonInit.attlist?
 
 ## The premise of an implication consists of a single formula

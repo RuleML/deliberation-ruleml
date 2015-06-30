@@ -1,15 +1,12 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
-namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dcterms:title [ "RuleML Present Default-Valued Attributes" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/default_present_expansion_module.rnc" ]
+dcterms:title [ "RuleML Operator Stripe-Skipping Module" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/stripe_skipping_op_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "RuleML, optional default-valued attributes" ]
-dcterms:description [
-  "The expansion module to allow attributes with default values to be optional."
-]
+dc:subject [ "RuleML, stripe-skipping, operator" ]
+dcterms:description [ "expansion module for oerator stripe-skipping." ]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -17,11 +14,15 @@ dc:rights [
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
-#
-direction-att-inf.choice |= direction-att.choice
-material-att-inf.choice |= material-att.choice
-mapDirection-att-inf.choice |= mapDirection-att.choice
-mapMaterial-att-inf.choice |= mapMaterial-att.choice
-singlevalued-att-inf.choice |= singlevalued-att.choice
-interpretation-att-inf.choice |= interpretation-att.choice
-oriented-att-inf.choice |= oriented-att.choice
+# This module extends the following RuleML choice patterns:
+#            * op_Atom
+#            * op_Expr
+
+# All the RuleML roles below are made collapsible by allowing
+# substitution of their content model for the role pattern.
+
+## Stripe-skipping is allowed for operators in atomic formulas.
+operatorForAtoms-edge.choice |= op_Atom.content
+
+## Stripe-skipping is allowed for operators in expressions.
+operatorForExpressions-edge.choice |= op_Expr.content

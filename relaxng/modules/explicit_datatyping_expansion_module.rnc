@@ -1,36 +1,42 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dc:title [ "RuleML Explicit Datatype Emulation" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Explicit Datatype Emulation" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/explicit_datatyping_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, explicit datatype" ]
-dc:description [
+dcterms:description [
   "The expansion module for explicit datatyping for the complete-form serialization."
 ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ## Union Datatypes
 ## Because of a Trang bug 
 ## (http://code.google.com/p/jing-trang/issues/detail?id=132&q=xsi&colspec=ID%20Type%20Status%20Priority%20Stars%20Module%20Summary)
 ## this module should not be included when translating from RNC to XSD.
-
 Data_any.Node.choice |=
   
   ## <Data>: May contain arbitrary simple or complex content. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Data
   element Data { Data_any_explicit.type.def }
-Data_any_explicit.type.def = (Data-datt.choice & reData.attlist) &
-   attribute xsi:type { xsd:QName "xs:anyType" } &
-  text & anyElement.choice*   
+Data_any_explicit.type.def =
+  (Data-datt.choice & reData.attlist)
+  & attribute xsi:type { xsd:QName "xs:anyType" }
+  & text
+  & anyElement.choice*
+
 ## FIXME: move to initialization
 anyElement.choice |= notAllowed
-
 Data_simple-node.choice |= Data_simple_typed.Node.def
 Data_simple_typed.Node.def = element Data { Data_simple_typed.Node.content }
 
@@ -77,10 +83,9 @@ Data_simple_typed.Node.content |=
   | unsignedByte.datatype.choice
   | positiveInteger.datatype.choice
   | anySimpleType.datatype.choice
-  
 # ur type
 anySimpleType.datatype.choice |=
-  attribute xsi:type { anySimpleType.value},
+  attribute xsi:type { anySimpleType.value },
   text
 # Primitive Datatypes
 duration.datatype.choice |=
@@ -204,5 +209,3 @@ unsignedByte.datatype.choice |=
 positiveInteger.datatype.choice |=
   attribute xsi:type { positiveInteger.value },
   xsd:positiveInteger
-
-  

@@ -1,21 +1,25 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dc:title [ "RuleML Explicit Datatype Emulation - Values" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, explicit datatype" ]
-dc:description [
+dcterms:title [ "RuleML Explicit Datatype Emulation - Values" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/explicit_datatyping_value_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dc:subject [ "RuleML, explicit datatype, value" ]
+dcterms:description [
   "The expansion module for value patterns for explicit datatyping for the complete-form serialization."
 ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
-  
-anySimpleType.value |= xsd:QName  "xs:anySimpleType"
+anySimpleType.value |= xsd:QName "xs:anySimpleType"
 duration.value |= xsd:QName "xs:duration"
 dateTime.value |= xsd:QName "xs:dateTime"
 time.value |= xsd:QName "xs:time"
@@ -56,8 +60,7 @@ unsignedLong.value |= xsd:QName "xs:unsignedLong"
 unsignedInt.value |= xsd:QName "xs:unsignedInt"
 unsignedByte.value |= xsd:QName "xs:unsignedByte"
 positiveInteger.value |= xsd:QName "xs:positiveInteger"
-
-anySimpleType.value |= xsd:QName  "xsd:anySimpleType"
+anySimpleType.value |= xsd:QName "xsd:anySimpleType"
 duration.value |= xsd:QName "xsd:duration"
 dateTime.value |= xsd:QName "xsd:dateTime"
 time.value |= xsd:QName "xsd:time"
@@ -98,4 +101,3 @@ unsignedLong.value |= xsd:QName "xsd:unsignedLong"
 unsignedInt.value |= xsd:QName "xsd:unsignedInt"
 unsignedByte.value |= xsd:QName "xsd:unsignedByte"
 positiveInteger.value |= xsd:QName "xsd:positiveInteger"
-

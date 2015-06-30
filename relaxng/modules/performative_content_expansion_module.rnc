@@ -1,13 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Performatives Content" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Performatives Content" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/performative_content_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, performative, assert, retract, query" ]
-dc:description [ "The expansion module for performative content models." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for performative content models." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module declares the following RuleML elements and attribute:
 #            * AssertRetractFormula.choice
@@ -39,7 +44,6 @@ AssertRetractFormula.choice |=
 ## Also meta-logic statements of proof-theoretic entailment and rulebase declaration may be allowed in assertions and retractions. 
 AssertRetractFormula.choice |= Entails-node.choice | Rulebase-node.choice
 # For the declaration of the entailment and rulebase patterns, see the meta-logic module (meta_module)
-
 
 ## Formulas allowed in queries:
 ## Simple formulas are allowed in queries in all sub-languages.

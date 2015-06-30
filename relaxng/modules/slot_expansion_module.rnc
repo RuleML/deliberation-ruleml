@@ -1,15 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
-default namespace this = inherit
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-
-dc:title [ "RuleML Slots" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Slots" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/slot_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, slot" ]
-dc:description [ "The expansion module for slots." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for slots." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= slot.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * slot
@@ -26,9 +29,9 @@ slotTermsForExpressions.sequence |= slot-edge.choice*
 ## an extension point for specializations of the slot tag name.  
 slot-edge.choice |= slot.edge.def
 slot.edge.def =
-    
-    ## A user-defined slot (property). See http://ruleml.org/1.02/glossary/#gloss-slot
-    element slot { slot.type.def }
+  
+  ## A user-defined slot (property). See http://ruleml.org/1.02/glossary/#gloss-slot
+  element slot { slot.type.def }
 slot.type.def = (slot-datt.choice & reslot.attlist), slot.content
 
 ## The slot element accepts optional cardinality and  weight attributes. 
@@ -46,5 +49,5 @@ slotKeyTerm.choice |= SimpleKeyTerm.choice | CompoundTerm.choice
 slotFillerTerm.choice |= AnyTerm.choice
 # For the declaration of term patterns, see the term module (individual_expansion_module).
 edge.choice |= slot.edge.def
-# 
+#
 reslot.attlist &= commonInit.attlist?

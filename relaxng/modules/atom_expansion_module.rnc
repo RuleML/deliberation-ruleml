@@ -1,14 +1,19 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Atomic Formulas" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Atomic Formulas" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/atom_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
-dc:description [ "The expansion module for atomic formulas." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
-start |= Atom.Node.def | Rel.Node.def | Atom.Node.def | Rel.Node.def |op_Atom.edge.def
+dcterms:description [ "The expansion module for atomic formulas." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
+start |= Atom.Node.def | Rel.Node.def | Atom.Node.def | Rel.Node.def | op_Atom.edge.def
 Node.choice |= Atom.Node.def | Rel.Node.def
 edge.choice |= op_Atom.edge.def
 # This module declares the following RuleML elements and attributes:
@@ -30,6 +35,7 @@ Atom.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-Atom
   element Atom { Atom.type.def }
 Atom.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
+
 ## Atomic formulas may have an optional closure attribute.
 reAtom.attlist &= closure-att.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
@@ -60,6 +66,7 @@ Rel.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-Rel
   element Rel { Rel.type.def }
 Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.content
+
 ## Relations accept the optional attribute pattern of resources.
 reRel.attlist &= Resource.attlist?
 

@@ -1,20 +1,25 @@
-namespace dc = "http://purl.org/dc/terms/"
-default namespace this = inherit
-
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dc:title [ "RuleML Web Datatypes" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Web Datatypes" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/web_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, web, datatype, IRI, CURIE" ]
-dc:description [ "The expansion module for webizing datatypes." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for webizing datatypes." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
-
 # For definition of the regular expression language used to define these patterns, see http://www.w3.org/TR/xmlschema-2/#charcter-classes
-AbsIRI.datatype |= xsd:string{pattern = "[\i-[:]][\c-[:]]+:.+"}
-PrefixedCURIE.datatype |=  xsd:string{pattern = "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-                                              minLength = "1"}
+AbsIRI.datatype |= xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+PrefixedCURIE.datatype |=
+  xsd:string {
+    pattern = "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+    minLength = "1"
+  }

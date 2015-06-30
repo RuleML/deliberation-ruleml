@@ -1,13 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Equivalences" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Equivalences" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/equivalent_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, equivalence" ]
-dc:description [ "The expansion module for equivalances." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for equivalances." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= Equivalent.Node.def | torso.edge.def
 Node.choice |= Equivalent.Node.def
 edge.choice |= torso.edge.def
@@ -28,9 +33,8 @@ Equivalent.Node.def =
   ## <Equivalent>: Syntactic sugar for two implications. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Equivalent 
   element Equivalent { Equivalent.type.def }
-Equivalent.type.def = (Equivalent-datt.choice & reEquivalent.attlist),
-    Equivalent.header,
-    Equivalent.main
+Equivalent.type.def =
+  (Equivalent-datt.choice & reEquivalent.attlist), Equivalent.header, Equivalent.main
 
 ## Equivalences may have an optional closure attribute 
 ## and will accept a scoped closure attribute at full first-order logic.
@@ -41,7 +45,6 @@ reEquivalent.attlist &= mapClosure-att-fo.choice?
 ## Equivalences accept the header patter common to truth-valued connectives.
 Equivalent.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
-
 
 ## the main content model of equivalances consists of two "torso" formulas
 Equivalent.main |= torso-edge.choice, torso-edge.choice

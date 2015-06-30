@@ -1,13 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Conjunctions and Disjunctions" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Conjunctions and Disjunctions" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/andor_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, conjunction, disjunction" ]
-dc:description [ "The expansion module for conjunctions and disjunctions." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for conjunctions and disjunctions." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= And.Node.def | Or.Node.def | formula_And.edge.def | formula_Or.edge.def
 Node.choice |= And.Node.def | Or.Node.def
 edge.choice |= formula_And.edge.def | formula_Or.edge.def
@@ -45,6 +50,7 @@ And.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-And
   element And { And.type.def }
 And.type.def = (And-datt.choice & reAnd.attlist), And.header, And.main
+
 ## The attribute list of the conjunction element will accept a scoped closure attribute at full first-order logic.
 reAnd.attlist &= commonNode.attlist?
 reAnd.attlist &= closure-att-fo.choice?
@@ -67,7 +73,7 @@ formula_And.edge.def =
   ## <formula>: contains a single formula. See  
   ## http://ruleml.org/1.02/glossary/#gloss-formula
   element formula { formula_And.type.def }
-formula_And.type.def =   formula_And-datt.choice & formula_And.attlist? & formula_And.content
+formula_And.type.def = formula_And-datt.choice & formula_And.attlist? & formula_And.content
 formula_And-datt.choice |= index-attrib.choice
 formula_And.attlist &= commonInit.attlist?
 
@@ -100,6 +106,7 @@ Or.Node.def =
   ## http://ruleml.org/1.02/glossary/#gloss-Or
   element Or { Or.type.def }
 Or.type.def = (Or-datt.choice & reOr.attlist), Or.header, Or.main
+
 ## The attribute list of the disjunction element will accept a (scoped) closure attribute at full first-order logic.
 reOr.attlist &= commonNode.attlist?
 reOr.attlist &= closure-att-fo.choice?

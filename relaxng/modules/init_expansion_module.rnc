@@ -1,13 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Initializing Base Patterns" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Initializing Base Patterns" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/init_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, initialize, base patterns" ]
-dc:description [ "expansion module for initializing base patterns." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org/1.02" ]
+dcterms:description [ "expansion module for initializing base patterns." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 # The patterns defined in this module are extension points of the Deliberation RuleML syntax.
 # Those patterns defined using a choice definition symbol (|=) can be extended by alternatives.
 # Those patterns defined using an interleave definitoin symbol (&=) can be extended as an interleaved sequence.
@@ -59,60 +64,60 @@ head_Entails-ss.content |= notAllowed
 # 
 # ATTRIBUTE LISTS
 reAnd.attlist &= empty
-#reAnd-Query.attlist &= empty
+# reAnd-Query.attlist &= empty
 formula_And.attlist &= empty
 reOr.attlist &= empty
-#reOr-Query.attlist &= empty
+# reOr-Query.attlist &= empty
 formula_Or.attlist &= empty
-#reAtom.attlist &= empty
-#op_Atom.attlist &= empty
-#reRel.attlist &= empty
-#oid.attlist &= empty
+# reAtom.attlist &= empty
+# op_Atom.attlist &= empty
+# reRel.attlist &= empty
+# oid.attlist &= empty
 reData.attlist &= empty
-#reEqual.attlist &= empty
-#left.attlist &= empty
-#right.attlist &= empty
-#reEquivalent.attlist &= empty
-#torso.attlist &= empty
+# reEqual.attlist &= empty
+# left.attlist &= empty
+# right.attlist &= empty
+# reEquivalent.attlist &= empty
+# torso.attlist &= empty
 reExpr.attlist &= empty
-#reFun.attlist &= empty
-#op_Expr.attlist &= empty
-#degree.attlist &= empty
-#reImplies.attlist &= empty
-#body_Implies.attlist &= empty
-#head_Implies.attlist &= empty
-#rearg.attlist &= empty
-#reInd.attlist &= empty
-#reEntails.attlist &= empty
-#body_Entails.attlist &= empty
-#head_Entails.attlist &= empty
-#reNaf.attlist &= empty
-#weak.attlist &= empty
-#reNeg.attlist &= empty
-#strong.attlist &= empty
-#reRuleML.attlist &= empty
-#react.attlist &= empty
-#reAssertRetract.attlist &= empty
-#reQuery.attlist &= empty
-#formula_AssertRetract.attlist &= empty
-#formula_Query.attlist &= empty
-#rePlex.attlist &= empty
-#reForall.attlist &= empty
+# reFun.attlist &= empty
+# op_Expr.attlist &= empty
+# degree.attlist &= empty
+# reImplies.attlist &= empty
+# body_Implies.attlist &= empty
+# head_Implies.attlist &= empty
+# rearg.attlist &= empty
+# reInd.attlist &= empty
+# reEntails.attlist &= empty
+# body_Entails.attlist &= empty
+# head_Entails.attlist &= empty
+# reNaf.attlist &= empty
+# weak.attlist &= empty
+# reNeg.attlist &= empty
+# strong.attlist &= empty
+# reRuleML.attlist &= empty
+# react.attlist &= empty
+# reAssertRetract.attlist &= empty
+# reQuery.attlist &= empty
+# formula_AssertRetract.attlist &= empty
+# formula_Query.attlist &= empty
+# rePlex.attlist &= empty
+# reForall.attlist &= empty
 reExists.attlist &= empty
-#declare.attlist &= empty
-#formula_Forall.attlist &= empty
+# declare.attlist &= empty
+# formula_Forall.attlist &= empty
 formula_Exists.attlist &= empty
-#Reify-any.attlist &= empty
-#Reify.attlist &= empty
-#Reify-node.attlist &= empty
-#reRulebase.attlist &= empty
-#formula_Rulebase.attlist &= empty
-#reSkolem.attlist &= empty
-#reslot.attlist &= empty
-#reVar.attlist &= empty
-#repo.attlist &= empty
-#resl.attlist &= empty
-#weight.attlist &= empty
+# Reify-any.attlist &= empty
+# Reify.attlist &= empty
+# Reify-node.attlist &= empty
+# reRulebase.attlist &= empty
+# formula_Rulebase.attlist &= empty
+# reSkolem.attlist &= empty
+# reslot.attlist &= empty
+# reVar.attlist &= empty
+# repo.attlist &= empty
+# resl.attlist &= empty
+# weight.attlist &= empty
 commonNode.attlist &= commonInit.attlist?
 commonInit.attlist &= empty
 Resource.attlist &= empty
@@ -208,7 +213,7 @@ slot-datt.choice |= empty
 Data-datt.choice |= empty
 Skolem-datt.choice |= empty
 arg-datt.choice |= notAllowed
-#
+# 
 # EDGE ATTRIBUTE CHOICE PATTERNS
 formula_Or-datt.choice |= notAllowed
 formula_And-datt.choice |= notAllowed
@@ -309,11 +314,9 @@ material_default.value |= notAllowed
 material_non-default.value |= notAllowed
 type.value |= notAllowed
 val.value |= notAllowed
-
 # .datatype
 AbsIRI.datatype |= notAllowed
 PrefixedCURIE.datatype |= notAllowed
-
 # 
 # Choice patterns for all Nodes, all edges.
 # Used for start and Reify
@@ -325,7 +328,6 @@ index-attrib.choice |= notAllowed
 # .nonemptysequence
 termsForAtoms.nonemptysequence.choice |= notAllowed
 termsForExpressions.nonemptysequence.choice |= notAllowed
-
 anySimpleType.value |= notAllowed
 duration.value |= notAllowed
 dateTime.value |= notAllowed
@@ -367,11 +369,7 @@ unsignedLong.value |= notAllowed
 unsignedInt.value |= notAllowed
 unsignedByte.value |= notAllowed
 positiveInteger.value |= notAllowed
-
-
-
-#
+# 
 # a dummy element to assist in XSD conversion
 #
 DummyCommonElement.def = element Common { commonInit.attlist }
-

@@ -1,28 +1,29 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
-dc:title [ "RuleML Positional Independence" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Positional Independence" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/unordered_groups_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, positional independence" ]
-dc:description [
-  "The expansion module for positional independence."
+dcterms:description [ "The expansion module for positional independence." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
 ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ## Pre-fix operator notation for atomic formulas is optional in the relaxed-form serialization.
 ## This pattern cannot be translated accurately into XSD.
-Atom.main |=
-  operatorForAtoms-edge.choice & argumentsForAtoms.sequence
+Atom.main |= operatorForAtoms-edge.choice & argumentsForAtoms.sequence
 
 ## Slotted arguments and positional arguments in atomic formulas
 ## may be interleaved in the relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-argumentsForAtoms.sequence |=
-  positionalArgumentsForAtoms.sequence & slotsForAtoms.sequence
+argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence & slotsForAtoms.sequence
 
 ## Positional rest arguments in atomic formulas may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
@@ -33,46 +34,38 @@ positionalArgumentsForAtoms.sequence |=
 ## Slotted rest arguments in atomic formulas may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-slotsForAtoms.sequence |=
-  slotTermsForAtoms.sequence & restOfSlots-edge.choice?
+slotsForAtoms.sequence |= slotTermsForAtoms.sequence & restOfSlots-edge.choice?
 
 ## Pre-fix operator notation for expressions is optional in the relaxed-form serialization.
 ## This pattern cannot be translated accurately into XSD.
-Expr.main |=
-  operatorForExpressions-edge.choice
-  & argumentsForExpressions.sequence
+Expr.main |= operatorForExpressions-edge.choice & argumentsForExpressions.sequence
 
 ## Slotted arguments and positional arguments in expressions 
 ## may be interleaved in the relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
 argumentsForExpressions.sequence |=
-  positionalArgumentsForExpressions.sequence
-  & slotsForExpressions.sequence
+  positionalArgumentsForExpressions.sequence & slotsForExpressions.sequence
 
 ## Positional rest arguments in expressions may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
 positionalArgumentsForExpressions.sequence |=
-  termsForExpressions.sequence
-  & restOfPositionalArguments-edge.choice?
+  termsForExpressions.sequence & restOfPositionalArguments-edge.choice?
 
 ## Slotted rest arguments in expressions may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-slotsForExpressions.sequence |=
-  slotTermsForExpressions.sequence & restOfSlots-edge.choice?
+slotsForExpressions.sequence |= slotTermsForExpressions.sequence & restOfSlots-edge.choice?
 
 ## In the relaxed-form serialization, the if and then 
 ## of an implication can occur in either order if striped.
 ## This pattern can be translated accurately into XSD.
-Implies.main |=
-  body_Implies.name.choice & head_Implies.name.choice
+Implies.main |= body_Implies.name.choice & head_Implies.name.choice
 
 ## In the relaxed-form serialization, the if and then 
 ## of a proof-theoretic entailment can occur in either order if striped.
 ## This pattern can be translated accurately into XSD.
-Entails.main |=
-  body_Entails.name.choice & head_Entails.name.choice
+Entails.main |= body_Entails.name.choice & head_Entails.name.choice
 
 ## In the relaxed-form serialization, the header element sequence is:
 ## an optional header element sequence as defined in Node.header, interleaved with optional

@@ -1,15 +1,20 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML Data" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, Data, Simple Content" ]
-dc:description [
+dcterms:title [ "RuleML Data" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/data_simple_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dc:subject [ "RuleML, data, Simple Content" ]
+dcterms:description [
   "The expansion module for the simple-type Data element, a Type (Object) for literal constants."
 ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= Data_simple.Node.def
 Node.choice |= Data_simple.Node.def
 # This module declares the following RuleML elements, attributes and patterns:
@@ -31,8 +36,9 @@ Data_simple.Node.def =
   ## <Data>: literal constant optionally typed with @xsi:type. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Data
   element Data { Data_simple.type.def }
-Data_simple.type.def = Data_simple.attlist?,  Data_simple.Node.content
+Data_simple.type.def = Data_simple.attlist?, Data_simple.Node.content
 Data_simple.attlist &= commonNode.attlist?
+
 ## an extension point for explicit datatyping
 Data_simple.Node.content |=
   xsd:duration

@@ -1,26 +1,29 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-
-dc:title [ "The RuleML Node Identifier" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "The RuleML Node Identifier" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/node_attribute_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, node identifier" ]
-dc:description [
-  "This is the Core Schema module for the node identifier in RuleML."
+dcterms:description [ "This is the Core Schema module for the node identifier in RuleML." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
 ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module declares the following RuleML elements and attributes:
 #            * @node
-
 commonNode.attlist &= node-att.choice?
+
 ## an extension point for specializations of the node attribute name.  
 node-att.choice |= node.attrib.def
 node.attrib.def =
-    
-    ## An attribute for referring to a IRI.    
-    ## See http://ruleml.org/1.02/glossary/#gloss-@node
-    attribute node { node.value }
+  
+  ## An attribute for referring to a IRI.    
+  ## See http://ruleml.org/1.02/glossary/#gloss-@node
+  attribute node { node.value }
 node.value |= PrefixedCURIE.datatype
 node.value |= AbsIRI.datatype

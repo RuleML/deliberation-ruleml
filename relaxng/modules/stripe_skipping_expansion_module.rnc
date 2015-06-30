@@ -1,18 +1,21 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-dc:title [ "RuleML General Stripe-Skipping Module" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML General Stripe-Skipping Module" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/stripe_skipping_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, stripe-skipping" ]
-dc:description [ "expansion module for general stripe-skipping." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "expansion module for general stripe-skipping." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module extends the following RuleML choice patterns:
 #            * arg
-#            * op_Atom
-#            * op_Expr
 #            * body_Entails
 #            * head_Entails
 #            * torso
@@ -36,12 +39,6 @@ start |= notAllowed
 
 ## Stripe-skipping is allowed for positional arguments in atomic formulas and expressions.
 positionalArgument-edge.choice |= arg.content
-
-## Stripe-skipping is allowed for operators in atomic formulas.
-operatorForAtoms-edge.choice |= op_Atom.content
-
-## Stripe-skipping is allowed for operators in expressions.
-operatorForExpressions-edge.choice |= op_Expr.content
 
 ## In entailments, both stripes may be skipped at the same time.
 Entails.main |= body_Entails-ss.content, head_Entails-ss.content

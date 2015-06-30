@@ -1,15 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
-default namespace this = inherit
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-
-dc:title [ "RuleML Slotted Rest Variables" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
-dc:subject [ "RuleML, rest, slot" ]
-dc:description [ "The expansion module for slotted rest variables." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:title [ "RuleML Slotted Rest Variables" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/resl_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dc:subject [ "RuleML, rest variable, slot" ]
+dcterms:description [ "The expansion module for slotted rest variables." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= resl.edge.def
 # This module declares the following RuleML elements and attributes:
 #            * <resl>
@@ -18,11 +21,11 @@ start |= resl.edge.def
 ## Stripe-skipping is not allowed for slotted rest variables.  
 restOfSlots-edge.choice |= resl.edge.def
 resl.edge.def =
-    
-    ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
-    ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
-    ## See http://ruleml.org/1.02/glossary/#gloss-resl
-    element resl { resl.type.def }
+  
+  ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
+  ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
+  ## See http://ruleml.org/1.02/glossary/#gloss-resl
+  element resl { resl.type.def }
 resl.type.def = resl.attlist? & resl.content
 
 ## The content model of a slotted rest variable is a single term.

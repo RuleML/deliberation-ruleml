@@ -1,14 +1,18 @@
-namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
 
-
-dc:title [ "RuleML Equations" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com" ]
+dcterms:title [ "RuleML Equations" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/equal_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, equals, equality, equations" ]
-dc:description [ "The expansion module for equations." ]
-dc:language [ "en" ]
-dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] 
-dc:relation [ "http://deliberation.ruleml.org" ]
+dcterms:description [ "The expansion module for equations." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= Equal.Node.def | left.edge.def | right.edge.def
 Node.choice |= Equal.Node.def
 edge.choice |= left.edge.def | right.edge.def
@@ -31,11 +35,9 @@ Equal.Node.def =
   ## <Equal>: an equation between two terms. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Equal
   element Equal { Equal.type.def }
-Equal.type.def = (Equal-datt.choice & reEqual.attlist),
-    Equal.header,
-    Equal.main
-
+Equal.type.def = (Equal-datt.choice & reEqual.attlist), Equal.header, Equal.main
 reEqual.attlist &= closure-att-fo.choice?
+
 ## Equations accept the header of truth-valued connectives
 Equal.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
