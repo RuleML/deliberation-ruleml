@@ -473,8 +473,9 @@
             function get_serial(LanguageForm) {
                 var serial = 0;
                 for (var i = 0; i <= 4; i = i + 1) {
+                    value = i<4 ? Math.pow(2, i) : Math.pow(2, i+2);
                     if (eval("LanguageForm.serial" + i + ".checked")) {
-                        serial = serial + Math.pow(2, i);
+                        serial = serial + value;
                     }
                 }
               return serial;
