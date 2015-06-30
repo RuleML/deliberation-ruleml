@@ -131,6 +131,7 @@
                 LanguageForm.serial1.checked = false;
                 LanguageForm.serial2.checked = false;
                 LanguageForm.serial3.checked = false;
+                LanguageForm.serial4.checked = false;
                 checkAll(LanguageForm);
             }            
             function fillPropo (LanguageForm) {
@@ -186,6 +187,7 @@
                 LanguageForm.serial1.checked = true;
                 LanguageForm.serial2.checked = true;
                 LanguageForm.serial3.checked = true;
+                LanguageForm.serial4.checked = true;
                 checkAll(LanguageForm);
             }            
 
@@ -470,7 +472,7 @@
             }
             function get_serial(LanguageForm) {
                 var serial = 0;
-                for (var i = 0; i <= 3; i = i + 1) {
+                for (var i = 0; i <= 4; i = i + 1) {
                     if (eval("LanguageForm.serial" + i + ".checked")) {
                         serial = serial + Math.pow(2, i);
                     }
@@ -671,7 +673,7 @@
                 var terms = parseInt("f0f", 16);
                 var quant = 1;
                 var expr = 0;
-                var serial = parseInt("c", 16);
+                var serial = parseInt("4c", 16);
                 var comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -687,7 +689,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -703,7 +705,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -719,7 +721,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -735,7 +737,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -751,7 +753,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -767,7 +769,7 @@
                 terms = parseInt("200", 16);
                 quant = 0;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -831,7 +833,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -847,7 +849,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -991,7 +993,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1007,7 +1009,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1023,7 +1025,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1039,7 +1041,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1055,7 +1057,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1071,7 +1073,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1087,7 +1089,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1103,7 +1105,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 1;
                 expr = 0;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1119,7 +1121,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1135,7 +1137,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1151,7 +1153,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1167,7 +1169,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1184,7 +1186,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1200,7 +1202,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1216,7 +1218,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1232,7 +1234,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1248,7 +1250,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1264,7 +1266,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1280,7 +1282,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1296,7 +1298,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1312,7 +1314,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1328,7 +1330,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1344,7 +1346,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1360,7 +1362,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1376,7 +1378,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1392,7 +1394,7 @@
                 terms = parseInt("f0f", 16);
                 quant = 7;
                 expr = 3;
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1408,7 +1410,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("c", 16);
+                serial = parseInt("4c", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1424,7 +1426,7 @@
                 terms = parseInt("f3f", 16);
                 quant = 7;
                 expr = parseInt("f", 16);
-                serial = parseInt("f", 16);
+                serial = parseInt("4f", 16);
                 comp = compareTo(LanguageForm, bb, df, ts, lng, 
                   propo, implies, terms, quant, expr, serial  );
                 if ( comp) {
@@ -1707,6 +1709,9 @@
               <li>
                 <input type="checkbox" name="serial3" onclick="checkAll(this.form)"
                   checked="checked" /> Schema Location Attribute </li>
+              <li>
+                <input type="checkbox" name="serial4" onclick="checkAll(this.form)"
+                  checked="checked" /> Distributed Syntax </li>
             </ol>
             </td>
             <td class="facet"> <span class="facet-head">Language <br /></span> (Select One)<br /><br />
