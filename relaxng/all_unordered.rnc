@@ -1,19 +1,25 @@
 namespace dc = "http://purl.org/dc/terms/"
+namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
-dc:title [ "RuleML Custom-Built Schema" ]
-dc:version [ "1.02" ]
-dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]
-dc:subject [ "RuleML, all modules (except ordered_groups) for testing only" ]
-dc:description [
-    "custom-built main module for a RuleML sublanguage."
+dcterms:title [ "RuleML Testing Schema - Positional Independence" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/all_ordered.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dc:subject [ "RuleML, driver, test, positional indepence" ]
+dcterms:description [
+    "Driver schema for testing all modules with positional independence."
 ]
 dc:language [ "en" ]
-dc:rights [ "TBD" ]
-dc:relation [ "http://deliberation.ruleml.org/1.02" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
  start = Node.choice | edge.choice
 
-include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/andor_query_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -43,9 +49,11 @@ include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = rulem
 include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/expr_type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/folog_closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/holog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/init_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -86,14 +94,16 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

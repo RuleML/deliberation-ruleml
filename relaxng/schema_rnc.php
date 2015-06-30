@@ -483,6 +483,9 @@ if ($bdefault==0){
         echo "#\n".'include "' . $modulesLocation .
             'stripe_skipping_ifthen_expansion_module.rnc"'."$end\n";
        }
+      echo "#\n# OPERATOR STRIPE-SKIPPING MODE ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'stripe_skipping_op_expansion_module.rnc"'."$end\n";
       if ($notPivot){ 
       // not included when converting to XSD
       echo "#\n# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
