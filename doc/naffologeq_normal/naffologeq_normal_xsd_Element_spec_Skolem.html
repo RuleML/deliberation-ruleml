@@ -8,17 +8,23 @@
          <!--
         var propertiesBoxes= new Array('properties_Skolem', 
 				'properties_Skolem_type', 
-				'properties_Skolem_node');
+				'properties_Skolem_node', 
+				'properties_Skolem_key', 
+				'properties_Skolem_keyref');
 
         
         
         var usedByBoxes= new Array('usedBy_Skolem', 
 				'usedBy_Skolem_type', 
-				'usedBy_Skolem_node');
+				'usedBy_Skolem_node', 
+				'usedBy_Skolem_key', 
+				'usedBy_Skolem_keyref');
 
         var sourceBoxes= new Array('source_Skolem', 
 				'source_Skolem_type', 
-				'source_Skolem_node');
+				'source_Skolem_node', 
+				'source_Skolem_key', 
+				'source_Skolem_keyref');
 
         
         var diagramBoxes= new Array('diagram_Skolem');
@@ -376,6 +382,24 @@
                                     </tr>
                                  </thead>
                                  <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem_key" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component key')">key</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem_keyref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component keyref')">keyref</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
                                     <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component node')">node</a></b></td>
                                     <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
                                     </td>
@@ -486,6 +510,40 @@
         </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+                  </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+                </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:extension&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:simpleContent&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
@@ -662,6 +720,194 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Skolem_key"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Skolem')">spec:Skolem</a></b> / @key</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Skolem_key" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Skolem_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Skolem_key" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Skolem_key" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Skolem_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Skolem_key" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Skolem')">spec:Skolem</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Skolem_key" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Skolem_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Skolem_key" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Skolem_keyref"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Skolem')">spec:Skolem</a></b> / @keyref</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Skolem_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Skolem_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Skolem_keyref" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Skolem_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Skolem_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Skolem_keyref" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Skolem')">spec:Skolem</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Skolem_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Skolem_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Skolem_keyref" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">

@@ -11,7 +11,9 @@
 				'properties_Equivalent_mapDirection', 
 				'properties_Equivalent_closure', 
 				'properties_Equivalent_mapClosure', 
-				'properties_Equivalent_node');
+				'properties_Equivalent_node', 
+				'properties_Equivalent_key', 
+				'properties_Equivalent_keyref');
 
         
         
@@ -20,14 +22,18 @@
 				'usedBy_Equivalent_mapDirection', 
 				'usedBy_Equivalent_closure', 
 				'usedBy_Equivalent_mapClosure', 
-				'usedBy_Equivalent_node');
+				'usedBy_Equivalent_node', 
+				'usedBy_Equivalent_key', 
+				'usedBy_Equivalent_keyref');
 
         var sourceBoxes= new Array('source_Equivalent', 
 				'source_Equivalent_mapMaterial', 
 				'source_Equivalent_mapDirection', 
 				'source_Equivalent_closure', 
 				'source_Equivalent_mapClosure', 
-				'source_Equivalent_node');
+				'source_Equivalent_node', 
+				'source_Equivalent_key', 
+				'source_Equivalent_keyref');
 
         var instanceBoxes= new Array('instance_Equivalent');
 
@@ -392,11 +398,11 @@
                            <div id="instance_Equivalent" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;spec:Equivalent</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:torso</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:torso&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:torso</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:torso&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;spec:Equivalent</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:torso</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:torso&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:torso</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:torso&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/spec:Equivalent&gt;</span></pre></td>
                                  </tr>
                               </table>
@@ -422,6 +428,24 @@
                                  <tr>
                                     <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component closure')">closure</a></b></td>
                                     <td>union of(restriction of <b>xs:token</b>, restriction of <b>xs:token</b>, restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent_key" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component key')">key</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent_keyref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component keyref')">keyref</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
                                     </td>
                                     <td>optional</td>
                                     <td>
@@ -657,6 +681,40 @@
     </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
@@ -1158,6 +1216,194 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Equivalent_key"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Equivalent')">spec:Equivalent</a></b> / @key</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Equivalent_key" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Equivalent_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Equivalent_key" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Equivalent_key" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Equivalent_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Equivalent_key" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Equivalent')">spec:Equivalent</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Equivalent_key" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Equivalent_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Equivalent_key" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Equivalent_keyref"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Equivalent')">spec:Equivalent</a></b> / @keyref</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Equivalent_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Equivalent_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Equivalent_keyref" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Equivalent_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Equivalent_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Equivalent_keyref" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Equivalent')">spec:Equivalent</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Equivalent_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Equivalent_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Equivalent_keyref" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">

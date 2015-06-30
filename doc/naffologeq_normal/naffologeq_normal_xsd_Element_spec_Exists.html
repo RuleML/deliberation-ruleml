@@ -11,7 +11,9 @@
 				'properties_Exists_mapDirection', 
 				'properties_Exists_closure', 
 				'properties_Exists_mapClosure', 
-				'properties_Exists_node');
+				'properties_Exists_node', 
+				'properties_Exists_key', 
+				'properties_Exists_keyref');
 
         
         
@@ -20,14 +22,18 @@
 				'usedBy_Exists_mapDirection', 
 				'usedBy_Exists_closure', 
 				'usedBy_Exists_mapClosure', 
-				'usedBy_Exists_node');
+				'usedBy_Exists_node', 
+				'usedBy_Exists_key', 
+				'usedBy_Exists_keyref');
 
         var sourceBoxes= new Array('source_Exists', 
 				'source_Exists_mapMaterial', 
 				'source_Exists_mapDirection', 
 				'source_Exists_closure', 
 				'source_Exists_mapClosure', 
-				'source_Exists_node');
+				'source_Exists_node', 
+				'source_Exists_key', 
+				'source_Exists_keyref');
 
         var instanceBoxes= new Array('instance_Exists');
 
@@ -392,11 +398,11 @@
                            <div id="instance_Exists" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;spec:Exists</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:declare</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/spec:declare&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;spec:formula</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:formula&gt;</span><span class="tI">
+                                    <td width="100%"><pre><span class="tEl">&lt;spec:Exists</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">closure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapClosure=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapDirection=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">mapMaterial=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">node=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xmlns:spec=</span><span class="tAV">"http://ruleml.org/spec"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:meta</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,unbounded}</span><span class="tEl">&lt;/spec:meta&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:degree</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{0,1}</span><span class="tEl">&lt;/spec:degree&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:declare</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/spec:declare&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;spec:formula</span><span class="tT"> </span><span class="tAN">xml:base=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">xml:id=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">key=</span><span class="tAV">""</span><span class="tT"> </span><span class="tAN">keyref=</span><span class="tAV">""</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/spec:formula&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/spec:Exists&gt;</span></pre></td>
                                  </tr>
                               </table>
@@ -422,6 +428,24 @@
                                  <tr>
                                     <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component closure')">closure</a></b></td>
                                     <td>union of(restriction of <b>xs:token</b>, restriction of <b>xs:token</b>, restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists_key" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component key')">key</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists_keyref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component keyref')">keyref</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
                                     </td>
                                     <td>optional</td>
                                     <td>
@@ -657,6 +681,40 @@
     </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
@@ -1158,6 +1216,194 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Exists_key"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Exists')">spec:Exists</a></b> / @key</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Exists_key" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Exists_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Exists_key" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Exists_key" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Exists_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Exists_key" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Exists')">spec:Exists</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Exists_key" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Exists_key');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Exists_key" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"key"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="Exists_keyref"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Exists')">spec:Exists</a></b> / @keyref</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_Exists_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Exists_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_Exists_keyref" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_Exists_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Exists_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_Exists_keyref" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Element_spec_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component spec:Exists')">spec:Exists</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_Exists_keyref" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Exists_keyref');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_Exists_keyref" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"keyref"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
