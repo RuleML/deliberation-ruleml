@@ -7,6 +7,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
+RNC_HOME=${REPO_HOME}relaxng/
 RNC4SIMP_HOME=${REPO_HOME}relaxng/rnc4simp/
 
 # creates the output directories if they don't exist, and clears them of RNC files, in case they already have contents
@@ -30,3 +31,6 @@ do
      exit 1
    fi
 done
+
+cp ${RNC_HOME}naffologeq_compact4simp.rnc ${RNC4SIMP_HOME}
+

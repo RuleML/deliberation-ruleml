@@ -21,8 +21,8 @@ dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
 include "modules/performative_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
 act.edge.def = notAllowed
-formula_AssertRetract-edge.choice |= notAllowed
-formula_Query-edge.choice |= notAllowed
+formula_AssertRetract.edge.def = notAllowed
+formula_Query.edge.def = notAllowed
 }
 #
 include "modules/performative_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -31,35 +31,39 @@ include "modules/performative_content_expansion_module.rnc" inherit = ruleml {st
 #
 include "modules/atom_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-operatorForAtoms-edge.choice |= notAllowed
+op_Atom.edge.def = notAllowed
 }
 #
 # CONJUNCTIONS AND DISJUNCTIONS INCLUDED
 #
 include "modules/andor_query_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-formula_And-edge.choice |= notAllowed
-formula_Or-edge.choice |= notAllowed
+formula_And.edge.def = notAllowed
+formula_Or.edge.def = notAllowed
 }
 #
 # IMPLICATIONS INCLUDED
 #
-include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/implication_expansion_module.rnc" inherit = ruleml {
+start |= notAllowed
+body_Implies.edge.def = notAllowed
+head_Implies.edge.def = notAllowed
+}
 #
 # QUANTIFICATION OVER VARIABLES INCLUDED
 #
 include "modules/quantification_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-formula_Exists-edge.choice |= notAllowed
-formula_Forall-edge.choice |= notAllowed
-declare-edge.choice |= notAllowed
+formula_Exists.edge.def = notAllowed
+formula_Forall.edge.def = notAllowed
+declare.edge.def = notAllowed
 }
 #
 # EXPRESSIONS INCLUDED
 #
 include "modules/expr_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-operatorForExpressions-edge.choice |= notAllowed
+op_Expr.edge.def = notAllowed
 }
 #
 include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -110,9 +114,9 @@ include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
 #
 # ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
 #
-include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
@@ -120,11 +124,11 @@ include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {star
 #
 # EXPLICIT DATATYPING ENABLED
 #
-include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # xsi:schemaLocation ALLOWED IN RuleML
 #
@@ -142,12 +146,16 @@ include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed
 #
 include "modules/rulebase_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-formula_Rulebase-edge.choice |= notAllowed
+formula_Rulebase.edge.def = notAllowed
 }
 #
 # ENTAILMENTS (PROVES) INCLUDED
 #
-include "modules/metalevel_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/metalevel_expansion_module.rnc" inherit = ruleml {
+start |= notAllowed
+body_Entails.edge.def = notAllowed
+head_Entails.edge.def = notAllowed
+}
 #
 # DEGREE OF UNCERTAINTY INCLUDED
 #
@@ -157,14 +165,14 @@ include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllow
 #
 include "modules/neg_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-strong-edge.choice |= notAllowed
+strong.edge.def = notAllowed
 }
 #
 # WEAK NEGATIONS INCLUDED
 #
 include "modules/naf_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-weak-edge.choice |= notAllowed
+weak.edge.def = notAllowed
 }
 #
 # NODE IDENTIFIERS INCLUDED
@@ -187,7 +195,7 @@ include "modules/xml_id_expansion_module.rnc" inherit = ruleml {start |= notAllo
 #
 include "modules/equivalent_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-torso-edge.choice |= notAllowed
+torso.edge.def = notAllowed
 }
 #
 # INFERENCE DIRECTION ATTRIBUTE IS INCLUDED
@@ -238,8 +246,8 @@ include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllo
 #
 include "modules/equal_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-leftSide-edge.choice |= notAllowed
-rightSide-edge.choice |= notAllowed
+left.edge.def = notAllowed
+right.edge.def = notAllowed
 }
 #
 # ORIENTED EQUALITY ATTRIBUTE IS INCLUDED
@@ -278,7 +286,7 @@ include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllow
 #
 include "modules/individual_expansion_module.rnc" inherit = ruleml {
 start |= notAllowed
-positionalArgument-edge.choice |= notAllowed
+arg.edge.def = notAllowed
 }
 #
 # VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
