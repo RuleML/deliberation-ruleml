@@ -76,7 +76,7 @@ RuleML =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    (act | (Assert | Retract | Query)*)+
+    (act | Assert | Retract | Query)*
   }
 Assert =
   element Assert {
@@ -1592,7 +1592,7 @@ act =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (Assert | Retract | Query)*
+    (Assert | Retract | Query)
   }
 And_2 =
   element And {

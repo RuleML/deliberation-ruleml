@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Reification of Nodes" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/reify_nodes_expansion_module.rnc" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/reify_nodes_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, reify, reification" ]

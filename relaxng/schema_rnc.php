@@ -162,22 +162,25 @@ $this_url = $this_url . $call_fragment;
 
 
 //Step 00. Write the header
-echo 'namespace dc = "http://purl.org/dc/terms/"'."\n";
+echo 'namespace dc = "http://purl.org/dc/elements/1.1/"'."\n";
+echo 'namespace dcterms = "http://purl.org/dc/terms/"'."\n";
 echo 'namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
-echo 'dc:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
-echo 'dc:version [ "1.02" ]'."\n";
-echo 'dc:creator [ "Tara Athan (taraathan AT gmail.com)" ]'."\n";
+echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
+echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";
+echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
-echo 'dc:description ['."\n";
+echo 'dcterms:description ['."\n";
 echo '    "custom-built main module for a Deliberation RuleML sublanguage."'."\n";
 echo ']'."\n";
-echo 'dc:date [ "';
+echo 'dcterms:date [ "';
 echo($now);
 echo '" ]'."\n";
-echo 'dc:language [ "en" ]'."\n";
+echo 'dcterms:language [ "en" ]'."\n";
 echo 'dc:rights [ \'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.\' ]'."\n";
-echo 'dc:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
+echo 'dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+'."\n";
+echo 'dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
 echo "# Base URL = $base_url \n";
 
 

@@ -186,7 +186,7 @@ act =
   element act {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?),
-    (Assert | Retract | Query)*
+    (Assert | Retract | Query)
   }
 _1 =
   element * {

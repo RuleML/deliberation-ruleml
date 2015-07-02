@@ -1428,7 +1428,7 @@ act =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (Assert | Retract | Query)*
+    (Assert | Retract | Query)
   }
 _1 =
   element * {

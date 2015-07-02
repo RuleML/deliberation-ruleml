@@ -30,7 +30,7 @@ start =
 RuleML =
   element RuleML {
     attribute ns1:schemaLocation { text }?,
-    (act | (Assert | Retract | Query)*)+
+    (act | Assert | Retract | Query)*
   }
 Assert =
   element Assert {
@@ -189,7 +189,7 @@ act =
   element act {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?),
-    (Assert | Retract | Query)*
+    (Assert | Retract | Query)
   }
 And_2 =
   element And {

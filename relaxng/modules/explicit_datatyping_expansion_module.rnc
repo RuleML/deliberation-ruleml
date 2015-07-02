@@ -5,7 +5,7 @@ namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Explicit Datatype Emulation" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/explicit_datatyping_expansion_module.rnc" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/explicit_datatyping_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, explicit datatype" ]

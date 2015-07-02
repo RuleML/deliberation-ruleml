@@ -2676,7 +2676,7 @@
   </xs:element>
   <xs:element name="act">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
         <xs:element ref="spec:Assert"/>
         <xs:element ref="spec:Retract"/>
         <xs:element ref="spec:Query"/>
