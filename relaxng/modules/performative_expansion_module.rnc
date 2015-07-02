@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Performatives" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/modules/performative_expansion_module.rnc" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/performative_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, performative, assert, retract, query" ]
@@ -56,8 +56,8 @@ act.type.def = (act-datt.choice & react.attlist), act.content
 act-datt.choice |= index-attrib.choice
 react.attlist &= empty
 
-## contains zero to many performatives.
-act.content |= Performative.choice*
+## contains one performatives.
+act.content |= Performative.choice
 
 ## Performatives include assertions, retractions and queries.
 Performative.choice |= AssertRetract-node.choice | Query-node.choice
