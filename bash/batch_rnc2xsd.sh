@@ -25,13 +25,25 @@ mkdir -p "${XSD_MIN_HOME}"
 rm ${XSD_HOME}*.xsd >> /dev/null 2>&1
 rm ${XSD_MIN_HOME}*.xsd >> /dev/null 2>&1
 
+# simplify before converting
+#simplify= true
+# 
+# don't simplify before converting
+# instead, flatten after converting
+simplify= false
+# applies the script rnc2xsd.sh to all RNC4XSD schemas
+# for debugging, do not remove the temporary RNG
+finish= false
+# for a clean build, remove the temporary RNG
+# finish= true
+#
 # applies the script rnc2xsd.sh to all RNC4XSD schemas
 for f in ${RNC4XSD_HOME}*.rnc
 do
   filename=$(basename "$f")
   #extension="${filename##*.}"
   filenameNE="${filename%.*}"
-  ${BASH_HOME}rnc2xsd.sh "$f" ${XSD_HOME}"$filenameNE".xsd
+  ${BASH_HOME}rnc2xsd.sh "$f" ${XSD_HOME}"$filenameNE".xsd "{$simplify}" "{$finish}"
 done
 
 for f in ${RNC4XSD_MIN_HOME}*.rnc
@@ -42,7 +54,6 @@ do
   ${BASH_HOME}rnc2xsd.sh "$f" ${XSD_MIN_HOME}"$filenameNE".xsd
 done
 
-rm ${XSD_HOME}xml.xsd
 # Apply XSLT transforamtions
 # transform in place for files in XSD_HOME
 # FIXME write an aux script for the xslt call

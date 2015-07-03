@@ -28,3 +28,7 @@ mapClosure.attrib.def =
   attribute mapClosure { mapClosure.value }
 mapClosure.value |= closure.value
 #
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyNapClosureElement.def = element MapClosure { mapClosure-att.choice }

@@ -28,3 +28,7 @@ mapDirection.attrib.def =
   ## See http://ruleml.org/1.02/glossary/#gloss-@mapDirection
   attribute mapDirection { mapDirection.value }
 mapDirection.value |= direction.value
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyMapDirectionElement.def = element MapDirection { mapDirection-att.choice }

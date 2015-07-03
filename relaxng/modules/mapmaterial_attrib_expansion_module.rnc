@@ -28,3 +28,7 @@ mapMaterial.attrib.def =
   ## See http://ruleml.org/1.02/glossary/#gloss-@mapMaterial
   attribute mapMaterial { mapMaterial.value }
 mapMaterial.value |= material.value
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyMapMaterialElement.def = element MapMaterial { mapMaterial-att.choice }

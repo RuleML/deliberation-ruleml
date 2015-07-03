@@ -164,7 +164,7 @@ $this_url = $this_url . $call_fragment;
 //Step 00. Write the header
 echo 'namespace dc = "http://purl.org/dc/elements/1.1/"'."\n";
 echo 'namespace dcterms = "http://purl.org/dc/terms/"'."\n";
-echo 'namespace ruleml = "http://ruleml.org/spec"'."\n";
+echo 'default namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
 echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";

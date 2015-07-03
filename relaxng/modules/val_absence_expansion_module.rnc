@@ -17,3 +17,7 @@ start |= notAllowed
 
 ## an extension point for specializations of the attribute for set-valued functions.  
 singlevalued-att.choice |= empty
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyValAbsenceElement.def = element ValAbsence { singlevalued-att.choice }

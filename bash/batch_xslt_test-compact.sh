@@ -28,7 +28,16 @@ mkdir -p ${COMPACT_SUITE_HOME}
 rm ${COMPACT_SUITE_HOME}* >> /dev/null 2>&1
 
 
-  schemaname="naffologeq_normal.xsd"
+  nschemaname="naffologeq_normal.xsd"
+  nfile=${XSD_HOME}${nschemaname}       
+  ${BASH_HOME}aux_valxsd.sh "${nfile}"
+  exitvalue=$?
+  echo ${exitvalue}
+  if [ "${exitvalue}" -ne "0" ]; then
+       echo "Schema Validation Failed for ${nschemaname}"
+       exit 1
+   fi   
+  schemaname="naffologeq_compact4xsd.xsd"
   sfile=${XSD_HOME}${schemaname}       
   ${BASH_HOME}aux_valxsd.sh "${sfile}"
   exitvalue=$?
@@ -66,10 +75,16 @@ for file in ${COMPACT_SUITE_HOME}*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
-    ${BASH_HOME}aux_valxsd.sh "${sfile}" "${file}" >> /dev/null 2>&1
+    ${BASH_HOME}aux_valxsd.sh "${nfile}" "${file}" >> /dev/null 2>&1
     exitvalue=$?
     if [ "${exitvalue}" -ne "1" ]; then
           echo "Normal Validation Succeeded for Compact ${file}"
+          exit 1
+    fi       
+    ${BASH_HOME}aux_valxsd.sh "${sfile}" "${file}" >> /dev/null 2>&1
+    exitvalue=$?
+    if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+          echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
     ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}" >> /dev/null 2>&1

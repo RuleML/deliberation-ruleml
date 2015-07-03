@@ -9,6 +9,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
+RNC_HOME=${REPO_HOME}relaxng/
 RNC4XSD_HOME=${REPO_HOME}relaxng/rnc4xsd/ 
 RNC4XSD_MIN_HOME=${REPO_HOME}relaxng/rnc4xsd_min/ 
 
@@ -53,3 +54,6 @@ do
    fi
 
 done
+
+cp ${RNC_HOME}naffologeq_compact4xsd.rnc ${RNC4XSD_HOME}
+

@@ -32,3 +32,7 @@ oriented.value |= oriented_default.value | oriented_non-default.value
 ## FIXME: move all such statements into initialization module.
 oriented_default.value |= notAllowed
 oriented_non-default.value |= notAllowed
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyOrientedElement.def = element Oriented { oriented-att.choice }

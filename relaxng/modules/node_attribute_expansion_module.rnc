@@ -27,3 +27,7 @@ node.attrib.def =
   attribute node { node.value }
 node.value |= PrefixedCURIE.datatype
 node.value |= AbsIRI.datatype
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyNodeElement.def = element Node { node-att.choice }

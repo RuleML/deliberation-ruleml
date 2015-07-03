@@ -31,3 +31,7 @@ direction.value |= direction_default.value | direction_non-default.value
 ## FIXME: move all such statements into initialization module.
 direction_default.value |= notAllowed
 direction_non-default.value |= notAllowed
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyDirectionElement.def = element Direction { direction-att.choice }

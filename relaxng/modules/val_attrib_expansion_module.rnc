@@ -31,3 +31,7 @@ val.value |= val_default.value | val_non-default.value
 ## FIXME: move all such statements into initialization module.
 val_default.value |= notAllowed
 val_non-default.value |= notAllowed
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyValAttribElement.def = element ValAttrib { singlevalued-att.choice }

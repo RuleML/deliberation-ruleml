@@ -16,10 +16,17 @@ CP2=${LIB}trang-20091111/trang.jar
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
 RNC_HOME=${REPO_HOME}relaxng/
-TMP=${RNC_HOME}tmp-std2xsd.rng
+TMP_HOME=${RNC_HOME}tmp/
+TMP_RNG=${TMP_HOME}tmp-std2xsd.rng
+
+# creates the temporary directory if they doesn't exist, and clears them, in case they already have contents
+mkdir -p ${TMP_HOME}
+rm ${TMP_HOME}* >> /dev/null 2>&1
+
 
 # Finds the filename without extension
 filename1=$(basename "$1")
+echo "Filename: " $filename1
 extension1="${filename1##*.}"
 #filenameNE="${filename1%.*}"
 
@@ -39,19 +46,32 @@ if [ "${extension2}" != "xsd" ];then
    echo "Output extension is not .xsd"
    exit 1
 fi
+infile="$1"
+outfile="${TMP_HOME}$filename2"
+echo "${infile}"
+if [ "$3" = true ]; then
+    echo "Start simplification."
+    java -jar "${CP1}" -cs "$1" > ${TMP_RNG}
+    if [ "$?" != "0" ];then
+      echo "Simplification Failed."
+      exit 1
+    fi
+    infile="${TMP_RNG}"
+    outfile="$2"
+fi  
 
-java -jar "${CP1}" -cs "$1" > ${TMP}
-if [ "$?" != "0" ];then
-   echo "Simplification Failed."
-   exit 1
-fi
-
-java -jar "${CP2}" -o disable-abstract-elements -o any-process-contents=lax ${TMP} "$2"
+echo "Start conversion of " "$infile"
+java -jar "${CP2}" -o disable-abstract-elements -o any-process-contents=lax "${infile}" "${outfile}"
 if [ "$?" != "0" ];then
    echo "Conversion to XSD Failed."
    exit 1
 fi
-function finish {
-  rm ${TMP}
-}
-trap finish EXIT
+if [ "$3" != true ]; then
+  ${BASH_HOME}flatten_xsd.sh "${outfile}" "$2" 
+fi
+if [ "$4" = true ]; then
+  function finish {
+    rm ${TMP}
+  }
+  trap finish EXIT
+fi
