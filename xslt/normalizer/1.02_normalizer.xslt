@@ -736,14 +736,6 @@
  
   <!-- Pretty Print -->
 
-  <!-- Copies everything to the transformation output -->
-  <xsl:template match="@*|node()"  mode="pretty-print">
-    <xsl:copy>
-      <xsl:apply-templates select="@*|node()" mode="pretty-print"/>
-    </xsl:copy>
-  </xsl:template>
-  
-
   <!--Makes sure everything is printed nicely-->
   <xsl:variable name="pretty-print-output">
     <xsl:apply-templates select="$phase-sort-output" mode="pretty-print">
@@ -798,6 +790,14 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- Copies everything else to the pretty-print output -->
+  <xsl:template match="@*|text()|processing-instruction()"  mode="pretty-print">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()" mode="pretty-print"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  
   <!-- formats a node that should have new lines before it's children -->
   <xsl:template name="new-line">
     <xsl:param name="tabs"/>
