@@ -656,19 +656,6 @@
       <xsl:apply-templates select="@*|node()" mode="phase-3"/>
     </act>
   </xsl:template>
-
-  <!-- Adds the required index attribute to the formula tag in And and Or -->
-  <xsl:template match="*[self::r:And or self::r:Or]/r:formula[not(@index)]" mode="phase-3">
-    <xsl:variable name="index_value">
-      <xsl:value-of select="count(preceding-sibling::r:formula)+1"/>
-    </xsl:variable>
-    <formula>
-      <xsl:attribute name="index">
-        <xsl:value-of select="$index_value"/>
-      </xsl:attribute>
-      <xsl:apply-templates select="@*|node()" mode="phase-3"/>
-    </formula>
-  </xsl:template>
   
   <!-- Copies everything else to the phase-3 output. Comments are preserved without escaping.
         Order is preserved.
