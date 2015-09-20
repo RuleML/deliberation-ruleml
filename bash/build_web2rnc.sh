@@ -18,18 +18,17 @@
 
 # webserver
 shopt -s nullglob
-BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
-REPO_HOME="${BASH_HOME}../"
-RNC_HOME=${REPO_HOME}relaxng/
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 # Generate RNC Drivers for Testing
-${BASH_HOME}batch_webconfig2rnc.sh  >> /dev/null 2>&1
+"${BASH_HOME}batch_webconfig2rnc.sh"
 if [ "$?" -ne "0" ]; then
      echo "Local Configuration and Caching of Online MYNG-Generated RNC Schemas Failed"
      exit 1
 fi
+
 # Validate Examples in Relax NG Test Suites
-${BASH_HOME}batch_rnc-test-suite.sh  >> /dev/null 2>&1
+"${BASH_HOME}batch_rnc-test-suite.sh"
 if [ "$?" -ne "0" ]; then
      echo "Local Testing of RuleML Instances against (Cached) Online MYNG-Generated RNC Schemas Failed"
      exit 1

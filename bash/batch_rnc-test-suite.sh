@@ -11,12 +11,9 @@
 # FIXME use configuration script to validate test files against multiple schemas, including fail tests
 # This will remove the fragile schema detection method now implemented.
 shopt -s nullglob
-BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
-REPO_HOME="${BASH_HOME}../"
-RNC_TEST_HOME=${REPO_HOME}relaxng/test/
-TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
-for file in ${TEST_SUITE_HOME}*/*.ruleml ${TEST_SUITE_HOME}*/*/*.ruleml
+for file in "${RNC_TEST_SUITE_HOME}"*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "${file}")
   echo "File "${filename}
@@ -30,20 +27,20 @@ do
        #echo "URL ${url}"
        schemaname=${url##*/}
        #echo "Schema ${schemaname}"       
-       sfile=${RNC_TEST_HOME}${schemaname}       
-       ${BASH_HOME}aux_valrnc.sh "${sfile}"
+       sfile="${TEST_HOME}${schemaname}"      
+       "${BASH_HOME}aux_valrnc.sh" "${sfile}"
        exitvalue=$?
        if [ "${exitvalue}" -ne "0" ]; then
           echo "Schema Validation Failed for ${schemaname} called in ${file}"
           exit 1
        fi   
-       ${BASH_HOME}aux_valrnc.sh "${sfile}" "${file}"
+       "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
        exitvalue=$?
-       if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+       if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for ${file}"
           exit 1
        else
-         if [[ ${file} =~ fail ]] && [ "${exitvalue}" == "0" ]; then
+         if [[ "${file}" =~ fail ]] && [ "${exitvalue}" == "0" ]; then
            echo "Validation Succeeded for Failure Test ${file}"
            exit 1
          fi

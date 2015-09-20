@@ -12,12 +12,9 @@
 # globstar is only available in bash 4
 #shopt -s globstar
 shopt -s nullglob
-BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
-REPO_HOME="${BASH_HOME}../"
-XSD_HOME=${REPO_HOME}xsd/
-TEST_SUITE_HOME=${REPO_HOME}test/xsd-test-suites/
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
-for file in ${TEST_SUITE_HOME}*/*.ruleml ${TEST_SUITE_HOME}*/*/*.ruleml
+for file in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
@@ -31,15 +28,15 @@ do
        echo "File ${sfile}"
        schemaname=${sfile##*/}
        echo "Schema ${schemaname}"
-       sfile=${XSD_HOME}${schemaname}       
-       ${BASH_HOME}aux_valxsd.sh "${sfile}"
+       sfile="${XSD_HOME}${schemaname}"       
+       "${BASH_HOME}aux_valxsd.sh" "${sfile}"
        exitvalue=$?
        echo ${exitvalue}
        if [ "${exitvalue}" -ne "0" ]; then
           echo "Schema Validation Failed for ${schemaname}"
           exit 1
        fi   
-       ${BASH_HOME}aux_valxsd.sh "${sfile}" "${file}"
+       "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
        exitvalue=$?
        if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for ${file}"

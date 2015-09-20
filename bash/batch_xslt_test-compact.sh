@@ -12,25 +12,16 @@
 # globstar is only available in bash 4
 #shopt -s globstar
 shopt -s nullglob
-BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
-REPO_HOME="${BASH_HOME}../"
-RNC_HOME=${REPO_HOME}relaxng/
-XSD_HOME=${REPO_HOME}xsd/
-TEST_SUITE_HOME=${REPO_HOME}test/rnc-test-suites/
-COMPACT_SUITE_HOME=${REPO_HOME}test/compactifier-test-suites/
-XSLT_HOME=${REPO_HOME}xslt/
-COMPACT_XSLT_HOME=${XSLT_HOME}compactifier/
-OXY_HOME=/Applications/oxygen/
-SAX_HOME=${OXY_HOME}lib/
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 # creates the compactification test directory if they doesn't exist, and clears it, in case it already has contents
-mkdir -p ${COMPACT_SUITE_HOME}
-rm ${COMPACT_SUITE_HOME}* >> /dev/null 2>&1
+mkdir -p "${COMPACT_SUITE_HOME}"
+rm "${COMPACT_SUITE_HOME}"* >> /dev/null 2>&1
 
 
   nschemaname="naffologeq_normal.xsd"
-  nfile=${XSD_HOME}${nschemaname}       
-  ${BASH_HOME}aux_valxsd.sh "${nfile}"
+  nfile="${XSD_HOME}${nschemaname}"       
+  "${BASH_HOME}aux_valxsd.sh" "${nfile}"
   exitvalue=$?
   echo ${exitvalue}
   if [ "${exitvalue}" -ne "0" ]; then
@@ -38,8 +29,8 @@ rm ${COMPACT_SUITE_HOME}* >> /dev/null 2>&1
        exit 1
    fi   
   schemaname="naffologeq_compact4xsd.xsd"
-  sfile=${XSD_HOME}${schemaname}       
-  ${BASH_HOME}aux_valxsd.sh "${sfile}"
+  sfile="${XSD_HOME}${schemaname}"       
+  "${BASH_HOME}aux_valxsd.sh" "${sfile}"
   exitvalue=$?
   echo ${exitvalue}
   if [ "${exitvalue}" -ne "0" ]; then
@@ -47,8 +38,8 @@ rm ${COMPACT_SUITE_HOME}* >> /dev/null 2>&1
        exit 1
    fi   
 schemaname2="naffologeq_compact.rnc"
-  sfile2=${RNC_HOME}${schemaname2}       
-  ${BASH_HOME}aux_valrnc.sh "${sfile2}"
+  sfile2="${RNC_HOME}${schemaname2}"       
+  "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   exitvalue=$?
   echo ${exitvalue}
   if [ "${exitvalue}" -ne "0" ]; then
@@ -64,32 +55,32 @@ for f in ${TEST_SUITE_HOME}*/*.ruleml
 do
   filename=$(basename "$f")
   echo "Transforming " "${filename}"
-  java -jar ${SAX_HOME}saxon9ee.jar -s:"${f}" -xsl:"${COMPACT_XSLT_HOME}1.02_compactifier.xslt"  -o:"${COMPACT_SUITE_HOME}${filename}"   >> /dev/null 2>&1
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${COMPACT_XSLT_HOME}1.02_compactifier.xslt"  -o:"${COMPACT_SUITE_HOME}${filename}"
   if [ "$?" -ne "0" ]; then
      echo "XSLT Transformation Failed for " "${filename}"
      exit 1
    fi
 done
 
-for file in ${COMPACT_SUITE_HOME}*.ruleml
+for file in "${COMPACT_SUITE_HOME}"*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
-    ${BASH_HOME}aux_valxsd.sh "${nfile}" "${file}" >> /dev/null 2>&1
+    "${BASH_HOME}aux_valxsd.sh" "${nfile}" "${file}"
     exitvalue=$?
     if [ "${exitvalue}" -ne "1" ]; then
           echo "Normal Validation Succeeded for Compact ${file}"
           exit 1
     fi       
-    ${BASH_HOME}aux_valxsd.sh "${sfile}" "${file}" >> /dev/null 2>&1
+    "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
-    if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
-    ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}" >> /dev/null 2>&1
+    ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}"
     exitvalue=$?
-    if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
