@@ -1,0 +1,581 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for component node</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        var propertiesBoxes= new Array('properties_common_node');
+
+        
+        
+        var usedByBoxes= new Array('usedBy_common_node', 
+				'usedBy_common');
+
+        var sourceBoxes= new Array('source_common_node', 
+				'source_common');
+
+        
+        var diagramBoxes= new Array('diagram_common');
+
+        
+        var attributesBoxes= new Array('attributes_common');
+
+        
+        
+        
+        
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    --></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="common_node"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.html#common" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:common')">ruleml:common</a></b> / @node</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_common_node" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_common_node');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_common_node" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_common_node" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_common_node');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_common_node" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Group </td>
+                                    <td><b><a href="SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.html#common" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:common')">ruleml:common</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_common_node" type="image" src="img/btM.gif" value="-" onclick="switchState('source_common_node');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_common_node" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="common"></a><div class="componentTitle">Attribute Group <span class="qname">ruleml:common</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://ruleml.org/spec</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_common" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_common');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_common" style="display:block"><object border="0" data="img/SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.svg" type="image/svg+xml"></object></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_common" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_common');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_common" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Types </td>
+                                    <td><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_ENTITIES.html#ENTITIES" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ENTITIES')">ruleml:ENTITIES</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_ENTITY.html#ENTITY" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ENTITY')">ruleml:ENTITY</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NCName.html#NCName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NCName')">ruleml:NCName</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NMTOKEN.html#NMTOKEN" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NMTOKEN')">ruleml:NMTOKEN</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NMTOKENS.html#NMTOKENS" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NMTOKENS')">ruleml:NMTOKENS</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NOTATION.html#NOTATION" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NOTATION')">ruleml:NOTATION</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_Name.html#Name" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Name')">ruleml:Name</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_QName.html#QName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:QName')">ruleml:QName</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_String.html#String" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:String')">ruleml:String</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_Token.html#Token" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Token')">ruleml:Token</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_anySimpleType.html#anySimpleType" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anySimpleType')">ruleml:anySimpleType</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_anyURI.html#anyURI" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anyURI')">ruleml:anyURI</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_base64Binary.html#base64Binary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:base64Binary')">ruleml:base64Binary</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_boolean.html#boolean" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:boolean')">ruleml:boolean</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_byte.html#byte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:byte')">ruleml:byte</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_date.html#date" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:date')">ruleml:date</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_dateTime.html#dateTime" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:dateTime')">ruleml:dateTime</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_decimal.html#decimal" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:decimal')">ruleml:decimal</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_double.html#double" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:double')">ruleml:double</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_duration.html#duration" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:duration')">ruleml:duration</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_float.html#float" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:float')">ruleml:float</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gDay.html#gDay" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gDay')">ruleml:gDay</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gMonth.html#gMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gMonth')">ruleml:gMonth</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gYear.html#gYear" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gYear')">ruleml:gYear</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gYearMonth.html#gYearMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gYearMonth')">ruleml:gYearMonth</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_hexBinary.html#hexBinary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:hexBinary')">ruleml:hexBinary</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_int.html#int" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:int')">ruleml:int</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_integer.html#integer" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:integer')">ruleml:integer</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_language.html#language" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:language')">ruleml:language</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_long.html#long" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:long')">ruleml:long</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_negativeInteger.html#negativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:negativeInteger')">ruleml:negativeInteger</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_nonNegativeInteger.html#nonNegativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:nonNegativeInteger')">ruleml:nonNegativeInteger</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_nonPositiveInteger.html#nonPositiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:nonPositiveInteger')">ruleml:nonPositiveInteger</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_normalizedString.html#normalizedString" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:normalizedString')">ruleml:normalizedString</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_positiveInteger.html#positiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:positiveInteger')">ruleml:positiveInteger</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_short.html#short" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:short')">ruleml:short</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_time.html#time" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:time')">ruleml:time</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedByte.html#unsignedByte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedByte')">ruleml:unsignedByte</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedInt.html#unsignedInt" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedInt')">ruleml:unsignedInt</a></b>, <b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedLong.html#unsignedLong" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedLong')">ruleml:unsignedLong</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_common" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_common');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_common" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.html#common_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component node')">node</a></b></td>
+                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
+                                    </td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:base')">xml:base</a></b></td>
+                                    <td><b>xs:anyURI</b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tEl">&lt;div</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;h3</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">base (as an attribute name)</span><span class="tEl">&lt;/h3&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">denotes an attribute whose value provides a URI to be used as the base for interpreting any relative URIs in the scope of the element on which it appears; its value is inherited. This name is reserved by virtue of its definition in the XML Base specification.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">See</span><span class="tI">
+    </span><span class="tEl">&lt;a</span><span class="tAN"> href=</span><span class="tAV">"http://www.w3.org/TR/xmlbase/"</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">http://www.w3.org/TR/xmlbase/</span><span class="tEl">&lt;/a&gt;</span><span class="tT" style="white-space:normal">for information about this attribute.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/div&gt;</span><span class="tI">
+</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_id.html#id" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:id')">xml:id</a></b></td>
+                                    <td><b>xs:ID</b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tEl">&lt;div</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;h3</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">id (as an attribute name)</span><span class="tEl">&lt;/h3&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">denotes an attribute whose value should be interpreted as if declared to be of type ID. This name is reserved by virtue of its definition in the xml:id specification.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">See</span><span class="tI">
+    </span><span class="tEl">&lt;a</span><span class="tAN"> href=</span><span class="tAV">"http://www.w3.org/TR/xml-id/"</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">http://www.w3.org/TR/xml-id/</span><span class="tEl">&lt;/a&gt;</span><span class="tT" style="white-space:normal">for information about this attribute.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/div&gt;</span><span class="tI">
+</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_common" type="image" src="img/btM.gif" value="-" onclick="switchState('source_common');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_common" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> name=</span><span class="tAV">"common"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+            </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
+          </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div><script type="text/javascript">
+         <!--                     
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                --></script></body>
+</html>
