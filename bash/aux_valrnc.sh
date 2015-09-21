@@ -7,7 +7,6 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 filename1=$(basename "$1")
 echo "${filename1}"
 extension1="${filename1##*.}"
-#filename1NE="${filename1%.*}"
 
 # Verifies that input schema name ends in ".rnc"
 if [ "${extension1}" != "rnc" ];then
