@@ -51,7 +51,7 @@ schemaname2="naffologeq_compact.rnc"
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to COMPACT_SUITE_HOME
 # FIXME write an aux script for the xslt call
-for f in ${TEST_SUITE_HOME}*/*.ruleml
+for f in ${XSD_TEST_SUITE_HOME}*/*.ruleml
 do
   filename=$(basename "$f")
   echo "Transforming " "${filename}"
