@@ -1,5 +1,5 @@
-IndexOptions SuppressIcon
-IndexOptions SuppressSize
-IndexOptions SuppressLastModified 
+IndexOptions +SuppressIcon
+IndexOptions +SuppressSize
+IndexOptions +SuppressLastModified 
 AddDescription "General normalizer" 1.02_normalizer.xslt
 AddDescription "Normalizer for ordered con/disjuncts" 1.02_normalizer_indexed_AndOr.xslt
