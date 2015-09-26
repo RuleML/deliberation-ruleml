@@ -51,7 +51,7 @@ schemaname2="naffologeq_compact.rnc"
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to COMPACT_SUITE_HOME
 # FIXME write an aux script for the xslt call
-for f in ${XSD_TEST_SUITE_HOME}*/*.ruleml
+for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "$f")
   echo "Transforming " "${filename}"
@@ -78,7 +78,7 @@ do
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
-    ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}"
+    "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
           echo "Validation Failed for Compact ${file}"
