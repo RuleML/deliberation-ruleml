@@ -636,12 +636,12 @@
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:arg)+1"/>
     </xsl:variable>
-    <arg>
+    <xsl:element name="r:arg">
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
       <xsl:apply-templates select="@*|node()" mode="phase-3"/>
-    </arg>
+    </xsl:element>
   </xsl:template>
 
   <!-- Adds the required index attribute to the act tag -->
@@ -649,12 +649,12 @@
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:act)+1"/>
     </xsl:variable>
-    <act>
+    <xsl:element name="r:act">
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
       <xsl:apply-templates select="@*|node()" mode="phase-3"/>
-    </act>
+    </xsl:element>
   </xsl:template>
   
   <!-- Adds the required index attribute to the formula tag in And and Or -->
@@ -662,12 +662,12 @@
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::r:formula)+1"/>
     </xsl:variable>
-    <formula>
+    <xsl:element name="r:formula">
       <xsl:attribute name="index">
         <xsl:value-of select="$index_value"/>
       </xsl:attribute>
       <xsl:apply-templates select="@*|node()" mode="phase-3"/>
-    </formula>
+    </xsl:element>
   </xsl:template>
   
   <!-- Copies everything else to the phase-3 output. Comments are preserved without escaping.
