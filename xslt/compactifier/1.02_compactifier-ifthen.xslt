@@ -42,7 +42,7 @@
   <xsl:template match="r:right"  mode="phase-compactify">
     <xsl:apply-templates select="node()" mode="phase-compactify"/>
   </xsl:template>  
-  <xsl:template match="r:*[not(name() = And or name() = Or)]/r:formula"  mode="phase-compactify">
+  <xsl:template match="r:formula"  mode="phase-compactify">
     <xsl:apply-templates select="node()" mode="phase-compactify"/>
   </xsl:template>  
   <xsl:template match="r:declare"  mode="phase-compactify">
