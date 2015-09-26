@@ -311,7 +311,7 @@
   <!-- Named template that wraps an element in the element given by the tag parameter. -->
   <xsl:template name="wrap">
     <xsl:param name="tag"/>
-    <xsl:element name="{$tag}">
+    <xsl:element name="r:{$tag}">
       <xsl:call-template name="copy-1"/>
     </xsl:element>
   </xsl:template>
