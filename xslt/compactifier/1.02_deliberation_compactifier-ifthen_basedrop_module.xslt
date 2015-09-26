@@ -20,7 +20,21 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="ruleml:*[name(..)='ruleml:arg'][not(.[@xml:base])]" mode="phase-compactify">
+  <xsl:template match="ruleml:*[
+    name(..)='ruleml:arg' or
+    name(..)='ruleml:op' or
+    name(..)='ruleml:if[..[ruleml:Entails]]' or
+    name(..)='ruleml:then[..[ruleml:Entails]]' or
+    name(..)='ruleml:torso' or
+    name(..)='ruleml:left' or
+    name(..)='ruleml:right' or
+    name(..)='ruleml:formula' or
+    name(..)='ruleml:declare' or
+    name(..)='ruleml:strong' or
+    name(..)='ruleml:weak' or
+    name(..)='ruleml:act' or
+    name(..)='ruleml:arg'
+    ][not(.[@xml:base])]" mode="phase-compactify">
     <xsl:element name="{name()}">
       <xsl:copy-of select="../@xml:base"/>
       <xsl:apply-templates select="node()|@*" mode="copy"/>
