@@ -74,7 +74,6 @@ formula_And.edge.def =
   ## http://ruleml.org/1.02/glossary/#gloss-formula
   element formula { formula_And.type.def }
 formula_And.type.def = formula_And-datt.choice & formula_And.attlist? & formula_And.content
-formula_And-datt.choice |= index-attrib.choice
 formula_And.attlist &= commonInit.attlist?
 
 ## Formulas within conjunctions consist of a single formula
@@ -128,7 +127,6 @@ formula_Or.edge.def =
   ##
   element formula { formula_Or.type.def }
 formula_Or.type.def = formula_Or-datt.choice & formula_Or.attlist? & formula_Or.content
-formula_Or-datt.choice |= index-attrib.choice
 formula_Or.attlist &= commonInit.attlist?
 
 ## Formulas within disjunctions consist of a single formula

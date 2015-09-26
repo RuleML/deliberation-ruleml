@@ -50,6 +50,8 @@ $propo_node = 6;
 $propo_meta = 7;
 $propo_xmlbase = 8;
 $propo_xmlid = 9;
+$propo_andor_ordered = 10;
+$propo_andor_unordered = 11;
 $bpropo = processGETParameter ($propo);
 $propoParam = "x".dechex(bindec($bpropo));
 //
@@ -238,10 +240,14 @@ if ($bdefault==0){
   $enableFuzzy = extractBit($bpropo, $propo_degree);
   $enableNeg = extractBit($bpropo, $propo_neg);
   $enableNaf = extractBit($bpropo, $propo_naf);
+  $enableAndOrOrdered = extractBit($bpropo, $propo_andor_ordered);
+  $enableAndOrUnordered = extractBit($bpropo, $propo_andor_unordered);
+  
   $NeedNode = extractBit($bpropo, $propo_node);
   $NeedMeta = extractBit($bpropo, $propo_meta);
   $NeedBase = extractBit($bpropo, $propo_xmlbase);
   $NeedId = extractBit($bpropo, $propo_xmlid);
+  $NeedAndOrSkippable = (1 - $enableAndOrOrdered * $enableAndOrUnordered) * $enableStripeSkip;
   
   $NeedIRI = $enableIRI;
   $NeedRulebase = $enableRulebase;
@@ -482,6 +488,11 @@ if ($bdefault==0){
       echo "#\n# SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'stripe_skipping_expansion_module.rnc"'."$end\n";
+      if ($NeedAndOrSkippable){    
+        echo "#\n#  AND OR FORMULA STRIPE-SKIPPING MODE ENABLED\n";
+        echo "#\n".'include "' . $modulesLocation .
+            'stripe_skipping_andor_expansion_module.rnc"'."$end\n";
+       }
       if ($NeedIfThenSkippable){    
         echo "#\n# SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED\n";
         echo "#\n".'include "' . $modulesLocation .
@@ -498,11 +509,17 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'asynchronous_stripe_skipping_implication_expansion_module.rnc"'."$end\n";
       }
+    }
+    if ($enableAndOrUnordered){
       echo "#\n# ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'attribute_skipping_expansion_module.rnc"'."$end\n";
     }
-    
+    if ($enableAndOrOrdered){
+      echo "#\n# ORDERED CONJUNCTIONS AND DISJUNCTIONS ENABLED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'andor_ordered_expansion_module.rnc"'."$end\n";
+    }
     // Include explicit datatyping
     if ($enableDatatyping){
       echo "#\n# EXPLICIT DATATYPING ENABLED\n";

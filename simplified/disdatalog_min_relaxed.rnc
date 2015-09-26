@@ -72,12 +72,12 @@ Rel =
 And =
   element And {
     attribute ns1:schemaLocation { text }?,
-    (formula_3 | Atom | And_2 | Or_2)*
+    formula_3*
   }
 Or =
   element Or {
     attribute ns1:schemaLocation { text }?,
-    (formula_4 | Atom | And_2 | Or_2)*
+    formula_4*
   }
 Implies =
   element Implies {
@@ -194,12 +194,12 @@ act =
 And_2 =
   element And {
     attribute ns1:schemaLocation { text }?,
-    (formula_3 | Atom | And_2 | Or_2)*
+    formula_3*
   }
 Or_2 =
   element Or {
     attribute ns1:schemaLocation { text }?,
-    (formula_4 | Atom | And_2 | Or_2)*
+    formula_4*
   }
 _1 =
   element * {

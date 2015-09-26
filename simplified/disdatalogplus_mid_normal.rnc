@@ -471,7 +471,7 @@ op =
   }
 formula_3 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
@@ -479,7 +479,7 @@ formula_3 =
   }
 formula_4 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
@@ -645,7 +645,7 @@ Exists_2 =
   }
 formula_7 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
@@ -653,7 +653,7 @@ formula_7 =
   }
 formula_8 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?

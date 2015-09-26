@@ -353,7 +353,7 @@ And =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & degree?),
-    (formula_3 | Atom | And_2 | Or_2)*
+    formula_3*
   }
 Or =
   element Or {
@@ -395,7 +395,7 @@ Or =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & degree?),
-    (formula_4 | Atom | And_2 | Or_2)*
+    formula_4*
   }
 Rulebase =
   element Rulebase {
@@ -1003,6 +1003,11 @@ act =
        }?),
     (Assert | Retract | Query)
   }
+_1 =
+  element * {
+    attribute * { text }*,
+    (text & _1*)
+  }
 And_2 =
   element And {
     (attribute node {
@@ -1033,7 +1038,7 @@ And_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & degree?),
-    (formula_3 | Atom | And_2 | Or_2)*
+    formula_3*
   }
 Or_2 =
   element Or {
@@ -1065,10 +1070,5 @@ Or_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & degree?),
-    (formula_4 | Atom | And_2 | Or_2)*
-  }
-_1 =
-  element * {
-    attribute * { text }*,
-    (text & _1*)
+    formula_4*
   }

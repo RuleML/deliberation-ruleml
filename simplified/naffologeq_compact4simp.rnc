@@ -453,17 +453,7 @@ And =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
-    (Atom
-     | Equal
-     | And_2
-     | Or_2
-     | Neg
-     | Naf
-     | Implies
-     | Equivalent
-     | Forall
-     | Exists)*
+    degree?
   }
 Or =
   element Or {
@@ -536,17 +526,7 @@ Or =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
-    (Atom
-     | Equal
-     | And_2
-     | Or_2
-     | Neg
-     | Naf
-     | Implies
-     | Equivalent
-     | Forall
-     | Exists)*
+    degree?
   }
 Implies =
   element Implies {
@@ -1851,17 +1831,7 @@ And_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
-    (Atom
-     | Equal
-     | And_2
-     | Or_2
-     | Neg
-     | Naf
-     | Implies
-     | Equivalent
-     | Forall
-     | Exists)*
+    degree?
   }
 Or_2 =
   element Or {
@@ -1934,17 +1904,7 @@ Or_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
-    (Atom
-     | Equal
-     | And_2
-     | Or_2
-     | Neg
-     | Naf
-     | Implies
-     | Equivalent
-     | Forall
-     | Exists)*
+    degree?
   }
 _1 =
   element * {

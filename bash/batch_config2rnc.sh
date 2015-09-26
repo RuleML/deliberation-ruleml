@@ -21,7 +21,7 @@ do
     echo  "Redirect /1.02/relaxng/${tokens[0]}_relaxed.rnc http://deliberation.ruleml.org/1.02/myng-${tokens[2]}.rnc">> "${RNC_HOME}/.htaccess"
 done < "${BASH_HOME}config_rnc.txt"
 
-echo "Redirect /1.02/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc">> "${RNC_HOME}/.htaccess"
+echo "Redirect /1.02/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/myng-b3f-d7-a7-l1-pfff-i7f-tf3f-q7-ef-s4f.rnc">> "${RNC_HOME}/.htaccess"
 
 while read line
 do

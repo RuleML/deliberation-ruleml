@@ -19,6 +19,7 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
  start = Node.choice | edge.choice
 
 #include "modules/andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/andor_ordered_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/andor_query_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -94,6 +95,7 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_andor_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

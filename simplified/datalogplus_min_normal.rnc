@@ -151,13 +151,13 @@ op =
   }
 formula_3 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & (Atom | Equal | And_2 | Or_2)
   }
 formula_4 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & (Atom | Equal | And_2 | Or_2)
   }
@@ -240,7 +240,7 @@ Exists_2 =
   }
 formula_7 =
   element formula {
-    attribute index { xsd:positiveInteger }
+    attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
     & (Atom | And_3 | Or_3 | Exists_2)
   }

@@ -37,46 +37,10 @@ start |= notAllowed
 # All the RuleML roles below are made collapsible by allowing
 # substitution of their content model for the role pattern.
 
-## Stripe-skipping is allowed for positional arguments in atomic formulas and expressions.
-positionalArgument-edge.choice |= arg.content
+## Stripe-skipping is allowed asynchronously for formulas in conjunctions.
+formula_And-edge.choice |= formula_And.content
+formula_And-head-edge.choice |= formula_And-head.content
 
-## In entailments, both stripes may be skipped at the same time.
-Entails.main |= body_Entails-ss.content, head_Entails-ss.content
-body_Entails-ss.content |= body_Entails.content
-head_Entails-ss.content |= head_Entails.content
-# Entails.main |= body_Entails-ss.content, head_Entails.name.choice
-# Entails.main |= body_Entails.name.choice, head_Entails-ss.content
-
-## Stripe-skipping is allowed asynchronously in equivalences.
-torso-edge.choice |= torso.content
-
-## Stripe-skipping is allowed asynchronously in equations.
-leftSide-edge.choice |= left.content
-rightSide-edge.choice |= right.content
-
-## Stripe-skipping is allowed for formulas in universal quantifications.
-formula_Forall-edge.choice |= formula_Forall.content
-
-## Stripe-skipping is allowed for formulas in existential quantifications.
-formula_Exists-edge.choice |= formula_Exists.content
-formula_Exists-head-edge.choice |= formula_Exists-head.content
-
-## Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.
-formula_AssertRetract-edge.choice |= formula_AssertRetract.content
-
-## Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.
-formula_Query-edge.choice |= formula_Query.content
-
-## Stripe-skipping is allowed asynchronously for formulas in assertions and retractions.
-formula_Rulebase-edge.choice |= formula_Rulebase.content
-declare-edge.choice |= declare.content
-
-## Stripe-skipping is allowed for weak negations.
-weak-edge.choice |= weak.content
-
-## Stripe-skipping is allowed for strong negations.
-strong-edge.choice |= strong.content
-#
-
-## Stripe-skipping is allowed for acts.
-act-edge.choice |= act.content
+## Stripe-skipping is allowed asynchronously for formulas in disjunctions.
+formula_Or-edge.choice |= formula_Or.content
+formula_Or-head-edge.choice |= formula_Or-head.content
