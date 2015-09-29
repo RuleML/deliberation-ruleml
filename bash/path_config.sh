@@ -8,6 +8,7 @@
 #   - Sax
 #   - XSD flattening script
 #   - schema docs generation script
+#   - instance generation script
 # External libraries
 #   - JAXB
 # Installed packages
@@ -69,6 +70,8 @@ MODULE_HOME="${REPO_HOME}relaxng/modules/"
 TMPDIR="${XSD_HOME}/tmp/"
 ZIP_HOME="${REPO_HOME}zip/"
 GIT_HOME="${REPO_HOME}../"
-REACTION_CONFIG="${BASH_HOME}/settings/reaction-config.xml"
-INSTANCE_HOME="${REPO_HOME}test/reaction-test-suites/"
+COMPACT_CONFIG="${BASH_HOME}/settings/compact-config.xml"
+NORMAL_CONFIG="${BASH_HOME}/settings/normal-config.xml"
+INSTANCE_COMPACT_HOME="${REPO_HOME}test/compact-test-suites/"
+INSTANCE_NORMAL_HOME="${REPO_HOME}test/normal-test-suites/"
 REACTION_XSD_HOME="${REPO_HOME}../reaction-ruleml/xsd/"

@@ -30,17 +30,17 @@ do
        sfile="${TEST_HOME}${schemaname}"      
        "${BASH_HOME}aux_valrnc.sh" "${sfile}"
        exitvalue=$?
-       if [ "${exitvalue}" -ne "0" ]; then
+       if [[ "${exitvalue}" -ne "0" ]]; then
           echo "Schema Validation Failed for ${schemaname} called in ${file}"
           exit 1
        fi   
        "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
        exitvalue=$?
-       if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+       if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
        else
-         if [[ "${file}" =~ fail ]] && [ "${exitvalue}" == "0" ]; then
+         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
            echo "Validation Succeeded for Failure Test ${file}"
            exit 1
          fi

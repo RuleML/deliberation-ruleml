@@ -9,7 +9,7 @@ extension1="${filename1##*.}"
 filename1NE="${filename1%.*}"
 
 # Verifies that input file name ends in ".rnc"
-if [ "${extension1}" != "rnc" ];then
+if [[ "${extension1}" != "rnc" ]];then
    echo "Extension is not .rnc"
    exit 1
 fi

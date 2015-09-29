@@ -10,8 +10,8 @@ for f in "${XSD_HOME}"*.xsd
 do
   filename=$(basename "$f")
   "${BASH_HOME}aux_valxsd.sh" "${f}"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${filename}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for  ${filename}"
      exit 1
    fi
 done

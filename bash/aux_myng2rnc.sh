@@ -25,7 +25,7 @@ s="serial=x${components[9]:1}"
 query="$b $d $a $l $p $i $t $q $e $s"
 echo "$query"
 php -f "${MYNG_BACK_END}" -c "${PHP_CLI_INI}" ${query} > "$2"
-if [ "$?" -ne "0" ]; then
-     echo "Download Failed for myng-code " "$1" " output file " "$2"
+if [[ "$?" -ne "0" ]]; then
+     echo "Download Failed for myng-code $1 output file $2"
      exit 1
 fi

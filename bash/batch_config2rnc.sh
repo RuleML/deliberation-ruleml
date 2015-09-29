@@ -34,8 +34,8 @@ done < "${BASH_HOME}config_rnc_myng.txt"
 for file in "${TEST_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "$file"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for  ${file}"
      exit 1
    fi
 done

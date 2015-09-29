@@ -26,8 +26,8 @@ done < "${BASH_HOME}config_xsd.txt"
 for file in "${RNC4XSD_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "$file"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for  ${file}"
      exit 1
    fi
 
@@ -44,8 +44,8 @@ done < "${BASH_HOME}config_xsd_min.txt"
 for file in "${RNC4XSD_MIN_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "${file}"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for  ${file}"
      exit 1
    fi
 

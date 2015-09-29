@@ -24,7 +24,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
   "${BASH_HOME}aux_valxsd.sh" "${cfile}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${cschemaname}"
        exit 1
    fi   
@@ -34,7 +34,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -44,7 +44,7 @@ schemaname2="naffologeq_normal.rnc"
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname2}"
        exit 1
    fi   
@@ -58,10 +58,10 @@ schemaname2="naffologeq_normal.rnc"
 for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "$f")
-  echo "Transforming " "${filename}"
+  echo "Transforming  ${filename}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${NORMAL_XSLT_HOME}1.02_normalizer.xslt"  -o:"${NORMAL_SUITE_HOME}${filename}"
-  if [ "$?" -ne "0" ]; then
-     echo "XSLT Transformation Failed for " "${filename}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "XSLT Transformation Failed for  ${filename}"
      exit 1
    fi
 done
@@ -72,19 +72,19 @@ do
   echo "File ${filename}"
     "${BASH_HOME}aux_valxsd.sh" "${cfile}" "${file}"
     exitvalue=$?
-    if [ "${exitvalue}" -ne "1" ]; then
+    if [[ "${exitvalue}" -ne "1" ]]; then
           echo "Normal Validation Succeeded for Compact ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Normal ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
