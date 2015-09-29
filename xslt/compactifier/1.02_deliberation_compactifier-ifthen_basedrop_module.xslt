@@ -37,7 +37,7 @@
     ][not(.[@xml:base])]" mode="phase-compactify">
     <xsl:element name="{name()}">
       <xsl:copy-of select="../@xml:base"/>
-      <xsl:apply-templates select="node()|@*" mode="copy"/>
+      <xsl:apply-templates select="node()|@*" mode="phase-compactify"/>
     </xsl:element>
   </xsl:template>
   
