@@ -55,6 +55,11 @@
     </xs:element>
   </xsl:template>
 
+  <!-- Fix elements with required index attribute. -->
+  <xsl:template match="*[not (@name='formula_And-datt.choice') and not (@name='formula_Or-datt.choice')]/xs:attributeGroup[@ref='ruleml:index-attrib.choice']">
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+  </xsl:template>
+  
   <!-- Remove groups like 
   <xs:group name="_1">-->
   <xsl:template match="xs:group[@name='_1']"> </xsl:template>
