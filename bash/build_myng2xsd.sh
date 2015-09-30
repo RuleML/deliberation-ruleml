@@ -43,4 +43,11 @@ if [[ "$?" -ne "0" ]]; then
      exit 1
 fi
 
+# Generate Random Compact-IfThen Instances and Check Round-Trip Identity Law
+"${BASH_HOME}generate_compact-ifthen_xml.sh"
+if [[ "$?" -ne "0" ]]; then
+     echo "Testing of Round-Trip Identity Law Failed"
+     exit 1
+fi
+
 

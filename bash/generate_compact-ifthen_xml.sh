@@ -5,11 +5,11 @@
 #
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
-mkdir -p "${INSTANCE_COMPACT_HOME}"
-rm "${INSTANCE_COMPACT_HOME}"*.ruleml  >> /dev/null 2>&1
+mkdir -p "${INSTANCE_COMPACTIFTHEN_HOME}"
+rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
 
 # Validate XSD schema
-  schemanameNE="naffologeq_compact"
+  schemanameNE="naffologeq_compact-ifthen"
   schemaname="${schemanameNE}.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
@@ -21,7 +21,7 @@ rm "${INSTANCE_COMPACT_HOME}"*.ruleml  >> /dev/null 2>&1
    fi   
 
 #   use oxygen to generate XML instances according to the configuration file for the naffologeq-normal driver
-sh "$GENERATE_SCRIPT" "$COMPACT_CONFIG"
+sh "$GENERATE_SCRIPT" "$COMPACTIFTHEN_CONFIG"
 
 # Validate RNC schema
   schemaname="${schemanameNE}.rnc"
@@ -35,13 +35,13 @@ sh "$GENERATE_SCRIPT" "$COMPACT_CONFIG"
    fi   
 
 # Apply XSLT transforamtions - instance postprocessing
-# transform in place for files in INSTANCE_COMPACT_HOME
+# transform in place for files in INSTANCE_COMPACTIFTHEN_HOME
 # FIXME write an aux script for the xslt call
-for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
+for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
-  echo "Transforming  ${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-compact.xslt"  -o:"${f}"
+  echo "Completing  ${filename}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-compact-ifthen.xslt"  -o:"${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -49,7 +49,7 @@ do
 done
 
 # Validate instances
-for file in "${INSTANCE_COMPACT_HOME}"*.ruleml 
+for file in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml 
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
@@ -67,9 +67,9 @@ do
 done
 
 # Apply XSLT transforamtions to canonicalize - strip whitespace only
-# transform in place for files in INSTANCE_COMPACT-IFTHEN_HOME
+# transform in place for files in INSTANCE_COMPACTIFTHEN_HOME
 # FIXME write an aux script for the xslt call
-for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
+for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
   echo "Canonicalizing  ${filename}"
@@ -81,7 +81,7 @@ do
 done
 
 # Validate instances
-for file in "${INSTANCE_COMPACT-IFTHEN_HOME}"*.ruleml 
+for file in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml 
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
@@ -98,18 +98,18 @@ do
   fi       
 done
 
-# Apply XSLT transforamtions - normalize, then compactify
-# transform into new file with "rt-" prefix for files in INSTANCE_COMPACT_HOME
+# Apply XSLT transforamtions - normalize, then compactify (ifthen)
+# transform into new file with "rt-" prefix for files in INSTANCE_COMPACTIFTHEN_HOME
 # FIXME write an aux script for the xslt call
-for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
+for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
   echo "Round-Trip Transforming  ${filename}"
-  fnew="${INSTANCE_COMPACT_HOME}rt-${filename}"
+  fnew="${INSTANCE_COMPACTIFTHEN_HOME}rt-${filename}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}normalizer/1.02_normalizer.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier.xslt"  -o:"${fnew}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier-ifthen.xslt"  -o:"${fnew}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor_stripwhitespace.xslt"  -o:"${fnew}"
-  read -r firstlineold<"${fnew}"
+  read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Round-Trip Comparing  ${filename}"
   if [[ "${firstlineold}" != "${firstlinenew}" ]]; then
