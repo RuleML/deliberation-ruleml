@@ -1357,10 +1357,14 @@
         XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence>
         <xs:group ref="ruleml:body_Implies.name.choice"/>
         <xs:group ref="ruleml:head_Implies.name.choice"/>
-      </xs:choice>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:group ref="ruleml:head_Implies.name.choice"/>
+        <xs:group ref="ruleml:body_Implies.name.choice"/>
+      </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Implies-ss.content"/>
         <xs:group ref="ruleml:head_Implies.content"/>
@@ -1374,10 +1378,14 @@
         into XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence>
         <xs:group ref="ruleml:body_Entails.name.choice"/>
         <xs:group ref="ruleml:head_Entails.name.choice"/>
-      </xs:choice>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:group ref="ruleml:head_Entails.name.choice"/>
+        <xs:group ref="ruleml:body_Entails.name.choice"/>
+      </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Entails-ss.content"/>
         <xs:group ref="ruleml:head_Entails-ss.content"/>

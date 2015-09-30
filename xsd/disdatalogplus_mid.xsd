@@ -1355,12 +1355,16 @@
         occur in either order if striped. This pattern can be translated accurately into
         XSD.</xs:documentation>
     </xs:annotation>
-    <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+    <xs:choice>
+      <xs:sequence>
         <xs:group ref="ruleml:body_Implies.name.choice"/>
         <xs:group ref="ruleml:head_Implies.name.choice"/>
-      </xs:choice>
-    </xs:sequence>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:group ref="ruleml:head_Implies.name.choice"/>
+        <xs:group ref="ruleml:body_Implies.name.choice"/>
+      </xs:sequence>
+    </xs:choice>
   </xs:group>
   <xs:group name="TruthValuedConnective.header">
     <xs:annotation>
