@@ -17,7 +17,7 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 #
 
-## In RuleML 1.0, asynchronous stripe-skipping of entailment is not allowed in the (official) mixed serialization,
+## Asynchronous stripe-skipping of entailment is not allowed in the (official) mixed serialization,
 ## but is allowed in the complete serialization.
 Entails.main |= body_Entails-ss.content, head_Entails.name.choice
 Entails.main |= body_Entails.name.choice, head_Entails-ss.content

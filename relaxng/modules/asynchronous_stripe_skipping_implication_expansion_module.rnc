@@ -16,7 +16,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
-## In RuleML 1.0, asynchronous stripe-skipping of implication  is not allowed in the (official) mixed serialization,
+## Asynchronous stripe-skipping of implication  is not allowed in the (official) mixed serialization,
 ## but is allowed in the complete serialization.
 Implies.main |= body_Implies-ss.content, head_Implies.name.choice
 Implies.main |= body_Implies.name.choice, head_Implies-ss.content
