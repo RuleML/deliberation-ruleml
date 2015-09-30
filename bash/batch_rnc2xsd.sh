@@ -42,7 +42,7 @@ done
 # FIXME write an aux script for the xslt call
 for f in "${XSD_HOME}"*.xsd
 do
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT2_HOME}rnc2xsd.xslt"  -o:"${f}"   >> /dev/null 2>&1
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT2_HOME}rnc2xsd.xslt"  -o:"${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "Post-processing Failed for  ${filename}"
      exit 1
@@ -52,7 +52,7 @@ done
 for f in "${XSD_MIN_HOME}"*.xsd
 do
   filename=$(basename "$f")  
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT2_HOME}rnc2xsd_min.xslt" -o:"${XSD_HOME}${filename}"  >> /dev/null 2>&1
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT2_HOME}rnc2xsd_min.xslt" -o:"${XSD_HOME}${filename}"
   if [[ "$?" -ne "0" ]]; then
      echo "Post-processing Failed for ${filename}"
      exit 1
