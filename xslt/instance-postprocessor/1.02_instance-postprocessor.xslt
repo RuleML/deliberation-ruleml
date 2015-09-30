@@ -14,107 +14,181 @@
   <xsl:template match="ruleml:meta[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom>        
+      <xsl:element name="ruleml:Atom">
+        <xsl:element name="ruleml:op">
+          <xsl:element name="ruleml:Rel"/>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:arg[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Ind/>
+      <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
-  </xsl:template>  
-    <xsl:template match="ruleml:oid[not(*)]">
+  </xsl:template>
+  <xsl:template match="ruleml:formula[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Ind/>
+      <xsl:element name="ruleml:Atom">
+        <xsl:element name="ruleml:op">
+          <xsl:element name="ruleml:Rel"/>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
+  <xsl:template match="ruleml:oid[not(*)]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="ruleml:Ind"/>
+    </xsl:copy>
+  </xsl:template>
   <xsl:template match="ruleml:repo[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Var/>
+      <xsl:element name="ruleml:Var"/>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:resl[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Var/>
+      <xsl:element name="ruleml:Var"/>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:slot[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Ind/>
-      <ruleml:Ind/>
+      <xsl:element name="ruleml:Ind"/>
+      <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Atom[not(ruleml:op)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:op><ruleml:Rel/></ruleml:op>
+      <xsl:element name="ruleml:op">
+        <xsl:element name="ruleml:Rel"/>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Expr[not(ruleml:op)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:op><ruleml:Fun/></ruleml:op>
+      <xsl:element name="ruleml:op">
+        <xsl:element name="ruleml:Fun"/>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Equal[not(ruleml:left) or not(ruleml:right)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:left><ruleml:Ind/></ruleml:left>
-      <ruleml:right><ruleml:Ind/></ruleml:right>
+      <xsl:element name="ruleml:left">
+        <xsl:element name="ruleml:Ind"/>
+      </xsl:element>
+      <xsl:element name="ruleml:right">
+        <xsl:element name="ruleml:Ind"/>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Naf[not(ruleml:weak)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:weak><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:weak>
+      <xsl:element name="ruleml:weak">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Neg[not(ruleml:strong)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:strong><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:strong>
+      <xsl:element name="ruleml:strong">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Equivalent[not(ruleml:torso[2])]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:torso><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:torso>
-      <ruleml:torso><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:torso>
+      <xsl:element name="ruleml:torso">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
+      <xsl:element name="ruleml:torso">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Implies[not(ruleml:if) or not(ruleml:then)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:if><ruleml:And/></ruleml:if>
-      <ruleml:then><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:then>
+      <xsl:element name="ruleml:if">
+        <xsl:element name="ruleml:And"/>
+      </xsl:element>
+      <xsl:element name="ruleml:then">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Entails[not(ruleml:if) or not(ruleml:then)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:if><ruleml:Rulebase/></ruleml:if>
-      <ruleml:then><ruleml:Rulebase/></ruleml:then>
+      <xsl:element name="ruleml:if">
+        <xsl:element name="ruleml:Rulebase"/>
+      </xsl:element>
+      <xsl:element name="ruleml:then">
+        <xsl:element name="ruleml:Rulebase"/>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Exists[not(ruleml:declare) or not(ruleml:formula)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:declare><ruleml:Var/></ruleml:declare>
-      <ruleml:formula><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:formula>
+      <xsl:element name="ruleml:declare">
+        <xsl:element name="ruleml:Var"/>
+      </xsl:element>
+      <xsl:element name="ruleml:formula">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template>  
+  </xsl:template>
   <xsl:template match="ruleml:Forall[not(ruleml:declare) or not(ruleml:formula)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:declare><ruleml:Var/></ruleml:declare>
-      <ruleml:formula><ruleml:Atom><ruleml:op><ruleml:Rel/></ruleml:op></ruleml:Atom></ruleml:formula>
+      <xsl:element name="ruleml:declare">
+        <xsl:element name="ruleml:Var"/>
+      </xsl:element>
+      <xsl:element name="ruleml:formula">
+        <xsl:element name="ruleml:Atom">
+          <xsl:element name="ruleml:op">
+            <xsl:element name="ruleml:Rel"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:element>
     </xsl:copy>
-  </xsl:template> 
-  
+  </xsl:template>
+
   <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()">
     <xsl:copy>

@@ -34,7 +34,7 @@
     <xsl:template match="ruleml:oid[not(*)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
-      <ruleml:Ind/>
+      <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
   <xsl:template match="ruleml:slot[not(*)]">
