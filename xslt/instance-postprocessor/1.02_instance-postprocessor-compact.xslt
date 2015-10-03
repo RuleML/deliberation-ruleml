@@ -37,26 +37,26 @@
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:slot[not(*)]">
+  <xsl:template match="ruleml:slot[not(ruleml:*[2])]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Ind"/>
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Atom[not(ruleml:op)]">
+  <xsl:template match="ruleml:Atom[not(ruleml:Rel)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Rel"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Expr[not(ruleml:op)]">
+  <xsl:template match="ruleml:Expr[not(ruleml:Fun)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Fun"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Equal[not(ruleml:left) or not(ruleml:right)]">
+  <xsl:template match="ruleml:Equal[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Ind"/>
@@ -79,29 +79,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Equivalent[not(ruleml:torso[2])]">
-    <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:element name="ruleml:Atom">
-        <xsl:element name="ruleml:Rel"/>
-      </xsl:element>
-      <xsl:element name="ruleml:Atom">
-        <xsl:element name="ruleml:Rel"/>
-      </xsl:element>
-    </xsl:copy>
-  </xsl:template>  
-  <xsl:template match="ruleml:Implies[not(ruleml:if) or not(ruleml:then)]">
-    <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:element name="ruleml:Atom">
-        <xsl:element name="ruleml:Rel"/>
-      </xsl:element>
-      <xsl:element name="ruleml:Atom">
-        <xsl:element name="ruleml:Rel"/>
-      </xsl:element>
-    </xsl:copy>
-  </xsl:template>  
-  <xsl:template match="ruleml:Entails[not(ruleml:if) or not(ruleml:then)]">
+  <xsl:template match="ruleml:Entails[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Rulebase"/>
