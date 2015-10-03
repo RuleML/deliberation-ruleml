@@ -24,16 +24,16 @@ rm "${COMPACT_SUITE_HOME}"* >> /dev/null 2>&1
   "${BASH_HOME}aux_valxsd.sh" "${nfile}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
-  schemaname="naffologeq_compact4xsd.xsd"
+  schemaname="naffologeq_compact.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -42,7 +42,7 @@ schemaname2="naffologeq_compact.rnc"
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   exitvalue=$?
   echo ${exitvalue}
-  if [ "${exitvalue}" -ne "0" ]; then
+  if [[ "${exitvalue}" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname2}"
        exit 1
    fi   
@@ -51,13 +51,13 @@ schemaname2="naffologeq_compact.rnc"
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to COMPACT_SUITE_HOME
 # FIXME write an aux script for the xslt call
-for f in ${XSD_TEST_SUITE_HOME}*/*.ruleml
+for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "$f")
-  echo "Transforming " "${filename}"
+  echo "Transforming  ${filename}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${COMPACT_XSLT_HOME}1.02_compactifier.xslt"  -o:"${COMPACT_SUITE_HOME}${filename}"
-  if [ "$?" -ne "0" ]; then
-     echo "XSLT Transformation Failed for " "${filename}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "XSLT Transformation Failed for  ${filename}"
      exit 1
    fi
 done
@@ -68,19 +68,19 @@ do
   echo "File ${filename}"
     "${BASH_HOME}aux_valxsd.sh" "${nfile}" "${file}"
     exitvalue=$?
-    if [ "${exitvalue}" -ne "1" ]; then
+    if [[ "${exitvalue}" -ne "1" ]]; then
           echo "Normal Validation Succeeded for Compact ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
-    ${BASH_HOME}aux_valrnc.sh "${sfile2}" "${file}"
+    "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       

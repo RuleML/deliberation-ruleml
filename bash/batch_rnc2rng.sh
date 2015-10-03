@@ -21,8 +21,8 @@ do
   filename=$(basename "$file")
 
   "${BASH_HOME}aux_rnc2rng.sh" "${file}" "${TMP_HOME}"
-   if [ "$?" -ne "0" ]; then
-     echo "Conversion Failed for " "${filename}"
+   if [[ "$?" -ne "0" ]]; then
+     echo "Conversion Failed for  ${filename}"
      exit 1
    fi
 done
@@ -30,7 +30,7 @@ rngfiles=("${TMP_HOME}"*.rng) # array initialization
 numrng=${#rngfiles[@]}
 
 #echo ${numrng}
-if [ "${numrng}" == "0" ]; then
+if [[ "${numrng}" == "0" ]]; then
   echo "No Conversion"
   exit 1
 fi
@@ -40,8 +40,8 @@ for file in "${TMP_HOME}"*.rng
 do
   filename=$(basename "$file")
   "${BASH_HOME}aux_valdesign.sh" "${file}"
-   if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${filename}"
+   if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for ${filename}"
      exit 1
    fi
 done

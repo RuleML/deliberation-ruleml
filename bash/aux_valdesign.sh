@@ -8,7 +8,7 @@ filename1=$(basename "$1")
 extension1="${filename1##*.}"
 
 # Verifies that input file name ends in ".rng"
-if [ "${extension1}" != "rng" ];then
+if [[ "${extension1}" != "rng" ]];then
    echo "Extension is not .rng"
    exit 1
 fi

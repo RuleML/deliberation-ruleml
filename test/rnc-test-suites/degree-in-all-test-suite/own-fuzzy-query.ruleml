@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../relaxng/test/datalog_relaxed.rnc"?>
+<?xml-model href="../../../relaxng/drivers/datalog_relaxed.rnc"?>
 <!--<?xml-model href="../../../xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -47,6 +47,7 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     <!-- explicit 'And' -->
     <And>
       <degree><Data xsi:type="xs:integer">1</Data></degree>
+      <formula>
       <Atom>
         <degree><Data xsi:type="xs:string">likely</Data></degree>
         <op><Rel>buy</Rel></op>
@@ -54,12 +55,15 @@ Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         <Var>merchant</Var>
         <Var>object</Var>
       </Atom>
-      <Atom>
+      </formula>
+      <formula>
+        <Atom>
         <degree><Data xsi:type="xs:decimal">0.5</Data></degree>
         <op><Rel>keep</Rel></op>
         <Var>person</Var>
         <Var>object</Var>
       </Atom>
+      </formula>
     </And>
   </if>
   <then>

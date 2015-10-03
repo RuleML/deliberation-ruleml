@@ -18,8 +18,8 @@ done < "${BASH_HOME}config_xsd.txt"
 for file in "${RNC4XSD_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "${file}"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for ${file}"
      exit 1
    fi
 
@@ -36,12 +36,13 @@ done < "${BASH_HOME}config_xsd_min.txt"
 for file in "${RNC4XSD_MIN_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "${file}"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for  ${file}"
      exit 1
    fi
 
 done
 
-cp "${RNC_HOME}naffologeq_compact4xsd.rnc" "${RNC4XSD_HOME}"
+cp "${RNC_HOME}naffologeq_compact4xsd.rnc" "${RNC4XSD_HOME}naffologeq_compact.rnc"
+cp "${RNC_HOME}naffologeq_compact-ifthen4xsd.rnc" "${RNC4XSD_HOME}naffologeq_compact-ifthen.rnc"
 

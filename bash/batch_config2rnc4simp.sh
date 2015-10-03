@@ -20,8 +20,8 @@ done < "${BASH_HOME}config_rnc4simp.txt"
 for file in "${RNC4SIMP_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "$file"
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for " "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for ${file}"
      exit 1
    fi
 done

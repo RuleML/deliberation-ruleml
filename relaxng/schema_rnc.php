@@ -1,6 +1,7 @@
 <?php
 // dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
-parse_str(implode('&', array_slice($argv, 1)), $_GET);
+//parse command line arguments into the $_GET variable
+//parse_str(implode('&', array_slice($argv, 1)), $_GET);
 ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 header('Content-Description: File Transfer');
@@ -343,7 +344,9 @@ if ($bdefault==0){
   $needDefaultPresent =  max($enableDefaultPresent , $enableDirND , $enableMatND , $enableInND , $enableValND , $enableOrientedND);    
   $needDefaultPresentFO = $needDefaultPresent * $enableFO;
   
-  $NeedIfThenSkippable = max( $notPivot, $notPlus ); 
+  // if and then edges are skippable when not converting to XSD and not a "plus" language
+  $NeedIfThenSkippable = max( $notPivot, $notPlus );
+   
   $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND);
 
   //Step 1. Assemble the language foundation
@@ -470,6 +473,7 @@ if ($bdefault==0){
     //       However, unordered deterministic groups is contained in unordered groups
     //       so it is redundant.
       if ($notPivot){
+      // not included when converting to XSD
          echo "#\n".'include "' . $modulesLocation .
             'unordered_groups_expansion_module.rnc"'."$end\n";
       }  
@@ -755,6 +759,7 @@ if ($bdefault==0){
     //             In that case, monotonicity is preserved.
     if ($needReify){
       if ($notPivot){    
+      // not included when converting to XSD
         echo "#\n# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT\n";
         echo "#\n".'include "' . $modulesLocation .
             'reify_expansion_module.rnc"'."$end\n";

@@ -32,17 +32,17 @@ do
        "${BASH_HOME}aux_valxsd.sh" "${sfile}"
        exitvalue=$?
        echo ${exitvalue}
-       if [ "${exitvalue}" -ne "0" ]; then
+       if [[ "${exitvalue}" -ne "0" ]]; then
           echo "Schema Validation Failed for ${schemaname}"
           exit 1
        fi   
        "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
        exitvalue=$?
-       if [[ ! ${file} =~ fail ]] && [ "${exitvalue}" -ne "0" ]; then
+       if [[ ! ${file} =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
        else
-         if [[ ${file} =~ fail ]] && [ "${exitvalue}" == "0" ]; then
+         if [[ ${file} =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
            echo "Validation Succeeded for Failure Test ${file}"
            exit 1
          fi

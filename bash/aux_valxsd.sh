@@ -11,18 +11,18 @@ filename=$(basename "$1")
 extension=${filename##*.}
 
 # Verifies that input schema name ends in ".xsd"
-if [ "${extension}" != "xsd" ];then
-   echo "Extension" "$extension"  "is not .xsd"
+if [[ "${extension}" != "xsd" ]];then
+   echo "Extension $extension is not .xsd"
    exit 1
 fi
 
 # Validate schema against JAXB
 # if the number of input arguments is one, or the schema validiation flag (third argument) is set
 if [[ "$#" -eq 1 ]] || [[ -e "$3"  &&  "$3" -eq "1" ]]; then
-  echo "Validating " "$1" " with JAXB"
-  java -jar "${JAXB_HOME}lib/jaxb-xjc.jar" "$1" -disableXmlSecurity -d "${TMPDIR}"  2>&1
-  if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for schema " "$1"
+  echo "Validating  $1  with JAXB"
+  java -jar "${JAXB_HOME}lib/jaxb-xjc.jar" "$1" -disableXmlSecurity -d "${TMPDIR}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for schema $1"
      exit 1
    fi
 fi
@@ -30,8 +30,8 @@ fi
  # Validate (using xmllint) the second argument as an instance, if the file exists  
  if [[ -e "$2" ]]; then
    xmllint -noout --schema "$1" "$2"
-   if [ "$?" -ne "0" ]; then
-     echo "Validation Failed for instance " "$2"
+   if [[ "$?" -ne "0" ]]; then
+     echo "Validation Failed for instance $2"
      exit 1
    fi
 

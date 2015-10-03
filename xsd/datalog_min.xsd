@@ -106,7 +106,7 @@
     <xs:attributeGroup ref="ruleml:act-datt.choice"/>
   </xs:complexType>
   <xs:attributeGroup name="act-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:group name="act.content">
     <xs:annotation>
@@ -1047,10 +1047,14 @@
         XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence>
         <xs:group ref="ruleml:body_Implies.name.choice"/>
         <xs:group ref="ruleml:head_Implies.name.choice"/>
-      </xs:choice>
+      </xs:sequence>
+      <xs:sequence>
+        <xs:group ref="ruleml:head_Implies.name.choice"/>
+        <xs:group ref="ruleml:body_Implies.name.choice"/>
+      </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Implies-ss.content"/>
         <xs:group ref="ruleml:head_Implies.content"/>
@@ -1336,7 +1340,7 @@
     <xs:attributeGroup ref="ruleml:arg-datt.choice"/>
   </xs:complexType>
   <xs:attributeGroup name="arg-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="index-attrib.choice">
     <xs:annotation>

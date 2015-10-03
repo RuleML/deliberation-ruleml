@@ -9,7 +9,7 @@ echo "${filename1}"
 extension1="${filename1##*.}"
 
 # Verifies that input schema name ends in ".rnc"
-if [ "${extension1}" != "rnc" ];then
+if [[ "${extension1}" != "rnc" ]];then
    echo "Extension of ${filename1} is not .rnc"
    exit 1
 fi

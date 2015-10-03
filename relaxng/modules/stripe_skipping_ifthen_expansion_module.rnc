@@ -24,7 +24,7 @@ start |= notAllowed
 # 
 #        *** <if> , <then> ***
 
-## In implications, both stripes may be skipped at the same time.
+## In implications, both stripes may be skipped at the same time, if the body-head order is maintained.
 Implies.main |= body_Implies-ss.content, head_Implies.content
 body_Implies-ss.content |= body_Implies.content
 head_Implies-ss.content |= head_Implies.content
