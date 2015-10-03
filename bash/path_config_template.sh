@@ -45,6 +45,7 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;
 REPO_HOME="${BASH_HOME}../"
 RNC_HOME="${REPO_HOME}relaxng/"
 DRIVER_HOME="${RNC_HOME}drivers/"
+DRIVER_COMPACT_HOME="${RNC_HOME}"
 TMP="${RNC_HOME}tmp-std2xsd.rng"
 MYNG_BACK_END="${RNC_HOME}schema_rnc_local.php"
 PHP_CLI_INI="${RNC_HOME}php-cli.ini"

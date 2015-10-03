@@ -1,8 +1,7 @@
 #!/bin/bash
 # dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 # See ReadMe.text for instructions on running this script.
-# 
-#
+
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${INSTANCE_NORMAL_HOME}"
@@ -10,13 +9,14 @@ rm "${INSTANCE_NORMAL_HOME}"*.ruleml  >> /dev/null 2>&1
 mkdir -p "${INSTANCE_COMPACT_HOME}"
 rm "${INSTANCE_COMPACT_HOME}"*.ruleml  >> /dev/null 2>&1
 
-nschemanameNE="naffologeq_normal"
-cschemanameNE="naffologeq_compact"
+family="naffologeq_"
+nschemanameNE="${family}normal"
+cschemanameNE="${family}compact"
+nschemaname="${nschemanameNE}.xsd"
+nxsfile="${XSD_NORMAL}${nschemaname}"       
 
 # Validate XSD schema
   echo "Start XSD Schema Validation"
-  nschemaname="${nschemanameNE}.xsd"
-  nxsfile="${XSD_NORMAL}${nschemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}"
   exitvalue=$?
   echo ${exitvalue}
@@ -25,7 +25,7 @@ cschemanameNE="naffologeq_compact"
        exit 1
    fi   
 
-#   use oxygen to generate XML instances according to the configuration file for the naffologeq-normal driver
+#   use oxygen to generate XML instances according to the configuration file for the normal-serialization driver"
 echo "Start Instance Generation"
 "$GENERATE_SCRIPT" "$NORMAL_CONFIG"
 
@@ -76,7 +76,7 @@ done
 # Validate compact schema
   echo "Start RNC Schema Validation"
   cschemaname="${cschemanameNE}.rnc"
-  csfile="${RNC_HOME}${cschemaname}"       
+  csfile="${DRIVER_COMPACT_HOME}${cschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${csfile}"
   exitvalue=$?
   echo ${exitvalue}

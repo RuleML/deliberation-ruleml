@@ -25,7 +25,7 @@ rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
 
 # Validate RNC schema
   schemaname="${schemanameNE}.rnc"
-  sfile="${RNC_HOME}${schemaname}"       
+  sfile="${DRIVER_COMPACT_HOME}${schemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile}"
   exitvalue=$?
   echo ${exitvalue}
