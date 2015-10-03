@@ -24,8 +24,6 @@
       select="(namespace-uri($node)='http://ruleml.org/spec' and
       (local-name($node)='arg' or
       local-name($node)='op' or
-      local-name($node)='if[..[ruleml:Entails]]' or
-      local-name($node)='then[..[ruleml:Entails]]' or
       local-name($node)='torso' or
       local-name($node)='left' or
       local-name($node)='right' or

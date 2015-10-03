@@ -37,33 +37,33 @@
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:slot[not(ruleml:*[2])]">
+  <xsl:template match="ruleml:slot[count(*) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Ind"/>
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Atom[not(ruleml:Rel)]">
+  <xsl:template match="ruleml:Atom[count(Rel)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Rel"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Expr[not(ruleml:Fun)]">
+  <xsl:template match="ruleml:Expr[count(Fun)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Fun"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Equal[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Equal[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Ind"/>
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Naf[not(ruleml:*[matches(name(), '^[A-Z]')])]">
+  <xsl:template match="ruleml:Naf[count(ruleml:*[matches(local-name(), '^[A-Z]')]) = 0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Atom">
@@ -71,7 +71,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Neg[not(ruleml:*[matches(name(), '^[A-Z]')])]">
+  <xsl:template match="ruleml:Neg[count(ruleml:*[matches(local-name(), '^[A-Z]')]) = 0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Atom">
@@ -79,14 +79,14 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Entails[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Entails[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Rulebase"/>
       <xsl:element name="ruleml:Rulebase"/>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Exists[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Exists[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Var"/>
@@ -95,7 +95,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Forall[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Forall[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Var"/>
@@ -104,7 +104,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Equivalent[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Equivalent[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Atom">
@@ -115,7 +115,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>  
-  <xsl:template match="ruleml:Implies[not(ruleml:*[matches(name(), '^[A-Z]')][2])]">
+  <xsl:template match="ruleml:Implies[count(ruleml:*[matches(local-name(), '^[A-Z]')]) &lt; 2]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Atom">

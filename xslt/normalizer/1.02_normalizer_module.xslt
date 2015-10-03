@@ -23,7 +23,6 @@
       "
     />
   </xsl:function>
-  <!-- FIXME - Move to RuleML XSLT -->
   
   
   <xsl:function name="ruleml:isAEPNode"  as="xs:boolean">
