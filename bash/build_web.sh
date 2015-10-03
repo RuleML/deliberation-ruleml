@@ -12,5 +12,19 @@ if [[ "$?" -ne "0" ]]; then
      echo "Local Testing of RNC Schemas Failed"
      exit 1
 fi
+# Generate XSD, and validate
+"${BASH_HOME}batch_webconfig2rnc4xsd.sh"
+"${BASH_HOME}batch_rnc2xsd.sh"
+if [[ "$?" -ne "0" ]]; then
+     echo "Generation of XSD Failed"
+     exit 1
+fi
+   
+# Validate Examples in XSD Test Suites
+"${BASH_HOME}batch_xsd-test-suite.sh"
+if [[ "$?" -ne "0" ]]; then
+     echo "Local Testing of XSD Schemas Failed"
+     exit 1
+fi
 # If everything validates, then build the documentation
 "${BASH_HOME}build_xsd2doc.sh"
