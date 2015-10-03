@@ -28,7 +28,7 @@ rm "${COMPACT_SUITE_HOME}"* >> /dev/null 2>&1
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
-  schemaname="naffologeq_compact4xsd.xsd"
+  schemaname="naffologeq_compact.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
   exitvalue=$?

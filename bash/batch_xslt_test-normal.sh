@@ -19,7 +19,7 @@ mkdir -p "${NORMAL_SUITE_HOME}"
 rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
 
 
-  cschemaname="naffologeq_compact4xsd.xsd"
+  cschemaname="naffologeq_compact.xsd"
   cfile="${XSD_HOME}${cschemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${cfile}"
   exitvalue=$?
@@ -40,7 +40,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
    fi   
 
 schemaname2="naffologeq_normal.rnc"
-  sfile2="${TEST_HOME}${schemaname2}"       
+  sfile2="${DRIVER_HOME}${schemaname2}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   exitvalue=$?
   echo ${exitvalue}

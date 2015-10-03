@@ -21,7 +21,7 @@ rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
    fi   
 
 #   use oxygen to generate XML instances according to the configuration file for the naffologeq-normal driver
-sh "$GENERATE_SCRIPT" "$COMPACTIFTHEN_CONFIG"
+"$GENERATE_SCRIPT" "$COMPACTIFTHEN_CONFIG"
 
 # Validate RNC schema
   schemaname="${schemanameNE}.rnc"
@@ -36,7 +36,6 @@ sh "$GENERATE_SCRIPT" "$COMPACTIFTHEN_CONFIG"
 
 # Apply XSLT transforamtions - instance postprocessing
 # transform in place for files in INSTANCE_COMPACTIFTHEN_HOME
-# FIXME write an aux script for the xslt call
 for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
@@ -68,7 +67,6 @@ done
 
 # Apply XSLT transforamtions to canonicalize - strip whitespace only
 # transform in place for files in INSTANCE_COMPACTIFTHEN_HOME
-# FIXME write an aux script for the xslt call
 for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
@@ -98,9 +96,30 @@ do
   fi       
 done
 
+# Apply XSLT transforamtions for compactifying
+# transform in place for files in INSTANCE_COMPACT_HOME
+# Law: Cy = y
+for f in "${INSTANCE_COMPACTIFTHEN_HOME}ca-"*.ruleml
+do
+  filename=$(basename "$f")
+  echo "Re-Compactifying  ${filename}"
+  fnew="${INSTANCE_COMPACTIFTHEN_HOME}re-${filename}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier-ifthen.xslt"  -o:"${fnew}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor_stripwhitespace.xslt"  -o:"${fnew}"
+  read -r firstlineold<"${f}"
+  read -r firstlinenew<"${fnew}"
+  echo "Re-Compactified Comparing  ${filename}"
+  if [[ "${firstlineold}" != "${firstlinenew}" ]]; then
+     echo "Re-Compactification Failed for  ${filename}"
+     diff -q "${f}" "${fnew}" 
+     exit 1
+   fi
+done
+
+
 # Apply XSLT transforamtions - normalize, then compactify (ifthen)
 # transform into new file with "rt-" prefix for files in INSTANCE_COMPACTIFTHEN_HOME
-# FIXME write an aux script for the xslt call
+# Law: CN = I
 for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")

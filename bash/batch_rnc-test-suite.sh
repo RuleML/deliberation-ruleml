@@ -27,7 +27,7 @@ do
        #echo "URL ${url}"
        schemaname=${url##*/}
        #echo "Schema ${schemaname}"       
-       sfile="${TEST_HOME}${schemaname}"      
+       sfile="${DRIVER_HOME}${schemaname}"      
        "${BASH_HOME}aux_valrnc.sh" "${sfile}"
        exitvalue=$?
        if [[ "${exitvalue}" -ne "0" ]]; then
