@@ -8,11 +8,12 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${INSTANCE_COMPACTIFTHEN_HOME}"
 rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
 
+family="naffologeq_"
 # Validate XSD schema
-  schemanameNE="naffologeq_compact-ifthen"
+  schemanameNE="${family}ifthen-compact"
   schemaname="${schemanameNE}.xsd"
-  sfile="${XSD_HOME}${schemaname}"       
-  "${BASH_HOME}aux_valxsd.sh" "${sfile}"
+  sxfile="${XSD_HOME}${schemaname}"       
+  "${BASH_HOME}aux_valxsd.sh" "${sxfile}"
   exitvalue=$?
   echo ${exitvalue}
   if [[ "${exitvalue}" -ne "0" ]]; then
@@ -20,7 +21,7 @@ rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
        exit 1
    fi   
 
-#   use oxygen to generate XML instances according to the configuration file for the naffologeq-normal driver
+#   use oxygen to generate XML instances according to the configuration file for the compact-serialization driver
 "$GENERATE_SCRIPT" "$COMPACTIFTHEN_CONFIG"
 
 # Validate RNC schema
@@ -53,6 +54,7 @@ do
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
+  "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
   exitvalue=$?
   if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
@@ -84,6 +86,7 @@ do
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
+  "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
   exitvalue=$?
   if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for ${file}"

@@ -2,7 +2,9 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Weak Negation (Negation as Failure) Formulas" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/naf_expansion_module.rnc" ]
+dcterms:identifier [
+  "http://deliberation.ruleml.org/1.02/relaxng/modules/naf_expansion_module.rnc"
+]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, negation, weak, formula" ]

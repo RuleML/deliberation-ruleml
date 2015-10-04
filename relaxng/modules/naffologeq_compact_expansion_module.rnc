@@ -1,0 +1,155 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dcterms:title [ "Deliberation RuleML Compact Serialization" ]
+dcterms:identifier [
+  "http://deliberation.ruleml.org/1.02/modules/naffologeq_compact_expansion_modoule.rnc"
+]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dc:subject [ "Deliberation RuleML, compact" ]
+dcterms:description [
+  "expansion module for the compact serialization of the Deliberation RuleML supremum."
+]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
+# 
+# ROOT NODE AND PERFORMATIVES REDEFINED
+#
+include "performative_expansion_module.rnc" {
+  start |= notAllowed
+  act-edge.choice |= notAllowed
+  formula_AssertRetract-edge.choice |= notAllowed
+  formula_Query-edge.choice |= notAllowed
+  act.edge.def = notAllowed
+  formula_AssertRetract.edge.def = notAllowed
+  formula_Query.edge.def = notAllowed
+  act.type.def = notAllowed
+  formula_AssertRetract.type.def = notAllowed
+  formula_Query.type.def = notAllowed
+}
+# 
+# ATOMIC FORMULAS REDEFINED
+#
+include "atom_expansion_module.rnc" {
+  start |= notAllowed
+  operatorForAtoms-edge.choice |= notAllowed
+  op_Atom.edge.def = notAllowed
+  op.type.def = notAllowed
+}
+# 
+# CONJUNCTIONS AND DISJUNCTIONS REDEFINED
+#
+include "andor_query_expansion_module.rnc" {
+  start |= notAllowed
+  formula_And-edge.choice |= notAllowed
+  formula_Or-edge.choice |= notAllowed
+  formula_And.edge.def = notAllowed
+  formula_Or.edge.def = notAllowed
+  formula_And.type.def = notAllowed
+  formula_Or.type.def = notAllowed
+}
+# 
+# QUANTIFICATION OVER VARIABLES REDEFINED
+#
+include "quantification_expansion_module.rnc" {
+  start |= notAllowed
+  formula_Exists-edge.choice |= notAllowed
+  formula_Forall-edge.choice |= notAllowed
+  declare-edge.choice |= notAllowed
+  formula_Exists.edge.def = notAllowed
+  formula_Forall.edge.def = notAllowed
+  declare.edge.def = notAllowed
+  formula_Exists.type.def = notAllowed
+  formula_Forall.type.def = notAllowed
+  declare.type.def = notAllowed
+}
+# 
+# EXPRESSIONS REDEFINED
+#
+include "expr_expansion_module.rnc" {
+  start |= notAllowed
+  operatorForExpressions-edge.choice |= notAllowed
+  op_Expr.type.def = notAllowed
+  op_Expr.edge.def = notAllowed
+}
+# 
+# ORDER MODE - UNORDERED GROUPS DISABLED
+#
+include "ordered_groups_expansion_module.rnc" {
+  start |= notAllowed
+  Entails.main |= notAllowed
+}
+# 
+# RULEBASES REDEFINED
+#
+include "rulebase_expansion_module.rnc" {
+  start |= notAllowed
+  formula_Rulebase-edge.choice |= notAllowed
+  formula_Rulebase.edge.def = notAllowed
+  formula_Rulebase.type.def = notAllowed
+}
+# 
+# ENTAILMENTS (PROVES) REDEFINED
+#
+include "metalevel_expansion_module.rnc" {
+  start |= notAllowed
+  body_Entails.name.choice |= notAllowed
+  head_Entails.name.choice |= notAllowed
+  body_Entails.edge.def = notAllowed
+  head_Entails.edge.def = notAllowed
+  body_Entails.type.def = notAllowed
+  head_Entails.type.def = notAllowed
+}
+# 
+# STRONG NEGATION REDEFINED
+#
+include "neg_expansion_module.rnc" {
+  start |= notAllowed
+  strong-edge.choice |= notAllowed
+  strong.edge.def = notAllowed
+  strong.type.def = notAllowed
+}
+# 
+# WEAK NEGATIONS REDEFINED
+#
+include "naf_expansion_module.rnc" {
+  start |= notAllowed
+  weak-edge.choice |= notAllowed
+  weak.edge.def = notAllowed
+  weak.type.def = notAllowed
+}
+# 
+# EQUIVALENCES REDEFINED
+#
+include "equivalent_expansion_module.rnc" {
+  start |= notAllowed
+  torso-edge.choice |= notAllowed
+  torso.edge.def = notAllowed
+  torso.type.def = notAllowed
+}
+# 
+# EQUATIONS REDEFINED
+#
+include "equal_expansion_module.rnc" {
+  start |= notAllowed
+  leftSide-edge.choice |= notAllowed
+  rightSide-edge.choice |= notAllowed
+  left.edge.def = notAllowed
+  right.edge.def = notAllowed
+  left.type.def = notAllowed
+  right.type.def = notAllowed
+}
+# 
+# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE REDEFINED
+#
+include "individual_expansion_module.rnc" {
+  start |= notAllowed
+  positionalArgument-edge.choice |= notAllowed
+  arg.type.def = notAllowed
+  arg.edge.def = notAllowed
+}

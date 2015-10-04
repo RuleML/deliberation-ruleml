@@ -44,8 +44,6 @@ positionalArgument-edge.choice |= arg.content
 Entails.main |= body_Entails-ss.content, head_Entails-ss.content
 body_Entails-ss.content |= body_Entails.content
 head_Entails-ss.content |= head_Entails.content
-# Entails.main |= body_Entails-ss.content, head_Entails.name.choice
-# Entails.main |= body_Entails.name.choice, head_Entails-ss.content
 
 ## Stripe-skipping is allowed asynchronously in equivalences.
 torso-edge.choice |= torso.content

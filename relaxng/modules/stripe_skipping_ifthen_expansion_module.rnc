@@ -28,5 +28,3 @@ start |= notAllowed
 Implies.main |= body_Implies-ss.content, head_Implies.content
 body_Implies-ss.content |= body_Implies.content
 head_Implies-ss.content |= head_Implies.content
-# Implies.main |= body_Implies-ss.content, head_Implies.name.choice
-# Implies.main |= body_Implies.name.choice, head_Implies-ss.content

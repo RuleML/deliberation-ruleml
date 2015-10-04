@@ -55,12 +55,15 @@ body_Entails.edge.def =
 body_Entails.type.def = body_Entails.attlist? & body_Entails.content
 body_Entails.attlist &= commonInit.attlist?
 
+##
+body_Entails.content |= EntailsFormula.choice
+
 ## The if of an entailment contains a single rulebase.
-body_Entails.content |= Rulebase-node.choice
-
-## The if of an entailment may contain a single formula that is allowed in a Rulebase.
-body_Entails.content |= RulebaseFormula.choice
-
+## as well as any single formula that is allowed in a Rulebase.
+EntailsFormula.choice |=
+  RulebaseFormula.choice
+  | Rulebase-node.choice
+  
 ## an extension point for stripe skipping as well as specializations of the then tag name in entailments.  
 head_Entails.name.choice |= head_Entails.edge.def
 head_Entails.edge.def =
@@ -73,8 +76,6 @@ head_Entails.edge.def =
 head_Entails.type.def = head_Entails.attlist? & head_Entails.content
 head_Entails.attlist &= commonInit.attlist?
 
-## The then of an entailment contains a single rulebase.
-head_Entails.content |= Rulebase-node.choice
+## The then of an entailment has the same content model as the if part.
+head_Entails.content |= EntailsFormula.choice
 
-## The then of an entailment may contain a single formula that is allowed in a Rulebase.
-head_Entails.content |= RulebaseFormula.choice

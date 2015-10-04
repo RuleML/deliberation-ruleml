@@ -44,5 +44,5 @@ do
 done
 
 cp "${RNC_HOME}naffologeq_compact4xsd.rnc" "${RNC4XSD_HOME}naffologeq_compact.rnc"
-cp "${RNC_HOME}naffologeq_compact-ifthen4xsd.rnc" "${RNC4XSD_HOME}naffologeq_compact-ifthen.rnc"
+cp "${RNC_HOME}naffologeq_ifthen-compact4xsd.rnc" "${RNC4XSD_HOME}naffologeq_ifthen-compact.rnc"
 
