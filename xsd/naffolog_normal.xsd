@@ -1991,11 +1991,20 @@
   </xs:attributeGroup>
   <xs:complexType name="body_Entails.content">
     <xs:annotation>
-      <xs:documentation>The if of an entailment contains a single rulebase.</xs:documentation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ruleml:EntailsFormula.choice"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EntailsFormula.choice">
+    <xs:annotation>
+      <xs:documentation>The if of an entailment contains a single rulebase. as well as any single
+        formula that is allowed in a Rulebase.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:group ref="ruleml:Rulebase-node.choice"/>
       <xs:group ref="ruleml:RulebaseFormula.choice"/>
+      <xs:group ref="ruleml:Rulebase-node.choice"/>
     </xs:choice>
   </xs:complexType>
   <xs:group name="head_Entails.name.choice">
@@ -2031,12 +2040,12 @@
   </xs:attributeGroup>
   <xs:complexType name="head_Entails.content">
     <xs:annotation>
-      <xs:documentation>The then of an entailment contains a single rulebase.</xs:documentation>
+      <xs:documentation>The then of an entailment has the same content model as the if
+        part.</xs:documentation>
     </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:Rulebase-node.choice"/>
-      <xs:group ref="ruleml:RulebaseFormula.choice"/>
-    </xs:choice>
+    <xs:complexContent>
+      <xs:extension base="ruleml:EntailsFormula.choice"/>
+    </xs:complexContent>
   </xs:complexType>
   
   

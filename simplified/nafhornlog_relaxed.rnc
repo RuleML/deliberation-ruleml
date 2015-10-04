@@ -742,12 +742,12 @@ Entails =
        }?),
     meta*,
     ((if_2 & then_2)
-     | ((Rulebase | Atom | Implies | Equivalent | Forall), if_2)
-     | (then_2, (Rulebase | Atom | Implies | Equivalent | Forall))
-     | ((Rulebase | Atom | Implies | Equivalent | Forall),
-        (Rulebase | Atom | Implies | Equivalent | Forall))
-     | ((Rulebase | Atom | Implies | Equivalent | Forall), then_2)
-     | (if_2, (Rulebase | Atom | Implies | Equivalent | Forall)))
+     | ((Atom | Implies | Equivalent | Forall | Rulebase), if_2)
+     | (then_2, (Atom | Implies | Equivalent | Forall | Rulebase))
+     | ((Atom | Implies | Equivalent | Forall | Rulebase),
+        (Atom | Implies | Equivalent | Forall | Rulebase))
+     | ((Atom | Implies | Equivalent | Forall | Rulebase), then_2)
+     | (if_2, (Atom | Implies | Equivalent | Forall | Rulebase)))
   }
 Naf =
   element Naf {
@@ -1391,7 +1391,7 @@ then_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Implies | Equivalent | Forall)
+    & (Atom | Implies | Equivalent | Forall | Rulebase)
   }
 if_2 =
   element if {
@@ -1414,7 +1414,7 @@ if_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Implies | Equivalent | Forall)
+    & (Atom | Implies | Equivalent | Forall | Rulebase)
   }
 degree =
   element degree {

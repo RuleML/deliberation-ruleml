@@ -997,7 +997,7 @@ then_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Implies | Equivalent)
+    & (Atom | Implies | Equivalent | Rulebase)
   }
 if_2 =
   element if {
@@ -1020,7 +1020,7 @@ if_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Implies | Equivalent)
+    & (Atom | Implies | Equivalent | Rulebase)
   }
 degree =
   element degree {

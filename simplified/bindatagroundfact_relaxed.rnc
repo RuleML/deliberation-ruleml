@@ -491,11 +491,11 @@ Entails =
        }?),
     meta*,
     ((if & then)
-     | ((Rulebase | Atom), if)
-     | (then, (Rulebase | Atom))
-     | ((Rulebase | Atom), (Rulebase | Atom))
-     | ((Rulebase | Atom), then)
-     | (if, (Rulebase | Atom)))
+     | ((Atom | Rulebase), if)
+     | (then, (Atom | Rulebase))
+     | ((Atom | Rulebase), (Atom | Rulebase))
+     | ((Atom | Rulebase), then)
+     | (if, (Atom | Rulebase)))
   }
 Data =
   element Data {
@@ -833,7 +833,7 @@ then =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom)
+    & (Atom | Rulebase)
   }
 if =
   element if {
@@ -856,7 +856,7 @@ if =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom)
+    & (Atom | Rulebase)
   }
 degree =
   element degree {

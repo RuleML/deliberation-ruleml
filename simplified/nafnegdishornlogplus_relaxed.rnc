@@ -791,22 +791,22 @@ Entails =
        }?),
     meta*,
     ((if_2 & then_2)
-     | ((Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall),
+     | ((Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase),
         if_2)
      | (then_2,
-        (Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall))
-     | ((Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall),
-        (Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall))
-     | ((Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall),
+        (Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase))
+     | ((Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase),
+        (Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase))
+     | ((Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase),
         then_2)
      | (if_2,
-        (Rulebase
-         | Atom
+        (Atom
          | Equal
          | Neg
          | Implies
          | Equivalent
-         | Forall)))
+         | Forall
+         | Rulebase)))
   }
 Neg =
   element Neg {
@@ -1545,7 +1545,7 @@ then_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall)
+    & (Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase)
   }
 if_2 =
   element if {
@@ -1568,7 +1568,7 @@ if_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase | Atom | Equal | Neg | Implies | Equivalent | Forall)
+    & (Atom | Equal | Neg | Implies | Equivalent | Forall | Rulebase)
   }
 degree =
   element degree {

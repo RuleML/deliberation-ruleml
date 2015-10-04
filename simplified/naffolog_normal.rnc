@@ -1807,15 +1807,15 @@ then_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase
-       | Atom
+    & (Atom
        | And_2
        | Or_2
        | Neg
        | Implies
        | Equivalent
        | Forall
-       | Exists)
+       | Exists
+       | Rulebase)
   }
 if_2 =
   element if {
@@ -1838,15 +1838,15 @@ if_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Rulebase
-       | Atom
+    & (Atom
        | And_2
        | Or_2
        | Neg
        | Implies
        | Equivalent
        | Forall
-       | Exists)
+       | Exists
+       | Rulebase)
   }
 degree =
   element degree {

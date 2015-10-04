@@ -1117,7 +1117,6 @@
       <xs:element ref="ruleml:arg"/>
     </xs:choice>
   </xs:group>
-  
   <xs:group name="leftSide-edge.choice">
     <xs:annotation>
       <xs:documentation>Stripe-skipping is allowed asynchronously in equations.</xs:documentation>
