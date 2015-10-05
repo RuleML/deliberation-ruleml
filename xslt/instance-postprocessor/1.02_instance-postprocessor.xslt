@@ -27,7 +27,37 @@
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:formula[not(*)]">
+  <xsl:template match="ruleml:formula[not(*)]"> 
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="ruleml:Atom">
+        <xsl:element name="ruleml:op">
+          <xsl:element name="ruleml:Rel"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="ruleml:strong[not(*)]">   
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="ruleml:Atom">
+        <xsl:element name="ruleml:op">
+          <xsl:element name="ruleml:Rel"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="ruleml:weak[not(*)]">       
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="ruleml:Atom">
+        <xsl:element name="ruleml:op">
+          <xsl:element name="ruleml:Rel"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="ruleml:torso[not(*)]">       
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:Atom">
