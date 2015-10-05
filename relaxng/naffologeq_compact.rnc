@@ -17,8 +17,8 @@ dc:rights [
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
 start = Node.choice | edge.choice
-# 
-# COMPACT MODULE REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
+#
+# COMPACT MODULE INCLUDED
 #
 include "modules/naffologeq_compact_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
@@ -31,14 +31,8 @@ include "modules/performative_content_expansion_module.rnc" inherit = ruleml {
 # 
 # IMPLICATIONS REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
 #
-include "modules/implication_expansion_module.rnc" inherit = ruleml {
+include "modules/implication_compact_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
-  body_Implies.name.choice = notAllowed
-  head_Implies.name.choice = notAllowed
-  body_Implies.edge.def = notAllowed
-  head_Implies.edge.def = notAllowed
-  body_Implies.type.def = notAllowed
-  head_Implies.type.def = notAllowed
 }
 # 
 # EXPRESSIONS INCLUDED
