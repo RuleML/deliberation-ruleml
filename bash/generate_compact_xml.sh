@@ -67,7 +67,7 @@ do
   fi       
 done
 
-# Apply XSLT transforamtions to canonicalize - strip whitespace only
+# Apply XSLT transforamtions to canonicalize - postprocess to strip whitespace only
 # transform in place for files in INSTANCE_COMPACT_HOME
 for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
 do
