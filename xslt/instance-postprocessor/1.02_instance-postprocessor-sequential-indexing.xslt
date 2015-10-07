@@ -7,7 +7,7 @@
   
   <xsl:template match="ruleml:content">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(index)]"/>
+      <xsl:apply-templates select="@*[not(name(.)='index')]"/>
       <xsl:attribute name="index" select="position()"/>
       <xsl:apply-templates select="node()"/>
     </xsl:copy>
