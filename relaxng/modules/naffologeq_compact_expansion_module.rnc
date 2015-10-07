@@ -152,4 +152,5 @@ include "individual_expansion_module.rnc" {
   positionalArgument-edge.choice |= notAllowed
   arg.type.def = notAllowed
   arg.edge.def = notAllowed
+  arg-datt.choice |= notAllowed
 }
