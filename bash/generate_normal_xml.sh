@@ -161,7 +161,7 @@ for f in "${INSTANCE_NORMAL_HOME}ca-"*.ruleml
 do
   filename=$(basename "$f")
   echo "Canonicalizing  ${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor_stripwhitespace.xslt"  -o:"${f}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -195,7 +195,7 @@ do
   echo "Re-Normalizing  ${filename}"
   fnew="${INSTANCE_NORMAL_HOME}re-${filename}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}normalizer/1.02_normalizer.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor_stripwhitespace.xslt"  -o:"${fnew}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Re-Normalized Comparing  ${filename}"
@@ -216,7 +216,7 @@ do
   fnew="${INSTANCE_NORMAL_HOME}rt-${filename}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier.xslt"  -o:"${fnew}"
   java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}normalizer/1.02_normalizer.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor_stripwhitespace.xslt"  -o:"${fnew}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Round-Trip Comparing  ${filename}"
