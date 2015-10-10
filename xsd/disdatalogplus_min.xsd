@@ -39,33 +39,7 @@
       <xs:element ref="ruleml:Var"/>
     </xs:choice>
   </xs:group>
-  <xs:group name="edge.choice">
-    <xs:choice>
-      <xs:choice>
-        <xs:group ref="ruleml:formula_AssertRetract.edge.def"/>
-        <xs:group ref="ruleml:formula_Query.edge.def"/>
-      </xs:choice>
-      <xs:element ref="ruleml:op"/>
-      <xs:choice>
-        <xs:group ref="ruleml:formula_And.edge.def"/>
-        <xs:group ref="ruleml:formula_Or.edge.def"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:then"/>
-        <xs:element ref="ruleml:if"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:declare"/>
-        <xs:group ref="ruleml:formula_Forall.edge.def"/>
-        <xs:group ref="ruleml:formula_Exists.edge.def"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:left"/>
-        <xs:element ref="ruleml:right"/>
-      </xs:choice>
-      <xs:element ref="ruleml:arg"/>
-    </xs:choice>
-  </xs:group>
+  
   
   <xs:element name="RuleML" type="ruleml:RuleML.type.def">
     <xs:annotation>
@@ -403,7 +377,7 @@
   </xs:element>
   <xs:complexType name="Rel.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Rel.content">
+      <xs:extension base="ruleml:Rel.value">
         <xs:attributeGroup ref="ruleml:reRel.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -415,7 +389,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:Resource.attlist"/>
   </xs:attributeGroup>
-  <xs:simpleType name="Rel.content">
+  <xs:simpleType name="Rel.value">
     <xs:annotation>
       <xs:documentation>The content model for relations is the XSD datatype
         token.</xs:documentation>
@@ -1241,10 +1215,7 @@
     <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
   </xs:simpleType>
   
-  <xs:element name="iri" type="ruleml:iri.content"/>
-  <xs:simpleType name="iri.content">
-    <xs:restriction base="ruleml:iri.value"/>
-  </xs:simpleType>
+  
   
   <xs:attributeGroup name="direction-att.choice">
     <xs:annotation>
@@ -1283,11 +1254,7 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:element name="Direction">
-    <xs:complexType>
-      <xs:attributeGroup ref="ruleml:direction-att.choice"/>
-    </xs:complexType>
-  </xs:element>
+  
   
   <xs:attributeGroup name="mapDirection-att.choice">
     <xs:annotation>
@@ -1319,11 +1286,7 @@
     <xs:restriction base="ruleml:direction.value"/>
   </xs:simpleType>
   
-  <xs:element name="MapDirection">
-    <xs:complexType>
-      <xs:attributeGroup ref="ruleml:mapDirection-att.choice"/>
-    </xs:complexType>
-  </xs:element>
+  
   
   
   <xs:attributeGroup name="material-att.choice">
@@ -1352,11 +1315,7 @@
     <xs:restriction base="ruleml:material_default.value"/>
   </xs:simpleType>
   
-  <xs:element name="Material">
-    <xs:complexType>
-      <xs:attributeGroup ref="ruleml:material-att.choice"/>
-    </xs:complexType>
-  </xs:element>
+  
   
   <xs:attributeGroup name="mapMaterial-att.choice">
     <xs:annotation>
@@ -1384,11 +1343,7 @@
     <xs:restriction base="ruleml:material.value"/>
   </xs:simpleType>
   
-  <xs:element name="MapMaterial">
-    <xs:complexType>
-      <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
-    </xs:complexType>
-  </xs:element>
+  
   
   <xs:simpleType name="material_default.value">
     <xs:restriction base="xs:token">
@@ -1612,11 +1567,7 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:element name="Oriented">
-    <xs:complexType>
-      <xs:attributeGroup ref="ruleml:oriented-att.choice"/>
-    </xs:complexType>
-  </xs:element>
+  
   
   
   <xs:group name="DataTerm.choice">
@@ -1756,7 +1707,7 @@
   </xs:element>
   <xs:complexType name="Ind.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Ind.content">
+      <xs:extension base="ruleml:Ind.value">
         <xs:attributeGroup ref="ruleml:reInd.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -1769,7 +1720,7 @@
     <xs:attributeGroup ref="ruleml:Resource.attlist"/>
   </xs:attributeGroup>
   
-  <xs:simpleType name="Ind.content">
+  <xs:simpleType name="Ind.value">
     <xs:annotation>
       <xs:documentation>The content model for individuals is the XSD datatype
         token.</xs:documentation>
@@ -1812,9 +1763,9 @@
     </xs:annotation>
   </xs:element>
   <xs:simpleType name="Var.type.def">
-    <xs:restriction base="ruleml:Var.content"/>
+    <xs:restriction base="ruleml:Var.value"/>
   </xs:simpleType>
-  <xs:simpleType name="Var.content">
+  <xs:simpleType name="Var.value">
     <xs:annotation>
       <xs:documentation>The content model for variables is the XSD datatype
         token.</xs:documentation>

@@ -478,7 +478,7 @@
   </xs:element>
   <xs:complexType name="Rel.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Rel.content">
+      <xs:extension base="ruleml:Rel.value">
         <xs:attributeGroup ref="ruleml:reRel.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -491,7 +491,7 @@
     <xs:attributeGroup ref="ruleml:Resource.attlist"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
   </xs:attributeGroup>
-  <xs:simpleType name="Rel.content">
+  <xs:simpleType name="Rel.value">
     <xs:annotation>
       <xs:documentation>The content model for relations is the XSD datatype
         token.</xs:documentation>
@@ -1372,7 +1372,7 @@
       </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Implies-ss.content"/>
-        <xs:group ref="ruleml:head_Implies.content"/>
+        <xs:group ref="ruleml:head_Implies-ss.content"/>
       </xs:sequence>
     </xs:choice>
   </xs:group>
@@ -1550,10 +1550,7 @@
     <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
   </xs:simpleType>
   
-  <xs:element name="iri" type="ruleml:iri.content"/>
-  <xs:simpleType name="iri.content">
-    <xs:restriction base="ruleml:iri.value"/>
-  </xs:simpleType>
+  
   
   
   <xs:group name="Rulebase-node.choice">
@@ -2006,16 +2003,21 @@
     </xs:sequence>
   </xs:group>
   
-  <xs:attributeGroup name="commonInit.attlist">
+  <xs:attributeGroup name="xmlbase.attlist">
     <xs:annotation>
       <xs:documentation> </xs:documentation>
     </xs:annotation>
     <xs:attribute ref="xml:base"/>
-    <xs:attribute ref="xml:id"/>
-    <xs:attribute name="key" type="ruleml:key.value"/>
-    <xs:attribute name="keyref" type="ruleml:keyref.value"/>
   </xs:attributeGroup>
   
+  
+  
+  <xs:attributeGroup name="xmlid.attlist">
+    <xs:annotation>
+      <xs:documentation> </xs:documentation>
+    </xs:annotation>
+    <xs:attribute ref="xml:id"/>
+  </xs:attributeGroup>
   
   
   
@@ -2537,7 +2539,7 @@
   </xs:element>
   <xs:complexType name="Skolem.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Skolem.content">
+      <xs:extension base="ruleml:Skolem.value">
         <xs:attributeGroup ref="ruleml:reSkolem.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -2550,7 +2552,7 @@
     <xs:attributeGroup ref="ruleml:Type.attlist"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
   </xs:attributeGroup>
-  <xs:simpleType name="Skolem.content">
+  <xs:simpleType name="Skolem.value">
     <xs:annotation>
       <xs:documentation>The content model for skolems is the XSD datatype token.</xs:documentation>
     </xs:annotation>
@@ -2567,7 +2569,7 @@
       <xs:element ref="ruleml:Reify"/>
     </xs:sequence>
   </xs:group>
-  <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attribute name="node"><xs:simpleType><xs:union><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/><xs:minLength value="1"/></xs:restriction></xs:simpleType><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="[\i-[:]][\c-[:]]+:.+"/></xs:restriction></xs:simpleType></xs:union></xs:simpleType></xs:attribute><xs:attribute ref="xml:base"/><xs:attribute ref="xml:id"/></xs:complexType></xs:element>
+  <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attributeGroup ref="ruleml:commonNode.attlist"/></xs:complexType></xs:element>
   <xs:complexType name="Reify-any.type.def">
     <xs:complexContent>
       <xs:extension base="ruleml:Reify-any.content">
@@ -2696,7 +2698,7 @@
   </xs:element>
   <xs:complexType name="Ind.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Ind.content">
+      <xs:extension base="ruleml:Ind.value">
         <xs:attributeGroup ref="ruleml:reInd.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -2711,7 +2713,7 @@
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
   </xs:attributeGroup>
   
-  <xs:simpleType name="Ind.content">
+  <xs:simpleType name="Ind.value">
     <xs:annotation>
       <xs:documentation>The content model for individuals is the XSD datatype
         token.</xs:documentation>
@@ -2728,6 +2730,14 @@
       <xs:group minOccurs="0" ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
     </xs:sequence>
   </xs:group>
+  <xs:attributeGroup name="commonInit.attlist">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:xmlid.attlist"/>
+    <xs:attribute name="key" type="ruleml:key.value"/>
+    <xs:attribute name="keyref" type="ruleml:keyref.value"/>
+  </xs:attributeGroup>
   
   
   <xs:group name="SimpleQuantifiableTerm.choice">
@@ -2756,7 +2766,7 @@
   </xs:element>
   <xs:complexType name="Var.type.def">
     <xs:simpleContent>
-      <xs:extension base="ruleml:Var.content">
+      <xs:extension base="ruleml:Var.value">
         <xs:attributeGroup ref="ruleml:reVar.attlist"/>
       </xs:extension>
     </xs:simpleContent>
@@ -2769,7 +2779,7 @@
     <xs:attributeGroup ref="ruleml:Type.attlist"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
   </xs:attributeGroup>
-  <xs:simpleType name="Var.content">
+  <xs:simpleType name="Var.value">
     <xs:annotation>
       <xs:documentation>The content model for variables is the XSD datatype
         token.</xs:documentation>

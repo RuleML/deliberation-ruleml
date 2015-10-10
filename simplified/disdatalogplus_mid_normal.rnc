@@ -44,7 +44,6 @@ RuleML =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     act*
@@ -81,7 +80,6 @@ Assert =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula*
@@ -118,7 +116,6 @@ Retract =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula*
@@ -134,7 +131,6 @@ Query =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_2*
@@ -150,7 +146,6 @@ Atom =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     op,
@@ -175,7 +170,6 @@ Rel =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     xsd:token
   }
@@ -190,7 +184,6 @@ And =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_3*
@@ -206,7 +199,6 @@ Or =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_4*
@@ -243,7 +235,6 @@ Implies =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     if,
@@ -260,7 +251,6 @@ Forall =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     declare+,
@@ -277,7 +267,6 @@ Exists =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     declare+,
@@ -304,7 +293,6 @@ Equal =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     left,
@@ -321,7 +309,6 @@ Data =
       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
     }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & text
     & _1*
@@ -345,7 +332,6 @@ Skolem =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     xsd:token
   }
@@ -360,7 +346,6 @@ Reify =
       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
     }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (RuleML
        | Assert
@@ -421,7 +406,6 @@ Ind =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     xsd:token
   }
@@ -444,28 +428,24 @@ Var =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     xsd:token
   }
 formula =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | Implies | Forall)
   }
 formula_2 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And | Or | Exists)
   }
 op =
   element op {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & Rel
   }
@@ -473,7 +453,6 @@ formula_3 =
   element formula {
     attribute index { xsd:positiveInteger }
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2)
   }
@@ -481,63 +460,54 @@ formula_4 =
   element formula {
     attribute index { xsd:positiveInteger }
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2)
   }
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_3 | Or_3 | Exists_2)
   }
 if =
   element if {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2)
   }
 declare =
   element declare {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & Var
   }
 formula_5 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | Implies | Forall)
   }
 formula_6 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | And_2 | Or_2 | Exists)
   }
 meta =
   element meta {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | Equal | Implies | Forall)
   }
 left =
   element left {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Skolem | Reify | Ind | Data | Var)
   }
 right =
   element right {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Skolem | Reify | Ind | Data | Var)
   }
@@ -545,7 +515,6 @@ arg =
   element arg {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     (Skolem | Reify | Ind | Data | Var)
   }
@@ -553,7 +522,6 @@ act =
   element act {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     (Assert | Retract | Query)
   }
@@ -573,7 +541,6 @@ And_2 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_3*
@@ -589,7 +556,6 @@ Or_2 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_4*
@@ -605,7 +571,6 @@ And_3 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_7*
@@ -621,7 +586,6 @@ Or_3 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     formula_8*
@@ -637,7 +601,6 @@ Exists_2 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?),
     meta*,
     declare+,
@@ -647,7 +610,6 @@ formula_7 =
   element formula {
     attribute index { xsd:positiveInteger }
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | And_3 | Or_3 | Exists_2)
   }
@@ -655,14 +617,12 @@ formula_8 =
   element formula {
     attribute index { xsd:positiveInteger }
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | And_3 | Or_3 | Exists_2)
   }
 formula_9 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & (Atom | And_3 | Or_3 | Exists_2)
   }

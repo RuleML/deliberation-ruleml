@@ -40,7 +40,6 @@ RuleML =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -103,7 +102,6 @@ Assert =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -166,7 +164,6 @@ Retract =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -208,7 +205,6 @@ Query =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -250,7 +246,6 @@ Atom =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -293,7 +288,6 @@ Rel =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -324,7 +318,6 @@ And =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -366,7 +359,6 @@ Or =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -439,7 +431,6 @@ Rulebase =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -471,7 +462,6 @@ Entails =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -508,7 +498,6 @@ Data =
       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
     }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -548,7 +537,6 @@ Skolem =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -579,7 +567,6 @@ Reify =
       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
     }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -652,7 +639,6 @@ Ind =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -675,7 +661,6 @@ Ind =
 formula =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -698,7 +683,6 @@ formula =
 formula_2 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -721,7 +705,6 @@ formula_2 =
 op =
   element op {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -745,7 +728,6 @@ formula_3 =
   element formula {
     attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -769,7 +751,6 @@ formula_4 =
   element formula {
     attribute index { xsd:positiveInteger }?
     & attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -792,7 +773,6 @@ formula_4 =
 formula_5 =
   element formula {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -815,7 +795,6 @@ formula_5 =
 then =
   element then {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -838,7 +817,6 @@ then =
 if =
   element if {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -861,7 +839,6 @@ if =
 degree =
   element degree {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -884,7 +861,6 @@ degree =
 meta =
   element meta {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -907,7 +883,6 @@ meta =
 oid =
   element oid {
     attribute ns1:schemaLocation { text }?
-    & attribute xml:base { xsd:anyURI }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
         xsd:string {
@@ -934,7 +909,6 @@ slot =
          xsd:decimal { minInclusive = "0.0" maxInclusive = "1.0" }
        }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -959,7 +933,6 @@ arg =
   element arg {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -983,7 +956,6 @@ act =
   element act {
     (attribute index { xsd:positiveInteger }
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -1014,7 +986,6 @@ And_2 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
@@ -1046,7 +1017,6 @@ Or_2 =
        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
      }?
      & attribute ns1:schemaLocation { text }?
-     & attribute xml:base { xsd:anyURI }?
      & attribute xml:id { xsd:NCName }?
      & attribute key {
          xsd:string {
