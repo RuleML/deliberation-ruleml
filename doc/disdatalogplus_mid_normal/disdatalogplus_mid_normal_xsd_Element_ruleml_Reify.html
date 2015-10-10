@@ -6,16 +6,13 @@
       <title>Schema documentation for component ruleml:Reify</title>
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
-        var propertiesBoxes= new Array('properties_Reify', 
-				'properties_Reify_node');
+        var propertiesBoxes= new Array('properties_Reify');
 
         
         
-        var usedByBoxes= new Array('usedBy_Reify', 
-				'usedBy_Reify_node');
+        var usedByBoxes= new Array('usedBy_Reify');
 
-        var sourceBoxes= new Array('source_Reify', 
-				'source_Reify_node');
+        var sourceBoxes= new Array('source_Reify');
 
         
         var diagramBoxes= new Array('diagram_Reify');
@@ -380,29 +377,15 @@
                                     </tr>
                                  </thead>
                                  <tr>
-                                    <td class="firstColumn"><b><a href="disdatalogplus_mid_normal_xsd_Element_ruleml_Reify.html#Reify_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component node')">node</a></b></td>
-                                    <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
-                                    </td>
-                                    <td>optional</td>
-                                    <td>
-                                       <div class="annotation"></div>
-                                    </td>
-                                 </tr>
-                                 <tr>
-                                    <td class="firstColumn"><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:base')">xml:base</a></b></td>
-                                    <td><b>xs:anyURI</b></td>
+                                    <td class="firstColumn"><b><a href="disdatalogplus_mid_normal_xsd_Attribute_Group_ruleml_commonNode_attlist.html#commonNode.attlist_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component node')">node</a></b></td>
+                                    <td><b><a href="disdatalogplus_mid_normal_xsd_Simple_Type_ruleml_node_value.html#node.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:node.value')">ruleml:node.value</a></b></td>
                                     <td>optional</td>
                                     <td>
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tEl">&lt;div</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;h3</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">base (as an attribute name)</span><span class="tEl">&lt;/h3&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">denotes an attribute whose value provides a URI to be used as the base for interpreting any relative URIs in the scope of the element on which it appears; its value is inherited. This name is reserved by virtue of its definition in the XML Base specification.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;p</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">See</span><span class="tI">
-    </span><span class="tEl">&lt;a</span><span class="tAN"> href=</span><span class="tAV">"http://www.w3.org/TR/xmlbase/"</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">http://www.w3.org/TR/xmlbase/</span><span class="tEl">&lt;/a&gt;</span><span class="tT" style="white-space:normal">for information about this attribute.</span><span class="tEl">&lt;/p&gt;</span><span class="tI">
-</span><span class="tEl">&lt;/div&gt;</span><span class="tI">
-</span></pre></td>
+                                                <td width="100%"><pre><span class="tT">An attribute for referring to a IRI.     See</span><span class="tI">
+</span><span class="tT">http://ruleml.org/1.02/glossary/#gloss-@node</span></pre></td>
                                              </tr>
                                           </table>
                                        </div>
@@ -446,121 +429,9 @@
     </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:any</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> processContents=</span><span class="tAV">"strict"</span><span class="tAN"> namespace=</span><span class="tAV">"##targetNamespace"</span><span class="tEl">/&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
-              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
-              </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
-            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-            </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
-              </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
-            </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:base"</span><span class="tEl">/&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> ref=</span><span class="tAV">"xml:id"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"ruleml:commonNode.attlist"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </td>
-                     </tr>
-                  </tbody>
-               </table>
-            </td>
-            <td class="rt_lineRight"></td>
-         </tr>
-         <tr>
-            <td class="rt_cornerBottomLeft"></td>
-            <td class="rt_lineBottom"></td>
-            <td class="rt_cornerBottomRight"></td>
-         </tr>
-      </table><a id="Reify_node"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="disdatalogplus_mid_normal_xsd_Element_ruleml_Reify.html#Reify" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify')">ruleml:Reify</a></b> / @node</span></div>
-      <table class="rt">
-         <tr>
-            <td class="rt_cornerTopLeft"></td>
-            <td class="rt_lineTop"></td>
-            <td class="rt_cornerTopRight"></td>
-         </tr>
-         <tr>
-            <td class="rt_lineLeft"></td>
-            <td class="rt_content">
-               <table class="component">
-                  <tbody>
-                     <tr>
-                        <td class="firstColumn"><b>Namespace</b></td>
-                        <td>No namespace</td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn"><b>Type</b></td>
-                        <td>union of(restriction of <b>xs:string</b>, restriction of <b>xs:string</b>)
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Properties</b></div>
-                           <div class="floatRight"><input id="button_properties_Reify_node" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_Reify_node');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="properties_Reify_node" style="display:block">
-                              <table class="propertiesTable">
-                                 <tr>
-                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
-                                    <td><b>simple</b></td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Used by</b></div>
-                           <div class="floatRight"><input id="button_usedBy_Reify_node" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_Reify_node');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="usedBy_Reify_node" style="display:block">
-                              <table class="usedByTable">
-                                 <tr>
-                                    <td class="firstColumn">Element </td>
-                                    <td><b><a href="disdatalogplus_mid_normal_xsd_Element_ruleml_Reify.html#Reify" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify')">ruleml:Reify</a></b></td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Source</b></div>
-                           <div class="floatRight"><input id="button_source_Reify_node" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Reify_node');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="source_Reify_node" style="display:block">
-                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
-                                 <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"node"</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:union</span><span class="tEl">&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"</span><span class="tEl">/&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:minLength</span><span class="tAN"> value=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:simpleType</span><span class="tEl">&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
-          </span><span class="tEl">&lt;xs:pattern</span><span class="tAN"> value=</span><span class="tAV">"[\i-[:]][\c-[:]]+:.+"</span><span class="tEl">/&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;/xs:union&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;/xs:simpleType&gt;</span><span class="tI">
-</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>
