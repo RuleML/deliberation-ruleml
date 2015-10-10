@@ -35,4 +35,4 @@ oriented_non-default.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyOrientedElement.def = element Oriented { oriented-att.choice }
+DummyOrientedElement.def = element DummyOriented { oriented-att.choice }

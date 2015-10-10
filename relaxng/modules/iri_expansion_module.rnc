@@ -13,7 +13,7 @@ dc:rights [
 ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
-start |= iri.edge.def
+start |= notAllowed
 # This module declares the following RuleML attribute:
 #    * @iri
 
@@ -30,5 +30,4 @@ iri.attrib.def =
 iri.value |= PrefixedCURIE.datatype
 iri.value |= AbsIRI.datatype
 #
-iri.edge.def = element iri { iri.content }
-iri.content |= iri.value
+DummyIriElement.def = element DummyIri { iri-att.choice }

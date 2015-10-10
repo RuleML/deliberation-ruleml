@@ -62,12 +62,12 @@ Fun.Node.def =
   ## <Fun>: a type of name for functional operators. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Fun
   element Fun { Fun.type.def }
-Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.content
+Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.value
 
 ## functors accept the resource attribute list
 reFun.attlist &= Resource.attlist?
 # Fun.attlist = interpretation-att.option & singlevalued-att.option & Resource.attlist?
 
 ## A functor contains the XSD datatype token.
-Fun.content |= xsd:token
+Fun.value |= xsd:token
 reFun.attlist &= commonNode.attlist?

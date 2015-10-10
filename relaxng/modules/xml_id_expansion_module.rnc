@@ -17,4 +17,11 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ##  
-commonInit.attlist &= attribute xml:id { xsd:NCName }?
+xmlid.attlist &= attribute xml:id { xsd:NCName }?
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyXmlIdElement.def = element DummyXmlId { xmlid.attlist }
+
+
+

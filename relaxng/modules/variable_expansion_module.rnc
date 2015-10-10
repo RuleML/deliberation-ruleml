@@ -28,11 +28,11 @@ Var.Node.def =
   ## A logical variable, as in logic programming.
   ## See http://ruleml.org/1.02/glossary/#gloss-Var
   element Var { Var.type.def }
-Var.type.def = (Var-datt.choice & reVar.attlist), Var.content
+Var.type.def = (Var-datt.choice & reVar.attlist), Var.value
 
 ## Variables optionally accept the attribute pattern of objects with user-defined types.
 reVar.attlist &= Type.attlist?
 
 ## The content model for variables is the XSD datatype token.
-Var.content |= xsd:token
+Var.value |= xsd:token
 reVar.attlist &= commonNode.attlist?

@@ -4,7 +4,7 @@
   <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] -->    
   
   <!-- Remove almost all white space between elements -->
-  <xsl:preserve-space elements="RuleML"/>
+  <xsl:preserve-space elements="xs:schema"/>
   <!--<xsl:strip-space elements="*"/>-->
 
   <!-- Add the  <?xml version="1.0" ?> at the top of the result.-->
@@ -34,8 +34,11 @@
   <xsl:template match="xs:group[@name='_1']"> </xsl:template>
   <xsl:template match="xs:group[@name='_2']"> </xsl:template>
   
-  <!-- Remove dummy elements -->
-  <xsl:template match="xs:element[@name='Common']"></xsl:template>
+  <!-- Remove unused groups and elements -->
+  <xsl:template match="xs:group[@name='edge.choice']"></xsl:template>
+  <xsl:template match="xs:group[matches(@name,'^Dummy')]"></xsl:template>
+  <xsl:template match="xs:element[matches(@name,'^Dummy')]"></xsl:template>
+ 
    
   <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()">

@@ -31,4 +31,4 @@ mapDirection.value |= direction.value
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyMapDirectionElement.def = element MapDirection { mapDirection-att.choice }
+DummyMapDirectionElement.def = element DummyMapDirection { mapDirection-att.choice }

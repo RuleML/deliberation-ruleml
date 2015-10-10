@@ -34,4 +34,4 @@ val_non-default.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyValAttribElement.def = element ValAttrib { singlevalued-att.choice }
+DummyValElement.def = element DummyVal { singlevalued-att.choice }

@@ -22,7 +22,6 @@
         </xs:union>
       </xs:simpleType>
     </xs:attribute>
-    <xs:attribute ref="xml:base"/>
     <xs:attribute ref="xml:id"/>
   </xs:attributeGroup>
   <xs:complexType name="duration">
@@ -127,6 +126,7 @@
     <xs:simpleContent>
       <xs:extension base="xs:anyURI">
         <xs:attributeGroup ref="ruleml:common"/>
+        <xs:attribute ref="xml:base"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>

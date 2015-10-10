@@ -122,6 +122,8 @@ commonNode.attlist &= commonInit.attlist?
 commonInit.attlist &= empty
 Resource.attlist &= empty
 Type.attlist &= empty
+xmlbase.attlist &= empty
+xmlid.attlist &= empty
 # 
 # SEQUENCES
 slotTermsForAtoms.sequence |= empty
@@ -372,4 +374,4 @@ positiveInteger.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyCommonElement.def = element Common { commonInit.attlist }
+DummyCommonElement.def = element DummyCommon { commonInit.attlist }

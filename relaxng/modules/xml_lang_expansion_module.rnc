@@ -17,4 +17,8 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ##  
-commonInit.attlist &= attribute xml:lang { text }?
+xmllang.attlist &= attribute xml:lang { text }?
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyXMLLangElement.def = element DummyXMLLang { xmllang.attlist }

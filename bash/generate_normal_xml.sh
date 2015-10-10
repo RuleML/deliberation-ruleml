@@ -92,7 +92,7 @@ do
   filename=$(basename "$f")
   echo "Compactifying  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier_basedrop.xslt"  -o:"${fnew}"
+  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier_drop.xslt"  -o:"${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1

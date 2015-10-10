@@ -17,8 +17,8 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ##  
-commonInit.attlist &= attribute xml:base { xsd:anyURI }?
+xmlbase.attlist &= attribute xml:base { xsd:anyURI }?
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyBaseElement.def = element Base { commonInit.attlist }
+DummyXmlBaseElement.def = element DummyXmlBase { xmlbase.attlist }

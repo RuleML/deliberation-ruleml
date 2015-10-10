@@ -20,4 +20,4 @@ singlevalued-att.choice |= empty
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyValAbsenceElement.def = element ValAbsence { singlevalued-att.choice }
+DummyValAbsenceElement.def = element DummyValAbsence { singlevalued-att.choice }

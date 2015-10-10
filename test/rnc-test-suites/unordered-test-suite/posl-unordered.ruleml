@@ -20,7 +20,7 @@
           <!-- Metaknowledge can be asserted "externally" by explicitly
            identifying the <oid>.-->
           <oid>
-            <Ind iri="this:#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
+            <Ind iri="this:#meta2"/>
           </oid>
           <op><Rel iri="rulemm:#Atom"/></op>
           <slot><Ind node="this:#ind1" iri="dcterms:created"/><Data xsi:type="xs:date">2012-04-01</Data></slot>
@@ -29,7 +29,7 @@
     </Assert>
   </act>
   <act index="1">
-    <Assert node="this:#assert1" xml:base="http://example.org/myrulebase.ruleml">
+    <Assert node="this:#assert1">
       <formula>
         <Implies node="this:#rule1">
           <!-- The @node attribute, which takes an IRI value, is used to "reify" a document, 
@@ -96,7 +96,7 @@
   <act index="3">
     <Query node="that:query1">
       <formula>
-        <Atom node="_:?x" xml:base="http://example.org/myrulebase.ruleml">
+        <Atom node="_:?x">
           <!-- It is possible to query for the value of node identifiers
            using a naming convention where IRIs containing a query string
            of datatype xs:NCName are considered as variables rather than

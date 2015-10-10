@@ -34,4 +34,4 @@ direction_non-default.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyDirectionElement.def = element Direction { direction-att.choice }
+DummyDirectionElement.def = element DummyDirection { direction-att.choice }

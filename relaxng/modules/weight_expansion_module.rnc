@@ -36,5 +36,5 @@ weight.attlist &= commonInit.attlist?
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyWeightElement.def = element Weight { weight-att.choice }
+DummyWeightElement.def = element DummyWeight { weight-att.choice }
 

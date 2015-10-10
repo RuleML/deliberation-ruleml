@@ -65,12 +65,12 @@ Rel.Node.def =
   ## <Rel>: a category of name used as the predicate of an atomic formula. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Rel
   element Rel { Rel.type.def }
-Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.content
+Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.value
 
 ## Relations accept the optional attribute pattern of resources.
 reRel.attlist &= Resource.attlist?
 
 ## The content model for relations is the XSD datatype token.
-Rel.content |= xsd:token
+Rel.value |= xsd:token
 reAtom.attlist &= commonNode.attlist?
 reRel.attlist &= commonNode.attlist?

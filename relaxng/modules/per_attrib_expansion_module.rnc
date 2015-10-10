@@ -34,4 +34,4 @@ interpretation_non-default.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyInterpretationElement.def = element Per { interpretation-att.choice }
+DummyInterpretationElement.def = element DummyInterpretation { interpretation-att.choice }

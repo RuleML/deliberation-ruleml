@@ -31,4 +31,4 @@ mapMaterial.value |= material.value
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyMapMaterialElement.def = element MapMaterial { mapMaterial-att.choice }
+DummyMapMaterialElement.def = element DummyMapMaterial { mapMaterial-att.choice }

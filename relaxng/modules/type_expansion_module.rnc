@@ -31,4 +31,4 @@ type.value |= AbsIRI.datatype
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyTypeElement.def = element Type { type-att.choice }
+DummyTypeElement.def = element DummyType { type-att.choice }

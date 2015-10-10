@@ -19,166 +19,168 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 include "explicit_datatyping_value_expansion_module.rnc"
+data_annotation.attlist &= commonNode.attlist? 
 # Derived Datatypes
 duration.datatype.node.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { duration.ruleml.value },
   xsd:duration
 dateTime.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { dateTime.ruleml.value },
   xsd:dateTime
 time.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { time.ruleml.value },
   xsd:time
 date.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { date.ruleml.value },
   xsd:date
 gYearMonth.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { gYearMonth.ruleml.value },
   xsd:gYearMonth
 gYear.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { gYear.ruleml.value },
   xsd:gYear
 gMonthDay.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { gMonthDay.ruleml.value },
   xsd:gMonthDay
 gDay.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { gDay.ruleml.value },
   xsd:gDay
 gMonth.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { gMonth.ruleml.value },
   xsd:gMonth
 boolean.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { boolean.ruleml.value },
   xsd:boolean
 base64Binary.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { base64Binary.ruleml.value },
   xsd:base64Binary
 hexBinary.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { hexBinary.ruleml.value },
   xsd:hexBinary
 float.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { float.ruleml.value },
   xsd:float
 decimal.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { decimal.ruleml.value },
   xsd:decimal
 double.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { double.ruleml.value },
   xsd:double
 anyURI.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
+  xmlbase.attlist, 
   attribute xsi:type { anyURI.ruleml.value },
   xsd:anyURI
 QName.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { QName.ruleml.value },
   xsd:QName
 NOTATION.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { NOTATION.ruleml.value },
   xsd:NOTATION
 String.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { String.ruleml.value },
   xsd:string
 # Derived Types
 normalizedString.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { normalizedString.ruleml.value },
   xsd:normalizedString
 Token.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { Token.ruleml.value },
   xsd:token
 language.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { language.ruleml.value },
   xsd:language
 Name.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { Name.ruleml.value },
   xsd:Name
 NCName.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { NCName.ruleml.value },
   xsd:NCName
 NMTOKEN.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { NMTOKEN.ruleml.value },
   xsd:NMTOKEN
 NMTOKENS.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { NMTOKENS.ruleml.value },
   xsd:NMTOKENS
 ENTITY.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { ENTITY.ruleml.value },
   xsd:ENTITY
 ENTITIES.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { ENTITIES.ruleml.value },
   xsd:ENTITIES
 integer.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { integer.ruleml.value },
   xsd:integer
 nonPositiveInteger.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { nonPositiveInteger.ruleml.value },
   xsd:nonPositiveInteger
 negativeInteger.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { negativeInteger.ruleml.value },
   xsd:negativeInteger
 long.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { long.ruleml.value },
   xsd:long
 int.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { int.ruleml.value },
   xsd:int
 short.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { short.ruleml.value },
   xsd:short
 byte.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { byte.ruleml.value },
   xsd:byte
 nonNegativeInteger.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { nonNegativeInteger.ruleml.value },
   xsd:nonNegativeInteger
 unsignedLong.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { unsignedLong.ruleml.value },
   xsd:unsignedLong
 unsignedInt.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { unsignedInt.ruleml.value },
   xsd:unsignedInt
 unsignedByte.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { unsignedByte.ruleml.value },
   xsd:unsignedByte
 positiveInteger.datatype.choice |=
-  commonNode.attlist,
+  data_annotation.attlist,
   attribute xsi:type { positiveInteger.ruleml.value },
   xsd:positiveInteger
 anySimpleType.ruleml.value |= xsd:QName "anySimpleType"

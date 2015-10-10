@@ -17,4 +17,8 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ##  
-commonInit.attlist &= attribute xml:space { xsd:token "preserve" | "default" }?
+xmlspace.attlist &= attribute xml:space { xsd:token "preserve" | "default" }?
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyXMLSpaceElement.def = element DummyXMLSpace { xmlspace.attlist }

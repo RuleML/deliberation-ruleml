@@ -30,4 +30,4 @@ node.value |= AbsIRI.datatype
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyNodeElement.def = element Node { node-att.choice }
+DummyNodeElement.def = element DummyNode { node-att.choice }

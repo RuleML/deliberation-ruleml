@@ -99,7 +99,7 @@ Ind.Node.def =
   ## <Ind>: an individual constant. See 
   ## http://ruleml.org/1.02/glossary/#gloss-Ind
   element Ind { Ind.type.def }
-Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.content
+Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.value
 
 ## Individuals optionally accept the attribute patterns of resources, and objects with user-defined types.
 reInd.attlist &= Resource.attlist?
@@ -108,7 +108,10 @@ reInd.attlist &= Type.attlist?
 # For the declaration of the attribute list for objects with user-defined types, see the type module (type_module). 
 
 ## The content model for individuals is the XSD datatype token.
-Ind.content |= xsd:token
+Ind.value |= xsd:token
 termsForAtoms.sequence |= termsForAtoms.nonemptysequence.choice?
 termsForExpressions.sequence |= termsForExpressions.nonemptysequence.choice?
 reInd.attlist &= commonNode.attlist?
+
+##
+commonInit.attlist &= xmlid.attlist?

@@ -32,25 +32,7 @@
         <xs:sequence>
           <xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/>
         </xs:sequence>
-        <xs:attribute name="node">
-          <xs:simpleType>
-            <xs:union>
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-                  <xs:minLength value="1"/>
-                </xs:restriction>
-              </xs:simpleType>
-              <xs:simpleType>
-                <xs:restriction base="xs:string">
-                  <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-                </xs:restriction>
-              </xs:simpleType>
-            </xs:union>
-          </xs:simpleType>
-        </xs:attribute>
-        <xs:attribute ref="xml:base"/>
-        <xs:attribute ref="xml:id"/>
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
       </xs:complexType>
     </xs:element>
   </xsl:template>
@@ -69,27 +51,10 @@
     <xs:attribute name="id" type="xs:ID"/>
   </xsl:template>
 
-  <!-- Remove unused groups -->
+  <!-- Remove unused groups and elements -->
   <xsl:template match="xs:group[@name='edge.choice']"></xsl:template>
-
-  <!-- Remove dummy elements -->
-  <xsl:template match="xs:element[@name='Base']"></xsl:template>
-  <xsl:template match="xs:element[@name='Card']"></xsl:template>
-  <xsl:template match="xs:element[@name='Closure']"></xsl:template>
-  <xsl:template match="xs:element[@name='Common']"></xsl:template>
-  <xsl:template match="xs:element[@name='Direction']"></xsl:template>
-  <xsl:template match="xs:element[@name='Key']"></xsl:template>
-  <xsl:template match="xs:element[@name='Material']"></xsl:template>
-  <xsl:template match="xs:element[@name='MapClosure']"></xsl:template>
-  <xsl:template match="xs:element[@name='MapDirection']"></xsl:template>
-  <xsl:template match="xs:element[@name='MapMaterial']"></xsl:template>
-  <xsl:template match="xs:element[@name='Node']"></xsl:template>
-  <xsl:template match="xs:element[@name='Oriented']"></xsl:template>
-  <xsl:template match="xs:element[@name='Per']"></xsl:template>
-  <xsl:template match="xs:element[@name='Type']"></xsl:template>
-  <xsl:template match="xs:element[@name='ValAbsence']"></xsl:template>
-  <xsl:template match="xs:element[@name='ValAttrib']"></xsl:template>
-  <xsl:template match="xs:element[@name='Weight']"></xsl:template>
+  <xsl:template match="xs:group[matches(@name,'^Dummy')]"></xsl:template>  
+  <xsl:template match="xs:element[matches(@name,'^Dummy')]"></xsl:template>
   
   <!-- Remove existing includes -->
   <xsl:template match="xs:include"/>

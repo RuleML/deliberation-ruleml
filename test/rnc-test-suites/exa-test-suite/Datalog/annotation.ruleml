@@ -20,7 +20,7 @@
        in general, distinct RuleML metaknowledge base, the <meta> element should
        be used.
   -->
-  <Assert node="this:#assert1" xml:base="http://example.org/myrulebase.ruleml">
+  <Assert node="this:#assert1" >
     <Implies node="this:#rule1">
       <!-- The @node attribute, which takes an IRI value, is used to "reify" a document, 
         metaformula, formula, or term. This IRI may then be used as a constant
@@ -86,7 +86,7 @@
       <!-- Metaknowledge can be asserted "externally" by explicitly
            identifying the <oid>.-->
       <oid>
-        <Ind iri="this:#meta2" xml:base="http://example.org/myrulebase.ruleml"/>
+        <Ind iri="this:#meta2" />
       </oid>
       <Rel iri="rulemm:#Atom"/>
       <slot>
@@ -96,7 +96,7 @@
     </Atom>
   </Assert>
   <Query node="that:query1" xmlns:that="http://example.org/myquery/">
-    <Atom node="_:?x" xml:base="http://example.org/myrulebase.ruleml">
+    <Atom node="_:?x">
       <!-- It is possible to query for the value of node identifiers
            using a naming convention where IRIs containing a query string
            of datatype xs:NCName are considered as variables rather than

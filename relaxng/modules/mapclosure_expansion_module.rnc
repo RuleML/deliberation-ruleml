@@ -31,4 +31,4 @@ mapClosure.value |= closure.value
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyNapClosureElement.def = element MapClosure { mapClosure-att.choice }
+DummyNapClosureElement.def = element DummyMapClosure { mapClosure-att.choice }

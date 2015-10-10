@@ -27,4 +27,4 @@ cardinality.value |= xsd:nonNegativeInteger
 # 
 # a dummy element to assist in XSD conversion
 #
-DummyCardElement.def = element Card { cardinality-att.choice }
+DummyCardElement.def = element DummyCard { cardinality-att.choice }
