@@ -25,7 +25,7 @@ iri-att.choice |= iri.attrib.def
 iri.attrib.def =
   
   ## An attribute for referring to a IRI.    
-  ## See http://ruleml.org/1.02/glossary/#gloss-@iri
+  ## See http://deliberation.ruleml.org/1.02/glossary/.40iri
   attribute iri { iri.value }
 iri.value |= PrefixedCURIE.datatype
 iri.value |= AbsIRI.datatype

@@ -38,7 +38,7 @@ Implies-node.choice |= Implies.Node.def
 Implies.Node.def =
   
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-Implies
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies
   element Implies { Implies.type.def }
 Implies.type.def = (Implies-datt.choice & reImplies.attlist), Implies.header, Implies.main
 
@@ -70,8 +70,7 @@ body_Implies.name.choice |= body_Implies.edge.def
 body_Implies.edge.def =
   
   ## <if>: contains the premise of the implication. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-if
-  ## FIXME: replace body_ with if_ and head_ with then_
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-if
   element if { body_Implies.type.def }
 body_Implies.type.def = body_Implies.attlist? & body_Implies.content
 body_Implies.attlist &= commonInit.attlist?
@@ -105,7 +104,7 @@ head_Implies.name.choice |= head_Implies.edge.def
 head_Implies.edge.def =
   
   ## <then>: contains the conclusion of the implication. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-then
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-then
   element then { head_Implies.type.def }
 head_Implies.type.def = head_Implies.attlist? & head_Implies.content
 head_Implies.attlist &= commonInit.attlist?

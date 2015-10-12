@@ -27,11 +27,11 @@ Equivalent-node.choice |= Equivalent.Node.def
 ## An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
 ## It consists of a pair of (optionally skipped) <torso> roles. 
 ## For example, "A person owning an object is equivalent to an object belonging to a person":
-## See http://ruleml.org/1.02/glossary/#gloss-Equivalent 
+## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent 
 Equivalent.Node.def =
   
   ## <Equivalent>: Syntactic sugar for two implications. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-Equivalent 
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent 
   element Equivalent { Equivalent.type.def }
 Equivalent.type.def =
   (Equivalent-datt.choice & reEquivalent.attlist), Equivalent.header, Equivalent.main
@@ -56,7 +56,7 @@ torso-edge.choice |= torso.edge.def
 torso.edge.def =
   
   ## <torso>: contains one formula within an equivalence. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-torso 
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-torso 
   element torso { torso.type.def }
 torso.type.def = torso.attlist? & torso.content
 torso.attlist &= commonInit.attlist?

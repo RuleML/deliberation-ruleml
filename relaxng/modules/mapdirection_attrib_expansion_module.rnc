@@ -6,7 +6,7 @@ dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/mapdir
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, scope, inference, direction" ]
-dcterms:description [ "The expansion module for the optional scope inference direction attribute." ]
+dcterms:description [ "The expansion module for scope inference direction." ]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -25,7 +25,7 @@ mapDirection.attrib.def =
   ##  An attribute indicating the intended direction of implication rule (<Implies>) inferencing of elements 
   ## falling within its scope (i.e. child elements). See attribute mapping for more details. This attribute has a 
   ## neutral default value of "bidirectional". Other allowed values are "forward" and "backward".
-  ## See http://ruleml.org/1.02/glossary/#gloss-@mapDirection
+  ## See http://deliberation.ruleml.org/1.02/glossary/.40mapDirection
   attribute mapDirection { mapDirection.value }
 mapDirection.value |= direction.value
 # 

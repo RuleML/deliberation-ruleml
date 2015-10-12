@@ -6,9 +6,7 @@ dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/data_s
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, data, Simple Content" ]
-dcterms:description [
-  "The expansion module for the simple-type Data element, a Type (Object) for literal constants."
-]
+dcterms:description ["The expansion module for the simple-type Data element, a Type (Object) for literal constants."]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -29,12 +27,12 @@ Node.choice |= Data_simple.Node.def
 Data_simple-node.choice |= Data_simple.Node.def
 
 ## A fixed argument like RDF literals. It may be optionally associated with an XML Schema built-in datatype using the xsi:type attribute.
-## See http://ruleml.org/1.02/glossary/#gloss-Data
+## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Data
 ## Data representing a complex datatype that includes xml elements can be represented by escaping for example <element/> becomes &lt;element/&gt;
 Data_simple.Node.def =
   
   ## <Data>: literal constant optionally typed with @xsi:type. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-Data
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Data
   element Data { Data_simple.type.def }
 Data_simple.type.def = Data_simple.attlist?, Data_simple.Node.content
 Data_simple.attlist &= commonNode.attlist?

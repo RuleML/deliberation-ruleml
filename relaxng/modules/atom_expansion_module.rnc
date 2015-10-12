@@ -22,7 +22,6 @@ edge.choice |= op_Atom.edge.def
 #            * <op>
 # This module also declares the following RuleML choice pattern:
 #            * SimpleFormula-node.choice
-# Schema Design Pattern Key: see andor_expansion_module
 
 ## atomic formulas are a kind of simple formula
 SimpleFormula-node.choice |= Atom-node.choice | Equal-node.choice
@@ -32,7 +31,7 @@ Atom-node.choice |= Atom.Node.def
 Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
-  ## http://ruleml.org/1.02/glossary/#gloss-Atom
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom
   element Atom { Atom.type.def }
 Atom.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 
@@ -48,7 +47,7 @@ operatorForAtoms-edge.choice |= op_Atom.edge.def
 op_Atom.edge.def =
   
   ## <op>: edge (role) element for the predicate of an atomic formula. See
-  ## http://ruleml.org/1.02/glossary/#gloss-op
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-op
   element op { op.type.def }
 op.type.def = op_Atom.attlist? & op_Atom.content
 op_Atom.attlist &= commonInit.attlist?
@@ -63,7 +62,7 @@ Relation-node.choice |= Rel.Node.def
 Rel.Node.def =
   
   ## <Rel>: a category of name used as the predicate of an atomic formula. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-Rel
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel
   element Rel { Rel.type.def }
 Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.value
 

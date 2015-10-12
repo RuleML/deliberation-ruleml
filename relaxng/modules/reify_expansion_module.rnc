@@ -6,7 +6,7 @@ dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/reify_
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, reify, reification" ]
-dcterms:description [ "The expansion module for reification of RuleML objects." ]
+dcterms:description [ "The expansion module for reification of RuleML constructs." ]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -26,7 +26,7 @@ Reify.Node.def =
   ## It allows any RuleML tag available within the current sublanguage as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
-  ## See http://ruleml.org/1.02/glossary/#gloss-Reify
+  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Reify
   element Reify { Reify.type.def }
 Reify.type.def = Reify.attlist? & Reify.content
 Reify.attlist &= commonNode.attlist?

@@ -26,7 +26,7 @@ Variable-node.choice |= Var.Node.def
 Var.Node.def =
   
   ## A logical variable, as in logic programming.
-  ## See http://ruleml.org/1.02/glossary/#gloss-Var
+  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Var
   element Var { Var.type.def }
 Var.type.def = (Var-datt.choice & reVar.attlist), Var.value
 

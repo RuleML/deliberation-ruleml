@@ -14,7 +14,11 @@ dc:rights [
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= Ind.Node.def | arg.edge.def
+
+## An extension point for RuleML Node elements
 Node.choice |= Ind.Node.def
+
+## An extension point for RuleML edge elements
 edge.choice |= arg.edge.def
 # 
 # This module declares the following RuleML elements, attributes and patterns:
@@ -35,7 +39,7 @@ positionalArgument-edge.choice |= arg.edge.def
 arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-arg
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-arg
   element arg { arg.type.def }
 
 ## The attribute @index is required for the positional argument role (property).
@@ -48,7 +52,7 @@ index-attrib.choice |= index.attrib.def
 index.attrib.def =
   
   ## A required attribute for specifying the position of a positional argument (<arg>) within a logical atom (<Atom>).
-  ## See http://ruleml.org/1.02/glossary/#gloss-index
+  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-index
   attribute index { index.value }
 index.value |= xsd:positiveInteger
 
@@ -97,7 +101,7 @@ Individual-node.choice |= Ind.Node.def
 Ind.Node.def =
   
   ## <Ind>: an individual constant. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-Ind
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Ind
   element Ind { Ind.type.def }
 Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.value
 

@@ -237,6 +237,7 @@ repoTerm.choice |= notAllowed
 reslTerm.choice |= notAllowed
 SequenceMarker.choice |= notAllowed
 SlotSequenceMarker.choice |= notAllowed
+anyElement.choice |= notAllowed
 # 
 # Node renaming and internationalizatio
 And-node.choice |= notAllowed
@@ -309,13 +310,22 @@ boundVariables.choice |= notAllowed
 cardinality.value |= notAllowed
 closure.value |= notAllowed
 direction.value |= notAllowed
+direction_default.value |= notAllowed
+direction_non-default.value |= notAllowed
 interpretation.value |= notAllowed
+interpretation_default.value |= notAllowed
+interpretation_non-default.value |= notAllowed
 iri.value |= notAllowed
 material.value |= notAllowed
 material_default.value |= notAllowed
 material_non-default.value |= notAllowed
+oriented.value |= notAllowed
+oriented_default.value |= notAllowed
+oriented_non-default.value |= notAllowed
 type.value |= notAllowed
 val.value |= notAllowed
+val_default.value |= notAllowed
+val_non-default.value |= notAllowed
 # .datatype
 AbsIRI.datatype |= notAllowed
 PrefixedCURIE.datatype |= notAllowed

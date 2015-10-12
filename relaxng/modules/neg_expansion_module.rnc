@@ -29,7 +29,7 @@ Neg.Node.def =
   
   ## A classical negation of a logical atom (<Atom>) (i.e. classical or "strong" negation). 
   ## The negated atom may be optionally surrounded by a <strong> role.
-  ##        See http://ruleml.org/1.02/glossary/#gloss-Neg
+  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Neg
   element Neg { Neg.type.def }
 Neg.type.def = (Neg-datt.choice & reNeg.attlist), Neg.header, Neg.main
 # The attribute list of the strong negation element will accept a scoped closure attribute at full first-order logic.
@@ -49,7 +49,7 @@ strong-edge.choice |= strong.edge.def
 strong.edge.def =
   
   ## A role used for logical negation (<Neg>).
-  ##        See http://ruleml.org/1.02/glossary/#gloss-strong
+  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-strong
   element strong { strong.type.def }
 strong.type.def = strong.attlist? & strong.content
 strong.attlist &= commonInit.attlist?

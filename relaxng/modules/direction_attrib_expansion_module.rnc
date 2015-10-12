@@ -2,11 +2,11 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Inference Direction" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/direction_attrib_expansion_module.rnc" ]
+dcterms:identifier ["http://deliberation.ruleml.org/1.02/relaxng/modules/direction_attrib_expansion_module.rnc"]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, inference, direction" ]
-dcterms:description [ "The expansion module for the inference direction attribute." ]
+dcterms:description [ "The expansion module for inference direction." ]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -24,13 +24,9 @@ direction.attrib.def =
   
   ##  An attribute indicating the intended direction of an implication rule's (<Implies>) inferencing. 
   ## It has a neutral default value of "bidirectional". Other allowed values are "forward" and "forward".
-  ## See http://ruleml.org/1.02/glossary/#gloss-@direction
+  ## See http://deliberation.ruleml.org/1.02/glossary/.40direction
   attribute direction { direction.value }
 direction.value |= direction_default.value | direction_non-default.value
-
-## FIXME: move all such statements into initialization module.
-direction_default.value |= notAllowed
-direction_non-default.value |= notAllowed
 # 
 # a dummy element to assist in XSD conversion
 #

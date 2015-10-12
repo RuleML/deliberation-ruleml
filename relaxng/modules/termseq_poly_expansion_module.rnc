@@ -5,7 +5,7 @@ dcterms:title [ "RuleML Positional Argument Sequences - Polyadic" ]
 dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/termseq_poly_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "RuleML, positional argument sequence" ]
+dc:subject [ "RuleML, positional argument sequence, polyadic" ]
 dcterms:description [ "The expansion module for positional argument sequences in polyadic logics." ]
 dcterms:language [ "en" ]
 dc:rights [
@@ -15,7 +15,8 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module extends the following RuleML choice pattern:
-#            * positionalArguments.sequence
+#            * termsForAtoms.nonemptysequence.choice
+#            * termsForExpressions.nonemptysequence.choice
 
 ##
 termsForAtoms.nonemptysequence.choice |= positionalArgument-edge.choice+

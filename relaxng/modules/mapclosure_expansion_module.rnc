@@ -6,7 +6,7 @@ dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/mapclo
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, scope,  closure" ]
-dcterms:description [ "The expansion module for the optional scope closure attribute." ]
+dcterms:description [ "The expansion module for scope closure." ]
 dcterms:language [ "en" ]
 dc:rights [
   'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
@@ -16,7 +16,6 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module declares the following RuleML attribute:
 #    * @mapClosure
-# Schema Design Pattern Key: see andor_expansion_module
 
 ## an extension point for specializations of the scope implicit closure attribute name.  
 mapClosure-att.choice |= mapClosure.attrib.def
@@ -24,7 +23,7 @@ mapClosure.attrib.def =
   
   ## An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified. 
   ## Allowed values are "universal" and "existential".
-  ## See http://ruleml.org/1.02/glossary/#gloss-@mapClosure
+  ## See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure
   attribute mapClosure { mapClosure.value }
 mapClosure.value |= closure.value
 #

@@ -25,7 +25,7 @@ metaKnowledge-edge.choice |= meta.edge.def
 meta.edge.def =
   
   ## <meta>: a container for meta-knowledge. See 
-  ## http://ruleml.org/1.02/glossary/#gloss-meta
+  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-meta
   element meta { meta.type.def }
 meta.type.def = meta.attlist? & AssertRetractFormula.choice
 meta.attlist &= commonInit.attlist?
