@@ -51,7 +51,7 @@
   <xs:element name="RuleML" type="ruleml:RuleML.type.def">
     <xs:annotation>
       <xs:documentation>The polyadic top_level of a RuleML document. See
-        http://ruleml.org/1.02/glossary/#gloss-RuleML</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-RuleML</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="RuleML.type.def">
@@ -61,8 +61,11 @@
     </xs:sequence>
     <xs:attributeGroup ref="ruleml:reRuleML.attlist"/>
   </xs:complexType>
-  
   <xs:group name="RuleML.header">
+    <xs:annotation>
+      <xs:documentation>The RuleML root element accepts the header patter common to
+        Nodes.</xs:documentation>
+    </xs:annotation>
     <xs:sequence>
       <xs:group minOccurs="0" ref="ruleml:Node.header"/>
     </xs:sequence>
@@ -89,27 +92,34 @@
   <xs:element name="act" type="ruleml:act.type.def">
     <xs:annotation>
       <xs:documentation>The action edge of a RuleML root which associates zero to many performatives
-        with the root. See http://ruleml.org/1.02/glossary/#gloss-act</xs:documentation>
+        with the root. See
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-act</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="act.type.def">
     <xs:annotation>
-      <xs:documentation>The attribute @index is required for the positional argument role
-        (property).</xs:documentation>
+      <xs:documentation>The type of the action edge</xs:documentation>
     </xs:annotation>
     <xs:group ref="ruleml:act.content"/>
     <xs:attributeGroup ref="ruleml:act-datt.choice"/>
     <xs:attributeGroup ref="ruleml:react.attlist"/>
   </xs:complexType>
   <xs:attributeGroup name="act-datt.choice">
+    <xs:annotation>
+      <xs:documentation>The attribute @index is required for the positional argument
+        edge.</xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="react.attlist">
+    <xs:annotation>
+      <xs:documentation>The action type accepts the common attributes. </xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
   </xs:attributeGroup>
   <xs:group name="act.content">
     <xs:annotation>
-      <xs:documentation>contains one performatives.</xs:documentation>
+      <xs:documentation>contains one performative.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="ruleml:Performative.choice"/>
@@ -148,7 +158,7 @@
     <xs:annotation>
       <xs:documentation>A KQML-like performative acting as a wrapper specifying that its content is
         asserted, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://ruleml.org/1.02/glossary/#gloss-Assert</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Assert</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Assert.type.def">
@@ -172,7 +182,7 @@
     <xs:annotation>
       <xs:documentation>A performative similar to KQML's 'untell' that acts as a wrapper specifying
         that its content is to be deleted, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://ruleml.org/1.02/glossary/#gloss-Retract</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Retract</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Retract.type.def">
@@ -226,7 +236,7 @@
         <xs:annotation>
           <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-formula Within Assert or
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Assert or
             Retract...</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -258,7 +268,7 @@
     <xs:annotation>
       <xs:documentation>A KQML-like performative acting as a wrapper specifying that its content is
         queried, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://ruleml.org/1.02/glossary/#gloss-Query</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Query</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Query.type.def">
@@ -311,7 +321,8 @@
         <xs:annotation>
           <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-formula Within Query ...</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Query
+            ...</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -330,12 +341,22 @@
     </xs:sequence>
   </xs:group>
   <xs:attributeGroup name="reRuleML.attlist">
+    <xs:annotation>
+      <xs:documentation>The RuleML type accepts the common Node attributes. </xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="formula_AssertRetract.attlist">
+    <xs:annotation>
+      <xs:documentation>The Assert/Retract formula type accepts the common attributes.
+      </xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="formula_Query.attlist">
+    <xs:annotation>
+      <xs:documentation>The Query formula type accepts the common attributes. </xs:documentation>
+    </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
   </xs:attributeGroup>
   
@@ -412,7 +433,7 @@
   <xs:element name="Atom" type="ruleml:Atom.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Atom&gt;: a predicate applied to arguments. See
-        http://ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Atom.type.def">
@@ -443,7 +464,7 @@
   <xs:element name="op" type="ruleml:op.type.def">
     <xs:annotation>
       <xs:documentation>&lt;op&gt;: edge (role) element for the predicate of an atomic formula. See
-        http://ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="op.type.def">
@@ -473,7 +494,7 @@
   <xs:element name="Rel" type="ruleml:Rel.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Rel&gt;: a category of name used as the predicate of an atomic formula. See
-        http://ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Rel.type.def">
@@ -517,7 +538,7 @@
       <xs:element form="qualified" name="And" type="ruleml:And.type.def">
         <xs:annotation>
           <xs:documentation>&lt;And&gt;: polyadic conjunction where &lt;And/&gt; is true. See
-            http://ruleml.org/1.02/glossary/#gloss-And</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-And</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -574,7 +595,7 @@
       <xs:element form="qualified" name="formula" type="ruleml:formula_And.type.def">
         <xs:annotation>
           <xs:documentation>&lt;formula&gt;: contains a single formula. See
-            http://ruleml.org/1.02/glossary/#gloss-formula</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -628,7 +649,7 @@
       <xs:element form="qualified" name="Or" type="ruleml:Or.type.def">
         <xs:annotation>
           <xs:documentation>&lt;Or&gt;: polyadic disjunction where &lt;Or/&gt; is false. See
-            http://ruleml.org/1.02/glossary/#gloss-Or</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-Or</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -818,7 +839,7 @@
   <xs:element name="Implies" type="ruleml:Implies.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Implies&gt;: an implication between two formulas, a premise and a conclusion.
-        See  http://ruleml.org/1.02/glossary/#gloss-Implies</xs:documentation>
+        See  http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Implies.type.def">
@@ -867,8 +888,7 @@
       <xs:element form="qualified" name="if" type="ruleml:body_Implies.type.def">
         <xs:annotation>
           <xs:documentation>&lt;if&gt;: contains the premise of the implication. See
-            http://ruleml.org/1.02/glossary/#gloss-if FIXME: replace body_ with if_ and head_ with
-            then_</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-if</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -921,7 +941,7 @@
       <xs:element form="qualified" name="then" type="ruleml:head_Implies.type.def">
         <xs:annotation>
           <xs:documentation>&lt;then&gt;: contains the conclusion of the implication. See
-            http://ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -981,7 +1001,7 @@
       <xs:documentation>Explicit universal quantifier. It consists of a sequence of one or more
         variables (&lt;Var&gt;), each optionally surrounded by a &lt;declare&gt; role, and a logical formula
         (optionally surrounded by a &lt;formula&gt; role). See
-        http://ruleml.org/1.02/glossary/#gloss-Forall</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Forall.type.def">
@@ -1032,7 +1052,7 @@
       <xs:documentation>Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;),
         each optionally surrounded by a &lt;declare&gt; role, followed by a logical formula  (optionally
         surrounded by a &lt;formula&gt; role). See
-        http://ruleml.org/1.02/glossary/#gloss-Exists</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Exists.type.def">
@@ -1090,7 +1110,7 @@
   <xs:element name="declare" type="ruleml:declare.type.def">
     <xs:annotation>
       <xs:documentation>A role used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or
-        &lt;Exists&gt;). See http://ruleml.org/1.02/glossary/#gloss-declare</xs:documentation>
+        &lt;Exists&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-declare</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="declare.type.def">
@@ -1121,7 +1141,8 @@
         <xs:annotation>
           <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-formula within Forall...</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula within
+            Forall...</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -1167,7 +1188,8 @@
         <xs:annotation>
           <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-formula Within Exists...</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within
+            Exists...</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -1527,7 +1549,7 @@
     <xs:attribute name="iri" type="ruleml:iri.value">
       <xs:annotation>
         <xs:documentation>An attribute for referring to a IRI.     See
-          http://ruleml.org/1.02/glossary/#gloss-@iri</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -1542,7 +1564,7 @@
     <xs:attribute name="iri" type="ruleml:iri.value" use="required">
       <xs:annotation>
         <xs:documentation>An attribute for referring to a IRI.     See
-          http://ruleml.org/1.02/glossary/#gloss-@iri</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -1565,7 +1587,8 @@
   <xs:element name="Rulebase" type="ruleml:Rulebase.type.def">
     <xs:annotation>
       <xs:documentation>A collection of rules that can be ordered or unordered, without or with
-        duplicates.  See http://ruleml.org/1.02/glossary/#gloss-Rulebase</xs:documentation>
+        duplicates.  See
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Rulebase</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Rulebase.type.def">
@@ -1608,7 +1631,8 @@
         <xs:annotation>
           <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-formula Within Rulebase ...</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Rulebase
+            ...</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -1653,7 +1677,7 @@
     <xs:annotation>
       <xs:documentation>Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
         Kowalski/Bowen's object/meta-level-amalgamated logic). See
-        http://ruleml.org/1.02/glossary/#gloss-Entails </xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Entails </xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Entails.type.def">
@@ -1691,7 +1715,7 @@
         <xs:annotation>
           <xs:documentation>The if of an implication rule (&lt;Implies&gt;) containing the Premise(s), also
             known as the "antecedent" part of the rule.  Also used as the "antecedent" part of an
-            entailment (&lt;Entails&gt;). See http://ruleml.org/1.02/glossary/#gloss-if  Within
+            entailment (&lt;Entails&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-if  Within
             Entails...</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -1738,7 +1762,8 @@
           <xs:documentation>The then of an implication rule (&lt;Implies&gt;) containing the conclusion,
             also known as the "consequent" or "then" part of the rule.  Also used as the
             "consequent" part of an entailment (&lt;Entails&gt;). See
-            http://ruleml.org/1.02/glossary/#gloss-then  within Entails</xs:documentation>
+            http://deliberation.ruleml.org/1.02/glossary/#gloss-then  within
+            Entails</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -1769,7 +1794,8 @@
   <xs:element name="degree" type="ruleml:degree.type.def">
     <xs:annotation>
       <xs:documentation>An optional uncertainty value (between 0.0 and 1.0) that may be assigned to
-        simple formulas. See http://ruleml.org/1.02/glossary/#gloss-degree</xs:documentation>
+        simple formulas. See
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-degree</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="degree.type.def">
@@ -1808,7 +1834,7 @@
     <xs:annotation>
       <xs:documentation>A classical negation of a logical atom (&lt;Atom&gt;) (i.e. classical or "strong"
         negation).  The negated atom may be optionally surrounded by a &lt;strong&gt; role.        See
-        http://ruleml.org/1.02/glossary/#gloss-Neg</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Neg</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Neg.type.def">
@@ -1843,7 +1869,7 @@
   <xs:element name="strong" type="ruleml:strong.type.def">
     <xs:annotation>
       <xs:documentation>A role used for logical negation (&lt;Neg&gt;).        See
-        http://ruleml.org/1.02/glossary/#gloss-strong</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-strong</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="strong.type.def">
@@ -1943,7 +1969,7 @@
     <xs:attribute name="node" type="ruleml:node.value">
       <xs:annotation>
         <xs:documentation>An attribute for referring to a IRI.     See
-          http://ruleml.org/1.02/glossary/#gloss-@node</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40node</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -1959,7 +1985,7 @@
     <xs:attribute name="node" type="ruleml:node.value" use="required">
       <xs:annotation>
         <xs:documentation>An attribute for referring to a IRI.     See
-          http://ruleml.org/1.02/glossary/#gloss-@node</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40node</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -1982,7 +2008,7 @@
   <xs:element name="meta" type="ruleml:meta.type.def">
     <xs:annotation>
       <xs:documentation>&lt;meta&gt;: a container for meta-knowledge. See
-        http://ruleml.org/1.02/glossary/#gloss-meta</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-meta</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="meta.type.def">
@@ -2034,7 +2060,7 @@
   <xs:element name="Equivalent" type="ruleml:Equivalent.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Equivalent&gt;: Syntactic sugar for two implications. See
-        http://ruleml.org/1.02/glossary/#gloss-Equivalent </xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent </xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Equivalent.type.def">
@@ -2076,7 +2102,7 @@
   <xs:element name="torso" type="ruleml:torso.type.def">
     <xs:annotation>
       <xs:documentation>&lt;torso&gt;: contains one formula within an equivalence. See
-        http://ruleml.org/1.02/glossary/#gloss-torso </xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-torso </xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="torso.type.def">
@@ -2111,7 +2137,7 @@
         <xs:documentation> An attribute indicating the intended direction of an implication rule's
           (&lt;Implies&gt;) inferencing.  It has a neutral default value of "bidirectional". Other allowed
           values are "forward" and "forward". See
-          http://ruleml.org/1.02/glossary/#gloss-@direction</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2121,31 +2147,12 @@
         <xs:documentation> An attribute indicating the intended direction of an implication rule's
           (&lt;Implies&gt;) inferencing.  It has a neutral default value of "bidirectional". Other allowed
           values are "forward" and "forward". See
-          http://ruleml.org/1.02/glossary/#gloss-@direction</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
   <xs:simpleType name="direction.value">
     <xs:union memberTypes="ruleml:direction_default.value ruleml:direction_non-default.value"/>
-  </xs:simpleType>
-  <xs:simpleType name="direction_default.value">
-    <xs:annotation>
-      <xs:documentation>FIXME: move all such statements into initialization
-        module.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="bidirectional"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="direction_non-default.value">
-    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="forward"/>
-          <xs:enumeration value="backward"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:union>
   </xs:simpleType>
   
   
@@ -2162,7 +2169,7 @@
           (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
           attribute mapping for more details. This attribute has a  neutral default value of
           "bidirectional". Other allowed values are "forward" and "backward". See
-          http://ruleml.org/1.02/glossary/#gloss-@mapDirection</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2173,7 +2180,7 @@
           (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
           attribute mapping for more details. This attribute has a  neutral default value of
           "bidirectional". Other allowed values are "forward" and "backward". See
-          http://ruleml.org/1.02/glossary/#gloss-@mapDirection</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2184,8 +2191,23 @@
   
   
   
+  <xs:simpleType name="direction_non-default.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="forward"/>
+          <xs:enumeration value="backward"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
   
   
+  <xs:simpleType name="direction_default.value">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="bidirectional"/>
+    </xs:restriction>
+  </xs:simpleType>
   
   
   <xs:attributeGroup name="material-att.choice">
@@ -2197,7 +2219,7 @@
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
           Allowed values are "yes" (the default) and "no". See
-          http://ruleml.org/1.02/glossary/#gloss-@material</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2206,7 +2228,7 @@
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
           Allowed values are "yes" (the default) and "no". See
-          http://ruleml.org/1.02/glossary/#gloss-@material</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2226,7 +2248,8 @@
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
           falling within its scope (i.e. child elements).   Allowed values are "yes" (the default)
-          and "no". See http://ruleml.org/1.02/glossary/#gloss-@mapMaterial</xs:documentation>
+          and "no". See
+          http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2235,7 +2258,8 @@
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
           falling within its scope (i.e. child elements).   Allowed values are "yes" (the default)
-          and "no". See http://ruleml.org/1.02/glossary/#gloss-@mapMaterial</xs:documentation>
+          and "no". See
+          http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2276,7 +2300,7 @@
   <xs:element name="oid" type="ruleml:oid.type.def">
     <xs:annotation>
       <xs:documentation>&lt;oid&gt;: a label for Node elements. See
-        http://ruleml.org/1.02/glossary/#gloss-oid</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-oid</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="oid.type.def">
@@ -2328,7 +2352,7 @@
   <xs:element name="slot" type="ruleml:slot.type.def">
     <xs:annotation>
       <xs:documentation>A user-defined slot (property). See
-        http://ruleml.org/1.02/glossary/#gloss-slot</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-slot</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="slot.type.def">
@@ -2393,7 +2417,7 @@
   <xs:attributeGroup name="card.attrib.def">
     <xs:annotation>
       <xs:documentation>An attribute optionally specifying a &lt;slot&gt;'s cardinality. See
-        http://ruleml.org/1.02/glossary/#gloss-card</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-card</xs:documentation>
     </xs:annotation>
     <xs:attribute name="card" type="ruleml:cardinality.value" use="required">
       <xs:annotation>
@@ -2416,7 +2440,7 @@
     <xs:attribute name="weight" type="ruleml:weight.datatype">
       <xs:annotation>
         <xs:documentation>An attribute optionally specifying a &lt;slot&gt;'s relative weight. See
-          http://ruleml.org/1.02/glossary/#gloss-weight</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-weight</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2424,7 +2448,7 @@
     <xs:attribute name="weight" type="ruleml:weight.datatype" use="required">
       <xs:annotation>
         <xs:documentation>An attribute optionally specifying a &lt;slot&gt;'s relative weight. See
-          http://ruleml.org/1.02/glossary/#gloss-weight</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-weight</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2454,7 +2478,7 @@
     <xs:attribute name="type" type="ruleml:type.value">
       <xs:annotation>
         <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
-          http://ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2469,7 +2493,7 @@
     <xs:attribute name="type" type="ruleml:type.value" use="required">
       <xs:annotation>
         <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
-          http://ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2534,7 +2558,7 @@
   <xs:element name="Skolem" type="ruleml:Skolem.type.def">
     <xs:annotation>
       <xs:documentation>A Skolem individual constant, like RDF's blank nodes. See
-        http://ruleml.org/1.02/glossary/#gloss-Skolem</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Skolem</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Skolem.type.def">
@@ -2594,7 +2618,7 @@
   <xs:element name="arg" type="ruleml:arg.type.def">
     <xs:annotation>
       <xs:documentation>&lt;arg&gt;: one argument of an atomic formula. See
-        http://ruleml.org/1.02/glossary/#gloss-arg</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-arg</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="arg.type.def">
@@ -2620,7 +2644,7 @@
       <xs:annotation>
         <xs:documentation>A required attribute for specifying the position of a positional argument
           (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
-          http://ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2629,7 +2653,7 @@
       <xs:annotation>
         <xs:documentation>A required attribute for specifying the position of a positional argument
           (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
-          http://ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2693,7 +2717,7 @@
   <xs:element name="Ind" type="ruleml:Ind.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Ind&gt;: an individual constant. See
-        http://ruleml.org/1.02/glossary/#gloss-Ind</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Ind</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Ind.type.def">
@@ -2761,7 +2785,7 @@
   <xs:element name="Var" type="ruleml:Var.type.def">
     <xs:annotation>
       <xs:documentation>A logical variable, as in logic programming. See
-        http://ruleml.org/1.02/glossary/#gloss-Var</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-Var</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Var.type.def">
@@ -2797,7 +2821,7 @@
       <xs:annotation>
         <xs:documentation>An attribute indicating how the contained free variables are quantified.
           Allowed values are "universal" and "existential". See
-          http://ruleml.org/1.02/glossary/#gloss-@closure</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2806,7 +2830,7 @@
       <xs:annotation>
         <xs:documentation>An attribute indicating how the contained free variables are quantified.
           Allowed values are "universal" and "existential". See
-          http://ruleml.org/1.02/glossary/#gloss-@closure</xs:documentation>
+          http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2833,7 +2857,7 @@
       <xs:annotation>
         <xs:documentation>An attribute indicating how the free variables falling within its scope
           (i.e. child elements) are quantified.  Allowed values are "universal" and "existential".
-          See http://ruleml.org/1.02/glossary/#gloss-@mapClosure</xs:documentation>
+          See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2842,7 +2866,7 @@
       <xs:annotation>
         <xs:documentation>An attribute indicating how the free variables falling within its scope
           (i.e. child elements) are quantified.  Allowed values are "universal" and "existential".
-          See http://ruleml.org/1.02/glossary/#gloss-@mapClosure</xs:documentation>
+          See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2866,7 +2890,7 @@
     <xs:annotation>
       <xs:documentation>A slotted rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.  Note that &lt;Plex&gt;s are
         generated, so &lt;resl&gt;s are only available above the Datalog sublanguage. See
-        http://ruleml.org/1.02/glossary/#gloss-resl</xs:documentation>
+        http://deliberation.ruleml.org/1.02/glossary/#gloss-resl</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="resl.type.def">
@@ -2994,7 +3018,7 @@
     <xs:annotation>
       <xs:documentation>@key: defines a unique key attribute which can be used for distributed
         referencing from a keyref attribute. See
-        http://consumer.ruleml.org/1.02/glossary/#gloss-@key</xs:documentation>
+        http://consumer.ruleml.org/1.02/glossary/#.40key</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:key.attrib.def"/>
   </xs:attributeGroup>
@@ -3007,7 +3031,7 @@
   <xs:attributeGroup name="keyref-att.choice">
     <xs:annotation>
       <xs:documentation>@keyref: defines a reference to a corresponding unique key. See
-        http://consumer.ruleml.org/1.02/glossary/#gloss-@keyref</xs:documentation>
+        http://consumer.ruleml.org/1.02/glossary/#.40keyref</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:keyref.attrib.def"/>
   </xs:attributeGroup>

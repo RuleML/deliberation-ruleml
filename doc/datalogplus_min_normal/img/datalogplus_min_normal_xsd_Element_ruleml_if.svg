@@ -209,7 +209,7 @@
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient52" spreadMethod="pad" x1="0" x2="0" y1="625" y2="677"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient52" spreadMethod="pad" x1="0" x2="0" y1="625" y2="690"
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
@@ -439,7 +439,7 @@
     ><text clip-path="url(#clipPath1)" stroke="none" x="553" xml:space="preserve" y="308"
       >&lt;Atom&gt;: a predicate applied to arguments. See </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="553" xml:space="preserve" y="321"
-      >http://ruleml.org/1.02/glossary/#gloss-Atom</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="522" x2="525" y1="263" y2="263"
@@ -528,7 +528,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="484"
       >&lt;Equal&gt;: an equation between two terms. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="497"
-      >http://ruleml.org/1.02/glossary/#gloss-Equal</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Equal</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="522" x2="525" y1="439" y2="439"
@@ -667,7 +667,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="741"
       >&lt;And&gt;: polyadic conjunction where &lt;And/&gt; is true. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="754"
-      >http://ruleml.org/1.02/glossary/#gloss-And</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-And</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="522" x2="525" y1="696" y2="696"
@@ -796,7 +796,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="968"
       >&lt;Or&gt;: polyadic disjunction where &lt;Or/&gt; is false. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="553" xml:space="preserve" y="981"
-      >http://ruleml.org/1.02/glossary/#gloss-Or</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Or</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="522" x2="525" y1="923" y2="923"
@@ -842,14 +842,16 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="242" x2="309" y1="637" y2="637"
     /></g
     ><g fill="url(#linearGradient52)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient52)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 638 1 637 1 636 2 635 3 634 4 633 5 633 6 632 13 632 20 625 27 632 230 632 231 633 232 633 233 634 234 635 235 636 235 637 236 638 236 671 235 672 235 673 234 674 233 675 232 676 231 676 230 677 6 677 5 676 4 676 3 675 2 674 1 673 1 672 0 671" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 638 1 637 1 636 2 635 3 634 4 633 5 633 6 632 13 632 20 625 27 632 230 632 231 633 232 633 233 634 234 635 235 636 235 637 236 638 236 671 235 672 235 673 234 674 233 675 232 676 231 676 230 677 6 677 5 676 4 676 3 675 2 674 1 673 1 672 0 671" shape-rendering="auto" stroke="rgb(229,229,229)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 638 1 637 1 636 2 635 3 634 4 633 5 633 6 632 13 632 20 625 27 632 230 632 231 633 232 633 233 634 234 635 235 636 235 637 236 638 236 684 235 685 235 686 234 687 233 688 232 689 231 689 230 690 6 690 5 689 4 689 3 688 2 687 1 686 1 685 0 684" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 638 1 637 1 636 2 635 3 634 4 633 5 633 6 632 13 632 20 625 27 632 230 632 231 633 232 633 233 634 234 635 235 636 235 637 236 638 236 684 235 685 235 686 234 687 233 688 232 689 231 689 230 690 6 690 5 689 4 689 3 688 2 687 1 686 1 685 0 684" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="645"
       >&lt;if&gt;: contains the premise of the implication. </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="658"
-      >See http://ruleml.org/1.02/glossary/#gloss-if </text
+      >See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="671"
-      >FIXME: replace body_ with...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#</text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="684"
+      >gloss-if</text
     ></g
   ></g
 ></svg

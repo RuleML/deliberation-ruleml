@@ -16,8 +16,7 @@
         
         var diagramBoxes= new Array('diagram_oriented_default.value');
 
-        var annotationBoxes= new Array('annotations_oriented_default.value');
-
+        
         
         
         
@@ -266,9 +265,6 @@
                   <h3>Showing:</h3>
                   <table>
                      <tr>
-                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
-                     </tr>
-                     <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
                      </tr>
                      <tr>
@@ -303,24 +299,6 @@
                      <tr>
                         <td class="firstColumn"><b>Namespace</b></td>
                         <td>http://ruleml.org/spec</td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Annotations</b></div>
-                           <div class="floatRight"><input id="button_annotations_oriented_default.value" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_oriented_default.value');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="annotations_oriented_default.value" style="display:block">
-                              <div class="annotation">
-                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
-                                    <tr>
-                                       <td width="100%"><pre><span class="tT">FIXME: move all such statements into initialization</span><span class="tI">
-</span><span class="tT">module.</span></pre></td>
-                                    </tr>
-                                 </table>
-                              </div>
-                           </div>
-                        </td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -364,9 +342,6 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"oriented_default.value"</span><span class="tEl">&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">FIXME: move all such statements into initialization module.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:token"</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"no"</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">

@@ -85,7 +85,7 @@
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(255,223,168)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient21" spreadMethod="pad" x1="0" x2="0" y1="280" y2="358"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient21" spreadMethod="pad" x1="0" x2="0" y1="280" y2="332"
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
@@ -235,7 +235,7 @@
     ><text clip-path="url(#clipPath1)" stroke="none" x="326" xml:space="preserve" y="220"
       >&lt;Rel&gt;: a category of name used as the predicate of an atomic </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="326" xml:space="preserve" y="233"
-      >formula. See http://ruleml.org/1.02/glossary/#gloss-Rel</text
+      >formula. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="295" x2="298" y1="175" y2="175"
@@ -283,18 +283,14 @@
       /><path clip-path="url(#clipPath1)" d="M185 326 A12 12 0 0 0 197 338" fill="none"
     /></g
     ><g fill="url(#linearGradient21)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient21)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 293 1 292 1 291 2 290 3 289 4 288 5 288 6 287 13 287 20 280 27 287 173 287 174 288 175 288 176 289 177 290 178 291 178 292 179 293 179 352 178 353 178 354 177 355 176 356 175 357 174 357 173 358 6 358 5 357 4 357 3 356 2 355 1 354 1 353 0 352" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 293 1 292 1 291 2 290 3 289 4 288 5 288 6 287 13 287 20 280 27 287 173 287 174 288 175 288 176 289 177 290 178 291 178 292 179 293 179 352 178 353 178 354 177 355 176 356 175 357 174 357 173 358 6 358 5 357 4 357 3 356 2 355 1 354 1 353 0 352" shape-rendering="auto" stroke="rgb(229,229,229)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 293 1 292 1 291 2 290 3 289 4 288 5 288 6 287 13 287 20 280 27 287 173 287 174 288 175 288 176 289 177 290 178 291 178 292 179 293 179 326 178 327 178 328 177 329 176 330 175 331 174 331 173 332 6 332 5 331 4 331 3 330 2 329 1 328 1 327 0 326" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 293 1 292 1 291 2 290 3 289 4 288 5 288 6 287 13 287 20 280 27 287 173 287 174 288 175 288 176 289 177 290 178 291 178 292 179 293 179 326 178 327 178 328 177 329 176 330 175 331 174 331 173 332 6 332 5 331 4 331 3 330 2 329 1 328 1 327 0 326" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="300"
       >&lt;op&gt;: edge (role) element for the </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="313"
       >predicate of an atomic formula. </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="326"
-      >See </text
-      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="339"
-      >http://ruleml.org/1.02/glossary/#g</text
-      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="352"
-      >loss-op</text
+      >See...</text
     ></g
   ></g
 ></svg

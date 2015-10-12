@@ -253,7 +253,7 @@
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient63" spreadMethod="pad" x1="0" x2="0" y1="705" y2="757"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient63" spreadMethod="pad" x1="0" x2="0" y1="705" y2="770"
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
@@ -489,7 +489,7 @@
     ><text clip-path="url(#clipPath1)" stroke="none" x="552" xml:space="preserve" y="308"
       >&lt;Atom&gt;: a predicate applied to arguments. See </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="552" xml:space="preserve" y="321"
-      >http://ruleml.org/1.02/glossary/#gloss-Atom</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="521" x2="524" y1="263" y2="263"
@@ -631,7 +631,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="552" xml:space="preserve" y="565"
       >&lt;Equal&gt;: an equation between two terms. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="552" xml:space="preserve" y="578"
-      >http://ruleml.org/1.02/glossary/#gloss-Equal</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Equal</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="521" x2="524" y1="520" y2="520"
@@ -1064,14 +1064,16 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="241" x2="308" y1="709" y2="709"
     /></g
     ><g fill="url(#linearGradient63)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient63)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 718 1 717 1 716 2 715 3 714 4 713 5 713 6 712 13 712 20 705 27 712 229 712 230 713 231 713 232 714 233 715 234 716 234 717 235 718 235 751 234 752 234 753 233 754 232 755 231 756 230 756 229 757 6 757 5 756 4 756 3 755 2 754 1 753 1 752 0 751" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 718 1 717 1 716 2 715 3 714 4 713 5 713 6 712 13 712 20 705 27 712 229 712 230 713 231 713 232 714 233 715 234 716 234 717 235 718 235 751 234 752 234 753 233 754 232 755 231 756 230 756 229 757 6 757 5 756 4 756 3 755 2 754 1 753 1 752 0 751" shape-rendering="auto" stroke="rgb(229,229,229)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 718 1 717 1 716 2 715 3 714 4 713 5 713 6 712 13 712 20 705 27 712 229 712 230 713 231 713 232 714 233 715 234 716 234 717 235 718 235 764 234 765 234 766 233 767 232 768 231 769 230 769 229 770 6 770 5 769 4 769 3 768 2 767 1 766 1 765 0 764" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 718 1 717 1 716 2 715 3 714 4 713 5 713 6 712 13 712 20 705 27 712 229 712 230 713 231 713 232 714 233 715 234 716 234 717 235 718 235 764 234 765 234 766 233 767 232 768 231 769 230 769 229 770 6 770 5 769 4 769 3 768 2 767 1 766 1 765 0 764" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="725"
       >&lt;then&gt;: contains the conclusion of the </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="738"
       >implication. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="751"
-      >http://ruleml.org/1.02/glossary/#gloss-then</text
+      >http://deliberation.ruleml.org/1.02/glossary/#</text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="764"
+      >gloss-then</text
     ></g
   ></g
 ></svg
