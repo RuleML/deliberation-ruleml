@@ -44,17 +44,17 @@
   
   <!-- Remove groups like 
   <xs:group name="_1">-->
-  <xsl:template match="xs:group[@name='_1']"> </xsl:template>
-  <xsl:template match="xs:group[@name='_2']"> </xsl:template>
+  <xsl:template match="xs:group[@name='_1']"/>
+  <xsl:template match="xs:group[@name='_2']"/>
 
   <xsl:template match="xs:attribute[@name='id']">
-    <xs:attribute name="id" type="xs:ID"/>
+     <xs:attribute name="id" type="xs:ID"/>
   </xsl:template>
 
   <!-- Remove unused groups and elements -->
-  <xsl:template match="xs:group[@name='edge.choice']"></xsl:template>
-  <xsl:template match="xs:group[matches(@name,'^Dummy')]"></xsl:template>  
-  <xsl:template match="xs:element[matches(@name,'^Dummy')]"></xsl:template>
+  <xsl:template match="xs:group[@name='edge.choice']"/>
+  <xsl:template match="xs:group[matches(@name,'^Dummy')]"/>  
+  <xsl:template match="xs:element[matches(@name,'^Dummy')]"/>
   
   <!-- Remove existing includes -->
   <xsl:template match="xs:include"/>
