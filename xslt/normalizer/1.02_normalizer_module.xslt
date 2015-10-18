@@ -511,7 +511,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -526,7 +526,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -540,8 +540,8 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'if' 
-              and local-name()!= 'then')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'if' 
+              and local-name(.)!= 'then')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:if" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:then" mode="phase-2"/>
@@ -556,7 +556,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -570,7 +570,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -584,7 +584,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -598,8 +598,8 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'if' 
-              and local-name()!= 'then')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'if' 
+              and local-name(.)!= 'then')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:if" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:then" mode="phase-2"/>
@@ -614,7 +614,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'torso')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'torso')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:torso" mode="phase-2"/>
     </xsl:copy>
@@ -628,7 +628,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -642,7 +642,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'formula')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'formula')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:formula" mode="phase-2"/>
     </xsl:copy>
@@ -657,14 +657,14 @@
       <xsl:apply-templates
         select="*[
               namespace-uri(.)='http://ruleml.org/spec' and 
-              local-name()!= 'meta' and 
-              local-name()!= 'oid' and 
-              local-name()!= 'degree' and 
-              local-name()!= 'op' and 
-              local-name()!= 'arg' and 
-              local-name()!='repo' and 
-              local-name()!='slot' and 
-              local-name()!='resl']"
+              local-name(.)!= 'meta' and 
+              local-name(.)!= 'oid' and 
+              local-name(.)!= 'degree' and 
+              local-name(.)!= 'op' and 
+              local-name(.)!= 'arg' and 
+              local-name(.)!='repo' and 
+              local-name(.)!='slot' and 
+              local-name(.)!='resl']"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:degree" mode="phase-2"/>
@@ -685,10 +685,10 @@
       <xsl:apply-templates
         select="*[
               namespace-uri(.)='http://ruleml.org/spec' and 
-              local-name()!= 'meta' and 
-              local-name()!= 'degree' and 
-              local-name()!= 'left' and 
-              local-name()!= 'right']"
+              local-name(.)!= 'meta' and 
+              local-name(.)!= 'degree' and 
+              local-name(.)!= 'left' and 
+              local-name(.)!= 'right']"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:degree" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:left" mode="phase-2"/>
@@ -704,7 +704,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'strong')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'strong')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:strong" mode="phase-2"/>
     </xsl:copy>
@@ -718,7 +718,7 @@
       <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
       <xsl:apply-templates
         select="*[namespace-uri(.)='http://ruleml.org/spec' and
-              (local-name()!= 'meta' and local-name()!= 'weak')]"
+              (local-name(.)!= 'meta' and local-name(.)!= 'weak')]"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:weak" mode="phase-2"/>
     </xsl:copy>
@@ -733,13 +733,13 @@
       <xsl:apply-templates
         select="*[
               namespace-uri(.)='http://ruleml.org/spec' and 
-              local-name()!= 'meta' and 
-              local-name()!= 'oid' and 
-              local-name()!= 'op' and 
-              local-name()!= 'arg' and 
-              local-name()!='repo' and 
-              local-name()!='slot' and 
-              local-name()!='resl']"
+              local-name(.)!= 'meta' and 
+              local-name(.)!= 'oid' and 
+              local-name(.)!= 'op' and 
+              local-name(.)!= 'arg' and 
+              local-name(.)!='repo' and 
+              local-name(.)!='slot' and 
+              local-name(.)!='resl']"
         mode="phase-2"/>
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:op" mode="phase-2"/>
@@ -759,12 +759,12 @@
       <xsl:apply-templates
         select="*[
               namespace-uri(.)='http://ruleml.org/spec' and 
-              local-name()!= 'meta' and 
-              local-name()!= 'oid' and 
-              local-name()!= 'arg' and 
-              local-name()!='repo' and 
-              local-name()!='slot' and 
-              local-name()!='resl']"/>
+              local-name(.)!= 'meta' and 
+              local-name(.)!= 'oid' and 
+              local-name(.)!= 'arg' and 
+              local-name(.)!='repo' and 
+              local-name(.)!='slot' and 
+              local-name(.)!='resl']"/>
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
