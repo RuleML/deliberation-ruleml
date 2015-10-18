@@ -11,19 +11,19 @@ may register -->
         <Implies material="yes" direction="bidirectional">
           <if>
             <And>
-              <formula>
+              <formula index="1">
                 <Atom>
                   <op><Rel>person</Rel></op>
                   <arg index="1"><Var>any</Var></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="2">
                 <Atom>
                   <op><Rel>organization</Rel></op>
                   <arg index="1"><Var>org</Var></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="3">
                 <Atom>
                   <op><Rel>employee in</Rel></op>
                   <arg index="1"><Var>any</Var></arg>
@@ -31,7 +31,7 @@ may register -->
                   <arg index="3"><Expr per="copy"><op><Fun per="copy">last</Fun></op><arg index="1"><Expr per="copy"><op><Fun per="copy">month</Fun></op><arg index="1"><Data xsi:type="xs:positiveInteger">2</Data></arg></Expr></arg></Expr></arg>
                 </Atom>
               </formula>
-              <formula>
+              <formula index="4">
                 <Atom>
                   <op><Rel>member in</Rel></op>
                   <arg index="1"><Var>org</Var></arg>
