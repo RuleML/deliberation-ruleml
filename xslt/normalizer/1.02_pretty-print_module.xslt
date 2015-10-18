@@ -12,15 +12,6 @@
  
   <!-- Pretty Print -->
 
-  <!--Makes sure everything is printed nicely-->
-  <xsl:variable name="pretty-print-output">
-    <xsl:apply-templates select="$phase-sort-output" mode="pretty-print">
-      <xsl:with-param name="tabs">
-        <xsl:text/>
-      </xsl:with-param>
-    </xsl:apply-templates>
-  </xsl:variable>
-
   <!-- variable containing the amount of space for a tab -->
   <xsl:variable name="tab">
     <xsl:text>  </xsl:text>

@@ -5,4 +5,14 @@
   <xsl:import href="1.02_normalizer_module.xslt"/>
   <xsl:import href="1.02_pretty-print_module.xslt"/>
   
+  <!--Makes sure everything is printed nicely-->
+  <xsl:variable name="pretty-print-output">
+    <xsl:apply-templates select="$phase-sort-output" mode="pretty-print">
+      <xsl:with-param name="tabs">
+        <xsl:text/>
+      </xsl:with-param>
+    </xsl:apply-templates>
+  </xsl:variable>
+  
+  
 </xsl:stylesheet>
