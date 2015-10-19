@@ -252,7 +252,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Retract. -->
   <xsl:template
-    match="ruleml:Retract/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Retract/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -260,7 +260,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Query. -->
   <xsl:template
-    match="ruleml:Query/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Query/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -268,7 +268,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of And.-->
   <xsl:template
-    match="ruleml:And/*[not(ruleml:isEdge(.))]"
+    match="ruleml:And/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -276,7 +276,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Or.-->
   <xsl:template
-    match="ruleml:Or/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Or/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -284,7 +284,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Neg. -->
   <xsl:template
-    match="ruleml:Neg/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Neg/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">strong</xsl:with-param>
@@ -292,7 +292,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Naf. -->
   <xsl:template
-    match="ruleml:Naf/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Naf/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">weak</xsl:with-param>
@@ -312,7 +312,7 @@
        
     -->
   <!-- Wraps the second to last RuleML child of Equal. -->
-  <xsl:template match="ruleml:Equal/*[not(ruleml:isEdge(.)) and position()=last()-1]"
+  <xsl:template match="ruleml:Equal/*[last()-1][ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name(following-sibling::*[1])='left'">
@@ -328,7 +328,7 @@
     </xsl:choose>
   </xsl:template>
   <!-- Wraps the last RuleML child of Equal. -->
-  <xsl:template match="ruleml:Equal/*[not(ruleml:isEdge(.)) and position()=last()]"
+  <xsl:template match="ruleml:Equal/*[last()][ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name(preceding-sibling::*[1])='right'">
@@ -345,7 +345,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML childern of Atom. -->
   <xsl:template
-    match="ruleml:Atom/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Atom/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name()='Rel'">
@@ -374,9 +374,8 @@
     -->
   <!-- Wraps the second to last RuleML child of Implies or Entails. -->
   <xsl:template
-    match="ruleml:Implies/*[namespace-uri(.)='http://ruleml.org/spec' and position()=last()-1]|
-     ruleml:Entails/*[namespace-uri(.)='http://ruleml.org/spec'
-       and position()=last()-1]"
+    match="ruleml:Implies/ruleml:*[last()-1]|
+    ruleml:Entails/ruleml:*[last()-1]"
     mode="phase-1">
     <!--<xsl:comment>second to last</xsl:comment>-->
     <xsl:choose>
@@ -397,9 +396,8 @@
   </xsl:template>
   <!-- Wraps the last RuleML child of Implies or Entails. -->
   <xsl:template
-    match="ruleml:Implies/*[namespace-uri(.)='http://ruleml.org/spec' and position()=last()]|
-     ruleml:Entails/*[namespace-uri(.)='http://ruleml.org/spec'
-       and position()=last()]"
+    match="ruleml:Implies/ruleml:*[last()]|
+     ruleml:Entails/ruleml:*[last()]"
     mode="phase-1">
     <!--<xsl:comment>last</xsl:comment>-->
     <xsl:choose>
@@ -420,7 +418,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Forall. -->
   <xsl:template
-    match="ruleml:Forall/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Forall/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name(.)='Var'">
@@ -437,7 +435,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Exists. -->
   <xsl:template
-    match="ruleml:Exists/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Exists/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name(.)='Var'">
@@ -454,7 +452,7 @@
   </xsl:template>
   <!-- Wraps the naked children of Expr -->
   <xsl:template
-    match="ruleml:Expr/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Expr/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:choose>
       <xsl:when test="local-name()='Fun'">
@@ -471,7 +469,7 @@
   </xsl:template>
   <!-- Wraps the naked children of Plex. -->
   <xsl:template
-    match="ruleml:Plex/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Plex/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">arg</xsl:with-param>
