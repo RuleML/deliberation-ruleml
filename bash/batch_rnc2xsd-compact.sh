@@ -27,7 +27,7 @@ do
   filenameNE=$(expr "${filename%.*}" : '\(.*\)4xsd' )
   fxsd="${XSD_HOME}${filenameNE}.xsd"
   "${BASH_HOME}rnc2xsd.sh" "$f" "${fxsd}" "{$simplify}" "{$finish}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fxsd}" -xsl:"${XSLT2_HOME}rnc2xsd.xslt"  -o:"${fxsd}"
+  "${BASH_HOME}aux_xslt.sh" "${fxsd}" "${XSLT2_HOME}rnc2xsd.xslt" "${fxsd}"
   if [[ "$?" -ne "0" ]]; then
      echo "Post-processing Failed for  ${fxsd}"
      exit 1

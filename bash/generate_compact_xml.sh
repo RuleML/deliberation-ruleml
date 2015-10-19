@@ -37,11 +37,17 @@ family="naffologeq_"
 
 # Apply XSLT transforamtions - instance postprocessing
 # transform in place for files in INSTANCE_COMPACT_HOME
+#
+# Check number of files to start with
+files=( "${INSTANCE_COMPACT_HOME}"*.ruleml )
+numfilesstart=${#files[@]}
+echo "Number of Files to Start: ${numfilesstart}"
+
 for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
 do
   filename=$(basename "$f")
   echo "Completing  ${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-compact.xslt"  -o:"${f}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-compact.xslt" "${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -56,16 +62,21 @@ do
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
   exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "Validation Failed for ${file}"
-          exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
-  fi       
+  if [[ "$?" -ne "0" ]]; then
+     echo "Completion Failed for  ${filename} - Removing"
+     rm "${file}"
+   fi
 done
+
+# Check if too many files were removed
+files=( "${INSTANCE_COMPACT_HOME}"*.ruleml )
+numfilesend=${#files[@]}
+numfilesenddouble=2*$numfilesend
+echo "Number of Files to End: ${numfilesend}"
+  if [[ $numfilesenddouble -le $numfilesstart ]]; then
+     echo "Completion Failed - Too Many Invalid Results"
+     exit 1
+   fi
 
 # Apply XSLT transforamtions to canonicalize - postprocess to strip whitespace only
 # transform in place for files in INSTANCE_COMPACT_HOME
@@ -73,7 +84,7 @@ for f in "${INSTANCE_COMPACT_HOME}"*.ruleml
 do
   filename=$(basename "$f")
   echo "Canonicalizing  ${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${f}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt" "${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -107,8 +118,8 @@ do
   filename=$(basename "$f")
   echo "Re-Compactifying  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}re-${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.02_compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Re-Compactified Comparing  ${filename}"
@@ -128,9 +139,9 @@ do
   filename=$(basename "$f")
   echo "Round-Trip Transforming  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}rt-${filename}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${f}" -xsl:"${XSLT_HOME}normalizer/1.02_normalizer.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}compactifier/1.02_compactifier.xslt"  -o:"${fnew}"
-  java -jar "${SAX_HOME}saxon9ee.jar" -s:"${fnew}" -xsl:"${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt"  -o:"${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}normalizer/1.02_normalizer.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}compactifier/1.02_compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Round-Trip Comparing  ${filename}"

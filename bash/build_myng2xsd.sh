@@ -29,6 +29,13 @@ if [[ "$?" -ne "0" ]]; then
      exit 1
 fi
 
+# Generate Random Mixed Instances and Check Formatters
+"${BASH_HOME}generate_mixed_xml.sh"
+if [[ "$?" -ne "0" ]]; then
+     echo "Testing of Formatters Failed"
+     exit 1
+fi
+
 # Generate Random Normal Instances and Check Round-Trip Identity Law
 "${BASH_HOME}generate_normal_xml.sh"
 if [[ "$?" -ne "0" ]]; then
