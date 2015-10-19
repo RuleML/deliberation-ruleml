@@ -20,7 +20,7 @@ do
   echo "File ${filename}"
   while read -r; do
      echo "Line ${REPLY}"
-     if [[ ${REPLY} =~ ^.*schemaLocation=\"http://ruleml.org/spec\s ]]
+     if [[ ${REPLY} =~ schemaLocation=\"http://ruleml.org/spec ]]
      then     
        tail=${REPLY#*spec }
        echo "Tail ${tail}"
