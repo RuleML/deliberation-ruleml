@@ -6,8 +6,6 @@
 #  Validate RuleML instances by XSD
 # Instructions:
 # run this script from the command line or another script after batch_rnc2xsd.sh
-# FIXME use configuration script to validate test files against multiple schemas, including fail tests
-# This will remove the fragile schema detection method now implemented.
 #
 # globstar is only available in bash 4
 #shopt -s globstar
@@ -22,9 +20,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
   cschemaname="naffologeq_compact.xsd"
   cfile="${XSD_HOME}${cschemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${cfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${cschemaname}"
        exit 1
    fi   
@@ -32,9 +28,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
   schemaname="naffologeq_normal.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -42,9 +36,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
 schemaname2="naffologeq_normal.rnc"
   sfile2="${DRIVER_HOME}${schemaname2}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname2}"
        exit 1
    fi   
@@ -52,8 +44,6 @@ schemaname2="naffologeq_normal.rnc"
 # Apply normalization XSLT transforamtions
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to NORMAL_SUITE_HOME
-# FIXME write an aux script for the xslt call
-# FIXME use a find command to get RuleML files at any depth
 # e.g. find "${XSD_TEST_SUITE_HOME}" -name '*.ruleml' -exec  "${BASH_HOME}aux_xslt.sh" {} "${NORMAL_XSLT_HOME}1.02_normalizer.xslt" "${NORMAL_SUITE_HOME}${filename}"
 for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do

@@ -6,8 +6,6 @@
 #  Validate RuleML instances by XSD
 # Instructions:
 # run this script from the command line or another script after batch_rnc2xsd.sh
-# FIXME use configuration script to validate test files against multiple schemas, including fail tests
-# This will remove the fragile schema detection method now implemented.
 #
 # globstar is only available in bash 4
 #shopt -s globstar
@@ -22,27 +20,21 @@ rm "${COMPACT_SUITE_HOME}"* >> /dev/null 2>&1
   nschemaname="naffologeq_normal.xsd"
   nfile="${XSD_HOME}${nschemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${nfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
   schemaname="naffologeq_compact.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
 schemaname2="naffologeq_compact.rnc"
   sfile2="${RNC_HOME}${schemaname2}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname2}"
        exit 1
    fi   
@@ -50,7 +42,6 @@ schemaname2="naffologeq_compact.rnc"
 # Apply compactification XSLT transforamtions
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to COMPACT_SUITE_HOME
-# FIXME write an aux script for the xslt call
 for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "$f")

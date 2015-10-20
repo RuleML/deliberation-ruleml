@@ -4,7 +4,6 @@
 # aux_rnc2rng.sh
 # aux_valdesign.sh
 # relaxng/modules
-# FIXME use named pipes with mkfifo to eliminate temporary files
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 

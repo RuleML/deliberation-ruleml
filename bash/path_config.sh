@@ -21,7 +21,6 @@
 PLATFORM="Mac"
 OXY_VERSION="14"
 OXY_HOME="/Applications/oxygen 14/"
-# FIXME: handle the script name variations for other versions and platforms
 FLATTEN_SCRIPT="${OXY_HOME}flattenSchema.sh"
 if [[ ${OXY_VERSION} == "14" && ${PLATFORM} == "Mac" ]]; then 
   FLATTEN_SCRIPT="${OXY_HOME}flattenSchemaMac.sh"

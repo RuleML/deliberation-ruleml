@@ -25,9 +25,7 @@ cxsfile="${XSD_NORMAL}${cschemaname}"
   "${BASH_HOME}aux_valxsd.sh" "${mxsfile}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}"
   "${BASH_HOME}aux_valxsd.sh" "${cxsfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -44,9 +42,7 @@ echo "Start Instance Generation"
   rschemaname="${family}_relaxed.rnc"
   rsfile="${DRIVER_HOME}${rschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
@@ -79,7 +75,6 @@ do
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${mxsfile}" "${file}"
-  exitvalue=$?
   if [[ "$?" -ne "0" ]]; then
      echo "Completion Failed for  ${filename} - Removing"
      rm "${file}"
@@ -102,9 +97,7 @@ echo "Number of Files to End: ${numfilesend}"
   cschemaname="${cschemanameNE}.rnc"
   csfile="${DRIVER_COMPACT_HOME}${cschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${csfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${cschemaname}"
        exit 1
    fi   
@@ -130,15 +123,9 @@ do
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${csfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${cxsfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 
@@ -168,15 +155,9 @@ do
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}" "${file}" 
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 
@@ -200,15 +181,9 @@ do
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 

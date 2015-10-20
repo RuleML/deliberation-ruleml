@@ -8,8 +8,6 @@
 #  Validate RuleML instances by RNC
 # Instructions:
 # run this script from the command line or another script after batch_config2rnc.sh
-# FIXME use configuration script to validate test files against multiple schemas, including fail tests
-# This will remove the fragile schema detection method now implemented.
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 

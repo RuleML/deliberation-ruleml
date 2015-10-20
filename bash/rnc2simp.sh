@@ -11,8 +11,6 @@
 # Trang
 # Note: change the APP_HOME path according to your path to the Jing/Trang library
 # Caution: Jing simplification cannot handle specified qualified names in content
-# FIXME use configuration script to set path variables
-# FIXME use named pipe instead of temporary file
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 # Finds the filename without extension

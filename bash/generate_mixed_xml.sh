@@ -25,9 +25,7 @@ cxsfile="${XSD_NORMAL}${cschemaname}"
 # Validate XSD schema
   echo "Start XSD Schema Validation"
   "${BASH_HOME}aux_valxsd.sh" "${mxsfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -41,9 +39,7 @@ echo "Start Instance Generation"
   rschemaname="${family}_relaxed.rnc"
   rsfile="${DRIVER_HOME}${rschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${mschemaname}"
        exit 1
    fi   
@@ -76,7 +72,6 @@ do
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${mxsfile}" "${file}"
-  exitvalue=$?
   if [[ "$?" -ne "0" ]]; then
      echo "Completion Failed for  ${filename} - Removing"
      rm "${file}"
@@ -98,15 +93,13 @@ echo "Number of Files to End: ${numfilesend}"
   cschemaname="${cschemanameNE}.rnc"
   csfile="${DRIVER_COMPACT_HOME}${cschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${csfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${cschemaname}"
        exit 1
    fi   
 
 # Apply XSLT transforamtions for compactifying
-# transform files in INSTANCE_NORMAL_HOME into INSTANCE_COMPACT_HOME 
+# transform files in INSTANCE_MIXED_HOME into INSTANCE_COMPACT_HOME 
 for f in "${INSTANCE_MIXED_HOME}"*.ruleml
 do
   filename=$(basename "$f")
@@ -127,15 +120,9 @@ do
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${csfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${cxsfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 
@@ -144,9 +131,7 @@ done
   nschemaname="${nschemanameNE}.rnc"
   nsfile="${DRIVER_NORMAL_HOME}${nschemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
@@ -173,19 +158,13 @@ do
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 
-# Apply XSLT transforamtions for canonicalizing instances of the mixed schema into the normalized serialization (P = compactify, normalize, sequential indexing and strip whitespace)
+# Apply XSLT transforamtions for canonicalizing instances of the mixed schema into the normalized serialization (P = compactify, normalize, and strip whitespace)
 # transform into INSTANCE_NORMAL_HOME
 for f in "${INSTANCE_MIXED_HOME}"*.ruleml
 do
@@ -194,7 +173,6 @@ do
   fnew="${INSTANCE_NORMAL_HOME}${filename}"
   "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.02_compactifier.xslt" "${fnew}"
   "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}normalizer/1.02_normalizer.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-sequential-indexing.xslt" "${fnew}"
   "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
@@ -209,15 +187,9 @@ do
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${nxsfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 
@@ -241,7 +213,7 @@ do
    fi
 done
 
-# Apply XSLT transforamtions for canonicalizing instances of the compact schema (Q = sequential indexing and strip whitespace)
+# Apply XSLT transforamtions for canonicalizing instances of the mixed schema into the compact serialization (Q = compactify, and strip whitespace)
 # transform in place for files in INSTANCE_COMPACT_HOME
 for f in "${INSTANCE_MIXED_HOME}"*.ruleml
 do
@@ -249,7 +221,6 @@ do
   echo "Canonicalizing  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}${filename}"
   "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.02_compactifier.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-sequential-indexing.xslt" "${fnew}"
   "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.02_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"

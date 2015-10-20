@@ -39,7 +39,6 @@ done
 
 # Apply XSLT transforamtions
 # transform in place for files in XSD_HOME
-# FIXME write an aux script for the xslt call
 for f in "${XSD_HOME}"*.xsd
 do
   "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT2_HOME}rnc2xsd.xslt" "${f}"

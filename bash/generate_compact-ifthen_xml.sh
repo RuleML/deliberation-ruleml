@@ -6,7 +6,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${INSTANCE_COMPACTIFTHEN_HOME}"
-rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1
+if [[ ${INSTANCE_COMPACTIFTHEN_HOME} ]]; then rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.lrml  >> /dev/null 2>&1; fi
 
 family="naffologeq_"
 # Validate XSD schema
@@ -14,9 +14,7 @@ family="naffologeq_"
   schemaname="${schemanameNE}.xsd"
   sxfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sxfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -28,9 +26,7 @@ family="naffologeq_"
   schemaname="${schemanameNE}.rnc"
   sfile="${DRIVER_COMPACT_HOME}${schemaname}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile}"
-  exitvalue=$?
-  echo ${exitvalue}
-  if [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
@@ -42,6 +38,7 @@ family="naffologeq_"
 files=( "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml )
 numfilesstart=${#files[@]}
 echo "Number of Files to Start: ${numfilesstart}"
+
 for f in "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml
 do
   filename=$(basename "$f")
@@ -60,7 +57,6 @@ do
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
-  exitvalue=$?
   if [[ "$?" -ne "0" ]]; then
      echo "Completion Failed for  ${filename} - Removing"
      rm "${file}"
@@ -97,15 +93,9 @@ do
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
   "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
-  exitvalue=$?
-  if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+  if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
           exit 1
-   else
-         if [[ "${file}" =~ fail ]] && [[ "${exitvalue}" == "0" ]]; then
-           echo "Validation Succeeded for Failure Test ${file}"
-           exit 1
-         fi
   fi       
 done
 

@@ -5,7 +5,6 @@
 # config_xsd.txt
 # config_xsd_min.txt
 # aux_valrnc.sh
-# FIXME use named pipes to avoid writing temporary files
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
