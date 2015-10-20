@@ -220,7 +220,7 @@
   </xsl:variable>
   <!-- Wraps the naked RuleML children of RuleML. -->
   <xsl:template
-    match="ruleml:RuleML/*[not(ruleml:isEdge(.))]"
+    match="ruleml:RuleML/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">act</xsl:with-param>
@@ -228,7 +228,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Assert. -->
   <xsl:template
-    match="ruleml:Assert/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Assert/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -236,7 +236,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Rulebase. -->
   <xsl:template
-    match="ruleml:Rulebase/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Rulebase/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">formula</xsl:with-param>
@@ -244,7 +244,7 @@
   </xsl:template>
   <!-- Wraps the naked RuleML children of Equivalent. -->
   <xsl:template
-    match="ruleml:Equivalent/*[not(ruleml:isEdge(.))]"
+    match="ruleml:Equivalent/*[ruleml:isNode(.)]"
     mode="phase-1">
     <xsl:call-template name="wrap">
       <xsl:with-param name="tag">torso</xsl:with-param>
