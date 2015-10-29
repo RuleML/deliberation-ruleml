@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Equations" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/equal_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/equal_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, equals, equality, equations" ]
 dcterms:description [ "The expansion module for equations." ]
@@ -33,7 +33,7 @@ Equal-node.choice |= Equal.Node.def
 Equal.Node.def =
   
   ## <Equal>: an equation between two terms. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Equal
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Equal
   element Equal { Equal.type.def }
 Equal.type.def = (Equal-datt.choice & reEqual.attlist), Equal.header, Equal.main
 reEqual.attlist &= closure-att-fo.choice?
@@ -50,7 +50,7 @@ leftSide-edge.choice |= left.edge.def
 left.edge.def =
   
   ## <left>: The left-hand side of an equation. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-left
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-left
   element left { left.type.def }
 left.type.def = left.attlist? & left.content
 left.attlist &= commonInit.attlist?
@@ -63,7 +63,7 @@ rightSide-edge.choice |= right.edge.def
 right.edge.def =
   
   ## <right>: The right-hand side of an equation. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-right
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-right
   element right { right.type.def }
 right.type.def = right.attlist? & right.content
 right.attlist &= commonInit.attlist?

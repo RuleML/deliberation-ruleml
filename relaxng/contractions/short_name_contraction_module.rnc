@@ -4,8 +4,8 @@ default namespace this = inherit
 
 
 dcterms:title [ "RuleML Short Names" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/contractions/short_name_contraction.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/contractions/short_name_contraction.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, short names" ]
 dcterms:description [ "The expansion module for human-readable names." ]

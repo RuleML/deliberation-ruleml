@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:ruleml="http://ruleml.org/spec">
+   xmlns:ruleml="http://ruleml.org/spec"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ] -->    
-  <xsl:import href="../normalizer/1.02_normalizer_module.xslt"/>
-  <xsl:import href="../normalizer/1.02_pretty-print_module.xslt"/>
-  <xsl:import href="1.02_deliberation_compactifier_drop_module.xslt"/>
-  <!-- Pretty Print -->
-  <!--Makes sure everything is printed nicely-->
-  <xsl:variable name="pretty-print-output">
-    <xsl:apply-templates select="$phase-compactify-output" mode="pretty-print">
-      <xsl:with-param name="tabs">
-        <xsl:text/>
-      </xsl:with-param>
-    </xsl:apply-templates>
-  </xsl:variable>
+  <xsl:import href="1.03_deliberation_compactifier_module.xslt"/>
+
+  <!-- Phase V: skip redundant edges -->
+  
+  <!-- Drop the xml:base attribute on a skippable element to the child node,
+    if it doesn't have one already, when skipping -->
+  <xsl:template match="ruleml:*[ruleml:isSkippableEdge(..)][not(.[@xsi:schemaLocation])]" mode="phase-compactify">
+    <xsl:element name="{name()}">
+      <xsl:copy-of select="../@xsi:schemaLocation"/>
+      <xsl:apply-templates select="node()|@*" mode="phase-compactify"/>
+    </xsl:element>
+  </xsl:template>
+  
   
 </xsl:stylesheet>

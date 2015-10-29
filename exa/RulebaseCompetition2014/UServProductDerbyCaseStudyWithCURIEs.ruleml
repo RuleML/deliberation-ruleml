@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafneghornlogeq_relaxed.rnc"
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/nafneghornlogeq_relaxed.rnc"
   ?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:us="userv:"
   xmlns:pred="http://www.w3.org/2007/rif-builtin-predicate#"
@@ -11,7 +11,7 @@
   xmlns:userv="http://userv.org/ontology/"
   xmlns:ui="http://userv.org/ontology/i/"
   xsi:schemaLocation="http://ruleml.org/spec 
-  http://deliberation.ruleml.org/1.02/xsd/nafneghornlogeq.xsd">
+  http://deliberation.ruleml.org/1.03/xsd/nafneghornlogeq.xsd">
   <!--
   Matthias Tylkowski, Martin Müller, Experiences Using Deliberation RuleML 1.01 as Rule Interchange Language,
   In T. Patkos, et al(Eds.) Proceedings of the RuleML 2014 Challenge and the RuleML 2014 Doctoral Consortium,  

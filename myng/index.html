@@ -3,15 +3,15 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>RuleML 1.02 Modular sYNtax ConfiGurator (MYNG)</title>
+    <title>RuleML 1.03 Modular sYNtax ConfiGurator (MYNG)</title>
     <link rel="shortcut icon" href="http://ruleml.org/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./myng.css"/>
     <script type="text/javascript">
       /* <![CDATA[ */
             "use strict";
-            var php_path = "/1.02/relaxng/schema_rnc.php";
-            var myng_path = "/1.02/";
-            var xsd_path = "/1.02/xsd/";
+            var php_path = "/1.03/relaxng/schema_rnc.php";
+            var myng_path = "/1.03/";
+            var xsd_path = "/1.03/xsd/";
             
             function initializeForm(LanguageForm) {
                 // One option must be checked for radio buttons
@@ -206,7 +206,7 @@
                 //
                 var hornlogeqAndUp = get_hornlogEqAndUp(LanguageForm);
                 var fol = get_fol(LanguageForm);
-                // In RuleML 1.02, non-default values of scope implication attributes
+                // In RuleML 1.03, non-default values of scope implication attributes
                 // are allowed, even in fact languages with no implications
                 LanguageForm.implies1.removeAttribute('disabled');
                 LanguageForm.implies2.removeAttribute('disabled');                
@@ -1473,7 +1473,7 @@
     </script>
   </head>
   <body>
-    <h1>MYNG 1.02 - the Deliberation RuleML Schema Selection Form</h1>
+    <h1>MYNG 1.03 - the Deliberation RuleML Schema Selection Form</h1>
     <div class="logo"><a href="http://ruleml.org"><img src="http://ruleml.org/images/RuleMLlogo2005.jpg" alt="RuleML logo"/></a></div>
     <div>
       <h2> Instructions</h2> Make selections from the form below. Click to Download the generated RNC schema or an approximating XSD anchor schema. To view the Relax NG driver schema, click "Generate Schema", then scroll down.  
@@ -1748,7 +1748,7 @@
       <p>
       Clicking on the "Download RNC Schema" button downloads a copy of the schema driver into a file named according to the text labelled "RNC". To use the schema driver  locally (offline), a local copy of the modules
       directory is also necessary - for download instructions, see the <a
-        href="http://deliberation.ruleml.org/1.02/relaxng/">Deliberation RuleML 1.02 Relax NG Directory</a>.
+        href="http://deliberation.ruleml.org/1.03/relaxng/">Deliberation RuleML 1.03 Relax NG Directory</a>.
       For more information about the re-engineering of RuleML into Relax NG, which made this modularization possible, see the <a href="http://wiki.ruleml.org/index.php/MYNG">MYNG</a> page on the RuleML Wiki.
       </p>
       <h2>Schema Driver</h2>

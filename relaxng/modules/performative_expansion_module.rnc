@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Performatives" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/performative_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/performative_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, performative, assert, retract, query" ]
 dcterms:description [ "The expansion module for performative components." ]
@@ -34,7 +34,7 @@ edge.choice |= formula_AssertRetract.edge.def | formula_Query.edge.def
 RuleML.def =
   
   ## The polyadic top_level of a RuleML document.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-RuleML
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-RuleML
   element RuleML { RuleML.type.def }
 RuleML.type.def = (RuleML-datt.choice & reRuleML.attlist), RuleML.header, RuleML.main
 
@@ -49,7 +49,7 @@ act-edge.choice |= act.edge.def
 act.edge.def =
   
   ## The action edge of a RuleML root which associates zero to many performatives with the root.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-act
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-act
   element act { act.type.def }
 
 ## The type of the action edge
@@ -76,7 +76,7 @@ Assert.Node.def =
   
   ## A KQML-like performative acting as a wrapper specifying that its content is 
   ## asserted, making an 'implicit <Rulebase>' assumption.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Assert
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Assert
   element Assert { Assert.type.def }
 Assert.type.def =
   (AssertRetract-datt.choice & reAssertRetract.attlist), AssertRetract.header, AssertRetract.main
@@ -87,7 +87,7 @@ Retract.Node.def =
   
   ## A performative similar to KQML's 'untell' that acts as a wrapper specifying that its
   ## content is to be deleted, making an 'implicit <Rulebase>' assumption.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Retract
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Retract
   element Retract { Retract.type.def }
 Retract.type.def =
   (AssertRetract-datt.choice & reAssertRetract.attlist), AssertRetract.header, AssertRetract.main
@@ -109,7 +109,7 @@ formula_AssertRetract.edge.def =
   
   ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-formula
   ## Within Assert or Retract...
   element formula { formula_AssertRetract.type.def }
 formula_AssertRetract.type.def = formula_AssertRetract.attlist? & formula_AssertRetract.content
@@ -123,7 +123,7 @@ Query.Node.def =
   
   ## A KQML-like performative acting as a wrapper specifying that its content is
   ## queried, making an 'implicit <Rulebase>' assumption.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Query
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Query
   element Query { Query.type.def }
 Query.type.def = (Query-datt.choice & reQuery.attlist), Query.header, Query.main
 
@@ -147,7 +147,7 @@ formula_Query.edge.def =
   
   ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-formula
   ## Within Query ...
   element formula { formula_Query.type.def }
 formula_Query.type.def = formula_Query.attlist? & formula_Query.content

@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Meta-Logic" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/metalevel_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/metalevel_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, meta-logic, entails" ]
 dcterms:description [ "The expansion module for the meta-logic components." ]
@@ -28,7 +28,7 @@ Entails.Node.def =
   
   ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in
   ##	Kowalski/Bowen's object/meta-level-amalgamated logic).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Entails 
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Entails 
   element Entails { Entails.type.def }
 Entails.type.def = (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main
 reEntails.attlist &= commonNode.attlist?
@@ -49,7 +49,7 @@ body_Entails.edge.def =
   
   ## The if of an implication rule (<Implies>) containing the Premise(s), also known as the "antecedent" part of the rule. 
   ## Also used as the "antecedent" part of an entailment (<Entails>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-if
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-if
   ##  Within Entails...
   element if { body_Entails.type.def }
 body_Entails.type.def = body_Entails.attlist? & body_Entails.content
@@ -70,7 +70,7 @@ head_Entails.edge.def =
   
   ## The then of an implication rule (<Implies>) containing the conclusion, also known as the "consequent" or "then" part of the rule. 
   ## Also used as the "consequent" part of an entailment (<Entails>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-then
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-then
   ##  within Entails
   element then { head_Entails.type.def }
 head_Entails.type.def = head_Entails.attlist? & head_Entails.content

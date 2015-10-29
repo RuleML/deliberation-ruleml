@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/fologeq_normal.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/fologeq.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/fologeq.xsd">
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/fologeq_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/fologeq.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/fologeq.xsd">
   <!-- a syntactic example rulebase for testing the fologeq (first-order logic with equations) RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">

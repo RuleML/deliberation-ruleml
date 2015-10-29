@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "The RuleML Object Identifier" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/oid_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/oid_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, object identifier" ]
 dcterms:description [ "The expansion module for object identifiers." ]
@@ -27,7 +27,7 @@ objectIdentifier-edge.choice |= oid.edge.def
 oid.edge.def =
   
   ## <oid>: a label for Node elements. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-oid
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-oid
   element oid { oid.type.def }
 oid.type.def = oid.attlist? & oid.content
 oid.attlist &= commonInit.attlist?

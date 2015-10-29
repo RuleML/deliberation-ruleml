@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Scope Material Implication" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/mapmaterial_attrib_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/mapmaterial_attrib_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, scope, material, implication" ]
 dcterms:description ["The expansion module for scope material implication."]
@@ -23,7 +23,7 @@ mapMaterial.attrib.def =
   
   ##  An attribute indicating the kind of all implication rules (<Implies>) falling within its scope (i.e. child elements). 
   ##  Allowed values are "yes" (the default) and "no".
-  ## See http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial
+  ## See http://deliberation.ruleml.org/1.03/glossary/.40mapMaterial
   attribute mapMaterial { mapMaterial.value }
 mapMaterial.value |= material.value
 # 

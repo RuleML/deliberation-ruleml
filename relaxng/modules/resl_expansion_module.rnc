@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Slotted Rest Variables" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/resl_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/resl_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, rest variable, slot" ]
 dcterms:description [ "The expansion module for slotted rest variables." ]
@@ -24,7 +24,7 @@ resl.edge.def =
   
   ## A slotted rest variable used in <Atom>s, <Expr>s and <Plex>s. 
   ## Note that <Plex>s are generated, so <resl>s are only available above the Datalog sublanguage.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-resl
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-resl
   element resl { resl.type.def }
 resl.type.def = resl.attlist? & resl.content
 

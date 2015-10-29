@@ -3,8 +3,8 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Positional Independence" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/unordered_groups_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/unordered_groups_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, positional independence" ]
 dcterms:description [ "The expansion module for positional independence." ]

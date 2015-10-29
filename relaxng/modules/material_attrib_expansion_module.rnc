@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Material Implication" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/material_attrib_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/material_attrib_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, material, implication" ]
 dcterms:description [ "The expansion module for material implication." ]
@@ -22,7 +22,7 @@ material-att.choice |= material.attrib.def
 material.attrib.def =
   
   ##  An attribute indicating the kind of an implication rule (<Implies>). Allowed values are "yes" (the default) and "no".
-  ## See http://deliberation.ruleml.org/1.02/glossary/.40material
+  ## See http://deliberation.ruleml.org/1.03/glossary/.40material
   attribute material { material.value }
 material.value |= material_default.value | material_non-default.value
 # 

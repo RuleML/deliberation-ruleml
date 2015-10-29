@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Quantification" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/quantification_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/quantification_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, quantify, quantification, universal, existential" ]
 dcterms:description [ "The expansion module for quantifications." ]
@@ -37,7 +37,7 @@ Forall.Node.def =
   ## Explicit universal quantifier. It consists of a sequence of one or more 
   ## variables (<Var>), each optionally surrounded by a <declare> role, and a
   ## logical formula (optionally surrounded by a <formula> role).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Forall
   element Forall { Forall.type.def }
 Forall.type.def = (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main
 
@@ -60,7 +60,7 @@ Exists.Node.def =
   ## Explicit existential quantifier. It consists of one or more variables (<Var>),
   ## each optionally surrounded by a <declare> role, followed by a logical formula 
   ## (optionally surrounded by a <formula> role).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Exists
   element Exists { Exists.type.def }
 Exists.type.def = (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main
 
@@ -84,7 +84,7 @@ declare-edge.choice |= declare.edge.def
 declare.edge.def =
   
   ## A role used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-declare
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-declare
   element declare { declare.type.def }
 declare.type.def = declare.attlist? & declare.content
 
@@ -97,7 +97,7 @@ formula_Forall.edge.def =
   
   ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-formula
   ## within Forall...
   element formula { formula_Forall.type.def }
 formula_Forall.type.def = formula_Forall.attlist? & formula_Forall.content
@@ -127,7 +127,7 @@ formula_Exists.edge.def =
   
   ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-formula
   ## Within Exists...
   element formula { formula_Exists.type.def }
 formula_Exists.type.def = formula_Exists.attlist? & formula_Exists.content

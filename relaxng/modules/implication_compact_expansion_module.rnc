@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Implications without stripes" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/implication_compact_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/implication_compact_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, implication, compact" ]
 dcterms:description [ "The expansion module for implications in the compact serialization." ]
@@ -18,7 +18,7 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 # 
 # IMPLICATIONS WITHOUT STRIPES INCLUDED
 #
-include "http://deliberation.ruleml.org/1.02/relaxng/modules/implication_expansion_module.rnc" { 
+include "implication_expansion_module.rnc" { 
   start |= notAllowed
   body_Implies.name.choice |= notAllowed
   head_Implies.name.choice |= notAllowed

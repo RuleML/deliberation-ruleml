@@ -2,13 +2,13 @@ deliberation-ruleml
 ===================
  
  This repository contains:
-* schemas in Relax NG and XSD for Deliberation RuleML Version 1.02
-* XSLT stylesheets to normalize Deliberation RuleML Version 1.02
-* schemas for the MYNG 1.02 modular design pattern
-* example RuleML 1.02 files
-* PHP scripts for MYNG 1.02
-* NVDL scripts for MYNG 1.02
-* bash scripts for building the RuleML 1.02 release
+* schemas in Relax NG and XSD for Deliberation RuleML Version 1.03
+* XSLT stylesheets to normalize Deliberation RuleML Version 1.03
+* schemas for the MYNG 1.03 modular design pattern
+* example RuleML 1.03 files
+* PHP scripts for MYNG 1.03
+* NVDL scripts for MYNG 1.03
+* bash scripts for building the RuleML 1.03 release
  
 Prerequisites
 -------------
@@ -52,9 +52,9 @@ Branching to Resolve Issues
 ---------------------------
 1. Switch the branch for the appropriate version, if necessary.
 
-    $ git checkout 1.02
+    $ git checkout 1.03
 
-2. Update your 1.02 branch from the ruleml remote.([2])
+2. Update your 1.03 branch from the ruleml remote.([2])
     
     $ git pull
     
@@ -94,12 +94,12 @@ Branching to Resolve Issues
   a) verify that everything got uploaded OK  
   b) submit a pull request to RuleML/deliberation-ruleml from your Github account. 
      If the RuleML repo already has a branch for issue45, submit your pull-request to that branch,
-     otherwise submit to the 1.02 branch.
+     otherwise submit to the 1.03 branch.
 
 9. The RuleML maintainer and/or other developers will make comments on your pull-request if 
 anything needs to be changed.
 You can push new commits to your issue45 branch and they will automatically be added to the pull-request.
-If your submission is accepted, the RuleML/issue45 branch will be merged with RuleML/1.02, or possibly a later version.
+If your submission is accepted, the RuleML/issue45 branch will be merged with RuleML/1.03, or possibly a later version.
 It will then be propagated to all forks when Step #2 or Step #6 is 
 executed by any user.
 

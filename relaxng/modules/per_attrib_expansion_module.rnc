@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Interpretation" ]
-dcterms:identifier ["http://deliberation.ruleml.org/1.02/relaxng/modules/per_attrib_expansion_module.rnc"]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier ["http://deliberation.ruleml.org/1.03/relaxng/modules/per_attrib_expansion_module.rnc"]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, interpretation" ]
 dcterms:description [ "The expansion module for interpretation, e.g. call-by-value." ]
@@ -23,7 +23,7 @@ per.attrib.def =
   #
   
   ##    An attribute for specifying interpretation properties of functions. 
-  ##    See http://deliberation.ruleml.org/1.02/glossary/.40per
+  ##    See http://deliberation.ruleml.org/1.03/glossary/.40per
   attribute per { interpretation.value }
 interpretation.value |= interpretation_default.value | interpretation_non-default.value
 # 

@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Basic Terms" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/individual_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/individual_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, term, individual" ]
 dcterms:description [ "The expansion module for basic terms." ]
@@ -39,7 +39,7 @@ positionalArgument-edge.choice |= arg.edge.def
 arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-arg
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-arg
   element arg { arg.type.def }
 
 ## The attribute @index is required for the positional argument role (property).
@@ -52,7 +52,7 @@ index-attrib.choice |= index.attrib.def
 index.attrib.def =
   
   ## A required attribute for specifying the position of a positional argument (<arg>) within a logical atom (<Atom>).
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-index
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-index
   attribute index { index.value }
 index.value |= xsd:positiveInteger
 
@@ -101,7 +101,7 @@ Individual-node.choice |= Ind.Node.def
 Ind.Node.def =
   
   ## <Ind>: an individual constant. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Ind
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Ind
   element Ind { Ind.type.def }
 Ind.type.def = (Ind-datt.choice & reInd.attlist), Ind.value
 
