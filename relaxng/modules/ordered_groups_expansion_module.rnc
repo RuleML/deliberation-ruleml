@@ -3,7 +3,9 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Positional Dependence" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/ordered_groups_expansion_module.rnc" ]
+dcterms:identifier [
+  "http://deliberation.ruleml.org/1.02/relaxng/modules/ordered_groups_expansion_module.rnc"
+]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, positional dependence" ]
@@ -16,48 +18,57 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
-## Pre-fix operator notation for atomic formulas is required in a normal-form serialization.
+## Pre-fix operator notation for atomic formulas is required in a normalized serialization.
 Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 
 ## Slotted arguments follow positional arguments in atomic formulas
-## in the normal-form serialization. 
+## in the normalized serialization. 
 argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence, slotsForAtoms.sequence
 
 ## Positional rest arguments follow the ordinary positional arguments
-## in atomic formulas in the normal-form serialization. 
+## in atomic formulas in the normalized serialization. 
 positionalArgumentsForAtoms.sequence |=
   termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
 
 ## Slotted rest arguments follow the ordinary slots
-## in atomic formulas in the normal-form serialization. 
+## in atomic formulas in the normalized serialization. 
 slotsForAtoms.sequence |= slotTermsForAtoms.sequence, restOfSlots-edge.choice?
 
-## Pre-fix operator notation for expressions is required in the normal-form serialization.
+## Pre-fix operator notation for expressions is required in the normalized serialization.
 Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequence
 
 ## Slotted arguments follow positional arguments in expressions
-## in the normal-form serialization. 
+## in the normalized serialization. 
 argumentsForExpressions.sequence |=
   positionalArgumentsForExpressions.sequence, slotsForExpressions.sequence
 
 ## Positional rest arguments follow the ordinary positional arguments
-## in expressions in the normal-form serialization. 
+## in expressions in the normalized serialization. 
 positionalArgumentsForExpressions.sequence |=
   termsForExpressions.sequence, restOfPositionalArguments-edge.choice?
 
 ## Slotted rest arguments follow the ordinary slots
-## in expressions in the normal-form serialization. 
+## in expressions in the normalized serialization. 
 slotsForExpressions.sequence |= slotTermsForExpressions.sequence, restOfSlots-edge.choice?
 
-## In the normal-form serialization, the if and then of an implication must occur in canonical order.
+## In the normalized serialization, the if and then of an implication must occur in canonical order.
 Implies.main |= body_Implies.name.choice, head_Implies.name.choice
 
-## In the normal-form serialization, the if and then of a proof-theoretic entailment must occur canonical order.
+## In the normalized serialization, the if and then of a proof-theoretic entailment must occur canonical order.
 Entails.main |= body_Entails.name.choice, head_Entails.name.choice
 
-## In the normal-form serialization, the order of header elements is:
+## In the normalized serialization, the order of header elements in Node elements is:
 ## an optional header element sequence as defined in Node.header, followed by optional
-## object identifier and degree
+## object identifier (in some elements) and degree (in some elements)
+#
+## The header of TruthValuedConnectives includes the Node header
+## followed by an optional (uncertainty) degree.
 TruthValuedConnective.header &= (Node.header?, degree-edge.choice?)?
+
+## The header of Atoms includes the Node header
+## followed by optional object identifier and (uncertainty) degree.
 Atom.header &= (Node.header?, objectIdentifier-edge.choice?, degree-edge.choice?)?
+
+## The header of Expressions includes the Node header
+## followed by optional object identifier.
 Expr.header &= (Node.header?, exprObjectIdentifier-edge.choice?)?
