@@ -88,7 +88,7 @@ $bquant = processGETParameter ($quant);
 $quantParam = "x".dechex(bindec($bquant));
 //
 $expr = "expr";
-$expr_val_absent = 0;
+//$expr_val_absent = 0;
 $expr_plex = 1;
 $expr_val_nondefault = 2;
 $expr_in = 3;
@@ -320,7 +320,7 @@ if ($bdefault==0){
   $needResl = extractBit($bquant, $quant_resl);
   $enableRepo = extractBit($bquant, $quant_repo);
   
-  $enableValAbsent = extractBit($bexpr, $expr_val_absent);
+  //$enableValAbsent = extractBit($bexpr, $expr_val_absent);
   $enablePlex = extractBit($bexpr, $expr_plex);
   $enableValND = extractBit($bexpr, $expr_val_nondefault);
   $NeedValND = $enableValND;
@@ -795,11 +795,11 @@ if ($bdefault==0){
     }
 
   // Include empty initialization of set-valued attribute if needed
-  if ( $enableValAbsent ){
-      echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'val_absence_expansion_module.rnc"'."$end\n";
-  }  
+//  if ( $enableValAbsent ){
+//      echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
+//      echo "#\n".'include "' . $modulesLocation .
+//          'val_absence_expansion_module.rnc"'."$end\n";
+//  }  
   // Include set-valued expression attribute if needed
  if ($needValAtt){
     echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED\n";

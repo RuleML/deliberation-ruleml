@@ -22,7 +22,7 @@ singlevalued-att.choice |= val.attrib.def
 val.attrib.def =
   #
   
-  ## This attribute is used to indicate whether a function (<Fun>) is deterministic or non-deterministic. 
+  ## An attribute indicating whether a function (<Fun>) is deterministic or non-deterministic. 
   ## It has two values: "1" (deterministic: exactly one) and "0.." (set-valued: zero or more).    
   ## See http://deliberation.ruleml.org/1.02/glossary/.40val
   attribute val { val.value }
