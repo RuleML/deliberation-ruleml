@@ -26,5 +26,7 @@ do
    fi
 done
 
-cp "${RNC_HOME}naffologeq_compact4simp.rnc" "${RNC4SIMP_HOME}"
-
+for file in "${RNC_HOME}"*"4simp.rnc"
+do
+  cp "${file}" "${RNC4SIMP_HOME}"
+done

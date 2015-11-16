@@ -26,7 +26,7 @@ do
   filename=$(basename "$f")
   filenameNE=$(expr "${filename%.*}" : '\(.*\)4xsd' )
   fxsd="${XSD_HOME}${filenameNE}.xsd"
-  "${BASH_HOME}rnc2xsd.sh" "$f" "${fxsd}" "{$simplify}" "{$finish}"
+  "${BASH_HOME}rnc2xsd.sh" "$f" "${fxsd}" "${simplify}" "${finish}"
   "${BASH_HOME}aux_xslt.sh" "${fxsd}" "${XSLT2_HOME}rnc2xsd.xslt" "${fxsd}"
   if [[ "$?" -ne "0" ]]; then
      echo "Post-processing Failed for  ${fxsd}"
