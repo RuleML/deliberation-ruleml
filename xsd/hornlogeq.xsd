@@ -3301,6 +3301,7 @@
     </xs:sequence>
   </xs:group>
   
+  
   <xs:attributeGroup name="singlevalued-att.choice">
     <xs:annotation>
       <xs:documentation>an extension point for specializations of the attribute for set-valued
@@ -3308,23 +3309,19 @@
     </xs:annotation>
     <xs:attribute name="val" type="ruleml:val.value">
       <xs:annotation>
-        <xs:documentation>This attribute is used to indicate whether a function (&lt;Fun&gt;) is
-          deterministic or non-deterministic.  It has two values: "1" (deterministic: exactly one)
-          and "0.." (set-valued: zero or more).     See
+        <xs:documentation>An attribute indicating whether a function (&lt;Fun&gt;) is deterministic or
+          non-deterministic.  It has two values: "1" (deterministic: exactly one) and "0.."
+          (set-valued: zero or more).     See
           http://deliberation.ruleml.org/1.02/glossary/.40val</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
-  
-  
-  
-  
   <xs:attributeGroup name="val.attrib.def">
     <xs:attribute name="val" type="ruleml:val.value" use="required">
       <xs:annotation>
-        <xs:documentation>This attribute is used to indicate whether a function (&lt;Fun&gt;) is
-          deterministic or non-deterministic.  It has two values: "1" (deterministic: exactly one)
-          and "0.." (set-valued: zero or more).     See
+        <xs:documentation>An attribute indicating whether a function (&lt;Fun&gt;) is deterministic or
+          non-deterministic.  It has two values: "1" (deterministic: exactly one) and "0.."
+          (set-valued: zero or more).     See
           http://deliberation.ruleml.org/1.02/glossary/.40val</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -3457,7 +3454,6 @@
   <xs:simpleType name="keyref.value">
     <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
   </xs:simpleType>
-  
   
   
   

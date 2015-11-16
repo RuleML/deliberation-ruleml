@@ -3096,9 +3096,6 @@
   </xs:group>
   
   
-  
-  
-  
   <xs:attributeGroup name="interpretation-att.choice">
     <xs:annotation>
       <xs:documentation>an extension point for specializations of the interpretation attribute name.
@@ -3190,7 +3187,6 @@
   <xs:simpleType name="keyref.value">
     <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
   </xs:simpleType>
-  
   
   
   
