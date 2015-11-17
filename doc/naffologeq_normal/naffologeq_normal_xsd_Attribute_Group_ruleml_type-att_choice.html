@@ -3,19 +3,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>Schema documentation for component ruleml:type-att.choice</title>
+      <title>Schema documentation for component type</title>
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
+        var propertiesBoxes= new Array('properties_type-att.choice_type');
+
         
         
-        
-        
-        var sourceBoxes= new Array('source_type-att.choice');
+        var usedByBoxes= new Array('usedBy_type-att.choice_type', 
+				'usedBy_type-att.choice');
+
+        var sourceBoxes= new Array('source_type-att.choice_type', 
+				'source_type-att.choice');
 
         
         var diagramBoxes= new Array('diagram_type-att.choice');
 
-        var annotationBoxes= new Array('annotations_type-att.choice');
+        var annotationBoxes= new Array('annotations_type-att.choice_type', 
+				'annotations_type-att.choice');
 
         var attributesBoxes= new Array('attributes_type-att.choice');
 
@@ -275,7 +280,13 @@
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
                      </tr>
                      <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
                      </tr>
                   </table>
                   <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
@@ -288,7 +299,106 @@
                <td class="rt_cornerBottomRight"></td>
             </tr>
          </table>
-      </div><a id="type-att.choice"></a><div class="componentTitle">Attribute Group <span class="qname">ruleml:type-att.choice</span></div>
+      </div><a id="type-att.choice_type"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_type-att_choice.html#type-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type-att.choice')">ruleml:type-att.choice</a></b> / @type</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_type-att.choice_type" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_type-att.choice_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_type-att.choice_type" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">A role for optionally specifying a term's (user-defined) type. See</span><span class="tI">
+</span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/#gloss-type</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="naffologeq_normal_xsd_Simple_Type_ruleml_type_value.html#type.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type.value')">ruleml:type.value</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_type-att.choice_type" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_type-att.choice_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_type-att.choice_type" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_type-att.choice_type" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_type-att.choice_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_type-att.choice_type" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Group </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_type-att_choice.html#type-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type-att.choice')">ruleml:type-att.choice</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_type-att.choice_type" type="image" src="img/btM.gif" value="-" onclick="switchState('source_type-att.choice_type');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_type-att.choice_type" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:type.value"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">A role for optionally specifying a term's (user-defined) type. See http://deliberation.ruleml.org/1.02/glossary/#gloss-type</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:attribute&gt;</span></pre></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="type-att.choice"></a><div class="componentTitle">Attribute Group <span class="qname">ruleml:type-att.choice</span></div>
       <table class="rt">
          <tr>
             <td class="rt_cornerTopLeft"></td>
@@ -333,6 +443,22 @@
                      </tr>
                      <tr>
                         <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_type-att.choice" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_type-att.choice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_type-att.choice" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute Groups </td>
+                                    <td><b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_Type_attlist.html#Type.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Type.attlist')">ruleml:Type.attlist</a></b>, <b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_generic-Node_attlist.html#generic-Node.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:generic-Node.attlist')">ruleml:generic-Node.attlist</a></b>, <b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_reFun_attlist.html#reFun.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reFun.attlist')">ruleml:reFun.attlist</a></b>, <b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_reRel_attlist.html#reRel.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reRel.attlist')">ruleml:reRel.attlist</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
                            <div class="floatLeft"><b>Attributes</b></div>
                            <div class="floatRight"><input id="button_attributes_type-att.choice" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_type-att.choice');" class="control" /></div>
                         </td>
@@ -348,9 +474,9 @@
                                     </tr>
                                  </thead>
                                  <tr>
-                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_type_attrib_def.html#type.attrib.def_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component type')">type</a></b></td>
+                                    <td class="firstColumn"><b><a href="naffologeq_normal_xsd_Attribute_Group_ruleml_type-att_choice.html#type-att.choice_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component type')">type</a></b></td>
                                     <td><b><a href="naffologeq_normal_xsd_Simple_Type_ruleml_type_value.html#type.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type.value')">ruleml:type.value</a></b></td>
-                                    <td>required</td>
+                                    <td>optional</td>
                                     <td>
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
@@ -379,7 +505,11 @@
   </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">an extension point for specializations of the oriented equation attribute name.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"ruleml:type.attrib.def"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"type"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:type.value"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">A role for optionally specifying a term's (user-defined) type. See http://deliberation.ruleml.org/1.02/glossary/#gloss-type</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:attribute&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:attributeGroup&gt;</span></pre></td>
                                  </tr>
                               </table>

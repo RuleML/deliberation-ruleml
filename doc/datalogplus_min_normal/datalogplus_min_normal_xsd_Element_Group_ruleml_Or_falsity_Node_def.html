@@ -22,7 +22,8 @@
         var annotationBoxes= new Array('annotations_Or_falsity.Node.def_Or', 
 				'annotations_Or_falsity.Node.def');
 
-        
+        var attributesBoxes= new Array('attributes_Or_falsity.Node.def_Or');
+
         
         
         
@@ -274,6 +275,9 @@
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
                      </tr>
                      <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
                      </tr>
                      <tr>
@@ -332,7 +336,7 @@
                            <div class="floatRight"><input id="button_diagram_Or_falsity.Node.def_Or" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Or_falsity.Node.def_Or');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_Or_falsity.Node.def_Or" style="display:block"><object border="0" data="img/datalogplus_min_normal_xsd_Element_ruleml_Or_2.svg" type="image/svg+xml"></object></div>
+                           <div id="diagram_Or_falsity.Node.def_Or" style="display:block"><object border="0" data="img/datalogplus_min_normal_xsd_Element_ruleml_Or_1.svg" type="image/svg+xml"></object></div>
                         </td>
                      </tr>
                      <tr>
@@ -353,6 +357,41 @@
                      </tr>
                      <tr>
                         <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_Or_falsity.Node.def_Or" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_Or_falsity.Node.def_Or');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_Or_falsity.Node.def_Or" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Use</th>
+                                       <th>Annotation</th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="datalogplus_min_normal_xsd_Attribute_Group_ruleml_style-att_choice.html#style-att.choice_style" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component style')">style</a></b></td>
+                                    <td><b><a href="datalogplus_min_normal_xsd_Simple_Type_ruleml_style_value.html#style.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:style.value')">ruleml:style.value</a></b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation">
+                                          <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                             <tr>
+                                                <td width="100%"><pre><span class="tT">@style: defines a reference to a semantic profile. See</span><span class="tI">
+</span><span class="tT">http://consumer.ruleml.org/1.02/glossary/#.40style</span></pre></td>
+                                             </tr>
+                                          </table>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
                            <div class="floatLeft"><b>Source</b></div>
                            <div class="floatRight"><input id="button_source_Or_falsity.Node.def_Or" type="image" src="img/btM.gif" value="-" onclick="switchState('source_Or_falsity.Node.def_Or');" class="control" /></div>
                         </td>
@@ -364,7 +403,9 @@
   </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">/&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
-  </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"ruleml:Or_falsity.type.def"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
                               </table>
@@ -468,7 +509,9 @@
       </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
         </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">/&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
-      </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;xs:complexType</span><span class="tEl">&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:attributeGroup</span><span class="tAN"> ref=</span><span class="tAV">"ruleml:Or_falsity.type.def"</span><span class="tEl">/&gt;</span><span class="tI">
+      </span><span class="tEl">&lt;/xs:complexType&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:element&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:group&gt;</span></pre></td>
