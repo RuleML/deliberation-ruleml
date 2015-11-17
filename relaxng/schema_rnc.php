@@ -232,6 +232,7 @@ if ($bdefault==0){
   // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
   $enableKey = extractBit($bserialization, $serialization_key);
+  $enableStyle = 1;
   
   $enableIRI = extractBit($bpropo, $propo_iri);
   $enableRulebase = extractBit($bpropo, $propo_rulebase);
@@ -341,7 +342,7 @@ if ($bdefault==0){
   // if and then edges are skippable when not converting to XSD and not a "plus" language
   $NeedIfThenSkippable = max( $notPivot, $notPlus );
    
-  $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND);
+  $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND, $enableStyle);
 
   //Step 1. Assemble the language foundation
   if ($enableAbsolute) {
@@ -848,6 +849,12 @@ if ($bdefault==0){
       echo "#\n# KEY/KEYREF ATTRIBUTES ENABLED\n";
       echo "#\n".'include "' . $consumerModulesLocation .
           'consumer_key_expansion_module.rnc"'."$end\n";
+  }
+  // Include key and keyref attributes
+  if ($enableStyle){
+      echo "#\n# STYLE ATTRIBUTE ENABLED\n";
+      echo "#\n".'include "' . $consumerModulesLocation .
+          'consumer_attribute_expansion_module.rnc"'."$end\n";
   }
 
 

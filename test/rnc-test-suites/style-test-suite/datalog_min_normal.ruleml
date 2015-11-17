@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/drivers/myng-b3f-d7-a7-l1-p010-i79-t000-q0-e1-sb.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:re="http://ruleml.org/1.02/entailments/"
+  xmlns:rp="http://ruleml.org/1.02/profiles/"
+  style="re:reasoning">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a syntactic example rulebase for testing the minimal Datalog RuleML sublanguage -->
+  <act index="1">
+    <Assert style="rp:herbrand-fols">
+      <formula>
+        <Implies>
+          <if>
+            <And/>
+          </if>
+          <then>
+            <Atom style="rp:herbrand-fols">
+              <op><Rel>friend</Rel></op>
+              <arg index="1"><Var>x</Var></arg>
+              <arg index="2"><Var>y</Var></arg>
+              <arg index="3"><Ind>Steph</Ind></arg>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>y</Var>
+          </declare>
+          <formula>
+            <Implies material="yes" direction="bidirectional">
+              <if>
+                <And>
+                  <formula index="1">
+                    <Atom>
+                      <op><Rel>friend</Rel></op>
+                      <arg index="1"><Ind>Jane</Ind></arg>
+                      <arg index="8"><Ind>Jack</Ind></arg>
+                      <arg index="9"><Var>y</Var></arg>
+                      <arg index="10"><Ind>Frank</Ind></arg>
+                    </Atom>
+                  </formula>
+                </And>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <arg index="1"><Var>x</Var></arg>
+                  <arg index="2"><Var>y</Var></arg>
+                  <arg index="3"><Ind>Steph</Ind></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>X</Var>
+          </declare>
+          <formula>
+            <Forall>
+              <declare>
+                <Var>Y</Var>
+              </declare>
+              <formula>
+                <Implies material="yes" direction="bidirectional">
+                  <if>
+                    <Atom>
+                      <op><Rel>P</Rel></op>
+                      <arg index="1"><Var>X</Var></arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Atom>
+                      <op><Rel>Q</Rel></op>
+                      <arg index="1"><Var>Y</Var></arg>
+                    </Atom>
+                  </then>
+                </Implies>
+              </formula>
+            </Forall>
+          </formula>
+        </Forall>
+      </formula>
+      <formula>
+        <Forall>
+          <declare>
+            <Var>X</Var>
+          </declare>
+          <formula>
+            <Atom>
+              <op><Rel>P</Rel></op>
+              <arg index="1"><Var>X</Var></arg>
+            </Atom>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>
