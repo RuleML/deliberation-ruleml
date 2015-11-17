@@ -203,6 +203,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:mapClosure-att.choice"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="AssertRetract.header">
@@ -288,6 +289,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:closure-att.choice"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="Query.header">
@@ -348,6 +350,7 @@
       <xs:documentation>The RuleML type accepts the common Node attributes. </xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="formula_AssertRetract.attlist">
     <xs:annotation>
@@ -449,6 +452,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:closure-att.choice"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="operatorForAtoms-edge.choice">
@@ -519,6 +523,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:Resource.attlist"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
   </xs:attributeGroup>
   <xs:simpleType name="Rel.value">
     <xs:annotation>
@@ -564,6 +569,7 @@
         attribute at full first-order logic.</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="And.header">
     <xs:annotation>
@@ -673,6 +679,7 @@
         attribute at full first-order logic.</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="Or.header">
     <xs:annotation>
@@ -861,6 +868,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
     <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="Implies.header">
@@ -1013,6 +1021,7 @@
         scoped closure attribute at full first-order logic.</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="Forall.header">
     <xs:annotation>
@@ -1064,6 +1073,7 @@
         scoped closure attribute at full first-order logic.</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="Exists.header">
     <xs:annotation>
@@ -1251,6 +1261,7 @@
   <xs:attributeGroup name="reExpr.attlist">
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
     <xs:attributeGroup ref="ruleml:Type.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="operatorForExpressions-edge.choice">
     <xs:annotation>
@@ -1321,6 +1332,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:Resource.attlist"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
   </xs:attributeGroup>
   
   <xs:simpleType name="Fun.value">
@@ -1726,6 +1738,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:mapClosure-att.choice"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="Rulebase.header">
@@ -1808,6 +1821,7 @@
   </xs:complexType>
   <xs:attributeGroup name="reEntails.attlist">
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="Entails.header">
     <xs:annotation>
@@ -2052,6 +2066,7 @@
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:closure-att.choice"/>
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   
   <xs:group name="Equivalent.header">
@@ -2451,19 +2466,19 @@
       <xs:documentation>attribute list for objects that can have user-defined types, includes an
         optional type attribute.</xs:documentation>
     </xs:annotation>
-    <xs:attribute name="type" type="ruleml:type.value">
-      <xs:annotation>
-        <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
-          http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="type-att.choice">
     <xs:annotation>
       <xs:documentation>an extension point for specializations of the oriented equation attribute
         name.  </xs:documentation>
     </xs:annotation>
-    <xs:attributeGroup ref="ruleml:type.attrib.def"/>
+    <xs:attribute name="type" type="ruleml:type.value">
+      <xs:annotation>
+        <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
+          http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:attributeGroup>
   <xs:attributeGroup name="type.attrib.def">
     <xs:attribute name="type" type="ruleml:type.value" use="required">
@@ -3009,6 +3024,7 @@
   </xs:complexType>
   <xs:attributeGroup name="rePlex.attlist">
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
   </xs:attributeGroup>
   <xs:group name="Plex.header">
     <xs:annotation>
@@ -3159,6 +3175,14 @@
   
   
   
+  <xs:attributeGroup name="style-att.choice">
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+          http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
   
   
   
@@ -3202,6 +3226,60 @@
   <xs:simpleType name="keyref.value">
     <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
   </xs:simpleType>
+  
+  
+  
+  
+  
+  <xs:attributeGroup name="style.attrib.def">
+    <xs:attribute name="style" type="ruleml:style.value" use="required">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+          http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="style.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+  </xs:simpleType>
+  
+  <xs:attributeGroup name="generic-Node.attlist">
+    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+    <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="generic-Formula.attlist">
+    <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="formula-interface-ext.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="formula-interface.attlist">
+    <xs:attributeGroup ref="ruleml:formula-interface-ext.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="operator-interface-ext.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="operator-interface.attlist">
+    <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
+    <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="reEqual.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reNaf.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reNeg.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  
   
   
   
