@@ -5,7 +5,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${INSTANCE_COMPACT_HOME}"
-if [[ ${INSTANCE_COMPACT_HOME} ]]; then rm "${INSTANCE_COMPACT_HOME}"*.lrml  >> /dev/null 2>&1; fi
+if [[ ${INSTANCE_COMPACT_HOME} ]]; then rm "${INSTANCE_COMPACT_HOME}"*.ruleml  >> /dev/null 2>&1; fi
 
 family="naffologeq_"
 # Validate XSD schema
