@@ -13,7 +13,7 @@
             <Var>y</Var>
           </declare>
           <formula>
-            <Implies material="yes" direction="bidirectional">
+            <Implies>
               <if>
                 <And>
                   <formula index="1">
@@ -56,7 +56,7 @@
                 <Var>Y</Var>
               </declare>
               <formula>
-                <Implies material="yes" direction="bidirectional">
+                <Implies>
                   <if>
                     <Atom>
                       <op><Rel>P</Rel></op>
