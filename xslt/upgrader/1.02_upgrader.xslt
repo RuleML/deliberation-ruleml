@@ -12,7 +12,7 @@
 
   <!-- Remove xml:base attributes  -->
   <xsl:template match="@xml:base"/>
-  
+
   <!-- Exception: don't remove @xml:base on Data element with datatype ruleml:anyURI-->
   <xsl:template match="ruleml:Data[@xsi:type]/@xml:base" priority="1">
     <xsl:variable name="datatypestring">
@@ -21,27 +21,25 @@
     <xsl:variable name="datatype" select="resolve-QName($datatypestring, ..)" as="xs:QName"/>
     <xsl:if test="local-name-from-QName($datatype)='anyURI'">
       <xsl:if test="namespace-uri-from-QName($datatype)='http://ruleml.org/spec'">
-        <xsl:copy-of select="."/>
+        <xsl:choose>
+          <xsl:when test="ancestor::*[@xml:base]">
+            <xsl:attribute name="{name(.)}">
+              <xsl:value-of select="resolve-uri(., base-uri(.))"/>
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:copy-of select="."/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </xsl:if>
   </xsl:template>
 
-  <!-- Adds the required index attribute to the formula tag in And and Or -->
-  <xsl:template match="*[self::ruleml:And or self::ruleml:Or]/ruleml:formula[not(@index)]">
-    <xsl:variable name="index_value">
-      <xsl:value-of select="count(preceding-sibling::ruleml:formula)+1"/>
-    </xsl:variable>
-    <xsl:element name="ruleml:formula">
-      <xsl:attribute name="index">
-        <xsl:value-of select="$index_value"/>
-      </xsl:attribute>
-      <xsl:apply-templates select="@*|node()"/>
-    </xsl:element>
-  </xsl:template>
-  
   <!-- Updates the version in the xml-model processing instruction  -->
   <xsl:template match="/processing-instruction('xml-model')">
-    <xsl:variable name="text"><xsl:value-of select="."/></xsl:variable>
+    <xsl:variable name="text">
+      <xsl:value-of select="."/>
+    </xsl:variable>
     <xsl:processing-instruction name="xml-model"><xsl:value-of select="replace($text, '1.01', '1.02' )"/></xsl:processing-instruction>
   </xsl:template>
 
@@ -49,8 +47,8 @@
   <xsl:template match="@xsi:schemaLocation">
     <xsl:attribute name="xsi:schemaLocation" select="replace(., '1.01', '1.02')"/>
   </xsl:template>
-  
-  
+
+
 
   <!-- Copies everything to the transformation output -->
   <xsl:template match="@*|node()">

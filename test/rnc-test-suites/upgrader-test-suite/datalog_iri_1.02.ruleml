@@ -9,7 +9,7 @@
         <Implies node="http://example.org#rule1">
           <if>
             <And>
-              <ruleml:formula xmlns:ruleml="http://ruleml.org/spec" index="1">
+              <formula>
                 <Atom>
                   <op><Rel iri="http://example.org/friend" node="http://example.org#rel1">friend</Rel></op>
                   <arg index=" 1"><Ind iri="http://example.org#e" node="http://example.org#f">Jane</Ind></arg>
@@ -25,7 +25,7 @@
                   <arg index="11"><Var type="http://example.orgvehicle">y</Var></arg>
                   <arg index="12"><Ind>Frank</Ind></arg>
                 </Atom>
-              </ruleml:formula>
+              </formula>
             </And>
           </if>
           <then>
