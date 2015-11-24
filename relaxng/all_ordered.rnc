@@ -104,7 +104,6 @@ include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= 
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
