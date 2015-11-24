@@ -12,7 +12,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
-for file in "${RNC_TEST_SUITE_HOME}"*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*.ruleml
+for file in "${RNC_TEST_SUITE_HOME}"*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*/*/*.ruleml
 do
   filename=$(basename "${file}")
   echo "File "${filename}
