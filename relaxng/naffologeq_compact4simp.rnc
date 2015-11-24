@@ -325,12 +325,6 @@ include "modules/plex_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
-#
-#include "modules/val_absence_expansion_module.rnc" inherit = ruleml {
-#  start |= notAllowed
-#}
-# 
 # SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
 #
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {
