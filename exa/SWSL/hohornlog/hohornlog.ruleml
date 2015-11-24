@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?xml-model href="../../../relaxng/nafhologeq_relaxed.rnc"?>
 <RuleML
 xmlns="http://ruleml.org/spec"
+xmlns:ex="http://example.org"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/hohornlog.xsd">
+>
 
 <!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
 
@@ -92,7 +93,7 @@ xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/x
 
 
 					<Uniterm>
-						<Const iri="test">unequal</Const>
+						<Const iri="ex:test">unequal</Const>
       					<slot><Const>label</Const><Const>an example fact</Const></slot>
 						<resl><Var>test</Var></resl>
 					</Uniterm>

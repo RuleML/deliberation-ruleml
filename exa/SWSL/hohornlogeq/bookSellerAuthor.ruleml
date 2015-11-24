@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
-
-
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/hohornlogeq.xsd">
+<?xml-model href="../../../relaxng/nafhologeq_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
 
 <!--an example: Looking for a situation wherein a  buyer purchases from a seller a book whose author is LeRif, 
     where the seller is also the author.(A Herbrand RIF condition in XML syntax -fully striped) -->
