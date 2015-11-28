@@ -28,5 +28,7 @@ done
 
 for file in "${RNC_HOME}"*"4simp.rnc"
 do
-  cp "${file}" "${RNC4SIMP_HOME}"
+  filename=$(basename "$file")
+  newfilename="${filename/4simp/}"
+  cp "${file}" "${RNC4SIMP_HOME}${newfilename}"
 done
