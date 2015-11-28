@@ -122,6 +122,10 @@ do
   filename=$(basename "${file}")
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${csfile}" "${file}"
+  if [[ "$?" -ne "0" ]]; then
+          echo "Validation Failed for ${file}"
+          exit 1
+  fi       
   "${BASH_HOME}aux_valxsd.sh" "${cxsfile}" "${file}"
   if [[ "$?" -ne "0" ]]; then
           echo "Validation Failed for ${file}"
