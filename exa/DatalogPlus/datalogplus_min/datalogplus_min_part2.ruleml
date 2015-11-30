@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <Query>
+    <!-- 
+         Is there any inconsistency?
+         Fails, indicating consistency. 
+         Sublanguage: ncdatalog         
+      -->
+    <Or/>
+  </Query>
+  <Assert>
+    <!-- 
+         Functionality Constraint: 
+         Everyone (or everything) has at most one supervisor. 
+         Sublanguage: datalogeq         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Var>z</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>supervises</Rel>
+              <Var>x</Var>
+              <Var>z</Var>
+            </Atom>
+            <Atom>
+              <Rel>supervises</Rel>
+              <Var>y</Var>
+              <Var>z</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Equal>
+            <Var>x</Var>
+            <Var>y</Var>
+          </Equal>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Margaret</Ind>
+      <Ind>Bill</Ind>
+    </Atom>
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Peggy</Ind>
+      <Ind>Bill</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!-- 
+          Is Peggy the same as Margaret?
+          Answer:
+          Succeeds.
+          Sublanguage: datalogeq         
+     -->
+    <Equal>
+      <Ind>Peggy</Ind>
+      <Ind>Margaret</Ind>
+    </Equal>
+  </Query>
+
+  <Assert>
+    <!-- 
+          Negative Constraints are allowed.
+          No one (or no thing) is their own supervisor. 
+          Sublanguage: ncdatalog         
+      -->
+    <Forall>
+      <Var>x</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>supervises</Rel>
+            <Var>x</Var>
+            <Var>x</Var>
+          </Atom>
+        </if>
+        <then>
+          <Or/>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Assert>
+    <!-- 
+          Margaret supervises Peggy.
+          Sublanguage: datalog         
+    -->
+    <Atom>
+      <Rel>supervises</Rel>
+      <Ind>Margaret</Ind>
+      <Ind>Peggy</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!-- 
+          Is there any inconsistency?
+          Succeeds, indicating inconsistency.
+          Sublanguage: ncdatalog         
+    -->
+    <Or/>
+  </Query>
+</RuleML>
