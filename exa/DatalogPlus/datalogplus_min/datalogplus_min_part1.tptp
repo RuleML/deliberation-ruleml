@@ -1,0 +1,114 @@
+% Equations are allowed as facts:
+% William is an employee.
+% "Bill" is an alias for "William".
+% Sublanguage: datagroundfacteq
+fof(act1_formula1,axiom,(
+    employee(william) )).
+
+fof(act1_formula2,axiom,(
+    bill = william )).
+
+% Who are the employees?
+% Answers:
+% x: <Ind>Bill</Ind>
+% x: <Ind>William</Ind>
+% Sublanguage: datalogeq
+fof(act2_formula1,conjecture,(
+    employee(X) )).
+
+% Equations may be universally quantified.
+% This fact is a degenerate case, corresponding to the body of an implication being empty.
+% The following makes the reflexive property of equality explicit (as built into most systems):
+% Everything is equal to itself.
+% Sublanguage: datalogeq
+fof(act3_formula1,axiom,(
+    ! [X] : X = X )).
+
+% What is equal to itself?
+% Answers:
+% x: <Ind>Bill</Ind>
+% x: <Ind>William</Ind>
+% Sublanguage: datalogeq
+fof(act4_formula1,conjecture,(
+    X = X )).
+
+% Non-ground facts are allowed.
+% John is the CEO.
+% John is responsible for everything.
+% Sublanguage: datalogeq
+fof(act5_formula1,axiom,(
+    cEO(john) )).
+
+fof(act5_formula2,axiom,(
+    ! [X] : responsible_for(john,X) )).
+
+% Is John responsible for Bill?
+% Answers:
+% Succeeds.
+% Sublanguage: datalogeq
+fof(act6_formula1,conjecture,(
+    responsible_for(john,bill) )).
+
+% Rules are expressed as universally-quantified implications.
+% A simple rule can be used to assert a subclass relationship:
+% Every manager is an employee.
+% Sublanguage: datalog
+fof(act7_formula1,axiom,(
+    ! [X] :
+      ( manager(X)
+     => employee(X) ) )).
+
+fof(act7_formula2,axiom,(
+    manger(john) )).
+
+% Who are the employees?
+% Answers:
+% x: <Ind>Bill</Ind>
+% x: <Ind>William</Ind>
+% x: <Ind>John</Ind>
+% Sublanguage: datalog
+fof(act8_formula1,conjecture,(
+    employee(X) )).
+
+% Equations are allowed in the body of (existential) implications.
+% If anyone is the same as Margaret, then they supervise someone.
+% (Note that this rule could be semantically simplified
+% to an existential fact relying on axioms of equality.)
+% Sublanguage: datalogexeq
+fof(act9_formula1,axiom,(
+    ! [X] :
+      ( margaret = X
+     => ? [Y] : supervises(X,Y) ) )).
+
+% Does Margaret supervise someone?
+% Answer:
+% Succeeds
+% Sublanguage: datalogeq
+fof(act10_formula1,conjecture,(
+    ? [Y] : supervises(margaret,Y) )).
+
+% Pairwise Disjoint Classes
+% Nothing is both an employee and a department.
+% Sublanguage: ncdatalog
+fof(act11_formula1,axiom,(
+    ! [X] :
+      ( ( employee(X)
+        & department(X) )
+     => $false ) )).
+
+% HR is an employee.
+% HR is a department.
+% These facts together with the previous rule create an inconsistency.
+% Sublanguage: datalog
+fof(act12_formula1,axiom,(
+    employee(hR) )).
+
+fof(act12_formula2,axiom,(
+    department(hR) )).
+
+% Is there any inconsistency?
+% Succeeds, indicating inconsistency.
+% Sublanguage: ncdatalog
+fof(act13_formula1,conjecture,(
+    $false )).
+

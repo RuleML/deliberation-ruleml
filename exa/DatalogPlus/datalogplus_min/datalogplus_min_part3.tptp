@@ -1,0 +1,61 @@
+% Is there any inconsistency?
+% Fails, indicating consistency.
+% Sublanguage: ncdatalog
+fof(act1_formula1,conjecture,(
+    $false )).
+
+% Equations may appear in the body of negative constraints.
+% The simplest case is the assertion that two individuals
+% are different (as built into systems making the unique name assumption).
+% Sublanguage: ncdatalogeq
+% 
+fof(act2_formula1,axiom,
+    ( sue = maria
+   => $false )).
+
+% Is Sue the same as Maria?
+% Answer:
+% Fails.
+% Sublanguage: datalogeq
+fof(act3_formula1,conjecture,(
+    sue = maria )).
+
+% Existential (Head) Rules
+% Every manager directs at least one department.
+% Maria is a manager.
+% Sublanguage: datalogex
+fof(act4_formula1,axiom,(
+    ! [M] :
+      ( manager(M)
+     => ? [P] : directs(M,P) ) )).
+
+fof(act4_formula2,axiom,(
+    manager(maria) )).
+
+% Does Maria direct a department?
+% Answer:
+% Succeeds.
+% Sublanguage: datalog
+fof(act5_formula1,conjecture,(
+    ? [P] : directs(maria,P) )).
+
+% The heads and bodies of existential rules can contain conjunctions.
+% Every employee who directs a department is a manager, and supervises at
+% least another employee who works in the same department.
+% Sublanguage: datalogexcon
+fof(act6_formula1,axiom,(
+    ! [E,P] :
+      ( ( employee(E)
+        & directs(E,P) )
+     => ? [E'] :
+          ( manager(E)
+          & supervises(E,E')
+          & works_in(E',P) ) ) )).
+
+% Does Maria supervise someone?
+% Answer:
+% Succeeds.
+% Sublanguage: datalog
+fof(act7_formula1,conjecture,(
+    ? [E'] : supervises(maria,E') )).
+

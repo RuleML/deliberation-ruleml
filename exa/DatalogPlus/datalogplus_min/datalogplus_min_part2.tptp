@@ -1,0 +1,47 @@
+% Is there any inconsistency?
+% Fails, indicating consistency.
+% Sublanguage: ncdatalog
+fof(act1_formula1,conjecture,(
+    $false )).
+
+% Functionality Constraint:
+% Everyone (or everything) has at most one supervisor.
+% Sublanguage: datalogeq
+fof(act2_formula1,axiom,(
+    ! [X,Y,Z] :
+      ( ( supervises(X,Z)
+        & supervises(Y,Z) )
+     => X = Y ) )).
+
+fof(act2_formula2,axiom,(
+    supervises(margaret,bill) )).
+
+fof(act2_formula3,axiom,(
+    supervises(peggy,bill) )).
+
+% Is Peggy the same as Margaret?
+% Answer:
+% Succeeds.
+% Sublanguage: datalogeq
+fof(act3_formula1,conjecture,(
+    peggy = margaret )).
+
+% Negative Constraints are allowed.
+% No one (or no thing) is their own supervisor.
+% Sublanguage: ncdatalog
+fof(act4_formula1,axiom,(
+    ! [X] :
+      ( supervises(X,X)
+     => $false ) )).
+
+% Margaret supervises Peggy.
+% Sublanguage: datalog
+fof(act5_formula1,axiom,(
+    supervises(margaret,peggy) )).
+
+% Is there any inconsistency?
+% Succeeds, indicating inconsistency.
+% Sublanguage: ncdatalog
+fof(act6_formula1,conjecture,(
+    $false )).
+

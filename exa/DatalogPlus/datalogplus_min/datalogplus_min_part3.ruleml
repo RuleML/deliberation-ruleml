@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalogplus_min_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec">
+  <Query>
+    <!-- 
+          Is there any inconsistency?
+          Fails, indicating consistency.
+          Sublanguage: ncdatalog         
+    -->
+    <Or/>
+  </Query>
+  <Assert>
+    <!-- 
+          Equations may appear in the body of negative constraints.
+          The simplest case is the assertion that two individuals
+          are different (as built into systems making the unique name assumption).
+          Sublanguage: ncdatalogeq         
+         
+      -->
+    <Implies>
+      <if>
+        <Equal>
+          <Ind>Sue</Ind>
+          <Ind>Maria</Ind>
+        </Equal>
+      </if>
+      <then>
+        <Or/>
+      </then>
+    </Implies>
+  </Assert>
+  <Query>
+    <!-- 
+          Is Sue the same as Maria?
+          Answer:
+          Fails.
+          Sublanguage: datalogeq         
+      -->
+    <Equal>
+      <Ind>Sue</Ind>
+      <Ind>Maria</Ind>
+    </Equal>
+  </Query>
+
+  <Assert>
+    <!-- 
+          Existential (Head) Rules
+          Every manager directs at least one department.
+          Maria is a manager.
+          Sublanguage: datalogex         
+      -->
+    <Forall>
+      <Var>M</Var>
+      <Implies>
+        <if>
+          <Atom>
+            <Rel>manager</Rel>
+            <Var>M</Var>
+          </Atom>
+        </if>
+        <then>
+          <Exists>
+            <Var>P</Var>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>M</Var>
+              <Var>P</Var>
+            </Atom>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+    <Atom>
+      <Rel>manager</Rel>
+      <Ind>Maria</Ind>
+    </Atom>
+  </Assert>
+  <Query>
+    <!-- 
+          Does Maria direct a department?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
+    <Exists>
+      <Var>P</Var>
+      <Atom>
+        <Rel>directs</Rel>
+        <Ind>Maria</Ind>
+        <Var>P</Var>
+      </Atom>
+    </Exists>
+  </Query>
+
+  <Assert>
+    <!-- 
+          The heads and bodies of existential rules can contain conjunctions.
+          Every employee who directs a department is a manager, and supervises at 
+          least another employee who works in the same department.
+          Sublanguage: datalogexcon         
+      -->
+    <Forall>
+      <Var>E</Var>
+      <Var>P</Var>
+      <Implies>
+        <if>
+          <And>
+            <Atom>
+              <Rel>employee</Rel>
+              <Var>E</Var>
+            </Atom>
+            <Atom>
+              <Rel>directs</Rel>
+              <Var>E</Var>
+              <Var>P</Var>
+            </Atom>
+          </And>
+        </if>
+        <then>
+          <Exists>
+            <Var>E'</Var>
+            <And>
+              <Atom>
+                <Rel>manager</Rel>
+                <Var>E</Var>
+              </Atom>
+              <Atom>
+                <Rel>supervises</Rel>
+                <Var>E</Var>
+                <Var>E'</Var>
+              </Atom>
+              <Atom>
+                <Rel>works_in</Rel>
+                <Var>E'</Var>
+                <Var>P</Var>
+              </Atom>
+            </And>
+          </Exists>
+        </then>
+      </Implies>
+    </Forall>
+  </Assert>
+  <Query>
+    <!-- 
+          Does Maria supervise someone?
+          Answer:
+          Succeeds.
+          Sublanguage: datalog         
+      -->
+    <Exists>
+      <Var>E'</Var>
+      <Atom>
+        <Rel>supervises</Rel>
+        <Ind>Maria</Ind>
+        <Var>E'</Var>
+      </Atom>
+    </Exists>
+  </Query>
+</RuleML>
