@@ -170,6 +170,7 @@ echo 'default namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
 echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";
+echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]'."\n";
 echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dcterms:description ['."\n";
