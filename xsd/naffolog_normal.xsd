@@ -13,44 +13,7 @@
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
   
-  <xs:group name="Node.choice">
-    <xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:RuleML"/>
-        <xs:element ref="ruleml:Assert"/>
-        <xs:element ref="ruleml:Retract"/>
-        <xs:element ref="ruleml:Query"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:Atom"/>
-        <xs:element ref="ruleml:Rel"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:group ref="ruleml:And-Query-node.choice"/>
-        <xs:group ref="ruleml:Or-Query-node.choice"/>
-      </xs:choice>
-      <xs:element ref="ruleml:Implies"/>
-      <xs:choice>
-        <xs:element ref="ruleml:Forall"/>
-        <xs:element ref="ruleml:Exists"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:Expr"/>
-        <xs:element ref="ruleml:Fun"/>
-      </xs:choice>
-      <xs:element ref="ruleml:Rulebase"/>
-      <xs:element ref="ruleml:Entails"/>
-      <xs:element ref="ruleml:Neg"/>
-      <xs:element ref="ruleml:Naf"/>
-      <xs:element ref="ruleml:Equivalent"/>
-      <xs:element ref="ruleml:Data"/>
-      <xs:element ref="ruleml:Skolem"/>
-      <xs:element ref="ruleml:Reify"/>
-      <xs:element ref="ruleml:Ind"/>
-      <xs:element ref="ruleml:Var"/>
-      <xs:group ref="ruleml:Plex_Any.Node.def"/>
-    </xs:choice>
-  </xs:group>
+  
   
   
   <xs:element name="RuleML" type="ruleml:RuleML.type.def">
@@ -2885,13 +2848,8 @@
     </xs:sequence>
   </xs:group>
   <xs:element name="Data" type="xs:anyType"/>
-  <xs:complexType mixed="true" name="Data_any.type.def">
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:anyElement.def"/>
-    <xs:attributeGroup ref="ruleml:reData.attlist"/>
-  </xs:complexType>
-  <xs:attributeGroup name="reData.attlist">
-    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
-  </xs:attributeGroup>
+  
+  
   <xs:group name="anyElement.choice">
     <xs:annotation>
       <xs:documentation/>
@@ -2955,20 +2913,10 @@
     </xs:sequence>
   </xs:group>
   <xs:element name="Reify"><xs:complexType><xs:sequence><xs:any minOccurs="0" processContents="strict" namespace="##targetNamespace"/></xs:sequence><xs:attributeGroup ref="ruleml:commonNode.attlist"/></xs:complexType></xs:element>
-  <xs:complexType name="Reify-any.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Reify-any.content">
-        <xs:attributeGroup ref="ruleml:Reify-any.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="Reify-any.attlist">
-    <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
-  </xs:attributeGroup>
   
-  <xs:complexType name="Reify-any.content">
-    <xs:group minOccurs="0" ref="ruleml:AnyThis.def"/>
-  </xs:complexType>
+  
+  
+  
   <xs:group name="AnyThis.def">
     <xs:sequence>
       <xs:any namespace="##targetNamespace" processContents="lax"/>
