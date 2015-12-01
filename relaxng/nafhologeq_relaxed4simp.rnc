@@ -1,34 +1,20 @@
-# Call parameters
-# GET parameter: backbone=x3f
-# GET parameter: default=x7
-# GET parameter: termseq=x7
-# GET parameter: lng=x1
-# GET parameter: propo=x3ff
-# GET parameter: implies=x7f
-# GET parameter: terms=xf3f
-# GET parameter: quant=x7
-# GET parameter: expr=xf
-# GET parameter: serial=x4f
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
-dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x4f" ]
+dcterms:title [ "Deliberation RuleML Holog Schema" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_relaxed4simp" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "Deliberation RuleML, custom-built" ]
+dc:subject [ "Deliberation RuleML, Holog" ]
 dcterms:description [
-    "custom-built main module for a Deliberation RuleML sublanguage."
+  "driver for the relaxed serialization for the Deliberation RuleML holog language (for generation of content models)."
 ]
-dcterms:date [ "2015-11-17T17:23:47-05:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 
 dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
-# Base URL = http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php 
-# Complete URL = 
-#     http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x4f
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -108,17 +94,17 @@ include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
 #
 #include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# ASYNCHRONOUS STRIPE-SKIPPING MODE DISABLED
+# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
 #
-#include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-#include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
 include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
-# EXPLICIT DATATYPING DISABLED FOR CONVERSTION TO XSD
+# EXPLICIT DATATYPING DISABLED FOR SIMPLIFICATION
 # 
 # include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -126,9 +112,11 @@ include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {star
 # include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
-# xsi:schemaLocation IN ROOT DISABLED FOR CONVERSTION TO XSD
-# 
-# include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# xsi:schemaLocation IN ROOT ENABLED
+#
+include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 # 
 # WEB REFERENCES INCLUDED
 #
@@ -256,7 +244,7 @@ include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllo
 #
 # REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
 #
-include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
 #

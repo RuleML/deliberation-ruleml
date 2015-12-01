@@ -16,6 +16,7 @@ do
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[2]}" "${RNC4SIMP_HOME}${tokens[0]}_relaxed.rnc"
 done < "${BASH_HOME}config_rnc4simp.txt"
 
+cp "${RNC_HOME}nafhologeq_relaxed4simp.rnc" "${RNC4SIMP_HOME}nafhologeq_relaxed.rnc"
 
 for file in "${RNC4SIMP_HOME}"*.rnc
 do
