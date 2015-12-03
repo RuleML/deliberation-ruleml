@@ -17,12 +17,14 @@ shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 # 
-# clears the simplifed directory
-rm "${SIMP_HOME}"*.rnc >> /dev/null 2>&1
+# creates the simplifed directory if it doesn't exist, and clears it, in case it already has contents
+mkdir -p "${SIMP_HOME}"
+rm "${SIMP_HOME}"*.rnc  >> /dev/null 2>&1
 
 for file in "${RNC4SIMP_HOME}"*.rnc
 do
   filename=$(basename "$file")
+  echo "${filename}"
   "${BASH_HOME}rnc2simp.sh" "$file" "${SIMP_HOME}${filename}"
   if [[ "$?" -ne "0" ]]; then
      echo "Simplification Failed for ${filename}"

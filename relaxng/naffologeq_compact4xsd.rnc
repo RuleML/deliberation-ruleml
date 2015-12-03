@@ -323,12 +323,6 @@ include "modules/plex_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
-#
-include "modules/val_absence_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
-# 
 # SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
 #
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {
@@ -377,3 +371,7 @@ include "modules/key_expansion_module.rnc"
         inherit = ruleml {
   start |= notAllowed
 }
+#
+# STYLE ATTRIBUTE ENABLED
+#
+include "http://consumer.ruleml.org/1.03/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

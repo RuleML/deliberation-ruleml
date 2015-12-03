@@ -157,12 +157,15 @@ formula_Query.content |= QueryFormula.choice
 
 ## The RuleML type accepts the common Node attributes. 
 reRuleML.attlist &= commonNode.attlist?
+reRuleML.attlist &= style-att.choice?
 
 ## The Assert/Retract type accepts the common Node attributes. 
 reAssertRetract.attlist &= commonNode.attlist?
+reAssertRetract.attlist &= style-att.choice?
 
 ## The Query type accepts the common Node attributes. 
 reQuery.attlist &= commonNode.attlist?
+reQuery.attlist &= style-att.choice?
 
 ## The Assert/Retract formula type accepts the common attributes. 
 formula_AssertRetract.attlist &= commonInit.attlist?

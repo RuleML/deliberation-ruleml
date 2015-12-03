@@ -92,7 +92,7 @@
       <xsl:element name="ruleml:Ind"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Atom[not(ruleml:op)]">
+  <xsl:template match="ruleml:Atom[count(ruleml:op)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:op">
@@ -100,7 +100,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Expr[not(ruleml:op)]">
+  <xsl:template match="ruleml:Expr[count(ruleml:op)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:op">
@@ -108,7 +108,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Equal[not(ruleml:left) or not(ruleml:right)]">
+  <xsl:template match="ruleml:Equal[count(ruleml:left)=0 or count(ruleml:right)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:left">
@@ -119,7 +119,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Naf[not(ruleml:weak)]">
+  <xsl:template match="ruleml:Naf[count(ruleml:weak)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:weak">
@@ -131,7 +131,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Neg[not(ruleml:strong)]">
+  <xsl:template match="ruleml:Neg[count(ruleml:strong)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:strong">
@@ -143,7 +143,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Equivalent[not(ruleml:torso[2])]">
+  <xsl:template match="ruleml:Equivalent[count(ruleml:torso[2])=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:torso">
@@ -162,7 +162,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Implies[not(ruleml:if) or not(ruleml:then)]">
+  <xsl:template match="ruleml:Implies[count(ruleml:if)=0 or count(ruleml:then)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:if">
@@ -177,7 +177,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Entails[not(ruleml:if) or not(ruleml:then)]">
+  <xsl:template match="ruleml:Entails[count(ruleml:if)=0 or count(ruleml:then)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:if">
@@ -188,7 +188,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Exists[not(ruleml:declare) or not(ruleml:formula)]">
+  <xsl:template match="ruleml:Exists[count(ruleml:declare)=0 or count(ruleml:formula)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:declare">
@@ -203,7 +203,7 @@
       </xsl:element>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="ruleml:Forall[not(ruleml:declare) or not(ruleml:formula)]">
+  <xsl:template match="ruleml:Forall[count(ruleml:declare)=0 or count(ruleml:formula)=0]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="ruleml:declare">

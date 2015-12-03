@@ -26,14 +26,14 @@ for f in "${RNC4XSD_HOME}"*.rnc
 do
   filename=$(basename "$f")
   filenameNE="${filename%.*}"
-  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_HOME}${filenameNE}.xsd" "{$simplify}" "{$finish}"
+  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
 done
 
 for f in "${RNC4XSD_MIN_HOME}"*.rnc
 do
   filename=$(basename "$f")
   filenameNE="${filename%.*}"
-  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_MIN_HOME}${filenameNE}.xsd" "{$simplify}" "{$finish}"
+  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_MIN_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
 done
 
 

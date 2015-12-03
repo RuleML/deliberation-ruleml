@@ -88,7 +88,7 @@ $bquant = processGETParameter ($quant);
 $quantParam = "x".dechex(bindec($bquant));
 //
 $expr = "expr";
-$expr_val_absent = 0;
+//$expr_val_absent = 0;
 $expr_plex = 1;
 $expr_val_nondefault = 2;
 $expr_in = 3;
@@ -170,6 +170,7 @@ echo 'default namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
 echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";
+echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]'."\n";
 echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dcterms:description ['."\n";
@@ -232,6 +233,7 @@ if ($bdefault==0){
   // The pivot bit is monotonic in the other direction.
   $notPivot = 1-extractBit($bserialization, $serialization_pivot);
   $enableKey = extractBit($bserialization, $serialization_key);
+  $enableStyle = 1;
   
   $enableIRI = extractBit($bpropo, $propo_iri);
   $enableRulebase = extractBit($bpropo, $propo_rulebase);
@@ -320,7 +322,6 @@ if ($bdefault==0){
   $needResl = extractBit($bquant, $quant_resl);
   $enableRepo = extractBit($bquant, $quant_repo);
   
-  $enableValAbsent = extractBit($bexpr, $expr_val_absent);
   $enablePlex = extractBit($bexpr, $expr_plex);
   $enableValND = extractBit($bexpr, $expr_val_nondefault);
   $NeedValND = $enableValND;
@@ -341,7 +342,7 @@ if ($bdefault==0){
   // if and then edges are skippable when not converting to XSD and not a "plus" language
   $NeedIfThenSkippable = max( $notPivot, $notPlus );
    
-  $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND);
+  $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND, $enableStyle);
 
   //Step 1. Assemble the language foundation
   if ($enableAbsolute) {
@@ -793,13 +794,6 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'plex_expansion_module.rnc"'."$end\n";
     }
-
-  // Include empty initialization of set-valued attribute if needed
-  if ( $enableValAbsent ){
-      echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL\n";
-      echo "#\n".'include "' . $modulesLocation .
-          'val_absence_expansion_module.rnc"'."$end\n";
-  }  
   // Include set-valued expression attribute if needed
  if ($needValAtt){
     echo "#\n# SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED\n";
@@ -848,6 +842,12 @@ if ($bdefault==0){
       echo "#\n# KEY/KEYREF ATTRIBUTES ENABLED\n";
       echo "#\n".'include "' . $modulesLocation .
           'key_expansion_module.rnc"'."$end\n";
+  }
+  // Include key and keyref attributes
+  if ($enableStyle){
+      echo "#\n# STYLE ATTRIBUTE ENABLED\n";
+      echo "#\n".'include "' . $consumerModulesLocation .
+          'consumer_attribute_expansion_module.rnc"'."$end\n";
   }
 
 

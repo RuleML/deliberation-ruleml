@@ -1,36 +1,61 @@
+# Call parameters
+# GET parameter: backbone=x3f
+# GET parameter: default=x7
+# GET parameter: termseq=x7
+# GET parameter: lng=x1
+# GET parameter: propo=x3ff
+# GET parameter: implies=x7f
+# GET parameter: terms=xf3f
+# GET parameter: quant=x7
+# GET parameter: expr=xf
+# GET parameter: serial=x4f
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
-dcterms:title [ "Deliberation RuleML CompXR Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/naffologeq_compact.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
+dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x4f" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "Deliberation RuleML, compact" ]
+dc:subject [ "Deliberation RuleML, custom-built" ]
 dcterms:description [
-    "driver for the if-then compact serialization for the Deliberation RuleML supremum language (allowing if and then stripes in implications) (for coversion to XSD)."
+    "custom-built main module for a Deliberation RuleML sublanguage."
 ]
+dcterms:date [ "2015-11-17T17:23:47-05:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
-dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
+
+dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
+# Base URL = http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php 
+# Complete URL = 
+#     http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xf3f&quant=x7&expr=xf&serial=x4f
  start = Node.choice | edge.choice
 #
-# COMPACT MODULE INCLUDED
+# ROOT NODE AND PERFORMATIVES INCLUDED
 #
-include "modules/naffologeq_compact_expansion_module.rnc" inherit = ruleml {
-start |= notAllowed
-}
+include "modules/performative_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/performative_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# ATOMIC FORMULAS INCLUDED
+#
+include "modules/atom_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# CONJUNCTIONS AND DISJUNCTIONS INCLUDED
+#
+include "modules/andor_query_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # IMPLICATIONS INCLUDED
 #
-include "modules/implication_expansion_module.rnc" inherit = ruleml {
-start |= notAllowed
-}
+include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# QUANTIFICATION OVER VARIABLES INCLUDED
+#
+include "modules/quantification_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # EXPRESSIONS INCLUDED
+#
+include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
@@ -42,6 +67,12 @@ include "modules/expr_type_expansion_module.rnc" inherit = ruleml {start |= notA
 include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/folog_closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# HIGHER-ORDER LOGIC SYNTAX ENABLED
+#
+include "modules/holog_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 #
 # ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED
 #
@@ -61,36 +92,45 @@ include "modules/default_present_folog_expansion_module.rnc" inherit = ruleml {s
 #
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# ORDER MODE - UNORDERED GROUPS ENABLED
+#
+include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
 #
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE DISABLED
+# SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED
 #
-#include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# ASYNCHRONOUS STRIPE-SKIPPING MODE DISABLED
+# OPERATOR STRIPE-SKIPPING MODE ENABLED
 #
-#include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-#include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
+#
+include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
 include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# EXPLICIT DATATYPING DISABLED FOR CONVERSTION TO XSD
+# EXPLICIT DATATYPING ENABLED
 #
-#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# xsi:schemaLocation DISABLED FOR CONVERSTION TO XSD
+include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-#include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# xsi:schemaLocation ALLOWED IN RuleML
+#
+include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # WEB REFERENCES INCLUDED
 #
@@ -100,9 +140,25 @@ include "modules/web_expansion_module.rnc" inherit = ruleml {start |= notAllowed
 #
 include "modules/iri_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# RULEBASES INCLUDED
+#
+include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ENTAILMENTS (PROVES) INCLUDED
+#
+include "modules/metalevel_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # DEGREE OF UNCERTAINTY INCLUDED
 #
 include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# STRONG NEGATION INCLUDED
+#
+include "modules/neg_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# WEAK NEGATIONS INCLUDED
+#
+include "modules/naf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # NODE IDENTIFIERS INCLUDED
 #
@@ -119,6 +175,10 @@ include "modules/xml_base_expansion_module.rnc" inherit = ruleml {start |= notAl
 # XML ID ATTRIBUTE INCLUDED
 #
 include "modules/xml_id_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# EQUIVALENCES INCLUDED
+#
+include "modules/equivalent_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INFERENCE DIRECTION ATTRIBUTE IS INCLUDED
 #
@@ -164,6 +224,10 @@ include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 #
 include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# EQUATIONS INCLUDED
+#
+include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # ORIENTED EQUALITY ATTRIBUTE IS INCLUDED
 #
 include "modules/oriented_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -192,9 +256,13 @@ include "modules/data_any_content_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT (FOR XSD GENERATION)
+# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
 #
-include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED
+#
+include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
 #

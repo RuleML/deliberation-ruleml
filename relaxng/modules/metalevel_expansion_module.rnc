@@ -32,6 +32,7 @@ Entails.Node.def =
   element Entails { Entails.type.def }
 Entails.type.def = (Entails-datt.choice & reEntails.attlist), Entails.header, Entails.main
 reEntails.attlist &= commonNode.attlist?
+reEntails.attlist &= style-att.choice?
 
 ## Logical entailments accept the header pattern common to Nodes.
 Entails.header &= Node.header?

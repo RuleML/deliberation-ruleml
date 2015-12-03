@@ -71,6 +71,10 @@ do
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}" "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Completion Failed for  ${filename} - Removing"
+     rm "${file}"
+   fi
   "${BASH_HOME}aux_valxsd.sh" "${mxsfile}" "${file}"
   if [[ "$?" -ne "0" ]]; then
      echo "Completion Failed for  ${filename} - Removing"

@@ -5,8 +5,31 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
-"${DOC_SCRIPT}"  "${XSD_HOME}datalogplus_min_normal.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+mkdir -p "${REPO_HOME}doc/"
+anchor="datalogplus_min_normal"
+mkdir -p "${REPO_HOME}doc/${anchor}"
+rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
+"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
  
-"${DOC_SCRIPT}"  "${XSD_HOME}disdatalogplus_mid_normal.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+anchor="disdatalogplus_mid_normal"
+mkdir -p "${REPO_HOME}doc/${anchor}"
+rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
+"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
 
-"${DOC_SCRIPT}"  "${XSD_HOME}naffologeq_normal.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+anchor="naffologeq_normal"
+mkdir -p "${REPO_HOME}doc/${anchor}"
+rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
+"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+

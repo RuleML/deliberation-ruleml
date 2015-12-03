@@ -6,7 +6,7 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${INSTANCE_COMPACTIFTHEN_HOME}"
-if [[ ${INSTANCE_COMPACTIFTHEN_HOME} ]]; then rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.lrml  >> /dev/null 2>&1; fi
+if [[ ${INSTANCE_COMPACTIFTHEN_HOME} ]]; then rm "${INSTANCE_COMPACTIFTHEN_HOME}"*.ruleml  >> /dev/null 2>&1; fi
 
 family="naffologeq_"
 # Validate XSD schema
@@ -56,6 +56,10 @@ do
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Completion Failed for  ${filename} - Removing"
+     rm "${file}"
+   fi
   "${BASH_HOME}aux_valxsd.sh" "${sxfile}" "${file}"
   if [[ "$?" -ne "0" ]]; then
      echo "Completion Failed for  ${filename} - Removing"

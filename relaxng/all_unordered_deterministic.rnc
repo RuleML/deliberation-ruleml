@@ -104,7 +104,6 @@ include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= 
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/val_absence_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -118,5 +117,5 @@ include "modules/xml_space_expansion_module.rnc" inherit = ruleml {start |= notA
 include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/key_expansion_module.rnc"
-
+include "http://consumer.ruleml.org/1.03/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
     

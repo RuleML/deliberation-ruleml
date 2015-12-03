@@ -64,6 +64,7 @@ head_Entails-ss.content |= notAllowed
 # 
 # ATTRIBUTE LISTS
 reAnd.attlist &= empty
+reAtom.attlist &= empty
 # reAnd-Query.attlist &= empty
 formula_And.attlist &= empty
 reOr.attlist &= empty
@@ -87,7 +88,7 @@ reExpr.attlist &= empty
 # body_Implies.attlist &= empty
 # head_Implies.attlist &= empty
 # rearg.attlist &= empty
-# reInd.attlist &= empty
+ reInd.attlist &= empty
 # reEntails.attlist &= empty
 # body_Entails.attlist &= empty
 # head_Entails.attlist &= empty
@@ -185,6 +186,8 @@ oriented-att.choice |= notAllowed
 oriented-att-inf.choice |= notAllowed
 singlevalued-att.choice |= notAllowed
 singlevalued-att-inf.choice |= notAllowed
+style-att.choice |= notAllowed
+type-att.choice |= notAllowed
 weight-att.choice |= notAllowed
 # 
 # ATTRIBUTES WITH DEFAULT VALUES
@@ -312,6 +315,7 @@ closure.value |= notAllowed
 direction.value |= notAllowed
 direction_default.value |= notAllowed
 direction_non-default.value |= notAllowed
+Ind.value |= notAllowed
 interpretation.value |= notAllowed
 interpretation_default.value |= notAllowed
 interpretation_non-default.value |= notAllowed

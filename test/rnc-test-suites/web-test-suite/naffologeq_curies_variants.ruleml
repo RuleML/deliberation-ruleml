@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.01/relaxng/datalog_relaxed.rnc" 
+<?xml-model href="../../../relaxng/drivers/naffologeq_relaxed.rnc" 
   type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns="http://ruleml.org/spec"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xml:base="http://example.org"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.01/xsd/datalog.xsd"
- >
+  xmlns:this="http://deliberation.ruleml.org/1.02/test/iri-test-suite/datalog_curies.ruleml"
+  xmlns:sort="http://example.org/ontology#"
+  xmlns:ext="http://example.org/ruleml-extension/vocab#"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
   <!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage -->
   <act index="1">
-    <Assert node="#assert1">
+    <Assert node="this:#assert1" mapClosure="ext:exists!" mapDirection="ext:greencut" mapMaterial="ext:intuitionistic">
       <formula>
-        <Implies node="http://example.org#rule1">
+        <Implies node="http://example.org#rule1" closure="ext:none" material="ext:indicative" direction="ext:cut">
           <if>
             <And>
               <formula>
                 <Atom>
-                  <op><Rel iri="http://example.org/friend" node="#rel1">friend</Rel></op>
-                  <arg index=" 1"><Ind iri="#e" node="#f">Jane</Ind></arg>
-                  <arg index="2 "><Skolem node="#sk1">constant b</Skolem></arg>
+                  <op><Rel iri="_:" node="this:#rel1">friend</Rel></op>
+                  <arg index=" 1"><Ind iri="d:e" node="e:f">Jane</Ind></arg>
+                  <arg index="2 "><Skolem node="this:#sk1">constant b</Skolem></arg>
                   <arg index=" 3 "><Data xsi:type="xs:string">test</Data></arg>
                   <arg index="4"><Data xsi:type="xs:integer">12</Data></arg>
-                  <arg index="5"><Data node="#data1" xsi:type="integer">12</Data></arg>
-                  <arg index="6"><Data node="#data2">12a <xs:integer/></Data></arg>
+                  <arg index="5"><Data node="this:#data1" xsi:type="integer">12</Data></arg>
+                  <arg index="6"><Data node="this:#data2">12a <xs:integer/></Data></arg>
                   <arg index="7"><Data>tomorrow</Data></arg>
                   <arg index="8"><Data xsi:type="xs:dateTime">2002-10-10T17:00:00Z</Data></arg>
                   <arg index="9"><Data>test12</Data></arg>
-                  <arg index="10"><Ind>Jack</Ind></arg>
-                  <arg index="11"><Var type="vehicle">y</Var></arg>
-                  <arg index="12"><Ind>Frank</Ind></arg>
+                  <arg index="10"><Ind type="sort:person">Jack</Ind></arg>
+                  <arg index="11"><Var type="sort:car">y</Var></arg>
+                  <arg index="12"><Expr><Fun per="ext:lazy" val="ext:0..2"></Fun></Expr></arg>
                 </Atom>
               </formula>
             </And>
           </if>
           <then>
-            <Atom>
-              <meta>
-                <Atom>
-                  <op><Rel>P</Rel></op>
-                </Atom>
-              </meta>
-              <op><Rel iri="/c">friend</Rel></op>
-              <arg index="1"><Var>x</Var></arg>
-              <arg index="2"><Var>y</Var></arg>
-              <arg index="3"><Ind>Steph</Ind></arg>
-              <slot><Ind iri="#b">t</Ind><Data xsi:type="xs:positiveInteger">1</Data></slot>
-            </Atom>
+            <Equal oriented="ext:reverse">
+              <Ind>a</Ind>
+              <Expr><Fun>f</Fun><Var>x</Var></Expr>
+            </Equal>
           </then>
         </Implies>
       </formula>

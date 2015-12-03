@@ -28,6 +28,10 @@ do
     "${BASH_HOME}aux_web2rnc.sh" "${tokens[2]}" "${DRIVER_HOME}myng-${tokens[2]}.rnc"
 done < "${BASH_HOME}config_rnc_myng.txt"
 
+url="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_relaxed.rnc"
+echo "${url}"
+curl -L "${url}" > "${DRIVER_HOME}nafhologeq_relaxed.rnc"
+
 for file in "${DRIVER_HOME}"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "$file"

@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
-dcterms:title [ "Deliberation RuleML CompXR Schema" ]
+dcterms:title [ "Deliberation RuleML Compact Schema- naffologeq" ]
 dcterms:identifier [ "http://deliberation.ruleml.org/1.03/naffologeq_compact.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
@@ -325,12 +325,6 @@ include "modules/plex_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# SET-VALUED EXPRESSION ATTRIBUTE IS ABSENT OR OPTIONAL
-#
-include "modules/val_absence_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
-# 
 # SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
 #
 include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {
@@ -379,3 +373,7 @@ include "modules/key_expansion_module.rnc"
         inherit = ruleml {
   start |= notAllowed
 }
+#
+# STYLE ATTRIBUTE ENABLED
+#
+include "http://consumer.ruleml.org/1.03/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

@@ -71,3 +71,4 @@ RulebaseFormula.choice |=
 # For the declaration of the quantification patterns, see the quantification module (quantifier_module)
 formula_Rulebase.attlist &= commonInit.attlist?
 reRulebase.attlist &= commonNode.attlist?
+reRulebase.attlist &= style-att.choice?
