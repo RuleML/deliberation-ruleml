@@ -1892,6 +1892,8 @@
     </xs:sequence>
   </xs:group>
   
+  
+  
   <xs:group name="exprObjectIdentifier-edge.choice">
     <xs:sequence>
       <xs:group ref="ruleml:objectIdentifier-edge.choice"/>
@@ -2151,7 +2153,6 @@
       <xs:group ref="ruleml:head_Implies.content"/>
     </xs:sequence>
   </xs:group>
-  
   
   
   <xs:simpleType name="AbsIRI.datatype">
@@ -3417,7 +3418,6 @@
       <xs:group ref="ruleml:head_Implies-ss.content"/>
     </xs:sequence>
   </xs:group>
-  
   
   
   

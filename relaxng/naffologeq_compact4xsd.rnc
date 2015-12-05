@@ -1,19 +1,17 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
-namespace ruleml = "http://ruleml.org/spec"
+default namespace ruleml = "http://ruleml.org/spec"
 
-dcterms:title [ "Deliberation RuleML CompXR Schema" ]
+dcterms:title [ "Deliberation RuleML Compact Schema - naffologeq" ]
 dcterms:identifier [ "http://deliberation.ruleml.org/1.02/naffologeq_compact.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "Deliberation RuleML, compact" ]
+dc:subject [ "Deliberation RuleML, compact, First-Order Logic" ]
 dcterms:description [
-  "driver for the compact serialization for the Deliberation RuleML supremum language (for conversion to XSD)."
+  "driver for the compact serialization for the Deliberation RuleML FOL language (for conversion to XSD)."
 ]
 dcterms:language [ "en" ]
-dc:rights [
-  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
-]
+dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
 start = Node.choice | edge.choice
@@ -31,14 +29,8 @@ include "modules/performative_content_expansion_module.rnc" inherit = ruleml {
 # 
 # IMPLICATIONS REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
 #
-include "modules/implication_expansion_module.rnc" inherit = ruleml {
+include "modules/implication_compact_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
-  body_Implies.name.choice = notAllowed
-  head_Implies.name.choice = notAllowed
-  body_Implies.edge.def = notAllowed
-  head_Implies.edge.def = notAllowed
-  body_Implies.type.def = notAllowed
-  head_Implies.type.def = notAllowed
 }
 # 
 # EXPRESSIONS INCLUDED
@@ -115,11 +107,11 @@ include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
 # 
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
-include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
+#include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
-# EXPLICIT DATATYPING DISABLED FOR CONVERSTION TO XSD
+# EXPLICIT DATATYPING DISABLED FOR CONVERSION TO XSD
 # 
 # include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -127,7 +119,7 @@ include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
 # include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
-# xsi:schemaLocation IN ROOT DISABLED FOR CONVERSTION TO XSD
+# xsi:schemaLocation IN RuleML DISABLED FOR CONVERSION TO XSD
 # 
 # include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
@@ -374,4 +366,7 @@ include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc"
+        inherit = ruleml {
+  start |= notAllowed
+}

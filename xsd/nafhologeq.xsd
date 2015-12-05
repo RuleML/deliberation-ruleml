@@ -1,16 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
-  Call parameters
-  GET parameter: backbone=x3f
-  GET parameter: default=x7
-  GET parameter: termseq=x7
-  GET parameter: lng=x1
-  GET parameter: propo=x3ff
-  GET parameter: implies=x7f
-  GET parameter: terms=xf3f
-  GET parameter: quant=x7
-  GET parameter: expr=xf
-  GET parameter: serial=x4f
---><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.02/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
   
   
@@ -1696,125 +1684,114 @@
   
   <xs:group name="Atom.main">
     <xs:annotation>
-      <xs:documentation>Pre-fix operator notation for atomic formulas is optional in the
-        relaxed-form serialization. This pattern cannot be translated accurately into
-        XSD.</xs:documentation>
+      <xs:documentation>Pre-fix operator notation for atomic formulas is required in a deterministic
+        serialization.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
-        <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
-      </xs:choice>
+      <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
+      <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="argumentsForAtoms.sequence">
     <xs:annotation>
-      <xs:documentation>Slotted arguments and positional arguments in atomic formulas may be
-        interleaved in the relaxed-form serialization.  This pattern cannot be translated accurately
-        into XSD.</xs:documentation>
+      <xs:documentation>Slotted arguments may precede or  follow positional arguments  in atomic
+        formulas in the deterministic serialization. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
-        <xs:group ref="ruleml:slotsForAtoms.sequence"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="positionalArgumentsForAtoms.sequence">
-    <xs:annotation>
-      <xs:documentation>Positional rest arguments in atomic formulas may occur in  any position
-        relative to the slots in relaxed-form serialization.  This pattern cannot be translated
-        accurately into XSD.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:termsForAtoms.sequence"/>
-        <xs:group ref="ruleml:restOfPositionalArguments-edge.choice"/>
-      </xs:choice>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="slotsForAtoms.sequence">
-    <xs:annotation>
-      <xs:documentation>Slotted rest arguments in atomic formulas may occur in  any position
-        relative to the slots in relaxed-form serialization.  This pattern cannot be translated
-        accurately into XSD.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
+      <xs:sequence minOccurs="0">
+        <xs:choice>
+          <xs:sequence>
+            <xs:group ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:repo"/>
+          </xs:sequence>
+          <xs:group ref="ruleml:repo"/>
+        </xs:choice>
         <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
-        <xs:group ref="ruleml:restOfSlots-edge.choice"/>
-      </xs:choice>
+      </xs:sequence>
+      <xs:group minOccurs="0" ref="ruleml:resl"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="repo">
+    <xs:sequence>
+      <xs:group ref="ruleml:restOfPositionalArguments-edge.choice"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="resl">
+    <xs:sequence>
+      <xs:group ref="ruleml:restOfSlots-edge.choice"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="Expr.main">
     <xs:annotation>
-      <xs:documentation>Pre-fix operator notation for expressions is optional in the relaxed-form
-        serialization. This pattern cannot be translated accurately into XSD.</xs:documentation>
+      <xs:documentation>Pre-fix operator notation for expressions is required in the deterministic
+        serialization.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:operatorForExpressions-edge.choice"/>
-        <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
-      </xs:choice>
+      <xs:group ref="ruleml:operatorForExpressions-edge.choice"/>
+      <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="argumentsForExpressions.sequence">
     <xs:annotation>
-      <xs:documentation>Slotted arguments and positional arguments in expressions  may be
-        interleaved in the relaxed-form serialization.  This pattern cannot be translated accurately
-        into XSD.</xs:documentation>
+      <xs:documentation>Slotted arguments may precede or  follow positional arguments  in the
+        deterministic serialization. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:positionalArgumentsForExpressions.sequence"/>
-        <xs:group ref="ruleml:slotsForExpressions.sequence"/>
-      </xs:choice>
+      <xs:sequence minOccurs="0">
+        <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
+        <xs:sequence minOccurs="0">
+          <xs:choice>
+            <xs:sequence>
+              <xs:group ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
+              <xs:group minOccurs="0" ref="ruleml:repo"/>
+            </xs:sequence>
+            <xs:group ref="ruleml:repo"/>
+          </xs:choice>
+          <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
+        </xs:sequence>
+        <xs:group minOccurs="0" ref="ruleml:resl"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
   <xs:group name="positionalArgumentsForExpressions.sequence">
     <xs:annotation>
-      <xs:documentation>Positional rest arguments in expressions may occur in  any position relative
-        to the slots in relaxed-form serialization.  This pattern cannot be translated accurately
-        into XSD.</xs:documentation>
+      <xs:documentation>Positional rest arguments follow the ordinary positional arguments in
+        expressions in the deterministic serialization. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence minOccurs="0">
         <xs:group ref="ruleml:termsForExpressions.sequence"/>
-        <xs:group ref="ruleml:restOfPositionalArguments-edge.choice"/>
-      </xs:choice>
+        <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
   <xs:group name="slotsForExpressions.sequence">
     <xs:annotation>
-      <xs:documentation>Slotted rest arguments in expressions may occur in  any position relative to
-        the slots in relaxed-form serialization.  This pattern cannot be translated accurately into
-        XSD.</xs:documentation>
+      <xs:documentation>Slotted rest arguments follow the ordinary slots in expressions in the
+        deterministic serialization. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence minOccurs="0">
         <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
-        <xs:group ref="ruleml:restOfSlots-edge.choice"/>
-      </xs:choice>
+        <xs:group minOccurs="0" ref="ruleml:resl"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
   <xs:group name="Implies.main">
     <xs:annotation>
-      <xs:documentation>In the relaxed-form serialization, the if and then  of an implication can
+      <xs:documentation>In the deterministic serialization, the if and then  of an implication can
         occur in either order if striped. This pattern can be translated accurately into
         XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence>
         <xs:group ref="ruleml:body_Implies.name.choice"/>
         <xs:group ref="ruleml:head_Implies.name.choice"/>
-      </xs:choice>
-      <xs:sequence>
-        <xs:group ref="ruleml:head_Implies-ss.content"/>
-        <xs:group ref="ruleml:body_Implies.name.choice"/>
       </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:head_Implies.name.choice"/>
-        <xs:group ref="ruleml:body_Implies-ss.content"/>
+        <xs:group ref="ruleml:body_Implies.name.choice"/>
       </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Implies-ss.content"/>
@@ -1824,22 +1801,18 @@
   </xs:group>
   <xs:group name="Entails.main">
     <xs:annotation>
-      <xs:documentation>In the relaxed-form serialization, the if and then  of a proof-theoretic
+      <xs:documentation>In the deterministic serialization, the if and then  of a proof-theoretic
         entailment can occur in either order if striped. This pattern can be translated accurately
         into XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:sequence>
         <xs:group ref="ruleml:body_Entails.name.choice"/>
         <xs:group ref="ruleml:head_Entails.name.choice"/>
-      </xs:choice>
-      <xs:sequence>
-        <xs:group ref="ruleml:head_Entails-ss.content"/>
-        <xs:group ref="ruleml:body_Entails.name.choice"/>
       </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:head_Entails.name.choice"/>
-        <xs:group ref="ruleml:body_Entails-ss.content"/>
+        <xs:group ref="ruleml:body_Entails.name.choice"/>
       </xs:sequence>
       <xs:sequence>
         <xs:group ref="ruleml:body_Entails-ss.content"/>
@@ -1849,36 +1822,34 @@
   </xs:group>
   <xs:group name="TruthValuedConnective.header">
     <xs:annotation>
-      <xs:documentation>In the relaxed-form serialization, the header element sequence is: an
-        optional header element sequence as defined in Node.header, interleaved with optional object
-        identifier and degree This pattern can be translated accurately into XSD using xs:any, but
-        is not correctly translated by the Trang software.</xs:documentation>
+      <xs:documentation>In the deterministic serialization, the order of header elements is: an
+        optional header element sequence as defined in Node.header, followed by optional object
+        identifier and degree</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:Node.header"/>
-        <xs:group ref="ruleml:degree-edge.choice"/>
-      </xs:choice>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
   <xs:group name="Atom.header">
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:Node.header"/>
-        <xs:group ref="ruleml:objectIdentifier-edge.choice"/>
-        <xs:group ref="ruleml:degree-edge.choice"/>
-      </xs:choice>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="ruleml:objectIdentifier-edge.choice"/>
+        <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
   <xs:group name="Expr.header">
     <xs:sequence>
-      <xs:choice maxOccurs="unbounded" minOccurs="0">
-        <xs:group ref="ruleml:Node.header"/>
-        <xs:group ref="ruleml:exprObjectIdentifier-edge.choice"/>
-      </xs:choice>
+      <xs:sequence minOccurs="0">
+        <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        <xs:group minOccurs="0" ref="ruleml:exprObjectIdentifier-edge.choice"/>
+      </xs:sequence>
     </xs:sequence>
   </xs:group>
-  
   
   
   
@@ -3945,7 +3916,6 @@
     <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
     <xs:attributeGroup ref="ruleml:closure-att.choice"/>
   </xs:attributeGroup>
-  
   
   
   

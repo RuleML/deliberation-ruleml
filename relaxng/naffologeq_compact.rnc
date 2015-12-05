@@ -1,6 +1,6 @@
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
-namespace ruleml = "http://ruleml.org/spec"
+default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML CompXR Schema" ]
 dcterms:identifier [ "http://deliberation.ruleml.org/1.02/naffologeq_compact.rnc" ]
@@ -8,17 +8,15 @@ dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, compact" ]
 dcterms:description [
-  "driver for the compact serialization for the Deliberation RuleML supremum language."
+  "driver for the compact serialization for the Deliberation RuleML FOL language."
 ]
 dcterms:language [ "en" ]
-dc:rights [
-  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
-]
+dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
 start = Node.choice | edge.choice
-#
-# COMPACT MODULE INCLUDED
+# 
+# COMPACT MODULE REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
 #
 include "modules/naffologeq_compact_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
@@ -109,9 +107,9 @@ include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
 # 
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
 #
-include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
+#include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # EXPLICIT DATATYPING ENABLED
 #
@@ -131,7 +129,7 @@ include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# xsi:schemaLocation IN ROOT ENABLED
+# xsi:schemaLocation ALLOWED IN RuleML
 #
 include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
@@ -380,4 +378,7 @@ include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc"
+        inherit = ruleml {
+  start |= notAllowed
+}

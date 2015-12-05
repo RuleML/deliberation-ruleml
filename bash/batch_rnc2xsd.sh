@@ -17,7 +17,7 @@ rm "${XSD_MIN_HOME}"*.xsd >> /dev/null 2>&1
 simplify=false
 # applies the script rnc2xsd.sh to all RNC4XSD schemas
 # for debugging, do not remove the temporary RNG
-finish=false
+finish=true
 # for a clean build, remove the temporary RNG
 # finish=true
 #

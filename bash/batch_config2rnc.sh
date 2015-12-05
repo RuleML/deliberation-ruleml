@@ -31,6 +31,11 @@ do
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[2]}" "${DRIVER_HOME}myng-${tokens[2]}.rnc"
 done < "${BASH_HOME}config_rnc_myng.txt"
 
+cp "${RNC_HOME}naffologeq_compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}naffologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_normal.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}nafhologeq_relaxed.rnc" "${DRIVER_HOME}"
 
 for file in "${DRIVER_HOME}"*.rnc

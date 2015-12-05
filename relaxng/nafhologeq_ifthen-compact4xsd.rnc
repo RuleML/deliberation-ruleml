@@ -2,34 +2,33 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
-dcterms:title [ "Deliberation RuleML Compact Schema- naffologeq" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/naffologeq_compact.rnc" ]
+dcterms:title [ "Deliberation RuleML Compact Schema - nafhologeq" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.02/nafhologeq_ifthen-compact.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
-dc:subject [ "Deliberation RuleML, compact" ]
+dc:subject [ "Deliberation RuleML, compact, Higher-Order Syntax" ]
 dcterms:description [
-  "driver for the compact serialization for the Deliberation RuleML supremum language (for generation of content models)."
+    "driver for the if-then compact serialization for the Deliberation RuleML supremum language (allowing if and then stripes in implications)  (for conversion to XSD)."
 ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
 start = Node.choice | edge.choice
-# 
-# COMPACT MODULE REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
+#
+# COMPACT MODULE INCLUDED
 #
 include "modules/naffologeq_compact_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
-  Implies.main |= notAllowed
 }
 #
 include "modules/performative_content_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# IMPLICATIONS REDEFINED FOR SKIPPING IF-THEN STRIPES IN IMPLIES
+# IMPLICATIONS INCLUDED
 #
-include "modules/implication_compact_expansion_module.rnc" inherit = ruleml {
+include "modules/implication_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
@@ -51,6 +50,12 @@ include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {
 }
 #
 include "modules/folog_closure_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
+#
+# HIGHER-ORDER LOGIC SYNTAX ENABLED
+#
+include "modules/holog_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
@@ -89,9 +94,9 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
-include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
+#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED
 #
@@ -111,20 +116,19 @@ include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
 #  start |= notAllowed
 #}
 # 
-# EXPLICIT DATATYPING DISABLED FOR SIMPLIFICATION
-# 
-# include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# 
-# xsi:schemaLocation ALLOWED IN RuleML
 #
-include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
-# 
+# EXPLICIT DATATYPING DISABLED FOR CONVERSION TO XSD
+#
+#include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# xsi:schemaLocation DISABLED FOR CONVERSION TO XSD
+#
+#include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # WEB REFERENCES INCLUDED
 #
 include "modules/web_expansion_module.rnc" inherit = ruleml {
@@ -277,12 +281,10 @@ include "modules/skolem_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
-# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT
+# REIFICATION TERMS INCLUDED, EXPLICIT CONTENT (FOR XSD GENERATION)
 #
-include "modules/reify_expansion_module.rnc" inherit = ruleml {
-  start |= notAllowed
-}
-# 
+include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
 #
 include "modules/variable_expansion_module.rnc" inherit = ruleml {
@@ -368,4 +370,7 @@ include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc"
+        inherit = ruleml {
+  start |= notAllowed
+}
