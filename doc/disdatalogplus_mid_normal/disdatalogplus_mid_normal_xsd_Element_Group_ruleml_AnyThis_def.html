@@ -9,8 +9,7 @@
         
         
         
-        var usedByBoxes= new Array('usedBy_AnyThis.def');
-
+        
         var sourceBoxes= new Array('source_AnyThis.def');
 
         
@@ -274,9 +273,6 @@
                      <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
                      </tr>
-                     <tr>
-                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
-                     </tr>
                   </table>
                   <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
                </td>
@@ -311,22 +307,6 @@
                         </td>
                         <td class="diagram">
                            <div id="diagram_AnyThis.def" style="display:block"><object border="0" data="img/disdatalogplus_mid_normal_xsd_Element_Group_ruleml_AnyThis_def.svg" type="image/svg+xml"></object></div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Used by</b></div>
-                           <div class="floatRight"><input id="button_usedBy_AnyThis.def" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_AnyThis.def');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="usedBy_AnyThis.def" style="display:block">
-                              <table class="usedByTable">
-                                 <tr>
-                                    <td class="firstColumn">Complex Types </td>
-                                    <td><b><a href="disdatalogplus_mid_normal_xsd_Complex_Type_ruleml_Reify-any_content.html#Reify-any.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify-any.content')">ruleml:Reify-any.content</a></b>, <b><a href="disdatalogplus_mid_normal_xsd_Complex_Type_ruleml_Reify-any_type_def.html#Reify-any.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify-any.type.def')">ruleml:Reify-any.type.def</a></b></td>
-                                 </tr>
-                              </table>
-                           </div>
                         </td>
                      </tr>
                      <tr>
