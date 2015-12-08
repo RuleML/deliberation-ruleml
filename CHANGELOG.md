@@ -17,6 +17,8 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 [unreleased]: https://github.com/RuleML/consumer-ruleml/compare/v1.02initial...HEAD
-<!--[v1.02final]: https://github.com/RuleML/consumer-ruleml/compare/v1.02external...v1.02final
+<!---
+[v1.02final]: https://github.com/RuleML/consumer-ruleml/compare/v1.02external...v1.02final
 [v1.02external]: https://github.com/RuleML/consumer-ruleml/compare/v1.02internal...v1.02external
-[v1.02internal]: https://github.com/RuleML/consumer-ruleml/compare/v1.02initial...v1.02internal-->
+[v1.02internal]: https://github.com/RuleML/consumer-ruleml/compare/v1.02initial...v1.02internal
+-->
