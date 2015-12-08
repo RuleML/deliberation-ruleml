@@ -3,7 +3,9 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
-# clears the output directories
+# creates the output directories if they don't exist, and clears them of RNC files, in case they already have contents
+mkdir -p "${RNC4XSD_HOME}"
+mkdir -p "${RNC4XSD_MIN_HOME}"
 rm "${RNC4XSD_HOME}"*.rnc >> /dev/null 2>&1
 rm "${RNC4XSD_MIN_HOME}"*.rnc >> /dev/null 2>&1
 
