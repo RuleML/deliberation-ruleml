@@ -3,13 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 
-## [v1.02final] - 2015-09-21
+<!--## [v1.02final] - 2016-xx-yy-->
 
 ### Added
 - more examples in exa directory
 - compactifier and normalizer XSLT, and formatting tests and bash script, included in main build script
 - normalizer does sorting by @index
-- extra post-processing step in rnc2xsd to achieve required @index
 - "basedrop" compactifiers transfer the xml:base attribute to the child node when skipping stripes, if possible
 - drivers for compact serialization
 - drivers include new deliberation module for datatype annotation
