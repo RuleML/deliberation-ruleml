@@ -6,8 +6,12 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 # creates the xsd and xsd_min directory if they don't exist, and clears them, in case they already have contents
 mkdir -p "${XSD_HOME}"
 mkdir -p "${XSD_MIN_HOME}"
+mkdir -p "${XSD_NORMAL_HOME}"
+mkdir -p "${XSD_NORMAL_MIN_HOME}"
 rm "${XSD_HOME}"*.xsd >> /dev/null 2>&1
 rm "${XSD_MIN_HOME}"*.xsd >> /dev/null 2>&1
+rm "${XSD_NORMAL_HOME}"*.xsd >> /dev/null 2>&1
+rm "${XSD_NORMAL_MIN_HOME}"*.xsd >> /dev/null 2>&1
 
 # simplify before converting
 #simplify=true
@@ -29,6 +33,13 @@ do
   "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
 done
 
+for f in "${RNC4XSD_NORMAL_HOME}"*.rnc
+do
+  filename=$(basename "$f")
+  filenameNE="${filename%.*}"
+  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_NORMAL_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
+done
+
 for f in "${RNC4XSD_MIN_HOME}"*.rnc
 do
   filename=$(basename "$f")
@@ -36,6 +47,12 @@ do
   "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_MIN_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
 done
 
+for f in "${RNC4XSD_NORMAL_MIN_HOME}"*.rnc
+do
+  filename=$(basename "$f")
+  filenameNE="${filename%.*}"
+  "${BASH_HOME}rnc2xsd.sh" "$f" "${XSD_NORMAL_MIN_HOME}${filenameNE}.xsd" "${simplify}" "${finish}"
+done
 
 # Apply XSLT transforamtions
 # transform in place for files in XSD_HOME
@@ -47,7 +64,27 @@ do
      exit 1
    fi
 done
-# transform and shift for files in XSD_HOME_min
+# transform and shift for files in XSD_NORMAL_HOME
+for f in "${XSD_NORMAL_HOME}"*.xsd
+do
+  filename=$(basename "$f")  
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT2_HOME}rnc2xsd_normal.xslt" "${XSD_HOME}${filename}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Post-processing Failed for ${filename}"
+     exit 1
+   fi
+done
+# transform and shift for files in XSD_NORMAL_MIN_HOME
+for f in "${XSD_NORMAL_MIN_HOME}"*.xsd
+do
+  filename=$(basename "$f")  
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT2_HOME}rnc2xsd_normal_min.xslt" "${XSD_HOME}${filename}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Post-processing Failed for ${filename}"
+     exit 1
+   fi
+done
+# transform and shift for files in XSD_MIN_HOME
 for f in "${XSD_MIN_HOME}"*.xsd
 do
   filename=$(basename "$f")  

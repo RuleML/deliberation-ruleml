@@ -608,7 +608,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:attributeGroup name="formula_And-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="formula_And.attlist">
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -726,7 +726,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:attributeGroup name="formula_Or-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:attributeGroup name="formula_Or.attlist">
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
