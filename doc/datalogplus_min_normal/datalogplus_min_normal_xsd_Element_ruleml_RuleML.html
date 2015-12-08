@@ -10,8 +10,7 @@
 
         
         
-        var usedByBoxes= new Array('usedBy_RuleML');
-
+        
         var sourceBoxes= new Array('source_RuleML');
 
         var instanceBoxes= new Array('instance_RuleML');
@@ -290,9 +289,6 @@
                      <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
                      </tr>
-                     <tr>
-                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
-                     </tr>
                   </table>
                   <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
                </td>
@@ -373,22 +369,6 @@
                                  <tr>
                                     <td class="firstColumn" style="white-space: nowrap;">content</td>
                                     <td><b>complex</b></td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td class="firstColumn">
-                           <div class="floatLeft"><b>Used by</b></div>
-                           <div class="floatRight"><input id="button_usedBy_RuleML" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_RuleML');" class="control" /></div>
-                        </td>
-                        <td>
-                           <div id="usedBy_RuleML" style="display:block">
-                              <table class="usedByTable">
-                                 <tr>
-                                    <td class="firstColumn">Element Group </td>
-                                    <td><b><a href="datalogplus_min_normal_xsd_Element_Group_ruleml_Node_choice.html#Node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Node.choice')">ruleml:Node.choice</a></b></td>
                                  </tr>
                               </table>
                            </div>
