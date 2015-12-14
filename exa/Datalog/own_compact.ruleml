@@ -5,40 +5,39 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
-
-<!-- start XML comment ...
-
-Note: This is a compact (i.e. minimally-roled) version of this example.
-
-This example rulebase contains four rules.
-The first and second rules are implications; the third and fourth ones are facts.
-
-In English:
-
-The first rule implies that a person owns an object
-if that person buys the object from a merchant and the person keeps the object.
-
-As an OrdLab Tree:
-
-Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          |                         |
-          |                         |
-          |                         |
-        Atom~~~~~~~~~~~~~~~~~~     And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                 |     |     |           |                                   |
-                 |     |     |           |                                   |
-                 |     |     |           |                                   |        
-                Rel   Var   Var        Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~
-                 .     .     .                  |     |      |       |              |     |     |
-                 .     .     .                  |     |      |       |              |     |     |
-                 .     .     .                  |     |      |       |              |     |     |
-                own  person object             Rel   Var    Var     Var            Rel   Var   Var
-                                                .     .      .       .              .     .     . 
-                                                .     .      .       .              .     .     .
-                                                .     .      .       .              .     .     .
-                                               buy  person merchant object        keep  person object
-
-... end XML comment -->
+  
+  <!-- start XML comment ...
+    
+    This example rulebase contains four rules.
+    The first and second rules are implications; the third and fourth ones are facts.
+    
+    In English:
+    
+    The first rule implies that a person owns an object
+    if that person buys the object from a merchant and the person keeps the object.
+    
+    As an OrdLab Tree:
+    
+    Implies~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+              *                                                                            *                       
+           if *                                                                       then * 
+              *                                                                            *  
+             And~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                 Atom~~~~~~~~~~~~~~~~~~
+                   |                                   |                                          *     |     |  
+                   |                                   |                                      op  *     |     |  
+                   |                                   |                                          *     |     |    
+                 Atom~~~~~~~~~~~~~~~~~~~~~~~~~~~     Atom~~~~~~~~~~~~~~~~~~                      Rel   Var   Var
+                          *     |      |       |              *     |     |                       .     .     .    
+                      op  *     |      |       |          op  *     |     |                       .     .     .    
+                          *     |      |       |              *     |     |                       .     .     .
+                         Rel   Var    Var     Var            Rel   Var   Var                     own  person object
+                          .     .      .       .              .     .     . 
+                          .     .      .       .              .     .     .
+                          .     .      .       .              .     .     .
+                         buy  person merchant object        keep  person object
+  
+  Note that the edges labelled as "if", "then" and "op" in the OrdLab tree do not appear explicitly in the compact serialization.
+    ... end XML comment -->
 
 <Assert mapClosure="universal">
 
