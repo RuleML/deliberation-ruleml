@@ -867,6 +867,7 @@
         serialization.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
+      <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
       <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
     </xs:sequence>
   </xs:group>
@@ -906,6 +907,7 @@
         serialization.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
+      <xs:group ref="ruleml:operatorForExpressions-edge.choice"/>
       <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
     </xs:sequence>
   </xs:group>
@@ -1595,6 +1597,11 @@
   </xs:group>
   
   
+<xs:group name="operatorForAtoms-edge.choice">      <xs:sequence>
+      <xs:group ref="ruleml:op_Atom.content"/>
+    </xs:sequence>
+  </xs:group>
+  
   <xs:group name="formula_And-edge.choice">
     <xs:sequence>
       <xs:group ref="ruleml:formula_And.content"/>
@@ -1622,6 +1629,11 @@
     </xs:sequence>
   </xs:group>
   
+  
+<xs:group name="operatorForExpressions-edge.choice">      <xs:sequence>
+      <xs:group ref="ruleml:op_Expr.content"/>
+    </xs:sequence>
+  </xs:group>
   
   <xs:group name="Entails.main">
     <xs:sequence>
