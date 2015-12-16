@@ -94,9 +94,9 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
-#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
-#  start |= notAllowed
-#}
+include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 # 
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED
 #

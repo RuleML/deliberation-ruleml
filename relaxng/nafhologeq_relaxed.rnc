@@ -115,41 +115,48 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {
 #
 include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
+  # infix placement of operator is not compatible with holog, where the
+  # operator may be any term, and this is not identifieable without
+  # positional dependence
+  Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
+  Atom.main |= (Relation-node.choice | element op {Relation-node.choice}) & argumentsForAtoms.sequence
+  Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequence
+  Atom.main |= (Function-node.choice | element op {Function-node.choice}) & argumentsForExpressions.sequence
 }
 # 
 # SYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
-#
+# 
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
-#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
-#  start |= notAllowed
-#}
+include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 # 
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED
-#
+# 
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
-#
+# 
 # ASYNCHRONOUS STRIPE-SKIPPING MODE ENABLED
-#
+# 
 include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
-#
+# 
 include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
-#
+# 
 include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
 # 
 # EXPLICIT DATATYPING ENABLED
-#
+# 
 include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
@@ -454,7 +461,7 @@ include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_
         inherit = ruleml {
   start |= notAllowed
 }
-#
+# 
 # STYLE ATTRIBUTE ENABLED
 #
 include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc"

@@ -119,35 +119,54 @@ include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {
 # 
 # SYNCHRONOUS STRIPE-SKIPPING MODE DISABLED
 # 
-# include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
+#include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE DISABLED
 # 
-# include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# 
-# OPERATOR STRIPE-SKIPPING MODE DISABLED
-# 
-# include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # ASYNCHRONOUS STRIPE-SKIPPING MODE DISABLED
 # 
-# include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
-# include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE DISABLED
 # 
-# include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
+#  start |= notAllowed
+#}
 # 
 # EXPLICIT DATATYPING ENABLED
+#
+include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
+include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
+include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
+include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
+include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 # 
- include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
- include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
- include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
- include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
- include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-# 
-# xsi:schemaLocation IN ROOT ENABLED
+# xsi:schemaLocation ALLOWED IN RuleML
 #
 include "modules/xsi_schemalocation_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed

@@ -122,9 +122,12 @@ include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = 
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }
+include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {
+  start |= notAllowed
+}
 # 
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE ENABLED
-# 
+#
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {
   start |= notAllowed
 }

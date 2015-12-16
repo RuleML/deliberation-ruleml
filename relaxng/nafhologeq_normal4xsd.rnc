@@ -124,18 +124,20 @@ include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {
 # SYNCHRONOUS IF-THEN STRIPE-SKIPPING MODE DISABLED
 # 
 # include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
+# 
+# OPERATOR STRIPE-SKIPPING MODE DISABLED
+# 
+# include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+# 
 # ASYNCHRONOUS STRIPE-SKIPPING MODE DISABLED
 # 
 # include "modules/asynchronous_stripe_skipping_entailment_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
 # include "modules/asynchronous_stripe_skipping_implication_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
-# ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE ENABLED
-#
-#include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {
-#  start |= notAllowed
-#}
+# ASYNCHRONOUS ATTRIBUTE-SKIPPING MODE DISABLED
+# 
+# include "modules/attribute_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 # 
 # EXPLICIT DATATYPING DISABLED FOR CONVERSION TO XSD
 # 
