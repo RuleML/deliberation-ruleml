@@ -1596,8 +1596,8 @@
     </xs:sequence>
   </xs:group>
   
-  
-<xs:group name="operatorForAtoms-edge.choice">      <xs:sequence>
+  <xs:group name="operatorForAtoms-edge.choice">
+    <xs:sequence>
       <xs:group ref="ruleml:op_Atom.content"/>
     </xs:sequence>
   </xs:group>
@@ -1629,8 +1629,8 @@
     </xs:sequence>
   </xs:group>
   
-  
-<xs:group name="operatorForExpressions-edge.choice">      <xs:sequence>
+  <xs:group name="operatorForExpressions-edge.choice">
+    <xs:sequence>
       <xs:group ref="ruleml:op_Expr.content"/>
     </xs:sequence>
   </xs:group>
@@ -1964,6 +1964,7 @@
     </xs:sequence>
     <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
   </xs:complexType>
+  
   <xs:group name="Uniterm-term.Node.def">
     <xs:sequence>
       <xs:element form="qualified" name="Uniterm" type="ruleml:Uniterm-term.type.def">
@@ -1982,6 +1983,7 @@
     <xs:attributeGroup ref="ruleml:Expr-datt.choice"/>
     <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
   </xs:complexType>
+  
   <xs:element name="Const" type="ruleml:Const.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Const&gt;: a constant. See
@@ -2189,6 +2191,9 @@
       <xs:group ref="ruleml:head_Entails.content"/>
     </xs:sequence>
   </xs:group>
+  
+  
+  
   
   
   

@@ -26,7 +26,7 @@ Uniterm-formula.Node.def =
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Uniterm
   element Uniterm { Uniterm-formula.type.def }
 Uniterm-formula.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
-operatorForAtoms-edge.choice |= empty
+#operatorForAtoms-edge.choice |= empty
 
 ## Let Uniterm be an alias for Expr
 Expression-node.choice |= Uniterm-term.Node.def
@@ -34,7 +34,7 @@ Uniterm-term.Node.def =
   ## Also, compound function, relation, or term represented as a Hilog term, generalizing Expr
   element Uniterm { Uniterm-term.type.def }
 Uniterm-term.type.def = (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
-operatorForExpressions-edge.choice |= empty
+#operatorForExpressions-edge.choice |= empty
 
 ## Let Const be an alias for Ind
 Individual-node.choice |= Const.Node.def

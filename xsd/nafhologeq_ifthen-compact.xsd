@@ -264,19 +264,12 @@
       <xs:group ref="ruleml:Uniterm-formula.Node.def"/>
     </xs:choice>
   </xs:group>
-  <xs:element name="Atom" type="ruleml:Atom.type.def">
+  <xs:element abstract="true" name="Atom">
     <xs:annotation>
       <xs:documentation>&lt;Atom&gt;: a predicate applied to arguments. See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:complexType name="Atom.type.def">
-    <xs:sequence>
-      <xs:group ref="ruleml:Atom.header"/>
-      <xs:group ref="ruleml:Atom.main"/>
-    </xs:sequence>
-    <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
-  </xs:complexType>
   <xs:attributeGroup name="reAtom.attlist">
     <xs:annotation>
       <xs:documentation>Atomic formulas may have an optional closure attribute.</xs:documentation>
@@ -790,20 +783,12 @@
       <xs:group ref="ruleml:Uniterm-term.Node.def"/>
     </xs:choice>
   </xs:group>
-  <xs:element name="Expr" type="ruleml:Expr.type.def">
+  <xs:element abstract="true" name="Expr">
     <xs:annotation>
       <xs:documentation>&lt;Expr&gt;: a functional expression. See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-Expr</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:complexType name="Expr.type.def">
-    <xs:sequence>
-      <xs:group ref="ruleml:Expr.header"/>
-      <xs:group ref="ruleml:Expr.main"/>
-    </xs:sequence>
-    <xs:attributeGroup ref="ruleml:Expr-datt.choice"/>
-    <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
-  </xs:complexType>
   <xs:attributeGroup name="reExpr.attlist">
     <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
     <xs:attributeGroup ref="ruleml:Type.attlist"/>
@@ -861,15 +846,6 @@
     <xs:restriction base="xs:token"/>
   </xs:simpleType>
   
-  <xs:group name="Atom.main">
-    <xs:annotation>
-      <xs:documentation>Pre-fix operator notation for atomic formulas is required in a normal-form
-        serialization.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
-    </xs:sequence>
-  </xs:group>
   <xs:group name="argumentsForAtoms.sequence">
     <xs:annotation>
       <xs:documentation>Slotted arguments follow positional arguments in atomic formulas in the
@@ -898,15 +874,6 @@
     <xs:sequence>
       <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
       <xs:group minOccurs="0" ref="ruleml:restOfSlots-edge.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Expr.main">
-    <xs:annotation>
-      <xs:documentation>Pre-fix operator notation for expressions is required in the normal-form
-        serialization.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="argumentsForExpressions.sequence">
@@ -1989,39 +1956,24 @@
   
   <xs:group name="Uniterm-formula.Node.def">
     <xs:sequence>
-      <xs:element form="qualified" name="Uniterm" type="ruleml:Uniterm-formula.type.def">
-        <xs:annotation>
-          <xs:documentation>simple sentence represented as a Hilog term, generalizing Atom
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-Uniterm</xs:documentation>
-        </xs:annotation>
+      <xs:element form="qualified" name="Uniterm">
+        <xs:complexType>
+          <xs:choice/>
+        </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:group>
-  <xs:complexType name="Uniterm-formula.type.def">
-    <xs:sequence>
-      <xs:group ref="ruleml:Atom.header"/>
-      <xs:group ref="ruleml:Atom.main"/>
-    </xs:sequence>
-    <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
-  </xs:complexType>
+  
   <xs:group name="Uniterm-term.Node.def">
     <xs:sequence>
-      <xs:element form="qualified" name="Uniterm" type="ruleml:Uniterm-term.type.def">
-        <xs:annotation>
-          <xs:documentation>Also, compound function, relation, or term represented as a Hilog term,
-            generalizing Expr</xs:documentation>
-        </xs:annotation>
+      <xs:element form="qualified" name="Uniterm">
+        <xs:complexType>
+          <xs:choice/>
+        </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:group>
-  <xs:complexType name="Uniterm-term.type.def">
-    <xs:sequence>
-      <xs:group ref="ruleml:Expr.header"/>
-      <xs:group ref="ruleml:Expr.main"/>
-    </xs:sequence>
-    <xs:attributeGroup ref="ruleml:Expr-datt.choice"/>
-    <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
-  </xs:complexType>
+  
   <xs:element name="Const" type="ruleml:Const.type.def">
     <xs:annotation>
       <xs:documentation>&lt;Const&gt;: a constant. See

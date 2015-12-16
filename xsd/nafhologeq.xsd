@@ -426,7 +426,7 @@
         operator tag name in atomic formulas.  </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:op_Atom.edge.def"/>
+      <xs:group ref="ruleml:op_Atom.edge.def"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="op_Atom.edge.def">
@@ -1319,7 +1319,7 @@
         operator tag name in expressions. </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:op_Expr.edge.def"/>
+      <xs:group ref="ruleml:op_Expr.edge.def"/>
     </xs:sequence>
   </xs:group>
   <xs:group name="op_Expr.edge.def">
@@ -1460,6 +1460,7 @@
     </xs:sequence>
     <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
   </xs:complexType>
+  
   <xs:group name="Uniterm-term.Node.def">
     <xs:sequence>
       <xs:element form="qualified" name="Uniterm" type="ruleml:Uniterm-term.type.def">
@@ -1478,6 +1479,7 @@
     <xs:attributeGroup ref="ruleml:Expr-datt.choice"/>
     <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
   </xs:complexType>
+  
   <xs:group name="Individual-node.choice">
     <xs:annotation>
       <xs:documentation>Let Const be an alias for Ind</xs:documentation>
