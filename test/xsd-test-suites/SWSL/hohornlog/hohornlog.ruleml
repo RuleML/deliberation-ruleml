@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML
+xmlns="http://ruleml.org/spec"
+xmlns:ex="http://example.org"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/nafhologeq.xsd"
+>
+
+<!-- a syntactic example rulebase for testing the Hornlog RuleML sublanguage -->
+
+<Assert mapClosure="universal">
+
+
+		<!-- variables over function symbols -->
+
+	    <Uniterm>
+	       <op><Var>X</Var></op>
+	       <Const>a</Const>
+	       <Var>Y</Var>
+	    </Uniterm>
+
+	    <Uniterm>
+	       <op><Var>X</Var></op>
+	       <Const>a</Const>
+	       <Uniterm>
+	          <op><Var>Y</Var></op>
+	          <Var>X</Var>
+	       </Uniterm>
+	    </Uniterm>
+
+
+
+		<!-- parameterized function symbols -->
+
+
+	    <Uniterm>
+	       <op>
+	          <Uniterm>
+	             <op><Const>f</Const></op>
+	             <Var>X</Var>
+	             <Const>a</Const>
+	          </Uniterm>
+	       </op>
+	       <Const>b</Const>
+	       <Uniterm>
+	          <op><Var>X</Var></op>
+	          <Const>c</Const>
+	       </Uniterm>
+	    </Uniterm>
+
+
+
+	    <Uniterm>
+	       <op>
+	          <Uniterm>
+	             <op><Var>Z</Var></op>
+	             <Var>X</Var>
+	             <Const>a</Const>
+	          </Uniterm>
+	       </op>
+	       <Const>b</Const>
+	       <Uniterm>
+	          <op>
+	             <Uniterm>
+                        <op><Var>X</Var></op>
+                        <Var>Y</Var>
+	             </Uniterm>
+	          </op>
+	          <Const>d</Const>
+	       </Uniterm>
+	    </Uniterm>
+	  
+
+	    <Uniterm>
+	       <op>
+	          <Uniterm>
+	             <op>
+                        <Uniterm>
+                           <op><Var>Z</Var></op>
+                           <Const>f</Const>
+                        </Uniterm>
+	             </op>
+	             <Const>g</Const>
+	             <Const>a</Const>
+	          </Uniterm>
+	       </op>
+	       <Const>p</Const>
+	       <Var>X</Var>
+	    </Uniterm>
+	  
+
+
+
+
+					<Uniterm>
+						<Const iri="ex:test">unequal</Const>
+      					<slot><Const>label</Const><Const>an example fact</Const></slot>
+						<resl><Var>test</Var></resl>
+					</Uniterm>
+
+
+
+
+				<Equivalent>
+					<Uniterm>
+						<Const>unequal</Const>
+						<Var>x</Var>
+						<Var>person</Var>
+					</Uniterm>
+					<Uniterm>
+						<Const>unequal</Const>
+						<Var>x</Var>
+						<Var>person</Var>
+					</Uniterm>
+				</Equivalent>
+				
+				<Forall>
+					<Var>x</Var>
+					<Uniterm>
+						<Const>unequal</Const>
+						<Var>x</Var>
+						<Var>person</Var>
+					</Uniterm>
+
+				</Forall>
+
+
+
+
+
+		<Implies>
+			<then>
+					<Uniterm>
+						<op>
+							<Const>friend</Const>
+						</op>
+						<slot>
+							<Const>t</Const>
+							<Const>b</Const>
+						</slot>
+						<Var>x</Var>
+						<Var>y</Var>
+						<Const>Steph</Const>
+					</Uniterm>
+		
+			</then>
+			<if>
+				<And>
+				<Or>
+				<Uniterm>
+					<Const>unequal</Const>
+					<Var>x</Var>
+					<Var>person</Var>
+				</Uniterm>
+				</Or>
+				</And>
+
+			</if>
+		</Implies>
+
+
+
+<Implies>
+  <then>
+     <Uniterm>
+      <op><Const>friend</Const></op>
+      <slot><Const>t</Const><Var>b</Var></slot>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Const>Steph</Const>
+     </Uniterm>
+  </then>
+  <if>
+    <And>
+    <Uniterm>
+      <op><Const>friend</Const></op>
+      <Const>Jane</Const>
+      <Const>Joan</Const>
+      <Const>Jack</Const>
+      <Var>y</Var>
+      <Const>Frank</Const>
+      <slot><Const>yar</Const><Uniterm>
+          <op><Const>constructor</Const></op>
+		<Const>yar2</Const><Var>c</Var>
+        </Uniterm></slot>
+    </Uniterm>
+    </And>
+  </if>
+</Implies>
+
+</Assert>
+
+</RuleML>
