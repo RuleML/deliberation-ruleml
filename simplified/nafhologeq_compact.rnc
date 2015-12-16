@@ -375,6 +375,16 @@ Atom =
     meta*,
     oid?,
     degree?,
+    (Rel
+     | Skolem
+     | Reify
+     | Ind
+     | Const
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     (Skolem
      | Reify
      | Ind
@@ -839,6 +849,16 @@ Expr =
        }?),
     meta*,
     oid?,
+    (Fun
+     | Skolem
+     | Reify
+     | Ind
+     | Const
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     (Skolem
      | Reify
      | Ind
@@ -2013,6 +2033,16 @@ Uniterm =
     meta*,
     oid?,
     degree?,
+    (Rel
+     | Skolem
+     | Reify
+     | Ind
+     | Const
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     (Skolem
      | Reify
      | Ind
@@ -2311,6 +2341,16 @@ Uniterm_2 =
        }?),
     meta*,
     oid?,
+    (Fun
+     | Skolem
+     | Reify
+     | Ind
+     | Const
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     (Skolem
      | Reify
      | Ind

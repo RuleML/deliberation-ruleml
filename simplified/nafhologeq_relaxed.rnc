@@ -396,8 +396,18 @@ Atom =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & oid? & degree?),
-    (op?
-     & (Skolem
+    (((op
+       | Rel
+       | Skolem
+       | Reify
+       | Const
+       | Ind
+       | Data
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex),
+      ((Skolem
         | Reify
         | Const
         | Ind
@@ -407,9 +417,37 @@ Atom =
         | Uniterm_2
         | Plex
         | arg)*
-     & repo?
-     & slot*
-     & resl?)
+       & repo?
+       & slot*
+       & resl?))
+     | ((Rel | op_3)
+        & (Skolem
+           | Reify
+           | Const
+           | Ind
+           | Data
+           | Var
+           | Expr
+           | Uniterm_2
+           | Plex
+           | arg)*
+        & repo?
+        & slot*
+        & resl?)
+     | ((Fun | op_4)
+        & (Skolem
+           | Reify
+           | Const
+           | Ind
+           | Data
+           | Var
+           | Expr
+           | Uniterm_2
+           | Plex
+           | arg)*
+        & repo?
+        & slot*
+        & resl?))
   }
 Rel =
   element Rel {
@@ -1029,17 +1067,27 @@ Expr =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & oid?),
-    (op_2?
-     & (Skolem
-        | Reify
-        | Const
-        | Ind
-        | Data
-        | Var
-        | Expr
-        | Uniterm_2
-        | Plex
-        | arg)*
+    (op_2
+     | Fun
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
+    ((Skolem
+      | Reify
+      | Const
+      | Ind
+      | Data
+      | Var
+      | Expr
+      | Uniterm_2
+      | Plex
+      | arg)*
      & repo?
      & slot*
      & resl?)
@@ -2798,8 +2846,18 @@ Uniterm =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & oid? & degree?),
-    (op?
-     & (Skolem
+    (((op
+       | Rel
+       | Skolem
+       | Reify
+       | Const
+       | Ind
+       | Data
+       | Var
+       | Expr
+       | Uniterm_2
+       | Plex),
+      ((Skolem
         | Reify
         | Const
         | Ind
@@ -2809,9 +2867,37 @@ Uniterm =
         | Uniterm_2
         | Plex
         | arg)*
-     & repo?
-     & slot*
-     & resl?)
+       & repo?
+       & slot*
+       & resl?))
+     | ((Rel | op_3)
+        & (Skolem
+           | Reify
+           | Const
+           | Ind
+           | Data
+           | Var
+           | Expr
+           | Uniterm_2
+           | Plex
+           | arg)*
+        & repo?
+        & slot*
+        & resl?)
+     | ((Fun | op_4)
+        & (Skolem
+           | Reify
+           | Const
+           | Ind
+           | Data
+           | Var
+           | Expr
+           | Uniterm_2
+           | Plex
+           | arg)*
+        & repo?
+        & slot*
+        & resl?))
   }
 And_2 =
   element And {
@@ -3097,21 +3183,33 @@ Uniterm_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (meta* & oid?),
-    (op_2?
-     & (Skolem
-        | Reify
-        | Const
-        | Ind
-        | Data
-        | Var
-        | Expr
-        | Uniterm_2
-        | Plex
-        | arg)*
+    (op_2
+     | Fun
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
+    ((Skolem
+      | Reify
+      | Const
+      | Ind
+      | Data
+      | Var
+      | Expr
+      | Uniterm_2
+      | Plex
+      | arg)*
      & repo?
      & slot*
      & resl?)
   }
+op_3 = element op { Rel }
+op_4 = element op { Fun }
 _1 =
   element * {
     attribute * { text }*,

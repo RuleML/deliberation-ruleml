@@ -425,9 +425,10 @@
       <xs:documentation>an extension point for stripe skipping as well as specializations of the
         operator tag name in atomic formulas.  </xs:documentation>
     </xs:annotation>
-    <xs:sequence>
+    <xs:choice>
       <xs:group ref="ruleml:op_Atom.edge.def"/>
-    </xs:sequence>
+      <xs:group ref="ruleml:op_Atom.content"/>
+    </xs:choice>
   </xs:group>
   <xs:group name="op_Atom.edge.def">
     <xs:annotation>
@@ -444,16 +445,13 @@
     </xs:sequence>
   </xs:group>
   <xs:complexType name="op.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:op_Atom.content">
-        <xs:attributeGroup ref="ruleml:op_Atom.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
+    <xs:group ref="ruleml:op_Atom.content"/>
+    <xs:attributeGroup ref="ruleml:op_Atom.attlist"/>
   </xs:complexType>
   <xs:attributeGroup name="op_Atom.attlist">
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
   </xs:attributeGroup>
-  <xs:complexType name="op_Atom.content">
+  <xs:group name="op_Atom.content">
     <xs:annotation>
       <xs:documentation>The operator role in the context of an atomic formula is filled by a
         predicate.</xs:documentation>
@@ -462,7 +460,7 @@
       <xs:group ref="ruleml:Relation-node.choice"/>
       <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:choice>
-  </xs:complexType>
+  </xs:group>
   <xs:group name="Relation-node.choice">
     <xs:annotation>
       <xs:documentation> </xs:documentation>
@@ -1318,9 +1316,10 @@
       <xs:documentation>an extension point for stripe skipping as well as specializations of the
         operator tag name in expressions. </xs:documentation>
     </xs:annotation>
-    <xs:sequence>
+    <xs:choice>
       <xs:group ref="ruleml:op_Expr.edge.def"/>
-    </xs:sequence>
+      <xs:group ref="ruleml:op_Expr.content"/>
+    </xs:choice>
   </xs:group>
   <xs:group name="op_Expr.edge.def">
     <xs:annotation>
@@ -1337,16 +1336,13 @@
     </xs:sequence>
   </xs:group>
   <xs:complexType name="op_Expr.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:op_Expr.content">
-        <xs:attributeGroup ref="ruleml:op_Expr.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
+    <xs:group ref="ruleml:op_Expr.content"/>
+    <xs:attributeGroup ref="ruleml:op_Expr.attlist"/>
   </xs:complexType>
   <xs:attributeGroup name="op_Expr.attlist">
     <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
   </xs:attributeGroup>
-  <xs:complexType name="op_Expr.content">
+  <xs:group name="op_Expr.content">
     <xs:annotation>
       <xs:documentation>The operator role of an expression is filled by a
         functor.</xs:documentation>
@@ -1355,7 +1351,7 @@
       <xs:group ref="ruleml:Function-node.choice"/>
       <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:choice>
-  </xs:complexType>
+  </xs:group>
   <xs:group name="Function-node.choice">
     <xs:annotation>
       <xs:documentation>an extension point for specializations of the function operator tag name.
@@ -1928,6 +1924,9 @@
       <xs:element ref="ruleml:strong"/>
     </xs:choice>
   </xs:group>
+  
+  
+  
   
   
   

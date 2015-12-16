@@ -398,7 +398,17 @@ Atom =
     meta*,
     oid?,
     degree?,
-    op?,
+    (op
+     | Rel
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     slot*,
     ((((Skolem
         | Reify
@@ -751,29 +761,6 @@ Implies =
          | Implies
          | Equivalent
          | Forall
-         | Exists))
-     | ((Atom
-         | Uniterm
-         | Equal
-         | And_2
-         | Or_2
-         | Neg
-         | Naf
-         | Implies
-         | Equivalent
-         | Forall
-         | Exists),
-        then)
-     | (if,
-        (Atom
-         | Uniterm
-         | Equal
-         | And_2
-         | Or_2
-         | Neg
-         | Implies
-         | Equivalent
-         | Forall
          | Exists)))
   }
 Forall =
@@ -1017,7 +1004,17 @@ Expr =
        }?),
     meta*,
     oid?,
-    op_2?,
+    (op_2
+     | Fun
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     slot*,
     ((((Skolem
         | Reify
@@ -1231,30 +1228,6 @@ Entails =
          | Forall
          | Exists
          | Rulebase),
-        (Atom
-         | Uniterm
-         | Equal
-         | And_2
-         | Or_2
-         | Neg
-         | Implies
-         | Equivalent
-         | Forall
-         | Exists
-         | Rulebase))
-     | ((Atom
-         | Uniterm
-         | Equal
-         | And_2
-         | Or_2
-         | Neg
-         | Implies
-         | Equivalent
-         | Forall
-         | Exists
-         | Rulebase),
-        then_2)
-     | (if_2,
         (Atom
          | Uniterm
          | Equal
@@ -2773,7 +2746,17 @@ Uniterm =
     meta*,
     oid?,
     degree?,
-    op?,
+    (op
+     | Rel
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     slot*,
     ((((Skolem
         | Reify
@@ -3077,7 +3060,17 @@ Uniterm_2 =
        }?),
     meta*,
     oid?,
-    op_2?,
+    (op_2
+     | Fun
+     | Skolem
+     | Reify
+     | Const
+     | Ind
+     | Data
+     | Var
+     | Expr
+     | Uniterm_2
+     | Plex),
     slot*,
     ((((Skolem
         | Reify
