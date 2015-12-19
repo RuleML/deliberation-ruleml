@@ -170,7 +170,7 @@ echo 'default namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
 echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";
-echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]'."\n";
+echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]'."\n";
 echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dcterms:description ['."\n";
@@ -846,8 +846,8 @@ if ($bdefault==0){
   // Include key and keyref attributes
   if ($enableStyle){
       echo "#\n# STYLE ATTRIBUTE ENABLED\n";
-      echo "#\n".'include "' . $consumerModulesLocation .
-          'consumer_attribute_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'attribute_expansion_module.rnc"'."$end\n";
   }
 
 

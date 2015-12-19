@@ -3,8 +3,8 @@ namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML Holog Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_relaxed4simp" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_relaxed4simp" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, Holog" ]
 dcterms:description [
@@ -14,7 +14,7 @@ dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 
-dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]
+dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -309,4 +309,4 @@ include "modules/key_expansion_module.rnc"
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.03/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

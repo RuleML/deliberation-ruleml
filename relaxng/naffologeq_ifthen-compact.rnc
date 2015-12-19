@@ -257,4 +257,4 @@ include "modules/key_expansion_module.rnc"
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.03/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

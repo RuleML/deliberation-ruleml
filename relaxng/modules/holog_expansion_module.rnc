@@ -23,7 +23,7 @@ op_Expr.content |= AnyTerm.choice
 Atom-node.choice |= Uniterm-formula.Node.def
 Uniterm-formula.Node.def =  
   ## simple sentence represented as a Hilog term, generalizing Atom
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Uniterm
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Uniterm
   element Uniterm { Uniterm-formula.type.def }
 Uniterm-formula.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 operatorForAtoms-edge.choice |= empty
@@ -41,6 +41,6 @@ Individual-node.choice |= Const.Node.def
 Const.Node.def =
   
   ## <Const>: a constant. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Const
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Const
   element Const { Const.type.def }
 Const.type.def = (Ind-datt.choice & reInd.attlist), Ind.value
