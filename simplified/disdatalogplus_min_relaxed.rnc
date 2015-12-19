@@ -32,31 +32,71 @@ start =
   | arg
 RuleML =
   element RuleML {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (act | Assert | Retract | Query)*
   }
 Assert =
   element Assert {
     (attribute mapMaterial { "yes" }?
      & attribute mapDirection { "bidirectional" }?
-     & attribute ns1:schemaLocation { text }?),
+     & attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula | Atom | Equal | Implies | Forall)*
   }
 Retract =
   element Retract {
     (attribute mapMaterial { "yes" }?
      & attribute mapDirection { "bidirectional" }?
-     & attribute ns1:schemaLocation { text }?),
+     & attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula | Atom | Equal | Implies | Forall)*
   }
 Query =
   element Query {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula_2 | Atom | Equal | And | Or | Exists)*
   }
 Atom =
   element Atom {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     ((op | Rel) & (Ind | Data | Var | arg)*)
   }
 Rel =
@@ -86,7 +126,15 @@ Implies =
   element Implies {
     (attribute direction { "bidirectional" }?
      & attribute material { "yes" }?
-     & attribute ns1:schemaLocation { text }?),
+     & attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     ((if & then)
      | ((Atom | Equal | And_3 | Or_3 | Exists_2), if)
      | (then, (Atom | Equal | And_2 | Or_2))
@@ -97,20 +145,44 @@ Implies =
   }
 Forall =
   element Forall {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (declare | Var)+,
     (formula_5 | Atom | Equal | Implies | Forall)
   }
 Exists =
   element Exists {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (declare | Var)+,
     (formula_6 | Atom | Equal | And_2 | Or_2 | Exists)
   }
 Equal =
   element Equal {
     (attribute oriented { "no" }?
-     & attribute ns1:schemaLocation { text }?),
+     & attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (Ind | Data | Var | left),
     (Ind | Data | Var | right)
   }
@@ -214,27 +286,67 @@ act =
   }
 And_2 =
   element And {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula_3 | Atom | Equal | And_2 | Or_2)*
   }
 Or_2 =
   element Or {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula_4 | Atom | Equal | And_2 | Or_2)*
   }
 And_3 =
   element And {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (Atom | And_3 | Or_3 | Exists_2 | formula_7)*
   }
 Or_3 =
   element Or {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (formula_8 | Atom | And_3 | Or_3 | Exists_2)*
   }
 Exists_2 =
   element Exists {
-    attribute ns1:schemaLocation { text }?,
+    (attribute ns1:schemaLocation { text }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
     (declare | Var)+,
     (Atom | And_3 | Or_3 | Exists_2 | formula_9)
   }

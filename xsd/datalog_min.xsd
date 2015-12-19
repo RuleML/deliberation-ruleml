@@ -48,7 +48,9 @@
   </xs:element>
   <xs:complexType name="RuleML.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:RuleML.main"/>
+      <xs:extension base="ruleml:RuleML.main">
+        <xs:attributeGroup ref="ruleml:reRuleML.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="RuleML.main">
@@ -137,6 +139,7 @@
     <xs:complexContent>
       <xs:extension base="ruleml:AssertRetract.main">
         <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -160,9 +163,17 @@
     <xs:complexContent>
       <xs:extension base="ruleml:AssertRetract.main">
         <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reAssertRetract.attlist">
+    <xs:annotation>
+      <xs:documentation>Assertions and retractions may have an optional scope closure
+        attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   
   <xs:complexType name="AssertRetract.main">
@@ -223,9 +234,18 @@
   </xs:element>
   <xs:complexType name="Query.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:Query.main"/>
+      <xs:extension base="ruleml:Query.main">
+        <xs:attributeGroup ref="ruleml:reQuery.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reQuery.attlist">
+    <xs:annotation>
+      <xs:documentation>Queries may have an optional map closure attribute  and will accept a scoped
+        closure attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   
   <xs:complexType name="Query.main">
@@ -269,6 +289,12 @@
       <xs:group ref="ruleml:QueryFormula.choice"/>
     </xs:sequence>
   </xs:group>
+  <xs:attributeGroup name="reRuleML.attlist">
+    <xs:annotation>
+      <xs:documentation>The RuleML type accepts the common Node attributes. </xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:group name="AssertRetractFormula.choice">
     <xs:annotation>
@@ -331,9 +357,17 @@
   </xs:element>
   <xs:complexType name="Atom.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:Atom.main"/>
+      <xs:extension base="ruleml:Atom.main">
+        <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reAtom.attlist">
+    <xs:annotation>
+      <xs:documentation>Atomic formulas may have an optional closure attribute.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:group name="operatorForAtoms-edge.choice">
     <xs:annotation>
@@ -423,9 +457,18 @@
   </xs:group>
   <xs:complexType name="And.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:And.main"/>
+      <xs:extension base="ruleml:And.main">
+        <xs:attributeGroup ref="ruleml:reAnd.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reAnd.attlist">
+    <xs:annotation>
+      <xs:documentation>The attribute list of the conjunction element will accept a scoped closure
+        attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:complexType name="And.main">
     <xs:annotation>
@@ -508,9 +551,18 @@
   </xs:group>
   <xs:complexType name="Or.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:Or.main"/>
+      <xs:extension base="ruleml:Or.main">
+        <xs:attributeGroup ref="ruleml:reOr.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reOr.attlist">
+    <xs:annotation>
+      <xs:documentation>The attribute list of the disjunction element will accept a (scoped) closure
+        attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:complexType name="Or.main">
     <xs:annotation>
@@ -649,9 +701,17 @@
     <xs:complexContent>
       <xs:extension base="ruleml:Implies.main">
         <xs:attributeGroup ref="ruleml:Implies-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reImplies.attlist"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reImplies.attlist">
+    <xs:annotation>
+      <xs:documentation>Implications may have an optional closure attribute  and will accept a
+        scoped closure attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   
   
@@ -757,9 +817,18 @@
   </xs:element>
   <xs:complexType name="Forall.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:Forall.main"/>
+      <xs:extension base="ruleml:Forall.main">
+        <xs:attributeGroup ref="ruleml:reForall.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reForall.attlist">
+    <xs:annotation>
+      <xs:documentation>The attribute list of the universal quantification formula  will accept a
+        scoped closure attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:complexType name="Forall.main">
     <xs:annotation>
@@ -790,9 +859,18 @@
   </xs:element>
   <xs:complexType name="Exists.type.def">
     <xs:complexContent>
-      <xs:extension base="ruleml:Exists.main"/>
+      <xs:extension base="ruleml:Exists.main">
+        <xs:attributeGroup ref="ruleml:reExists.attlist"/>
+      </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:attributeGroup name="reExists.attlist">
+    <xs:annotation>
+      <xs:documentation>The attribute list of the existential quantification formula  will accept a
+        scoped closure attribute at full first-order logic.</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   <xs:complexType name="Exists.main">
     <xs:annotation>
@@ -1460,6 +1538,25 @@
   
   
   
+  <xs:attributeGroup name="reExpr.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  
+  
+  
+  
+  
+  
+  
+  
+  <xs:attributeGroup name="style-att.choice">
+    <xs:attribute name="style" type="ruleml:style.value">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+          http://consumer.ruleml.org/1.03/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
   
   
   
@@ -1476,9 +1573,56 @@
   
   
   
+  <xs:attributeGroup name="style.attrib.def">
+    <xs:attribute name="style" type="ruleml:style.value" use="required">
+      <xs:annotation>
+        <xs:documentation>@style: defines a reference to a semantic profile. See
+          http://consumer.ruleml.org/1.03/glossary/#.40style</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="style.value">
+    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+  </xs:simpleType>
   
+  <xs:attributeGroup name="generic-Node.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
+  <xs:attributeGroup name="generic-Formula.attlist">
+    <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
+  </xs:attributeGroup>
   
+  <xs:attributeGroup name="formula-interface-ext.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="formula-interface.attlist">
+    <xs:attributeGroup ref="ruleml:formula-interface-ext.attlist"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="operator-interface-ext.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="operator-interface.attlist">
+    <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="reEqual.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reNaf.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reNeg.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="reEquivalent.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
+  
+  <xs:attributeGroup name="rePlex.attlist">
+    <xs:attributeGroup ref="ruleml:style-att.choice"/>
+  </xs:attributeGroup>
   
   
   
