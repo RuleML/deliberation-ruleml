@@ -10,34 +10,9 @@
   GET parameter: quant=x0
   GET parameter: expr=x0
   GET parameter: serial=x10
---><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><!--  dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
+--><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
-  <xs:group name="Node.choice">
-    <xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:RuleML"/>
-        <xs:element ref="ruleml:Assert"/>
-        <xs:element ref="ruleml:Retract"/>
-        <xs:element ref="ruleml:Query"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:element ref="ruleml:Atom"/>
-        <xs:element ref="ruleml:Rel"/>
-      </xs:choice>
-      <xs:choice>
-        <xs:group ref="ruleml:And-Query-node.choice"/>
-        <xs:group ref="ruleml:Or-Query-node.choice"/>
-      </xs:choice>
-      <xs:element ref="ruleml:Implies"/>
-      <xs:choice>
-        <xs:element ref="ruleml:Forall"/>
-        <xs:element ref="ruleml:Exists"/>
-      </xs:choice>
-      <xs:element ref="ruleml:Data"/>
-      <xs:element ref="ruleml:Ind"/>
-      <xs:element ref="ruleml:Var"/>
-    </xs:choice>
-  </xs:group>
+  
   
   
   <xs:element name="RuleML" type="ruleml:RuleML.type.def">
@@ -513,7 +488,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:attributeGroup name="formula_And-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:complexType name="formula_And.content">
     <xs:annotation>
@@ -607,7 +582,7 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:attributeGroup name="formula_Or-datt.choice">
-    <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
   </xs:attributeGroup>
   <xs:complexType name="formula_Or.content">
     <xs:annotation>

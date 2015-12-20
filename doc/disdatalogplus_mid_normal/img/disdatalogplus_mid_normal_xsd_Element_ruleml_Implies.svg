@@ -536,7 +536,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient29)" points=" 404 642 405 641 405 640 406 639 407 638 408 637 409 637 410 636 417 636 424 629 431 636 1044 636 1045 637 1046 637 1047 638 1048 639 1049 640 1049 641 1050 642 1050 649 1049 650 1049 651 1048 652 1047 653 1046 654 1045 654 1044 655 410 655 409 654 408 654 407 653 406 652 405 651 405 650 404 649" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 404 642 405 641 405 640 406 639 407 638 408 637 409 637 410 636 417 636 424 629 431 636 1044 636 1045 637 1046 637 1047 638 1048 639 1049 640 1049 641 1050 642 1050 649 1049 650 1049 651 1048 652 1047 653 1046 654 1045 654 1044 655 410 655 409 654 408 654 407 653 406 652 405 651 405 650 404 649" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="407" xml:space="preserve" y="649"
-      >In the normal-form serialization, the order of header elements is: an optional header element sequence as defined in...</text
+      >In the normalized serialization, the order of header elements in Node elements is: an optional header element sequence...</text
       ><line clip-path="url(#clipPath1)" fill="none" shape-rendering="auto" stroke="silver" x1="376" x2="379" y1="467" y2="467"
       /><line clip-path="url(#clipPath1)" fill="none" shape-rendering="auto" stroke="silver" x1="379" x2="379" y1="467" y2="467"
       /><line clip-path="url(#clipPath1)" fill="none" shape-rendering="auto" stroke="silver" x1="379" x2="418" y1="467" y2="467"
@@ -777,7 +777,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 319 1125 320 1124 320 1123 321 1122 322 1121 323 1120 324 1120 325 1119 332 1119 339 1112 346 1119 890 1119 891 1120 892 1120 893 1121 894 1122 895 1123 895 1124 896 1125 896 1132 895 1133 895 1134 894 1135 893 1136 892 1137 891 1137 890 1138 325 1138 324 1137 323 1137 322 1136 321 1135 320 1134 320 1133 319 1132" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 319 1125 320 1124 320 1123 321 1122 322 1121 323 1120 324 1120 325 1119 332 1119 339 1112 346 1119 890 1119 891 1120 892 1120 893 1121 894 1122 895 1123 895 1124 896 1125 896 1132 895 1133 895 1134 894 1135 893 1136 892 1137 891 1137 890 1138 325 1138 324 1137 323 1137 322 1136 321 1135 320 1134 320 1133 319 1132" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="322" xml:space="preserve" y="1132"
-      >In the normal-form serialization, the if and then of an implication must occur in canonical order.</text
+      >In the normalized serialization, the if and then of an implication must occur in canonical order.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="291" x2="294" y1="683" y2="683"
