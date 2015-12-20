@@ -2,7 +2,7 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "Deliberation RuleML Distributed Syntax" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/consumer_key_expansion_module.rnc" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/key_expansion_module.rnc" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Paschkea" ]

@@ -33,3 +33,12 @@ rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
 "${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
 
+anchor="nafhologeq_normal"
+mkdir -p "${REPO_HOME}doc/${anchor}"
+rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
+rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
+"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+

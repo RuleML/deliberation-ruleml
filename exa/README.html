@@ -1,40 +1,8 @@
-<h2>Using a Relax NG Schema to Validate Through <a href="http://Validator.nu">Validator.nu</a></h2>
-Please see the <a href="http://wiki.ruleml.org/index.php/Relax_NG#Using_Validator.nu">MYNG Demo</a> for a tutorial on using the online tool Validator.nu to validate these examples against Relax NG schemas, XSD schemas or NVDL scripts.
-<h2>Using an XSD schema to Validate Through <a href="http://www.validome.org/xml/validate">Validome</a></h2>
-<ol>
-  <li> Direct your browser to <a href="http://www.validome.org/xml/validate/">http://www.validome.org/xml/validate/</a>
-  </li>
-  <li> Enter the following:
-    <ol>
-      <li> <b>Source</b>: a URL such as <a href="http://deliberation.ruleml.org/1.03/exa/DatalogPlus/datalogplus_min_normal.ruleml">http://deliberation.ruleml.org/1.03/exa/DatalogPlus/datalogplus_min_normal.ruleml</a>, or upload a local RuleML file, or paste the Sourcecode into the text area.
-        <ol>
-          <li> Note: the RuleML file must contain an xsi:schemaLocation attribute referencing a RuleML XSD schema such as <a href="http://deliberation.ruleml.org/1.03/xsd/datalogplus_min_normal.xsd">http://deliberation.ruleml.org/1.03/xsd/datalogplus_min_normal.xsd</a>
-          </li>
-        </ol>
-      </li>
-      <li> Check the <b>View Sourcecode</b> checkbox.
-      </li>
-      <li> Click <b>Validate</b>.
-      </li>
-    </ol>
-  </li>
-</ol><h2>Validation Instructions in oXygen</h2>
 <p>
-In the instances in this examples directory, xml-model processing instructions (PIs) are used to indicate the minimal RNC and XSD schemas that the instances should validate against.
-An xml-model processing application, such as oXygen (http://oxygenxml.com) will use these PIs to determine the schemas to be used for validation.
-Unfortunately, the RuleML Version 1.0 XSD schemas are not validated by oXygen's default XSD validator, Xerces, due to circular definitions.
-These XSD schemas are validated by Saxon EE (with warning messages) and XSV (with no warning messages).
-Ideally, a user would configure oXygen to use a non-default XSD validation engine, enabling validation of an instance against both RNC and XSD schemas.
-Unfortunately, in oXygen versions up to at least 13.1, this configuration setting causes oXygen to attempt to apply the Saxon engine to the RNC schema, which produces an error message. This bug has been reported and is scheduled to be fixed in oXygen 13.2.
-The xml-model processing instruction for the XSD schema has been commented out, so that it can be easily activated once this oXygen issue is fixed. Also a RuleML start tag that includes the xsi:schemaLocation attribute is available in a comment in each file, for use with validators that do not understand xml-model processsing instructions.
-</p>
-<p>
-As a temporary workaround to this oXygen issue, one may apply a custom validation configuration to each subdirectory, except for the MYNG subdirectory, where each file requires a custom validation configuration. Each configuration contains two validation scenarios:
-<ol>
-  <li>the default validation scenario, which activates the xml-model PI with the RNC schema;</li>
-  <li>a scenario specifying the XSD schema appropriate to that instance or subdirectory, and a validation engine (either Saxon EE or XSV)</li>
-</ol>
-Once these configurations have been set, batch validation may be performed on the entire exa directory.
-</p><p>
-Hint: the oXygen "Information" view provides helpful information about the batch validation process, beyond what appears in the "Results" pane.
+  In the instances in this examples directory, xml-model processing instructions (PIs) and/or xsi:schemaLocation attributes are used to indicate RNC, NVDL, or XSD schemas that the instances should validate against.
+Please see 
+  <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.03#Appendix_3:_Validating_a_RuleML_Instance_Against_a_Relax_NG_Schema">Appendix 3</a>,
+  <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.03#Appendix_4:_Validating_a_RuleML_Instance_Against_an_NVDL_Schema">Appendix 4</a>, and  
+  <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.03#Appendix_5:_Instructions_on_Validating_a_RuleML_Instance_Online_with_XSD">Appendix 5</a>
+  of the Deliberation RuleML 1.03 Specification for information on validating these examples against Relax NG schemas, NVDL scripts, and XSD schemas, resp.
 </p>

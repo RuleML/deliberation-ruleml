@@ -339,7 +339,7 @@ if ($bdefault==0){
   $needDefaultPresent =  max($enableDefaultPresent , $enableDirND , $enableMatND , $enableInND , $enableValND , $enableOrientedND);    
   $needDefaultPresentFO = $needDefaultPresent * $enableFO;
   
-  // if and then edges are skippable when not converting to XSD and not a "plus" language
+  // if and then edges are skippable when not converting to XSD or not a "plus" language
   $NeedIfThenSkippable = max( $notPivot, $notPlus );
    
   $NeedWeb = max($NeedIRI, $NeedNode, $enableMatND, $enableDirND, $enableOrientedND, $enableClosure, $enableValND, $enableStyle);
@@ -836,7 +836,7 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'init_expansion_module.rnc"'."$end\n";
     }
-  //Step 4C. Include Consumer modules  
+  //Step 4C. Include Deliberation modules  
   // Include key and keyref attributes
   if ($enableKey){
       echo "#\n# KEY/KEYREF ATTRIBUTES ENABLED\n";

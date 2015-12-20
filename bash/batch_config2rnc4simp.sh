@@ -16,7 +16,10 @@ do
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[2]}" "${RNC4SIMP_HOME}${tokens[0]}_relaxed.rnc"
 done < "${BASH_HOME}config_rnc4simp.txt"
 
+cp "${RNC_HOME}nafhologeq_compact4simp.rnc" "${RNC4SIMP_HOME}nafhologeq_compact.rnc"
+cp "${RNC_HOME}nafhologeq_deterministic4simp.rnc" "${RNC4SIMP_HOME}nafhologeq.rnc"
 cp "${RNC_HOME}nafhologeq_relaxed4simp.rnc" "${RNC4SIMP_HOME}nafhologeq_relaxed.rnc"
+cp "${RNC_HOME}nafhologeq_normal4simp.rnc" "${RNC4SIMP_HOME}nafhologeq_normal.rnc"
 
 for file in "${RNC4SIMP_HOME}"*.rnc
 do

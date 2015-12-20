@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../relaxng/drivers/myng-b3f-d7-a7-l1-p010-i79-t000-q0-e1-sb.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:re="http://ruleml.org/1.02/entailments/"
-  xmlns:rp="http://ruleml.org/1.02/profiles/"
+  xmlns:re="http://ruleml.org/1.03/entailments/"
+  xmlns:rp="http://ruleml.org/1.03/profiles/"
   style="re:reasoning">
   <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->

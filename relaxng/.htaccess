@@ -1,4 +1,4 @@
-IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* all_ordered.rnc all_unordered.rnc local.prepend.php php-cli.ini phpinfo.php schema_rnc.php schema_rnc_test.php error_log
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* contractions indep_valid_modules all_compact.rnc all_ordered.rnc all_unordered.rnc all_unordered_deterministic.rnc local.prepend.php php-cli.ini phpinfo.php schema_rnc.php schema_rnc_local.php error_log
 Redirect /1.03/relaxng/bindatagroundfact_normal.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b01-d7-a2-l1-p3cf-i06-tf0f-q1-e0-s4c.rnc
 Redirect /1.03/relaxng/bindatagroundfact_relaxed.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b01-d7-a2-l1-p3cf-i06-tf0f-q1-e0-s4f.rnc
 Redirect /1.03/relaxng/bindatagroundlog_normal.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b03-d7-a2-l1-p3cf-i07-tf0f-q1-e0-s4c.rnc
@@ -47,4 +47,4 @@ Redirect /1.03/relaxng/naffolog_normal.rnc http://deliberation.ruleml.org/1.03/r
 Redirect /1.03/relaxng/naffolog_relaxed.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf0f-q7-e3-s4f.rnc
 Redirect /1.03/relaxng/naffologeq_normal.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4c.rnc
 Redirect /1.03/relaxng/naffologeq_relaxed.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc
-Redirect /1.03/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc
+Redirect /1.03/relaxng/schema.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc

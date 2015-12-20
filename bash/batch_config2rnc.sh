@@ -9,7 +9,7 @@ mkdir -p "${DRIVER_HOME}"
 rm "${DRIVER_HOME}"*.rnc >> /dev/null 2>&1
 rm "${RNC_HOME}.htaccess" >> /dev/null 2>&1
 
-echo  "IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* all_ordered.rnc all_unordered.rnc local.prepend.php php-cli.ini phpinfo.php schema_rnc.php schema_rnc_test.php error_log">> "${RNC_HOME}.htaccess"
+echo  "IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* contractions indep_valid_modules all_compact.rnc all_ordered.rnc all_unordered.rnc all_unordered_deterministic.rnc local.prepend.php php-cli.ini phpinfo.php schema_rnc.php schema_rnc_local.php error_log">> "${RNC_HOME}.htaccess"
 
 while read line
 do
@@ -31,6 +31,11 @@ do
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[2]}" "${DRIVER_HOME}myng-${tokens[2]}.rnc"
 done < "${BASH_HOME}config_rnc_myng.txt"
 
+cp "${RNC_HOME}naffologeq_compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}naffologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}nafhologeq_normal.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}nafhologeq_relaxed.rnc" "${DRIVER_HOME}"
 
 for file in "${DRIVER_HOME}"*.rnc

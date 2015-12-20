@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE rfml SYSTEM "http://www.relfun.org/rfml/rfml.dtd">
+
+<rfml>
+
+<ft>
+  <pattop>
+    <con>serialise</con>
+    <var>l</var>
+  </pattop>
+  <callop>
+    <con>numbered</con>
+    <callop>
+      <struc>
+        <con>qsort</con>
+        <con>before</con>
+      </struc>
+      <callop>
+        <con>pairlists</con>
+        <var>l</var>
+        <var>r</var>
+      </callop>
+    </callop>
+    <con>1</con>
+  </callop>
+  <var>r</var>
+</ft>
+<ft>
+  <pattop>
+    <con>pairlists</con>
+    <tup/>
+    <tup/>
+  </pattop>
+  <tup/>
+</ft>
+<ft>
+  <pattop>
+    <con>pairlists</con>
+    <tup>
+      <var>x</var>
+      <rest/>
+      <var>l</var>
+    </tup>
+    <tup>
+      <var>y</var>
+      <rest/>
+      <var>m</var>
+    </tup>
+  </pattop>
+  <callop>
+    <con>tup</con>
+    <tup>
+      <var>x</var>
+      <var>y</var>
+    </tup>
+    <rest/>
+    <callop>
+      <con>pairlists</con>
+      <var>l</var>
+      <var>m</var>
+    </callop>
+  </callop>
+</ft>
+<hn>
+  <pattop>
+    <con>numbered</con>
+    <tup/>
+    <var>n</var>
+  </pattop>
+</hn>
+<hn>
+  <pattop>
+    <con>numbered</con>
+    <tup>
+      <tup>
+        <var>x</var>
+        <var>n</var>
+      </tup>
+      <rest/>
+      <var>r</var>
+    </tup>
+    <var>n</var>
+  </pattop>
+  <callop>
+    <con>numbered</con>
+    <var>r</var>
+    <callop>
+      <con>+</con>
+      <var>n</var>
+      <con>1</con>
+    </callop>
+  </callop>
+</hn>
+<ft>
+  <pattop>
+    <struc>
+      <con>qsort</con>
+      <var>cr</var>
+    </struc>
+    <tup/>
+  </pattop>
+  <tup/>
+</ft>
+<ft>
+  <pattop>
+    <struc>
+      <con>qsort</con>
+      <var>cr</var>
+    </struc>
+    <tup>
+      <var>x</var>
+      <rest/>
+      <var>y</var>
+    </tup>
+  </pattop>
+  <callop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <var>y</var>
+    <var>sm</var>
+    <var>gr</var>
+  </callop>
+  <callop>
+    <con>cat</con>
+    <callop>
+      <struc>
+        <con>qsort</con>
+        <var>cr</var>
+      </struc>
+      <var>sm</var>
+    </callop>
+    <callop>
+      <con>tup</con>
+      <var>x</var>
+      <rest/>
+      <callop>
+        <struc>
+          <con>qsort</con>
+          <var>cr</var>
+        </struc>
+        <var>gr</var>
+      </callop>
+    </callop>
+  </callop>
+</ft>
+<hn>
+  <pattop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <tup>
+      <var>y</var>
+      <rest/>
+      <var>z</var>
+    </tup>
+    <tup>
+      <var>y</var>
+      <rest/>
+      <var>sm</var>
+    </tup>
+    <var>gr</var>
+  </pattop>
+  <callop>
+    <var>cr</var>
+    <var>y</var>
+    <var>x</var>
+  </callop>
+  <callop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <var>z</var>
+    <var>sm</var>
+    <var>gr</var>
+  </callop>
+</hn>
+<hn>
+  <pattop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <tup>
+      <var>y</var>
+      <rest/>
+      <var>z</var>
+    </tup>
+    <var>sm</var>
+    <tup>
+      <var>y</var>
+      <rest/>
+      <var>gr</var>
+    </tup>
+  </pattop>
+  <callop>
+    <var>cr</var>
+    <var>x</var>
+    <var>y</var>
+  </callop>
+  <callop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <var>z</var>
+    <var>sm</var>
+    <var>gr</var>
+  </callop>
+</hn>
+<hn>
+  <pattop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <tup>
+      <var>x</var>
+      <rest/>
+      <var>z</var>
+    </tup>
+    <var>sm</var>
+    <var>gr</var>
+  </pattop>
+  <callop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <var>z</var>
+    <var>sm</var>
+    <var>gr</var>
+  </callop>
+</hn>
+<hn>
+  <pattop>
+    <struc>
+      <con>partition</con>
+      <var>cr</var>
+    </struc>
+    <var>x</var>
+    <tup/>
+    <tup/>
+    <tup/>
+  </pattop>
+</hn>
+<hn>
+  <pattop>
+    <con>before</con>
+    <tup>
+      <var>x1</var>
+      <var>y1</var>
+    </tup>
+    <tup>
+      <var>x2</var>
+      <var>y2</var>
+    </tup>
+  </pattop>
+  <callop>
+    <con>stringlt</con>
+    <var>x1</var>
+    <var>x2</var>
+  </callop>
+</hn>
+<ft>
+  <pattop>
+    <con>cat</con>
+    <tup/>
+    <var>l</var>
+  </pattop>
+  <var>l</var>
+</ft>
+<ft>
+  <pattop>
+    <con>cat</con>
+    <tup>
+      <var>h</var>
+      <rest/>
+      <var>r</var>
+    </tup>
+    <var>l</var>
+  </pattop>
+  <callop>
+    <con>tup</con>
+    <var>h</var>
+    <rest/>
+    <callop>
+      <con>cat</con>
+      <var>r</var>
+      <var>l</var>
+    </callop>
+  </callop>
+</ft>
+
+</rfml>
