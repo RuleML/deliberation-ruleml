@@ -31,6 +31,7 @@
       select="namespace-uri($node)='http://ruleml.org/spec' and (
       local-name($node)='Atom' or
       local-name($node)='Expr' or
+      local-name($node)='Uniterm' or
       local-name($node)='Plex'
       )
       "
@@ -87,7 +88,8 @@
     <xsl:param name="node" as="node()"/>
     <xsl:value-of
       select="namespace-uri($node)='http://ruleml.org/spec' and
-      (local-name($node)='Ind' or
+      (local-name($node)='Const' or
+      local-name($node)='Ind' or
       local-name($node)='Var' or
       local-name($node)='Skolem' or
       local-name($node)='Reify'
@@ -111,6 +113,7 @@
     <xsl:value-of
       select="(namespace-uri($node)='http://ruleml.org/spec' and 
       (
+      local-name($node)='Uniterm' or
       local-name($node)='Atom' or
       local-name($node)='Equal' or
       local-name($node)='Time[ruleml:isFormulaHolder($nodeParent)]' or
@@ -359,6 +362,30 @@
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+  <!-- Wraps the naked RuleML childern of Uniterm. -->
+  <xsl:template
+    match="ruleml:Uniterm/*[ruleml:isNode(.)]"
+    mode="phase-1" priority = "9">
+    <xsl:choose>
+      <xsl:when test="local-name()='Rel'">
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">op</xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">arg</xsl:with-param>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template
+    match="ruleml:Uniterm[count(ruleml:op)+count(ruleml:Rel)=0]/*[ruleml:isNode(.)][1]"
+    mode="phase-1" priority = "10">
+    <xsl:call-template name="wrap">
+      <xsl:with-param name="tag">op</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
   <!-- Wraps the naked RuleML children of Implies in the cases where:
         -the only children of Implies are <left>, <right> and <oid> which can appear before <if> and <then> - does not handle foreign elements in the last or second to last position

@@ -17,21 +17,21 @@ mkdir -p "${COMPACT_SUITE_HOME}"
 rm "${COMPACT_SUITE_HOME}"* >> /dev/null 2>&1
 
 
-  nschemaname="naffologeq_normal.xsd"
+  nschemaname="nafhologeq_normal.xsd"
   nfile="${XSD_HOME}${nschemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${nfile}"
   if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${nschemaname}"
        exit 1
    fi   
-  schemaname="naffologeq_compact.xsd"
+  schemaname="nafhologeq_compact.xsd"
   sfile="${XSD_HOME}${schemaname}"       
   "${BASH_HOME}aux_valxsd.sh" "${sfile}"
   if [[ "$?" -ne "0" ]]; then
        echo "Schema Validation Failed for ${schemaname}"
        exit 1
    fi   
-schemaname2="naffologeq_compact.rnc"
+schemaname2="nafhologeq_compact.rnc"
   sfile2="${RNC_HOME}${schemaname2}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   if [[ "$?" -ne "0" ]]; then
