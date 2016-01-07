@@ -5,7 +5,8 @@
     <validate
       schema="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php"
       schemaType="application/relax-ng-compact-syntax"/>
-
+    <validate schema="http://deliberation.ruleml.org/1.02/xsd/nafhologeq.xsd"
+      schemaType="application/xml"/>
   </namespace>
   <anyNamespace>
     <allow/>
