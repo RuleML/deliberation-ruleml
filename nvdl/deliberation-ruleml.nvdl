@@ -3,10 +3,8 @@
   xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   <namespace ns="http://ruleml.org/spec">
     <validate
-      schema="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php"
+      schema="http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_relaxed.rnc"
       schemaType="application/relax-ng-compact-syntax"/>
-    <validate schema="http://deliberation.ruleml.org/1.02/xsd/nafhologeq.xsd"
-      schemaType="application/xml"/>
   </namespace>
   <anyNamespace>
     <allow/>
