@@ -7,15 +7,13 @@
 <h2>Download</h2>
 <p>To download the complete Deliberation RuleML 1.02 repository, use the <a href="https://github.com/RuleML/deliberation-ruleml/archive/1.02.zip">Github Download</a>.</p>
 <p>To download a zip archive of the Deliberation modules only <a href="http://deliberation.ruleml.org/1.02/relaxng/modules/RNCModulesDeliberation1.02.zip">Click Here</a>.</p>
-<h2>Redirects</h2>
-<p>There are a number of URLs beginning with the path to this directory that redirect to PHP scripts. In particular, <!--the zip archives and--> the schema drivers for anchor languages are built on-the-fly by PHP scripts.</p>
-    <h3><a name="anchor" id="anchor"/>Schema Drivers for Anchor Sublanguages</h3>
-    <p>The schema drivers listed in this table are built on-the-fly by the PHP script "schema_rnc.php". The primary purpose of these links is for online validation. The intended usage is to copy the link and paste it into a validation script or processing instruction. Clicking on the links will download (only) the schema driver file.  If you plan to use a local copy of one or more of these drivers, please also download the modules from one of the download link above. RuleML users may recommend additional anchor languages for future versions through the 
+<h2><a name="anchor" id="anchor"/>Schema Drivers for Anchor SLanguages</h2>
+<p>The schema drivers listed in this table are built on-the-fly by the PHP script <a href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php">"schema_rnc.php"</a>. The primary purpose of these links is for online validation. The intended usage is to copy the link and paste it into a validation script or processing instruction. Clicking on the links will download (only) the schema driver file.  If you plan to use a local copy of one or more of these drivers, please also download the modules from one of the download links above. RuleML users may recommend additional anchor languages for future versions through the 
       <a href="http://wiki.ruleml.org/index.php/Category:Issues">RuleML Wiki Issue Manager</a>. To obtain a Wiki account, contact: <strong>webmaster {A T} ruleml.org</strong>.</p>
     <table>
       <thead>
         <tr>
-          <td>Anchor Sublanguage</td>
+          <td>Anchor Language</td>
           <td>Normalized Serialization</td>
           <td>Relaxed Serialization</td>
           <td>Compact Serialization</td>
@@ -256,12 +254,12 @@
       </tbody>
     </table>
 
-<h3>Schema Drivers for Customized Sublanguages</h3>
-The PHP script "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php"  accepts a query string that may be used to customize a RuleML language. Because the more than fifty schema modules are freely-combinable, a large number of customized languages are available. A naming convention has been adopted to identify these languages, illustrated as follows:
+<h2>Schema Drivers for Customized Languages</h2>
+The PHP script "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php"  accepts a query string that may be used, indirectly through the <a href="http://deliberation.ruleml.org/1.02/myng">MYNG GUI</a> or directly by advanced users, to customize a RuleML language. Because the more than fifty schema modules are freely-combinable, a large number of customized languages are available. A naming convention has been adopted to identify these languages, illustrated as follows:
 <table>
   <thead>
     <tr>
-      <td>Sublanguage Name</td>
+      <td>Language Name</td>
       <td>Query String</td>
     </tr>
   </thead>
@@ -276,8 +274,8 @@ The PHP script "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php"  acc
 The first letter of the facet (backbone, default, ...) has been used in the encoding, except for the facet "termseq", where the letter "a" (for -adicity or -arity) is used to disambiguate from the "terms" facet.
 
 
-<h3>MYNG</h3>
-A GUI for constructing the query string for a customized language is available (see  <a href="http://deliberation.ruleml.org/1.02/myng">MYNG</a>).  For details of the modularization approach, see the <a href="http://wiki.ruleml.org/index.php/MYNG">MYNG Wiki</a>, or the publication describing the re-engineering of <a href="http://ruleml.org/papers/RuleMLinRelaxNG/">RuleML in Relax NG</a>.
+<h2>MYNG</h2>
+A GUI for constructing the query string for a customized language is available (see  <a href="http://deliberation.ruleml.org/1.02/myng">MYNG</a>).  For details of the schema modularization approach that makes this fine-grained customization possible, see the <a href="http://wiki.ruleml.org/index.php/MYNG">MYNG Wiki</a>, or the publication describing the re-engineering of <a href="http://ruleml.org/papers/RuleMLinRelaxNG/">RuleML in Relax NG</a>.
 
 
   </body>
