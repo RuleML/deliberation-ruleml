@@ -24,7 +24,7 @@ restOfPositionalArguments-edge.choice |= repo.edge.def
 repo.edge.def =
   
   ## A positional rest variable used in <Atom>s, <Expr>s and <Plex>s. 
-  ## Note that <Plex>s are generated, so <repo>s are only available above the Datalog sublanguage.
+  ## Note that <Plex>s are generated, so <repo>s are only available above the Datalog language.
   ##        See http://www.ruleml.org/0.9/glossary/#gloss-repo
   element repo { repo.type.def }
 repo.type.def = repo.attlist? & repo.content

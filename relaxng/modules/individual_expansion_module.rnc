@@ -35,7 +35,7 @@ edge.choice |= arg.edge.def
 ## an extension point for stripe skipping as well as specializations of the positional argument tag name. 
 positionalArgument-edge.choice |= arg.edge.def
 
-## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog sublanguages).
+## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog languages).
 arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 

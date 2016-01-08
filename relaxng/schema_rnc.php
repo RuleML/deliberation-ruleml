@@ -174,7 +174,7 @@ echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]'."\n";
 echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dcterms:description ['."\n";
-echo '    "custom-built main module for a Deliberation RuleML sublanguage."'."\n";
+echo '    "custom-built main module for a Deliberation RuleML language."'."\n";
 echo ']'."\n";
 echo 'dcterms:date [ "';
 echo($now);

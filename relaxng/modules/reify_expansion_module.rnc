@@ -23,7 +23,7 @@ Reify-node.choice |= Reify.Node.def
 Reify.Node.def =
   
   ## Supports reification (a kind of instantiation or quasi-quotation) as needed by SWSL. 
-  ## It allows any RuleML tag available within the current sublanguage as content, treating 
+  ## It allows any RuleML tag available within the current language as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Reify
