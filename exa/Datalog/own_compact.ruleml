@@ -35,7 +35,9 @@
                           .     .      .       .              .     .     .
                          buy  person merchant object        keep  person object
   
-  Note that the edges labeled as "if", "then" and "op" in the OrdLab tree do not appear explicitly in the compact serialization.
+  Note that the edges labeled as "if", "then" and "op" in the OrdLab tree
+  do not appear explicitly in the compact serialization.
+  
     ... end XML comment -->
 
   <Assert mapClosure="universal">
