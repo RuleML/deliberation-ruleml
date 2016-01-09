@@ -1,8 +1,9 @@
 <p>
-  In the instances in this examples directory, xml-model processing instructions (PIs) and/or xsi:schemaLocation attributes are used to indicate RNC, NVDL, or XSD schemas that the instances should validate against.
+  The examples of this directory are grouped into (sub-)subdirectories roughly corresponding to anchor languages. In the instance documents at the leaves of the main directory, xml-model processing instructions (PIs) and/or xsi:schemaLocation attributes are used to indicate RNC, NVDL, or XSD schemas that the instances should validate against.
 Please see 
   <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.02#Appendix_3:_Validating_a_RuleML_Instance_Against_a_Relax_NG_Schema">Appendix 3</a>,
   <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.02#Appendix_4:_Validating_a_RuleML_Instance_Against_an_NVDL_Schema">Appendix 4</a>, and  
   <a href="http://wiki.ruleml.org/index.php/Specification_of_Deliberation_RuleML_1.02#Appendix_5:_Instructions_on_Validating_a_RuleML_Instance_Online_with_XSD">Appendix 5</a>
   of the Deliberation RuleML 1.02 Specification for information on validating these examples against Relax NG schemas, NVDL scripts, and XSD schemas, resp.
+  Besides the primary instance documents with filename extension .ruleml, secondary documents with other filename extensions .&lt;ext&gt; are sometimes included to illustrate meaning and interoperation of primary documents (using the same filename, i.e. instance.ruleml and instance.&lt;ext&gt;). The <a href="https://github.com/RuleML/deliberation-ruleml/tree/1.02/bash">RuleML validation scripts</a> only process leaf documents with filename extension .ruleml (ignoring everything else). Some instance documents are intended as counter-examples for validation, as indicated by their names of the form instance_fail.ruleml.
 </p>
