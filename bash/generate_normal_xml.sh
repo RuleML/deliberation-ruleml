@@ -109,7 +109,7 @@ do
   filename=$(basename "$f")
   echo "Compactifying  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.02_compactifier_drop.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.02_compactifier.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
