@@ -3459,7 +3459,7 @@
   <xs:element name="resl" type="ruleml:resl.type.def">
     <xs:annotation>
       <xs:documentation>A slotted rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.  Note that &lt;Plex&gt;s are
-        generated, so &lt;resl&gt;s are only available above the Datalog sublanguage. See
+        generated, so &lt;resl&gt;s are only available above the Datalog language. See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-resl</xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -3515,7 +3515,7 @@
   <xs:element name="repo" type="ruleml:repo.type.def">
     <xs:annotation>
       <xs:documentation>A positional rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.  Note that &lt;Plex&gt;s
-        are generated, so &lt;repo&gt;s are only available above the Datalog sublanguage.        See
+        are generated, so &lt;repo&gt;s are only available above the Datalog language.        See
         http://www.ruleml.org/0.9/glossary/#gloss-repo</xs:documentation>
     </xs:annotation>
   </xs:element>
