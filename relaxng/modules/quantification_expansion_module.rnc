@@ -32,11 +32,13 @@ edge.choice |= declare.edge.def | formula_Forall.edge.def | formula_Exists.edge.
 
 ## an extension point to allow alternate names and internationalization of universal quantifiers
 Forall-node.choice |= Forall.Node.def
+## The children of a universal quantification are divided into two sections, 
+## a header section for modifiers, and a main section for the variable declarations and body formula. 
 Forall.Node.def =
   
   ## Explicit universal quantifier. It consists of a sequence of one or more 
-  ## variables (<Var>), each optionally surrounded by a <declare> role, and a
-  ## logical formula (optionally surrounded by a <formula> role).
+  ## variables (<Var>), each optionally surrounded by <declare> role tags, and a
+  ## logical formula (optionally surrounded by <formula> role tags).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall
   element Forall { Forall.type.def }
 Forall.type.def = (Forall-datt.choice & reForall.attlist), Forall.header, Forall.main
@@ -46,7 +48,7 @@ Forall.type.def = (Forall-datt.choice & reForall.attlist), Forall.header, Forall
 reForall.attlist &= closure-att-fo.choice?
 reForall.attlist &= mapClosure-att-fo.choice?
 
-## Universally qualified formulas aaccept the header patter common to truth-valued connectives.
+## Universally qualified formulas aaccept the header pattern common to truth-valued connectives.
 Forall.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
@@ -55,11 +57,13 @@ Forall.main |= boundVariables.choice, formula_Forall-edge.choice
 
 ## an extension point to allow alternate names and internationalization for existential quantifiers
 Exists-node.choice |= Exists.Node.def
+## The children of an existential quantification are divided into two sections, 
+## a header section for modifiers, and a main section for the variable declarations and body formula. 
 Exists.Node.def =
   
   ## Explicit existential quantifier. It consists of one or more variables (<Var>),
-  ## each optionally surrounded by a <declare> role, followed by a logical formula 
-  ## (optionally surrounded by a <formula> role).
+  ## each optionally surrounded by <declare> role tags, followed by a logical formula 
+  ## (optionally surrounded by <formula> role tags).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists
   element Exists { Exists.type.def }
 Exists.type.def = (Exists-datt.choice & reExists.attlist), Exists.header, Exists.main
@@ -69,7 +73,7 @@ Exists.type.def = (Exists-datt.choice & reExists.attlist), Exists.header, Exists
 reExists.attlist &= closure-att-fo.choice?
 reExists.attlist &= mapClosure-att-fo.choice?
 
-## Existential quantifications accept the header patter common to truth-valued connectives.
+## Existential quantifications accept the header pattern common to truth-valued connectives.
 Exists.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
@@ -83,26 +87,26 @@ boundVariables.choice |= declare-edge.choice+
 declare-edge.choice |= declare.edge.def
 declare.edge.def =
   
-  ## A role used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
+  ## An edge used for variables (<Var>) declared within a quantifier (<Forall> or <Exists>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-declare
   element declare { declare.type.def }
 declare.type.def = declare.attlist? & declare.content
 
-## a declaration element contains a single quantifiable term
+## The role filler for a quantification's declare edge is a simple quantifiable term
 declare.content |= SimpleQuantifiableTerm.choice
 
 ## an extension point for stripe skipping as well as specializations of the formula tag name in universal quantifications. 
 formula_Forall-edge.choice |= formula_Forall.edge.def
 formula_Forall.edge.def =
   
-  ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
+  ## The formula edge of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
   ## within Forall...
   element formula { formula_Forall.type.def }
 formula_Forall.type.def = formula_Forall.attlist? & formula_Forall.content
 
-## The formula role of universal quantifications contains a single formula. 
+## The role filler for an universal quantification's body edge is a formula. 
 formula_Forall.content |= ForallFormula.choice
 
 ## formulas allowed to be universally quantified.
@@ -125,14 +129,14 @@ ForallFormula.choice |=
 formula_Exists-edge.choice |= formula_Exists.edge.def
 formula_Exists.edge.def =
   
-  ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
+  ## The formula edge of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
   ## Within Exists...
   element formula { formula_Exists.type.def }
 formula_Exists.type.def = formula_Exists.attlist? & formula_Exists.content
 
-## The formula role of existential quantifications contains a single formula.
+## The role filler of an existential quantification's body edge is a formula.
 formula_Exists.content |= ExistsFormula.choice
 
 ## formulas allowed to be existentially quantified.

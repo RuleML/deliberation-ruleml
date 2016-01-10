@@ -21,7 +21,7 @@ start |= notAllowed
 material-att.choice |= material.attrib.def
 material.attrib.def =
   
-  ##  An attribute indicating the kind of an implication rule (<Implies>). Allowed values are "yes" (the default) and "no".
+  ##  An attribute indicating the kind of an implication rule (<Implies>). Predefined values are "yes" (the default) and "no".
   ## See http://deliberation.ruleml.org/1.02/glossary/.40material
   attribute material { material.value }
 material.value |= material_default.value | material_non-default.value

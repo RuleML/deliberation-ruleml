@@ -21,10 +21,12 @@ Node.choice |= Reify-any.Node.def
 
 ## an extension point to allow alternate names and internationalization for reification
 Reify-node.choice |= Reify-any.Node.def
+## The children of a reification are divided into two sections, 
+## a header section for modifiers, and a main section for the body construct. 
 Reify-any.Node.def =
   
-  ## Supports reification (a kind of instantiation or quasi-quotation) as needed by SWSL. 
-  ## It allows any RuleML tag available within the current language as content, treating 
+  ## Supports reification (a kind of instantiation or quasi-quotation). 
+  ## It allows any RuleML element available within the current language as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Reify

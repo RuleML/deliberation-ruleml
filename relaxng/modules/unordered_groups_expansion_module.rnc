@@ -16,6 +16,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
+## The main section of an atomic formula contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for atomic formulas is optional in the relaxed-form serialization.
 ## This pattern cannot be translated accurately into XSD.
 Atom.main |= operatorForAtoms-edge.choice & argumentsForAtoms.sequence
@@ -36,6 +37,7 @@ positionalArgumentsForAtoms.sequence |=
 ## This pattern cannot be translated accurately into XSD.
 slotsForAtoms.sequence |= slotTermsForAtoms.sequence & restOfSlots-edge.choice?
 
+## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is optional in the relaxed-form serialization.
 ## This pattern cannot be translated accurately into XSD.
 Expr.main |= operatorForExpressions-edge.choice & argumentsForExpressions.sequence
@@ -57,6 +59,7 @@ positionalArgumentsForExpressions.sequence |=
 ## This pattern cannot be translated accurately into XSD.
 slotsForExpressions.sequence |= slotTermsForExpressions.sequence & restOfSlots-edge.choice?
 
+## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the relaxed-form serialization, the if and then 
 ## of an implication can occur in either order if striped.
 ## This pattern can be translated accurately into XSD.
@@ -76,7 +79,7 @@ Atom.header &= (Node.header? & objectIdentifier-edge.choice? & degree-edge.choic
 Expr.header &= (Node.header? & exprObjectIdentifier-edge.choice?)?
 # 
 # 
-# STRIPE-SKIPPING AND POSITIONAL-DNDEPENDENCE
+# STRIPE-SKIPPING AND POSITIONAL-INDEPENDENCE
 # RELAX NG ENHANCEMENT
 
 ## non-linear interaction of stripe-skipping and relaxed-form serialization

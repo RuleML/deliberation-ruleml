@@ -16,6 +16,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
+## The main section of an atomic formula contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for atomic formulas is required in a normal-form serialization.
 Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 
@@ -32,6 +33,7 @@ positionalArgumentsForAtoms.sequence |=
 ## in atomic formulas in the normal-form serialization. 
 slotsForAtoms.sequence |= slotTermsForAtoms.sequence, restOfSlots-edge.choice?
 
+## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is required in the normal-form serialization.
 Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequence
 
@@ -49,6 +51,7 @@ positionalArgumentsForExpressions.sequence |=
 ## in expressions in the normal-form serialization. 
 slotsForExpressions.sequence |= slotTermsForExpressions.sequence, restOfSlots-edge.choice?
 
+## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the normal-form serialization, the if and then of an implication must occur in canonical order.
 Implies.main |= body_Implies.name.choice, head_Implies.name.choice
 

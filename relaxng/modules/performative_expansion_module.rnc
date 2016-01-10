@@ -38,7 +38,7 @@ RuleML.def =
   element RuleML { RuleML.type.def }
 RuleML.type.def = (RuleML-datt.choice & reRuleML.attlist), RuleML.header, RuleML.main
 
-## The RuleML root element accepts the header patter common to Nodes.
+## The RuleML root element accepts the header pattern common to Nodes.
 RuleML.header &= Node.header?
 
 ## The RuleML root element contains zero or more performatives.
@@ -72,6 +72,8 @@ AssertRetract-node.choice |= Assert-node.choice | Retract-node.choice
 
 ## an extension point for specializations of the assertion tag name.  
 Assert-node.choice |= Assert.Node.def
+## The children of an assertion performative are divided into two sections, 
+## a header section for modifiers, and a main section for the asserted rulebase or formula. 
 Assert.Node.def =
   
   ## A KQML-like performative acting as a wrapper specifying that its content is 
@@ -83,6 +85,8 @@ Assert.type.def =
 
 ## an extension point for specializations of the retraction tag name.  
 Retract-node.choice |= Retract.Node.def
+## The children of a rectraction performative are divided into two sections, 
+## a header section for modifiers, and a main section for the retracted rulebase or formula. 
 Retract.Node.def =
   
   ## A performative similar to KQML's 'untell' that acts as a wrapper specifying that its
@@ -96,7 +100,7 @@ Retract.type.def =
 reAssertRetract.attlist &= mapClosure-att.choice?
 # For the declaration of the scope closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Assertions and retractions accept the header patter common to Nodes.
+## Assertions and retractions accept the header pattern common to Nodes.
 AssertRetract.header &= Node.header?
 # The object header is initialized to be empty, and may be over-ridden by optional modules. See the object identifier module (desc_module).
 
@@ -107,7 +111,7 @@ AssertRetract.main |= formula_AssertRetract-edge.choice*
 formula_AssertRetract-edge.choice |= formula_AssertRetract.edge.def
 formula_AssertRetract.edge.def =
   
-  ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
+  ## The formula edge of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
   ## Within Assert or Retract...
@@ -119,6 +123,8 @@ formula_AssertRetract.content |= AssertRetractFormula.choice
 
 ## an extension point for specializations of the query tag name.  
 Query-node.choice |= Query.Node.def
+## The children of a query performative are divided into two sections, 
+## a header section for modifiers, and a main section for the query formula. 
 Query.Node.def =
   
   ## A KQML-like performative acting as a wrapper specifying that its content is
@@ -133,7 +139,7 @@ reQuery.attlist &= closure-att.choice?
 reQuery.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Queries accept the header patter common to Nodes.
+## Queries accept the header pattern common to Nodes.
 Query.header &= Node.header?
 # The object header may be positionally-dependent, 
 # see the position-(in)dependence serialization modules (orderstrict_module, orderlax_module).
@@ -145,7 +151,7 @@ Query.main |= formula_Query-edge.choice*
 formula_Query-edge.choice |= formula_Query.edge.def
 formula_Query.edge.def =
   
-  ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
+  ## The formula edge of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
   ## Within Query ...

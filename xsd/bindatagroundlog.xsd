@@ -31,7 +31,7 @@
   </xs:complexType>
   <xs:group name="RuleML.header">
     <xs:annotation>
-      <xs:documentation>The RuleML root element accepts the header patter common to
+      <xs:documentation>The RuleML root element accepts the header pattern common to
         Nodes.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -173,7 +173,7 @@
   
   <xs:group name="AssertRetract.header">
     <xs:annotation>
-      <xs:documentation>Assertions and retractions accept the header patter common to
+      <xs:documentation>Assertions and retractions accept the header pattern common to
         Nodes.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -203,7 +203,7 @@
     <xs:sequence>
       <xs:element form="qualified" name="formula" type="ruleml:formula_AssertRetract.type.def">
         <xs:annotation>
-          <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
+          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
             http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Assert or
             Retract...</xs:documentation>
@@ -259,7 +259,7 @@
   
   <xs:group name="Query.header">
     <xs:annotation>
-      <xs:documentation>Queries accept the header patter common to Nodes.</xs:documentation>
+      <xs:documentation>Queries accept the header pattern common to Nodes.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group minOccurs="0" ref="ruleml:Node.header"/>
@@ -289,7 +289,7 @@
     <xs:sequence>
       <xs:element form="qualified" name="formula" type="ruleml:formula_Query.type.def">
         <xs:annotation>
-          <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
+          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
             http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Query
             ...</xs:documentation>
@@ -430,7 +430,7 @@
   </xs:group>
   <xs:element name="op" type="ruleml:op.type.def">
     <xs:annotation>
-      <xs:documentation>&lt;op&gt;: edge (role) element for the predicate of an atomic formula. See
+      <xs:documentation>&lt;op&gt;: edge element for the predicate of an atomic formula. See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -460,7 +460,7 @@
   </xs:group>
   <xs:element name="Rel" type="ruleml:Rel.type.def">
     <xs:annotation>
-      <xs:documentation>&lt;Rel&gt;: a category of name used as the predicate of an atomic formula. See
+      <xs:documentation>&lt;Rel&gt;: symbol used as the predicate of an atomic formula. See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -499,8 +499,9 @@
   </xs:group>
   <xs:group name="And.Node.def">
     <xs:annotation>
-      <xs:documentation>A polyadic conjunctive expression,  Within anything other than
-        Query...</xs:documentation>
+      <xs:documentation>A polyadic conjunctive formula,  The children of the conjunction element are
+        divided into two sections,  a header section for modifiers, and a main section for the
+        formulas that are conjuncts.  Within anything other than Query...</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element form="qualified" name="And" type="ruleml:And.type.def">
@@ -528,7 +529,7 @@
   </xs:attributeGroup>
   <xs:group name="And.header">
     <xs:annotation>
-      <xs:documentation>Conjunctions accept the header patter common to truth-valued
+      <xs:documentation>Conjunctions accept the header pattern common to truth-valued
         connectives.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -539,7 +540,7 @@
   <xs:group name="And.main">
     <xs:annotation>
       <xs:documentation>The main section of the conjunction content model contains zero or more
-        formulas.</xs:documentation>
+        formula edges.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_And-edge.choice"/>
@@ -557,8 +558,7 @@
   </xs:group>
   <xs:group name="formula_And.edge.def">
     <xs:annotation>
-      <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) expression,  Within And
-        ...</xs:documentation>
+      <xs:documentation>A formula edge of a conjunction (&lt;And&gt;),  Within And ...</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element form="qualified" name="formula" type="ruleml:formula_And.type.def">
@@ -610,7 +610,9 @@
   </xs:group>
   <xs:group name="Or.Node.def">
     <xs:annotation>
-      <xs:documentation>A polyadic disjunctive expression, </xs:documentation>
+      <xs:documentation>A polyadic disjunctive formula,  The children of the disjunction element are
+        divided into two sections,  a header section for modifiers, and a main section for the
+        formulas that are disjuncts.  Within anything other than Query...</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element form="qualified" name="Or" type="ruleml:Or.type.def">
@@ -638,7 +640,7 @@
   </xs:attributeGroup>
   <xs:group name="Or.header">
     <xs:annotation>
-      <xs:documentation>Disjunctions accept the header patter common to truth-valued
+      <xs:documentation>Disjunctions accept the header pattern common to truth-valued
         connectives.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -649,7 +651,7 @@
   <xs:group name="Or.main">
     <xs:annotation>
       <xs:documentation>The main section of the disjunction content model contains zero or more
-        formulas.</xs:documentation>
+        formula edges.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_Or-edge.choice"/>
@@ -667,7 +669,7 @@
   </xs:group>
   <xs:group name="formula_Or.edge.def">
     <xs:annotation>
-      <xs:documentation>The formula role of a disjunctive (&lt;Or&gt;) expression, </xs:documentation>
+      <xs:documentation>A formula edge of a disjunction (&lt;Or&gt;), </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element form="qualified" name="formula" type="ruleml:formula_Or.type.def">
@@ -828,7 +830,8 @@
   
   <xs:group name="Implies.header">
     <xs:annotation>
-      <xs:documentation>Equations accept the header of truth-valued connectives</xs:documentation>
+      <xs:documentation>Equations accept the header pattern of truth-valued
+        connectives</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
@@ -949,8 +952,8 @@
   <xs:attributeGroup name="Implies-datt.choice">
     <xs:annotation>
       <xs:documentation>implications have inference direction and material implication as an
-        attribute with default values.  implications have scoped attributes that are activated at
-        full first-order logic</xs:documentation>
+        attribute.  implications have scoped attributes that are activated at full first-order
+        logic</xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:direction-att-inf.choice"/>
     <xs:attributeGroup ref="ruleml:material-att-inf.choice"/>
@@ -958,7 +961,7 @@
   <xs:attributeGroup name="Rulebase-datt.choice">
     <xs:annotation>
       <xs:documentation>rulebases have scope inference direction  and scope material implication as
-        an attribute with default values. </xs:documentation>
+        an attribute. </xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
     <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
@@ -966,7 +969,7 @@
   <xs:attributeGroup name="AssertRetract-datt.choice">
     <xs:annotation>
       <xs:documentation>assertions and retractions have scope inference direction  and  scope
-        material implication as an attribute with default values. </xs:documentation>
+        material implication as an attribute. </xs:documentation>
     </xs:annotation>
     <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
     <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
@@ -1011,8 +1014,9 @@
   
   <xs:group name="Atom.main">
     <xs:annotation>
-      <xs:documentation>Pre-fix operator notation for atomic formulas is required in a deterministic
-        serialization.</xs:documentation>
+      <xs:documentation>The main section of an atomic formula contains an operator edge and a
+        collection of argument edges. Pre-fix operator notation for atomic formulas is required in a
+        deterministic serialization.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
@@ -1067,9 +1071,10 @@
   </xs:group>
   <xs:group name="Implies.main">
     <xs:annotation>
-      <xs:documentation>In the deterministic serialization, the if and then  of an implication can
-        occur in either order if striped. This pattern can be translated accurately into
-        XSD.</xs:documentation>
+      <xs:documentation>The main section of an implication contains two edges, a premise (body, if)
+        edge and a conclusion (head, then) edge. In the deterministic serialization, the if and then
+        of an implication can occur in either order if striped. This pattern can be translated
+        accurately into XSD.</xs:documentation>
     </xs:annotation>
     <xs:choice>
       <xs:sequence>
@@ -1256,8 +1261,8 @@
   </xs:group>
   <xs:element name="Rulebase" type="ruleml:Rulebase.type.def">
     <xs:annotation>
-      <xs:documentation>A collection of rules that can be ordered or unordered, without or with
-        duplicates.  See
+      <xs:documentation>A collection of rules or formulas that can be ordered or unordered, without
+        or with duplicates.  See
         http://deliberation.ruleml.org/1.02/glossary/#gloss-Rulebase</xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1300,7 +1305,7 @@
     <xs:sequence>
       <xs:element form="qualified" name="formula" type="ruleml:formula_Rulebase.type.def">
         <xs:annotation>
-          <xs:documentation>The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
+          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
             quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
             http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Rulebase
             ...</xs:documentation>
@@ -1464,8 +1469,7 @@
   <xs:element name="degree" type="ruleml:degree.type.def">
     <xs:annotation>
       <xs:documentation>An optional uncertainty value (between 0.0 and 1.0) that may be assigned to
-        simple formulas. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-degree</xs:documentation>
+        formulas. See http://deliberation.ruleml.org/1.02/glossary/#gloss-degree</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="degree.type.def">
@@ -1608,7 +1612,7 @@
   
   <xs:group name="Equivalent.header">
     <xs:annotation>
-      <xs:documentation>Equivalences accept the header patter common to truth-valued
+      <xs:documentation>Equivalences accept the header pattern common to truth-valued
         connectives.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
@@ -1618,8 +1622,8 @@
   
   <xs:group name="Equivalent.main">
     <xs:annotation>
-      <xs:documentation>the main content model of equivalances consists of two "torso"
-        formulas</xs:documentation>
+      <xs:documentation>the main section of an equivalance contains of two "torso"
+        edges</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="ruleml:torso-edge.choice"/>
@@ -1644,8 +1648,9 @@
       <xs:documentation>An equivalance is syntactic sugar for two implications. In all RuleML
         languages, formulas allowed as premises are the same or more general than those allowed as
         conclusions, because this is a requirement for the statement "P implies P" to be
-        syntactically valid whenever P is a valid conclusion. Therefore, formulas allowed in
-        equivalences are the same as those allowed in conclusions.</xs:documentation>
+        syntactically valid whenever P is a valid conclusion. Therefore, the torso roles in
+        equivalences may be filled by the same formulas as those allowed in
+        conclusions.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="ruleml:ConclusionFormula.choice"/>
@@ -1662,8 +1667,8 @@
     <xs:attribute name="direction" type="ruleml:direction.value">
       <xs:annotation>
         <xs:documentation> An attribute indicating the intended direction of an implication rule's
-          (&lt;Implies&gt;) inferencing.  It has a neutral default value of "bidirectional". Other allowed
-          values are "forward" and "forward". See
+          (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other predefined values
+          are "forward" and "backward". See
           http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1672,8 +1677,8 @@
     <xs:attribute name="direction" type="ruleml:direction.value" use="required">
       <xs:annotation>
         <xs:documentation> An attribute indicating the intended direction of an implication rule's
-          (&lt;Implies&gt;) inferencing.  It has a neutral default value of "bidirectional". Other allowed
-          values are "forward" and "forward". See
+          (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other predefined values
+          are "forward" and "backward". See
           http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1695,7 +1700,7 @@
         <xs:documentation> An attribute indicating the intended direction of implication rule
           (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
           attribute mapping for more details. This attribute has a  neutral default value of
-          "bidirectional". Other allowed values are "forward" and "backward". See
+          "bidirectional". Other predefined values are "forward" and "backward". See
           http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1706,7 +1711,7 @@
         <xs:documentation> An attribute indicating the intended direction of implication rule
           (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
           attribute mapping for more details. This attribute has a  neutral default value of
-          "bidirectional". Other allowed values are "forward" and "backward". See
+          "bidirectional". Other predefined values are "forward" and "backward". See
           http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1745,7 +1750,7 @@
     <xs:attribute name="material" type="ruleml:material.value">
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
-          Allowed values are "yes" (the default) and "no". See
+          Predefined values are "yes" (the default) and "no". See
           http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1754,7 +1759,7 @@
     <xs:attribute name="material" type="ruleml:material.value" use="required">
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
-          Allowed values are "yes" (the default) and "no". See
+          Predefined values are "yes" (the default) and "no". See
           http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1774,8 +1779,8 @@
     <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value">
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
-          falling within its scope (i.e. child elements).   Allowed values are "yes" (the default)
-          and "no". See
+          falling within its scope (i.e. child elements).   Predefined values are "yes" (the
+          default) and "no". See
           http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -1784,8 +1789,8 @@
     <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value" use="required">
       <xs:annotation>
         <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
-          falling within its scope (i.e. child elements).   Allowed values are "yes" (the default)
-          and "no". See
+          falling within its scope (i.e. child elements).   Predefined values are "yes" (the
+          default) and "no". See
           http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2011,7 +2016,7 @@
     </xs:annotation>
     <xs:attribute name="type" type="ruleml:type.value">
       <xs:annotation>
-        <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
+        <xs:documentation>An attribute for optionally refining a term's (user-defined) type. See
           http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2019,7 +2024,7 @@
   <xs:attributeGroup name="type.attrib.def">
     <xs:attribute name="type" type="ruleml:type.value" use="required">
       <xs:annotation>
-        <xs:documentation>A role for optionally specifying a term's (user-defined) type. See
+        <xs:documentation>An attribute for optionally refining a term's (user-defined) type. See
           http://deliberation.ruleml.org/1.02/glossary/#gloss-type</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2135,8 +2140,8 @@
   </xs:element>
   <xs:complexType name="arg.type.def">
     <xs:annotation>
-      <xs:documentation>The attribute @index is required for the positional argument role
-        (property).</xs:documentation>
+      <xs:documentation>The attribute @index is required for the positional argument
+        role.</xs:documentation>
     </xs:annotation>
     <xs:group ref="ruleml:arg.content"/>
     <xs:attributeGroup ref="ruleml:arg-datt.choice"/>
@@ -2174,8 +2179,8 @@
   </xs:simpleType>
   <xs:group name="arg.content">
     <xs:annotation>
-      <xs:documentation>The content model of positional arguments for atomic formulas consists of
-        any single term.</xs:documentation>
+      <xs:documentation>The role filler for positional arguments edges in atomic formulas is a
+        term.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="ruleml:AnyTerm.choice"/>
@@ -2282,8 +2287,8 @@
     </xs:annotation>
     <xs:attribute name="closure" type="ruleml:closure.value">
       <xs:annotation>
-        <xs:documentation>An attribute indicating how the contained free variables are quantified.
-          Allowed values are "universal" and "existential". See
+        <xs:documentation>An attribute indicating how the in-scope free variables are quantified.
+          Predefined values are "universal" and "existential". See
           http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2291,8 +2296,8 @@
   <xs:attributeGroup name="closure.attrib.def">
     <xs:attribute name="closure" type="ruleml:closure.value" use="required">
       <xs:annotation>
-        <xs:documentation>An attribute indicating how the contained free variables are quantified.
-          Allowed values are "universal" and "existential". See
+        <xs:documentation>An attribute indicating how the in-scope free variables are quantified.
+          Predefined values are "universal" and "existential". See
           http://deliberation.ruleml.org/1.02/glossary/.40closure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -2319,8 +2324,9 @@
     <xs:attribute name="mapClosure" type="ruleml:mapClosure.value">
       <xs:annotation>
         <xs:documentation>An attribute indicating how the free variables falling within its scope
-          (i.e. child elements) are quantified.  Allowed values are "universal" and "existential".
-          See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
+          (i.e. child elements) are quantified.  Predefined values are "universal" and
+          "existential". See
+          http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
@@ -2328,8 +2334,9 @@
     <xs:attribute name="mapClosure" type="ruleml:mapClosure.value" use="required">
       <xs:annotation>
         <xs:documentation>An attribute indicating how the free variables falling within its scope
-          (i.e. child elements) are quantified.  Allowed values are "universal" and "existential".
-          See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
+          (i.e. child elements) are quantified.  Predefined values are "universal" and
+          "existential". See
+          http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>

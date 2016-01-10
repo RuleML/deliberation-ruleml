@@ -18,8 +18,8 @@ start |= notAllowed
 #            * op_Atom
 #            * op_Expr
 
-# All the RuleML roles below are made collapsible by allowing
-# substitution of their content model for the role pattern.
+# All the RuleML edges below are made collapsible by allowing
+# substitution of their content model for the edge pattern.
 
 ## Stripe-skipping is allowed for operators in atomic formulas.
 operatorForAtoms-edge.choice |= op_Atom.content

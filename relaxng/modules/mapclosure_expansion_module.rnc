@@ -22,7 +22,7 @@ mapClosure-att.choice |= mapClosure.attrib.def
 mapClosure.attrib.def =
   
   ## An attribute indicating how the free variables falling within its scope (i.e. child elements) are quantified. 
-  ## Allowed values are "universal" and "existential".
+  ## Predefined values are "universal" and "existential".
   ## See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure
   attribute mapClosure { mapClosure.value }
 mapClosure.value |= closure.value

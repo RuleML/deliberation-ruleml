@@ -17,13 +17,13 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 #
 
-## expressions have interpretation attribute as an attribute with default values.
+## expressions have interpretation attribute as an attribute.
 Expr-datt.choice |= interpretation-att-inf.choice
 
-## functors have interpretation and single-valuedness as an attribute with default values.
+## function symbols have interpretation and single-valuedness as an attribute.
 Fun-datt.choice |= interpretation-att-inf.choice & singlevalued-att-inf.choice
 
-## implications have inference direction and material implication as an attribute with default values. 
+## implications have inference direction and material implication as an attribute. 
 ## implications have scoped attributes that are activated at full first-order logic
 Implies-datt.choice |=
   direction-att-inf.choice
@@ -31,16 +31,16 @@ Implies-datt.choice |=
   & mapMaterial-att-fo.choice
   & mapDirection-att-fo.choice
 
-## rulebases have scope inference direction  and scope material implication as an attribute with default values. 
+## rulebases have scope inference direction  and scope material implication as an attribute. 
 Rulebase-datt.choice |= mapMaterial-att-inf.choice & mapDirection-att-inf.choice
 
 ## assertions and retractions have scope inference direction  and 
-## scope material implication as an attribute with default values. 
+## scope material implication as an attribute. 
 AssertRetract-datt.choice |= mapMaterial-att-inf.choice & mapDirection-att-inf.choice
 # For the declaration of the scope material attribute pattern, see the material implication module (material_expansion_module)
 # For the declaration of the scope direction attribute pattern, see the inference direction module (direction_expansion_module)
 
-## equations have orientation as an attribute with default values.
+## equations have orientation as an attribute.
 Equal-datt.choice |= oriented-att-inf.choice
 
 ## conjunctions have scoped attributes that are activated at full first-order logic

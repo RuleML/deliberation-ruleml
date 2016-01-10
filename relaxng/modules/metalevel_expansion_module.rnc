@@ -24,6 +24,8 @@ edge.choice |= head_Entails.edge.def | body_Entails.edge.def
 
 ## an extension point for specializations of the entailment tag name.  
 Entails-node.choice |= Entails.Node.def
+## The children of an entailment meta-formula are divided into two sections, 
+## a header section for modifiers, and a main section for the antecedent and consequent rulebases. 
 Entails.Node.def =
   
   ## Well-known in (meta-) logic (earlier called 'Turnstile', and 'Demo' in

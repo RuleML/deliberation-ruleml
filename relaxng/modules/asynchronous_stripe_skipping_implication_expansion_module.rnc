@@ -17,6 +17,6 @@ dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
 ## Asynchronous stripe-skipping of implication  is not allowed in the (official) mixed serialization,
-## but is allowed in the complete serialization.
+## but is allowed in the relaxed serialization.
 Implies.main |= body_Implies-ss.content, head_Implies.name.choice
 Implies.main |= body_Implies.name.choice, head_Implies-ss.content

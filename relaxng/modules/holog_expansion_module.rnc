@@ -15,12 +15,14 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
-## Allow any term as the operator of an Atom or Expr
+## In Holog languages, any term is allowed to fill the operator role of an Atom or Expr
 op_Atom.content |= AnyTerm.choice
 op_Expr.content |= AnyTerm.choice
 
-## Let Uniterm be an alias for Atom
+## In Holog languages, a Uniterm formula is a simple formula
 Atom-node.choice |= Uniterm-formula.Node.def
+## The children of a Uniterm formula are divided into two sections, 
+## a header section for modifiers, and a main section for the operator and arguments. 
 Uniterm-formula.Node.def =  
   ## simple sentence represented as a Hilog term, generalizing Atom
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Uniterm
@@ -28,19 +30,21 @@ Uniterm-formula.Node.def =
 Uniterm-formula.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 #operatorForAtoms-edge.choice |= empty
 
-## Let Uniterm be an alias for Expr
+## In Holog languages, a Uniterm term is a function, relation, or functional expression
 Expression-node.choice |= Uniterm-term.Node.def
+## The children of a Uniterm term are divided into two sections, 
+## a header section for modifiers, and a main section for the operator and arguments. 
 Uniterm-term.Node.def =
   ## Also, compound function, relation, or term represented as a Hilog term, generalizing Expr
   element Uniterm { Uniterm-term.type.def }
 Uniterm-term.type.def = (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
 #operatorForExpressions-edge.choice |= empty
 
-## Let Const be an alias for Ind
+## In Holog languages, a Const term is an individual. 
 Individual-node.choice |= Const.Node.def
 Const.Node.def =
   
-  ## <Const>: a constant. See 
+  ## <Const>: a constant for Holog languages. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Const
   element Const { Const.type.def }
 Const.type.def = (Ind-datt.choice & reInd.attlist), Ind.value

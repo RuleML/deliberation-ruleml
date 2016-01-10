@@ -34,8 +34,8 @@ start |= notAllowed
 #            * weak
 #            * strong
 
-# All the RuleML roles below are made collapsible by allowing
-# substitution of their content model for the role pattern.
+# All the RuleML edges below are made collapsible by allowing
+# substitution of their content model for the edge pattern.
 
 ## Stripe-skipping is allowed for positional arguments in atomic formulas and expressions.
 positionalArgument-edge.choice |= arg.content

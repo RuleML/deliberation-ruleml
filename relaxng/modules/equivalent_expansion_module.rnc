@@ -24,9 +24,9 @@ edge.choice |= torso.edge.def
 ## an extension point for specializations of the equivalence tag name.  
 Equivalent-node.choice |= Equivalent.Node.def
 
-## An equivalence expression, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
-## It consists of a pair of (optionally skipped) <torso> roles. 
-## For example, "A person owning an object is equivalent to an object belonging to a person":
+## An equivalence formula, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
+## The children of an equivalence are divided into two sections, 
+## a header section for modifiers, and a main section for the two 'torso' formulas. 
 ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent 
 Equivalent.Node.def =
   
@@ -42,17 +42,17 @@ reEquivalent.attlist &= closure-att.choice?
 reEquivalent.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Equivalences accept the header patter common to truth-valued connectives.
+## Equivalences accept the header pattern common to truth-valued connectives.
 Equivalent.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
-## the main content model of equivalances consists of two "torso" formulas
+## the main section of an equivalance contains of two "torso" edges
 Equivalent.main |= torso-edge.choice, torso-edge.choice
 
 ## an extension point for stripe skipping as well as specializations of the torso tag name in equivalences.  
 torso-edge.choice |= torso.edge.def
 
-##  A symmetric role used in an equivalence expression (<Equivalent>) combining the asymmetric <then> and <if>.
+##  A symmetric edge used in an equivalence formula (<Equivalent>) combining the asymmetric <then> and <if>.
 torso.edge.def =
   
   ## <torso>: contains one formula within an equivalence. See 
@@ -64,7 +64,7 @@ torso.attlist &= commonInit.attlist?
 ## An equivalance is syntactic sugar for two implications.
 ## In all RuleML languages, formulas allowed as premises are the same or more general than those allowed as conclusions,
 ## because this is a requirement for the statement "P implies P" to be syntactically valid whenever P is a valid conclusion.
-## Therefore, formulas allowed in equivalences are the same as those allowed in conclusions.
+## Therefore, the torso roles in equivalences may be filled by the same formulas as those allowed in conclusions.
 torso.content |= ConclusionFormula.choice
 # For the declaration of the conclusion pattern, see the implication module (implication_expansion_module).
 reEquivalent.attlist &= commonNode.attlist?

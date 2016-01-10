@@ -32,9 +32,9 @@ Implication-node.choice |= Implies-node.choice | Equivalent-node.choice
 ## an extension point to allow alternate names and internationalization of uni-directional implication tag name.
 Implies-node.choice |= Implies.Node.def
 
-## An implication rule. It consists of a conclusion role (<then>) followed by a Premise role (<if>), or, equivalently (since roles constitute unordered elements), a Premise role followed by a conclusion role.
-## Alternatively, the roles may be skipped, in which case the Premise comes first followed by the conclusion as suggested by the element name 'Implies'.
-## The children of the implication element are divided into two sections, a header section for modifiers, and a main section for the premises and conclusion. 
+## An implication rule.
+## The content of the implication element is divided into two sections, a header section for modifiers, 
+## and a main section for the premise and conclusion. 
 Implies.Node.def =
   
   ## <Implies>: an implication between two formulas, a premise and a conclusion. See 
@@ -49,7 +49,7 @@ reImplies.attlist &= closure-att.choice?
 reImplies.attlist &= mapClosure-att-fo.choice?
 # For the declaration of the closure attribute pattern, see the quantification closure module (closure_expansion_module)
 
-## Equations accept the header of truth-valued connectives
+## Equations accept the header pattern of truth-valued connectives
 Implies.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 

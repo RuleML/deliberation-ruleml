@@ -26,10 +26,9 @@ edge.choice |= left.edge.def | right.edge.def
 ## an extension point for specializations of the equation tag name.  
 Equal-node.choice |= Equal.Node.def
 
-## An equational formula consisting of two expressions, each of which contains an argument and may be optionally surrounded 
-## by a left (<left>) or a right (<right>) role.
-
-## The children of the equation element are divided into two sections, a header section for modifiers, and a main section for the formulas on either side of the equation. 
+## An equational formula..
+## The children of the equation element are divided into two sections, 
+## a header section for modifiers, and a main section for the formulas on either side of the equation. 
 Equal.Node.def =
   
   ## <Equal>: an equation between two terms. See 
@@ -42,14 +41,14 @@ reEqual.attlist &= closure-att-fo.choice?
 Equal.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
-## Equations contain a pair of terms, a left-hand side and a right-hand side.
+## The main section of equations contains a pair of edges, a left-hand side edge and a right-hand side edge.
 Equal.main |= leftSide-edge.choice, rightSide-edge.choice
 
 ## an extension point for stripe skipping as well as specializations of the left-hand side tag name in equations.  
 leftSide-edge.choice |= left.edge.def
 left.edge.def =
   
-  ## <left>: The left-hand side of an equation. See 
+  ## <left>: The left-hand side edge of an equation. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-left
   element left { left.type.def }
 left.type.def = left.attlist? & left.content
@@ -62,7 +61,7 @@ left.content |= leftTerm.choice
 rightSide-edge.choice |= right.edge.def
 right.edge.def =
   
-  ## <right>: The right-hand side of an equation. See 
+  ## <right>: The right-hand side edge of an equation. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-right
   element right { right.type.def }
 right.type.def = right.attlist? & right.content

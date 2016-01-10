@@ -22,9 +22,11 @@ edge.choice |= formula_Rulebase.edge.def
 
 ## an extension point for specializations of the rulebase tag name.  
 Rulebase-node.choice |= Rulebase.Node.def
+## The children of a rulebase are divided into two sections, 
+## a header section for modifiers, and a main section for the rules or formulas. 
 Rulebase.Node.def =
   
-  ## A collection of rules that can be ordered or unordered, without or with duplicates. 
+  ## A collection of rules or formulas that can be ordered or unordered, without or with duplicates. 
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Rulebase
   element Rulebase { Rulebase.type.def }
 Rulebase.type.def = (Rulebase-datt.choice & reRulebase.attlist), Rulebase.header, Rulebase.main
@@ -44,7 +46,7 @@ Rulebase.main |= formula_Rulebase-edge.choice*
 formula_Rulebase-edge.choice |= formula_Rulebase.edge.def
 formula_Rulebase.edge.def =
   
-  ## The formula role of a conjunctive (<And>) or disjunctive (<Or>) expression, 
+  ## The formula edge of a conjunctive (<And>) or disjunctive (<Or>) expression, 
   ## quantifier (<Forall> or <Exists>), or performative (<Assert>, <Query> or <Retract>).
   ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
   ## Within Rulebase ...

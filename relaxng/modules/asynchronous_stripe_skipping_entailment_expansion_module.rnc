@@ -18,6 +18,6 @@ start |= notAllowed
 #
 
 ## Asynchronous stripe-skipping of entailment is not allowed in the (official) mixed serialization,
-## but is allowed in the complete serialization.
+## but is allowed in the relaxed serialization.
 Entails.main |= body_Entails-ss.content, head_Entails.name.choice
 Entails.main |= body_Entails.name.choice, head_Entails-ss.content

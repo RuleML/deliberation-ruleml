@@ -16,6 +16,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 
+## The main section of an atomic formula contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for atomic formulas is required in a deterministic serialization.
 Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 
@@ -29,6 +30,7 @@ argumentsForAtoms.sequence |=
 repo = restOfPositionalArguments-edge.choice
 resl = restOfSlots-edge.choice
 
+## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is required in the deterministic serialization.
 Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequence
 
@@ -49,6 +51,7 @@ positionalArgumentsForExpressions.sequence |=
 ## in expressions in the deterministic serialization. 
 slotsForExpressions.sequence |= slotTermsForExpressions.sequence, resl?
 
+## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the deterministic serialization, the if and then 
 ## of an implication can occur in either order if striped.
 ## This pattern can be translated accurately into XSD.

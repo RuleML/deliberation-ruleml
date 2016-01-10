@@ -25,10 +25,9 @@ edge.choice |= op_Expr.edge.def
 ## an extension point for specializations of the expression tag name. 
 Expression-node.choice |= Expr.Node.def
 
-## A logical function of the form "f(...)" where f is a function name. 
-## The function name (<Fun>) is followed by a sequence of zero or more arguments (<arg>). 
-## Optional user-defined slots (<slot>) are also permitted before and/or after the arguments, just like an atom (<Atom>).	
-## Rest variables (<repo> and <resl>) are also permitted.
+## A functional expression. 
+## The children of a functional expression are divided into two sections, 
+## a header section for modifiers, and a main section for the operator and arguments. 
 Expr.Node.def =
   
   ## <Expr>: a functional expression. See 
@@ -41,7 +40,7 @@ reExpr.attlist &= commonNode.attlist?
 operatorForExpressions-edge.choice |= op_Expr.edge.def
 
 ## (context sensitive: see Also atom_backbone_module and holog_module)
-## An operator expression including a function name (<Fun>) of a (<Expr>).
+## An operator edge including a function symbol (<Fun>) of a (<Expr>).
 ## http://deliberation.ruleml.org/1.02/glossary/#gloss-op
 op_Expr.edge.def =
   
@@ -50,24 +49,24 @@ op_Expr.edge.def =
 op_Expr.type.def = op_Expr.attlist? & op_Expr.content
 op_Expr.attlist &= commonInit.attlist?
 
-## The operator role of an expression is filled by a functor.
+## The operator role of a functional expression is filled by a function symbol.
 op_Expr.content |= Function-node.choice
 
 ## an extension point for specializations of the function operator tag name. 
 Function-node.choice |= Fun.Node.def
 
-## A user-defined function name of an <Expr>. It is optionally surrounded by an operator (<op>).
+## A user-defined function symbol of an <Expr>. It is optionally surrounded by an operator (<op>).
 Fun.Node.def =
   
-  ## <Fun>: a type of name for functional operators. See 
+  ## <Fun>: symbol for functional operators. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Fun
   element Fun { Fun.type.def }
 Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.value
 
-## functors accept the resource attribute list
+## function symbols accept the resource attribute list
 reFun.attlist &= Resource.attlist?
 # Fun.attlist = interpretation-att.option & singlevalued-att.option & Resource.attlist?
 
-## A functor contains the XSD datatype token.
+## A function symbol contains the XSD datatype token.
 Fun.value |= xsd:token
 reFun.attlist &= commonNode.attlist?

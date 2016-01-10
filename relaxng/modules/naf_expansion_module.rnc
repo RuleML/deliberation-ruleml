@@ -25,37 +25,39 @@ edge.choice |= weak.edge.def
 
 ## an extension point for specializations of the weak negation tag name.  
 NegationAsFailure-node.choice |= Naf.Node.def
+## The children of a weak negation are divided into two sections, 
+## a header section for modifiers, and a main section for the body formula. 
 Naf.Node.def =
-  # A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
-  # The negated atom may be optionally surrounded by a <weak> role.
-  #        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Naf
+  ## A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
+  ## The negated atom may be optionally surrounded by <weak> role tags.
+  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Naf
   element Naf { Naf.type.def }
 Naf.type.def = (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main
-# The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
+## The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
 reNaf.attlist &= commonNode.attlist?
 reNaf.attlist &= closure-att-fo.choice?
 reNaf.attlist &= mapClosure-att-fo.choice?
 
-## Negation As Failure formulas accept the header patter common to truth-valued connectives.
+## Negation As Failure formulas accept the header pattern common to truth-valued connectives.
 Naf.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
-## Negation As Failure formulas contain a single role.
+## The main section of Negation As Failure formulas contains a single "weak" edge.
 Naf.main |= weak-edge.choice
 
 ## an extension point for stripe skipping as well as specializations of the weak tag name in weak negations. 
 weak-edge.choice |= weak.edge.def
 weak.edge.def =
-  # A role used for negation as failure (<Naf>).
-  #        See http://deliberation.ruleml.org/1.02/glossary/#gloss-weak
+  ## An edge used for negation as failure (<Naf>).
+  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-weak
   element weak { weak.type.def }
 weak.type.def = weak.attlist? & weak.content
 weak.attlist &= commonInit.attlist?
 
-## The negation role contains a single formula. 
+## The weak negation edge contains a single formula. 
 weak.content |= NafFormula.choice
 
-## formulas allowed to belong to weak negation formulas include atomic forumulas. 
+## formulas allowed to belong to weak negation formulas 
 NafFormula.choice |=
   SimpleFormula-node.choice
   | And-fo-node.choice

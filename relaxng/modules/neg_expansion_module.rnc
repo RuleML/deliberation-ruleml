@@ -25,10 +25,12 @@ edge.choice |= strong.edge.def
 
 ## an extension point for specializations of the strong negation tag name.  
 Negation-node.choice |= Neg.Node.def
+## The children of a classical (strong) negation are divided into two sections, 
+## a header section for modifiers, and a main section for the body formula. 
 Neg.Node.def =
   
   ## A classical negation of a logical atom (<Atom>) (i.e. classical or "strong" negation). 
-  ## The negated atom may be optionally surrounded by a <strong> role.
+  ## The negated atom may be optionally surrounded by <strong> role tags.
   ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Neg
   element Neg { Neg.type.def }
 Neg.type.def = (Neg-datt.choice & reNeg.attlist), Neg.header, Neg.main
@@ -37,24 +39,24 @@ reNeg.attlist &= commonNode.attlist?
 reNeg.attlist &= closure-att-fo.choice?
 reNeg.attlist &= mapClosure-att-fo.choice?
 
-## Negation formulas accept the header patter common to truth-valued connectives.
+## Negation formulas accept the header pattern common to truth-valued connectives.
 Neg.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
-## Negation formulas contain a single role.
+## The main section of a Negation formula contains a single "strong" edge.
 Neg.main |= strong-edge.choice
 
 ## an extension point for stripe skipping as well as specializations of the strong tag name in strong negations. 
 strong-edge.choice |= strong.edge.def
 strong.edge.def =
   
-  ## A role used for logical negation (<Neg>).
+  ## An edge used for logical negation (<Neg>).
   ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-strong
   element strong { strong.type.def }
 strong.type.def = strong.attlist? & strong.content
 strong.attlist &= commonInit.attlist?
 
-## The negation role contains a single formula. 
+## The role filler for strong negation edges is a single formula. 
 strong.content |= NegFormula.choice
 
 ## formulas allowed to belong to strong negation formulas include atomic formulas. 

@@ -18,5 +18,5 @@ start |= notAllowed
 # This module modifies the following RuleML elements and attributes:
 #            * <Expr>
 
-## Expressions optionally accept the attribute pattern of objects with user-defined types.
+## Functional expressions optionally accept the attribute pattern of objects with user-defined types.
 reExpr.attlist &= Type.attlist?

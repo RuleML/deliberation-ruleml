@@ -35,14 +35,14 @@ edge.choice |= arg.edge.def
 ## an extension point for stripe skipping as well as specializations of the positional argument tag name. 
 positionalArgument-edge.choice |= arg.edge.def
 
-## A role used for the positional arguments of a logical atom (<Atom>), i.e. any of the following: <Ind>, <Data>, <Var>, <Skolem> or <Reify> (also <Expr> and <Plex> in non-Datalog languages).
+## An edge used for the positional arguments of a logical atom (<Atom>).
 arg.edge.def =
   
   ## <arg>: one argument of an atomic formula. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-arg
   element arg { arg.type.def }
 
-## The attribute @index is required for the positional argument role (property).
+## The attribute @index is required for the positional argument role.
 arg.type.def = (arg-datt.choice & rearg.attlist), arg.content
 arg-datt.choice |= index-attrib.choice
 rearg.attlist &= commonInit.attlist?
@@ -56,7 +56,7 @@ index.attrib.def =
   attribute index { index.value }
 index.value |= xsd:positiveInteger
 
-## The content model of positional arguments for atomic formulas consists of any single term.
+## The role filler for positional arguments edges in atomic formulas is a term.
 arg.content |= AnyTerm.choice
 
 ## Terms may be simple or compound.

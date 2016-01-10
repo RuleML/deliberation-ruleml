@@ -28,6 +28,8 @@ SimpleFormula-node.choice |= Atom-node.choice | Equal-node.choice
 
 ## an extension point for specializations of the atomic formula tag name.  
 Atom-node.choice |= Atom.Node.def
+## The children of an atomic formula are divided into two sections, 
+## a header section for modifiers, and a main section for the operator and arguments. 
 Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
@@ -43,10 +45,10 @@ reAtom.attlist &= closure-att.choice?
 operatorForAtoms-edge.choice |= op_Atom.edge.def
 
 ## (context sensitive: see also expr_module and holog_module)
-## An operator expression including a relation (<Rel>) of an atom (<Atom>).
+## An operator edge containing a relation (<Rel>) of an atom (<Atom>).
 op_Atom.edge.def =
   
-  ## <op>: edge (role) element for the predicate of an atomic formula. See
+  ## <op>: edge element for the predicate of an atomic formula. See
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-op
   element op { op.type.def }
 op.type.def = op_Atom.attlist? & op_Atom.content
@@ -61,7 +63,7 @@ Relation-node.choice |= Rel.Node.def
 ## A relation, i.e. a logical Predicate, of an atom (<Atom>). It is optionally surrounded by an operator (<op>).
 Rel.Node.def =
   
-  ## <Rel>: a category of name used as the predicate of an atomic formula. See 
+  ## <Rel>: symbol used as the predicate of an atomic formula. See 
   ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel
   element Rel { Rel.type.def }
 Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.value

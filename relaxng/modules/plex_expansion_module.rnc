@@ -20,6 +20,8 @@ Node.choice |= Plex_Any.Node.def
 
 ## an extension point for specializations of the generalized list tag name.  
 Plex_Any-node.choice |= Plex_Any.Node.def
+## The children of a generalized list (plex) are divided into two sections, 
+## a header section for modifiers, and a main section for the list arguments. 
 Plex_Any.Node.def =
   
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
@@ -42,6 +44,8 @@ Plex_Any.main |= argumentsForExpressions.sequence
 
 ## an extension point for specializations of the generalized list tag name.  
 Plex_repo-node.choice |= Plex_repo.Node.def
+## The children of a generalized list (plex) are divided into two sections, 
+## a header section for modifiers, and a main section for the list arguments. 
 Plex_repo.Node.def =
   
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
@@ -59,6 +63,8 @@ Plex_repo.main |= positionalArgumentsForExpressions.sequence
 
 ## an extension point for specializations of the generalized list tag name.  
 Plex_resl-node.choice |= Plex_resl.Node.def
+## The children of a generalized list (plex) are divided into two sections, 
+## a header section for modifiers, and a main section for the list arguments. 
 Plex_resl.Node.def =
   
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
