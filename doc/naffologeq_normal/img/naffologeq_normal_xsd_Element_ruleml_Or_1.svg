@@ -640,7 +640,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="624" xml:space="preserve" y="725"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="624" xml:space="preserve" y="738"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="593" x2="596" y1="680" y2="680"
@@ -665,7 +665,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient36)" points=" 295 812 296 811 296 810 297 809 298 808 299 807 300 807 301 806 308 806 315 799 322 806 1099 806 1100 807 1101 807 1102 808 1103 809 1104 810 1104 811 1105 812 1105 819 1104 820 1104 821 1103 822 1102 823 1101 824 1100 824 1099 825 301 825 300 824 299 824 298 823 297 822 296 821 296 820 295 819" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 295 812 296 811 296 810 297 809 298 808 299 807 300 807 301 806 308 806 315 799 322 806 1099 806 1100 807 1101 807 1102 808 1103 809 1104 810 1104 811 1105 812 1105 819 1104 820 1104 821 1103 822 1102 823 1101 824 1100 824 1099 825 301 825 300 824 299 824 298 823 297 822 296 821 296 820 295 819" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="298" xml:space="preserve" y="819"
-      >Disjunctions accept the header patter common to truth-valued connectives.</text
+      >Disjunctions accept the header pattern common to truth-valued connectives.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="267" x2="270" y1="777" y2="777"
@@ -828,7 +828,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 486 1033 487 1032 487 1031 488 1030 489 1029 490 1028 491 1028 492 1027 499 1027 506 1020 513 1027 766 1027 767 1028 768 1028 769 1029 770 1030 771 1031 771 1032 772 1033 772 1040 771 1041 771 1042 770 1043 769 1044 768 1045 767 1045 766 1046 492 1046 491 1045 490 1045 489 1044 488 1043 487 1042 487 1041 486 1040" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 486 1033 487 1032 487 1031 488 1030 489 1029 490 1028 491 1028 492 1027 499 1027 506 1020 513 1027 766 1027 767 1028 768 1028 769 1029 770 1030 771 1031 771 1032 772 1033 772 1040 771 1041 771 1042 770 1043 769 1044 768 1045 767 1045 766 1046 492 1046 491 1045 490 1045 489 1044 488 1043 487 1042 487 1041 486 1040" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="489" xml:space="preserve" y="1040"
-      >The formula role of a disjunctive (&lt;Or&gt;) expression,</text
+      >A formula edge of a disjunction (&lt;Or&gt;),</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="458" x2="461" y1="988" y2="988"
@@ -850,7 +850,7 @@
       ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient49)" points=" 295 1120 296 1119 296 1118 297 1117 298 1116 299 1115 300 1115 301 1114 308 1114 315 1107 322 1114 782 1114 783 1115 784 1115 785 1116 786 1117 787 1118 787 1119 788 1120 788 1127 787 1128 787 1129 786 1130 785 1131 784 1132 783 1132 782 1133 301 1133 300 1132 299 1132 298 1131 297 1130 296 1129 296 1128 295 1127" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 295 1120 296 1119 296 1118 297 1117 298 1116 299 1115 300 1115 301 1114 308 1114 315 1107 322 1114 782 1114 783 1115 784 1115 785 1116 786 1117 787 1118 787 1119 788 1120 788 1127 787 1128 787 1129 786 1130 785 1131 784 1132 783 1132 782 1133 301 1133 300 1132 299 1132 298 1131 297 1130 296 1129 296 1128 295 1127" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="298" xml:space="preserve" y="1127"
-      >The main section of the disjunction content model contains zero or more formulas.</text
+      >The main section of the disjunction content model contains zero or more formula edges.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="267" x2="270" y1="777" y2="777"

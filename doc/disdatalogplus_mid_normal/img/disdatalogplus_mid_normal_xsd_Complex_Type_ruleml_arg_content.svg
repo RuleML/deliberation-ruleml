@@ -217,7 +217,7 @@
       ><stop offset="0%" stop-color="rgb(232,226,242)" stop-opacity="0.3922"
         /><stop offset="100%" stop-color="rgb(225,219,234)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient54" spreadMethod="pad" x1="0" x2="0" y1="728" y2="780"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient54" spreadMethod="pad" x1="0" x2="0" y1="728" y2="767"
       ><stop offset="0%" stop-color="rgb(232,226,242)" stop-opacity="0.3922"
         /><stop offset="100%" stop-color="rgb(225,219,234)" stop-opacity="1"
       /></linearGradient
@@ -944,14 +944,12 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="239" x2="278" y1="702" y2="702"
     /></g
     ><g fill="url(#linearGradient54)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient54)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 741 1 740 1 739 2 738 3 737 4 736 5 736 6 735 13 735 20 728 27 735 227 735 228 736 229 736 230 737 231 738 232 739 232 740 233 741 233 774 232 775 232 776 231 777 230 778 229 779 228 779 227 780 6 780 5 779 4 779 3 778 2 777 1 776 1 775 0 774" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 741 1 740 1 739 2 738 3 737 4 736 5 736 6 735 13 735 20 728 27 735 227 735 228 736 229 736 230 737 231 738 232 739 232 740 233 741 233 774 232 775 232 776 231 777 230 778 229 779 228 779 227 780 6 780 5 779 4 779 3 778 2 777 1 776 1 775 0 774" shape-rendering="auto" stroke="rgb(208,203,217)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 741 1 740 1 739 2 738 3 737 4 736 5 736 6 735 13 735 20 728 27 735 227 735 228 736 229 736 230 737 231 738 232 739 232 740 233 741 233 761 232 762 232 763 231 764 230 765 229 766 228 766 227 767 6 767 5 766 4 766 3 765 2 764 1 763 1 762 0 761" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 741 1 740 1 739 2 738 3 737 4 736 5 736 6 735 13 735 20 728 27 735 227 735 228 736 229 736 230 737 231 738 232 739 232 740 233 741 233 761 232 762 232 763 231 764 230 765 229 766 228 766 227 767 6 767 5 766 4 766 3 765 2 764 1 763 1 762 0 761" shape-rendering="auto" stroke="rgb(208,203,217)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="748"
-      >The content model of positional arguments </text
+      >The role filler for positional arguments edges </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="761"
-      >for atomic formulas consists of any single </text
-      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="774"
-      >term.</text
+      >in atomic formulas is a term.</text
     ></g
   ></g
 ></svg

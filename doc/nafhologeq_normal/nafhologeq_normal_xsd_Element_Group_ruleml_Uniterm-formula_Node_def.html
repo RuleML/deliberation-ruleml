@@ -20,7 +20,8 @@
         var diagramBoxes= new Array('diagram_Uniterm-formula.Node.def_Uniterm', 
 				'diagram_Uniterm-formula.Node.def');
 
-        var annotationBoxes= new Array('annotations_Uniterm-formula.Node.def_Uniterm');
+        var annotationBoxes= new Array('annotations_Uniterm-formula.Node.def_Uniterm', 
+				'annotations_Uniterm-formula.Node.def');
 
         var attributesBoxes= new Array('attributes_Uniterm-formula.Node.def_Uniterm');
 
@@ -429,8 +430,8 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating how the contained free variables are quantified.</span><span class="tI">
-</span><span class="tT">Allowed values are "universal" and "existential". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating how the in-scope free variables are quantified.</span><span class="tI">
+</span><span class="tT">Predefined values are "universal" and "existential". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40closure</span></pre></td>
                                              </tr>
                                           </table>
@@ -554,6 +555,24 @@
                      </tr>
                      <tr>
                         <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_Uniterm-formula.Node.def" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_Uniterm-formula.Node.def');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_Uniterm-formula.Node.def" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">The children of a Uniterm formula are divided into two sections,  a header</span><span class="tI">
+</span><span class="tT">section for modifiers, and a main section for the operator and arguments.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
                            <div class="floatLeft"><b>Diagram</b></div>
                            <div class="floatRight"><input id="button_diagram_Uniterm-formula.Node.def" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Uniterm-formula.Node.def');" class="control" /></div>
                         </td>
@@ -598,6 +617,9 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:group</span><span class="tAN"> name=</span><span class="tAV">"Uniterm-formula.Node.def"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">The children of a Uniterm formula are divided into two sections, a header section for modifiers, and a main section for the operator and arguments.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> form=</span><span class="tAV">"qualified"</span><span class="tAN"> name=</span><span class="tAV">"Uniterm"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:Uniterm-formula.type.def"</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">

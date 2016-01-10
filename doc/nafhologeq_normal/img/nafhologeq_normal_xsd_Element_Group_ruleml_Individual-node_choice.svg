@@ -29,7 +29,7 @@
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient7" spreadMethod="pad" x1="0" x2="0" y1="83" y2="109"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient7" spreadMethod="pad" x1="0" x2="0" y1="83" y2="122"
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
@@ -101,7 +101,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient4)" points=" 297 57 298 56 298 55 299 54 300 53 301 52 302 52 303 51 310 51 317 44 324 51 654 51 655 52 656 52 657 53 658 54 659 55 659 56 660 57 660 77 659 78 659 79 658 80 657 81 656 82 655 82 654 83 303 83 302 82 301 82 300 81 299 80 298 79 298 78 297 77" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 297 57 298 56 298 55 299 54 300 53 301 52 302 52 303 51 310 51 317 44 324 51 654 51 655 52 656 52 657 53 658 54 659 55 659 56 660 57 660 77 659 78 659 79 658 80 657 81 656 82 655 82 654 83 303 83 302 82 301 82 300 81 299 80 298 79 298 78 297 77" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="300" xml:space="preserve" y="64"
-      >&lt;Const&gt;: a constant. See </text
+      >&lt;Const&gt;: a constant for Holog languages. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="300" xml:space="preserve" y="77"
       >http://deliberation.ruleml.org/1.02/glossary/#gloss-Const</text
     ></g
@@ -151,10 +151,12 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="201" x2="226" y1="66" y2="66"
     /></g
     ><g fill="url(#linearGradient7)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient7)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 96 1 95 1 94 2 93 3 92 4 91 5 91 6 90 13 90 20 83 27 90 203 90 204 91 205 91 206 92 207 93 208 94 208 95 209 96 209 103 208 104 208 105 207 106 206 107 205 108 204 108 203 109 6 109 5 108 4 108 3 107 2 106 1 105 1 104 0 103" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 96 1 95 1 94 2 93 3 92 4 91 5 91 6 90 13 90 20 83 27 90 203 90 204 91 205 91 206 92 207 93 208 94 208 95 209 96 209 103 208 104 208 105 207 106 206 107 205 108 204 108 203 109 6 109 5 108 4 108 3 107 2 106 1 105 1 104 0 103" shape-rendering="auto" stroke="rgb(224,225,228)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 96 1 95 1 94 2 93 3 92 4 91 5 91 6 90 13 90 20 83 27 90 203 90 204 91 205 91 206 92 207 93 208 94 208 95 209 96 209 116 208 117 208 118 207 119 206 120 205 121 204 121 203 122 6 122 5 121 4 121 3 120 2 119 1 118 1 117 0 116" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 96 1 95 1 94 2 93 3 92 4 91 5 91 6 90 13 90 20 83 27 90 203 90 204 91 205 91 206 92 207 93 208 94 208 95 209 96 209 116 208 117 208 118 207 119 206 120 205 121 204 121 203 122 6 122 5 121 4 121 3 120 2 119 1 118 1 117 0 116" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="103"
-      >Let Const be an alias for Ind</text
+      >In Holog languages, a Const term is an </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="116"
+      >individual.</text
     ></g
   ></g
 ></svg

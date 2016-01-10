@@ -598,7 +598,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="550" xml:space="preserve" y="642"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="550" xml:space="preserve" y="655"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="519" x2="522" y1="597" y2="597"
@@ -623,7 +623,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient33)" points=" 221 729 222 728 222 727 223 726 224 725 225 724 226 724 227 723 234 723 241 716 248 723 1025 723 1026 724 1027 724 1028 725 1029 726 1030 727 1030 728 1031 729 1031 736 1030 737 1030 738 1029 739 1028 740 1027 741 1026 741 1025 742 227 742 226 741 225 741 224 740 223 739 222 738 222 737 221 736" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 221 729 222 728 222 727 223 726 224 725 225 724 226 724 227 723 234 723 241 716 248 723 1025 723 1026 724 1027 724 1028 725 1029 726 1030 727 1030 728 1031 729 1031 736 1030 737 1030 738 1029 739 1028 740 1027 741 1026 741 1025 742 227 742 226 741 225 741 224 740 223 739 222 738 222 737 221 736" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="224" xml:space="preserve" y="736"
-      >Negation formulas accept the header patter common to truth-valued connectives.</text
+      >Negation formulas accept the header pattern common to truth-valued connectives.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="193" x2="196" y1="672" y2="672"
@@ -741,7 +741,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient41)" points=" 391 899 392 898 392 897 393 896 394 895 395 894 396 894 397 893 404 893 411 886 418 893 752 893 753 894 754 894 755 895 756 896 757 897 757 898 758 899 758 919 757 920 757 921 756 922 755 923 754 924 753 924 752 925 397 925 396 924 395 924 394 923 393 922 392 921 392 920 391 919" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 391 899 392 898 392 897 393 896 394 895 395 894 396 894 397 893 404 893 411 886 418 893 752 893 753 894 754 894 755 895 756 896 757 897 757 898 758 899 758 919 757 920 757 921 756 922 755 923 754 924 753 924 752 925 397 925 396 924 395 924 394 923 393 922 392 921 392 920 391 919" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="394" xml:space="preserve" y="906"
-      >A role used for logical negation (&lt;Neg&gt;). See </text
+      >An edge used for logical negation (&lt;Neg&gt;). See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="394" xml:space="preserve" y="919"
       >http://deliberation.ruleml.org/1.02/glossary/#gloss-strong</text
     ></g
@@ -767,7 +767,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 221 999 222 998 222 997 223 996 224 995 225 994 226 994 227 993 234 993 241 986 248 993 757 993 758 994 759 994 760 995 761 996 762 997 762 998 763 999 763 1006 762 1007 762 1008 761 1009 760 1010 759 1011 758 1011 757 1012 227 1012 226 1011 225 1011 224 1010 223 1009 222 1008 222 1007 221 1006" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 221 999 222 998 222 997 223 996 224 995 225 994 226 994 227 993 234 993 241 986 248 993 757 993 758 994 759 994 760 995 761 996 762 997 762 998 763 999 763 1006 762 1007 762 1008 761 1009 760 1010 759 1011 758 1011 757 1012 227 1012 226 1011 225 1011 224 1010 223 1009 222 1008 222 1007 221 1006" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="224" xml:space="preserve" y="1006"
-      >Negation formulas contain a single role.</text
+      >The main section of a Negation formula contains a single "strong" edge.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="193" x2="196" y1="672" y2="672"

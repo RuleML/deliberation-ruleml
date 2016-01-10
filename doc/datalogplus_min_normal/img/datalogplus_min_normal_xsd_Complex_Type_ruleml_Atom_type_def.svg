@@ -312,9 +312,9 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="388" xml:space="preserve" y="148"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="388" xml:space="preserve" y="161"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="357" x2="360" y1="103" y2="103"
@@ -628,7 +628,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 215 694 216 693 216 692 217 691 218 690 219 689 220 689 221 688 228 688 235 681 242 688 1126 688 1127 689 1128 689 1129 690 1130 691 1131 692 1131 693 1132 694 1132 701 1131 702 1131 703 1130 704 1129 705 1128 706 1127 706 1126 707 221 707 220 706 219 706 218 705 217 704 216 703 216 702 215 701" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 215 694 216 693 216 692 217 691 218 690 219 689 220 689 221 688 228 688 235 681 242 688 1126 688 1127 689 1128 689 1129 690 1130 691 1131 692 1131 693 1132 694 1132 701 1131 702 1131 703 1130 704 1129 705 1128 706 1127 706 1126 707 221 707 220 706 219 706 218 705 217 704 216 703 216 702 215 701" shape-rendering="auto" stroke="rgb(208,203,217)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="218" xml:space="preserve" y="701"
-      >Pre-fix operator notation for atomic formulas is required in a normal-form serialization.</text
+      >The main section of an atomic formula contains an operator edge and a collection of argument edges. Pre-fix operator...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="187" x2="190" y1="530" y2="530"

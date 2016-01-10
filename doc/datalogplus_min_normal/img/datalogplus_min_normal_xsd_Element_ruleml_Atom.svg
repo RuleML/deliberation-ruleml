@@ -338,9 +338,9 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="412" xml:space="preserve" y="206"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="412" xml:space="preserve" y="219"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="381" x2="384" y1="161" y2="161"
@@ -654,7 +654,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 239 752 240 751 240 750 241 749 242 748 243 747 244 747 245 746 252 746 259 739 266 746 1150 746 1151 747 1152 747 1153 748 1154 749 1155 750 1155 751 1156 752 1156 759 1155 760 1155 761 1154 762 1153 763 1152 764 1151 764 1150 765 245 765 244 764 243 764 242 763 241 762 240 761 240 760 239 759" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 239 752 240 751 240 750 241 749 242 748 243 747 244 747 245 746 252 746 259 739 266 746 1150 746 1151 747 1152 747 1153 748 1154 749 1155 750 1155 751 1156 752 1156 759 1155 760 1155 761 1154 762 1153 763 1152 764 1151 764 1150 765 245 765 244 764 243 764 242 763 241 762 240 761 240 760 239 759" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="242" xml:space="preserve" y="759"
-      >Pre-fix operator notation for atomic formulas is required in a normal-form serialization.</text
+      >The main section of an atomic formula contains an operator edge and a collection of argument edges. Pre-fix operator...</text
       ><polygon clip-path="url(#clipPath1)" fill="rgb(255,249,240)" points=" 239 777 547 777 548 778 549 778 550 779 551 780 552 781 552 782 553 783 553 880 552 881 552 882 551 883 550 884 549 885 548 885 547 886 239 886" stroke="none" stroke-width="2"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 239 777 547 777 548 778 549 778 550 779 551 780 552 781 552 782 553 783 553 880 552 881 552 882 551 883 550 884 549 885 548 885 547 886 239 886" stroke="silver" stroke-width="2"
       /><rect clip-path="url(#clipPath1)" fill="url(#linearGradient38)" height="2" stroke="none" stroke-width="2" width="176" x="301" y="803"

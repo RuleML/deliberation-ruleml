@@ -73,7 +73,7 @@
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient18" spreadMethod="pad" x1="0" x2="0" y1="199" y2="251"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient18" spreadMethod="pad" x1="0" x2="0" y1="199" y2="277"
       ><stop offset="0%" stop-color="white" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(247,247,247)" stop-opacity="1"
       /></linearGradient
@@ -221,9 +221,9 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="326" xml:space="preserve" y="220"
-      >&lt;Rel&gt;: a category of name used as the predicate of an atomic </text
+      >&lt;Rel&gt;: symbol used as the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="326" xml:space="preserve" y="233"
-      >formula. See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="295" x2="298" y1="175" y2="175"
@@ -242,14 +242,18 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="185" x2="252" y1="174" y2="174"
     /></g
     ><g fill="url(#linearGradient18)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient18)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 212 1 211 1 210 2 209 3 208 4 207 5 207 6 206 13 206 20 199 27 206 173 206 174 207 175 207 176 208 177 209 178 210 178 211 179 212 179 245 178 246 178 247 177 248 176 249 175 250 174 250 173 251 6 251 5 250 4 250 3 249 2 248 1 247 1 246 0 245" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 212 1 211 1 210 2 209 3 208 4 207 5 207 6 206 13 206 20 199 27 206 173 206 174 207 175 207 176 208 177 209 178 210 178 211 179 212 179 245 178 246 178 247 177 248 176 249 175 250 174 250 173 251 6 251 5 250 4 250 3 249 2 248 1 247 1 246 0 245" shape-rendering="auto" stroke="rgb(229,229,229)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 212 1 211 1 210 2 209 3 208 4 207 5 207 6 206 13 206 20 199 27 206 173 206 174 207 175 207 176 208 177 209 178 210 178 211 179 212 179 271 178 272 178 273 177 274 176 275 175 276 174 276 173 277 6 277 5 276 4 276 3 275 2 274 1 273 1 272 0 271" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 212 1 211 1 210 2 209 3 208 4 207 5 207 6 206 13 206 20 199 27 206 173 206 174 207 175 207 176 208 177 209 178 210 178 211 179 212 179 271 178 272 178 273 177 274 176 275 175 276 174 276 173 277 6 277 5 276 4 276 3 275 2 274 1 273 1 272 0 271" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="219"
-      >&lt;op&gt;: edge (role) element for the </text
+      >&lt;op&gt;: edge element for the </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="232"
       >predicate of an atomic formula. </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="245"
-      >See...</text
+      >See </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="258"
+      >http://deliberation.ruleml.org/1.02</text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="271"
+      >/glossary/#gloss-op</text
     ></g
   ></g
 ></svg

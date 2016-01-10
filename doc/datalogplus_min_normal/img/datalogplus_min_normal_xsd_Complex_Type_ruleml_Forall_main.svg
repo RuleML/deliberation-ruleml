@@ -261,9 +261,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient12)" points=" 424 145 425 144 425 143 426 142 427 141 428 140 429 140 430 139 437 139 444 132 451 139 788 139 789 140 790 140 791 141 792 142 793 143 793 144 794 145 794 165 793 166 793 167 792 168 791 169 790 170 789 170 788 171 430 171 429 170 428 170 427 169 426 168 425 167 425 166 424 165" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 424 145 425 144 425 143 426 142 427 141 428 140 429 140 430 139 437 139 444 132 451 139 788 139 789 140 790 140 791 141 792 142 793 143 793 144 794 145 794 165 793 166 793 167 792 168 791 169 790 170 789 170 788 171 430 171 429 170 428 170 427 169 426 168 425 167 425 166 424 165" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="427" xml:space="preserve" y="152"
-      >A role used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or </text
+      >An edge used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="427" xml:space="preserve" y="165"
-      >&lt;Exists&gt;). See...</text
+      >or &lt;Exists&gt;). See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="396" x2="399" y1="107" y2="107"
@@ -403,7 +403,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient22)" points=" 403 415 404 414 404 413 405 412 406 411 407 410 408 410 409 409 416 409 423 402 430 409 806 409 807 410 808 410 809 411 810 412 811 413 811 414 812 415 812 435 811 436 811 437 810 438 809 439 808 440 807 440 806 441 409 441 408 440 407 440 406 439 405 438 404 437 404 436 403 435" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 403 415 404 414 404 413 405 412 406 411 407 410 408 410 409 409 416 409 423 402 430 409 806 409 807 410 808 410 809 411 810 412 811 413 811 414 812 415 812 435 811 436 811 437 810 438 809 439 808 440 807 440 806 441 409 441 408 440 407 440 406 439 405 438 404 437 404 436 403 435" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="406" xml:space="preserve" y="422"
-      >The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
+      >The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="406" xml:space="preserve" y="435"
       >quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or...</text
     ></g

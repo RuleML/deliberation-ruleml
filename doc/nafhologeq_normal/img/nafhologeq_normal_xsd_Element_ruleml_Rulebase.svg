@@ -234,7 +234,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="275" xml:space="preserve" y="134"
       >rulebases have scope inference direction and scope </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="275" xml:space="preserve" y="147"
-      >material implication as an attribute with default values.</text
+      >material implication as an attribute.</text
       ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient10)" points=" 272 165 456 165 457 166 458 166 459 167 460 168 461 169 461 170 462 171 462 197 272 197" stroke="none" stroke-width="2"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 272 165 456 165 457 166 458 166 459 167 460 168 461 169 461 170 462 171 462 197 272 197" stroke="silver" stroke-width="2"
       /><rect clip-path="url(#clipPath1)" fill="rgb(242,152,0)" height="5" stroke="none" width="5" x="296" y="174"
@@ -620,7 +620,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient37)" points=" 605 799 606 798 606 797 607 796 608 795 609 794 610 794 611 793 618 793 625 786 632 793 1026 793 1027 794 1028 794 1029 795 1030 796 1031 797 1031 798 1032 799 1032 819 1031 820 1031 821 1030 822 1029 823 1028 824 1027 824 1026 825 611 825 610 824 609 824 608 823 607 822 606 821 606 820 605 819" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 605 799 606 798 606 797 607 796 608 795 609 794 610 794 611 793 618 793 625 786 632 793 1026 793 1027 794 1028 794 1029 795 1030 796 1031 797 1031 798 1032 799 1032 819 1031 820 1031 821 1030 822 1029 823 1028 824 1027 824 1026 825 611 825 610 824 609 824 608 823 607 822 606 821 606 820 605 819" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="608" xml:space="preserve" y="806"
-      >The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
+      >The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="608" xml:space="preserve" y="819"
       >quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or...</text
     ></g
@@ -665,11 +665,11 @@
     ><polygon clip-path="url(#clipPath1)" points=" 0 404 1 403 1 402 2 401 3 400 4 399 5 399 6 398 13 398 20 391 27 398 207 398 208 399 209 399 210 400 211 401 212 402 212 403 213 404 213 437 212 438 212 439 211 440 210 441 209 442 208 442 207 443 6 443 5 442 4 442 3 441 2 440 1 439 1 438 0 437" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 404 1 403 1 402 2 401 3 400 4 399 5 399 6 398 13 398 20 391 27 398 207 398 208 399 209 399 210 400 211 401 212 402 212 403 213 404 213 437 212 438 212 439 211 440 210 441 209 442 208 442 207 443 6 443 5 442 4 442 3 441 2 440 1 439 1 438 0 437" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="411"
-      >A collection of rules that can be ordered </text
+      >A collection of rules or formulas that can </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="424"
-      >or unordered, without or with duplicates. </text
+      >be ordered or unordered, without or with </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="437"
-      >See...</text
+      >duplicates. See...</text
     ></g
   ></g
 ></svg

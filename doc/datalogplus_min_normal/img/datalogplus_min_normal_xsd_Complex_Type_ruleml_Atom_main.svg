@@ -125,7 +125,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient31" spreadMethod="pad" x1="0" x2="0" y1="262" y2="327"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient31" spreadMethod="pad" x1="0" x2="0" y1="262" y2="340"
       ><stop offset="0%" stop-color="rgb(232,226,242)" stop-opacity="0.3922"
         /><stop offset="100%" stop-color="rgb(225,219,234)" stop-opacity="1"
       /></linearGradient
@@ -247,9 +247,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient9)" points=" 317 101 318 100 318 99 319 98 320 97 321 96 322 96 323 95 330 95 337 88 344 95 656 95 657 96 658 96 659 97 660 98 661 99 661 100 662 101 662 121 661 122 661 123 660 124 659 125 658 126 657 126 656 127 323 127 322 126 321 126 320 125 319 124 318 123 318 122 317 121" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 317 101 318 100 318 99 319 98 320 97 321 96 322 96 323 95 330 95 337 88 344 95 656 95 657 96 658 96 659 97 660 98 661 99 661 100 662 101 662 121 661 122 661 123 660 124 659 125 658 126 657 126 656 127 323 127 322 126 321 126 320 125 319 124 318 123 318 122 317 121" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="108"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="121"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="289" x2="292" y1="63" y2="63"
@@ -563,16 +563,18 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="136" x2="161" y1="245" y2="245"
     /></g
     ><g fill="url(#linearGradient31)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient31)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 275 1 274 1 273 2 272 3 271 4 270 5 270 6 269 13 269 20 262 27 269 138 269 139 270 140 270 141 271 142 272 143 273 143 274 144 275 144 321 143 322 143 323 142 324 141 325 140 326 139 326 138 327 6 327 5 326 4 326 3 325 2 324 1 323 1 322 0 321" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 275 1 274 1 273 2 272 3 271 4 270 5 270 6 269 13 269 20 262 27 269 138 269 139 270 140 270 141 271 142 272 143 273 143 274 144 275 144 321 143 322 143 323 142 324 141 325 140 326 139 326 138 327 6 327 5 326 4 326 3 325 2 324 1 323 1 322 0 321" shape-rendering="auto" stroke="rgb(208,203,217)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 275 1 274 1 273 2 272 3 271 4 270 5 270 6 269 13 269 20 262 27 269 138 269 139 270 140 270 141 271 142 272 143 273 143 274 144 275 144 334 143 335 143 336 142 337 141 338 140 339 139 339 138 340 6 340 5 339 4 339 3 338 2 337 1 336 1 335 0 334" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 275 1 274 1 273 2 272 3 271 4 270 5 270 6 269 13 269 20 262 27 269 138 269 139 270 140 270 141 271 142 272 143 273 143 274 144 275 144 334 143 335 143 336 142 337 141 338 140 339 139 339 138 340 6 340 5 339 4 339 3 338 2 337 1 336 1 335 0 334" shape-rendering="auto" stroke="rgb(208,203,217)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="282"
-      >Pre-fix operator notation </text
+      >The main section of an </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="295"
-      >for atomic formulas is </text
+      >atomic formula contains an </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="308"
-      >required in a normal-form </text
+      >operator edge and a </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="321"
-      >serialization.</text
+      >collection of argument </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="334"
+      >edges. Pre-fix operator...</text
     ></g
   ></g
 ></svg

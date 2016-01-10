@@ -660,7 +660,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="559" xml:space="preserve" y="685"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="559" xml:space="preserve" y="698"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="528" x2="531" y1="640" y2="640"
@@ -685,7 +685,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient34)" points=" 230 772 231 771 231 770 232 769 233 768 234 767 235 767 236 766 243 766 250 759 257 766 1034 766 1035 767 1036 767 1037 768 1038 769 1039 770 1039 771 1040 772 1040 779 1039 780 1039 781 1038 782 1037 783 1036 784 1035 784 1034 785 236 785 235 784 234 784 233 783 232 782 231 781 231 780 230 779" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 230 772 231 771 231 770 232 769 233 768 234 767 235 767 236 766 243 766 250 759 257 766 1034 766 1035 767 1036 767 1037 768 1038 769 1039 770 1039 771 1040 772 1040 779 1039 780 1039 781 1038 782 1037 783 1036 784 1035 784 1034 785 236 785 235 784 234 784 233 783 232 782 231 781 231 780 230 779" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="233" xml:space="preserve" y="779"
-      >Universally qualified formulas aaccept the header patter common to truth-valued connectives.</text
+      >Universally qualified formulas aaccept the header pattern common to truth-valued connectives.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="202" x2="205" y1="805" y2="805"
@@ -845,9 +845,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient45)" points=" 506 986 507 985 507 984 508 983 509 982 510 981 511 981 512 980 519 980 526 973 533 980 870 980 871 981 872 981 873 982 874 983 875 984 875 985 876 986 876 1006 875 1007 875 1008 874 1009 873 1010 872 1011 871 1011 870 1012 512 1012 511 1011 510 1011 509 1010 508 1009 507 1008 507 1007 506 1006" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 506 986 507 985 507 984 508 983 509 982 510 981 511 981 512 980 519 980 526 973 533 980 870 980 871 981 872 981 873 982 874 983 875 984 875 985 876 986 876 1006 875 1007 875 1008 874 1009 873 1010 872 1011 871 1011 870 1012 512 1012 511 1011 510 1011 509 1010 508 1009 507 1008 507 1007 506 1006" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="509" xml:space="preserve" y="993"
-      >A role used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or </text
+      >An edge used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="509" xml:space="preserve" y="1006"
-      >&lt;Exists&gt;). See...</text
+      >or &lt;Exists&gt;). See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="478" x2="481" y1="948" y2="948"
@@ -987,7 +987,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient55)" points=" 485 1256 486 1255 486 1254 487 1253 488 1252 489 1251 490 1251 491 1250 498 1250 505 1243 512 1250 888 1250 889 1251 890 1251 891 1252 892 1253 893 1254 893 1255 894 1256 894 1276 893 1277 893 1278 892 1279 891 1280 890 1281 889 1281 888 1282 491 1282 490 1281 489 1281 488 1280 487 1279 486 1278 486 1277 485 1276" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 485 1256 486 1255 486 1254 487 1253 488 1252 489 1251 490 1251 491 1250 498 1250 505 1243 512 1250 888 1250 889 1251 890 1251 891 1252 892 1253 893 1254 893 1255 894 1256 894 1276 893 1277 893 1278 892 1279 891 1280 890 1281 889 1281 888 1282 491 1282 490 1281 489 1281 488 1280 487 1279 486 1278 486 1277 485 1276" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="488" xml:space="preserve" y="1263"
-      >The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
+      >The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="488" xml:space="preserve" y="1276"
       >quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or...</text
     ></g

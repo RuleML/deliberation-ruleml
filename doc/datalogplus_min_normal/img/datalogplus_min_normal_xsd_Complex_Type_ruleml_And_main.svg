@@ -57,7 +57,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient14" spreadMethod="pad" x1="0" x2="0" y1="124" y2="189"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient14" spreadMethod="pad" x1="0" x2="0" y1="124" y2="202"
       ><stop offset="0%" stop-color="rgb(232,226,242)" stop-opacity="0.3922"
         /><stop offset="100%" stop-color="rgb(225,219,234)" stop-opacity="1"
       /></linearGradient
@@ -203,7 +203,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 260 195 261 194 261 193 262 192 263 191 264 190 265 190 266 189 273 189 280 182 287 189 737 189 738 190 739 190 740 191 741 192 742 193 742 194 743 195 743 202 742 203 742 204 741 205 740 206 739 207 738 207 737 208 266 208 265 207 264 207 263 206 262 205 261 204 261 203 260 202" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 260 195 261 194 261 193 262 192 263 191 264 190 265 190 266 189 273 189 280 182 287 189 737 189 738 190 739 190 740 191 741 192 742 193 742 194 743 195 743 202 742 203 742 204 741 205 740 206 739 207 738 207 737 208 266 208 265 207 264 207 263 206 262 205 261 204 261 203 260 202" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="263" xml:space="preserve" y="202"
-      >The formula role of a conjunctive (&lt;And&gt;) expression, Within And ...</text
+      >A formula edge of a conjunction (&lt;And&gt;), Within And ...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="232" x2="235" y1="107" y2="107"
@@ -220,8 +220,8 @@
       /><line clip-path="url(#clipPath1)" fill="none" shape-rendering="auto" stroke="silver" x1="129" x2="189" y1="107" y2="107"
       /><text clip-path="url(#clipPath1)" fill="black" shape-rendering="auto" stroke="none" x="146" xml:space="preserve" y="104"
       >0..&#x221e;</text
-      ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient14)" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 117 131 118 132 119 132 120 133 121 134 122 135 122 136 123 137 123 183 122 184 122 185 121 186 120 187 119 188 118 188 117 189 6 189 5 188 4 188 3 187 2 186 1 185 1 184 0 183" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 117 131 118 132 119 132 120 133 121 134 122 135 122 136 123 137 123 183 122 184 122 185 121 186 120 187 119 188 118 188 117 189 6 189 5 188 4 188 3 187 2 186 1 185 1 184 0 183" shape-rendering="auto" stroke="rgb(208,203,217)"
+      ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient14)" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 117 131 118 132 119 132 120 133 121 134 122 135 122 136 123 137 123 196 122 197 122 198 121 199 120 200 119 201 118 201 117 202 6 202 5 201 4 201 3 200 2 199 1 198 1 197 0 196" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 117 131 118 132 119 132 120 133 121 134 122 135 122 136 123 137 123 196 122 197 122 198 121 199 120 200 119 201 118 201 117 202 6 202 5 201 4 201 3 200 2 199 1 198 1 197 0 196" shape-rendering="auto" stroke="rgb(208,203,217)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="144"
       >The main section of </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="157"
@@ -229,7 +229,9 @@
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="170"
       >content model contains </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="183"
-      >zero or more formulas.</text
+      >zero or more formula </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="196"
+      >edges.</text
     ></g
   ></g
 ></svg

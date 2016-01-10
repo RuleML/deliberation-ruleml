@@ -1802,7 +1802,8 @@
   
   <xs:group name="Implies.header">
     <xs:annotation>
-      <xs:documentation>Equations accept the header of truth-valued connectives</xs:documentation>
+      <xs:documentation>Equations accept the header pattern of truth-valued
+        connectives</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>

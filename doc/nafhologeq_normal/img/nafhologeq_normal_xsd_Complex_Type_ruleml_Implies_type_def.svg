@@ -290,9 +290,9 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="184" xml:space="preserve" y="94"
       >implications have inference direction and material </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="184" xml:space="preserve" y="107"
-      >implication as an attribute with default values. </text
+      >implication as an attribute. implications have scoped </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="184" xml:space="preserve" y="120"
-      >implications have...</text
+      >attributes...</text
       ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient8)" points=" 181 138 355 138 356 139 357 139 358 140 359 141 360 142 360 143 361 144 361 170 181 170" stroke="none" stroke-width="2"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 181 138 355 138 356 139 357 139 358 140 359 141 360 142 360 143 361 144 361 170 181 170" stroke-width="2"
       /><rect clip-path="url(#clipPath1)" fill="rgb(242,152,0)" height="5" stroke="none" width="5" x="205" y="147"
@@ -666,7 +666,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="567" xml:space="preserve" y="698"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="567" xml:space="preserve" y="711"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="536" x2="539" y1="653" y2="653"
@@ -691,7 +691,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient34)" points=" 238 785 239 784 239 783 240 782 241 781 242 780 243 780 244 779 251 779 258 772 265 779 1042 779 1043 780 1044 780 1045 781 1046 782 1047 783 1047 784 1048 785 1048 792 1047 793 1047 794 1046 795 1045 796 1044 797 1043 797 1042 798 244 798 243 797 242 797 241 796 240 795 239 794 239 793 238 792" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 238 785 239 784 239 783 240 782 241 781 242 780 243 780 244 779 251 779 258 772 265 779 1042 779 1043 780 1044 780 1045 781 1046 782 1047 783 1047 784 1048 785 1048 792 1047 793 1047 794 1046 795 1045 796 1044 797 1043 797 1042 798 244 798 243 797 242 797 241 796 240 795 239 794 239 793 238 792" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="241" xml:space="preserve" y="792"
-      >Equations accept the header of truth-valued connectives</text
+      >Equations accept the header pattern of truth-valued connectives</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="210" x2="213" y1="818" y2="818"
@@ -1025,7 +1025,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 238 1406 239 1405 239 1404 240 1403 241 1402 242 1401 243 1401 244 1400 251 1400 258 1393 265 1400 902 1400 903 1401 904 1401 905 1402 906 1403 907 1404 907 1405 908 1406 908 1413 907 1414 907 1415 906 1416 905 1417 904 1418 903 1418 902 1419 244 1419 243 1418 242 1418 241 1417 240 1416 239 1415 239 1414 238 1413" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 238 1406 239 1405 239 1404 240 1403 241 1402 242 1401 243 1401 244 1400 251 1400 258 1393 265 1400 902 1400 903 1401 904 1401 905 1402 906 1403 907 1404 907 1405 908 1406 908 1413 907 1414 907 1415 906 1416 905 1417 904 1418 903 1418 902 1419 244 1419 243 1418 242 1418 241 1417 240 1416 239 1415 239 1414 238 1413" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="241" xml:space="preserve" y="1413"
-      >In the normal-form serialization, the if and then of an implication must occur in canonical order.</text
+      >The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge. In...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="210" x2="213" y1="818" y2="818"

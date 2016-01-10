@@ -93,7 +93,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient23" spreadMethod="pad" x1="0" x2="0" y1="281" y2="320"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient23" spreadMethod="pad" x1="0" x2="0" y1="281" y2="333"
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
@@ -422,7 +422,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="496" xml:space="preserve" y="422"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="496" xml:space="preserve" y="435"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="465" x2="468" y1="377" y2="377"
@@ -451,12 +451,14 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="156" x2="181" y1="264" y2="264"
     /></g
     ><g fill="url(#linearGradient23)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient23)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 294 1 293 1 292 2 291 3 290 4 289 5 289 6 288 13 288 20 281 27 288 158 288 159 289 160 289 161 290 162 291 163 292 163 293 164 294 164 314 163 315 163 316 162 317 161 318 160 319 159 319 158 320 6 320 5 319 4 319 3 318 2 317 1 316 1 315 0 314" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 294 1 293 1 292 2 291 3 290 4 289 5 289 6 288 13 288 20 281 27 288 158 288 159 289 160 289 161 290 162 291 163 292 163 293 164 294 164 314 163 315 163 316 162 317 161 318 160 319 159 319 158 320 6 320 5 319 4 319 3 318 2 317 1 316 1 315 0 314" shape-rendering="auto" stroke="rgb(224,225,228)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 294 1 293 1 292 2 291 3 290 4 289 5 289 6 288 13 288 20 281 27 288 158 288 159 289 160 289 161 290 162 291 163 292 163 293 164 294 164 327 163 328 163 329 162 330 161 331 160 332 159 332 158 333 6 333 5 332 4 332 3 331 2 330 1 329 1 328 0 327" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 294 1 293 1 292 2 291 3 290 4 289 5 289 6 288 13 288 20 281 27 288 158 288 159 289 160 289 161 290 162 291 163 292 163 293 164 294 164 327 163 328 163 329 162 330 161 331 160 332 159 332 158 333 6 333 5 332 4 332 3 331 2 330 1 329 1 328 0 327" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="301"
-      >Equations accept the header of </text
+      >Equations accept the header </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="314"
-      >truth-valued connectives</text
+      >pattern of truth-valued </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="327"
+      >connectives</text
     ></g
   ></g
 ></svg

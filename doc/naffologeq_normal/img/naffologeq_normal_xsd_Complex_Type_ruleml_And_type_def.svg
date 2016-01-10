@@ -624,7 +624,7 @@
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="551" xml:space="preserve" y="685"
       >An optional uncertainty value (between 0.0 and 1.0) that may be assigned </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="551" xml:space="preserve" y="698"
-      >to simple formulas. See...</text
+      >to formulas. See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="520" x2="523" y1="640" y2="640"
@@ -649,7 +649,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient34)" points=" 222 772 223 771 223 770 224 769 225 768 226 767 227 767 228 766 235 766 242 759 249 766 1026 766 1027 767 1028 767 1029 768 1030 769 1031 770 1031 771 1032 772 1032 779 1031 780 1031 781 1030 782 1029 783 1028 784 1027 784 1026 785 228 785 227 784 226 784 225 783 224 782 223 781 223 780 222 779" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 222 772 223 771 223 770 224 769 225 768 226 767 227 767 228 766 235 766 242 759 249 766 1026 766 1027 767 1028 767 1029 768 1030 769 1031 770 1031 771 1032 772 1032 779 1031 780 1031 781 1030 782 1029 783 1028 784 1027 784 1026 785 228 785 227 784 226 784 225 783 224 782 223 781 223 780 222 779" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="225" xml:space="preserve" y="779"
-      >Conjunctions accept the header patter common to truth-valued connectives.</text
+      >Conjunctions accept the header pattern common to truth-valued connectives.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="194" x2="197" y1="737" y2="737"
@@ -818,7 +818,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 413 1036 414 1035 414 1034 415 1033 416 1032 417 1031 418 1031 419 1030 426 1030 433 1023 440 1030 890 1030 891 1031 892 1031 893 1032 894 1033 895 1034 895 1035 896 1036 896 1043 895 1044 895 1045 894 1046 893 1047 892 1048 891 1048 890 1049 419 1049 418 1048 417 1048 416 1047 415 1046 414 1045 414 1044 413 1043" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 413 1036 414 1035 414 1034 415 1033 416 1032 417 1031 418 1031 419 1030 426 1030 433 1023 440 1030 890 1030 891 1031 892 1031 893 1032 894 1033 895 1034 895 1035 896 1036 896 1043 895 1044 895 1045 894 1046 893 1047 892 1048 891 1048 890 1049 419 1049 418 1048 417 1048 416 1047 415 1046 414 1045 414 1044 413 1043" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="416" xml:space="preserve" y="1043"
-      >The formula role of a conjunctive (&lt;And&gt;) expression, Within And ...</text
+      >A formula edge of a conjunction (&lt;And&gt;), Within And ...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="385" x2="388" y1="948" y2="948"
@@ -838,7 +838,7 @@
       ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient48)" points=" 222 1110 223 1109 223 1108 224 1107 225 1106 226 1105 227 1105 228 1104 235 1104 242 1097 249 1104 906 1104 907 1105 908 1105 909 1106 910 1107 911 1108 911 1109 912 1110 912 1117 911 1118 911 1119 910 1120 909 1121 908 1122 907 1122 906 1123 228 1123 227 1122 226 1122 225 1121 224 1120 223 1119 223 1118 222 1117" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 222 1110 223 1109 223 1108 224 1107 225 1106 226 1105 227 1105 228 1104 235 1104 242 1097 249 1104 906 1104 907 1105 908 1105 909 1106 910 1107 911 1108 911 1109 912 1110 912 1117 911 1118 911 1119 910 1120 909 1121 908 1122 907 1122 906 1123 228 1123 227 1122 226 1122 225 1121 224 1120 223 1119 223 1118 222 1117" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="225" xml:space="preserve" y="1117"
-      >The main section of the conjunction content model contains zero or more formulas.</text
+      >The main section of the conjunction content model contains zero or more formula edges.</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="194" x2="197" y1="737" y2="737"

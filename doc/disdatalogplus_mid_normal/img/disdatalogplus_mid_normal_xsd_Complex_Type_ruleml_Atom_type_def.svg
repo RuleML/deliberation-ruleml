@@ -592,9 +592,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient29)" points=" 399 585 400 584 400 583 401 582 402 581 403 580 404 580 405 579 412 579 419 572 426 579 738 579 739 580 740 580 741 581 742 582 743 583 743 584 744 585 744 605 743 606 743 607 742 608 741 609 740 610 739 610 738 611 405 611 404 610 403 610 402 609 401 608 400 607 400 606 399 605" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 399 585 400 584 400 583 401 582 402 581 403 580 404 580 405 579 412 579 419 572 426 579 738 579 739 580 740 580 741 581 742 582 743 583 743 584 744 585 744 605 743 606 743 607 742 608 741 609 740 610 739 610 738 611 405 611 404 610 403 610 402 609 401 608 400 607 400 606 399 605" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="402" xml:space="preserve" y="592"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="402" xml:space="preserve" y="605"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="371" x2="374" y1="547" y2="547"
@@ -908,7 +908,7 @@
     ><polygon clip-path="url(#clipPath1)" points=" 229 1138 230 1137 230 1136 231 1135 232 1134 233 1133 234 1133 235 1132 242 1132 249 1125 256 1132 1140 1132 1141 1133 1142 1133 1143 1134 1144 1135 1145 1136 1145 1137 1146 1138 1146 1145 1145 1146 1145 1147 1144 1148 1143 1149 1142 1150 1141 1150 1140 1151 235 1151 234 1150 233 1150 232 1149 231 1148 230 1147 230 1146 229 1145" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 229 1138 230 1137 230 1136 231 1135 232 1134 233 1133 234 1133 235 1132 242 1132 249 1125 256 1132 1140 1132 1141 1133 1142 1133 1143 1134 1144 1135 1145 1136 1145 1137 1146 1138 1146 1145 1145 1146 1145 1147 1144 1148 1143 1149 1142 1150 1141 1150 1140 1151 235 1151 234 1150 233 1150 232 1149 231 1148 230 1147 230 1146 229 1145" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="232" xml:space="preserve" y="1145"
-      >Pre-fix operator notation for atomic formulas is required in a normal-form serialization.</text
+      >The main section of an atomic formula contains an operator edge and a collection of argument edges. Pre-fix operator...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="201" x2="204" y1="499" y2="499"

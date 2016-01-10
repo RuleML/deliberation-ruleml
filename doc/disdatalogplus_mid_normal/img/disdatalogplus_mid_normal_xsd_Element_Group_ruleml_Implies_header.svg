@@ -69,7 +69,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient17" spreadMethod="pad" x1="0" x2="0" y1="168" y2="207"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient17" spreadMethod="pad" x1="0" x2="0" y1="168" y2="220"
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
@@ -315,12 +315,14 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="156" x2="181" y1="151" y2="151"
     /></g
     ><g fill="url(#linearGradient17)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient17)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 181 1 180 1 179 2 178 3 177 4 176 5 176 6 175 13 175 20 168 27 175 158 175 159 176 160 176 161 177 162 178 163 179 163 180 164 181 164 201 163 202 163 203 162 204 161 205 160 206 159 206 158 207 6 207 5 206 4 206 3 205 2 204 1 203 1 202 0 201" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 181 1 180 1 179 2 178 3 177 4 176 5 176 6 175 13 175 20 168 27 175 158 175 159 176 160 176 161 177 162 178 163 179 163 180 164 181 164 201 163 202 163 203 162 204 161 205 160 206 159 206 158 207 6 207 5 206 4 206 3 205 2 204 1 203 1 202 0 201" shape-rendering="auto" stroke="rgb(224,225,228)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 181 1 180 1 179 2 178 3 177 4 176 5 176 6 175 13 175 20 168 27 175 158 175 159 176 160 176 161 177 162 178 163 179 163 180 164 181 164 214 163 215 163 216 162 217 161 218 160 219 159 219 158 220 6 220 5 219 4 219 3 218 2 217 1 216 1 215 0 214" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 181 1 180 1 179 2 178 3 177 4 176 5 176 6 175 13 175 20 168 27 175 158 175 159 176 160 176 161 177 162 178 163 179 163 180 164 181 164 214 163 215 163 216 162 217 161 218 160 219 159 219 158 220 6 220 5 219 4 219 3 218 2 217 1 216 1 215 0 214" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="188"
-      >Equations accept the header of </text
+      >Equations accept the header </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="201"
-      >truth-valued connectives</text
+      >pattern of truth-valued </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="214"
+      >connectives</text
     ></g
   ></g
 ></svg

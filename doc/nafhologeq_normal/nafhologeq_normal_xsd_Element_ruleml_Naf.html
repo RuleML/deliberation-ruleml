@@ -18,7 +18,8 @@
 
         var diagramBoxes= new Array('diagram_Naf');
 
-        
+        var annotationBoxes= new Array('annotations_Naf');
+
         var attributesBoxes= new Array('attributes_Naf');
 
         
@@ -269,6 +270,9 @@
                   <h3>Showing:</h3>
                   <table>
                      <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
                         <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
                      </tr>
                      <tr>
@@ -315,6 +319,25 @@
                      <tr>
                         <td class="firstColumn"><b>Namespace</b></td>
                         <td>http://ruleml.org/spec</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_Naf" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_Naf');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_Naf" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">A "by default" negation of a logical atom (&lt;Atom&gt;) (i.e. "weak" negation or</span><span class="tI">
+</span><span class="tT">negation as failure).  The negated atom may be optionally surrounded by &lt;weak&gt; role tags.</span><span class="tI">
+</span><span class="tT">See http://deliberation.ruleml.org/1.02/glossary/#gloss-Naf</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -415,8 +438,8 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating how the contained free variables are quantified.</span><span class="tI">
-</span><span class="tT">Allowed values are "universal" and "existential". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating how the in-scope free variables are quantified.</span><span class="tI">
+</span><span class="tT">Predefined values are "universal" and "existential". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40closure</span></pre></td>
                                              </tr>
                                           </table>
@@ -448,8 +471,9 @@
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
                                                 <td width="100%"><pre><span class="tT">An attribute indicating how the free variables falling within its scope</span><span class="tI">
-</span><span class="tT">(i.e. child elements) are quantified.  Allowed values are "universal" and "existential".</span><span class="tI">
-</span><span class="tT">See http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</span></pre></td>
+</span><span class="tT">(i.e. child elements) are quantified.  Predefined values are "universal" and</span><span class="tI">
+</span><span class="tT">"existential". See</span><span class="tI">
+</span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</span></pre></td>
                                              </tr>
                                           </table>
                                        </div>
@@ -466,7 +490,7 @@
                                                 <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication rule</span><span class="tI">
 </span><span class="tT">(&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See</span><span class="tI">
 </span><span class="tT">attribute mapping for more details. This attribute has a  neutral default value of</span><span class="tI">
-</span><span class="tT">"bidirectional". Other allowed values are "forward" and "backward". See</span><span class="tI">
+</span><span class="tT">"bidirectional". Other predefined values are "forward" and "backward". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</span></pre></td>
                                              </tr>
                                           </table>
@@ -482,8 +506,8 @@
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
                                                 <td width="100%"><pre><span class="tT">An attribute indicating the kind of all implication rules (&lt;Implies&gt;)</span><span class="tI">
-</span><span class="tT">falling within its scope (i.e. child elements).   Allowed values are "yes" (the default)</span><span class="tI">
-</span><span class="tT">and "no". See</span><span class="tI">
+</span><span class="tT">falling within its scope (i.e. child elements).   Predefined values are "yes" (the</span><span class="tI">
+</span><span class="tT">default) and "no". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</span></pre></td>
                                              </tr>
                                           </table>
@@ -553,7 +577,11 @@
                            <div id="source_Naf" style="display:block">
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
-                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Naf"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:Naf.type.def"</span><span class="tEl">/&gt;</span></pre></td>
+                                    <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"Naf"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:Naf.type.def"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">A "by default" negation of a logical atom (&lt;Atom&gt;) (i.e. "weak" negation or negation as failure). The negated atom may be optionally surrounded by &lt;weak&gt; role tags. See http://deliberation.ruleml.org/1.02/glossary/#gloss-Naf</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
                               </table>
                            </div>

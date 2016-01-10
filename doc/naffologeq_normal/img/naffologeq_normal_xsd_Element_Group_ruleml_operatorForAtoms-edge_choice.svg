@@ -153,9 +153,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient7)" points=" 429 101 430 100 430 99 431 98 432 97 433 96 434 96 435 95 442 95 449 88 456 95 768 95 769 96 770 96 771 97 772 98 773 99 773 100 774 101 774 121 773 122 773 123 772 124 771 125 770 126 769 126 768 127 435 127 434 126 433 126 432 125 431 124 430 123 430 122 429 121" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 429 101 430 100 430 99 431 98 432 97 433 96 434 96 435 95 442 95 449 88 456 95 768 95 769 96 770 96 771 97 772 98 773 99 773 100 774 101 774 121 773 122 773 123 772 124 771 125 770 126 769 126 768 127 435 127 434 126 433 126 432 125 431 124 430 123 430 122 429 121" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="432" xml:space="preserve" y="108"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="432" xml:space="preserve" y="121"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="401" x2="404" y1="63" y2="63"
@@ -166,9 +166,9 @@
     ><polygon clip-path="url(#clipPath1)" points=" 344 151 345 150 345 149 346 148 347 147 348 146 349 146 350 145 357 145 364 138 371 145 765 145 766 146 767 146 768 147 769 148 770 149 770 150 771 151 771 171 770 172 770 173 769 174 768 175 767 176 766 176 765 177 350 177 349 176 348 176 347 175 346 174 345 173 345 172 344 171" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 344 151 345 150 345 149 346 148 347 147 348 146 349 146 350 145 357 145 364 138 371 145 765 145 766 146 767 146 768 147 769 148 770 149 770 150 771 151 771 171 770 172 770 173 769 174 768 175 767 176 766 176 765 177 350 177 349 176 348 176 347 175 346 174 345 173 345 172 344 171" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="347" xml:space="preserve" y="158"
-      >(context sensitive: see also expr_module and holog_module) An operator expression </text
+      >(context sensitive: see also expr_module and holog_module) An operator edge </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="347" xml:space="preserve" y="171"
-      >including a relation (&lt;Rel&gt;) of an...</text
+      >containing a relation (&lt;Rel&gt;) of an atom...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="316" x2="319" y1="63" y2="63"

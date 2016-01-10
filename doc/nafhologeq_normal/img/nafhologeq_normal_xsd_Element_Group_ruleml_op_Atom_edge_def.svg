@@ -95,9 +95,9 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient4)" points=" 272 57 273 56 273 55 274 54 275 53 276 52 277 52 278 51 285 51 292 44 299 51 611 51 612 52 613 52 614 53 615 54 616 55 616 56 617 57 617 77 616 78 616 79 615 80 614 81 613 82 612 82 611 83 278 83 277 82 276 82 275 81 274 80 273 79 273 78 272 77" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 272 57 273 56 273 55 274 54 275 53 276 52 277 52 278 51 285 51 292 44 299 51 611 51 612 52 613 52 614 53 615 54 616 55 616 56 617 57 617 77 616 78 616 79 615 80 614 81 613 82 612 82 611 83 278 83 277 82 276 82 275 81 274 80 273 79 273 78 272 77" shape-rendering="auto" stroke="rgb(229,229,229)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="275" xml:space="preserve" y="64"
-      >&lt;op&gt;: edge (role) element for the predicate of an atomic formula. </text
+      >&lt;op&gt;: edge element for the predicate of an atomic formula. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="275" xml:space="preserve" y="77"
-      >See...</text
+      >http://deliberation.ruleml.org/1.02/glossary/#gloss-op</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="244" x2="247" y1="19" y2="19"
@@ -115,9 +115,9 @@
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="69"
       >expr_module and holog_module) An </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="82"
-      >operator expression including a </text
+      >operator edge containing a relation </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="95"
-      >relation (&lt;Rel&gt;) of an...</text
+      >(&lt;Rel&gt;) of an atom...</text
     ></g
   ></g
 ></svg

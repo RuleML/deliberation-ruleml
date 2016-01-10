@@ -61,7 +61,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient15" spreadMethod="pad" x1="0" x2="0" y1="174" y2="226"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient15" spreadMethod="pad" x1="0" x2="0" y1="174" y2="252"
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
@@ -181,7 +181,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient7)" points=" 317 101 318 100 318 99 319 98 320 97 321 96 322 96 323 95 330 95 337 88 344 95 659 95 660 96 661 96 662 97 663 98 664 99 664 100 665 101 665 121 664 122 664 123 663 124 662 125 661 126 660 126 659 127 323 127 322 126 321 126 320 125 319 124 318 123 318 122 317 121" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 317 101 318 100 318 99 319 98 320 97 321 96 322 96 323 95 330 95 337 88 344 95 659 95 660 96 661 96 662 97 663 98 664 99 664 100 665 101 665 121 664 122 664 123 663 124 662 125 661 126 660 126 659 127 323 127 322 126 321 126 320 125 319 124 318 123 318 122 317 121" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="108"
-      >&lt;left&gt;: The left-hand side of an equation. See </text
+      >&lt;left&gt;: The left-hand side edge of an equation. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="121"
       >http://deliberation.ruleml.org/1.02/glossary/#gloss-left</text
     ></g
@@ -272,7 +272,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient13)" points=" 317 290 318 289 318 288 319 287 320 286 321 285 322 285 323 284 330 284 337 277 344 284 668 284 669 285 670 285 671 286 672 287 673 288 673 289 674 290 674 310 673 311 673 312 672 313 671 314 670 315 669 315 668 316 323 316 322 315 321 315 320 314 319 313 318 312 318 311 317 310" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 317 290 318 289 318 288 319 287 320 286 321 285 322 285 323 284 330 284 337 277 344 284 668 284 669 285 670 285 671 286 672 287 673 288 673 289 674 290 674 310 673 311 673 312 672 313 671 314 670 315 669 315 668 316 323 316 322 315 321 315 320 314 319 313 318 312 318 311 317 310" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="297"
-      >&lt;right&gt;: The right-hand side of an equation. See </text
+      >&lt;right&gt;: The right-hand side edge of an equation. See </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="320" xml:space="preserve" y="310"
       >http://deliberation.ruleml.org/1.02/glossary/#gloss-right</text
     ></g
@@ -299,14 +299,18 @@
       /><line clip-path="url(#clipPath1)" fill="none" x1="136" x2="161" y1="157" y2="157"
     /></g
     ><g fill="url(#linearGradient15)" font-family="sans-serif" font-size="11" shape-rendering="crispEdges" stroke="url(#linearGradient15)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 187 1 186 1 185 2 184 3 183 4 182 5 182 6 181 13 181 20 174 27 181 138 181 139 182 140 182 141 183 142 184 143 185 143 186 144 187 144 220 143 221 143 222 142 223 141 224 140 225 139 225 138 226 6 226 5 225 4 225 3 224 2 223 1 222 1 221 0 220" stroke="none"
-      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 187 1 186 1 185 2 184 3 183 4 182 5 182 6 181 13 181 20 174 27 181 138 181 139 182 140 182 141 183 142 184 143 185 143 186 144 187 144 220 143 221 143 222 142 223 141 224 140 225 139 225 138 226 6 226 5 225 4 225 3 224 2 223 1 222 1 221 0 220" shape-rendering="auto" stroke="rgb(224,225,228)"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 187 1 186 1 185 2 184 3 183 4 182 5 182 6 181 13 181 20 174 27 181 138 181 139 182 140 182 141 183 142 184 143 185 143 186 144 187 144 246 143 247 143 248 142 249 141 250 140 251 139 251 138 252 6 252 5 251 4 251 3 250 2 249 1 248 1 247 0 246" stroke="none"
+      /><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 187 1 186 1 185 2 184 3 183 4 182 5 182 6 181 13 181 20 174 27 181 138 181 139 182 140 182 141 183 142 184 143 185 143 186 144 187 144 246 143 247 143 248 142 249 141 250 140 251 139 251 138 252 6 252 5 251 4 251 3 250 2 249 1 248 1 247 0 246" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="194"
-      >Equations contain a pair of </text
+      >The main section of </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="207"
-      >terms, a left-hand side and </text
+      >equations contains a pair </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="220"
-      >a right-hand side.</text
+      >of edges, a left-hand side </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="233"
+      >edge and a right-hand side </text
+      ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="3" xml:space="preserve" y="246"
+      >edge.</text
     ></g
   ></g
 ></svg

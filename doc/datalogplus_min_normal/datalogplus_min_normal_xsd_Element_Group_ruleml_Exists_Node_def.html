@@ -20,7 +20,8 @@
         var diagramBoxes= new Array('diagram_Exists.Node.def_Exists', 
 				'diagram_Exists.Node.def');
 
-        var annotationBoxes= new Array('annotations_Exists.Node.def_Exists');
+        var annotationBoxes= new Array('annotations_Exists.Node.def_Exists', 
+				'annotations_Exists.Node.def');
 
         var attributesBoxes= new Array('attributes_Exists.Node.def_Exists');
 
@@ -334,8 +335,8 @@
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
                                        <td width="100%"><pre><span class="tT">Explicit existential quantifier. It consists of one or more variables</span><span class="tI">
-</span><span class="tT">(&lt;Var&gt;), each optionally surrounded by a &lt;declare&gt; role, followed by a logical formula</span><span class="tI">
-</span><span class="tT">(optionally surrounded by a &lt;formula&gt; role). See</span><span class="tI">
+</span><span class="tT">(&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, followed by a logical formula</span><span class="tI">
+</span><span class="tT">(optionally surrounded by &lt;formula&gt; role tags). See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</span></pre></td>
                                     </tr>
                                  </table>
@@ -458,7 +459,7 @@
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:element</span><span class="tAN"> form=</span><span class="tAV">"qualified"</span><span class="tAN"> name=</span><span class="tAV">"Exists"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:Exists.type.def"</span><span class="tEl">&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
-    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;), each optionally surrounded by a &lt;declare&gt; role, followed by a logical formula (optionally surrounded by a &lt;formula&gt; role). See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, followed by a logical formula (optionally surrounded by &lt;formula&gt; role tags). See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
 </span><span class="tEl">&lt;/xs:element&gt;</span></pre></td>
                                  </tr>
@@ -491,6 +492,25 @@
                      <tr>
                         <td class="firstColumn"><b>Namespace</b></td>
                         <td>http://ruleml.org/spec</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_Exists.Node.def" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_Exists.Node.def');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_Exists.Node.def" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%"><pre><span class="tT">The children of an existential quantification are divided into two sections,</span><span class="tI">
+</span><span class="tT">a header section for modifiers, and a main section for the variable declarations and body</span><span class="tI">
+</span><span class="tT">formula.</span></pre></td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
                      </tr>
                      <tr>
                         <td class="firstColumn">
@@ -538,10 +558,13 @@
                               <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                  <tr>
                                     <td width="100%"><pre><span class="tEl">&lt;xs:group</span><span class="tAN"> name=</span><span class="tAV">"Exists.Node.def"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">The children of an existential quantification are divided into two sections, a header section for modifiers, and a main section for the variable declarations and body formula.</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
   </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
     </span><span class="tEl">&lt;xs:element</span><span class="tAN"> form=</span><span class="tAV">"qualified"</span><span class="tAN"> name=</span><span class="tAV">"Exists"</span><span class="tAN"> type=</span><span class="tAV">"ruleml:Exists.type.def"</span><span class="tEl">&gt;</span><span class="tI">
       </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
-        </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;), each optionally surrounded by a &lt;declare&gt; role, followed by a logical formula (optionally surrounded by a &lt;formula&gt; role). See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+        </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, followed by a logical formula (optionally surrounded by &lt;formula&gt; role tags). See http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
       </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
     </span><span class="tEl">&lt;/xs:element&gt;</span><span class="tI">
   </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">

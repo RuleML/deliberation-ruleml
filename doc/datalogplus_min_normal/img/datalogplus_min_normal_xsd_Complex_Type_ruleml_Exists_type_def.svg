@@ -330,9 +330,9 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="497" xml:space="preserve" y="192"
-      >A role used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or </text
+      >An edge used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="497" xml:space="preserve" y="205"
-      >&lt;Exists&gt;). See...</text
+      >or &lt;Exists&gt;). See...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="geometricPrecision"
     ><line clip-path="url(#clipPath1)" fill="none" x1="466" x2="469" y1="147" y2="147"
@@ -472,7 +472,7 @@
       /><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient26)" points=" 473 455 474 454 474 453 475 452 476 451 477 450 478 450 479 449 486 449 493 442 500 449 878 449 879 450 880 450 881 451 882 452 883 453 883 454 884 455 884 475 883 476 883 477 882 478 881 479 880 480 879 480 878 481 479 481 478 480 477 480 476 479 475 478 474 477 474 476 473 475" stroke="none"
       /><polygon clip-path="url(#clipPath1)" fill="none" points=" 473 455 474 454 474 453 475 452 476 451 477 450 478 450 479 449 486 449 493 442 500 449 878 449 879 450 880 450 881 451 882 452 883 453 883 454 884 455 884 475 883 476 883 477 882 478 881 479 880 480 879 480 878 481 479 481 478 480 477 480 476 479 475 478 474 477 474 476 473 475" shape-rendering="auto" stroke="rgb(224,225,228)"
       /><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="476" xml:space="preserve" y="462"
-      >The formula role of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
+      >The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression, </text
       ><text clip-path="url(#clipPath1)" fill="rgb(51,51,51)" font-size="10" stroke="none" x="476" xml:space="preserve" y="475"
       >quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or...</text
     ></g
