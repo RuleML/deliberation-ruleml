@@ -26,7 +26,7 @@
             <Data xsi:type="xs:string">test</Data>
             <Data xsi:type="xs:integer">12</Data>
             <Data node="this:#data1" xsi:type="integer">12</Data>
-            <Data node="this:#data2">12a <xs:integer/></Data>
+            <Data node="this:#data2"><!--mixed XML content--> Bob Smith <ex:Address>123 Main St.</ex:Address></Data>
             <Data>tomorrow</Data>
             <Data xsi:type="xs:dateTime"
               >2002-10-10T17:00:00Z</Data>
