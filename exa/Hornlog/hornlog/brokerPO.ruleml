@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-bf-d7-a7-l1-p0-i0-t0-q0-e1-sb.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/hornlog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/hornlog.xsd"
+  style="http://ruleml.org/1.02/profiles/Horn-Herbrand" >
+
+<!-- a simplified broker definition -->
+
+<Assert>
+
+  <Forall>
+    <Var>broker</Var>
+    <Var>prod</Var>
+    <Implies>
+     <then>
+      <Atom>
+        <op><Rel>buy</Rel></op>
+        <Var>broker</Var>
+        <Var>prod</Var>
+      </Atom>
+     </then>
+     <if>
+      <And>
+        <Atom>
+          <op><Rel>want</Rel></op>
+          <Ind>customer-of-broker</Ind>
+          <Var>prod</Var>
+        </Atom>
+        <Atom>
+          <op><Rel>deal</Rel></op>
+          <Var>prod</Var>
+          <Expr>
+            <op><Fun>cost</Fun></op>
+            <Ind>prod</Ind>
+          </Expr>
+          <Ind>benefit-of-prod</Ind>
+        </Atom>
+      </And>
+     </if>
+    </Implies>  
+  </Forall>
+    
+  <Forall>
+    <Var>prod</Var>
+    <Var>cost</Var>
+    <Var>benefit</Var>
+    <Implies>
+     <then>
+      <Atom>
+        <op><Rel>deal</Rel></op>
+        <Var>prod</Var>
+        <Var>cost</Var>
+        <Var>benefit</Var>
+      </Atom>
+     </then>
+     <if>
+      <Atom>
+        <op><Rel>greater-or-equal</Rel></op>
+        <Var>benefit</Var>
+        <Var>cost</Var>
+      </Atom>
+     </if>
+    </Implies>
+  </Forall>
+  
+  <Atom>
+    <op><Rel>want</Rel></op>
+    <Ind>miller</Ind>
+    <Ind>stock1</Ind>
+  </Atom>
+
+  <Atom>
+    <op><Rel>want</Rel></op>
+    <Ind>miller</Ind>
+    <Ind>stock2</Ind>
+  </Atom>
+
+</Assert>
+
+</RuleML>
