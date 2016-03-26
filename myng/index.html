@@ -31,7 +31,7 @@
                 LanguageForm.termseq[2].checked *
                 LanguageForm.termseq[3].checked *
                 LanguageForm.termseq[4].checked)) {
-                    // initialize to Polyadic
+                    // initialize to Variably Polyadic
                     LanguageForm.termseq[4].checked = true;
                 }
                 if (!(
@@ -312,7 +312,7 @@
                     LanguageForm.quant1.disabled = "disabled";
                 }
                 // If quantification is allowed and
-                // term sequences are polyadic, then
+                // term sequences are variably polyadic, then
                 // positional rest variables are available
                 if (datalogAndUp && LanguageForm.termseq[4].checked) {
                     LanguageForm.quant2.removeAttribute('disabled');
@@ -1607,7 +1607,7 @@
                 <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Unary/Binary (Zero
                 to Two) </li>
               <li>
-                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Polyadic (Zero
+                <input type="radio" name="termseq" onclick="checkAll(this.form)" /> Variably Polyadic (Zero
                 or More) </li>
             </ol>
             </td>
