@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-b7-d7-a7-l1-p0-i48-t20b-q0-e0-sa.rnc"?>
+
+<RuleML xmlns="http://ruleml.org/spec">
+   <Assert> 
+    <Atom> 
+        <Rel>addressRel</Rel>        
+        <Data>Computer Science</Data>        
+        <Data>Engineering Dr</Data>        
+        <Data>Stony Brook, NY 11794</Data>        
+    </Atom>     
+   
+    <!--        
+% Nested:
+
+<Forall>
+  <Var>Name</Var>  
+  <Var>Street</Var>  
+  <Var>Town</Var>  
+  <Implies>  
+    <Atom>    
+      <Rel>addressRel</Rel>      
+      <Var>Name</Var>      
+      <Var>Street</Var>      
+      <Var>Town</Var>      
+    </Atom>    
+    <Exists>    
+      <Var>O1</Var>      
+      <Var>O2</Var>      
+      <Atom>      
+        <oid><Var>O1</Var>></oid>        
+        <Rel>addressObj</Rel>        
+        <slot><Ind>name</Ind><Var>Name</Var></slot>        
+        <slot>        
+          <Ind>place</Ind>          
+          <Atom>          
+            <oid><Var>O2</Var></oid>            
+            <Rel>placeObj</Rel>            
+            <slot><Ind>street</Ind><Var>Street</Var></slot>            
+            <slot><Ind>town</Ind><Var>Town</Var></slot>            
+          </Atom>          
+        </slot>        
+      </Atom>      
+    </Exists>
+    
+  </Implies>
+  
+</Forall>
+
+-->
+    
+    
+<!--    % Unnested: -->
+    
+    
+    <Forall>        
+        <Var>Name</Var>        
+        <Var>Street</Var>        
+        <Var>Town</Var>        
+        <Implies>            
+            <Atom>                
+                <Rel>addressRel</Rel>                
+                <Var>Name</Var>                
+                <Var>Street</Var>                
+                <Var>Town</Var>                
+            </Atom>            
+            <Exists>                
+                <Var>O1</Var>                
+                <Var>O2</Var>                
+                <And>                    
+                    <Atom>                        
+                        <oid><Var>O2</Var></oid>                        
+                        <Rel>placeObj</Rel>                        
+                        <slot><Ind>street</Ind><Var>Street</Var></slot>                        
+                        <slot><Ind>town</Ind><Var>Town</Var></slot>                        
+                    </Atom>                    
+                    <Atom>                        
+                        <oid><Var>O1</Var></oid>                        
+                        <Rel>addressObj</Rel>                        
+                        <slot><Ind>name</Ind><Var>Name</Var></slot>                        
+                        <slot><Ind>place</Ind><Var>O2</Var></slot>                        
+                    </Atom>                    
+                    </And>                        
+            </Exists>            
+        </Implies>        
+    </Forall>
+   </Assert>
+</RuleML>
