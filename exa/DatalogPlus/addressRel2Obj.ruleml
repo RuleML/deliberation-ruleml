@@ -2,7 +2,9 @@
 <!--<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>-->
 <?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-b7-d7-a7-l1-p0-i48-t20b-q0-e0-sa.rnc"?>
 
-<RuleML xmlns="http://ruleml.org/spec">
+<RuleML xmlns="http://ruleml.org/spec"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    style="http://ruleml.org/1.02/profiles/HornPSOA-Tarski"
+    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/nafnegdisdatalogplus.xsd">
    <Assert> 
     <Atom> 
         <Rel>addressRel</Rel>        
@@ -18,18 +20,21 @@
   <Var>Name</Var>  
   <Var>Street</Var>  
   <Var>Town</Var>  
-  <Implies>  
+  <Implies>
+    <if>  
     <Atom>    
       <Rel>addressRel</Rel>      
       <Var>Name</Var>      
       <Var>Street</Var>      
       <Var>Town</Var>      
-    </Atom>    
+    </Atom>
+   </if>
+   <then>
     <Exists>    
       <Var>O1</Var>      
       <Var>O2</Var>      
       <Atom>      
-        <oid><Var>O1</Var>></oid>        
+        <oid><Var>O1</Var></oid>        
         <Rel>addressObj</Rel>        
         <slot><Ind>name</Ind><Var>Name</Var></slot>        
         <slot>        
@@ -43,7 +48,7 @@
         </slot>        
       </Atom>      
     </Exists>
-    
+    </then>  
   </Implies>
   
 </Forall>
@@ -53,18 +58,20 @@
     
 <!--    % Unnested: -->
     
-    
     <Forall>        
         <Var>Name</Var>        
         <Var>Street</Var>        
         <Var>Town</Var>        
-        <Implies>            
+        <Implies>
+           <if>            
             <Atom>                
                 <Rel>addressRel</Rel>                
                 <Var>Name</Var>                
                 <Var>Street</Var>                
                 <Var>Town</Var>                
             </Atom>            
+           </if>
+           <then> 
             <Exists>                
                 <Var>O1</Var>                
                 <Var>O2</Var>                
@@ -83,6 +90,7 @@
                     </Atom>                    
                     </And>                        
             </Exists>            
+          </then>
         </Implies>        
     </Forall>
    </Assert>
