@@ -13,50 +13,6 @@
         <Data>Stony Brook, NY 11794</Data>        
     </Atom>     
    
-    <!--        
-% Nested:
-
-<Forall>
-  <Var>Name</Var>  
-  <Var>Street</Var>  
-  <Var>Town</Var>  
-  <Implies>
-    <if>  
-    <Atom>    
-      <Rel>addressRel</Rel>      
-      <Var>Name</Var>      
-      <Var>Street</Var>      
-      <Var>Town</Var>      
-    </Atom>
-   </if>
-   <then>
-    <Exists>    
-      <Var>O1</Var>      
-      <Var>O2</Var>      
-      <Atom>      
-        <oid><Var>O1</Var></oid>        
-        <Rel>addressObj</Rel>        
-        <slot><Ind>name</Ind><Var>Name</Var></slot>        
-        <slot>        
-          <Ind>place</Ind>          
-          <Atom>          
-            <oid><Var>O2</Var></oid>            
-            <Rel>placeObj</Rel>            
-            <slot><Ind>street</Ind><Var>Street</Var></slot>            
-            <slot><Ind>town</Ind><Var>Town</Var></slot>            
-          </Atom>          
-        </slot>        
-      </Atom>      
-    </Exists>
-    </then>  
-  </Implies>
-  
-</Forall>
-
--->
-    
-    
-<!--    % Unnested: -->
     
     <Forall>        
         <Var>Name</Var>        
