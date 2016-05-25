@@ -62,7 +62,7 @@
     </Implies>
     <Implies>
       <if>
-        <And keyref=":premise"> </And>
+        <And keyref=":premise"/> 
       </if>
       <then>
         <Atom>
