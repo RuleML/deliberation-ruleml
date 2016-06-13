@@ -47,7 +47,7 @@ echo "Start Instance Generation"
        exit 1
    fi   
 
-# Apply XSLT transforamtions - instance postprocessing
+# Apply XSLT transformations - instance postprocessing
 # transform in place for files in INSTANCE_NORMAL_HOME
 #
 # Check number of files to start with

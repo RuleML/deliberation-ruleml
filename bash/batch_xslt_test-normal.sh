@@ -63,7 +63,7 @@ do
     "${BASH_HOME}aux_valxsd.sh" "${cfile}" "${file}"
     exitvalue=$?
     if [[ "${exitvalue}" -ne "1" ]]; then
-          echo "Normal Validation Succeeded for Compact ${file}"
+          echo "Compact Validation Succeeded for Normal ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
