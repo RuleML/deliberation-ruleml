@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalog.ruleml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd"
+  style="http://ruleml.org/1.02/profiles/splittableHeadConjunction">
+
+  <Assert mapClosure="universal">
+
+    <!--  A rule with conjunctive head, which is syntactically valid in the RuleML language
+  myng-b7-d7-a7-l1-p1-i8-t0-q1-e0-s4a.rnc or superlanguages of it.
+ 
+
+    <Implies>
+      <if>
+        <And>
+          <Atom>
+              <Rel>P</Rel>
+          </Atom>
+          <Atom>
+            <Rel>Q</Rel>
+          </Atom>
+          <Atom>
+            <Rel>R</Rel>
+          </Atom>
+        </And>
+      </if>
+      <then>
+        <And>
+          <Atom>
+            <Rel>S</Rel>
+          </Atom>
+          <Atom>
+            <Rel>T</Rel>
+          </Atom>
+        </And>
+      </then>
+    </Implies>
+ -->
+
+    <!-- An equivalent set of rules, syntactically valid in the smaller language datalog .
+    The key-keyref mechanism of syntactic distribution is used here to reuse the common premise.-->
+    <Implies>
+      <if>
+        <And key=":premise">
+          <Atom>
+            <Rel>P</Rel>
+          </Atom>
+          <Atom>
+            <Rel>Q</Rel>
+          </Atom>
+          <Atom>
+            <Rel>R</Rel>
+          </Atom>
+        </And>
+      </if>
+      <then>
+        <Atom>
+          <Rel>S</Rel>
+        </Atom>
+      </then>
+    </Implies>
+    <Implies>
+      <if>
+        <And keyref=":premise"/> 
+      </if>
+      <then>
+        <Atom>
+          <Rel>T</Rel>
+        </Atom>
+      </then>
+    </Implies>
+
+  </Assert>
+
+</RuleML>
