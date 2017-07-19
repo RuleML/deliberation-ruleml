@@ -12,7 +12,23 @@ deliberation-ruleml
  
 Prerequisites
 -------------
-1. To contribute to this repository, You must have Git installed on your system. See ([7]).
+1. To contribute to this repository, You must have the following installed on your system : 
+    1.1 Git, See ([7])
+    1.2 JAXB, See ([9])
+    1.3 PHP, See ([10])
+        
+2. To run the bash scripts to build the RuleML release, You must create your own "path_config.sh" script in the bash directory.
+	2.1. First, Navigate to the "bash" directory of from the root of this repository
+	2.2. Find the file with name "path_config_template.sh"
+	2.3. Copy this file and rename it to "path_config.sh"
+	2.4. Open "path_config.sh" in a text editor
+	2.5. Change the following variables accordingly
+		- PLATFORM : 	Enter the OS of your current machine.
+						e.g. "Mac" for MacOS, "Linux" for Linux machines
+		- OXY_VERSION : Enter the version number of your oXygen XML editor.
+						e.g. "18"
+	    - OXY_HOME : 	Enter the installation location of oXygen on your machine.
+						e.g. "C:/Program Files/Oxygen XML Editor 18/"
 
 Training
 --------
@@ -111,4 +127,6 @@ executed by any user.
 [6]:http://git-scm.com/book/en/Getting-Started-Git-Basics
 [7]:http://git-scm.com/downloads
 [8]:https://github.com/RuleML/issues-ruleml
+[9]:https://github.com/javaee/jaxb-v2
+[10]:http://php.net/manual/en/install.php
 
