@@ -54,7 +54,7 @@ fi
 echo "Trang Conversion to XSD succeeded."
 
 if [[ "$3" != true ]]; then
-  if [[ "${OXY_VERSION}" == 14 ]]; then
+  if [[ "${OXY_VERSION}" == 14 || "${OXY_VERSION}" == 19 ]]; then
     echo "Start flattening of ${outfile} to ${outdir}"
     "${BASH_HOME}flatten_xsd.sh" "${outfile}" "${outdir}"
   else   
