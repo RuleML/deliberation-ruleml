@@ -4,17 +4,83 @@ There are two top-level build scripts:
 * build_myng.sh : this builds the generated RNC and XSD locally and tests it against local test suites
 * build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
 
+Preliminaries:
+1.  Create a symbolic link from the relaxng/modules directory to relaxng/drivers/modules. From the repository home directory:
+    For Unix/Mac systems:
+    $ cd ./relaxng/drivers
+    $ ln -s ../modules/ modules
+    
+    $ cd ../relaxng/drivers4simp
+    $ ln -s ../modules/ modules
+
+    $ cd ../relaxng/drivers4xsd
+    $ ln -s ../modules/ modules 
+    
+    $ cd ../relaxng/drivers4xsd_normal
+    $ ln -s ../modules/ modules
+    
+    $ cd ../relaxng/drivers4xsd_normal_min
+    $ ln -s ../modules/ modules
+   
+    $ cd ../relaxng/drivers4xsd_min
+    $ ln -s ../modules/ modules
+
+2.  Proceed to directory bash/settings. Here you will find multiple XML files which will need to be modified. Every file ending with "-config" 
+    needs to have the fields "schemaSystemID" and outPutFolder updated with information relevant to your system.
+    
+    2.1  For schemaSystemID, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+         Text in lowercase remains unchanged.
+         file:/home/dylan/Documents/GitHub/deliberation/xsd/naffologeq_compact.xsd
+         >>
+         file:/PATH/TO/CLONE/xsd/naffologeq_compact.xsd
+    
+    2.2  For outputFolder, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+         Text in lowercase remains unchanged.
+    
+         /home/dylan/Documents/GitHub/deliberation/test/compact-test-suites
+         >>
+         /PATH/TO/CLONE/test/compact-test-suites
+     
+    2.3  Repeat for every file ending in "-config.xml" 
+    
+
+3.  Ensure that PHP is installed.
+4.  Ensure that xmllint (in the library: libxml2-utils) is installed.
+
+
 Procedure:
 1. run build_myng.sh. The script should exit with code 0.
-2. After successful exection of build_myng.sh, 
+  - The script may be run directly from a terminal.
+    $ ./build_myng.sh
+  - alternately, the script may be run from an external tool from oXygen.
+2. After successful execution of build_myng.sh, 
   - commit the results
   - push to Github
-  - wait for synchronization on the RuleML server, or manuually update with gitupdate.sh on the server
-3. run web_myng.sh. The script should exit with code 0.
-2. After successful exection of web_myng.sh, 
+  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
+3. run build_web.sh. The script should exit with code 0.
+  - This script performs some tests of the RuleML installation on HawkHost, however these tests are not as extensive as those performed by the build_myng.sh script.
+4. After successful execution of build_web.sh, 
   - commit the results
   - push to Github
-  - wait for synchronization on the RuleML server, or manuually update with gitupdate.sh on the server
+  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
 
 These scripts call incremental build scripts which can be manually activated for partial builds.
 See the top-level build scripts for details.
+
+(Optional)
+If you use oXygen for editing your files, "External tools" can be made to facilitate the process of running the scripts.
+Creating an external tool (oXygen v. 19):
+1.  Within oXygen, locate "Tools" from the top-bar menu.
+2.  Navigate to Tools->External Tools->Configure
+3.  Click on "New" located at the bottom right of the screen.
+4.  Give the tool a name and a description of your preference.
+5.  Enter "${cfd}" without the quotes as "Working Directory"
+6.  Enter "./${cfne}" without the quotes in the "Command Line" text field.
+7.  Keep the rest of the defaults.
+
+Now that this is done, you can easily run the bash scripts of the project by following these steps :
+1.  Have the desired script open and in focus in oXygen.
+2.  Navigate to Tools->External Tools
+3.  Click on the tool you just created.
+
+A command  prompt should now appear within the oXygen console displaying the progress of the script.
