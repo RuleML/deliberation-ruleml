@@ -8,9 +8,9 @@
     <noOfInstances>10</noOfInstances>
     <openFirstInstance>false</openFirstInstance>
     <defaultNamespace>&lt;NO_NAMESPACE></defaultNamespace>
-    <valuesMaxLength>30</valuesMaxLength>
+    <valuesMaxLength>100</valuesMaxLength>
     <isUseIncrementalNamesForValues>false</isUseIncrementalNamesForValues>
-    <discardOptionalElementsAfterNestedLevel>6</discardOptionalElementsAfterNestedLevel>
+    <discardOptionalElementsAfterNestedLevel>4</discardOptionalElementsAfterNestedLevel>
     <namespaceMapping ns="http://ruleml.org/spec" proxy="ruleml"/>
     <namespaceMapping ns="http://www.w3.org/2001/XMLSchema-datatypes" proxy="xm"/>
     <element namespace="&lt;ANY>" name="&lt;ANY>">
