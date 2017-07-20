@@ -12,1633 +12,1651 @@
   GET parameter: serial=x10
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
-  
-  
-  
-  <xs:element name="RuleML" type="ruleml:RuleML.type.def">
-    <xs:annotation>
-      <xs:documentation>The polyadic top_level of a RuleML document. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-RuleML</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="RuleML.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:RuleML.main">
-        <xs:attributeGroup ref="ruleml:reRuleML.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="RuleML.main">
-    <xs:annotation>
-      <xs:documentation>The RuleML root element contains zero or more
-        performatives.</xs:documentation>
-    </xs:annotation>
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:act-edge.choice"/>
-  </xs:complexType>
-  <xs:group name="act-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in assertions and retractions.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:act"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="act" type="ruleml:act.type.def">
-    <xs:annotation>
-      <xs:documentation>The action edge of a RuleML root which associates zero to many performatives
-        with the root. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-act</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="act.type.def">
-    <xs:annotation>
-      <xs:documentation>The type of the action edge</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:act.content">
-        <xs:attributeGroup ref="ruleml:act-datt.choice"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="act-datt.choice">
-    <xs:annotation>
-      <xs:documentation>The attribute @index is required for the positional argument
-        edge.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
-  </xs:attributeGroup>
-  <xs:complexType name="act.content">
-    <xs:annotation>
-      <xs:documentation>contains one performative.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:Performative.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Performative.choice">
-    <xs:annotation>
-      <xs:documentation>Performatives include assertions, retractions and
-        queries.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:AssertRetract-node.choice"/>
-      <xs:group ref="ruleml:Query-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  <xs:group name="AssertRetract-node.choice">
-    <xs:annotation>
-      <xs:documentation>a convenience pattern combining assertions and
-        retractions</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:Assert-node.choice"/>
-      <xs:group ref="ruleml:Retract-node.choice"/>
-    </xs:choice>
-  </xs:group>
-  <xs:group name="Assert-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the assertion tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Assert"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Assert" type="ruleml:Assert.type.def">
-    <xs:annotation>
-      <xs:documentation>A KQML-like performative acting as a wrapper specifying that its content is
-        asserted, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Assert</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Assert.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:AssertRetract.main">
-        <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
-        <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:group name="Retract-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the retraction tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Retract"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Retract" type="ruleml:Retract.type.def">
-    <xs:annotation>
-      <xs:documentation>A performative similar to KQML's 'untell' that acts as a wrapper specifying
-        that its content is to be deleted, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Retract</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Retract.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:AssertRetract.main">
-        <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
-        <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reAssertRetract.attlist">
-    <xs:annotation>
-      <xs:documentation>Assertions and retractions may have an optional scope closure
-        attribute.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  <xs:complexType name="AssertRetract.main">
-    <xs:annotation>
-      <xs:documentation>Assertions and retractions contain zero or more formulas.</xs:documentation>
-    </xs:annotation>
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_AssertRetract-edge.choice"/>
-  </xs:complexType>
-  <xs:group name="formula_AssertRetract-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in assertions and retractions.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_AssertRetract.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_AssertRetract.edge.def">
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_AssertRetract.type.def">
+    
+    
+    
+    <xs:element name="RuleML" type="ruleml:RuleML.type.def">
         <xs:annotation>
-          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
-            quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Assert or
-            Retract...</xs:documentation>
+            <xs:documentation>The polyadic top_level of a RuleML document. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-RuleML</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_AssertRetract.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_AssertRetract.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="formula_AssertRetract.content">
-    <xs:annotation>
-      <xs:documentation>Forumulas within assertions and retractions contain a single
-        formula.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:AssertRetractFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:group name="Query-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the query tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Query"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Query" type="ruleml:Query.type.def">
-    <xs:annotation>
-      <xs:documentation>A KQML-like performative acting as a wrapper specifying that its content is
-        queried, making an 'implicit &lt;Rulebase&gt;' assumption. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Query</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Query.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Query.main">
-        <xs:attributeGroup ref="ruleml:reQuery.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reQuery.attlist">
-    <xs:annotation>
-      <xs:documentation>Queries may have an optional map closure attribute  and will accept a scoped
-        closure attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  <xs:complexType name="Query.main">
-    <xs:annotation>
-      <xs:documentation>The content model of queries consists of zero or more
-        formulas.</xs:documentation>
-    </xs:annotation>
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_Query-edge.choice"/>
-  </xs:complexType>
-  <xs:group name="formula_Query-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in queries.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_Query.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_Query.edge.def">
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_Query.type.def">
+    </xs:element>
+    <xs:complexType name="RuleML.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:RuleML.main">
+                <xs:attributeGroup ref="ruleml:reRuleML.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RuleML.main">
         <xs:annotation>
-          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
-            quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within Query
-            ...</xs:documentation>
+            <xs:documentation>The RuleML root element contains zero or more
+                performatives.</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_Query.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_Query.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="formula_Query.content">
-    <xs:annotation>
-      <xs:documentation>The content model of a forumula within queries is a single
-        formula.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:QueryFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reRuleML.attlist">
-    <xs:annotation>
-      <xs:documentation>The RuleML type accepts the common Node attributes. </xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:complexType name="AssertRetractFormula.choice">
-    <xs:annotation>
-      <xs:documentation>Formulas allowed in assertions and retractions: Simple formulas are allowed
-        in assertions and retractions in all sub-languages. Conjunctions and disjunctions are
-        allowed in assertions and retractions in sub-languages that contain these components.
-        Implications and universal quantifications is allowed in assertions and retractions for all
-        quantified sub-languages. Strong and weak negation are allowed in assertions and retractions
-        for all sub-languages that contain these components. Existential quantification is added to
-        assertions and retractions for full first-order sub-languages.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:Implication-node.choice"/>
-      <xs:group ref="ruleml:Forall-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  
-  <xs:complexType name="QueryFormula.choice">
-    <xs:annotation>
-      <xs:documentation>Formulas allowed in queries: Simple formulas are allowed in queries in all
-        sub-languages. Conjunctions and disjunctions are allowed in queries in sub-languages that
-        contain these components. Existential quantifications is allowed in queries for all
-        quantified sub-languages. Strong and weak negation are allowed in queries for all
-        sub-languages that contain these components. Implications and universal quantification are
-        added to queries for full first-order sub-languages.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:And-Query-node.choice"/>
-      <xs:group ref="ruleml:Or-Query-node.choice"/>
-      <xs:group ref="ruleml:Exists-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  
-  <xs:group name="SimpleFormula-node.choice">
-    <xs:annotation>
-      <xs:documentation>atomic formulas are a kind of simple formula</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Atom-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Atom-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the atomic formula tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Atom"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Atom" type="ruleml:Atom.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;Atom&gt;: a predicate applied to arguments. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Atom.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Atom.main">
-        <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reAtom.attlist">
-    <xs:annotation>
-      <xs:documentation>Atomic formulas may have an optional closure attribute.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:group name="operatorForAtoms-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        operator tag name in atomic formulas.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:op"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="op" type="ruleml:op.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;op&gt;: edge element for the predicate of an atomic formula. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="op.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:op_Atom.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="op_Atom.content">
-    <xs:annotation>
-      <xs:documentation>The operator role in the context of an atomic formula is filled by a
-        predicate.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:Relation-node.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Relation-node.choice">
-    <xs:annotation>
-      <xs:documentation> </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Rel"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Rel" type="ruleml:Rel.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;Rel&gt;: symbol used as the predicate of an atomic formula. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Rel.type.def">
-    <xs:simpleContent>
-      <xs:extension base="ruleml:Rel.value">
-        <xs:attributeGroup ref="ruleml:reRel.attlist"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reRel.attlist">
-    <xs:annotation>
-      <xs:documentation>Relations accept the optional attribute pattern of
-        resources.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
-  </xs:attributeGroup>
-  <xs:simpleType name="Rel.value">
-    <xs:annotation>
-      <xs:documentation>The content model for relations is the XSD datatype
-        token.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token"/>
-  </xs:simpleType>
-  
-  <xs:group name="And-node.choice">
-    <xs:annotation>
-      <xs:documentation/>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:And.Node.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="And.Node.def">
-    <xs:annotation>
-      <xs:documentation>A polyadic conjunctive formula,  The children of the conjunction element are
-        divided into two sections,  a header section for modifiers, and a main section for the
-        formulas that are conjuncts.  Within anything other than Query...</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="And" type="ruleml:And.type.def">
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:act-edge.choice"/>
+    </xs:complexType>
+    <xs:group name="act-edge.choice">
         <xs:annotation>
-          <xs:documentation>&lt;And&gt;: polyadic conjunction where &lt;And/&gt; is true. See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-And</xs:documentation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in assertions and retractions.  </xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="And.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:And.main">
-        <xs:attributeGroup ref="ruleml:reAnd.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reAnd.attlist">
-    <xs:annotation>
-      <xs:documentation>The attribute list of the conjunction element will accept a scoped closure
-        attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:complexType name="And.main">
-    <xs:annotation>
-      <xs:documentation>The main section of the conjunction content model contains zero or more
-        formula edges.</xs:documentation>
-    </xs:annotation>
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_And-edge.choice"/>
-  </xs:complexType>
-  <xs:group name="formula_And-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in conjunctions.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_And.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_And.edge.def">
-    <xs:annotation>
-      <xs:documentation>A formula edge of a conjunction (&lt;And&gt;),  Within And ...</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_And.type.def">
+        <xs:sequence>
+            <xs:element ref="ruleml:act"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="act" type="ruleml:act.type.def">
         <xs:annotation>
-          <xs:documentation>&lt;formula&gt;: contains a single formula. See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula</xs:documentation>
+            <xs:documentation>The action edge of a RuleML root which associates zero to many
+                performatives with the root. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-act</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_And.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_And.content">
-        <xs:attributeGroup ref="ruleml:formula_And-datt.choice"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="formula_And-datt.choice">
-    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
-  </xs:attributeGroup>
-  <xs:complexType name="formula_And.content">
-    <xs:annotation>
-      <xs:documentation>Formulas within conjunctions consist of a single formula</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:AndFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="AndFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to participate in conjunctions. </xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:And-node.choice"/>
-      <xs:group ref="ruleml:Or-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  <xs:group name="Or-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the disjunction tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Or.Node.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Or.Node.def">
-    <xs:annotation>
-      <xs:documentation>A polyadic disjunctive formula,  The children of the disjunction element are
-        divided into two sections,  a header section for modifiers, and a main section for the
-        formulas that are disjuncts.  Within anything other than Query...</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="Or" type="ruleml:Or.type.def">
+    </xs:element>
+    <xs:complexType name="act.type.def">
         <xs:annotation>
-          <xs:documentation>&lt;Or&gt;: polyadic disjunction where &lt;Or/&gt; is false. See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-Or</xs:documentation>
+            <xs:documentation>The type of the action edge</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="Or.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Or.main">
-        <xs:attributeGroup ref="ruleml:reOr.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reOr.attlist">
-    <xs:annotation>
-      <xs:documentation>The attribute list of the disjunction element will accept a (scoped) closure
-        attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:complexType name="Or.main">
-    <xs:annotation>
-      <xs:documentation>The main section of the disjunction content model contains zero or more
-        formula edges.</xs:documentation>
-    </xs:annotation>
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_Or-edge.choice"/>
-  </xs:complexType>
-  <xs:group name="formula_Or-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in disjunctions.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_Or.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_Or.edge.def">
-    <xs:annotation>
-      <xs:documentation>A formula edge of a disjunction (&lt;Or&gt;), </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_Or.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:act.content">
+                <xs:attributeGroup ref="ruleml:act-datt.choice"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="act-datt.choice">
         <xs:annotation>
-          <xs:documentation/>
+            <xs:documentation>The attribute @index is required for the positional argument
+                edge.</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_Or.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_Or.content">
-        <xs:attributeGroup ref="ruleml:formula_Or-datt.choice"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="formula_Or-datt.choice">
-    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
-  </xs:attributeGroup>
-  <xs:complexType name="formula_Or.content">
-    <xs:annotation>
-      <xs:documentation>Formulas within disjunctions consist of a single formula</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:OrFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="OrFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to participate in disjunctions. </xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:And-node.choice"/>
-      <xs:group ref="ruleml:Or-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  <xs:group name="And-Query-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the conjunction tag name in
-        queries.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:And-Query.Node.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="And-Query.Node.def">
-    <xs:annotation>
-      <xs:documentation>Within Query...</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="And" type="ruleml:And-Query.type.def">
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+    </xs:attributeGroup>
+    <xs:complexType name="act.content">
         <xs:annotation>
-          <xs:documentation/>
+            <xs:documentation>contains one performative.</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="And-Query.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:And.main"/>
-    </xs:complexContent>
-  </xs:complexType>
-  
-  <xs:group name="Or-Query-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the disjunction tag name in
-        queries.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Or-Query.Node.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Or-Query.Node.def">
-    <xs:annotation>
-      <xs:documentation>Within Query...</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element form="qualified" name="Or" type="ruleml:Or-Query.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Performative.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Performative.choice">
         <xs:annotation>
-          <xs:documentation/>
+            <xs:documentation>Performatives include assertions, retractions and
+                queries.</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="Or-Query.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Or.main"/>
-    </xs:complexContent>
-  </xs:complexType>
-  
-  <xs:group name="Implication-node.choice">
-    <xs:annotation>
-      <xs:documentation>a convenience pattern that unifies implications and equivalences because
-        equivalence is allowed wherever implication is allowed.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Implies-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  
-  <xs:group name="Implies-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point to allow alternate names and internationalization of
-        uni-directional implication tag name.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Implies"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Implies" type="ruleml:Implies.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;Implies&gt;: an implication between two formulas, a premise and a conclusion.
-        See  http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Implies.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Implies.main">
-        <xs:attributeGroup ref="ruleml:Implies-datt.choice"/>
-        <xs:attributeGroup ref="ruleml:reImplies.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reImplies.attlist">
-    <xs:annotation>
-      <xs:documentation>Implications may have an optional closure attribute  and will accept a
-        scoped closure attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  
-  <xs:group name="body_Implies.name.choice">
-    <xs:annotation>
-      <xs:documentation> an extension point for stripe skipping as well as specializations of the if
-        tag name in implications.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:if"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="if" type="ruleml:body_Implies.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;if&gt;: contains the premise of the implication. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-if</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="body_Implies.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:body_Implies.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="body_Implies.content">
-    <xs:annotation>
-      <xs:documentation>The premise of an implication consists of a single
-        formula</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:PremiseFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="PremiseFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to be premises. </xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:And-node.choice"/>
-      <xs:group ref="ruleml:Or-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  <xs:group name="head_Implies.name.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        then tag name in implications.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:then"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="then" type="ruleml:head_Implies.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;then&gt;: contains the conclusion of the implication. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="head_Implies.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:head_Implies.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="head_Implies.content">
-    <xs:annotation>
-      <xs:documentation>The conclusion of an implication consists of a single
-        formula.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:ConclusionFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ConclusionFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to be conclusions include atomic formulas.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:Atom-head-node.choice"/>
-      <xs:group ref="ruleml:And-head-node.choice"/>
-      <xs:group ref="ruleml:Or-head-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  <xs:group name="Atom-head-node.choice">
-    <xs:annotation>
-      <xs:documentation>backbone patterns    </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Atom-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="And-head-node.choice">
-    <xs:sequence>
-      <xs:group ref="ruleml:And-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Or-head-node.choice">
-    <xs:sequence>
-      <xs:group ref="ruleml:Or-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  
-  <xs:group name="Forall-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point to allow alternate names and internationalization of
-        universal quantifiers</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Forall"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Forall" type="ruleml:Forall.type.def">
-    <xs:annotation>
-      <xs:documentation>Explicit universal quantifier. It consists of a sequence of one or more
-        variables (&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, and a logical formula
-        (optionally surrounded by &lt;formula&gt; role tags). See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Forall.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Forall.main">
-        <xs:attributeGroup ref="ruleml:reForall.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reForall.attlist">
-    <xs:annotation>
-      <xs:documentation>The attribute list of the universal quantification formula  will accept a
-        scoped closure attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:complexType name="Forall.main">
-    <xs:annotation>
-      <xs:documentation>Universally qualified formulas contain a sequence of bound variables and one
-        formula.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:boundVariables.choice"/>
-      <xs:group ref="ruleml:formula_Forall-edge.choice"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:group name="Exists-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point to allow alternate names and internationalization for
-        existential quantifiers</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Exists"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Exists" type="ruleml:Exists.type.def">
-    <xs:annotation>
-      <xs:documentation>Explicit existential quantifier. It consists of one or more variables (&lt;Var&gt;),
-        each optionally surrounded by &lt;declare&gt; role tags, followed by a logical formula  (optionally
-        surrounded by &lt;formula&gt; role tags). See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Exists.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:Exists.main">
-        <xs:attributeGroup ref="ruleml:reExists.attlist"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reExists.attlist">
-    <xs:annotation>
-      <xs:documentation>The attribute list of the existential quantification formula  will accept a
-        scoped closure attribute at full first-order logic.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:complexType name="Exists.main">
-    <xs:annotation>
-      <xs:documentation>Existentially qualified formulas contain a sequence of bound variables and
-        one formula.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:boundVariables.choice"/>
-      <xs:group ref="ruleml:formula_Exists-edge.choice"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:group name="boundVariables.choice">
-    <xs:annotation>
-      <xs:documentation>declaration of one or more bound quantifiable terms.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group maxOccurs="unbounded" ref="ruleml:declare-edge.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="declare-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        declare tag name in quantified formulas.  </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:declare"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="declare" type="ruleml:declare.type.def">
-    <xs:annotation>
-      <xs:documentation>An edge used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt; or
-        &lt;Exists&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-declare</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="declare.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:declare.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="declare.content">
-    <xs:annotation>
-      <xs:documentation>The role filler for a quantification's declare edge is a simple quantifiable
-        term</xs:documentation>
-    </xs:annotation>
-    <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
-  </xs:complexType>
-  <xs:group name="formula_Forall-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in universal quantifications. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_Forall.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_Forall.edge.def">
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_Forall.type.def">
+        <xs:choice>
+            <xs:group ref="ruleml:AssertRetract-node.choice"/>
+            <xs:group ref="ruleml:Query-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:group name="AssertRetract-node.choice">
         <xs:annotation>
-          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
-            quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula within
-            Forall...</xs:documentation>
+            <xs:documentation>a convenience pattern combining assertions and
+                retractions</xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_Forall.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_Forall.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="formula_Forall.content">
-    <xs:annotation>
-      <xs:documentation>The role filler for an universal quantification's body edge is a formula.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:ForallFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ForallFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to be universally quantified.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:Implication-node.choice"/>
-      <xs:group ref="ruleml:Forall-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  <xs:group name="formula_Exists-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        formula tag name in existential quantifications. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:formula_Exists.edge.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="formula_Exists.edge.def">
-    <xs:sequence>
-      <xs:element form="qualified" name="formula" type="ruleml:formula_Exists.type.def">
+        <xs:choice>
+            <xs:group ref="ruleml:Assert-node.choice"/>
+            <xs:group ref="ruleml:Retract-node.choice"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="Assert-node.choice">
         <xs:annotation>
-          <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;) expression,
-            quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt; or &lt;Retract&gt;). See
-            http://deliberation.ruleml.org/1.02/glossary/#gloss-formula Within
-            Exists...</xs:documentation>
+            <xs:documentation>an extension point for specializations of the assertion tag name.
+            </xs:documentation>
         </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="formula_Exists.type.def">
-    <xs:complexContent>
-      <xs:extension base="ruleml:formula_Exists.content"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="formula_Exists.content">
-    <xs:annotation>
-      <xs:documentation>The role filler of an existential quantification's body edge is a
-        formula.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:ExistsFormula.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="ExistsFormula.choice">
-    <xs:annotation>
-      <xs:documentation>formulas allowed to be existentially quantified.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleFormula-node.choice"/>
-      <xs:group ref="ruleml:And-node.choice"/>
-      <xs:group ref="ruleml:Or-node.choice"/>
-      <xs:group ref="ruleml:Exists-node.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  
-  
-  <xs:attributeGroup name="Implies-datt.choice">
-    <xs:annotation>
-      <xs:documentation>implications have inference direction and material implication as an
-        attribute.  implications have scoped attributes that are activated at full first-order
-        logic</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:direction-att-inf.choice"/>
-    <xs:attributeGroup ref="ruleml:material-att-inf.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="Rulebase-datt.choice">
-    <xs:annotation>
-      <xs:documentation>rulebases have scope inference direction  and scope material implication as
-        an attribute. </xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
-    <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="AssertRetract-datt.choice">
-    <xs:annotation>
-      <xs:documentation>assertions and retractions have scope inference direction  and  scope
-        material implication as an attribute. </xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
-    <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
-  </xs:attributeGroup>
-  
-  
-  <xs:attributeGroup name="direction-att-inf.choice">
-    <xs:attributeGroup ref="ruleml:direction-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="material-att-inf.choice">
-    <xs:attributeGroup ref="ruleml:material-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="mapDirection-att-inf.choice">
-    <xs:attributeGroup ref="ruleml:mapDirection-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="mapMaterial-att-inf.choice">
-    <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  
-  <xs:group name="termsForAtoms.nonemptysequence.choice">
-    <xs:annotation>
-      <xs:documentation/>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="termsForExpressions.nonemptysequence.choice">
-    <xs:sequence>
-      <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="Atom.main">
-    <xs:annotation>
-      <xs:documentation>The main section of an atomic formula contains an operator edge and a
-        collection of argument edges. Pre-fix operator notation for atomic formulas is required in a
-        normal-form serialization.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
-      <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:group name="argumentsForAtoms.sequence">
-    <xs:annotation>
-      <xs:documentation>Slotted arguments follow positional arguments in atomic formulas in the
-        normal-form serialization. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="positionalArgumentsForAtoms.sequence">
-    <xs:annotation>
-      <xs:documentation>Positional rest arguments follow the ordinary positional arguments in atomic
-        formulas in the normal-form serialization. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:termsForAtoms.sequence"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="argumentsForExpressions.sequence">
-    <xs:annotation>
-      <xs:documentation>Slotted arguments follow positional arguments in expressions in the
-        normal-form serialization. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:positionalArgumentsForExpressions.sequence"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="positionalArgumentsForExpressions.sequence">
-    <xs:annotation>
-      <xs:documentation>Positional rest arguments follow the ordinary positional arguments in
-        expressions in the normal-form serialization. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:termsForExpressions.sequence"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:complexType name="Implies.main">
-    <xs:annotation>
-      <xs:documentation>The main section of an implication contains two edges, a premise (body, if)
-        edge and a conclusion (head, then) edge. In the normal-form serialization, the if and then
-        of an implication must occur in canonical order.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:body_Implies.name.choice"/>
-      <xs:group ref="ruleml:head_Implies.name.choice"/>
-    </xs:sequence>
-  </xs:complexType>
-  
-  <xs:simpleType name="AbsIRI.datatype">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="PrefixedCURIE.datatype">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
-      <xs:minLength value="1"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:attributeGroup name="Resource.attlist">
-    <xs:annotation>
-      <xs:documentation>attribute list for resources includes and optional iri
-        attribute.</xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="iri" type="ruleml:iri.value">
-      <xs:annotation>
-        <xs:documentation>An attribute for referring to a IRI.     See
-          http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="iri-att.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the oriented equation attribute
-        name.  </xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:iri.attrib.def"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="iri.attrib.def">
-    <xs:attribute name="iri" type="ruleml:iri.value" use="required">
-      <xs:annotation>
-        <xs:documentation>An attribute for referring to a IRI.     See
-          http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="iri.value">
-    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
-  </xs:simpleType>
-  
-  
-  
-  <xs:attributeGroup name="direction-att.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the inference direction attribute
-        name.  </xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="direction" type="ruleml:direction.value">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the intended direction of an implication rule's
-          (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other predefined values
-          are "forward" and "backward". See
-          http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="direction.attrib.def">
-    <xs:attribute name="direction" type="ruleml:direction.value" use="required">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the intended direction of an implication rule's
-          (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other predefined values
-          are "forward" and "backward". See
-          http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="direction.value">
-    <xs:restriction base="ruleml:direction_default.value"/>
-  </xs:simpleType>
-  
-  
-  
-  <xs:attributeGroup name="mapDirection-att.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the scope inference direction
-        attribute name.  </xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="mapDirection" type="ruleml:mapDirection.value">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the intended direction of implication rule
-          (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
-          attribute mapping for more details. This attribute has a  neutral default value of
-          "bidirectional". Other predefined values are "forward" and "backward". See
-          http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="mapDirection.attrib.def">
-    <xs:attribute name="mapDirection" type="ruleml:mapDirection.value" use="required">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the intended direction of implication rule
-          (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See
-          attribute mapping for more details. This attribute has a  neutral default value of
-          "bidirectional". Other predefined values are "forward" and "backward". See
-          http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="mapDirection.value">
-    <xs:restriction base="ruleml:direction.value"/>
-  </xs:simpleType>
-  
-  
-  
-  <xs:simpleType name="direction_default.value">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="bidirectional"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:attributeGroup name="material-att.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the material implication attribute
-        name.  </xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="material" type="ruleml:material.value">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
-          Predefined values are "yes" (the default) and "no". See
-          http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="material.attrib.def">
-    <xs:attribute name="material" type="ruleml:material.value" use="required">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the kind of an implication rule (&lt;Implies&gt;).
-          Predefined values are "yes" (the default) and "no". See
-          http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="material.value">
-    <xs:restriction base="ruleml:material_default.value"/>
-  </xs:simpleType>
-  
-  
-  
-  <xs:attributeGroup name="mapMaterial-att.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the scope material implication
-        attribute name.  </xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
-          falling within its scope (i.e. child elements).   Predefined values are "yes" (the
-          default) and "no". See
-          http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="mapMaterial.attrib.def">
-    <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value" use="required">
-      <xs:annotation>
-        <xs:documentation> An attribute indicating the kind of all implication rules (&lt;Implies&gt;)
-          falling within its scope (i.e. child elements).   Predefined values are "yes" (the
-          default) and "no". See
-          http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="mapMaterial.value">
-    <xs:restriction base="ruleml:material.value"/>
-  </xs:simpleType>
-  
-  
-  
-  <xs:simpleType name="material_default.value">
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="yes"/>
-    </xs:restriction>
-  </xs:simpleType>
-  
-  <xs:group name="DataTerm.choice">
-    <xs:annotation>
-      <xs:documentation>Data terms may have mixed content from any namespace.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Data_any-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  
-  <xs:group name="Data_any-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the data tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Data"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Data" type="xs:anyType"/>
-  <xs:complexType mixed="true" name="Data_any.type.def">
-    <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:anyElement.def"/>
-  </xs:complexType>
-  <xs:group name="anyElement.choice">
-    <xs:annotation>
-      <xs:documentation/>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:anyElement.def"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="anyElement.def">
-    <xs:sequence>
-      <xs:any processContents="lax"/>
-    </xs:sequence>
-  </xs:group>
-  
-  <xs:group name="positionalArgument-edge.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for stripe skipping as well as specializations of the
-        positional argument tag name. </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:arg"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="arg" type="ruleml:arg.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;arg&gt;: one argument of an atomic formula. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-arg</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="arg.type.def">
-    <xs:annotation>
-      <xs:documentation>The attribute @index is required for the positional argument
-        role.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:arg.content">
-        <xs:attributeGroup ref="ruleml:arg-datt.choice"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:attributeGroup name="arg-datt.choice">
-    <xs:attributeGroup ref="ruleml:index.attrib.def"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="index-attrib.choice">
-    <xs:annotation>
-      <xs:documentation/>
-    </xs:annotation>
-    <xs:attribute name="index" type="ruleml:index.value">
-      <xs:annotation>
-        <xs:documentation>A required attribute for specifying the position of a positional argument
-          (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
-          http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="index.attrib.def">
-    <xs:attribute name="index" type="ruleml:index.value" use="required">
-      <xs:annotation>
-        <xs:documentation>A required attribute for specifying the position of a positional argument
-          (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
-          http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="index.value">
-    <xs:restriction base="xs:positiveInteger"/>
-  </xs:simpleType>
-  <xs:complexType name="arg.content">
-    <xs:annotation>
-      <xs:documentation>The role filler for positional arguments edges in atomic formulas is a
-        term.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ruleml:AnyTerm.choice"/>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="AnyTerm.choice">
-    <xs:annotation>
-      <xs:documentation>Terms may be simple or compound. Simple terms are either constant or
-        quantifiable (variable).</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:SimpleConstantTerm.choice"/>
-      <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
-    </xs:choice>
-  </xs:complexType>
-  
-  <xs:group name="SimpleConstantTerm.choice">
-    <xs:annotation>
-      <xs:documentation>Skolem constants are simple constant terms, but are not used in keys.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
-    </xs:sequence>
-  </xs:group>
-  
-  
-  <xs:group name="SimpleKeyTerm.choice">
-    <xs:annotation>
-      <xs:documentation>Individuals and literals (data) are simple, constant terms, and may be used
-        in slot keys.</xs:documentation>
-    </xs:annotation>
-    <xs:choice>
-      <xs:group ref="ruleml:Individual-node.choice"/>
-      <xs:group ref="ruleml:DataTerm.choice"/>
-    </xs:choice>
-  </xs:group>
-  
-  
-  <xs:group name="Individual-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the individual tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Ind"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Ind" type="ruleml:Ind.type.def">
-    <xs:annotation>
-      <xs:documentation>&lt;Ind&gt;: an individual constant. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Ind</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:complexType name="Ind.type.def">
-    <xs:simpleContent>
-      <xs:extension base="ruleml:Ind.value">
-        <xs:attributeGroup ref="ruleml:reInd.attlist"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
-  <xs:attributeGroup name="reInd.attlist">
-    <xs:annotation>
-      <xs:documentation>Individuals optionally accept the attribute patterns of resources, and
-        objects with user-defined types.</xs:documentation>
-    </xs:annotation>
-    <xs:attributeGroup ref="ruleml:Resource.attlist"/>
-  </xs:attributeGroup>
-  
-  <xs:simpleType name="Ind.value">
-    <xs:annotation>
-      <xs:documentation>The content model for individuals is the XSD datatype
-        token.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token"/>
-  </xs:simpleType>
-  <xs:group name="termsForAtoms.sequence">
-    <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="termsForExpressions.sequence">
-    <xs:sequence>
-      <xs:group minOccurs="0" ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
-    </xs:sequence>
-  </xs:group>
-  
-  <xs:group name="SimpleQuantifiableTerm.choice">
-    <xs:annotation>
-      <xs:documentation>terms that can be bound by a quantifier include
-        variables.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:group ref="ruleml:Variable-node.choice"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:group name="Variable-node.choice">
-    <xs:annotation>
-      <xs:documentation>an extension point for specializations of the variable tag name.
-      </xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element ref="ruleml:Var"/>
-    </xs:sequence>
-  </xs:group>
-  <xs:element name="Var" type="ruleml:Var.type.def">
-    <xs:annotation>
-      <xs:documentation>A logical variable, as in logic programming. See
-        http://deliberation.ruleml.org/1.02/glossary/#gloss-Var</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:simpleType name="Var.type.def">
-    <xs:restriction base="ruleml:Var.value"/>
-  </xs:simpleType>
-  <xs:simpleType name="Var.value">
-    <xs:annotation>
-      <xs:documentation>The content model for variables is the XSD datatype
-        token.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token"/>
-  </xs:simpleType>
-  
-  
-  
-  
-  
-  
-  
-  
-  <xs:attributeGroup name="reExpr.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  
-  
-  
-  
-  
-  
-  <xs:attributeGroup name="style-att.choice">
-    <xs:attribute name="style" type="ruleml:style.value">
-      <xs:annotation>
-        <xs:documentation>@style: defines a reference to a semantic profile. See
-          http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <xs:attributeGroup name="style.attrib.def">
-    <xs:attribute name="style" type="ruleml:style.value" use="required">
-      <xs:annotation>
-        <xs:documentation>@style: defines a reference to a semantic profile. See
-          http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:attributeGroup>
-  <xs:simpleType name="style.value">
-    <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
-  </xs:simpleType>
-  
-  <xs:attributeGroup name="generic-Node.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:attributeGroup name="generic-Formula.attlist">
-    <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
-  </xs:attributeGroup>
-  
-  <xs:attributeGroup name="formula-interface-ext.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="formula-interface.attlist">
-    <xs:attributeGroup ref="ruleml:formula-interface-ext.attlist"/>
-  </xs:attributeGroup>
-  
-  <xs:attributeGroup name="operator-interface-ext.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="operator-interface.attlist">
-    <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
-  </xs:attributeGroup>
-  
-  <xs:attributeGroup name="reEqual.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="reNaf.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="reNeg.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  <xs:attributeGroup name="reEquivalent.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  <xs:attributeGroup name="rePlex.attlist">
-    <xs:attributeGroup ref="ruleml:style-att.choice"/>
-  </xs:attributeGroup>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+        <xs:sequence>
+            <xs:element ref="ruleml:Assert"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Assert" type="ruleml:Assert.type.def">
+        <xs:annotation>
+            <xs:documentation>A KQML-like performative acting as a wrapper specifying that its
+                content is  asserted, making an 'implicit &lt;Rulebase&gt;' assumption. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Assert</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Assert.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:AssertRetract.main">
+                <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
+                <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:group name="Retract-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the retraction tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Retract"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Retract" type="ruleml:Retract.type.def">
+        <xs:annotation>
+            <xs:documentation>A performative similar to KQML's 'untell' that acts as a wrapper
+                specifying that its content is to be deleted, making an 'implicit &lt;Rulebase&gt;'
+                assumption. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Retract</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Retract.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:AssertRetract.main">
+                <xs:attributeGroup ref="ruleml:AssertRetract-datt.choice"/>
+                <xs:attributeGroup ref="ruleml:reAssertRetract.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reAssertRetract.attlist">
+        <xs:annotation>
+            <xs:documentation>Assertions and retractions may have an optional scope closure
+                attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    <xs:complexType name="AssertRetract.main">
+        <xs:annotation>
+            <xs:documentation>Assertions and retractions contain zero or more
+                formulas.</xs:documentation>
+        </xs:annotation>
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_AssertRetract-edge.choice"/>
+    </xs:complexType>
+    <xs:group name="formula_AssertRetract-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in assertions and retractions.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_AssertRetract.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_AssertRetract.edge.def">
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_AssertRetract.type.def">
+                <xs:annotation>
+                    <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;)
+                        expression,  quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt;
+                        or &lt;Retract&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+                        Within Assert or Retract...</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_AssertRetract.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_AssertRetract.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="formula_AssertRetract.content">
+        <xs:annotation>
+            <xs:documentation>Forumulas within assertions and retractions contain a single
+                formula.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:AssertRetractFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:group name="Query-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the query tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Query"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Query" type="ruleml:Query.type.def">
+        <xs:annotation>
+            <xs:documentation>A KQML-like performative acting as a wrapper specifying that its
+                content is queried, making an 'implicit &lt;Rulebase&gt;' assumption. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Query</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Query.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Query.main">
+                <xs:attributeGroup ref="ruleml:reQuery.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reQuery.attlist">
+        <xs:annotation>
+            <xs:documentation>Queries may have an optional map closure attribute  and will accept a
+                scoped closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    <xs:complexType name="Query.main">
+        <xs:annotation>
+            <xs:documentation>The content model of queries consists of zero or more
+                formulas.</xs:documentation>
+        </xs:annotation>
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_Query-edge.choice"/>
+    </xs:complexType>
+    <xs:group name="formula_Query-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in queries.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_Query.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_Query.edge.def">
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_Query.type.def">
+                <xs:annotation>
+                    <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;)
+                        expression,  quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt;
+                        or &lt;Retract&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+                        Within Query ...</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_Query.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_Query.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="formula_Query.content">
+        <xs:annotation>
+            <xs:documentation>The content model of a forumula within queries is a single
+                formula.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:QueryFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reRuleML.attlist">
+        <xs:annotation>
+            <xs:documentation>The RuleML type accepts the common Node attributes.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="AssertRetractFormula.choice">
+        <xs:annotation>
+            <xs:documentation>Formulas allowed in assertions and retractions: Simple formulas are
+                allowed in assertions and retractions in all sub-languages. Conjunctions and
+                disjunctions are allowed in assertions and retractions in sub-languages that contain
+                these components. Implications and universal quantifications is allowed in
+                assertions and retractions for all quantified sub-languages. Strong and weak
+                negation are allowed in assertions and retractions for all sub-languages that
+                contain these components. Existential quantification is added to assertions and
+                retractions for full first-order sub-languages.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:Implication-node.choice"/>
+            <xs:group ref="ruleml:Forall-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="QueryFormula.choice">
+        <xs:annotation>
+            <xs:documentation>Formulas allowed in queries: Simple formulas are allowed in queries in
+                all sub-languages. Conjunctions and disjunctions are allowed in queries in
+                sub-languages that contain these components. Existential quantifications is allowed
+                in queries for all quantified sub-languages. Strong and weak negation are allowed in
+                queries for all sub-languages that contain these components. Implications and
+                universal quantification are added to queries for full first-order
+                sub-languages.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-Query-node.choice"/>
+            <xs:group ref="ruleml:Or-Query-node.choice"/>
+            <xs:group ref="ruleml:Exists-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    
+    <xs:group name="SimpleFormula-node.choice">
+        <xs:annotation>
+            <xs:documentation>atomic formulas are a kind of simple formula</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Atom-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Atom-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the atomic formula tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Atom"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Atom" type="ruleml:Atom.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Atom&gt;: a predicate applied to arguments. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Atom.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Atom.main">
+                <xs:attributeGroup ref="ruleml:reAtom.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reAtom.attlist">
+        <xs:annotation>
+            <xs:documentation>Atomic formulas may have an optional closure
+                attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:group name="operatorForAtoms-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the operator tag name in atomic formulas.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:op"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="op" type="ruleml:op.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;op&gt;: edge element for the predicate of an atomic formula. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-op</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="op.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:op_Atom.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="op_Atom.content">
+        <xs:annotation>
+            <xs:documentation>The operator role in the context of an atomic formula is filled by a
+                predicate.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:Relation-node.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="Relation-node.choice">
+        <xs:annotation>
+            <xs:documentation> </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Rel"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Rel" type="ruleml:Rel.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Rel&gt;: symbol used as the predicate of an atomic formula. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Rel.type.def">
+        <xs:simpleContent>
+            <xs:extension base="ruleml:Rel.value">
+                <xs:attributeGroup ref="ruleml:reRel.attlist"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reRel.attlist">
+        <xs:annotation>
+            <xs:documentation>Relations accept the optional attribute pattern of
+                resources.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+    </xs:attributeGroup>
+    <xs:simpleType name="Rel.value">
+        <xs:annotation>
+            <xs:documentation>The content model for relations is the XSD datatype
+                token.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    
+    <xs:group name="And-node.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:And.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="And.Node.def">
+        <xs:annotation>
+            <xs:documentation>A polyadic conjunctive formula,  The children of the conjunction
+                element are divided into two sections,  a header section for modifiers, and a main
+                section for the formulas that are conjuncts.  Within anything other than
+                Query...</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="And" type="ruleml:And.type.def">
+                <xs:annotation>
+                    <xs:documentation>&lt;And&gt;: polyadic conjunction where &lt;And/&gt; is true. See
+                        http://deliberation.ruleml.org/1.02/glossary/#gloss-And</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="And.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:And.main">
+                <xs:attributeGroup ref="ruleml:reAnd.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reAnd.attlist">
+        <xs:annotation>
+            <xs:documentation>The attribute list of the conjunction element will accept a scoped
+                closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="And.main">
+        <xs:annotation>
+            <xs:documentation>The main section of the conjunction content model contains zero or
+                more formula edges.</xs:documentation>
+        </xs:annotation>
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_And-edge.choice"/>
+    </xs:complexType>
+    <xs:group name="formula_And-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in conjunctions.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_And.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_And.edge.def">
+        <xs:annotation>
+            <xs:documentation>A formula edge of a conjunction (&lt;And&gt;),  Within And
+                ...</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_And.type.def">
+                <xs:annotation>
+                    <xs:documentation>&lt;formula&gt;: contains a single formula. See
+                        http://deliberation.ruleml.org/1.02/glossary/#gloss-formula</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_And.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_And.content">
+                <xs:attributeGroup ref="ruleml:formula_And-datt.choice"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="formula_And-datt.choice">
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+    </xs:attributeGroup>
+    <xs:complexType name="formula_And.content">
+        <xs:annotation>
+            <xs:documentation>Formulas within conjunctions consist of a single
+                formula</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:AndFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AndFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to participate in conjunctions. </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-node.choice"/>
+            <xs:group ref="ruleml:Or-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:group name="Or-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the disjunction tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Or.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Or.Node.def">
+        <xs:annotation>
+            <xs:documentation>A polyadic disjunctive formula,  The children of the disjunction
+                element are divided into two sections,  a header section for modifiers, and a main
+                section for the formulas that are disjuncts.  Within anything other than
+                Query...</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="Or" type="ruleml:Or.type.def">
+                <xs:annotation>
+                    <xs:documentation>&lt;Or&gt;: polyadic disjunction where &lt;Or/&gt; is false. See
+                        http://deliberation.ruleml.org/1.02/glossary/#gloss-Or</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Or.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Or.main">
+                <xs:attributeGroup ref="ruleml:reOr.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reOr.attlist">
+        <xs:annotation>
+            <xs:documentation>The attribute list of the disjunction element will accept a (scoped)
+                closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="Or.main">
+        <xs:annotation>
+            <xs:documentation>The main section of the disjunction content model contains zero or
+                more formula edges.</xs:documentation>
+        </xs:annotation>
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:formula_Or-edge.choice"/>
+    </xs:complexType>
+    <xs:group name="formula_Or-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in disjunctions.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_Or.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_Or.edge.def">
+        <xs:annotation>
+            <xs:documentation>A formula edge of a disjunction (&lt;Or&gt;), </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_Or.type.def">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_Or.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_Or.content">
+                <xs:attributeGroup ref="ruleml:formula_Or-datt.choice"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="formula_Or-datt.choice">
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+    </xs:attributeGroup>
+    <xs:complexType name="formula_Or.content">
+        <xs:annotation>
+            <xs:documentation>Formulas within disjunctions consist of a single
+                formula</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:OrFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="OrFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to participate in disjunctions. </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-node.choice"/>
+            <xs:group ref="ruleml:Or-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:group name="And-Query-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the conjunction tag name in
+                queries.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:And-Query.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="And-Query.Node.def">
+        <xs:annotation>
+            <xs:documentation>Within Query...</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="And" type="ruleml:And-Query.type.def">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="And-Query.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:And.main"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:group name="Or-Query-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the disjunction tag name in
+                queries.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Or-Query.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Or-Query.Node.def">
+        <xs:annotation>
+            <xs:documentation>Within Query...</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="Or" type="ruleml:Or-Query.type.def">
+                <xs:annotation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Or-Query.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Or.main"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:group name="Implication-node.choice">
+        <xs:annotation>
+            <xs:documentation>a convenience pattern that unifies implications and equivalences
+                because equivalence is allowed wherever implication is allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Implies-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Implies-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point to allow alternate names and internationalization
+                of uni-directional implication tag name.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Implies"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Implies" type="ruleml:Implies.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Implies&gt;: an implication between two formulas, a premise and a
+                conclusion. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Implies.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Implies.main">
+                <xs:attributeGroup ref="ruleml:Implies-datt.choice"/>
+                <xs:attributeGroup ref="ruleml:reImplies.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reImplies.attlist">
+        <xs:annotation>
+            <xs:documentation>Implications may have an optional closure attribute  and will accept a
+                scoped closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    
+    <xs:group name="body_Implies.name.choice">
+        <xs:annotation>
+            <xs:documentation> an extension point for stripe skipping as well as specializations of
+                the if tag name in implications.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:if"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="if" type="ruleml:body_Implies.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;if&gt;: contains the premise of the implication. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-if</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="body_Implies.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:body_Implies.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="body_Implies.content">
+        <xs:annotation>
+            <xs:documentation>The premise of an implication consists of a single
+                formula</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:PremiseFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="PremiseFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to be premises. </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-node.choice"/>
+            <xs:group ref="ruleml:Or-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:group name="head_Implies.name.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the then tag name in implications.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:then"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="then" type="ruleml:head_Implies.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;then&gt;: contains the conclusion of the implication. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-then</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="head_Implies.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:head_Implies.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="head_Implies.content">
+        <xs:annotation>
+            <xs:documentation>The conclusion of an implication consists of a single
+                formula.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:ConclusionFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ConclusionFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to be conclusions include atomic formulas.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:Atom-head-node.choice"/>
+            <xs:group ref="ruleml:And-head-node.choice"/>
+            <xs:group ref="ruleml:Or-head-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:group name="Atom-head-node.choice">
+        <xs:annotation>
+            <xs:documentation>backbone patterns    </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Atom-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="And-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:And-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Or-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Or-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Forall-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point to allow alternate names and internationalization
+                of universal quantifiers</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Forall"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Forall" type="ruleml:Forall.type.def">
+        <xs:annotation>
+            <xs:documentation>Explicit universal quantifier. It consists of a sequence of one or
+                more  variables (&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, and a
+                logical formula (optionally surrounded by &lt;formula&gt; role tags). See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Forall</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Forall.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Forall.main">
+                <xs:attributeGroup ref="ruleml:reForall.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reForall.attlist">
+        <xs:annotation>
+            <xs:documentation>The attribute list of the universal quantification formula  will
+                accept a scoped closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="Forall.main">
+        <xs:annotation>
+            <xs:documentation>Universally qualified formulas contain a sequence of bound variables
+                and one formula.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:boundVariables.choice"/>
+            <xs:group ref="ruleml:formula_Forall-edge.choice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:group name="Exists-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point to allow alternate names and internationalization
+                for existential quantifiers</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Exists"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Exists" type="ruleml:Exists.type.def">
+        <xs:annotation>
+            <xs:documentation>Explicit existential quantifier. It consists of one or more variables
+                (&lt;Var&gt;), each optionally surrounded by &lt;declare&gt; role tags, followed by a logical
+                formula  (optionally surrounded by &lt;formula&gt; role tags). See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Exists</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Exists.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:Exists.main">
+                <xs:attributeGroup ref="ruleml:reExists.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reExists.attlist">
+        <xs:annotation>
+            <xs:documentation>The attribute list of the existential quantification formula  will
+                accept a scoped closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="Exists.main">
+        <xs:annotation>
+            <xs:documentation>Existentially qualified formulas contain a sequence of bound variables
+                and one formula.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:boundVariables.choice"/>
+            <xs:group ref="ruleml:formula_Exists-edge.choice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:group name="boundVariables.choice">
+        <xs:annotation>
+            <xs:documentation>declaration of one or more bound quantifiable
+                terms.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" ref="ruleml:declare-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="declare-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the declare tag name in quantified formulas.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:declare"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="declare" type="ruleml:declare.type.def">
+        <xs:annotation>
+            <xs:documentation>An edge used for variables (&lt;Var&gt;) declared within a quantifier (&lt;Forall&gt;
+                or &lt;Exists&gt;). See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-declare</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="declare.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:declare.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="declare.content">
+        <xs:annotation>
+            <xs:documentation>The role filler for a quantification's declare edge is a simple
+                quantifiable term</xs:documentation>
+        </xs:annotation>
+        <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+    </xs:complexType>
+    <xs:group name="formula_Forall-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in universal quantifications. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_Forall.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_Forall.edge.def">
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_Forall.type.def">
+                <xs:annotation>
+                    <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;)
+                        expression,  quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt;
+                        or &lt;Retract&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+                        within Forall...</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_Forall.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_Forall.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="formula_Forall.content">
+        <xs:annotation>
+            <xs:documentation>The role filler for an universal quantification's body edge is a
+                formula. </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:ForallFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ForallFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to be universally quantified.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:Implication-node.choice"/>
+            <xs:group ref="ruleml:Forall-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:group name="formula_Exists-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the formula tag name in existential quantifications. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:formula_Exists.edge.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="formula_Exists.edge.def">
+        <xs:sequence>
+            <xs:element form="qualified" name="formula" type="ruleml:formula_Exists.type.def">
+                <xs:annotation>
+                    <xs:documentation>The formula edge of a conjunctive (&lt;And&gt;) or disjunctive (&lt;Or&gt;)
+                        expression,  quantifier (&lt;Forall&gt; or &lt;Exists&gt;), or performative (&lt;Assert&gt;, &lt;Query&gt;
+                        or &lt;Retract&gt;). See http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+                        Within Exists...</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="formula_Exists.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:formula_Exists.content"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="formula_Exists.content">
+        <xs:annotation>
+            <xs:documentation>The role filler of an existential quantification's body edge is a
+                formula.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:ExistsFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ExistsFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to be existentially quantified.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-node.choice"/>
+            <xs:group ref="ruleml:Or-node.choice"/>
+            <xs:group ref="ruleml:Exists-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    
+    
+    <xs:attributeGroup name="Implies-datt.choice">
+        <xs:annotation>
+            <xs:documentation>implications have inference direction and material implication as an
+                attribute.  implications have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:direction-att-inf.choice"/>
+        <xs:attributeGroup ref="ruleml:material-att-inf.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Rulebase-datt.choice">
+        <xs:annotation>
+            <xs:documentation>rulebases have scope inference direction  and scope material
+                implication as an attribute. </xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="AssertRetract-datt.choice">
+        <xs:annotation>
+            <xs:documentation>assertions and retractions have scope inference direction  and  scope
+                material implication as an attribute. </xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-inf.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
+    </xs:attributeGroup>
+    
+    
+    <xs:attributeGroup name="direction-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:direction-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="material-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:material-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="mapDirection-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:mapDirection-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="mapMaterial-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    
+    <xs:group name="termsForAtoms.nonemptysequence.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="termsForExpressions.nonemptysequence.choice">
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Atom.main">
+        <xs:annotation>
+            <xs:documentation>The main section of an atomic formula contains an operator edge and a
+                collection of argument edges. Pre-fix operator notation for atomic formulas is
+                required in a normal-form serialization.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:operatorForAtoms-edge.choice"/>
+            <xs:group ref="ruleml:argumentsForAtoms.sequence"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:group name="argumentsForAtoms.sequence">
+        <xs:annotation>
+            <xs:documentation>Slotted arguments follow positional arguments in atomic formulas in
+                the normal-form serialization. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="positionalArgumentsForAtoms.sequence">
+        <xs:annotation>
+            <xs:documentation>Positional rest arguments follow the ordinary positional arguments in
+                atomic formulas in the normal-form serialization. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:termsForAtoms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="argumentsForExpressions.sequence">
+        <xs:annotation>
+            <xs:documentation>Slotted arguments follow positional arguments in expressions in the
+                normal-form serialization. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:positionalArgumentsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="positionalArgumentsForExpressions.sequence">
+        <xs:annotation>
+            <xs:documentation>Positional rest arguments follow the ordinary positional arguments in
+                expressions in the normal-form serialization. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Implies.main">
+        <xs:annotation>
+            <xs:documentation>The main section of an implication contains two edges, a premise
+                (body, if) edge and a conclusion (head, then) edge. In the normal-form
+                serialization, the if and then of an implication must occur in canonical
+                order.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:body_Implies.name.choice"/>
+            <xs:group ref="ruleml:head_Implies.name.choice"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="AbsIRI.datatype">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\i-[:]][\c-[:]]+:.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PrefixedCURIE.datatype">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"/>
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:attributeGroup name="Resource.attlist">
+        <xs:annotation>
+            <xs:documentation>attribute list for resources includes and optional iri
+                attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="iri" type="ruleml:iri.value">
+            <xs:annotation>
+                <xs:documentation>An attribute for referring to a IRI.     See
+                    http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="iri-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the oriented equation
+                attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:iri.attrib.def"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="iri.attrib.def">
+        <xs:attribute name="iri" type="ruleml:iri.value" use="required">
+            <xs:annotation>
+                <xs:documentation>An attribute for referring to a IRI.     See
+                    http://deliberation.ruleml.org/1.02/glossary/.40iri</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="iri.value">
+        <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:attributeGroup name="direction-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the inference direction
+                attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="direction" type="ruleml:direction.value">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the intended direction of an implication
+                    rule's (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other
+                    predefined values are "forward" and "backward". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="direction.attrib.def">
+        <xs:attribute name="direction" type="ruleml:direction.value" use="required">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the intended direction of an implication
+                    rule's (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other
+                    predefined values are "forward" and "backward". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40direction</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="direction.value">
+        <xs:restriction base="ruleml:direction_default.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:attributeGroup name="mapDirection-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the scope inference
+                direction attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="mapDirection" type="ruleml:mapDirection.value">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the intended direction of implication
+                    rule (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child
+                    elements). See attribute mapping for more details. This attribute has a  neutral
+                    default value of "bidirectional". Other predefined values are "forward" and
+                    "backward". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="mapDirection.attrib.def">
+        <xs:attribute name="mapDirection" type="ruleml:mapDirection.value" use="required">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the intended direction of implication
+                    rule (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child
+                    elements). See attribute mapping for more details. This attribute has a  neutral
+                    default value of "bidirectional". Other predefined values are "forward" and
+                    "backward". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="mapDirection.value">
+        <xs:restriction base="ruleml:direction.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:simpleType name="direction_default.value">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="bidirectional"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:attributeGroup name="material-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the material implication
+                attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="material" type="ruleml:material.value">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the kind of an implication rule
+                    (&lt;Implies&gt;). Predefined values are "yes" (the default) and "no". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="material.attrib.def">
+        <xs:attribute name="material" type="ruleml:material.value" use="required">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the kind of an implication rule
+                    (&lt;Implies&gt;). Predefined values are "yes" (the default) and "no". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40material</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="material.value">
+        <xs:restriction base="ruleml:material_default.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:attributeGroup name="mapMaterial-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the scope material
+                implication attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the kind of all implication rules
+                    (&lt;Implies&gt;) falling within its scope (i.e. child elements).   Predefined values
+                    are "yes" (the default) and "no". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="mapMaterial.attrib.def">
+        <xs:attribute name="mapMaterial" type="ruleml:mapMaterial.value" use="required">
+            <xs:annotation>
+                <xs:documentation> An attribute indicating the kind of all implication rules
+                    (&lt;Implies&gt;) falling within its scope (i.e. child elements).   Predefined values
+                    are "yes" (the default) and "no". See
+                    http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="mapMaterial.value">
+        <xs:restriction base="ruleml:material.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:simpleType name="material_default.value">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:group name="DataTerm.choice">
+        <xs:annotation>
+            <xs:documentation>Data terms may have mixed content from any
+                namespace.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Data_any-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Data_any-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the data tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Data"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Data" type="xs:anyType"/>
+    <xs:complexType mixed="true" name="Data_any.type.def">
+        <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:anyElement.def"/>
+    </xs:complexType>
+    <xs:group name="anyElement.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:anyElement.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="anyElement.def">
+        <xs:sequence>
+            <xs:any processContents="lax"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="positionalArgument-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the positional argument tag name. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:arg"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="arg" type="ruleml:arg.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;arg&gt;: one argument of an atomic formula. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-arg</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="arg.type.def">
+        <xs:annotation>
+            <xs:documentation>The attribute @index is required for the positional argument
+                role.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:arg.content">
+                <xs:attributeGroup ref="ruleml:arg-datt.choice"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="arg-datt.choice">
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="index-attrib.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:attribute name="index" type="ruleml:index.value">
+            <xs:annotation>
+                <xs:documentation>A required attribute for specifying the position of a positional
+                    argument (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
+                    http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="index.attrib.def">
+        <xs:attribute name="index" type="ruleml:index.value" use="required">
+            <xs:annotation>
+                <xs:documentation>A required attribute for specifying the position of a positional
+                    argument (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See
+                    http://deliberation.ruleml.org/1.02/glossary/#gloss-index</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="index.value">
+        <xs:restriction base="xs:positiveInteger"/>
+    </xs:simpleType>
+    <xs:complexType name="arg.content">
+        <xs:annotation>
+            <xs:documentation>The role filler for positional arguments edges in atomic formulas is a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:AnyTerm.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AnyTerm.choice">
+        <xs:annotation>
+            <xs:documentation>Terms may be simple or compound. Simple terms are either constant or
+                quantifiable (variable).</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleConstantTerm.choice"/>
+            <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:group name="SimpleConstantTerm.choice">
+        <xs:annotation>
+            <xs:documentation>Skolem constants are simple constant terms, but are not used in keys.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    
+    <xs:group name="SimpleKeyTerm.choice">
+        <xs:annotation>
+            <xs:documentation>Individuals and literals (data) are simple, constant terms, and may be
+                used in slot keys.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:Individual-node.choice"/>
+            <xs:group ref="ruleml:DataTerm.choice"/>
+        </xs:choice>
+    </xs:group>
+    
+    
+    <xs:group name="Individual-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the individual tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Ind"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Ind" type="ruleml:Ind.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Ind&gt;: an individual constant. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Ind</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Ind.type.def">
+        <xs:simpleContent>
+            <xs:extension base="ruleml:Ind.value">
+                <xs:attributeGroup ref="ruleml:reInd.attlist"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reInd.attlist">
+        <xs:annotation>
+            <xs:documentation>Individuals optionally accept the attribute patterns of resources, and
+                objects with user-defined types.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="Ind.value">
+        <xs:annotation>
+            <xs:documentation>The content model for individuals is the XSD datatype
+                token.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    <xs:group name="termsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="termsForExpressions.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="SimpleQuantifiableTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms that can be bound by a quantifier include
+                variables.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Variable-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Variable-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the variable tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Var"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Var" type="ruleml:Var.type.def">
+        <xs:annotation>
+            <xs:documentation>A logical variable, as in logic programming. See
+                http://deliberation.ruleml.org/1.02/glossary/#gloss-Var</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:simpleType name="Var.type.def">
+        <xs:restriction base="ruleml:Var.value"/>
+    </xs:simpleType>
+    <xs:simpleType name="Var.value">
+        <xs:annotation>
+            <xs:documentation>The content model for variables is the XSD datatype
+                token.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    
+    
+    
+    
+    
+    
+    
+    
+    <xs:attributeGroup name="reExpr.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    <xs:attributeGroup name="style-att.choice">
+        <xs:attribute name="style" type="ruleml:style.value">
+            <xs:annotation>
+                <xs:documentation>@style: defines a reference to a semantic profile. See
+                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <xs:attributeGroup name="style.attrib.def">
+        <xs:attribute name="style" type="ruleml:style.value" use="required">
+            <xs:annotation>
+                <xs:documentation>@style: defines a reference to a semantic profile. See
+                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="style.value">
+        <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype"/>
+    </xs:simpleType>
+    
+    <xs:attributeGroup name="generic-Node.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="generic-Formula.attlist">
+        <xs:attributeGroup ref="ruleml:generic-Node.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="formula-interface-ext.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="formula-interface.attlist">
+        <xs:attributeGroup ref="ruleml:formula-interface-ext.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="operator-interface-ext.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="operator-interface.attlist">
+        <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="reEqual.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="reNaf.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="reNeg.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="reEquivalent.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:attributeGroup name="rePlex.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </xs:schema>

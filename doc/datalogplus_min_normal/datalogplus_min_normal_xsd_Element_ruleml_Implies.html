@@ -7,26 +7,15 @@
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
         var propertiesBoxes= new Array('properties_Implies');
+var usedByBoxes= new Array('usedBy_Implies');
+var sourceBoxes= new Array('source_Implies');
+var instanceBoxes= new Array('instance_Implies');
+var diagramBoxes= new Array('diagram_Implies');
+var annotationBoxes= new Array('annotations_Implies');
+var attributesBoxes= new Array('attributes_Implies');
+var modelBoxes= new Array('model_Implies');
 
-        
-        
-        var usedByBoxes= new Array('usedBy_Implies');
-
-        var sourceBoxes= new Array('source_Implies');
-
-        var instanceBoxes= new Array('instance_Implies');
-
-        var diagramBoxes= new Array('diagram_Implies');
-
-        var annotationBoxes= new Array('annotations_Implies');
-
-        var attributesBoxes= new Array('attributes_Implies');
-
-        
-        
-        
-        var modelBoxes= new Array('model_Implies');
-
+      
         var button_prefix = 'button_';
         
         /**
@@ -255,7 +244,8 @@
          }
           
 
-    --></script></head>
+    
+                    //--></script></head>
    <body>
       <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
          <table class="rt">
@@ -330,8 +320,9 @@
                               <div class="annotation">
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
-                                       <td width="100%"><pre><span class="tT">&lt;Implies&gt;: an implication between two formulas, a premise and a conclusion.</span><span class="tI">
-</span><span class="tT">See  http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</span></pre></td>
+                                       <td width="100%"><pre><span class="tT">&lt;Implies&gt;: an implication between two formulas, a premise and a</span><span class="tI">
+</span><span class="tT">conclusion. See</span><span class="tI">
+</span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/#gloss-Implies</span></pre></td>
                                     </tr>
                                  </table>
                               </div>
@@ -354,9 +345,9 @@
                      <tr>
                         <td class="firstColumn"><b>Type hierarchy</b></td>
                         <td>
-                           <ul>
-                              <li><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_Implies_main.html#Implies.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.main')">ruleml:Implies.main</a></b><ul>
-                                    <li><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_Implies_type_def.html#Implies.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.type.def')">ruleml:Implies.type.def</a></b></li>
+                           <ul class="internal">
+                              <li class="internal"><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_Implies_main.html#Implies.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.main')">ruleml:Implies.main</a></b><ul class="internal">
+                                    <li class="internal"><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_Implies_type_def.html#Implies.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.type.def')">ruleml:Implies.type.def</a></b></li>
                                  </ul>
                               </li>
                            </ul>
@@ -447,9 +438,9 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of an implication rule's</span><span class="tI">
-</span><span class="tT">(&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other predefined values</span><span class="tI">
-</span><span class="tT">are "forward" and "backward". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of an implication</span><span class="tI">
+</span><span class="tT">rule's (&lt;Implies&gt;) inferencing.  It has a neutral value of "bidirectional". Other</span><span class="tI">
+</span><span class="tT">predefined values are "forward" and "backward". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40direction</span></pre></td>
                                              </tr>
                                           </table>
@@ -464,8 +455,8 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating the kind of an implication rule (&lt;Implies&gt;).</span><span class="tI">
-</span><span class="tT">Predefined values are "yes" (the default) and "no". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating the kind of an implication rule</span><span class="tI">
+</span><span class="tT">(&lt;Implies&gt;). Predefined values are "yes" (the default) and "no". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40material</span></pre></td>
                                              </tr>
                                           </table>
@@ -526,7 +517,7 @@
          <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
          </div>
       </div><script type="text/javascript">
-         <!--                     
+         <!--
                      // The namespace is the selected option in the TOC combo.
                     
                      // Floats the toolbar.
@@ -554,5 +545,5 @@
 	                     
 	                     globalControls.style.right='0';                       
                      }
-                --></script></body>
+                //--></script></body>
 </html>

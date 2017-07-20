@@ -7,29 +7,18 @@
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
         var propertiesBoxes= new Array('properties_formula_And-head.edge.def_formula');
-
-        
-        
-        var usedByBoxes= new Array('usedBy_formula_And-head.edge.def');
-
-        var sourceBoxes= new Array('source_formula_And-head.edge.def_formula', 
+var usedByBoxes= new Array('usedBy_formula_And-head.edge.def');
+var sourceBoxes= new Array('source_formula_And-head.edge.def_formula', 
 				'source_formula_And-head.edge.def');
-
-        var instanceBoxes= new Array('instance_formula_And-head.edge.def_formula');
-
-        var diagramBoxes= new Array('diagram_formula_And-head.edge.def_formula', 
+var instanceBoxes= new Array('instance_formula_And-head.edge.def_formula');
+var diagramBoxes= new Array('diagram_formula_And-head.edge.def_formula', 
 				'diagram_formula_And-head.edge.def');
-
-        var annotationBoxes= new Array('annotations_formula_And-head.edge.def_formula');
-
-        var attributesBoxes= new Array('attributes_formula_And-head.edge.def_formula');
-
-        
-        
-        
-        var modelBoxes= new Array('model_formula_And-head.edge.def_formula', 
+var annotationBoxes= new Array('annotations_formula_And-head.edge.def_formula');
+var attributesBoxes= new Array('attributes_formula_And-head.edge.def_formula');
+var modelBoxes= new Array('model_formula_And-head.edge.def_formula', 
 				'model_formula_And-head.edge.def');
 
+      
         var button_prefix = 'button_';
         
         /**
@@ -258,7 +247,8 @@
          }
           
 
-    --></script></head>
+    
+                    //--></script></head>
    <body>
       <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
          <table class="rt">
@@ -340,7 +330,7 @@
                            <div class="floatRight"><input id="button_diagram_formula_And-head.edge.def_formula" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_formula_And-head.edge.def_formula');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_formula_And-head.edge.def_formula" style="display:block"><object border="0" data="img/datalogplus_min_normal_xsd_Element_ruleml_formula_7.svg" type="image/svg+xml"></object></div>
+                           <div id="diagram_formula_And-head.edge.def_formula" style="display:block"><object border="0" data="img/datalogplus_min_normal_xsd_Element_ruleml_formula_3.svg" type="image/svg+xml"></object></div>
                         </td>
                      </tr>
                      <tr>
@@ -350,10 +340,10 @@
                      <tr>
                         <td class="firstColumn"><b>Type hierarchy</b></td>
                         <td>
-                           <ul>
-                              <li><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_AndHeadFormula_choice.html#AndHeadFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AndHeadFormula.choice')">ruleml:AndHeadFormula.choice</a></b><ul>
-                                    <li><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_formula_And-head_content.html#formula_And-head.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-head.content')">ruleml:formula_And-head.content</a></b><ul>
-                                          <li><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_formula_And-head_type_def.html#formula_And-head.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-head.type.def')">ruleml:formula_And-head.type.def</a></b></li>
+                           <ul class="internal">
+                              <li class="internal"><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_AndHeadFormula_choice.html#AndHeadFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AndHeadFormula.choice')">ruleml:AndHeadFormula.choice</a></b><ul class="internal">
+                                    <li class="internal"><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_formula_And-head_content.html#formula_And-head.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-head.content')">ruleml:formula_And-head.content</a></b><ul class="internal">
+                                          <li class="internal"><b><a href="datalogplus_min_normal_xsd_Complex_Type_ruleml_formula_And-head_type_def.html#formula_And-head.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-head.type.def')">ruleml:formula_And-head.type.def</a></b></li>
                                        </ul>
                                     </li>
                                  </ul>
@@ -433,8 +423,8 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">A required attribute for specifying the position of a positional argument</span><span class="tI">
-</span><span class="tT">(&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">A required attribute for specifying the position of a positional</span><span class="tI">
+</span><span class="tT">argument (&lt;arg&gt;) within a logical atom (&lt;Atom&gt;). See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/#gloss-index</span></pre></td>
                                              </tr>
                                           </table>
@@ -565,7 +555,7 @@
          <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
          </div>
       </div><script type="text/javascript">
-         <!--                     
+         <!--
                      // The namespace is the selected option in the TOC combo.
                     
                      // Floats the toolbar.
@@ -593,5 +583,5 @@
 	                     
 	                     globalControls.style.right='0';                       
                      }
-                --></script></body>
+                //--></script></body>
 </html>
