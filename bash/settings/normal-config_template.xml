@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
-  <schemaSystemId>file:/home/tara/Documents/Github/RuleML/deliberation-ruleml/xsd/naffologeq_normal.xsd</schemaSystemId>
+    <schemaSystemId>file:/home/dylan/Documents/GitHub/deliberation/xsd/naffologeq_normal.xsd</schemaSystemId>
     <documentRoot>RuleML</documentRoot>
-    <outputFolder>/home/tara/Documents/Github/RuleML/deliberation-ruleml/test/normal-test-suites</outputFolder>
+    <outputFolder>/home/dylan/Documents/GitHub/deliberation/test/normal-test-suites</outputFolder>
     <filenamePrefix>instance</filenamePrefix>
     <filenameExtension>ruleml</filenameExtension>
     <noOfInstances>10</noOfInstances>
     <openFirstInstance>false</openFirstInstance>
     <defaultNamespace>&lt;NO_NAMESPACE></defaultNamespace>
-    <valuesMaxLength>30</valuesMaxLength>
+    <valuesMaxLength>100</valuesMaxLength>
     <isUseIncrementalNamesForValues>false</isUseIncrementalNamesForValues>
-    <discardOptionalElementsAfterNestedLevel>6</discardOptionalElementsAfterNestedLevel>
+    <discardOptionalElementsAfterNestedLevel>4</discardOptionalElementsAfterNestedLevel>
     <namespaceMapping ns="http://ruleml.org/spec" proxy="ruleml"/>
     <namespaceMapping ns="http://www.w3.org/2001/XMLSchema-datatypes" proxy="xm"/>
     <element namespace="&lt;ANY>" name="&lt;ANY>">

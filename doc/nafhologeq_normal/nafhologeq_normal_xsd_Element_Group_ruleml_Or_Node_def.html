@@ -7,30 +7,19 @@
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
         var propertiesBoxes= new Array('properties_Or.Node.def_Or');
-
-        
-        
-        var usedByBoxes= new Array('usedBy_Or.Node.def');
-
-        var sourceBoxes= new Array('source_Or.Node.def_Or', 
+var usedByBoxes= new Array('usedBy_Or.Node.def');
+var sourceBoxes= new Array('source_Or.Node.def_Or', 
 				'source_Or.Node.def');
-
-        var instanceBoxes= new Array('instance_Or.Node.def_Or');
-
-        var diagramBoxes= new Array('diagram_Or.Node.def_Or', 
+var instanceBoxes= new Array('instance_Or.Node.def_Or');
+var diagramBoxes= new Array('diagram_Or.Node.def_Or', 
 				'diagram_Or.Node.def');
-
-        var annotationBoxes= new Array('annotations_Or.Node.def_Or', 
+var annotationBoxes= new Array('annotations_Or.Node.def_Or', 
 				'annotations_Or.Node.def');
-
-        var attributesBoxes= new Array('attributes_Or.Node.def_Or');
-
-        
-        
-        
-        var modelBoxes= new Array('model_Or.Node.def_Or', 
+var attributesBoxes= new Array('attributes_Or.Node.def_Or');
+var modelBoxes= new Array('model_Or.Node.def_Or', 
 				'model_Or.Node.def');
 
+      
         var button_prefix = 'button_';
         
         /**
@@ -259,7 +248,8 @@
          }
           
 
-    --></script></head>
+    
+                    //--></script></head>
    <body>
       <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
          <table class="rt">
@@ -348,7 +338,7 @@
                            <div class="floatRight"><input id="button_diagram_Or.Node.def_Or" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_Or.Node.def_Or');" class="control" /></div>
                         </td>
                         <td class="diagram">
-                           <div id="diagram_Or.Node.def_Or" style="display:block"><object border="0" data="img/nafhologeq_normal_xsd_Element_ruleml_Or_1.svg" type="image/svg+xml"></object></div>
+                           <div id="diagram_Or.Node.def_Or" style="display:block"><object border="0" data="img/nafhologeq_normal_xsd_Element_ruleml_Or.svg" type="image/svg+xml"></object></div>
                         </td>
                      </tr>
                      <tr>
@@ -425,8 +415,8 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating how the in-scope free variables are quantified.</span><span class="tI">
-</span><span class="tT">Predefined values are "universal" and "existential". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating how the in-scope free variables are</span><span class="tI">
+</span><span class="tT">quantified.  Predefined values are "universal" and "existential". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40closure</span></pre></td>
                                              </tr>
                                           </table>
@@ -457,9 +447,9 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating how the free variables falling within its scope</span><span class="tI">
-</span><span class="tT">(i.e. child elements) are quantified.  Predefined values are "universal" and</span><span class="tI">
-</span><span class="tT">"existential". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating how the free variables falling within its</span><span class="tI">
+</span><span class="tT">scope (i.e. child elements) are quantified.  Predefined values are "universal"</span><span class="tI">
+</span><span class="tT">and "existential". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapClosure</span></pre></td>
                                              </tr>
                                           </table>
@@ -474,10 +464,11 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication rule</span><span class="tI">
-</span><span class="tT">(&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See</span><span class="tI">
-</span><span class="tT">attribute mapping for more details. This attribute has a  neutral default value of</span><span class="tI">
-</span><span class="tT">"bidirectional". Other predefined values are "forward" and "backward". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication</span><span class="tI">
+</span><span class="tT">rule (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child</span><span class="tI">
+</span><span class="tT">elements). See attribute mapping for more details. This attribute has a  neutral</span><span class="tI">
+</span><span class="tT">default value of "bidirectional". Other predefined values are "forward" and</span><span class="tI">
+</span><span class="tT">"backward". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</span></pre></td>
                                              </tr>
                                           </table>
@@ -492,9 +483,9 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating the kind of all implication rules (&lt;Implies&gt;)</span><span class="tI">
-</span><span class="tT">falling within its scope (i.e. child elements).   Predefined values are "yes" (the</span><span class="tI">
-</span><span class="tT">default) and "no". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating the kind of all implication rules</span><span class="tI">
+</span><span class="tT">(&lt;Implies&gt;) falling within its scope (i.e. child elements).   Predefined values</span><span class="tI">
+</span><span class="tT">are "yes" (the default) and "no". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapMaterial</span></pre></td>
                                              </tr>
                                           </table>
@@ -610,9 +601,10 @@
                               <div class="annotation">
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
-                                       <td width="100%"><pre><span class="tT">A polyadic disjunctive formula,  The children of the disjunction element are</span><span class="tI">
-</span><span class="tT">divided into two sections,  a header section for modifiers, and a main section for the</span><span class="tI">
-</span><span class="tT">formulas that are disjuncts.  Within anything other than Query...</span></pre></td>
+                                       <td width="100%"><pre><span class="tT">A polyadic disjunctive formula,  The children of the disjunction</span><span class="tI">
+</span><span class="tT">element are divided into two sections,  a header section for modifiers, and a main</span><span class="tI">
+</span><span class="tT">section for the formulas that are disjuncts.  Within anything other than</span><span class="tI">
+</span><span class="tT">Query...</span></pre></td>
                                     </tr>
                                  </table>
                               </div>
@@ -697,7 +689,7 @@
          <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
          </div>
       </div><script type="text/javascript">
-         <!--                     
+         <!--
                      // The namespace is the selected option in the TOC combo.
                     
                      // Floats the toolbar.
@@ -725,5 +717,5 @@
 	                     
 	                     globalControls.style.right='0';                       
                      }
-                --></script></body>
+                //--></script></body>
 </html>

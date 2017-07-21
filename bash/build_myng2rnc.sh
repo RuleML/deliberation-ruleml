@@ -13,6 +13,8 @@ shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 # Validate modules individually
+echo "Build script validates each module individually"
+echo ""
 for file in "${RNC_HOME}indep_valid_modules/"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "${file}"
@@ -23,6 +25,9 @@ do
 done
 
 # Validate modules all together
+echo ""
+echo "Build script validates compatible sets of modules together"
+echo ""
 for file in "${RNC_HOME}all_"*.rnc
 do
   "${BASH_HOME}aux_valrnc.sh" "${file}"

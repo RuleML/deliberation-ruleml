@@ -7,27 +7,16 @@
       <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
          <!--
         var propertiesBoxes= new Array('properties_mapDirection-att.choice_mapDirection');
-
-        
-        
-        var usedByBoxes= new Array('usedBy_mapDirection-att.choice_mapDirection', 
+var usedByBoxes= new Array('usedBy_mapDirection-att.choice_mapDirection', 
 				'usedBy_mapDirection-att.choice');
-
-        var sourceBoxes= new Array('source_mapDirection-att.choice_mapDirection', 
+var sourceBoxes= new Array('source_mapDirection-att.choice_mapDirection', 
 				'source_mapDirection-att.choice');
-
-        
-        var diagramBoxes= new Array('diagram_mapDirection-att.choice');
-
-        var annotationBoxes= new Array('annotations_mapDirection-att.choice_mapDirection', 
+var diagramBoxes= new Array('diagram_mapDirection-att.choice');
+var annotationBoxes= new Array('annotations_mapDirection-att.choice_mapDirection', 
 				'annotations_mapDirection-att.choice');
+var attributesBoxes= new Array('attributes_mapDirection-att.choice');
 
-        var attributesBoxes= new Array('attributes_mapDirection-att.choice');
-
-        
-        
-        
-        
+      
         var button_prefix = 'button_';
         
         /**
@@ -256,7 +245,8 @@
          }
           
 
-    --></script></head>
+    
+                    //--></script></head>
    <body>
       <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
          <table class="rt">
@@ -325,10 +315,11 @@
                               <div class="annotation">
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
-                                       <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication rule</span><span class="tI">
-</span><span class="tT">(&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See</span><span class="tI">
-</span><span class="tT">attribute mapping for more details. This attribute has a  neutral default value of</span><span class="tI">
-</span><span class="tT">"bidirectional". Other predefined values are "forward" and "backward". See</span><span class="tI">
+                                       <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication</span><span class="tI">
+</span><span class="tT">rule (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child</span><span class="tI">
+</span><span class="tT">elements). See attribute mapping for more details. This attribute has a  neutral</span><span class="tI">
+</span><span class="tT">default value of "bidirectional". Other predefined values are "forward" and</span><span class="tI">
+</span><span class="tT">"backward". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</span></pre></td>
                                     </tr>
                                  </table>
@@ -343,8 +334,8 @@
                      <tr>
                         <td class="firstColumn"><b>Type hierarchy</b></td>
                         <td>
-                           <ul>
-                              <li><b><a href="naffologeq_normal_xsd_Simple_Type_ruleml_mapDirection_value.html#mapDirection.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection.value')">ruleml:mapDirection.value</a></b></li>
+                           <ul class="internal">
+                              <li class="internal"><b><a href="naffologeq_normal_xsd_Simple_Type_ruleml_mapDirection_value.html#mapDirection.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection.value')">ruleml:mapDirection.value</a></b></li>
                            </ul>
                         </td>
                      </tr>
@@ -435,8 +426,8 @@
                               <div class="annotation">
                                  <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                     <tr>
-                                       <td width="100%"><pre><span class="tT">an extension point for specializations of the scope inference direction</span><span class="tI">
-</span><span class="tT">attribute name.</span></pre></td>
+                                       <td width="100%"><pre><span class="tT">an extension point for specializations of the scope inference</span><span class="tI">
+</span><span class="tT">direction attribute name.</span></pre></td>
                                     </tr>
                                  </table>
                               </div>
@@ -492,10 +483,11 @@
                                        <div class="annotation">
                                           <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
                                              <tr>
-                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication rule</span><span class="tI">
-</span><span class="tT">(&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child elements). See</span><span class="tI">
-</span><span class="tT">attribute mapping for more details. This attribute has a  neutral default value of</span><span class="tI">
-</span><span class="tT">"bidirectional". Other predefined values are "forward" and "backward". See</span><span class="tI">
+                                                <td width="100%"><pre><span class="tT">An attribute indicating the intended direction of implication</span><span class="tI">
+</span><span class="tT">rule (&lt;Implies&gt;) inferencing of elements  falling within its scope (i.e. child</span><span class="tI">
+</span><span class="tT">elements). See attribute mapping for more details. This attribute has a  neutral</span><span class="tI">
+</span><span class="tT">default value of "bidirectional". Other predefined values are "forward" and</span><span class="tI">
+</span><span class="tT">"backward". See</span><span class="tI">
 </span><span class="tT">http://deliberation.ruleml.org/1.02/glossary/.40mapDirection</span></pre></td>
                                              </tr>
                                           </table>
@@ -546,7 +538,7 @@
          <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
          </div>
       </div><script type="text/javascript">
-         <!--                     
+         <!--
                      // The namespace is the selected option in the TOC combo.
                     
                      // Floats the toolbar.
@@ -574,5 +566,5 @@
 	                     
 	                     globalControls.style.right='0';                       
                      }
-                --></script></body>
+                //--></script></body>
 </html>

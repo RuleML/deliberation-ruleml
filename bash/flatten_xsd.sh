@@ -8,7 +8,7 @@
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 #   use oxygen to flatten the XSD driver in the $TMP directory and output to the $XSD_HOME directory
-if [[ "${OXY_VERSION}" == "17" ]]; then 
+if [[ "${OXY_VERSION}" -ge "17" ]]; then 
   sh "$FLATTEN_SCRIPT" "-in:$1" "-outDir:$2"  "-flattenImports:false"
 fi
 

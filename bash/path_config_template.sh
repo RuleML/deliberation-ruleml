@@ -17,12 +17,10 @@
 #  - curl
 #  - libxml2-utils (for xmllint)
 #  - zip  
-# Note: copy to path_config.sh and then
-# change the parameters accordingly
-# JAXB (jaxb-ri) should be installed in the Oxygen /lib directory
+# Note: copied from path_config_template.sh
 PLATFORM="Linux"
-OXY_VERSION="17"
-OXY_HOME="/Applications/oxygen 17/"
+OXY_VERSION="19"
+OXY_HOME="/home/dylan/Oxygen XML Editor 19/"
 FLATTEN_SCRIPT="${OXY_HOME}flattenSchema.sh"
 if [[ ${OXY_VERSION} == "14" && ${PLATFORM} == "Mac" ]]; then 
   FLATTEN_SCRIPT="${OXY_HOME}flattenSchemaMac.sh"
@@ -39,27 +37,30 @@ OXY_LIB="${OXY_HOME}lib/"
 SAX_HOME="${OXY_LIB}"
 JING="${OXY_LIB}jing.jar"
 TRANG="${OXY_LIB}trang.jar"
-JAXB_HOME="${OXY_LIB}"jaxb-ri/
-BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;
+JAXB_HOME="${OXY_LIB}"jaxb-ri-2.2.6/
+BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/
 REPO_HOME="${BASH_HOME}../"
 RNC_HOME="${REPO_HOME}relaxng/"
 DRIVER_HOME="${RNC_HOME}drivers/"
 DRIVER_COMPACT_HOME="${RNC_HOME}"
+DRIVER_NORMAL_HOME="${RNC_HOME}drivers/"
 TMP="${RNC_HOME}tmp-std2xsd.rng"
 MYNG_BACK_END="${RNC_HOME}schema_rnc_local.php"
 PHP_CLI_INI="${RNC_HOME}php-cli.ini"
 DESIGN_HOME="${REPO_HOME}designPattern/"
-DRIVER_HOME="${REPO_HOME}relaxng/drivers/"
 RNC4SIMP_HOME="${REPO_HOME}relaxng/drivers4simp/"
 RNC4XSD_HOME="${REPO_HOME}relaxng/drivers4xsd/" 
+RNC4XSD_NORMAL_HOME="${REPO_HOME}relaxng/drivers4xsd_normal/" 
 RNC4XSD_MIN_HOME="${REPO_HOME}relaxng/drivers4xsd_min/" 
+RNC4XSD_NORMAL_MIN_HOME="${REPO_HOME}relaxng/drivers4xsd_normal_min/" 
 RNC_TEST_SUITE_HOME="${REPO_HOME}test/rnc-test-suites/"
 TMP_MODULES="${RNC_HOME}tmp/modules/"
 SIMP_HOME="${REPO_HOME}simplified/"
 XSD_HOME="${REPO_HOME}xsd/"
 XSD_MIN_HOME="${REPO_HOME}xsd_min/"
+XSD_NORMAL_HOME="${REPO_HOME}xsd_normal/"
+XSD_NORMAL_MIN_HOME="${REPO_HOME}xsd_normal_min/"
 XSLT2_HOME="${REPO_HOME}xslt/rnc2xsd/"
-XSD_HOME="${REPO_HOME}xsd/"
 XSD_COMPACT="${REPO_HOME}xsd/"
 XSD_NORMAL="${REPO_HOME}xsd/"
 XSD_TEST_SUITE_HOME="${REPO_HOME}test/xsd-test-suites/"
@@ -77,7 +78,9 @@ GIT_HOME="${REPO_HOME}../"
 COMPACT_CONFIG="${BASH_HOME}settings/compact-config.xml"
 COMPACTIFTHEN_CONFIG="${BASH_HOME}settings/compact-ifthen-config.xml"
 NORMAL_CONFIG="${BASH_HOME}settings/normal-config.xml"
+MIXED_CONFIG="${BASH_HOME}settings/mixed-config.xml"
 INSTANCE_COMPACT_HOME="${REPO_HOME}test/compact-test-suites/"
 INSTANCE_COMPACTIFTHEN_HOME="${REPO_HOME}test/compact-ifthen-test-suites/"
 INSTANCE_NORMAL_HOME="${REPO_HOME}test/normal-test-suites/"
+INSTANCE_MIXED_HOME="${REPO_HOME}test/mixed-test-suites/"
 REACTION_XSD_HOME="${REPO_HOME}../reaction-ruleml/xsd/"

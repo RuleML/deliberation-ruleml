@@ -18,9 +18,9 @@
 #  - libxml2-utils (for xmllint)
 #  - zip  
 # Note: copied from path_config_template.sh
-PLATFORM="Mac"
-OXY_VERSION="14"
-OXY_HOME="/Applications/oxygen 14/"
+PLATFORM="Linux"
+OXY_VERSION="19"
+OXY_HOME="/home/dylan/Oxygen XML Editor 19/"
 FLATTEN_SCRIPT="${OXY_HOME}flattenSchema.sh"
 if [[ ${OXY_VERSION} == "14" && ${PLATFORM} == "Mac" ]]; then 
   FLATTEN_SCRIPT="${OXY_HOME}flattenSchemaMac.sh"
