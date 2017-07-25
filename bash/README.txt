@@ -25,27 +25,11 @@ Preliminaries:
     $ cd ../relaxng/drivers4xsd_min
     $ ln -s ../modules/ modules
 
-2.  Proceed to directory bash/settings. Here you will find multiple XML files which will need to be modified. Every file ending with "-config" 
-    needs to have the fields "schemaSystemID" and outPutFolder updated with information relevant to your system.
-    
-    2.1  For schemaSystemID, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
-         Text in lowercase remains unchanged.
-         file:/home/dylan/Documents/GitHub/deliberation/xsd/naffologeq_compact.xsd
-         >>
-         file:/PATH/TO/CLONE/xsd/naffologeq_compact.xsd
-    
-    2.2  For outputFolder, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
-         Text in lowercase remains unchanged.
-    
-         /home/dylan/Documents/GitHub/deliberation/test/compact-test-suites
-         >>
-         /PATH/TO/CLONE/test/compact-test-suites
-     
-    2.3  Repeat for every file ending in "-config.xml" 
-    
-
-3.  Ensure that PHP is installed.
-4.  Ensure that xmllint (in the library: libxml2-utils) is installed.
+2.  Ensure that GIT is installed.
+3.  Ensure that JAXB is installed.
+4.  Ensure that PHP is installed.
+5.  Ensure that curl is installed.
+6.  Ensure that xmllint (in the library: libxml2-utils) is installed.
 
 
 Procedure:

@@ -16,8 +16,10 @@ Prerequisites
     1.1 Git, See ([7])
     1.2 JAXB, See ([9])
     1.3 PHP, See ([10])
+    1.4 curl, See ([11])
+    1.5 xmllint, See ([12])   
         
-2. To run the bash scripts to build the RuleML release, You must create your own "path_config.sh" script in the bash directory.
+2. To run the bash scripts to build the RuleML release, you must create your own "path_config.sh" script in the bash directory.
 	2.1. First, Navigate to the "bash" directory of from the root of this repository
 	2.2. Find the file with name "path_config_template.sh"
 	2.3. Copy this file and rename it to "path_config.sh"
@@ -29,6 +31,27 @@ Prerequisites
 						e.g. "18"
 	    - OXY_HOME : 	Enter the installation location of oXygen on your machine.
 						e.g. "C:/Program Files/Oxygen XML Editor 18/"
+                           
+3.  To run bash scripts to build the RuleML release, you must create your own "FILENAME-config.xml" files from the "FILENAME-config_template.xml" files under /bash/settings/ 
+    3.1  Find the first "FILENAME-config_template.xml"
+    3.2  Copy this file and rename it to "FILENAME-config.xml"
+    3.3  Open "FILENAME-config.xml" in a text editor   
+    3.4  Change the following fields
+         -  For schemaSystemID, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+            Text in lowercase remains unchanged.
+            e.g.
+            file:/home/dylan/Documents/GitHub/deliberation/xsd/naffologeq_compact.xsd
+            >>
+            file:/PATH/TO/CLONE/xsd/naffologeq_compact.xsd
+    
+         -  For outputFolder, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+            Text in lowercase remains unchanged.
+            e.g.
+            /home/dylan/Documents/GitHub/deliberation/test/compact-test-suites
+            >>
+            /PATH/TO/CLONE/test/compact-test-suites
+    3.5  Repeat for every file ending in "-config.xml" 
+       
 
 Training
 --------
@@ -129,4 +152,6 @@ executed by any user.
 [8]:https://github.com/RuleML/issues-ruleml
 [9]:https://github.com/javaee/jaxb-v2
 [10]:http://php.net/manual/en/install.php
+[11]:https://curl.haxx.se/
+[12]:http://xmlsoft.org/xmllint.html
 
