@@ -2,13 +2,13 @@ deliberation-ruleml
 ===================
  
  This repository contains:
-* schemas in Relax NG and XSD for Deliberation RuleML Version 1.02
-* XSLT stylesheets to normalize Deliberation RuleML Version 1.02
-* schemas for the MYNG 1.02 modular design pattern
-* example RuleML 1.02 files
-* PHP scripts for MYNG 1.02
-* NVDL scripts for MYNG 1.02
-* bash scripts for building the RuleML 1.02 release
+* schemas in Relax NG and XSD for Deliberation RuleML Version 1.03
+* XSLT stylesheets to normalize Deliberation RuleML Version 1.03
+* schemas for the MYNG 1.03 modular design pattern
+* example RuleML 1.03 files
+* PHP scripts for MYNG 1.03
+* NVDL scripts for MYNG 1.03
+* bash scripts for building the RuleML 1.03 release
  
 Prerequisites
 -------------
@@ -16,8 +16,10 @@ Prerequisites
     1.1 Git, See ([7])
     1.2 JAXB, See ([9])
     1.3 PHP, See ([10])
+    1.4 curl, See ([11])
+    1.5 xmllint, See ([12])   
         
-2. To run the bash scripts to build the RuleML release, You must create your own "path_config.sh" script in the bash directory.
+2. To run the bash scripts to build the RuleML release, you must create your own "path_config.sh" script in the bash directory.
 	2.1. First, Navigate to the "bash" directory of from the root of this repository
 	2.2. Find the file with name "path_config_template.sh"
 	2.3. Copy this file and rename it to "path_config.sh"
@@ -29,6 +31,27 @@ Prerequisites
 						e.g. "18"
 	    - OXY_HOME : 	Enter the installation location of oXygen on your machine.
 						e.g. "C:/Program Files/Oxygen XML Editor 18/"
+                           
+3.  To run bash scripts to build the RuleML release, you must create your own "FILENAME-config.xml" files from the "FILENAME-config_template.xml" files under /bash/settings/ 
+    3.1  Find the first "FILENAME-config_template.xml"
+    3.2  Copy this file and rename it to "FILENAME-config.xml"
+    3.3  Open "FILENAME-config.xml" in a text editor   
+    3.4  Change the following fields
+         -  For schemaSystemID, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+            Text in lowercase remains unchanged.
+            e.g.
+            file:/home/dylan/Documents/GitHub/deliberation/xsd/naffologeq_compact.xsd
+            >>
+            file:/PATH/TO/CLONE/xsd/naffologeq_compact.xsd
+    
+         -  For outputFolder, the path to the installation of the repository on your machine must be put in, while keeping the path of the xsd file.
+            Text in lowercase remains unchanged.
+            e.g.
+            /home/dylan/Documents/GitHub/deliberation/test/compact-test-suites
+            >>
+            /PATH/TO/CLONE/test/compact-test-suites
+    3.5  Repeat for every file ending in "-config.xml" 
+       
 
 Training
 --------
@@ -68,9 +91,9 @@ Branching to Resolve Issues
 ---------------------------
 1. Switch the branch for the appropriate version, if necessary.
 
-    $ git checkout 1.02
+    $ git checkout 1.03
 
-2. Update your 1.02 branch from the ruleml remote.([2])
+2. Update your 1.03 branch from the ruleml remote.([2])
     
     $ git pull
     
@@ -110,12 +133,12 @@ Branching to Resolve Issues
   a) verify that everything got uploaded OK  
   b) submit a pull request to RuleML/deliberation-ruleml from your Github account. 
      If the RuleML repo already has a branch for issue45, submit your pull-request to that branch,
-     otherwise submit to the 1.02 branch.
+     otherwise submit to the 1.03 branch.
 
 9. The RuleML maintainer and/or other developers will make comments on your pull-request if 
 anything needs to be changed.
 You can push new commits to your issue45 branch and they will automatically be added to the pull-request.
-If your submission is accepted, the RuleML/issue45 branch will be merged with RuleML/1.02, or possibly a later version.
+If your submission is accepted, the RuleML/issue45 branch will be merged with RuleML/1.03, or possibly a later version.
 It will then be propagated to all forks when Step #2 or Step #6 is 
 executed by any user.
 
@@ -129,4 +152,6 @@ executed by any user.
 [8]:https://github.com/RuleML/issues-ruleml
 [9]:https://github.com/javaee/jaxb-v2
 [10]:http://php.net/manual/en/install.php
+[11]:https://curl.haxx.se/
+[12]:http://xmlsoft.org/xmllint.html
 

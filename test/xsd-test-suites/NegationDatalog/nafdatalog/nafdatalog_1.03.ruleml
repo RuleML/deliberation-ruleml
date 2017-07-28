@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><RuleML xmlns:base="http://example.org/ontology#" xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec ../../../../xsd/nafdatalog.xsd">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+
+<!-- a syntactic example rulebase for testing the Datalog RuleML sublanguage, with negation as failure -->
+
+<Assert mapClosure="universal">
+
+<Implies>
+  <then>
+
+     <Atom>
+      <op><Rel>friend</Rel></op>
+      <slot><Ind>t</Ind><Ind>b</Ind></slot>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Ind>Steph</Ind>
+     </Atom>
+
+  </then>
+  <if>
+   <Naf>
+    <Atom>
+      <op><Rel>friend</Rel></op>
+      <Ind>Jane</Ind>
+      <Ind>Joan</Ind>
+      <Ind>Jack</Ind>
+      <Var>y</Var>
+      <Ind>Frank</Ind>
+    </Atom>
+   </Naf>
+  </if>
+</Implies>
+
+<Implies>
+  <if>
+   <Or>
+    <Naf>
+     <Atom>
+      <op><Rel>friend</Rel></op>
+      <Ind>Jane</Ind>
+      <Ind>Joan</Ind>
+      <Ind>Jack</Ind>
+      <Var>y</Var>
+      <Ind>Frank</Ind>
+     </Atom>
+    </Naf>
+   </Or>
+  </if>
+  <then>
+     <Atom>
+      <op><Rel>friend</Rel></op>
+      <slot><Ind>t</Ind><Ind>b</Ind></slot>
+      <Var>x</Var>
+      <Var>y</Var>
+      <Ind>Steph</Ind>
+     </Atom>
+  </then>
+</Implies>
+
+
+    <Forall>
+	<Var type="http://example.org/Person">x1</Var>
+	<Var type="http://example.org/Person">x2</Var>
+	<Var type="http://example.org/Person">x3</Var>
+	<Var type="http://example.org/Person">x4</Var>
+	<Implies>
+           <Atom>
+               <op><Rel>rel1</Rel></op>
+               <Data xsi:type="xs:positiveInteger">1</Data>
+               <Data xsi:type="xs:positiveInteger">2</Data>
+               <Data xsi:type="xs:positiveInteger">3</Data>
+               <Var>x5</Var>
+           </Atom>
+           <Atom>
+               <op><Rel>rel2</Rel></op>
+               <Data xsi:type="xs:positiveInteger">4</Data>
+               <Data xsi:type="xs:positiveInteger">5</Data>
+               <Var>x6</Var>
+               <Data xsi:type="xs:positiveInteger">6</Data>
+           </Atom>
+	</Implies>
+   </Forall>
+
+
+    <Atom>
+      <op><Rel>yet another relation</Rel></op>
+      <Ind>constant e</Ind>
+      <Ind>constant b</Ind>
+      <slot><Ind>role_name3</Ind><Ind>role 3</Ind></slot>
+    </Atom>
+
+</Assert>
+
+</RuleML>
