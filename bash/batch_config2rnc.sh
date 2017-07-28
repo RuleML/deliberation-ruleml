@@ -17,11 +17,11 @@ do
     tokens=( $line )
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[1]}" "${DRIVER_HOME}${tokens[0]}_normal.rnc"
     "${BASH_HOME}aux_myng2rnc.sh" "${tokens[2]}" "${DRIVER_HOME}${tokens[0]}_relaxed.rnc"
-    echo  "Redirect /1.02/relaxng/${tokens[0]}_normal.rnc http://deliberation.ruleml.org/1.02/relaxng/myng-${tokens[1]}.rnc">> "${RNC_HOME}.htaccess"
-    echo  "Redirect /1.02/relaxng/${tokens[0]}_relaxed.rnc http://deliberation.ruleml.org/1.02/relaxng/myng-${tokens[2]}.rnc">> "${RNC_HOME}.htaccess"
+    echo  "Redirect /1.03/relaxng/${tokens[0]}_normal.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-${tokens[1]}.rnc">> "${RNC_HOME}.htaccess"
+    echo  "Redirect /1.03/relaxng/${tokens[0]}_relaxed.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-${tokens[2]}.rnc">> "${RNC_HOME}.htaccess"
 done < "${BASH_HOME}config_rnc.txt"
 
-echo "Redirect /1.02/relaxng/schema.rnc http://deliberation.ruleml.org/1.02/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc">> "${RNC_HOME}.htaccess"
+echo "Redirect /1.03/relaxng/schema.rnc http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a7-l1-p3ff-i7f-tf3f-q7-ef-s4f.rnc">> "${RNC_HOME}.htaccess"
 
 while read line
 do
