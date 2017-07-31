@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Scope Inference Direction" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/mapdirection_attrib_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/mapdirection_attrib_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, scope, inference, direction" ]
 dcterms:description [ "The expansion module for scope inference direction." ]
@@ -25,7 +25,7 @@ mapDirection.attrib.def =
   ##  An attribute indicating the intended direction of implication rule (<Implies>) inferencing of elements 
   ## falling within its scope (i.e. child elements). See attribute mapping for more details. This attribute has a 
   ## neutral default value of "bidirectional". Other predefined values are "forward" and "backward".
-  ## See http://deliberation.ruleml.org/1.02/glossary/.40mapDirection
+  ## See http://deliberation.ruleml.org/1.03/glossary/.40mapDirection
   attribute mapDirection { mapDirection.value }
 mapDirection.value |= direction.value
 # 

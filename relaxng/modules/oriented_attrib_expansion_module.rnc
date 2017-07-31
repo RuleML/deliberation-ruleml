@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Equation Orientation" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/oriented_attrib_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/oriented_attrib_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, orientation, oriented, equation" ]
 dcterms:description [ "The expansion module for oriented equations" ]
@@ -25,7 +25,7 @@ oriented-att.choice |= oriented.attrib.def
 oriented.attrib.def =
   
   ## An attribute indicating whether an equation (<Equal>) is oriented (directed) or unoriented (symmetric).    
-  ##    See http://deliberation.ruleml.org/1.02/glossary/.40oriented
+  ##    See http://deliberation.ruleml.org/1.03/glossary/.40oriented
   attribute oriented { oriented.value }
 oriented.value |= oriented_default.value | oriented_non-default.value
 

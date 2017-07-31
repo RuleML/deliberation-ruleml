@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Inference Direction Default Value" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/direction_default_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/direction_default_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, direction, default" ]
 dcterms:description [ "The expansion module for the inference direction default value." ]

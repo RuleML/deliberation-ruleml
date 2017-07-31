@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Strong Negation Formulas" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/neg_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/neg_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, negation, strong, formula" ]
 dcterms:description [ "The expansion module for strong negation formulas." ]
@@ -31,7 +31,7 @@ Neg.Node.def =
   
   ## A classical negation of a logical atom (<Atom>) (i.e. classical or "strong" negation). 
   ## The negated atom may be optionally surrounded by <strong> role tags.
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Neg
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Neg
   element Neg { Neg.type.def }
 Neg.type.def = (Neg-datt.choice & reNeg.attlist), Neg.header, Neg.main
 # The attribute list of the strong negation element will accept a scoped closure attribute at full first-order logic.
@@ -51,7 +51,7 @@ strong-edge.choice |= strong.edge.def
 strong.edge.def =
   
   ## An edge used for logical negation (<Neg>).
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-strong
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-strong
   element strong { strong.type.def }
 strong.type.def = strong.attlist? & strong.content
 strong.attlist &= commonInit.attlist?

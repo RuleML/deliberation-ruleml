@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Higher-Order Syntax" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/holog_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/holog_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, higher-order syntax, nonpredicative" ]
 dcterms:description [ "The expansion module for higher-order syntax, also called non-predicative." ]
@@ -25,7 +25,7 @@ Atom-node.choice |= Uniterm-formula.Node.def
 ## a header section for modifiers, and a main section for the operator and arguments. 
 Uniterm-formula.Node.def =  
   ## simple sentence represented as a Hilog term, generalizing Atom
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Uniterm
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Uniterm
   element Uniterm { Uniterm-formula.type.def }
 Uniterm-formula.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 #operatorForAtoms-edge.choice |= empty
@@ -45,6 +45,6 @@ Individual-node.choice |= Const.Node.def
 Const.Node.def =
   
   ## <Const>: a constant for Holog languages. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Const
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Const
   element Const { Const.type.def }
 Const.type.def = (Ind-datt.choice & reInd.attlist), Ind.value

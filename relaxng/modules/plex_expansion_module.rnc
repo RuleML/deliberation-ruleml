@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Generalized Lists" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/plex_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/plex_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, plex, generalized lists" ]
 dcterms:description [ "The expansion module for generalized lists." ]
@@ -27,7 +27,7 @@ Plex_Any.Node.def =
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
   ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
   ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex
   ## within Atom
   element Plex { Plex_Any.type.def }
 Plex_Any.type.def = (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_Any.main
@@ -51,7 +51,7 @@ Plex_repo.Node.def =
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
   ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
   ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex
   ## within repo
   element Plex { Plex_repo.type.def }
 Plex_repo.type.def = (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_repo.main
@@ -70,7 +70,7 @@ Plex_resl.Node.def =
   ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
   ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
   ## to having a system-specified constructor 'Plex'). Rest variables (<repo> and <resl>) are also permitted.
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Plex
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex
   ## within resl
   element Plex { Plex_resl.type.def }
 Plex_resl.type.def = (Plex-datt.choice & rePlex.attlist), Plex.header, Plex_resl.main

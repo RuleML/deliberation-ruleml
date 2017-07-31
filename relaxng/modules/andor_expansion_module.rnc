@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Conjunctions and Disjunctions" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/andor_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/andor_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, conjunction, disjunction" ]
 dcterms:description [ "The expansion module for conjunctions and disjunctions." ]
@@ -51,7 +51,7 @@ And-node.choice |= And.Node.def
 And.Node.def =
   
   ## <And>: polyadic conjunction where <And/> is true. See
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-And
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-And
   element And { And.type.def }
 And.type.def = (And-datt.choice & reAnd.attlist), And.header, And.main
 
@@ -75,7 +75,7 @@ formula_And-edge.choice |= formula_And.edge.def
 formula_And.edge.def =
   
   ## <formula>: contains a single formula. See  
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-formula
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-formula
   element formula { formula_And.type.def }
 formula_And.type.def = formula_And-datt.choice & formula_And.attlist? & formula_And.content
 formula_And-datt.choice |= index-attrib.choice
@@ -110,7 +110,7 @@ Or-node.choice |= Or.Node.def
 Or.Node.def =
   
   ## <Or>: polyadic disjunction where <Or/> is false. See
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Or
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Or
   element Or { Or.type.def }
 Or.type.def = (Or-datt.choice & reOr.attlist), Or.header, Or.main
 

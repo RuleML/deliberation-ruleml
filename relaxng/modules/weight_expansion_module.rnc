@@ -4,8 +4,8 @@ namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Weight" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/xml_weight_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/xml_weight_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, uncertainty, fuzzy, weight" ]
 dcterms:description [ "The expansion module for slot weight." ]
@@ -25,7 +25,7 @@ weight-att.choice |= weight.attrib.def
 weight.attrib.def =
   
   ## An attribute optionally specifying a <slot>'s relative weight.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-weight
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-weight
   attribute weight { weight.datatype }
 #
 

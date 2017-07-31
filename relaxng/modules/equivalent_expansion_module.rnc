@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Equivalences" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/equivalent_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/equivalent_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, equivalence" ]
 dcterms:description [ "The expansion module for equivalances." ]
@@ -27,11 +27,11 @@ Equivalent-node.choice |= Equivalent.Node.def
 ## An equivalence formula, which is "syntactic sugar" for a pair of conjoined converse implication rules (<Implies>). 
 ## The children of an equivalence are divided into two sections, 
 ## a header section for modifiers, and a main section for the two 'torso' formulas. 
-## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent 
+## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Equivalent 
 Equivalent.Node.def =
   
   ## <Equivalent>: Syntactic sugar for two implications. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Equivalent 
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Equivalent 
   element Equivalent { Equivalent.type.def }
 Equivalent.type.def =
   (Equivalent-datt.choice & reEquivalent.attlist), Equivalent.header, Equivalent.main
@@ -56,7 +56,7 @@ torso-edge.choice |= torso.edge.def
 torso.edge.def =
   
   ## <torso>: contains one formula within an equivalence. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-torso 
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-torso 
   element torso { torso.type.def }
 torso.type.def = torso.attlist? & torso.content
 torso.attlist &= commonInit.attlist?

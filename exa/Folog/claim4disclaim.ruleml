@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/folog_relaxed.rnc"?>-->
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-b3f-d7-a2-l1-p0-i78-t0-q1-e1-sb.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/folog_relaxed.rnc"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/myng-b3f-d7-a2-l1-p0-i78-t0-q1-e1-sb.rnc"?>
 <!-- Adapted from https://www.w3.org/Submission/FOL-RuleML/#6 -->
 
 <RuleML xmlns="http://ruleml.org/spec"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    style="http://ruleml.org/1.02/profiles/FOL-Herbrand"
-    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/folog.xsd">
+    style="http://ruleml.org/1.03/profiles/FOL-Herbrand"
+    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/folog.xsd">
     <Assert>
         <Atom>
             <Rel>other</Rel>

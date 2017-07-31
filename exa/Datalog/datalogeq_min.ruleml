@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php?backbone=x7&amp;default=x7&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x210&amp;quant=x0&amp;expr=x0&amp;serial=xf"  type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&amp;default=x7&amp;termseq=x7&amp;lng=x1&amp;propo=x1&amp;implies=x0&amp;terms=x210&amp;quant=x0&amp;expr=x0&amp;serial=xf"  type="application/relax-ng-compact-syntax"?>
 <RuleML xmlns="http://ruleml.org/spec">
   <!-- <RuleML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalogplus_min_normal.xsd"
+ xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogplus_min_normal.xsd"
  xmlns="http://ruleml.org/spec"> -->
   
 <!-- a syntactic example rulebase for testing the RuleML Datalog with Equality sublanguage -->

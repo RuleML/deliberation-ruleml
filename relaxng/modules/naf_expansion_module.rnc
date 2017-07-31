@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Weak Negation (Negation as Failure) Formulas" ]
-dcterms:identifier ["http://deliberation.ruleml.org/1.02/relaxng/modules/naf_expansion_module.rnc"]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier ["http://deliberation.ruleml.org/1.03/relaxng/modules/naf_expansion_module.rnc"]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, negation, weak, formula" ]
 dcterms:description [ "The expansion module for weak negation formulas." ]
@@ -30,7 +30,7 @@ NegationAsFailure-node.choice |= Naf.Node.def
 Naf.Node.def =
   ## A "by default" negation of a logical atom (<Atom>) (i.e. "weak" negation or negation as failure). 
   ## The negated atom may be optionally surrounded by <weak> role tags.
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-Naf
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Naf
   element Naf { Naf.type.def }
 Naf.type.def = (Naf-datt.choice & reNaf.attlist), Naf.header, Naf.main
 ## The attribute list of the weak negation element will accept a scoped closure attribute at full first-order logic.
@@ -49,7 +49,7 @@ Naf.main |= weak-edge.choice
 weak-edge.choice |= weak.edge.def
 weak.edge.def =
   ## An edge used for negation as failure (<Naf>).
-  ##        See http://deliberation.ruleml.org/1.02/glossary/#gloss-weak
+  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-weak
   element weak { weak.type.def }
 weak.type.def = weak.attlist? & weak.content
 weak.attlist &= commonInit.attlist?

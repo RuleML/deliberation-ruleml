@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Functional Expressions" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/expr_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/expr_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, function, expression" ]
 dcterms:description [ "The expansion module for functional expressions." ]
@@ -31,7 +31,7 @@ Expression-node.choice |= Expr.Node.def
 Expr.Node.def =
   
   ## <Expr>: a functional expression. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Expr
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Expr
   element Expr { Expr.type.def }
 Expr.type.def = (Expr-datt.choice & reExpr.attlist), Expr.header, Expr.main
 reExpr.attlist &= commonNode.attlist?
@@ -41,7 +41,7 @@ operatorForExpressions-edge.choice |= op_Expr.edge.def
 
 ## (context sensitive: see Also atom_backbone_module and holog_module)
 ## An operator edge including a function symbol (<Fun>) of a (<Expr>).
-## http://deliberation.ruleml.org/1.02/glossary/#gloss-op
+## http://deliberation.ruleml.org/1.03/glossary/#gloss-op
 op_Expr.edge.def =
   
   ## Also an operator in functional expressions.
@@ -59,7 +59,7 @@ Function-node.choice |= Fun.Node.def
 Fun.Node.def =
   
   ## <Fun>: symbol for functional operators. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Fun
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Fun
   element Fun { Fun.type.def }
 Fun.type.def = (Fun-datt.choice & reFun.attlist), Fun.value
 

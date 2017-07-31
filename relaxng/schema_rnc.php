@@ -6,7 +6,7 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL | E_STRICT);
 header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
-//Assembler of RNC schema for RuleML 1.02
+//Assembler of RNC schema for RuleML 1.03
 //
 //Step 0000. Extract all GET parameters
 $backbone = "backbone";
@@ -122,7 +122,7 @@ $rnc_filename = $rnc_filename.'.rnc';
 header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"');
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
-$base_url = "http://deliberation.ruleml.org/1.02/relaxng/schema_rnc.php";
+$base_url = "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php";
 $now =  date(DATE_ATOM,time());
 
 //
@@ -170,7 +170,7 @@ echo 'default namespace ruleml = "http://ruleml.org/spec"'."\n";
 echo "\n";
 echo 'dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]'."\n";
 echo 'dcterms:identifier [ "'.$this_url.'" ]'."\n";
-echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]'."\n";
+echo 'dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]'."\n";
 echo 'dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]'."\n";
 echo 'dc:subject [ "Deliberation RuleML, custom-built" ]'."\n";
 echo 'dcterms:description ['."\n";
@@ -183,7 +183,7 @@ echo 'dcterms:language [ "en" ]'."\n";
 echo 'dc:rights [ \'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.\' ]'."\n";
 echo 'dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 '."\n";
-echo 'dcterms:relation [ "http://deliberation.ruleml.org/1.02" ]'."\n";
+echo 'dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]'."\n";
 echo "# Base URL = $base_url \n";
 
 
@@ -346,7 +346,7 @@ if ($bdefault==0){
 
   //Step 1. Assemble the language foundation
   if ($enableAbsolute) {
-    $schemaLocation='http://deliberation.ruleml.org/1.02/relaxng/';  
+    $schemaLocation='http://deliberation.ruleml.org/1.03/relaxng/';  
   } else {
     $schemaLocation='';
   }
