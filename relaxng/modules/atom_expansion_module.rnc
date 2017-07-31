@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Atomic Formulas" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/atom_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/atom_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, atom, atomic formulas, propositions" ]
 dcterms:description [ "The expansion module for atomic formulas." ]
@@ -33,7 +33,7 @@ Atom-node.choice |= Atom.Node.def
 Atom.Node.def =
   
   ## <Atom>: a predicate applied to arguments. See
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Atom
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Atom
   element Atom { Atom.type.def }
 Atom.type.def = (Atom-datt.choice & reAtom.attlist), Atom.header, Atom.main
 
@@ -49,7 +49,7 @@ operatorForAtoms-edge.choice |= op_Atom.edge.def
 op_Atom.edge.def =
   
   ## <op>: edge element for the predicate of an atomic formula. See
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-op
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-op
   element op { op.type.def }
 op.type.def = op_Atom.attlist? & op_Atom.content
 op_Atom.attlist &= commonInit.attlist?
@@ -64,7 +64,7 @@ Relation-node.choice |= Rel.Node.def
 Rel.Node.def =
   
   ## <Rel>: symbol used as the predicate of an atomic formula. See 
-  ## http://deliberation.ruleml.org/1.02/glossary/#gloss-Rel
+  ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Rel
   element Rel { Rel.type.def }
 Rel.type.def = (Rel-datt.choice & reRel.attlist), Rel.value
 

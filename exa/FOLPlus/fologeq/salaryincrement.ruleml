@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/fologeq_relaxed.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/fologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/fologeq_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/fologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
 <RuleML xmlns="http://ruleml.org/spec"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/fologeq.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/fologeq.xsd">
 
 <!-- An Employee cannot get a salaryincrement of ten percent and twenty percent  
      at the same time and also he cannot get more than one salary increment in a year -->

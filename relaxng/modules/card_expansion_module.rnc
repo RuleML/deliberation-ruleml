@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Cardinality" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/card_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/card_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, cardinality" ]
 dcterms:description [ "The expansion module for slot cardinality." ]
@@ -18,7 +18,7 @@ start |= notAllowed
 ## an extension point for specializations of the cardinality attribute name.  
 cardinality-att.choice |= card.attrib.def
 
-## An attribute optionally specifying a <slot>'s cardinality. See http://deliberation.ruleml.org/1.02/glossary/#gloss-card
+## An attribute optionally specifying a <slot>'s cardinality. See http://deliberation.ruleml.org/1.03/glossary/#gloss-card
 card.attrib.def =
   
   ## the cardinality of a slot.

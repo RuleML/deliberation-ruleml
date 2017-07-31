@@ -24,27 +24,27 @@ do
     "${BASH_HOME}aux_web2rnc.sh" "${tokens[2]}" "${DRIVER_HOME}myng-${tokens[2]}.rnc"
 done < "${BASH_HOME}config_rnc_myng.txt"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/naffologeq_compact.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/naffologeq_compact.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}naffologeq_compact.rnc"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/naffologeq_ifthen-compact.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/naffologeq_ifthen-compact.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}naffologeq_ifthen-compact.rnc"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_compact.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_compact.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}nafhologeq_compact.rnc"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_ifthen-compact.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_ifthen-compact.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}nafhologeq_ifthen-compact.rnc"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_normal.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_normal.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}nafhologeq_normal.rnc"
 
-url="http://deliberation.ruleml.org/1.02/relaxng/nafhologeq_relaxed.rnc"
+url="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_relaxed.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}nafhologeq_relaxed.rnc"
 

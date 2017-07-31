@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Variables" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/variable_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/variable_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, variables, interpretable names" ]
 dcterms:description [ "The expansion module for variables." ]
@@ -26,7 +26,7 @@ Variable-node.choice |= Var.Node.def
 Var.Node.def =
   
   ## A logical variable, as in logic programming.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Var
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Var
   element Var { Var.type.def }
 Var.type.def = (Var-datt.choice & reVar.attlist), Var.value
 

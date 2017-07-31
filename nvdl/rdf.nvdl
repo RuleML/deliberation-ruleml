@@ -9,7 +9,7 @@
   </namespace>
   <namespace ns="http://www.w3.org/XML/1998/namespace"
     match="attributes">
-    <validate schema="http://deliberation.ruleml.org/1.02/xsd/xml.xsd"/>
+    <validate schema="http://deliberation.ruleml.org/1.03/xsd/xml.xsd"/>
   </namespace>
   <anyNamespace>
     <allow/>

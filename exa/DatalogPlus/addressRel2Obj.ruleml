@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>-->
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-b7-d7-a7-l1-p0-i48-t20b-q0-e0-sa.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>-->
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/myng-b7-d7-a7-l1-p0-i48-t20b-q0-e0-sa.rnc"?>
 
 <RuleML xmlns="http://ruleml.org/spec"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    style="http://ruleml.org/1.02/profiles/HornPSOA-Tarski"
-    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/nafnegdisdatalogplus.xsd">
+    style="http://ruleml.org/1.03/profiles/HornPSOA-Tarski"
+    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/nafnegdisdatalogplus.xsd">
    <Assert> 
     <Atom> 
         <Rel>addressRel</Rel>        

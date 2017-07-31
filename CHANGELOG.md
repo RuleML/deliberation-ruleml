@@ -3,11 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased][unreleased]
 
-<!--## [v1.02final] - 2016-xx-yy-->
+<!--## [v1.03final] - 2016-xx-yy-->
 
-<!--## [v1.02external] - 2015-xx-yy-->
+<!--## [v1.03external] - 2015-xx-yy-->
 
-<!--## [v1.02internal] - 2015-xx-yy-->
+<!--## [v1.03internal] - 2015-xx-yy-->
 ### Added
 
 ### Changed
@@ -19,11 +19,11 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
-[unreleased]: https://github.com/RuleML/deliberation-ruleml/compare/v1.02initial...HEAD
+[unreleased]: https://github.com/RuleML/deliberation-ruleml/compare/v1.03initial...HEAD
 <!---
-[v1.02final]: https://github.com/RuleML/deliberation-ruleml/compare/v1.02external...v1.02final
-[v1.02external]: https://github.com/RuleML/deliberation-ruleml/compare/v1.02internal...v1.02external
-[v1.02internal]: https://github.com/RuleML/deliberation-ruleml/compare/v1.02initial...v1.02internal
+[v1.03final]: https://github.com/RuleML/deliberation-ruleml/compare/v1.03external...v1.03final
+[v1.03external]: https://github.com/RuleML/deliberation-ruleml/compare/v1.03internal...v1.03external
+[v1.03internal]: https://github.com/RuleML/deliberation-ruleml/compare/v1.03initial...v1.03internal
 -->
 [issue32]: https://github.com/RuleML/issues-ruleml/issues/32
 [issue33]: https://github.com/RuleML/issues-ruleml/issues/33

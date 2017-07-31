@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "RuleML Closure" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/closure_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/closure_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, closure" ]
 dcterms:description [ "The expansion module for quantification closure." ]
@@ -23,7 +23,7 @@ closure.attrib.def =
   
   ## An attribute indicating how the in-scope free variables are quantified. 
   ## Predefined values are "universal" and "existential".
-  ## See http://deliberation.ruleml.org/1.02/glossary/.40closure
+  ## See http://deliberation.ruleml.org/1.03/glossary/.40closure
   attribute closure { closure.value }
 closure.value |= "universal" | "existential"
 closure.value |= PrefixedCURIE.datatype

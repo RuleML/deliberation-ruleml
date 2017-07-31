@@ -2,8 +2,8 @@ namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 
 dcterms:title [ "Deliberation RuleML Compact Serialization" ]
-dcterms:identifier ["http://deliberation.ruleml.org/1.02/modules/naffologeq_compact_expansion_modoule.rnc"]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier ["http://deliberation.ruleml.org/1.03/modules/naffologeq_compact_expansion_modoule.rnc"]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, compact" ]
 dcterms:description ["The expansion module for the compact serialization of the anchor naffologeq."]

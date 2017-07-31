@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/datalog_relaxed.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.02/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML style="http://ruleml.org/1.02/profiles/reasoning" xmlns="http://ruleml.org/spec"
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalog_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalog.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML style="http://ruleml.org/1.03/profiles/reasoning" xmlns="http://ruleml.org/spec"
   xmlns:ex="http://example.org#"
   xmlns:this="http://example.org/datalog.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/datalog.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalog.xsd">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 

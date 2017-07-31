@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/myng-b7-d7-a7-l1-p1-i8-t0-q1-e0-s4a.rnc"?>
-<?xml-model href="http://deliberation.ruleml.org/1.02/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/myng-b7-d7-a7-l1-p1-i8-t0-q1-e0-s4a.rnc"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/nafnegdisdatalogplus_relaxed.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalog.ruleml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.02/xsd/nafnegdisdatalogplus.xsd"
-  style="http://ruleml.org/1.02/profiles/splittableHeadConjunction">
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/nafnegdisdatalogplus.xsd"
+  style="http://ruleml.org/1.03/profiles/splittableHeadConjunction">
 
   <Assert mapClosure="universal">
 

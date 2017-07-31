@@ -4,8 +4,8 @@ namespace xs = "http://www.w3.org/2001/XMLSchema"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Degree of Uncertainty" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/fuzzy_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/fuzzy_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, uncertainty, fuzzy, degree" ]
 dcterms:description [ "The expansion module for degree of uncertainty." ]
@@ -23,7 +23,7 @@ degree-edge.choice |= degree.edge.def
 degree.edge.def =
   
   ## An optional uncertainty value (between 0.0 and 1.0) that may be assigned to formulas.
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-degree
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-degree
   element degree { degree.type.def }
 degree.type.def = degree.attlist? & degree.content
 degree.attlist &= commonInit.attlist?

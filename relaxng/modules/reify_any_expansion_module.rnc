@@ -3,8 +3,8 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace inherit = inherit
 
 dcterms:title [ "RuleML Reification - Any" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.02/relaxng/modules/reify_any_expansion_module.rnc" ]
-dcterms:isPartOf [ "http://deliberation.ruleml.org/1.02/spec" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/reify_any_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, reify, reification, XSD" ]
 dcterms:description [ "The expansion module for reification of RuleML constructs, for conversion to XSD." ]
@@ -29,7 +29,7 @@ Reify-any.Node.def =
   ## It allows any RuleML element available within the current language as content, treating 
   ## it as a term for performing reasoning on, e.g.
   ## <Reify><Ind>John Doe</Ind></Reify>
-  ## See http://deliberation.ruleml.org/1.02/glossary/#gloss-Reify
+  ## See http://deliberation.ruleml.org/1.03/glossary/#gloss-Reify
   element Reify { Reify-any.type.def }
 Reify-any.type.def = Reify-any.attlist? & Reify-any.content
 Reify-any.attlist &= commonNode.attlist?
