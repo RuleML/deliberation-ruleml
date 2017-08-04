@@ -56,7 +56,7 @@ for f in "${INSTANCE_MIXED_HOME}"*.ruleml
 do
   filename=$(basename "$f")
   echo "Completing  ${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}instance-postprocessor/1.03_instance-postprocessor.xslt" "${f}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}instance-postprocessor/instance-postprocessor.xslt" "${f}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -109,7 +109,7 @@ do
   filename=$(basename "$f")
   echo "Compactifying  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.03_compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/compactifier.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -147,7 +147,7 @@ do
   filename=$(basename "$f")
   echo "Normalizing  ${filename}"
   fnew="${INSTANCE_NORMAL_HOME}${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}normalizer/1.03_normalizer.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}normalizer/normalizer.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -175,9 +175,9 @@ do
   filename=$(basename "$f")
   echo "Canonicalizing  ${filename}"
   fnew="${INSTANCE_NORMAL_HOME}${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.03_compactifier.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}normalizer/1.03_normalizer.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.03_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}normalizer/normalizer.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -205,8 +205,8 @@ do
   filename=$(basename "$f")
   echo "Re-Normalizing  ${filename}"
   fnew="${INSTANCE_NORMAL_HOME}re-${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}normalizer/1.03_normalizer.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.03_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}normalizer/normalizer.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Re-Normalized Comparing  ${filename}"
@@ -224,8 +224,8 @@ do
   filename=$(basename "$f")
   echo "Canonicalizing  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.03_compactifier.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.03_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
@@ -240,8 +240,8 @@ do
   filename=$(basename "$f")
   echo "Re-Compactifying  ${filename}"
   fnew="${INSTANCE_COMPACT_HOME}re-${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/1.03_compactifier.xslt" "${fnew}"
-  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/1.03_instance-postprocessor-stripwhitespace.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${XSLT_HOME}compactifier/compactifier.xslt" "${fnew}"
+  "${BASH_HOME}aux_xslt.sh" "${fnew}" "${XSLT_HOME}instance-postprocessor/instance-postprocessor-stripwhitespace.xslt" "${fnew}"
   read -r firstlineold<"${f}"
   read -r firstlinenew<"${fnew}"
   echo "Re-Compactified Comparing  ${filename}"
