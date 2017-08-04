@@ -1,0 +1,73 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+default namespace this = inherit
+
+dc:title [ "Consumer RuleML Attributes" ]
+dc:version [ "1.02" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Paschkea" ]
+dc:subject [ "RuleML, Consumer, attributes" ]
+dc:description [ "The expansion module for Consumer RuleML attributes beyond Deliberation RuleML." ]
+dc:language [ "en" ]
+dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
+dcterms:relation [ "http://consumer.ruleml.org" ]
+start |= notAllowed
+# This module declares the following Consumer RuleML attributes:
+#    * @style (reference to a profile definition)	
+# 
+#
+
+style-att.choice |= style.attrib.def
+style.attrib.def =
+  
+  ## @style: defines a reference to a semantic profile. See
+  ## http://consumer.ruleml.org/1.02/glossary/#.40style
+  attribute style { style.value }
+style.value |= PrefixedCURIE.datatype
+style.value |= AbsIRI.datatype
+# 
+# a group of attributes for generic Nodes
+#
+generic-Node.attlist &= commonNode.attlist?
+generic-Node.attlist &= type-att.choice?
+generic-Node.attlist &= style-att.choice?
+#
+generic-Formula.attlist &= generic-Node.attlist?
+generic-Formula.attlist &= closure-att.choice?
+# 
+# a group of attributes for the meta knowledge interface of knowledge formulas
+# that may have implicit closure
+#
+formula-interface-ext.attlist &= style-att.choice?
+formula-interface.attlist &= formula-interface-ext.attlist?
+formula-interface.attlist &= closure-att.choice?
+# 
+# a group of attributes for the meta knowledge interface of all connectives/operators in Consumer RuleML
+#
+operator-interface-ext.attlist &= style-att.choice?
+operator-interface.attlist &= operator-interface-ext.attlist?
+operator-interface.attlist &= closure-att.choice?
+# 
+# extension of optional attribute groups on formulas from Deliberation RuleML
+#
+reAtom.attlist &= style-att.choice?
+reEqual.attlist &= style-att.choice?
+reAnd.attlist &= style-att.choice?
+reOr.attlist &= style-att.choice?
+reNaf.attlist &= style-att.choice?
+reNeg.attlist &= style-att.choice?
+reImplies.attlist &= style-att.choice?
+reEquivalent.attlist &= style-att.choice?
+reForall.attlist &= style-att.choice?
+reExists.attlist &= style-att.choice?
+# 
+# extension of optional attribute groups on Fun and Rel from Deliberation RuleML
+#
+reExpr.attlist &= style-att.choice?
+rePlex.attlist &= style-att.choice?
+reFun.attlist &= type-att.choice?
+reRel.attlist &= type-att.choice?
+# 
+# a dummy element to assist in XSD conversion
+#
+DummyElement.def = element Dummy { formula-interface.attlist }

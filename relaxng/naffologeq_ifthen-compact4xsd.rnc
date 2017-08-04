@@ -248,9 +248,9 @@ include "modules/init_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 #
 # KEY/KEYREF ATTRIBUTES ENABLED
 #
-include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_key_expansion_module.rnc"  inherit = ruleml {start |= notAllowed}
+include "modules/key_expansion_module.rnc"  inherit = ruleml {start |= notAllowed}
 #
 # STYLE ATTRIBUTE ENABLED
 #
-include "http://consumer.ruleml.org/1.02/relaxng/modules/consumer_attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/attribute_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 
