@@ -351,7 +351,6 @@ if ($bdefault==0){
     $schemaLocation='';
   }
   $modulesLocation = $schemaLocation . 'modules/';
-  $consumerModulesLocation = 'http://consumer.ruleml.org/1.02/relaxng/modules/';
 
   //Step 1A. Assemble the propositional language 
   // Add the start statement
@@ -836,18 +835,17 @@ if ($bdefault==0){
       echo "#\n".'include "' . $modulesLocation .
           'init_expansion_module.rnc"'."$end\n";
     }
-  //Step 4C. Include Consumer modules  
-  // Include key and keyref attributes
+  //Step 4C. Include key and keyref attributes  
   if ($enableKey){
       echo "#\n# KEY/KEYREF ATTRIBUTES ENABLED\n";
-      echo "#\n".'include "' . $consumerModulesLocation .
-          'consumer_key_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' .
+          'modules/key_expansion_module.rnc"'."$end\n";
   }
   // Include key and keyref attributes
   if ($enableStyle){
       echo "#\n# STYLE ATTRIBUTE ENABLED\n";
-      echo "#\n".'include "' . $consumerModulesLocation .
-          'consumer_attribute_expansion_module.rnc"'."$end\n";
+      echo "#\n".'include "' .
+          'modules/attribute_expansion_module.rnc"'."$end\n";
   }
 
 
