@@ -2562,7 +2562,7 @@
             <xs:annotation>
                 <xs:documentation>An attribute indicating how the in-scope free variables are
                     quantified.  Predefined values are "universal" and "existential". See
-                    http://deliberation.ruleml.org/1.03/glossary/.40closure</xs:documentation>
+                    http://deliberation.ruleml.org/1.03/glossary/#.40closure</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
@@ -2571,7 +2571,7 @@
             <xs:annotation>
                 <xs:documentation>An attribute indicating how the in-scope free variables are
                     quantified.  Predefined values are "universal" and "existential". See
-                    http://deliberation.ruleml.org/1.03/glossary/.40closure</xs:documentation>
+                    http://deliberation.ruleml.org/1.03/glossary/#.40closure</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
@@ -2746,7 +2746,7 @@
         <xs:attribute name="style" type="ruleml:style.value">
             <xs:annotation>
                 <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+                    http://deliberation.ruleml.org/1.03/glossary/#.40style</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
@@ -2769,7 +2769,7 @@
         <xs:annotation>
             <xs:documentation>@key: defines a unique key attribute which can be used for distributed
                 referencing from a keyref attribute. See
-                http://consumer.ruleml.org/1.02/glossary/#.40key</xs:documentation>
+                http://deliberation.ruleml.org/1.03/glossary/#.40key</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:key.attrib.def"/>
     </xs:attributeGroup>
@@ -2782,7 +2782,7 @@
     <xs:attributeGroup name="keyref-att.choice">
         <xs:annotation>
             <xs:documentation>@keyref: defines a reference to a corresponding unique key. See
-                http://consumer.ruleml.org/1.02/glossary/#.40keyref</xs:documentation>
+                http://deliberation.ruleml.org/1.03/glossary/#.40keyref</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:keyref.attrib.def"/>
     </xs:attributeGroup>
@@ -2800,7 +2800,7 @@
         <xs:attribute name="style" type="ruleml:style.value" use="required">
             <xs:annotation>
                 <xs:documentation>@style: defines a reference to a semantic profile. See
-                    http://consumer.ruleml.org/1.02/glossary/#.40style</xs:documentation>
+                    http://deliberation.ruleml.org/1.03/glossary/#.40style</xs:documentation>
             </xs:annotation>
         </xs:attribute>
     </xs:attributeGroup>
