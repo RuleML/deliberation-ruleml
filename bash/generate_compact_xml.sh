@@ -52,6 +52,7 @@ done
 # Validate instances
 for file in "${INSTANCE_COMPACT_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"
@@ -92,6 +93,7 @@ done
 # Validate instances
 for file in "${INSTANCE_COMPACT_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${sfile}" "${file}"

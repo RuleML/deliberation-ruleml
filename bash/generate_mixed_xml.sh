@@ -68,6 +68,7 @@ done
 #       validate against the relaxed serialization RNC schema and the mixed serialization XSD schema
 for file in "${INSTANCE_MIXED_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${rsfile}" "${file}"
@@ -120,6 +121,7 @@ done
 # Test: output of the compactifier validates against the compact serialization RNC and XSD schema
 for file in "${INSTANCE_COMPACT_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${csfile}" "${file}"
@@ -158,6 +160,7 @@ done
 # Test: output of the normalizer validates against the normalized RNC and XSDserialization schema
 for file in "${INSTANCE_NORMAL_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
@@ -187,6 +190,7 @@ done
 # Validate instances
 for file in "${INSTANCE_NORMAL_HOME}"*.ruleml 
 do
+  sleep 2
   filename=$(basename "${file}")
   echo "Validating File ${filename}"
   "${BASH_HOME}aux_valrnc.sh" "${nsfile}" "${file}"
