@@ -46,7 +46,7 @@ for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
 do
   filename=$(basename "$f")
   echo "Transforming  ${filename}"
-  "${BASH_HOME}aux_xslt.sh" "${f}" "${COMPACT_XSLT_HOME}1.03_compactifier.xslt" "${COMPACT_SUITE_HOME}${filename}"
+  "${BASH_HOME}aux_xslt.sh" "${f}" "${COMPACT_XSLT_HOME}compactifier.xslt" "${COMPACT_SUITE_HOME}${filename}"
   if [[ "$?" -ne "0" ]]; then
      echo "XSLT Transformation Failed for  ${filename}"
      exit 1
