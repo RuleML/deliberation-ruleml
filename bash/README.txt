@@ -52,6 +52,15 @@ These scripts call incremental build scripts which can be manually activated for
 See the top-level build scripts for details.
 
 (Optional)
+If you are creating a new bash script, the permissions of that file must be modified in order to make sure it is executable.
+The following steps should be followed:
+1.  Open the terminal
+2.  Navigate to the path of the new script on the machine:
+    $ cd /path/to/clone/deliberation/bash/
+3.  Enter the following command:
+    $ chmod a+x scriptname.sh
+The script should now be executable.
+
 If you use oXygen for editing your files, "External tools" can be made to facilitate the process of running the scripts.
 Creating an external tool (oXygen v. 19):
 1.  Within oXygen, locate "Tools" from the top-bar menu.
