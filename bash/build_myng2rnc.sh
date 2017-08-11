@@ -12,6 +12,9 @@
 shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
+# Generates indep valid files for rnc files in modules
+"${BASH_HOME}batch_module2indep_valid.sh"
+
 # Validate modules individually
 echo "Build script validates each module individually"
 echo ""
