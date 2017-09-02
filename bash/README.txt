@@ -5,24 +5,25 @@ There are two top-level build scripts:
 * build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
 
 Preliminaries:
-1.  Create a symbolic link from the relaxng/modules directory to relaxng/drivers/modules. From the repository home directory:
+0.  If directories <Dir> for 1. don't exist yet, create them with mkdir -p <Dir>
+1.  Create a symbolic links from the relaxng/modules directory to relaxng/drivers/modules. From the repository home directory:
     For Unix/Mac systems:
     $ cd ./relaxng/drivers
     $ ln -s ../modules/ modules
     
-    $ cd ../relaxng/drivers4simp
+    $ cd ../drivers4simp
     $ ln -s ../modules/ modules
 
-    $ cd ../relaxng/drivers4xsd
+    $ cd ../drivers4xsd
     $ ln -s ../modules/ modules 
     
-    $ cd ../relaxng/drivers4xsd_normal
+    $ cd ../drivers4xsd_normal
     $ ln -s ../modules/ modules
     
-    $ cd ../relaxng/drivers4xsd_normal_min
+    $ cd ../drivers4xsd_normal_min
     $ ln -s ../modules/ modules
    
-    $ cd ../relaxng/drivers4xsd_min
+    $ cd ../drivers4xsd_min
     $ ln -s ../modules/ modules
 
 2.  Ensure that GIT is installed.
