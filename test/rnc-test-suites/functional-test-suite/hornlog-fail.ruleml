@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/drivers/hornlog_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- a syntactic example rulebase for testing a counter-example (<Expr> in <repo>) for the Hornlog RuleML sublanguage -->
+
+  <Assert>
+    <Atom>
+      <Rel>p</Rel>
+      <Plex>
+        <repo>
+          <Expr>
+            <Fun>f</Fun>
+          </Expr>
+        </repo>
+      </Plex>
+    </Atom>
+
+  </Assert>
+
+</RuleML>
