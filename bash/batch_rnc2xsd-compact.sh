@@ -23,6 +23,7 @@ finish=false
 # Apply XSLT transforamtions
 for f in "${RNC_HOME}"*4xsd.rnc
 do
+  sleep 2
   filename=$(basename "$f")
   filenameNE=$(expr "${filename%.*}" : '\(.*\)4xsd' )
   fxsd="${XSD_HOME}${filenameNE}.xsd"

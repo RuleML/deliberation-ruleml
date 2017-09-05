@@ -19,6 +19,7 @@ fi
 # Validate schema against JAXB
 # if the number of input arguments is one, or the schema validiation flag (third argument) is set
 if [[ "$#" -eq 1 ]] || [[ -e "$3"  &&  "$3" -eq "1" ]]; then
+  sleep 2
   echo "Validating  $1  with JAXB"
   java -jar "${JAXB_HOME}lib/jaxb-xjc.jar" "$1" -disableXmlSecurity -d "${TMPDIR}"
   if [[ "$?" -ne "0" ]]; then
@@ -29,6 +30,7 @@ fi
     
  # Validate (using xmllint) the second argument as an instance, if the file exists  
  if [[ -e "$2" ]]; then
+   sleep 2
    xmllint -noout --schema "$1" "$2"
    if [[ "$?" -ne "0" ]]; then
      echo "Validation Failed for instance $2"
