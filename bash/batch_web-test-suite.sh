@@ -47,6 +47,7 @@ do
   filename=$(basename "${file}")
   echo "File ${filename}"
   while read -r; do
+     sleep 2
      echo "Line ${REPLY}"
      if [[ ${REPLY} =~ ^.*schemaLocation=\"http://ruleml.org/spec\s ]]
      then     

@@ -8,6 +8,7 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 # Validate all XSD schemas in the XSD_HOME directory
 for f in "${XSD_HOME}"*.xsd
 do
+  sleep 2
   filename=$(basename "$f")
   "${BASH_HOME}aux_valxsd.sh" "${f}"
   if [[ "$?" -ne "0" ]]; then

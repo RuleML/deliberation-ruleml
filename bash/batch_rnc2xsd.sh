@@ -98,6 +98,7 @@ done
 # Validate the resulting XSD schemas
 for f in "${XSD_HOME}"*.xsd
 do
+  sleep 2
   filename=$(basename "$f")
   "${BASH_HOME}aux_valxsd.sh" "${f}"
   if [[ "$?" -ne "0" ]]; then
