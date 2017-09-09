@@ -59,4 +59,4 @@ cp "${RNC_HOME}nafhologeq_compact4xsd.rnc" "${RNC4XSD_HOME}nafhologeq_compact.rn
 cp "${RNC_HOME}nafhologeq_ifthen-compact4xsd.rnc" "${RNC4XSD_HOME}nafhologeq_ifthen-compact.rnc"
 cp "${RNC_HOME}nafhologeq_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}nafhologeq_normal.rnc"
 cp "${RNC_HOME}nafhologeq4xsd.rnc" "${RNC4XSD_HOME}nafhologeq.rnc"
-
+cp "${RNC_HOME}hornlogrepoexpr4xsd.rnc" "${RNC4XSD_HOME}hornlogrepoexpr.rnc"
