@@ -63,19 +63,19 @@ do
     "${BASH_HOME}aux_valxsd.sh" "${cfile}" "${file}"
     exitvalue=$?
     if [[ "${exitvalue}" -ne "1" ]]; then
-          echo "Compact Validation Succeeded for Normal ${file}"
+          echo "XSD Compact Validation Succeeded for Normal ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "Validation Failed for Normal ${file}"
+          echo "XSD Validation Failed for Normal ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "Validation Failed for Compact ${file}"
+          echo "RNC Validation Failed for Normal ${file}"
           exit 1
     fi       
 done

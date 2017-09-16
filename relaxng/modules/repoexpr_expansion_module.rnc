@@ -13,7 +13,7 @@ dc:rights [
 ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
-start |= repo.edge.def
+start |= notAllowed
 # This module extends the following RuleML elements and attributes:
 #            * <repo>
 
