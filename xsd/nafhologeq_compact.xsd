@@ -3097,6 +3097,7 @@
         <xs:choice>
             <xs:group ref="ruleml:SequenceMarker.choice"/>
             <xs:group ref="ruleml:Plex_repo-node.choice"/>
+            <xs:group ref="ruleml:Expression-node.choice"/>
         </xs:choice>
     </xs:complexType>
     
@@ -3113,6 +3114,7 @@
     <xs:attributeGroup name="repo.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
     </xs:attributeGroup>
+    
     
     <xs:group name="Plex_Any-node.choice">
         <xs:annotation>
@@ -3475,6 +3477,7 @@
             <xs:group ref="ruleml:head_Implies-ss.content"/>
         </xs:sequence>
     </xs:group>
+    
     
     
     
