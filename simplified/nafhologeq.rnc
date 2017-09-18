@@ -2672,7 +2672,7 @@ repo =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Var | Plex_3)
+    & (Var | Plex_3 | Expr | Uniterm_2)
   }
 act =
   element act {

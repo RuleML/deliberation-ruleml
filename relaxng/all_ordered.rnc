@@ -89,6 +89,7 @@ include "modules/reify_any_expansion_module.rnc" inherit = ruleml {start |= notA
 include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/reify_nodes_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/repoexpr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
