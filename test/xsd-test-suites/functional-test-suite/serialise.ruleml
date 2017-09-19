@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_relaxed.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<!--<?xml-model href="../../../xsd/nafhologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/nafhologeq.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/nafhologeq.xsd">
 
   <Assert mapClosure="universal">
 
@@ -10,10 +11,12 @@
       <Atom>
         <Rel>numbered</Rel>
         <Expr>
-          <Expr per="value">
-            <Fun per="copy">qsort</Fun>
-            <Const>before</Const>
-          </Expr>
+          <op>
+            <Expr per="value">
+              <Fun per="copy">qsort</Fun>
+              <Const>before</Const>
+            </Expr>
+          </op>
           <Expr>
             <Fun per="value">pairlists</Fun>
             <Var>l</Var>
@@ -105,10 +108,12 @@
 
     <Equal oriented="yes">
       <Expr>
-        <Expr per="value">
-          <Fun per="copy">qsort</Fun>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <Fun per="copy">qsort</Fun>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Plex/>
       </Expr>
       <Plex/>
@@ -116,10 +121,12 @@
 
     <Implies>
       <Atom>
-        <Expr per="value">
-          <Const per="copy">partition</Const>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Var>x</Var>
         <Var>y</Var>
         <Var>sm</Var>
@@ -127,10 +134,12 @@
       </Atom>
       <Equal oriented="yes">
         <Expr>
-          <Expr per="value">
-            <Fun per="copy">qsort</Fun>
-            <Var>cr</Var>
-          </Expr>
+          <op>
+            <Expr per="value">
+              <Fun per="copy">qsort</Fun>
+              <Var>cr</Var>
+            </Expr>
+          </op>
           <Plex>
             <Var>x</Var>
             <repo>
@@ -141,10 +150,12 @@
         <Expr>
           <Fun per="value">cat</Fun>
           <Expr>
-            <Expr per="value">
-              <Fun per="copy">qsort</Fun>
-              <Var>cr</Var>
-            </Expr>
+            <op>
+              <Expr per="value">
+                <Fun per="copy">qsort</Fun>
+                <Var>cr</Var>
+              </Expr>
+            </op>
             <Var>sm</Var>
           </Expr>
           <Expr>
@@ -152,10 +163,12 @@
             <Var>x</Var>
             <repo>
               <Expr>
-                <Expr per="value">
-                  <Fun per="copy">qsort</Fun>
-                  <Var>cr</Var>
-                </Expr>
+                <op>
+                  <Expr per="value">
+                    <Fun per="copy">qsort</Fun>
+                    <Var>cr</Var>
+                  </Expr>
+                </op>
                 <Var>gr</Var>
               </Expr>
             </repo>
@@ -167,15 +180,17 @@
     <Implies>
       <And>
         <Atom>
-          <Var>cr</Var>
+          <op><Var>cr</Var></op>
           <Var>y</Var>
           <Var>x</Var>
         </Atom>
         <Atom>
-          <Expr per="value">
-            <Const per="copy">partition</Const>
-            <Var>cr</Var>
-          </Expr>
+          <op>
+            <Expr per="value">
+              <op><Const per="copy">partition</Const></op>
+              <Var>cr</Var>
+            </Expr>
+          </op>
           <Var>x</Var>
           <Var>z</Var>
           <Var>sm</Var>
@@ -183,10 +198,12 @@
         </Atom>
       </And>
       <Atom>
-        <Expr per="value">
-          <Const per="copy">partition</Const>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Var>x</Var>
         <Plex>
           <Var>y</Var>
@@ -207,15 +224,17 @@
     <Implies>
       <And>
         <Atom>
-          <Var>cr</Var>
+          <op><Var>cr</Var></op>
           <Var>x</Var>
           <Var>y</Var>
         </Atom>
         <Atom>
-          <Expr per="value">
-            <Const per="copy">partition</Const>
-            <Var>cr</Var>
-          </Expr>
+          <op>
+            <Expr per="value">
+              <op><Const per="copy">partition</Const></op>
+              <Var>cr</Var>
+            </Expr>
+          </op>
           <Var>x</Var>
           <Var>z</Var>
           <Var>sm</Var>
@@ -223,10 +242,12 @@
         </Atom>
       </And>
       <Atom>
-        <Expr per="value">
-          <Const per="copy">partition</Const>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Var>x</Var>
         <Plex>
           <Var>y</Var>
@@ -246,20 +267,24 @@
 
     <Implies>
       <Atom>
-        <Expr per="value">
-          <Const per="copy">partition</Const>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Var>x</Var>
         <Var>z</Var>
         <Var>sm</Var>
         <Var>gr</Var>
       </Atom>
       <Atom>
-        <Expr per="value">
-          <Const per="copy">partition</Const>
-          <Var>cr</Var>
-        </Expr>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
         <Var>x</Var>
         <Plex>
           <Var>x</Var>
@@ -273,10 +298,12 @@
     </Implies>
 
     <Atom>
-      <Expr per="value">
-        <Const per="copy">partition</Const>
-        <Var>cr</Var>
-      </Expr>
+      <op>
+        <Expr per="value">
+          <op><Const per="copy">partition</Const></op>
+          <Var>cr</Var>
+        </Expr>
+      </op>
       <Var>x</Var>
       <Plex/>
       <Plex/>
@@ -290,7 +317,7 @@
         <Var>x2</Var>
       </Atom>
       <Atom>
-        <Const>before</Const>
+        <op><Const>before</Const></op>
         <Plex>
           <Var>x1</Var>
           <Var>y1</Var>

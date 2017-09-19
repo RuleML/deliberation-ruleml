@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/nafhologeq_relaxed.rnc"?>
+  <RuleML xmlns="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/nafhologeq.xsd">
+
+  <Assert mapClosure="universal">
+
+    <Implies>
+      <Atom>
+        <Rel>numbered</Rel>
+        <Expr>
+          <op>
+            <Expr per="value">
+              <Fun per="copy">qsort</Fun>
+              <Const>before</Const>
+            </Expr>
+          </op>
+          <Expr>
+            <Fun per="value">pairlists</Fun>
+            <Var>l</Var>
+            <Var>r</Var>
+          </Expr>
+        </Expr>
+        <Data>1</Data>
+      </Atom>
+      <Equal oriented="yes">
+        <Expr>
+          <Fun per="value">serialise</Fun>
+          <Var>l</Var>
+        </Expr>
+        <Var>r</Var>
+      </Equal>
+    </Implies>
+
+    <Equal oriented="yes">
+      <Expr>
+        <Fun per="value">pairlists</Fun>
+        <Plex/>
+        <Plex/>
+      </Expr>
+      <Plex/>
+    </Equal>
+
+    <Equal oriented="yes">
+      <Expr>
+        <Fun per="value">pairlists</Fun>
+        <Plex>
+          <Var>x</Var>
+          <repo>
+            <Var>l</Var>
+          </repo>
+        </Plex>
+        <Plex>
+          <Var>y</Var>
+          <repo>
+            <Var>m</Var>
+          </repo>
+        </Plex>
+      </Expr>
+      <Expr>
+        <Fun per="value">Plex</Fun>
+        <Plex>
+          <Var>x</Var>
+          <Var>y</Var>
+        </Plex>
+        <repo>
+          <Expr>
+            <Fun per="value">pairlists</Fun>
+            <Var>l</Var>
+            <Var>m</Var>
+          </Expr>
+        </repo>
+      </Expr>
+    </Equal>
+
+    <Atom>
+      <Rel>numbered</Rel>
+      <Plex/>
+      <Var>n</Var>
+    </Atom>
+
+    <Implies>
+      <Atom>
+        <Rel>numbered</Rel>
+        <Var>r</Var>
+        <Expr>
+          <Fun per="value">+</Fun>
+          <Var>n</Var>
+          <Data>1</Data>
+        </Expr>
+      </Atom>
+      <Atom>
+        <Rel>numbered</Rel>
+        <Plex>
+          <Plex>
+            <Var>x</Var>
+            <Var>n</Var>
+          </Plex>
+          <repo>
+            <Var>r</Var>
+          </repo>
+        </Plex>
+        <Var>n</Var>
+      </Atom>
+    </Implies>
+
+    <Equal oriented="yes">
+      <Expr>
+        <op>
+          <Expr per="value">
+            <Fun per="copy">qsort</Fun>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Plex/>
+      </Expr>
+      <Plex/>
+    </Equal>
+
+    <Implies>
+      <Atom>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Var>x</Var>
+        <Var>y</Var>
+        <Var>sm</Var>
+        <Var>gr</Var>
+      </Atom>
+      <Equal oriented="yes">
+        <Expr>
+          <op>
+            <Expr per="value">
+              <Fun per="copy">qsort</Fun>
+              <Var>cr</Var>
+            </Expr>
+          </op>
+          <Plex>
+            <Var>x</Var>
+            <repo>
+              <Var>y</Var>
+            </repo>
+          </Plex>
+        </Expr>
+        <Expr>
+          <Fun per="value">cat</Fun>
+          <Expr>
+            <op>
+              <Expr per="value">
+                <Fun per="copy">qsort</Fun>
+                <Var>cr</Var>
+              </Expr>
+            </op>
+            <Var>sm</Var>
+          </Expr>
+          <Expr>
+            <Fun per="value">Plex</Fun>
+            <Var>x</Var>
+            <repo>
+              <Expr>
+                <op>
+                  <Expr per="value">
+                    <Fun per="copy">qsort</Fun>
+                    <Var>cr</Var>
+                  </Expr>
+                </op>
+                <Var>gr</Var>
+              </Expr>
+            </repo>
+          </Expr>
+        </Expr>
+      </Equal>
+    </Implies>
+
+    <Implies>
+      <And>
+        <Atom>
+          <op><Var>cr</Var></op>
+          <Var>y</Var>
+          <Var>x</Var>
+        </Atom>
+        <Atom>
+          <op>
+            <Expr per="value">
+              <op><Const per="copy">partition</Const></op>
+              <Var>cr</Var>
+            </Expr>
+          </op>
+          <Var>x</Var>
+          <Var>z</Var>
+          <Var>sm</Var>
+          <Var>gr</Var>
+        </Atom>
+      </And>
+      <Atom>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Var>x</Var>
+        <Plex>
+          <Var>y</Var>
+          <repo>
+            <Var>z</Var>
+          </repo>
+        </Plex>
+        <Plex>
+          <Var>y</Var>
+          <repo>
+            <Var>sm</Var>
+          </repo>
+        </Plex>
+        <Var>gr</Var>
+      </Atom>
+    </Implies>
+
+    <Implies>
+      <And>
+        <Atom>
+          <op><Var>cr</Var></op>
+          <Var>x</Var>
+          <Var>y</Var>
+        </Atom>
+        <Atom>
+          <op>
+            <Expr per="value">
+              <op><Const per="copy">partition</Const></op>
+              <Var>cr</Var>
+            </Expr>
+          </op>
+          <Var>x</Var>
+          <Var>z</Var>
+          <Var>sm</Var>
+          <Var>gr</Var>
+        </Atom>
+      </And>
+      <Atom>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Var>x</Var>
+        <Plex>
+          <Var>y</Var>
+          <repo>
+            <Var>z</Var>
+          </repo>
+        </Plex>
+        <Var>sm</Var>
+        <Plex>
+          <Var>y</Var>
+          <repo>
+            <Var>gr</Var>
+          </repo>
+        </Plex>
+      </Atom>
+    </Implies>
+
+    <Implies>
+      <Atom>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Var>x</Var>
+        <Var>z</Var>
+        <Var>sm</Var>
+        <Var>gr</Var>
+      </Atom>
+      <Atom>
+        <op>
+          <Expr per="value">
+            <op><Const per="copy">partition</Const></op>
+            <Var>cr</Var>
+          </Expr>
+        </op>
+        <Var>x</Var>
+        <Plex>
+          <Var>x</Var>
+          <repo>
+            <Var>z</Var>
+          </repo>
+        </Plex>
+        <Var>sm</Var>
+        <Var>gr</Var>
+      </Atom>
+    </Implies>
+
+    <Atom>
+      <op>
+        <Expr per="value">
+          <op><Const per="copy">partition</Const></op>
+          <Var>cr</Var>
+        </Expr>
+      </op>
+      <Var>x</Var>
+      <Plex/>
+      <Plex/>
+      <Plex/>
+    </Atom>
+
+    <Implies>
+      <Atom>
+        <Rel>stringlt</Rel>
+        <Var>x1</Var>
+        <Var>x2</Var>
+      </Atom>
+      <Atom>
+        <op><Const>before</Const></op>
+        <Plex>
+          <Var>x1</Var>
+          <Var>y1</Var>
+        </Plex>
+        <Plex>
+          <Var>x2</Var>
+          <Var>y2</Var>
+        </Plex>
+      </Atom>
+    </Implies>
+
+    <Equal oriented="yes">
+      <Expr>
+        <Fun per="value">cat</Fun>
+        <Plex/>
+        <Var>l</Var>
+      </Expr>
+      <Var>l</Var>
+    </Equal>
+
+    <Equal oriented="yes">
+      <Expr>
+        <Fun per="value">cat</Fun>
+        <Plex>
+          <Var>h</Var>
+          <repo>
+            <Var>r</Var>
+          </repo>
+        </Plex>
+        <Var>l</Var>
+      </Expr>
+      <Expr>
+        <Fun per="value">Plex</Fun>
+        <Var>h</Var>
+        <repo>
+          <Expr>
+            <Fun per="value">cat</Fun>
+            <Var>r</Var>
+            <Var>l</Var>
+          </Expr>
+        </repo>
+      </Expr>
+    </Equal>
+
+  </Assert>
+
+</RuleML>
