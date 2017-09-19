@@ -1511,10 +1511,24 @@
     <xs:complexType name="Const.type.def">
         <xs:simpleContent>
             <xs:extension base="ruleml:Ind.value">
-                <xs:attributeGroup ref="ruleml:reInd.attlist"/>
+                <xs:attributeGroup ref="ruleml:Const-datt.choice"/>
+                <xs:attributeGroup ref="ruleml:reConst.attlist"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+    <xs:attributeGroup name="Const-datt.choice">
+        <xs:annotation>
+            <xs:documentation>constants have interpretation as an attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:interpretation-att-inf.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="reConst.attlist">
+        <xs:annotation>
+            <xs:documentation>constants have the attribute pattern of
+                individuals.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:reInd.attlist"/>
+    </xs:attributeGroup>
     
     <xs:attributeGroup name="Expr-datt.choice">
         <xs:annotation>

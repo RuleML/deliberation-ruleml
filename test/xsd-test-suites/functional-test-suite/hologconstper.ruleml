@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="../../../xsd/nafhologeq.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/nafhologeq.xsd">
+
+  <!-- a syntactic example rulebase for testing an example (<Const> with @per) for the
+       Holog RuleML sublanguage extended with constants used as operators of,
+       e.g. evaluated, functional expressions -->
+
+  <Assert>
+    <Atom>
+      <op>
+        <Expr>
+          <op><Const per="value">c</Const></op>
+        </Expr>
+      </op>
+    </Atom>   
+    <Atom>
+      <op>
+        <Expr>
+          <op><Const per="copy">c</Const></op>
+        </Expr>
+      </op>
+    </Atom>
+  </Assert>
+
+</RuleML>

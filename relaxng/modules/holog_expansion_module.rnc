@@ -47,4 +47,10 @@ Const.Node.def =
   ## <Const>: a constant for Holog languages. See 
   ## http://deliberation.ruleml.org/1.03/glossary/#gloss-Const
   element Const { Const.type.def }
-Const.type.def = (Ind-datt.choice & reInd.attlist), Ind.value
+Const.type.def = (Const-datt.choice & reConst.attlist), Ind.value
+
+## constants have interpretation as an attribute.
+Const-datt.choice |= interpretation-att-inf.choice
+
+## constants have the attribute pattern of individuals.
+reConst.attlist &= reInd.attlist?
