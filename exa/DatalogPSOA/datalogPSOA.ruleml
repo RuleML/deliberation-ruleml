@@ -8,34 +8,38 @@
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
   <!-- a syntactic example rulebase for testing the Datalog PSOA RuleML sublanguage -->
+  <act index="1">
+    <Assert mapClosure="universal">
 
-  <Assert mapClosure="universal">
-    <Implies node="this:#rule1">
-      <if>
-        <Atom>
-          <oid>
-            <Ind>John</Ind>
-          </oid>
-          <op>
-            <Rel>TA</Rel>
-          </op>
-          <slotdep>
-            <Ind>workload</Ind>
-            <Ind>high</Ind>
-          </slotdep>
-        </Atom>
-      </if>
-      <then>
-        <Atom>
-          <op>
-            <Rel>friend</Rel>
-          </op>
-          <slotdep>
-            <Ind>time</Ind>
-            <Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data>
-          </slotdep>
-        </Atom>
-      </then>
-    </Implies>
-  </Assert>
+      <formula>
+        <Implies node="this:#rule1">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>John</Ind>
+              </oid>
+              <op>
+                <Rel>TA</Rel>
+              </op>
+              <slotdep>
+                <Ind>workload</Ind>
+                <Ind>high</Ind>
+              </slotdep>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>friend</Rel>
+              </op>
+              <slotdep>
+                <Ind>time</Ind>
+                <Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data>
+              </slotdep>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+    </Assert>
+  </act>
 </RuleML>
