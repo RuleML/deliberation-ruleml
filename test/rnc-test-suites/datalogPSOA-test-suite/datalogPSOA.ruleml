@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalogPSOA_relaxed.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<?xml-model href="../../../relaxng/datalogPSOA_normal.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
