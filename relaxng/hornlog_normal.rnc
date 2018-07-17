@@ -3,14 +3,14 @@ namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x0&serial=x4c" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=x4c" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, custom-built" ]
 dcterms:description [
     "custom-built main module for a Deliberation RuleML language."
 ]
-dcterms:date [ "2018-07-12T18:31:36+00:00" ]
+dcterms:date [ "2018-07-17T18:16:01+00:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
@@ -18,7 +18,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
 # Base URL = http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php 
 # Complete URL = 
-#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x0&serial=x4c
+#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=xf&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x3&serial=x4c
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -42,6 +42,14 @@ include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= no
 # QUANTIFICATION OVER VARIABLES INCLUDED
 #
 include "modules/quantification_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# EXPRESSIONS INCLUDED
+#
+include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/expr_type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED
 #
@@ -150,10 +158,6 @@ include "modules/material_default_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# DEPENDENT SLOTS INCLUDED
-#
-include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
 # SLOTS INCLUDED
 #
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -207,6 +211,18 @@ include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 # POSITIONAL REST VARIABLES INCLUDED
 #
 include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# GENERALIZED LISTS INCLUDED
+#
+include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED
+#
+include "modules/per_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUE OF EXPRESSION INTERPRETATION INCLUDED
+#
+include "modules/per_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INITIALIZATION MODULES INCLUDED
 #

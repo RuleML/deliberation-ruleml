@@ -127,6 +127,8 @@ xmlbase.attlist &= empty
 xmlid.attlist &= empty
 # 
 # SEQUENCES
+slotdepTermsForAtoms.sequence |= empty
+slotdepTermsForExpressions.sequence |= empty
 slotTermsForAtoms.sequence |= empty
 slotTermsForExpressions.sequence |= empty
 termsForAtoms.sequence |= empty

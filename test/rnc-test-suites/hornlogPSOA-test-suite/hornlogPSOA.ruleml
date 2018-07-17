@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../../../relaxng/datalogPSOA_normal.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
+<?xml-model href="../../../relaxng/hornlogPSOA_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/hornlogPSOA.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
@@ -20,6 +20,20 @@
                 <Rel>TA</Rel>
               </op>
               <arg index="1">
+                <Expr>
+                  <op>
+                    <Fun>Professor</Fun>
+                  </op>
+                  <arg index="1">
+                    <Ind>Suneel</Ind>
+                  </arg>
+                  <slotdep>
+                    <Ind>wife</Ind>
+                    <Ind>Rima</Ind>
+                  </slotdep>
+                </Expr>
+              </arg>
+              <arg index="2">
                 <Ind>Sue</Ind>
               </arg>
               <slotdep>
