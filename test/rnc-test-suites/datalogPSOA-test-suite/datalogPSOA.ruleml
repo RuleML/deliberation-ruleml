@@ -19,10 +19,17 @@
               <op>
                 <Rel>TA</Rel>
               </op>
+              <arg index="1">
+                <Ind>Sue</Ind>
+              </arg>
               <slotdep>
                 <Ind>workload</Ind>
                 <Ind>high</Ind>
               </slotdep>
+              <slot>
+                <Ind>freetime</Ind>
+                <Ind>low</Ind>
+              </slot>
             </Atom>
           </if>
           <then>
