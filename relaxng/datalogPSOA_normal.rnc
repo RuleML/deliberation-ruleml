@@ -150,13 +150,13 @@ include "modules/material_default_expansion_module.rnc" inherit = ruleml {start 
 #
 include "modules/oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
-# SLOTS INCLUDED
-#
-include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
 # DEPENDENT SLOTS INCLUDED
 #
 include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# SLOTS INCLUDED
+#
+include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # SLOT CARDINALITY INCLUDED
 #
