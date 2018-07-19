@@ -12,7 +12,7 @@ deliberation-ruleml
  
 Prerequisites
 -------------
-1. To contribute to this repository, you must have the following installed on your system (besides Java): 
+1. To contribute to this repository, you must have the following installed on your system (besides Java JRE): 
     1.1 Git, See ([7])
     1.2 JAXB, See ([9])
     1.3 PHP, See ([10])
