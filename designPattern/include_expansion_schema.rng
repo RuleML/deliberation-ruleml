@@ -21,7 +21,7 @@
   <dcterms:rights>http://ruleml.org/licensing/RSL1.0-RuleML</dcterms:rights>
   <dcterms:relation>http://deliberation.ruleml.org</dcterms:relation>
   <dcterms:relation>http://relaxng.org/relaxng.rng</dcterms:relation>
-  <include href="http://relaxng.org/relaxng.rng">
+  <include href="relaxng.rng">
     <define name="pattern">
       <choice>
         <element name="element">
