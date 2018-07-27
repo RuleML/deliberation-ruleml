@@ -164,7 +164,7 @@ include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAll
 #
 # SLOTS INCLUDED
 #
-#include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # SLOT CARDINALITY INCLUDED
 #
