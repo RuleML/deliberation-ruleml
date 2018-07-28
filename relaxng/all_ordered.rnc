@@ -1,4 +1,4 @@
- namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/terms/"
 namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
@@ -95,6 +95,7 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
