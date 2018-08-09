@@ -4,6 +4,9 @@ There are two top-level build scripts:
 * build_myng.sh : this builds the generated RNC and XSD locally and tests it against local test suites
 * build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
 
+Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linus on WSL(Windows Sybsystem for Linux)
+For WSL users there is a special section at the end.
+
 Preliminaries:
 0.  If directories <Dir> for 1. don't exist yet, create them with mkdir -p <Dir>
 1.  Create a symbolic links from the relaxng/modules directory to relaxng/drivers/modules. From the repository home directory:
@@ -78,3 +81,38 @@ Now that this is done, you can easily run the bash scripts of the project by fol
 3.  Click on the tool you just created.
 
 A command  prompt should now appear within the oXygen console displaying the progress of the script.
+
+WSL specific instructions:
+
+I] Steps to change flattenSchems.sh, xmlGenerator.sh and schemaDocumentation.sh
+
+1. Change sh to bash in "#!bin/   /"
+
+2. Make changes by removing the patch of
+	# Resolve the location of the oxygen installation.
+	# This includes resolving any symlinks.
+	and
+	# Absolutize dir
+	
+  a. Removing the original code that creates the variable $OXYGEN_HOME 
+    
+  b. Change $Oxygen_Home to OXYGEN_HOME="/mnt/c/Program Files/Oxygen XML Editor 20"
+
+3. Change every line in Classpath to update the latest version number, but dont change the  sequence of the line.Break the Classpath temporarily into separate lines
+  example: 
+  '$OXYGEN_HOME/lib/guava-19.0.jar' becomes '$OX_HOME/lib/guava-23.0.jar'
+
+4. Change in last section
+
+"${OXYGEN_JAVA}" \
+ -Xmx256m\
+ -XX:SoftRefLRUPolicyMSPerMB=10\
+ -cp "$CP"\
+ ro.sync.xml.generator.XMLInstanceGenerator "$@"
+ 
+ to
+ 
+java -Xmx256m -XX:SoftRefLRUPolicyMSPerMB=10 -cp "$CP" ro.sync.xml.generator.XMLInstanceGenerator "$@" 
+Note: the above line should be in single line and shouldnt be splitted anywhere, else it gives \r error
+
+II] Soft Links
