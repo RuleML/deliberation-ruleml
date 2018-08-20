@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalogPSOA_relaxed.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalogPSOA_normal.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd">
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
@@ -22,9 +22,13 @@
                 <Rel>TA</Rel>
               </op>
               <slotdep>
-                <Ind>workload</Ind>
-                <Ind>high</Ind>
+                <Ind>w</Ind>
+                <Ind>h</Ind>
               </slotdep>
+              <slot>
+                <Ind>v</Ind>
+                <Ind>g</Ind>
+              </slot>
             </Atom>
           </if>
           <then>
@@ -33,9 +37,13 @@
                 <Rel>friend</Rel>
               </op>
               <slotdep>
-                <Ind>time</Ind>
-                <Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data>
+                <Ind>t</Ind>
+                <Ind>a</Ind>
               </slotdep>
+              <slot>
+                <Ind>r</Ind>
+                <Ind>b</Ind>
+              </slot>
             </Atom>
           </then>
         </Implies>
