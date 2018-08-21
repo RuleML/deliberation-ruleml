@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalogPSOA_normal.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd">
 
@@ -21,14 +21,32 @@
               <op>
                 <Rel>TA</Rel>
               </op>
-              <slotdep>
-                <Ind>w</Ind>
-                <Ind>h</Ind>
-              </slotdep>
-              <slot>
-                <Ind>v</Ind>
-                <Ind>g</Ind>
-              </slot>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
             </Atom>
           </if>
           <then>
@@ -36,14 +54,105 @@
               <op>
                 <Rel>friend</Rel>
               </op>
-              <slotdep>
-                <Ind>t</Ind>
-                <Ind>a</Ind>
-              </slotdep>
-              <slot>
-                <Ind>r</Ind>
-                <Ind>b</Ind>
-              </slot>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies node="this:#rule2">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>John</Ind>
+              </oid>
+              <op>
+                <Rel>TA</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>friend</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
             </Atom>
           </then>
         </Implies>
