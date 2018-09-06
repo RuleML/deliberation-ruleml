@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/datalogPSOA_normal.rnc"?>
 <RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogPSOA_normal.xsd">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
   <!-- a syntactic example rulebase for testing the Datalog PSOA RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">
-      
+
       <formula>
         <Implies node="this:#rule1">
           <if>
@@ -19,14 +19,14 @@
               <op>
                 <Rel>g</Rel>
               </op>
-              <slotdep>
+              <slot>
                 <Ind>a</Ind>
                 <Ind>b</Ind>
-              </slotdep>
-              <slot>
+              </slot>
+              <slotdep>
                 <Ind>d</Ind>
                 <Ind>e</Ind>
-              </slot>
+              </slotdep>
             </Atom>
           </if>
           <then>
@@ -56,7 +56,7 @@
               <op>
                 <Rel>g</Rel>
               </op>
-              <tupdep>
+              <tup>
                 <Tuple>
                   <arg index="1">
                     <Ind>a</Ind>
@@ -68,8 +68,8 @@
                     <Ind>c</Ind>
                   </arg>
                 </Tuple>
-              </tupdep>
-              <tup>
+              </tup>
+              <tupdep>
                 <Tuple>
                   <arg index="1">
                     <Ind>d</Ind>
@@ -81,7 +81,7 @@
                     <Ind>f</Ind>
                   </arg>
                 </Tuple>
-              </tup>
+              </tupdep>
             </Atom>
           </if>
           <then>
@@ -129,6 +129,14 @@
               <op>
                 <Rel>g</Rel>
               </op>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
               <tupdep>
                 <Tuple>
                   <arg index="1">
@@ -155,14 +163,6 @@
                   </arg>
                 </Tuple>
               </tup>
-              <slotdep>
-                <Ind>a</Ind>
-                <Ind>b</Ind>
-              </slotdep>
-              <slot>
-                <Ind>d</Ind>
-                <Ind>e</Ind>
-              </slot>
             </Atom>
           </if>
           <then>

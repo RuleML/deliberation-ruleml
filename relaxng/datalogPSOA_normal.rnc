@@ -190,6 +190,18 @@ include "modules/reify_expansion_module.rnc" inherit = ruleml {start |= notAllow
 #
 include "modules/individual_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# DEPENDENT TUPLE EDGES INCLUDED
+#
+include "modules/tupdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INDEPENDENT TUPLE EDGES INCLUDED
+#
+include "modules/tup_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# TUPLE NODES INCLUDED
+#
+include "modules/tuple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # VARIABLES (INTERPRETABLE NAMES) ARE INCLUDED
 #
 include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAllowed}

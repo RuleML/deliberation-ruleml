@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/datalogPSOA_normal.rnc"?>
-<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/datalogPSOA_normal.xsd">
 
@@ -16,10 +16,47 @@
           <if>
             <Atom>
               <oid>
-                <Ind>John</Ind>
+                <Ind>j1</Ind>
               </oid>
               <op>
-                <Rel>TA</Rel>
+                <Rel>g</Rel>
+              </op>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies node="this:#rule2">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>j2</Ind>
+              </oid>
+              <op>
+                <Rel>g</Rel>
               </op>
               <tupdep>
                 <Tuple>
@@ -52,7 +89,7 @@
           <then>
             <Atom>
               <op>
-                <Rel>friend</Rel>
+                <Rel>g</Rel>
               </op>
               <tupdep>
                 <Tuple>
@@ -85,14 +122,14 @@
         </Implies>
       </formula>
       <formula>
-        <Implies node="this:#rule2">
+        <Implies node="this:#rule3">
           <if>
             <Atom>
               <oid>
-                <Ind>John</Ind>
+                <Ind>j3</Ind>
               </oid>
               <op>
-                <Rel>TA</Rel>
+                <Rel>g</Rel>
               </op>
               <tupdep>
                 <Tuple>
@@ -120,12 +157,20 @@
                   </arg>
                 </Tuple>
               </tup>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
             </Atom>
           </if>
           <then>
             <Atom>
               <op>
-                <Rel>friend</Rel>
+                <Rel>g</Rel>
               </op>
               <tupdep>
                 <Tuple>
@@ -153,6 +198,14 @@
                   </arg>
                 </Tuple>
               </tup>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
             </Atom>
           </then>
         </Implies>

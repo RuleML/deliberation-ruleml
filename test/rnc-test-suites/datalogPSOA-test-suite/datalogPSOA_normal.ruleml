@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../../relaxng/datalogPSOA_normal.rnc"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA.ruleml"
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
@@ -14,33 +14,196 @@
           <if>
             <Atom>
               <oid>
-                <Ind>John</Ind>
+                <Ind>j1</Ind>
               </oid>
               <op>
-                <Rel>TA</Rel>
+                <Rel>g</Rel>
               </op>
-              <arg index="1">
-                <Ind>Sue</Ind>
-              </arg>
               <slotdep>
-                <Ind>workload</Ind>
-                <Ind>high</Ind>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
               </slotdep>
               <slot>
-                <Ind>freetime</Ind>
-                <Ind>low</Ind>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
               </slot>
             </Atom>
           </if>
           <then>
             <Atom>
               <op>
-                <Rel>friend</Rel>
+                <Rel>g</Rel>
               </op>
               <slotdep>
-                <Ind>time</Ind>
-                <Data xsi:type="xs:dateTime">2001-10-26T21:32:52+02:00</Data>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
               </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies node="this:#rule2">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>j2</Ind>
+              </oid>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies node="this:#rule3">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>j3</Ind>
+              </oid>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <tupdep>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>a</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>b</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>c</Ind>
+                  </arg>
+                </Tuple>
+              </tupdep>
+              <tup>
+                <Tuple>
+                  <arg index="1">
+                    <Ind>d</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>e</Ind>
+                  </arg>
+                  <arg index="3">
+                    <Ind>f</Ind>
+                  </arg>
+                </Tuple>
+              </tup>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
             </Atom>
           </then>
         </Implies>

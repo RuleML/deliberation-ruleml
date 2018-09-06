@@ -136,6 +136,11 @@ termsForExpressions.sequence |= empty
 slotsForExpressions.sequence |= empty
 argumentsForExpressions.sequence |= empty
 positionalArgumentsForExpressions.sequence |= empty
+positionalArgumentsForAtoms.sequence |= empty
+tupdepTermsForAtoms.sequence |= empty
+tupTermsForAtoms.sequence |= empty
+tupdepTermsForExpressions.sequence |= empty
+tupTermsForExpressions.sequence |= empty
 # 
 # HEADERS
 TruthValuedConnective.header &= empty
@@ -285,6 +290,7 @@ Exists-fo-node.choice |= notAllowed
 Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
 Skolem-node.choice |= notAllowed
+Tuple-node.choice |= notAllowed
 #
 NegationAsFailure-node.notallowed = notAllowed
 # 

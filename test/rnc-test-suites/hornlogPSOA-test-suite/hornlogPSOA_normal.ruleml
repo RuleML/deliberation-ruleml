@@ -8,7 +8,7 @@
   <!-- a syntactic example rulebase for testing the Hornlog PSOA RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">
-
+      
       <formula>
         <Implies node="this:#rule1">
           <if>
@@ -82,9 +82,6 @@
                   <op>
                     <Fun>p</Fun>
                   </op>
-                  <arg index="1">
-                    <Ind>s</Ind>
-                  </arg>
                   <tupdep>
                     <Tuple>
                       <arg index="1">
@@ -113,35 +110,6 @@
                   </tup>
                 </Expr>
               </arg>
-              <arg index="2">
-                <Ind>u</Ind>
-              </arg>
-              <tupdep>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>a</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>b</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>c</Ind>
-                  </arg>
-                </Tuple>
-              </tupdep>
-              <tup>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>d</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>e</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>f</Ind>
-                  </arg>
-                </Tuple>
-              </tup>
             </Atom>
           </if>
           <then>
@@ -194,9 +162,6 @@
                   <op>
                     <Fun>p</Fun>
                   </op>
-                  <arg index="1">
-                    <Ind>s</Ind>
-                  </arg>
                   <tupdep>
                     <Tuple>
                       <arg index="1">
@@ -233,35 +198,6 @@
                   </slot>
                 </Expr>
               </arg>
-              <arg index="2">
-                <Ind>u</Ind>
-              </arg>
-              <tupdep>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>a</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>b</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>c</Ind>
-                  </arg>
-                </Tuple>
-              </tupdep>
-              <tup>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>d</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>e</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>f</Ind>
-                  </arg>
-                </Tuple>
-              </tup>
               <slotdep>
                 <Ind>a</Ind>
                 <Ind>b</Ind>
@@ -314,7 +250,7 @@
             </Atom>
           </then>
         </Implies>
-      </formula>      
+      </formula>
     </Assert>
   </act>
 </RuleML>

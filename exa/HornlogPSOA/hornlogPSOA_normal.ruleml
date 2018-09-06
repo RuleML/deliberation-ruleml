@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/datalogPSOA_normal.ruleml"
+<?xml-model href="http://deliberation.ruleml.org/1.03/relaxng/hornlogPSOA_normal.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03/xsd/hornlogPSOA_normal.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/hornlogPSOA_normal.ruleml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/datalogPSOA_normal.xsd">
-
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03/xsd/hornlogPSOA_normal.xsd">
+  
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
-
-  <!-- a syntactic example rulebase for testing the Datalog PSOA RuleML sublanguage -->
+  
+  <!-- a syntactic example rulebase for testing the Hornlog PSOA RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">
       
@@ -19,6 +21,27 @@
               <op>
                 <Rel>g</Rel>
               </op>
+              <arg index="1">
+                <Expr>
+                  <op>
+                    <Fun>p</Fun>
+                  </op>
+                  <arg index="1">
+                    <Ind>s</Ind>
+                  </arg>
+                  <slotdep>
+                    <Ind>a</Ind>
+                    <Ind>b</Ind>
+                  </slotdep>
+                  <slot>
+                    <Ind>d</Ind>
+                    <Ind>e</Ind>
+                  </slot>
+                </Expr>
+              </arg>
+              <arg index="2">
+                <Ind>u</Ind>
+              </arg>
               <slotdep>
                 <Ind>a</Ind>
                 <Ind>b</Ind>
@@ -56,32 +79,39 @@
               <op>
                 <Rel>g</Rel>
               </op>
-              <tupdep>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>a</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>b</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>c</Ind>
-                  </arg>
-                </Tuple>
-              </tupdep>
-              <tup>
-                <Tuple>
-                  <arg index="1">
-                    <Ind>d</Ind>
-                  </arg>
-                  <arg index="2">
-                    <Ind>e</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>f</Ind>
-                  </arg>
-                </Tuple>
-              </tup>
+              <arg index="1">
+                <Expr>
+                  <op>
+                    <Fun>p</Fun>
+                  </op>
+                  <tupdep>
+                    <Tuple>
+                      <arg index="1">
+                        <Ind>a</Ind>
+                      </arg>
+                      <arg index="2">
+                        <Ind>b</Ind>
+                      </arg>
+                      <arg index="3">
+                        <Ind>c</Ind>
+                      </arg>
+                    </Tuple>
+                  </tupdep>
+                  <tup>
+                    <Tuple>
+                      <arg index="1">
+                        <Ind>d</Ind>
+                      </arg>
+                      <arg index="2">
+                        <Ind>e</Ind>
+                      </arg>
+                      <arg index="3">
+                        <Ind>f</Ind>
+                      </arg>
+                    </Tuple>
+                  </tup>
+                </Expr>
+              </arg>
             </Atom>
           </if>
           <then>
@@ -129,32 +159,47 @@
               <op>
                 <Rel>g</Rel>
               </op>
-              <tupdep>
-                <Tuple>
-                  <arg index="1">
+              <arg index="1">
+                <Expr>
+                  <op>
+                    <Fun>p</Fun>
+                  </op>
+                  <tupdep>
+                    <Tuple>
+                      <arg index="1">
+                        <Ind>a</Ind>
+                      </arg>
+                      <arg index="2">
+                        <Ind>b</Ind>
+                      </arg>
+                      <arg index="3">
+                        <Ind>c</Ind>
+                      </arg>
+                    </Tuple>
+                  </tupdep>
+                  <tup>
+                    <Tuple>
+                      <arg index="1">
+                        <Ind>d</Ind>
+                      </arg>
+                      <arg index="2">
+                        <Ind>e</Ind>
+                      </arg>
+                      <arg index="3">
+                        <Ind>f</Ind>
+                      </arg>
+                    </Tuple>
+                  </tup>
+                  <slotdep>
                     <Ind>a</Ind>
-                  </arg>
-                  <arg index="2">
                     <Ind>b</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>c</Ind>
-                  </arg>
-                </Tuple>
-              </tupdep>
-              <tup>
-                <Tuple>
-                  <arg index="1">
+                  </slotdep>
+                  <slot>
                     <Ind>d</Ind>
-                  </arg>
-                  <arg index="2">
                     <Ind>e</Ind>
-                  </arg>
-                  <arg index="3">
-                    <Ind>f</Ind>
-                  </arg>
-                </Tuple>
-              </tup>
+                  </slot>
+                </Expr>
+              </arg>
               <slotdep>
                 <Ind>a</Ind>
                 <Ind>b</Ind>
