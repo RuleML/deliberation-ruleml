@@ -1,4 +1,4 @@
- namespace dc = "http://purl.org/dc/terms/"
+namespace dc = "http://purl.org/dc/terms/"
 namespace dcterms = "http://purl.org/dc/terms/"
 namespace ruleml = "http://ruleml.org/spec"
 
@@ -95,6 +95,7 @@ include "modules/rulebase_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "contractions/short_name_contraction_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/skolem_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/slot_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -102,6 +103,9 @@ include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= no
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_unbin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/tup_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/tupdep_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/tuple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #include "modules/unordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #include "modules/unordered_deterministic_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
