@@ -8,6 +8,7 @@ header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
 //Assembler of RNC schema for RuleML 1.03
 //
+$debug = true;
 //Step 0000. Extract all GET parameters
 $backbone = "backbone";
 $backbone_andor = 0;
@@ -77,6 +78,9 @@ $terms_data = 9;
 $terms_skolem = 10;
 $terms_reify = 11;
 $terms_var = 12;
+$terms_slotdep = 13;
+$terms_tupdep = 14;
+$terms_tup = 15;
 $bterms = processGETParameter ($terms);
 $termsParam = "x".dechex(bindec($bterms));
 //
@@ -195,7 +199,13 @@ if ($bdefault==0){
   
   $enableAndOr = extractBit($bbackbone, $backbone_andor);
   $enableImp = extractBit($bbackbone, $backbone_implies);
+  // Explicit quantification is enabled through the backbone facet ($backbone_quant)
   $enableQuant = extractBit($bbackbone, $backbone_quant);
+  if ($debug) echo "#\n";
+  if ($debug) echo "# bbackbone: ".$bbackbone ."\n";
+  if ($debug) echo "# backbone_quant: ".$backbone_quant ."\n";
+  if ($debug) echo "# enableQuant: ".$enableQuant ."\n";
+  if ($debug) echo "#\n";
   $enableExpr = extractBit($bbackbone, $backbone_expr);
   // Disjunctive Heads are now indicated from the implication options facets.
   // However, we also honor the backbone code for dishornlog for backward compatibility
@@ -300,6 +310,28 @@ if ($bdefault==0){
   // a call to extractBit ($enable...), those that are used to include a particular module ($Need => $need)
   // and those that are intermediate ($need => $flag)
   // In those cases when the $enable variable is used directly to include a module, add an assignment.
+  $needTupDep = extractBit($bterms, $terms_tupdep);
+  if ($debug) echo "#\n";
+  if ($debug) echo "# bterms: ".$bterms ."\n";
+  if ($debug) echo "# terms_tupdep: ".$terms_tupdep ."\n";
+  if ($debug) echo "# needTupDep: ".$needTupDep ."\n";
+  if ($debug) echo "#\n";
+  $needTup = extractBit($bterms, $terms_tup);
+  if ($debug) echo "#\n";
+  if ($debug) echo "# bterms: ".$bterms ."\n";
+  if ($debug) echo "# terms_tup: ".$terms_tup ."\n";
+  if ($debug) echo "# needTup: ".$needTup ."\n";
+  if ($debug) echo "#\n";
+  $needTuple = max($needTupDep, $needTup);
+  if ($debug) echo "#\n";
+  if ($debug) echo "# needTuple: ".$needTuple ."\n";
+  if ($debug) echo "#\n";
+  $needSlotDep = extractBit($bterms, $terms_slotdep);
+  if ($debug) echo "#\n";
+  if ($debug) echo "# bterms: ".$bterms ."\n";
+  if ($debug) echo "# terms_slotdep: ".$terms_slotdep ."\n";
+  if ($debug) echo "# needSlotDep: ".$needSlotDep ."\n";
+  if ($debug) echo "#\n";
   $needSlot = extractBit($bterms, $terms_slot);
   $needCard = extractBit($bterms, $terms_card);
   $needWeight = extractBit($bterms, $terms_weight);
@@ -316,6 +348,9 @@ if ($bdefault==0){
   $needReify = extractBit($bterms, $terms_reify);
   $needInd = max($btermseq , $enableOid , $needSlot , $needEqual);
 
+  // There are two ways to include variables (<Var>) in a RuleML language:
+  // 1. through the flag $enableQuant 
+  // 2. through the terms facet ($terms_var)
   $needVar = max($enableQuant , extractBit($bterms, $terms_var));   
   $enableClosure = extractBit($bquant, $quant_closure);
   $NeedClosure = $enableClosure;
@@ -668,8 +703,15 @@ if ($bdefault==0){
       echo "#\n# OBJECT IDENTIFIERS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'oid_expansion_module.rnc"'."$end\n";
+    }    
+    
+    // Include dependent slots
+    if ($needSlotDep){
+      echo "#\n# DEPENDENT SLOTS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'slotdep_expansion_module.rnc"'."$end\n";
     }
-    // Include slots
+        // Include slots
     if ($needSlot){
       echo "#\n# SLOTS INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
@@ -758,6 +800,24 @@ if ($bdefault==0){
       echo "#\n# INDIVIDUAL TERMS (INTERPRETED NAMES) ARE INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'individual_expansion_module.rnc"'."$end\n";      
+    }
+    // Include dependent tuple edges if needed 
+    if ($needTupDep){
+      echo "#\n# DEPENDENT TUPLE EDGES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'tupdep_expansion_module.rnc"'."$end\n";
+    }    
+    // Include independent tuple edges if needed 
+    if ($needTup){
+      echo "#\n# INDEPENDENT TUPLE EDGES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'tup_expansion_module.rnc"'."$end\n";
+    }
+    // Include tuple nodes if needed
+    if ($needTuple){
+      echo "#\n# TUPLE NODES INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'tuple_expansion_module.rnc"'."$end\n";
     }
     // Include variables if needed
     if ($needVar){
@@ -920,7 +980,10 @@ function processGETParameter ($paramName){
   return $bparam;
 }
 
+// Extract a bit from a binary number, return as boolean  
 function extractBit ($bparam, $bitIndex) {
+  // bparam: binary number
+  // bitIndex: index of the desired bit (zero is the rightmost bit index)
   if (strlen($bparam)>$bitIndex) {
     $bparamBit =  (boolean) (substr($bparam, -1-$bitIndex, 1)==1);
   } else {

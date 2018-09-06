@@ -3,14 +3,16 @@ namespace dcterms = "http://purl.org/dc/terms/"
 namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
 
 dcterms:title [ "RuleML Positional Dependence" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/ordered_groups_expansion_module.rnc" ]
+dcterms:identifier [
+    "http://deliberation.ruleml.org/1.03/relaxng/modules/ordered_groups_expansion_module.rnc"
+]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "RuleML, positional dependence" ]
 dcterms:description [ "The expansion module for positional dependence." ]
 dcterms:language [ "en" ]
 dc:rights [
-  'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+    'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
 ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
@@ -22,16 +24,22 @@ Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 
 ## Slotted arguments follow positional arguments in atomic formulas
 ## in the normal-form serialization. 
-argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence, slotsForAtoms.sequence
+argumentsForAtoms.sequence |=
+    (positionalArgumentsForAtoms.sequence | tuplesForAtoms.sequence), slotsForAtoms.sequence
 
 ## Positional rest arguments follow the ordinary positional arguments
 ## in atomic formulas in the normal-form serialization. 
 positionalArgumentsForAtoms.sequence |=
-  termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
+    termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
 
 ## Slotted rest arguments follow the ordinary slots
 ## in atomic formulas in the normal-form serialization. 
-slotsForAtoms.sequence |= slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence, restOfSlots-edge.choice?
+slotsForAtoms.sequence |=
+    slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence, restOfSlots-edge.choice?
+
+## Dependent tuples are followed by independent tuples
+## in atomic formulas in the normal-form serialization. 
+tuplesForAtoms.sequence |= tupdepTermsForAtoms.sequence, tupTermsForAtoms.sequence
 
 ## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is required in the normal-form serialization.
@@ -40,16 +48,21 @@ Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequenc
 ## Slotted arguments follow positional arguments in expressions
 ## in the normal-form serialization. 
 argumentsForExpressions.sequence |=
-  positionalArgumentsForExpressions.sequence, slotsForExpressions.sequence
+    (positionalArgumentsForExpressions.sequence | tuplesForExpressions.sequence), slotsForExpressions.sequence
 
 ## Positional rest arguments follow the ordinary positional arguments
 ## in expressions in the normal-form serialization. 
 positionalArgumentsForExpressions.sequence |=
-  termsForExpressions.sequence, restOfPositionalArguments-edge.choice?
+    termsForExpressions.sequence, restOfPositionalArguments-edge.choice?
 
 ## Slotted rest arguments follow the ordinary slots
 ## in expressions in the normal-form serialization. 
-slotsForExpressions.sequence |= slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence, restOfSlots-edge.choice?
+slotsForExpressions.sequence |=
+    slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence, restOfSlots-edge.choice?
+
+## Dependent tuples are followed by independent tuples
+## in expressions in the normal-form serialization. 
+tuplesForExpressions.sequence |= tupdepTermsForExpressions.sequence, tupTermsForExpressions.sequence
 
 ## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the normal-form serialization, the if and then of an implication must occur in canonical order.
