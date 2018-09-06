@@ -16,7 +16,16 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 "${BASH_HOME}batch_module2indep_valid.sh"
 
 # Validate modules individually
-"${BASH_HOME}batch_val_module.sh"
+echo "Build script validates each module individually"
+echo ""
+for file in "${RNC_HOME}indep_valid_modules/"*.rnc
+do
+  "${BASH_HOME}aux_valrnc.sh" "${file}"
+  if [[ "$?" -ne "0" ]]; then
+     echo "Module Validation Failed"
+     exit 1
+  fi
+done
 
 # Validate modules all together
 echo ""

@@ -54,7 +54,7 @@ fi
 echo "Trang Conversion to XSD succeeded."
 
 if [[ "$3" != true ]]; then
-  if [[ "${OXY_VERSION}" == 14 || "${OXY_VERSION}" -ge 19 ]]; then
+  if [[ "${OXY_VERSION}" == 14 || "${OXY_VERSION}" == 19 ]]; then
     echo "Start flattening of ${outfile} to ${outdir}"
     "${BASH_HOME}flatten_xsd.sh" "${outfile}" "${outdir}"
   else   
@@ -64,8 +64,7 @@ if [[ "$3" != true ]]; then
 fi
 if [[ "$4" == true ]]; then
   function finish {
-  
-    rm "${TMP_HOME}"* >> /dev/null 2>&1
+    rm "${TMP}"
   }
   trap finish EXIT
 fi
