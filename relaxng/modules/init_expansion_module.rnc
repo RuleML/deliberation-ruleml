@@ -127,8 +127,6 @@ xmlbase.attlist &= empty
 xmlid.attlist &= empty
 # 
 # SEQUENCES
-slotdepTermsForAtoms.sequence |= empty
-slotdepTermsForExpressions.sequence |= empty
 slotTermsForAtoms.sequence |= empty
 slotTermsForExpressions.sequence |= empty
 termsForAtoms.sequence |= empty
@@ -136,11 +134,6 @@ termsForExpressions.sequence |= empty
 slotsForExpressions.sequence |= empty
 argumentsForExpressions.sequence |= empty
 positionalArgumentsForExpressions.sequence |= empty
-positionalArgumentsForAtoms.sequence |= empty
-tupdepTermsForAtoms.sequence |= empty
-tupTermsForAtoms.sequence |= empty
-tupdepTermsForExpressions.sequence |= empty
-tupTermsForExpressions.sequence |= empty
 # 
 # HEADERS
 TruthValuedConnective.header &= empty
@@ -222,7 +215,6 @@ Fun-datt.choice |= notAllowed
 Var-datt.choice |= empty
 Ind-datt.choice |= empty
 slot-datt.choice |= empty
-slotdep-datt.choice |= empty
 Data-datt.choice |= empty
 Skolem-datt.choice |= empty
 arg-datt.choice |= notAllowed
@@ -290,7 +282,6 @@ Exists-fo-node.choice |= notAllowed
 Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
 Skolem-node.choice |= notAllowed
-Tuple-node.choice |= notAllowed
 #
 NegationAsFailure-node.notallowed = notAllowed
 # 
