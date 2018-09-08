@@ -39,8 +39,10 @@ cp "${RNC_HOME}nafhologeq_normal.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}nafhologeq_relaxed.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}hornlogrepoexpr_normal.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}hornlogrepoexpr_relaxed.rnc" "${DRIVER_HOME}"
+
 cp "${RNC_HOME}datalogPSOA_normal.rnc" "${DRIVER_HOME}"
 cp "${RNC_HOME}hornlogPSOA_normal.rnc" "${DRIVER_HOME}"
+cp "${RNC_HOME}naffologeqPSOA_normal.rnc" "${DRIVER_HOME}"
 
 for file in "${DRIVER_HOME}"*.rnc
 do

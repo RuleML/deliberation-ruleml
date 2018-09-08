@@ -8,7 +8,7 @@ header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
 //Assembler of RNC schema for RuleML 1.03
 //
-$debug = true;
+$debug = false;
 //Step 0000. Extract all GET parameters
 $backbone = "backbone";
 $backbone_andor = 0;

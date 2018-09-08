@@ -1,27 +1,27 @@
 # Call parameters
-# GET parameter: backbone=x7
+# GET parameter: backbone=x3f
 # GET parameter: default=x7
 # GET parameter: termseq=x7
 # GET parameter: lng=x1
-# GET parameter: propo=x3cf
-# GET parameter: implies=x7
-# GET parameter: terms=xef0f
-# GET parameter: quant=x1
-# GET parameter: expr=x0
+# GET parameter: propo=x3ff
+# GET parameter: implies=x7f
+# GET parameter: terms=xef3f
+# GET parameter: quant=x7
+# GET parameter: expr=xf
 # GET parameter: serial=x48
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xef0f&quant=x1&expr=x0&serial=x48" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xef3f&quant=x7&expr=xf&serial=x48" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, custom-built" ]
 dcterms:description [
     "custom-built main module for a Deliberation RuleML language."
 ]
-dcterms:date [ "2018-09-08T11:07:17-04:00" ]
+dcterms:date [ "2018-09-08T11:07:15-04:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
@@ -29,7 +29,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
 # Base URL = http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php 
 # Complete URL = 
-#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xef0f&quant=x1&expr=x0&serial=x48
+#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3ff&implies=x7f&terms=xef3f&quant=x7&expr=xf&serial=x48
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -54,6 +54,21 @@ include "modules/implication_expansion_module.rnc" inherit = ruleml {start |= no
 #
 include "modules/quantification_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# EXPRESSIONS INCLUDED
+#
+include "modules/expr_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/expr_oid_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/expr_type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# RESTRICTIONS ON COMPOUNDING CLASSICAL FORMULAS REMOVED 
+#   FULL FIRST-ORDER EXPRESSIVITY (INCLUDING NEGATION) IS AVAILABLE 
+#
+include "modules/folog_cl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+include "modules/folog_closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # ATTRIBUTES WITH DEFAULT VALUES ARE INITIALIZED
 #
 include "modules/default_inf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -66,6 +81,7 @@ include "modules/default_absent_folog_expansion_module.rnc" inherit = ruleml {st
 # ATTRIBUTES WITH DEFAULT VALUES REQUIRED
 #
 include "modules/default_present_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/default_present_folog_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # POLYADIC TERM (ONE OR MORE TERMS) SEQUENCES INCLUDED
 #
@@ -98,6 +114,14 @@ include "modules/metalevel_expansion_module.rnc" inherit = ruleml {start |= notA
 # DEGREE OF UNCERTAINTY INCLUDED
 #
 include "modules/fuzzy_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# STRONG NEGATION INCLUDED
+#
+include "modules/neg_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# WEAK NEGATIONS INCLUDED
+#
+include "modules/naf_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # NODE IDENTIFIERS INCLUDED
 #
@@ -167,6 +191,22 @@ include "modules/card_expansion_module.rnc" inherit = ruleml {start |= notAllowe
 #
 include "modules/weight_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
+# EQUATIONS INCLUDED
+#
+include "modules/equal_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# ORIENTED EQUALITY ATTRIBUTE IS INCLUDED
+#
+include "modules/oriented_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# NON-DEFAULT VALUES OF ORIENTED EQUALITY ATTRIBUTE INCLUDED
+#
+include "modules/oriented_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUE OF ORIENTED EQUALITY ATTRIBUTE INCLUDED
+#
+include "modules/oriented_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
 # EXPLICIT TYPING OF TERMS INCLUDED
 #
 include "modules/type_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
@@ -212,6 +252,42 @@ include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/mapclosure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# SLOTTED REST VARIABLES INCLUDED
+#
+include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# POSITIONAL REST VARIABLES INCLUDED
+#
+include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# GENERALIZED LISTS INCLUDED
+#
+include "modules/plex_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# SET-VALUED EXPRESSION ATTRIBUTE IS INCLUDED
+#
+include "modules/val_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# NON-DEFAULT VALUES OF THE SET-VALUED ATTRIBUTE INCLUDED
+#
+include "modules/val_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUE OF THE SET-VALUED ATTRIBUTE INCLUDED
+#
+include "modules/val_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# INTERPRETED EXPRESSION ATTRIBUTE IS INCLUDED
+#
+include "modules/per_attrib_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# NON-DEFAULT VALUES OF EXPRESSION INTERPRETATION INCLUDED
+#
+include "modules/per_non-default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+#
+# DEFAULT VALUE OF EXPRESSION INTERPRETATION INCLUDED
+#
+include "modules/per_default_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INITIALIZATION MODULES INCLUDED
 #
