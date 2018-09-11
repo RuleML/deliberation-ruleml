@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
   Call parameters
-  GET parameter: backbone=xf
+  GET parameter: backbone=x3f
   GET parameter: default=x7
   GET parameter: termseq=x7
   GET parameter: lng=x1
-  GET parameter: propo=x3cf
-  GET parameter: implies=x7
-  GET parameter: terms=xef0f
+  GET parameter: propo=x3ff
+  GET parameter: implies=x7f
+  GET parameter: terms=xef3f
   GET parameter: quant=x7
-  GET parameter: expr=x3
+  GET parameter: expr=xf
   GET parameter: serial=x50
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.03/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
@@ -251,6 +251,7 @@
             <xs:group ref="ruleml:Query.header"/>
             <xs:group ref="ruleml:Query.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Query-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reQuery.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reQuery.attlist">
@@ -259,6 +260,7 @@
                 scoped closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
@@ -355,8 +357,12 @@
         <xs:choice>
             <xs:choice>
                 <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+                <xs:group ref="ruleml:And-fo-node.choice"/>
+                <xs:group ref="ruleml:Or-fo-node.choice"/>
+                <xs:group ref="ruleml:Negation-node.choice"/>
                 <xs:group ref="ruleml:Implication-node.choice"/>
                 <xs:group ref="ruleml:Forall-node.choice"/>
+                <xs:group ref="ruleml:Exists-fo-node.choice"/>
             </xs:choice>
             <xs:choice>
                 <xs:group ref="ruleml:Entails-node.choice"/>
@@ -381,6 +387,10 @@
                 <xs:group ref="ruleml:SimpleFormula-node.choice"/>
                 <xs:group ref="ruleml:And-Query-node.choice"/>
                 <xs:group ref="ruleml:Or-Query-node.choice"/>
+                <xs:group ref="ruleml:Negation-node.choice"/>
+                <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+                <xs:group ref="ruleml:Implication-fo-node.choice"/>
+                <xs:group ref="ruleml:Forall-fo-node.choice"/>
                 <xs:group ref="ruleml:Exists-node.choice"/>
             </xs:choice>
             <xs:choice>
@@ -395,9 +405,10 @@
         <xs:annotation>
             <xs:documentation>atomic formulas are a kind of simple formula</xs:documentation>
         </xs:annotation>
-        <xs:sequence>
+        <xs:choice>
             <xs:group ref="ruleml:Atom-node.choice"/>
-        </xs:sequence>
+            <xs:group ref="ruleml:Equal-node.choice"/>
+        </xs:choice>
     </xs:group>
     <xs:group name="Atom-node.choice">
         <xs:annotation>
@@ -540,6 +551,7 @@
             <xs:group ref="ruleml:And.header"/>
             <xs:group ref="ruleml:And.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:And-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reAnd.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reAnd.attlist">
@@ -548,6 +560,8 @@
                 closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     <xs:group name="And.header">
@@ -623,6 +637,11 @@
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
             <xs:group ref="ruleml:And-node.choice"/>
             <xs:group ref="ruleml:Or-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+            <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
         </xs:choice>
     </xs:complexType>
     
@@ -656,6 +675,7 @@
             <xs:group ref="ruleml:Or.header"/>
             <xs:group ref="ruleml:Or.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Or-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reOr.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reOr.attlist">
@@ -664,6 +684,8 @@
                 closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     <xs:group name="Or.header">
@@ -737,6 +759,11 @@
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
             <xs:group ref="ruleml:And-node.choice"/>
             <xs:group ref="ruleml:Or-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+            <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
         </xs:choice>
     </xs:complexType>
     <xs:group name="And-Query-node.choice">
@@ -765,6 +792,7 @@
             <xs:group ref="ruleml:And.header"/>
             <xs:group ref="ruleml:And.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:And-Query-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reAnd-Query.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reAnd-Query.attlist">
@@ -774,6 +802,7 @@
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
     </xs:attributeGroup>
     
     <xs:group name="Or-Query-node.choice">
@@ -802,6 +831,7 @@
             <xs:group ref="ruleml:Or.header"/>
             <xs:group ref="ruleml:Or.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Or-Query-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reOr-Query.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reOr-Query.attlist">
@@ -811,6 +841,7 @@
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
     </xs:attributeGroup>
     
     <xs:group name="Implication-node.choice">
@@ -855,6 +886,7 @@
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     
@@ -920,6 +952,11 @@
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
             <xs:group ref="ruleml:And-node.choice"/>
             <xs:group ref="ruleml:Or-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+            <xs:group ref="ruleml:NegationAsFailure-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
         </xs:choice>
     </xs:complexType>
     
@@ -971,16 +1008,60 @@
             <xs:documentation>formulas allowed to be conclusions include atomic formulas.
             </xs:documentation>
         </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:Atom-head-node.choice"/>
-        </xs:complexContent>
+        <xs:choice>
+            <xs:group ref="ruleml:Atom-head-node.choice"/>
+            <xs:group ref="ruleml:Equal-head-node.choice"/>
+            <xs:group ref="ruleml:And-head-node.choice"/>
+            <xs:group ref="ruleml:Or-head-node.choice"/>
+            <xs:group ref="ruleml:Negation-head-node.choice"/>
+            <xs:group ref="ruleml:Implication-head-node.choice"/>
+            <xs:group ref="ruleml:Forall-head-node.choice"/>
+            <xs:group ref="ruleml:Exists-head-node.choice"/>
+        </xs:choice>
     </xs:complexType>
-    <xs:complexType name="Atom-head-node.choice">
+    <xs:group name="Atom-head-node.choice">
         <xs:annotation>
             <xs:documentation>backbone patterns    </xs:documentation>
         </xs:annotation>
-        <xs:group ref="ruleml:Atom-node.choice"/>
-    </xs:complexType>
+        <xs:sequence>
+            <xs:group ref="ruleml:Atom-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Equal-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Equal-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="And-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:And-fo-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Or-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Or-fo-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Negation-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Implication-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Forall-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Exists-head-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
+        </xs:sequence>
+    </xs:group>
     
     <xs:group name="Forall-node.choice">
         <xs:annotation>
@@ -1004,6 +1085,7 @@
             <xs:group ref="ruleml:Forall.header"/>
             <xs:group ref="ruleml:Forall.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Forall-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reForall.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reForall.attlist">
@@ -1011,6 +1093,8 @@
             <xs:documentation>The attribute list of the universal quantification formula  will
                 accept a scoped closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
@@ -1056,6 +1140,7 @@
             <xs:group ref="ruleml:Exists.header"/>
             <xs:group ref="ruleml:Exists.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Exists-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reExists.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reExists.attlist">
@@ -1063,6 +1148,8 @@
             <xs:documentation>The attribute list of the existential quantification formula  will
                 accept a scoped closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
@@ -1168,8 +1255,12 @@
         </xs:annotation>
         <xs:choice>
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-fo-node.choice"/>
+            <xs:group ref="ruleml:Or-fo-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
             <xs:group ref="ruleml:Implication-node.choice"/>
             <xs:group ref="ruleml:Forall-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
         </xs:choice>
     </xs:complexType>
     
@@ -1218,6 +1309,9 @@
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
             <xs:group ref="ruleml:And-node.choice"/>
             <xs:group ref="ruleml:Or-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
             <xs:group ref="ruleml:Exists-node.choice"/>
         </xs:choice>
     </xs:complexType>
@@ -1347,6 +1441,44 @@
     </xs:group>
     
     
+    <xs:group name="And-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:And-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Or-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Or-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Negation-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Implication-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Implication-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Forall-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Forall-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Exists-fo-node.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:Exists-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:attributeGroup name="mapClosure-att-fo.choice">
+        <xs:attributeGroup ref="ruleml:mapClosure-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="closure-att-fo.choice">
+        <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+    </xs:attributeGroup>
+    
     <xs:attributeGroup name="Expr-datt.choice">
         <xs:annotation>
             <xs:documentation>expressions have interpretation attribute as an
@@ -1360,6 +1492,7 @@
                 attribute.</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:interpretation-att-inf.choice"/>
+        <xs:attributeGroup ref="ruleml:singlevalued-att-inf.choice"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="Implies-datt.choice">
         <xs:annotation>
@@ -1369,6 +1502,8 @@
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:direction-att-inf.choice"/>
         <xs:attributeGroup ref="ruleml:material-att-inf.choice"/>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="Rulebase-datt.choice">
         <xs:annotation>
@@ -1387,6 +1522,92 @@
         <xs:attributeGroup ref="ruleml:mapDirection-att-inf.choice"/>
     </xs:attributeGroup>
     
+    <xs:attributeGroup name="Equal-datt.choice">
+        <xs:annotation>
+            <xs:documentation>equations have orientation as an attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:oriented-att-inf.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="And-datt.choice">
+        <xs:annotation>
+            <xs:documentation>conjunctions have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="And-Query-datt.choice">
+        <xs:annotation>
+            <xs:documentation>conjunctions have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Query-datt.choice">
+        <xs:annotation>
+            <xs:documentation>queries have scoped attributes that are activated at full first-order
+                logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Equivalent-datt.choice">
+        <xs:annotation>
+            <xs:documentation>equivalences have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Forall-datt.choice">
+        <xs:annotation>
+            <xs:documentation>universal quantifications have scoped attributes that are activated at
+                full first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Exists-datt.choice">
+        <xs:annotation>
+            <xs:documentation>existential quantifications have scoped attributes that are activated
+                at full first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Or-datt.choice">
+        <xs:annotation>
+            <xs:documentation>disjunctions have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Or-Query-datt.choice">
+        <xs:annotation>
+            <xs:documentation>disjunctions have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Neg-datt.choice">
+        <xs:annotation>
+            <xs:documentation>strong negations have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Naf-datt.choice">
+        <xs:annotation>
+            <xs:documentation>weqk negations have scoped attributes that are activated at full
+                first-order logic</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:mapMaterial-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapDirection-att-fo.choice"/>
+    </xs:attributeGroup>
     
     <xs:attributeGroup name="direction-att-inf.choice">
         <xs:attributeGroup ref="ruleml:direction-att.choice"/>
@@ -1400,10 +1621,22 @@
     <xs:attributeGroup name="mapMaterial-att-inf.choice">
         <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
     </xs:attributeGroup>
+    <xs:attributeGroup name="singlevalued-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:singlevalued-att.choice"/>
+    </xs:attributeGroup>
     <xs:attributeGroup name="interpretation-att-inf.choice">
         <xs:attributeGroup ref="ruleml:interpretation-att.choice"/>
     </xs:attributeGroup>
+    <xs:attributeGroup name="oriented-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:oriented-att.choice"/>
+    </xs:attributeGroup>
     
+    <xs:attributeGroup name="mapMaterial-att-fo.choice">
+        <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="mapDirection-att-fo.choice">
+        <xs:attributeGroup ref="ruleml:mapDirection-att.choice"/>
+    </xs:attributeGroup>
     
     
     <xs:group name="termsForAtoms.nonemptysequence.choice">
@@ -1725,8 +1958,12 @@
         </xs:annotation>
         <xs:choice>
             <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-fo-node.choice"/>
+            <xs:group ref="ruleml:Or-fo-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
             <xs:group ref="ruleml:Implication-node.choice"/>
             <xs:group ref="ruleml:Forall-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
         </xs:choice>
     </xs:group>
     
@@ -1898,6 +2135,210 @@
         <xs:group ref="ruleml:DataTerm.choice"/>
     </xs:complexType>
     
+    <xs:group name="Negation-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the strong negation tag
+                name.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Neg"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Neg" type="ruleml:Neg.type.def">
+        <xs:annotation>
+            <xs:documentation>A classical negation of a logical atom (&lt;Atom&gt;) (i.e. classical or
+                "strong" negation).  The negated atom may be optionally surrounded by &lt;strong&gt; role
+                tags.        See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Neg</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Neg.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Neg.header"/>
+            <xs:group ref="ruleml:Neg.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Neg-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reNeg.attlist"/>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="reNeg.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="Neg.header">
+        <xs:annotation>
+            <xs:documentation>Negation formulas accept the header pattern common to truth-valued
+                connectives.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Neg.main">
+        <xs:annotation>
+            <xs:documentation>The main section of a Negation formula contains a single "strong"
+                edge.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:strong-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="strong-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the strong tag name in strong negations. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:strong"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="strong" type="ruleml:strong.type.def">
+        <xs:annotation>
+            <xs:documentation>An edge used for logical negation (&lt;Neg&gt;).        See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-strong</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="strong.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:strong.content">
+                <xs:attributeGroup ref="ruleml:strong.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="strong.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="strong.content">
+        <xs:annotation>
+            <xs:documentation>The role filler for strong negation edges is a single formula.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:NegFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NegFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to belong to strong negation formulas include atomic
+                formulas. </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-fo-node.choice"/>
+            <xs:group ref="ruleml:Or-fo-node.choice"/>
+            <xs:group ref="ruleml:Negation-fo-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:group name="NegationAsFailure-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the weak negation tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Naf"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Naf" type="ruleml:Naf.type.def">
+        <xs:annotation>
+            <xs:documentation>A "by default" negation of a logical atom (&lt;Atom&gt;) (i.e. "weak" negation
+                or negation as failure).  The negated atom may be optionally surrounded by &lt;weak&gt; role
+                tags.        See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Naf</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Naf.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Naf.header"/>
+            <xs:group ref="ruleml:Naf.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Naf-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reNaf.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="reNaf.attlist">
+        <xs:annotation>
+            <xs:documentation>The attribute list of the weak negation element will accept a scoped
+                closure attribute at full first-order logic.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="Naf.header">
+        <xs:annotation>
+            <xs:documentation>Negation As Failure formulas accept the header pattern common to
+                truth-valued connectives.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Naf.main">
+        <xs:annotation>
+            <xs:documentation>The main section of Negation As Failure formulas contains a single
+                "weak" edge.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:weak-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="weak-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the weak tag name in weak negations. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:weak"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="weak" type="ruleml:weak.type.def">
+        <xs:annotation>
+            <xs:documentation>An edge used for negation as failure (&lt;Naf&gt;).        See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-weak</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="weak.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:weak.content">
+                <xs:attributeGroup ref="ruleml:weak.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="weak.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="weak.content">
+        <xs:annotation>
+            <xs:documentation>The weak negation edge contains a single formula. </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:NafFormula.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NafFormula.choice">
+        <xs:annotation>
+            <xs:documentation>formulas allowed to belong to weak negation formulas
+            </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleFormula-node.choice"/>
+            <xs:group ref="ruleml:And-fo-node.choice"/>
+            <xs:group ref="ruleml:Or-fo-node.choice"/>
+            <xs:group ref="ruleml:Negation-node.choice"/>
+            <xs:group ref="ruleml:Implication-fo-node.choice"/>
+            <xs:group ref="ruleml:Forall-fo-node.choice"/>
+            <xs:group ref="ruleml:Exists-fo-node.choice"/>
+        </xs:choice>
+    </xs:complexType>
+    
     <xs:attributeGroup name="commonNode.attlist">
         <xs:attribute name="node" type="ruleml:node.value">
             <xs:annotation>
@@ -2000,6 +2441,7 @@
             <xs:group ref="ruleml:Equivalent.header"/>
             <xs:group ref="ruleml:Equivalent.main"/>
         </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Equivalent-datt.choice"/>
         <xs:attributeGroup ref="ruleml:reEquivalent.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="reEquivalent.attlist">
@@ -2008,6 +2450,7 @@
                 scoped closure attribute at full first-order logic.</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
+        <xs:attributeGroup ref="ruleml:mapClosure-att-fo.choice"/>
         <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
@@ -2487,6 +2930,180 @@
     </xs:attributeGroup>
     
     
+    
+    <xs:group name="Equal-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the equation tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Equal"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Equal" type="ruleml:Equal.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Equal&gt;: an equation between two terms. See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Equal</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Equal.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Equal.header"/>
+            <xs:group ref="ruleml:Equal.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Equal-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reEqual.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="reEqual.attlist">
+        <xs:attributeGroup ref="ruleml:closure-att-fo.choice"/>
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="Equal.header">
+        <xs:annotation>
+            <xs:documentation>Equations accept the header of truth-valued
+                connectives</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Equal.main">
+        <xs:annotation>
+            <xs:documentation>The main section of equations contains a pair of edges, a left-hand
+                side edge and a right-hand side edge.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:leftSide-edge.choice"/>
+            <xs:group ref="ruleml:rightSide-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="leftSide-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the left-hand side tag name in equations.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:left"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="left" type="ruleml:left.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;left&gt;: The left-hand side edge of an equation. See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-left</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="left.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:left.content">
+                <xs:attributeGroup ref="ruleml:left.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="left.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="left.content">
+        <xs:annotation>
+            <xs:documentation>The left-hand side role in an equation is filled by a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:leftTerm.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:group name="rightSide-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the right-hand side tag name in equations.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:right"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="right" type="ruleml:right.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;right&gt;: The right-hand side edge of an equation. See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-right</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="right.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:right.content">
+                <xs:attributeGroup ref="ruleml:right.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="right.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="right.content">
+        <xs:annotation>
+            <xs:documentation>The right-hand side role in an equation is filled by a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:rightTerm.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="leftTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed in the left-hand side of an equation </xs:documentation>
+        </xs:annotation>
+        <xs:group ref="ruleml:AnyTerm.choice"/>
+    </xs:complexType>
+    <xs:complexType name="rightTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed in the right-hand side of an equation
+            </xs:documentation>
+        </xs:annotation>
+        <xs:group ref="ruleml:AnyTerm.choice"/>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="oriented-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the oriented equation
+                attribute name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="oriented" type="ruleml:oriented.value">
+            <xs:annotation>
+                <xs:documentation>An attribute indicating whether an equation (&lt;Equal&gt;) is oriented
+                    (directed) or unoriented (symmetric).        See
+                    http://deliberation.ruleml.org/1.03/glossary/.40oriented</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="oriented.attrib.def">
+        <xs:attribute name="oriented" type="ruleml:oriented.value" use="required">
+            <xs:annotation>
+                <xs:documentation>An attribute indicating whether an equation (&lt;Equal&gt;) is oriented
+                    (directed) or unoriented (symmetric).        See
+                    http://deliberation.ruleml.org/1.03/glossary/.40oriented</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="oriented.value">
+        <xs:union memberTypes="ruleml:oriented_default.value ruleml:oriented_non-default.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:simpleType name="oriented_non-default.value">
+        <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="yes"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="oriented_default.value">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="no"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <xs:attributeGroup name="Type.attlist">
         <xs:annotation>
@@ -3313,6 +3930,52 @@
         </xs:sequence>
     </xs:group>
     
+    <xs:attributeGroup name="singlevalued-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the attribute for set-valued
+                functions.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="val" type="ruleml:val.value">
+            <xs:annotation>
+                <xs:documentation>An attribute indicating whether a function (&lt;Fun&gt;) is deterministic
+                    or non-deterministic.  It has two values: "1" (deterministic: exactly one) and
+                    "0.." (set-valued: zero or more).     See
+                    http://deliberation.ruleml.org/1.03/glossary/.40val</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="val.attrib.def">
+        <xs:attribute name="val" type="ruleml:val.value" use="required">
+            <xs:annotation>
+                <xs:documentation>An attribute indicating whether a function (&lt;Fun&gt;) is deterministic
+                    or non-deterministic.  It has two values: "1" (deterministic: exactly one) and
+                    "0.." (set-valued: zero or more).     See
+                    http://deliberation.ruleml.org/1.03/glossary/.40val</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="val.value">
+        <xs:union memberTypes="ruleml:val_default.value ruleml:val_non-default.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:simpleType name="val_non-default.value">
+        <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="0.."/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+    
+    <xs:simpleType name="val_default.value">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <xs:attributeGroup name="interpretation-att.choice">
         <xs:annotation>
             <xs:documentation>an extension point for specializations of the interpretation attribute
@@ -3336,10 +3999,21 @@
         </xs:attribute>
     </xs:attributeGroup>
     <xs:simpleType name="interpretation.value">
-        <xs:restriction base="ruleml:interpretation_default.value"/>
+        <xs:union memberTypes="ruleml:interpretation_default.value ruleml:interpretation_non-default.value"/>
     </xs:simpleType>
     
     
+    
+    <xs:simpleType name="interpretation_non-default.value">
+        <xs:union memberTypes="ruleml:PrefixedCURIE.datatype ruleml:AbsIRI.datatype">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="value"/>
+                    <xs:enumeration value="open"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
     
     <xs:simpleType name="interpretation_default.value">
         <xs:restriction base="xs:token">
@@ -3455,15 +4129,18 @@
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
     </xs:attributeGroup>
     
-    <xs:attributeGroup name="reEqual.attlist">
-        <xs:attributeGroup ref="ruleml:style-att.choice"/>
-    </xs:attributeGroup>
-    <xs:attributeGroup name="reNaf.attlist">
-        <xs:attributeGroup ref="ruleml:style-att.choice"/>
-    </xs:attributeGroup>
-    <xs:attributeGroup name="reNeg.attlist">
-        <xs:attributeGroup ref="ruleml:style-att.choice"/>
-    </xs:attributeGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

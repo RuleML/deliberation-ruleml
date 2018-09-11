@@ -22,6 +22,7 @@ start =
   | Skolem
   | Reify
   | Ind
+  | Tuple
   | Var
   | Plex
   | formula
@@ -45,6 +46,8 @@ start =
   | slotdep
   | slot
   | arg
+  | tupdep
+  | tup
   | resl
   | repo
 RuleML =
@@ -325,8 +328,7 @@ Atom =
     oid?,
     degree?,
     op,
-    arg*,
-    repo?,
+    ((arg*, repo?) | (tupdep*, tup*)),
     slotdep*,
     slot*,
     resl?
@@ -663,8 +665,7 @@ Expr =
     meta*,
     oid?,
     op_2,
-    arg*,
-    repo?,
+    ((arg*, repo?) | (tupdep*, tup*)),
     slotdep*,
     slot*,
     resl?
@@ -994,6 +995,7 @@ Reify =
        | Skolem
        | Reify
        | Ind
+       | Tuple
        | Var
        | Plex
        | formula
@@ -1017,6 +1019,8 @@ Reify =
        | slotdep
        | slot
        | arg
+       | tupdep
+       | tup
        | resl
        | repo)*
   }
@@ -1065,6 +1069,38 @@ Ind =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     xsd:token
+  }
+Tuple =
+  element Tuple {
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:id { xsd:NCName }?
+     & attribute key {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute keyref {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
+    meta*,
+    arg*,
+    repo?
   }
 Var =
   element Var {
@@ -1141,8 +1177,7 @@ Plex =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    arg*,
-    repo?,
+    ((arg*, repo?) | (tupdep*, tup*)),
     slotdep*,
     slot*,
     resl?
@@ -1621,6 +1656,50 @@ arg =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     (Skolem | Reify | Ind | Data | Var | Expr | Plex)
+  }
+tupdep =
+  element tupdep {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:id { xsd:NCName }?
+    & attribute key {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & attribute keyref {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & Tuple
+  }
+tup =
+  element tup {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:id { xsd:NCName }?
+    & attribute key {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & attribute keyref {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & Tuple
   }
 resl =
   element resl {

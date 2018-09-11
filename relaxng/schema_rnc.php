@@ -127,6 +127,7 @@ header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"'
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
 $base_url = "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php";
+date_default_timezone_set('US/Eastern');
 $now =  date(DATE_ATOM,time());
 
 //
