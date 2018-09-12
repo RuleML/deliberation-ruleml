@@ -2712,19 +2712,6 @@
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
     </xs:attributeGroup>
     
-    <xs:attributeGroup name="Tuple.attlist">
-        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
-    </xs:attributeGroup>
-    <xs:group name="Tuple.header">
-        <xs:annotation>
-            <xs:documentation>Generalized lists accept the header pattern common to
-                Nodes.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
-        </xs:sequence>
-    </xs:group>
-    
     <xs:complexType name="Tuple-node.choice">
         <xs:annotation>
             <xs:documentation>an extension point for specializations of the generalized list tag
@@ -2752,6 +2739,20 @@
         </xs:sequence>
         <xs:attributeGroup ref="ruleml:Tuple.attlist"/>
     </xs:complexType>
+    <xs:attributeGroup name="Tuple.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="Tuple.header">
+        <xs:annotation>
+            <xs:documentation>Generalized lists accept the header pattern common to
+                Nodes.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        </xs:sequence>
+    </xs:group>
+    
     <xs:group name="Tuple.main">
         <xs:annotation>
             <xs:documentation>A generalized list within a positional rest variable contains a
