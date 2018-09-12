@@ -18,12 +18,6 @@ Node.choice |= Tuple.Node.def
 # This module declares the following RuleML elements and attributes:
 #            * <Tuple>
 
-Tuple.attlist &= commonNode.attlist?
-
-## Generalized lists accept the header pattern common to Nodes.
-Tuple.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
-
 ## an extension point for specializations of the generalized list tag name.  
 Tuple-node.choice |= Tuple.Node.def
 ## The children of a generalized list (tuple) are divided into two sections, 
@@ -37,6 +31,12 @@ Tuple.Node.def =
   ## within repo
   element Tuple { Tuple.type.def }
 Tuple.type.def = Tuple.attlist, Tuple.header, Tuple.main
+
+Tuple.attlist &= commonNode.attlist?
+
+## Generalized lists accept the header pattern common to Nodes.
+Tuple.header &= Node.header?
+# For the declaration of the Node header, see the modules meta_expansion_module).
 
 ## A generalized list within a positional rest variable contains a positional argument sequence
 Tuple.main |= positionalArgumentsForAtoms.sequence

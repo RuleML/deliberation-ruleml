@@ -8,7 +8,7 @@ header('Content-Description: File Transfer');
 header('Content-type: application/relax-ng-compact-syntax; charset=utf-8');
 //Assembler of RNC schema for RuleML 1.03
 //
-$debug = true;
+$debug = false;
 //Step 0000. Extract all GET parameters
 $backbone = "backbone";
 $backbone_andor = 0;
@@ -127,6 +127,7 @@ header('Content-Disposition: attachment; filename="'.basename($rnc_filename).'"'
 $start = ' start = Node.choice | edge.choice'."\n";
 $end = ' inherit = ruleml {start |= notAllowed}';
 $base_url = "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php";
+date_default_timezone_set('US/Eastern');
 $now =  date(DATE_ATOM,time());
 
 //

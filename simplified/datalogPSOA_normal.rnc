@@ -20,6 +20,7 @@ start =
   | Skolem
   | Reify
   | Ind
+  | Tuple
   | Var
   | formula
   | formula_2
@@ -41,8 +42,8 @@ start =
   | slotdep
   | slot
   | arg
-  | resl
-  | repo
+  | tupdep
+  | tup
 RuleML =
   element RuleML {
     (attribute node {
@@ -321,11 +322,9 @@ Atom =
     oid?,
     degree?,
     op,
-    arg*,
-    repo?,
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 Rel =
   element Rel {
@@ -887,6 +886,7 @@ Reify =
        | Skolem
        | Reify
        | Ind
+       | Tuple
        | Var
        | formula
        | formula_2
@@ -908,8 +908,8 @@ Reify =
        | slotdep
        | slot
        | arg
-       | resl
-       | repo)*
+       | tupdep
+       | tup)*
   }
 Ind =
   element Ind {
@@ -956,6 +956,45 @@ Ind =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     xsd:token
+  }
+Tuple =
+  element Tuple {
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:id { xsd:NCName }?
+     & attribute key {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute keyref {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
+    meta*,
+    arg*
   }
 Var =
   element Var {
@@ -1448,8 +1487,8 @@ arg =
        }?),
     (Skolem | Reify | Ind | Data | Var)
   }
-resl =
-  element resl {
+tupdep =
+  element tupdep {
     attribute ns1:schemaLocation { text }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
@@ -1468,10 +1507,10 @@ resl =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & Var
+    & Tuple
   }
-repo =
-  element repo {
+tup =
+  element tup {
     attribute ns1:schemaLocation { text }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
@@ -1490,7 +1529,7 @@ repo =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & Var
+    & Tuple
   }
 act =
   element act {
