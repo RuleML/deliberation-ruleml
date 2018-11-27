@@ -23,9 +23,9 @@ Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 ## Slotted arguments may precede or  follow positional arguments 
 ## in atomic formulas in the deterministic serialization. 
 argumentsForAtoms.sequence |=
-  slotTermsForAtoms.sequence,
+  slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence,
   (((termsForAtoms.nonemptysequence.choice, repo?) | repo),
-   slotTermsForAtoms.sequence)?,
+   slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence)?,
   resl?
 repo = restOfPositionalArguments-edge.choice
 resl = restOfSlots-edge.choice
@@ -37,9 +37,9 @@ Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequenc
 ## Slotted arguments may precede or  follow positional arguments 
 ## in the deterministic serialization. 
 argumentsForExpressions.sequence |=
-  slotTermsForExpressions.sequence,
+  slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence,
   (((termsForExpressions.nonemptysequence.choice, repo?) | repo),
-   slotTermsForExpressions.sequence)?,
+   slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence)?,
   resl?
 
 ## Positional rest arguments follow the ordinary positional arguments
