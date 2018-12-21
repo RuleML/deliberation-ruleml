@@ -47,6 +47,57 @@
         </Implies>
       </formula>
       <formula>
+        <Implies node="this:#rule1b">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>j1</Ind>
+              </oid>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <arg index="1">
+                <Ind>f</Ind>
+              </arg>
+              <arg index="2">
+                <Data>123</Data>
+              </arg>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slotdep>
+                <Ind>g</Ind>
+                <Ind>h</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+              <slot>
+                <Ind>i</Ind>
+                <Ind>j</Ind>
+              </slot>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <slotdep>
+                <Ind>a</Ind>
+                <Ind>b</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d</Ind>
+                <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
         <Implies node="this:#rule2">
           <if>
             <Atom>
