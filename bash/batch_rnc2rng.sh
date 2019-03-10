@@ -14,7 +14,7 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${TMP_HOME}"
 rm "${TMP_HOME}"*.rng >> /dev/null 2>&1
 
-# applies the auxiliary script aux_rnc2rng.sh to all RNC expansion modules
+echo "Apply the auxiliary script aux_rnc2rng.sh to all RNC expansion modules"
 for file in "${RNC_HOME}modules/"*.rnc 
 do 
   filename=$(basename "$file")
@@ -34,10 +34,13 @@ if [[ "${numrng}" == "0" ]]; then
   exit 1
 fi
 
-# Validate against ../designPattern/include_expansion_schema.rng
+echo "Validate against ../designPattern/include_expansion_schema.rng"
+#Validate
+java -jar "${JING}"  "${DESIGN_HOME}include_expansion_schema.rng"
 for file in "${TMP_HOME}"*.rng
 do
   filename=$(basename "$file")
+  echo "${filename}"
   "${BASH_HOME}aux_valdesign.sh" "${file}"
    if [[ "$?" -ne "0" ]]; then
      echo "Validation Failed for ${filename}"
