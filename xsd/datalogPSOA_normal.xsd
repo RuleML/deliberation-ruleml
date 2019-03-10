@@ -2099,7 +2099,7 @@
         <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:complexType>
     
-    <xs:group name="slotdepTermsForAtoms.sequence">
+    <xs:group name="slotdepTerms.sequence">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more dependent slots are
                 allowed.</xs:documentation>
@@ -2108,13 +2108,18 @@
             <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotdep-edge.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="slotdepTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotdepTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="slotdepTermsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>In expressions, zero or more dependent slots are
                 allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotdep-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:slotdepTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="slotdep-edge.choice">
@@ -2180,7 +2185,7 @@
     
     
     
-    <xs:group name="slotTermsForAtoms.sequence">
+    <xs:group name="slotTerms.sequence">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
@@ -2188,12 +2193,17 @@
             <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="slotTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="slotTermsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>In expressions, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     
@@ -2609,13 +2619,23 @@
         <xs:attribute name="keyref" type="ruleml:keyref.value"/>
     </xs:attributeGroup>
     
-    <xs:group name="tupdepTermsForAtoms.sequence">
+    <xs:group name="tupdepTerms.nonemptysequence.choice">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more tupdep are
                 allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:tupdep-edge.choice"/>
+            <xs:group maxOccurs="unbounded" ref="ruleml:tupdep-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdepTerms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdepTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="tupdepTermsForExpressions.sequence">
@@ -2623,7 +2643,7 @@
             <xs:documentation>In expressions, zero or more tupdep are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:tupdep-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="tupdep-edge.choice">
@@ -2661,12 +2681,22 @@
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
     </xs:attributeGroup>
     
-    <xs:group name="tupTermsForAtoms.sequence">
+    <xs:group name="tupTerms.nonemptysequence.choice">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more tup are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:tup-edge.choice"/>
+            <xs:group maxOccurs="unbounded" ref="ruleml:tup-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupTerms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="tupTermsForExpressions.sequence">
@@ -2674,7 +2704,7 @@
             <xs:documentation>In expressions, zero or more tup are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:tup-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="tup-edge.choice">

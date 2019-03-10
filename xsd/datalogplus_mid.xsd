@@ -1291,6 +1291,16 @@
             <xs:group minOccurs="0" ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="positionalArgumentsForAtoms.sequence">
+        <xs:annotation>
+            <xs:documentation>Positional rest arguments in atomic formulas may occur in  any
+                position relative to the slots in relaxed-form serialization.  This pattern cannot
+                be translated accurately into XSD.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForAtoms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="argumentsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>Slotted arguments may precede or  follow positional arguments  in the
@@ -2359,6 +2369,9 @@
     </xs:attributeGroup>
     
     <xs:attributeGroup name="rePlex.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Tuple.attlist">
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="reFun.attlist">

@@ -1436,7 +1436,7 @@
                 the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
+            <xs:group minOccurs="0" ref="ruleml:positionalArgumentsForAtoms.sequence"/>
             <xs:group ref="ruleml:slotsForAtoms.sequence"/>
         </xs:sequence>
     </xs:group>
@@ -1446,8 +1446,10 @@
                 atomic formulas in the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:termsForAtoms.sequence"/>
-            <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+            <xs:sequence minOccurs="0">
+                <xs:group ref="ruleml:termsForAtoms.sequence"/>
+                <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+            </xs:sequence>
         </xs:sequence>
     </xs:group>
     <xs:group name="slotsForAtoms.sequence">
@@ -1478,7 +1480,7 @@
         </xs:annotation>
         <xs:sequence>
             <xs:sequence minOccurs="0">
-                <xs:group ref="ruleml:positionalArgumentsForExpressions.sequence"/>
+                <xs:group minOccurs="0" ref="ruleml:positionalArgumentsForExpressions.sequence"/>
                 <xs:group ref="ruleml:slotsForExpressions.sequence"/>
             </xs:sequence>
         </xs:sequence>
@@ -2231,7 +2233,7 @@
         <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:complexType>
     
-    <xs:group name="slotTermsForAtoms.sequence">
+    <xs:group name="slotTerms.sequence">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
@@ -2239,12 +2241,17 @@
             <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="slotTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="slotTermsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>In expressions, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     
@@ -3200,6 +3207,9 @@
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     
+    <xs:attributeGroup name="Tuple.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
     
     
     

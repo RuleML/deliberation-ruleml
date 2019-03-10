@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><!--
   Call parameters
-  GET parameter: backbone=x7
+  GET parameter: backbone=xf
   GET parameter: default=x7
-  GET parameter: termseq=x2
+  GET parameter: termseq=x7
   GET parameter: lng=x1
   GET parameter: propo=x3cf
   GET parameter: implies=x7
-  GET parameter: terms=xf0f
-  GET parameter: quant=x3
-  GET parameter: expr=x0
-  GET parameter: serial=x53
+  GET parameter: terms=xef0f
+  GET parameter: quant=x1
+  GET parameter: expr=x3
+  GET parameter: serial=x50
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.03/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
 -->
     
@@ -431,16 +431,24 @@
                 the operator tag name in atomic formulas.  </xs:documentation>
         </xs:annotation>
         <xs:choice>
-            <xs:element ref="ruleml:op"/>
+            <xs:group ref="ruleml:op_Atom.edge.def"/>
             <xs:group ref="ruleml:op_Atom.content"/>
         </xs:choice>
     </xs:group>
-    <xs:element name="op" type="ruleml:op.type.def">
+    <xs:group name="op_Atom.edge.def">
         <xs:annotation>
-            <xs:documentation>&lt;op&gt;: edge element for the predicate of an atomic formula. See
-                http://deliberation.ruleml.org/1.03/glossary/#gloss-op</xs:documentation>
+            <xs:documentation>(context sensitive: see also expr_module and holog_module) An operator
+                edge containing a relation (&lt;Rel&gt;) of an atom (&lt;Atom&gt;).</xs:documentation>
         </xs:annotation>
-    </xs:element>
+        <xs:sequence>
+            <xs:element form="qualified" name="op" type="ruleml:op.type.def">
+                <xs:annotation>
+                    <xs:documentation>&lt;op&gt;: edge element for the predicate of an atomic formula. See
+                        http://deliberation.ruleml.org/1.03/glossary/#gloss-op</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
     <xs:complexType name="op.type.def">
         <xs:group ref="ruleml:op_Atom.content"/>
         <xs:attributeGroup ref="ruleml:op_Atom.attlist"/>
@@ -583,7 +591,7 @@
         <xs:attributeGroup ref="ruleml:formula_And.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="formula_And-datt.choice">
-        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="formula_And.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -695,7 +703,7 @@
         <xs:attributeGroup ref="ruleml:formula_Or.attlist"/>
     </xs:complexType>
     <xs:attributeGroup name="formula_Or-datt.choice">
-        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
+        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="formula_Or.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -1204,6 +1212,133 @@
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
     </xs:attributeGroup>
     
+    <xs:group name="Expression-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the expression tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Expr"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Expr" type="ruleml:Expr.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Expr&gt;: a functional expression. See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Expr</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Expr.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Expr.header"/>
+            <xs:group ref="ruleml:Expr.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Expr-datt.choice"/>
+        <xs:attributeGroup ref="ruleml:reExpr.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="reExpr.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:Type.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="operatorForExpressions-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the operator tag name in expressions. </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:op_Expr.edge.def"/>
+            <xs:group ref="ruleml:op_Expr.content"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="op_Expr.edge.def">
+        <xs:annotation>
+            <xs:documentation>(context sensitive: see Also atom_backbone_module and holog_module) An
+                operator edge including a function symbol (&lt;Fun&gt;) of a (&lt;Expr&gt;).
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-op</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="op" type="ruleml:op_Expr.type.def">
+                <xs:annotation>
+                    <xs:documentation>Also an operator in functional expressions.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="op_Expr.type.def">
+        <xs:group ref="ruleml:op_Expr.content"/>
+        <xs:attributeGroup ref="ruleml:op_Expr.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="op_Expr.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:group name="op_Expr.content">
+        <xs:annotation>
+            <xs:documentation>The operator role of a functional expression is filled by a function
+                symbol.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Function-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Function-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the function operator tag
+                name. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Fun"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Fun" type="ruleml:Fun.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Fun&gt;: symbol for functional operators. See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Fun</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Fun.type.def">
+        <xs:simpleContent>
+            <xs:extension base="ruleml:Fun.value">
+                <xs:attributeGroup ref="ruleml:Fun-datt.choice"/>
+                <xs:attributeGroup ref="ruleml:reFun.attlist"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reFun.attlist">
+        <xs:annotation>
+            <xs:documentation>function symbols accept the resource attribute list</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:Resource.attlist"/>
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:type-att.choice"/>
+    </xs:attributeGroup>
+    
+    <xs:simpleType name="Fun.value">
+        <xs:annotation>
+            <xs:documentation>A function symbol contains the XSD datatype token.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:token"/>
+    </xs:simpleType>
+    <xs:group name="exprObjectIdentifier-edge.choice">
+        <xs:sequence>
+            <xs:group ref="ruleml:objectIdentifier-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    
+    <xs:attributeGroup name="Expr-datt.choice">
+        <xs:annotation>
+            <xs:documentation>expressions have interpretation attribute as an
+                attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:interpretation-att-inf.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Fun-datt.choice">
+        <xs:annotation>
+            <xs:documentation>function symbols have interpretation and single-valuedness as an
+                attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:interpretation-att-inf.choice"/>
+    </xs:attributeGroup>
     <xs:attributeGroup name="Implies-datt.choice">
         <xs:annotation>
             <xs:documentation>implications have inference direction and material implication as an
@@ -1243,23 +1378,23 @@
     <xs:attributeGroup name="mapMaterial-att-inf.choice">
         <xs:attributeGroup ref="ruleml:mapMaterial-att.choice"/>
     </xs:attributeGroup>
+    <xs:attributeGroup name="interpretation-att-inf.choice">
+        <xs:attributeGroup ref="ruleml:interpretation-att.choice"/>
+    </xs:attributeGroup>
     
     
     
     <xs:group name="termsForAtoms.nonemptysequence.choice">
         <xs:annotation>
-            <xs:documentation>In binary logics, a positional argument sequence has exactly zero or
-                two positional arguments.</xs:documentation>
+            <xs:documentation/>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:positionalArgument-edge.choice"/>
-            <xs:group ref="ruleml:positionalArgument-edge.choice"/>
+            <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="termsForExpressions.nonemptysequence.choice">
         <xs:sequence>
-            <xs:group ref="ruleml:positionalArgument-edge.choice"/>
-            <xs:group ref="ruleml:positionalArgument-edge.choice"/>
+            <xs:group maxOccurs="unbounded" ref="ruleml:positionalArgument-edge.choice"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="Atom.main">
@@ -1279,17 +1414,16 @@
                 atomic formulas in the deterministic serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
+            <xs:group ref="ruleml:slotdepTermsForAtoms.sequence"/>
             <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
             <xs:sequence minOccurs="0">
-                <xs:group ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
+                <xs:choice>
+                    <xs:group ref="ruleml:termsForAtoms.nonemptysequence.choice"/>
+                    <xs:group ref="ruleml:tuplesForAtoms.nonemptysequence.choice"/>
+                </xs:choice>
+                <xs:group ref="ruleml:slotdepTermsForAtoms.sequence"/>
                 <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
             </xs:sequence>
-            <xs:group minOccurs="0" ref="ruleml:resl"/>
-        </xs:sequence>
-    </xs:group>
-    <xs:group name="resl">
-        <xs:sequence>
-            <xs:group ref="ruleml:restOfSlots-edge.choice"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="positionalArgumentsForAtoms.sequence">
@@ -1302,6 +1436,29 @@
             <xs:group minOccurs="0" ref="ruleml:termsForAtoms.sequence"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="tuplesForAtoms.nonemptysequence.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:choice>
+            <xs:sequence>
+                <xs:group ref="ruleml:tupdepTerms.nonemptysequence.choice"/>
+                <xs:group ref="ruleml:tupTerms.sequence"/>
+            </xs:sequence>
+            <xs:group ref="ruleml:tupTerms.nonemptysequence.choice"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="Expr.main">
+        <xs:annotation>
+            <xs:documentation>The main section of a functional expression contains an operator edge
+                and a collection of argument edges. Pre-fix operator notation for expressions is
+                required in the deterministic serialization.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:operatorForExpressions-edge.choice"/>
+            <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="argumentsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>Slotted arguments may precede or  follow positional arguments  in the
@@ -1309,14 +1466,30 @@
         </xs:annotation>
         <xs:sequence>
             <xs:sequence minOccurs="0">
+                <xs:group ref="ruleml:slotdepTermsForExpressions.sequence"/>
                 <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
                 <xs:sequence minOccurs="0">
-                    <xs:group ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
+                    <xs:choice>
+                        <xs:group ref="ruleml:termsForExpressions.nonemptysequence.choice"/>
+                        <xs:group ref="ruleml:tuplesForExpressions.nonemptysequence.choice"/>
+                    </xs:choice>
+                    <xs:group ref="ruleml:slotdepTermsForExpressions.sequence"/>
                     <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
                 </xs:sequence>
-                <xs:group minOccurs="0" ref="ruleml:resl"/>
             </xs:sequence>
         </xs:sequence>
+    </xs:group>
+    <xs:group name="tuplesForExpressions.nonemptysequence.choice">
+        <xs:annotation>
+            <xs:documentation/>
+        </xs:annotation>
+        <xs:choice>
+            <xs:sequence>
+                <xs:group ref="ruleml:tupdepTerms.nonemptysequence.choice"/>
+                <xs:group ref="ruleml:tupTerms.sequence"/>
+            </xs:sequence>
+            <xs:group ref="ruleml:tupTerms.nonemptysequence.choice"/>
+        </xs:choice>
     </xs:group>
     <xs:group name="positionalArgumentsForExpressions.sequence">
         <xs:annotation>
@@ -1333,10 +1506,7 @@
                 deterministic serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:sequence minOccurs="0">
-                <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
-                <xs:group minOccurs="0" ref="ruleml:resl"/>
-            </xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotTermsForExpressions.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="Implies.main">
@@ -1406,7 +1576,10 @@
     </xs:group>
     <xs:group name="Expr.header">
         <xs:sequence>
-            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+            <xs:sequence minOccurs="0">
+                <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+                <xs:group minOccurs="0" ref="ruleml:exprObjectIdentifier-edge.choice"/>
+            </xs:sequence>
         </xs:sequence>
     </xs:group>
     
@@ -2108,6 +2281,93 @@
         <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:complexType>
     
+    <xs:group name="slotdepTerms.sequence">
+        <xs:annotation>
+            <xs:documentation>In atomic formulas, zero or more dependent slots are
+                allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slotdep-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="slotdepTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotdepTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="slotdepTermsForExpressions.sequence">
+        <xs:annotation>
+            <xs:documentation>In expressions, zero or more dependent slots are
+                allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotdepTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="slotdep-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the slotdep tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:slotdep"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="slotdep" type="ruleml:slotdep.type.def">
+        <xs:annotation>
+            <xs:documentation>A user-defined slotdep (property). See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-slotdep</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="slotdep.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:slotdep.content">
+                <xs:attributeGroup ref="ruleml:reslotdep.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reslotdep.attlist">
+        <xs:annotation>
+            <xs:documentation>The slotdep element accepts optional cardinality and  weight
+                attributes. </xs:documentation>
+        </xs:annotation>
+        <xs:attributeGroup ref="ruleml:cardinality-att.choice"/>
+        <xs:attributeGroup ref="ruleml:weight-att.choice"/>
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="slotdep.content">
+        <xs:annotation>
+            <xs:documentation>The slotdep content model consists of a key (first position) and a
+                filler (second position).</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:slotdepKeyTerm.choice"/>
+            <xs:group ref="ruleml:slotdepFillerTerm.choice"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:group name="slotdepKeyTerm.choice">
+        <xs:annotation>
+            <xs:documentation>The key (first position) in a slotdep contains an interpreted term or
+                data, which may be simple or compound.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
+            <xs:group ref="ruleml:CompoundTerm.choice"/>
+        </xs:choice>
+    </xs:group>
+    
+    <xs:group name="slotdepFillerTerm.choice">
+        <xs:annotation>
+            <xs:documentation>The filler (second position) in a slotdep contains any single
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:AnyTerm.choice"/>
+        </xs:sequence>
+    </xs:group>
+    
+    
+    
     <xs:group name="slotTerms.sequence">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more slots are allowed.</xs:documentation>
@@ -2176,9 +2436,10 @@
             <xs:documentation>The key (first position) in a slot contains an interpreted term or
                 data, which may be simple or compound.</xs:documentation>
         </xs:annotation>
-        <xs:sequence>
+        <xs:choice>
             <xs:group ref="ruleml:SimpleKeyTerm.choice"/>
-        </xs:sequence>
+            <xs:group ref="ruleml:CompoundTerm.choice"/>
+        </xs:choice>
     </xs:group>
     
     <xs:group name="slotFillerTerm.choice">
@@ -2446,6 +2707,7 @@
         <xs:choice>
             <xs:group ref="ruleml:SimpleConstantTerm.choice"/>
             <xs:group ref="ruleml:SimpleQuantifiableTerm.choice"/>
+            <xs:group ref="ruleml:CompoundTerm.choice"/>
         </xs:choice>
     </xs:group>
     
@@ -2470,6 +2732,16 @@
         <xs:choice>
             <xs:group ref="ruleml:Individual-node.choice"/>
             <xs:group ref="ruleml:DataTerm.choice"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="CompoundTerm.choice">
+        <xs:annotation>
+            <xs:documentation>Data terms are literals, and may have simple or complex
+                datatypes.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:Expression-node.choice"/>
+            <xs:group ref="ruleml:Plex_Any-node.choice"/>
         </xs:choice>
     </xs:group>
     
@@ -2531,6 +2803,180 @@
         <xs:attribute name="key" type="ruleml:key.value"/>
         <xs:attribute name="keyref" type="ruleml:keyref.value"/>
     </xs:attributeGroup>
+    
+    <xs:group name="tupdepTerms.nonemptysequence.choice">
+        <xs:annotation>
+            <xs:documentation>In atomic formulas, zero or more tupdep are
+                allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" ref="ruleml:tupdep-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdepTerms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdepTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdepTermsForExpressions.sequence">
+        <xs:annotation>
+            <xs:documentation>In expressions, zero or more tupdep are allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupdepTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupdep-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the tupdep tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:tupdep"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="tupdep" type="ruleml:tupdep.type.def">
+        <xs:annotation>
+            <xs:documentation>A user-defined tupdep (property). See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-tupdep</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="tupdep.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:tupdep.content">
+                <xs:attributeGroup ref="ruleml:tupdep.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tupdep.content">
+        <xs:annotation>
+            <xs:documentation>The tupdep content model consists of a Tuple.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:Tuple-node.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="tupdep.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:group name="tupTerms.nonemptysequence.choice">
+        <xs:annotation>
+            <xs:documentation>In atomic formulas, zero or more tup are allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group maxOccurs="unbounded" ref="ruleml:tup-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupTerms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.nonemptysequence.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tupTermsForExpressions.sequence">
+        <xs:annotation>
+            <xs:documentation>In expressions, zero or more tup are allowed.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:tupTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="tup-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the tup tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:tup"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="tup" type="ruleml:tup.type.def">
+        <xs:annotation>
+            <xs:documentation>A user-defined tup (property). See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-tup</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="tup.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:tup.content">
+                <xs:attributeGroup ref="ruleml:tup.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tup.content">
+        <xs:annotation>
+            <xs:documentation>The tup content model consists of a Tuple.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:Tuple-node.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:attributeGroup name="tup.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    
+    <xs:complexType name="Tuple-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the generalized list tag
+                name.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Tuple"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Tuple" type="ruleml:Tuple.type.def">
+        <xs:annotation>
+            <xs:documentation>A collection of (ordered) arguments (optionally enclosed by &lt;arg&gt;)
+                and/or (unordered) user-defined slots (&lt;slot&gt;),  identical to an uninterpreted
+                expression (&lt;Expr in="no"&gt;) except not having a user-specified function name
+                (equivalent  to having a system-specified constructor 'Tuple'). Rest variables (&lt;repo&gt;
+                and &lt;resl&gt;) are also permitted.        See
+                http://deliberation.ruleml.org/1.03/glossary/#gloss-Tuple within
+                repo</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Tuple.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Tuple.header"/>
+            <xs:group ref="ruleml:Tuple.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:Tuple.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="Tuple.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:group name="Tuple.header">
+        <xs:annotation>
+            <xs:documentation>Generalized lists accept the header pattern common to
+                Nodes.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Tuple.main">
+        <xs:annotation>
+            <xs:documentation>A generalized list within a positional rest variable contains a
+                positional argument sequence</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     
     <xs:group name="SimpleQuantifiableTerm.choice">
         <xs:annotation>
@@ -2644,68 +3090,199 @@
     
     
     
-    <xs:group name="restOfSlots-edge.choice">
+    <xs:group name="Plex_Any-node.choice">
         <xs:annotation>
-            <xs:documentation>an extension point for specializations of the slotted rest tag name.
-                Stripe-skipping is not allowed for slotted rest variables.  </xs:documentation>
+            <xs:documentation>an extension point for specializations of the generalized list tag
+                name.  </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="ruleml:resl"/>
+            <xs:group ref="ruleml:Plex_Any.Node.def"/>
         </xs:sequence>
     </xs:group>
-    <xs:element name="resl" type="ruleml:resl.type.def">
+    <xs:group name="Plex_Any.Node.def">
         <xs:annotation>
-            <xs:documentation>A slotted rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.  See
-                http://deliberation.ruleml.org/1.03/glossary/#gloss-resl</xs:documentation>
+            <xs:documentation>The children of a generalized list (plex) are divided into two
+                sections,  a header section for modifiers, and a main section for the list
+                arguments. </xs:documentation>
         </xs:annotation>
-    </xs:element>
-    <xs:complexType name="resl.type.def">
-        <xs:complexContent>
-            <xs:extension base="ruleml:resl.content">
-                <xs:attributeGroup ref="ruleml:resl.attlist"/>
-            </xs:extension>
-        </xs:complexContent>
+        <xs:sequence>
+            <xs:element form="qualified" name="Plex" type="ruleml:Plex_Any.type.def">
+                <xs:annotation>
+                    <xs:documentation>A collection of (ordered) arguments (optionally enclosed by
+                        &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;),  identical to an
+                        uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified
+                        function name (equivalent  to having a system-specified constructor 'Plex').
+                        Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.        See
+                        http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex within
+                        Atom</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Plex_Any.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Plex.header"/>
+            <xs:group ref="ruleml:Plex_Any.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
     </xs:complexType>
-    <xs:complexType name="resl.content">
-        <xs:annotation>
-            <xs:documentation>The content model of a slotted rest variable is a single
-                term.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:reslTerm.choice"/>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="reslTerm.choice">
-        <xs:annotation>
-            <xs:documentation>terms allowed in slotted rest variables. </xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:SlotSequenceMarker.choice"/>
-        </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:complexType name="SlotSequenceMarker.choice">
-        <xs:annotation>
-            <xs:documentation>Sequence markers are represented as ordinary
-                variables.</xs:documentation>
-        </xs:annotation>
-        <xs:group ref="ruleml:Variable-node.choice"/>
-    </xs:complexType>
-    
-    <xs:attributeGroup name="resl.attlist">
-        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
-    </xs:attributeGroup>
-    
-    
-    
-    
-    
-    
-    
-    
-    <xs:attributeGroup name="reExpr.attlist">
+    <xs:attributeGroup name="rePlex.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
+    <xs:group name="Plex.header">
+        <xs:annotation>
+            <xs:documentation>Generalized lists accept the header pattern common to
+                Nodes.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Plex_Any.main">
+        <xs:annotation>
+            <xs:documentation>A generalized list contains a generalized term sequence, which may be
+                empty.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:argumentsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Plex_repo-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the generalized list tag
+                name.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Plex_repo.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Plex_repo.Node.def">
+        <xs:annotation>
+            <xs:documentation>The children of a generalized list (plex) are divided into two
+                sections,  a header section for modifiers, and a main section for the list
+                arguments. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="Plex" type="ruleml:Plex_repo.type.def">
+                <xs:annotation>
+                    <xs:documentation>A collection of (ordered) arguments (optionally enclosed by
+                        &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;),  identical to an
+                        uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified
+                        function name (equivalent  to having a system-specified constructor 'Plex').
+                        Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.        See
+                        http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex within
+                        repo</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Plex_repo.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Plex.header"/>
+            <xs:group ref="ruleml:Plex_repo.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
+    </xs:complexType>
+    <xs:group name="Plex_repo.main">
+        <xs:annotation>
+            <xs:documentation>A generalized list within a positional rest variable contains a
+                positional argument sequence</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:positionalArgumentsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="Plex_resl-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the generalized list tag
+                name.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Plex_resl.Node.def"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Plex_resl.Node.def">
+        <xs:annotation>
+            <xs:documentation>The children of a generalized list (plex) are divided into two
+                sections,  a header section for modifiers, and a main section for the list
+                arguments. </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element form="qualified" name="Plex" type="ruleml:Plex_resl.type.def">
+                <xs:annotation>
+                    <xs:documentation>A collection of (ordered) arguments (optionally enclosed by
+                        &lt;arg&gt;) and/or (unordered) user-defined slots (&lt;slot&gt;),  identical to an
+                        uninterpreted expression (&lt;Expr in="no"&gt;) except not having a user-specified
+                        function name (equivalent  to having a system-specified constructor 'Plex').
+                        Rest variables (&lt;repo&gt; and &lt;resl&gt;) are also permitted.        See
+                        http://deliberation.ruleml.org/1.03/glossary/#gloss-Plex within
+                        resl</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:group>
+    <xs:complexType name="Plex_resl.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Plex.header"/>
+            <xs:group ref="ruleml:Plex_resl.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:rePlex.attlist"/>
+    </xs:complexType>
+    <xs:group name="Plex_resl.main">
+        <xs:annotation>
+            <xs:documentation>A generalized list within a slotted rest variable contains a slotted
+                argument sequence</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:slotsForExpressions.sequence"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:attributeGroup name="interpretation-att.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the interpretation attribute
+                name.  </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="per" type="ruleml:interpretation.value">
+            <xs:annotation>
+                <xs:documentation>   An attribute for specifying interpretation properties of
+                    functions.     See
+                    http://deliberation.ruleml.org/1.03/glossary/.40per</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="per.attrib.def">
+        <xs:attribute name="per" type="ruleml:interpretation.value" use="required">
+            <xs:annotation>
+                <xs:documentation>   An attribute for specifying interpretation properties of
+                    functions.     See
+                    http://deliberation.ruleml.org/1.03/glossary/.40per</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:simpleType name="interpretation.value">
+        <xs:restriction base="ruleml:interpretation_default.value"/>
+    </xs:simpleType>
+    
+    
+    
+    <xs:simpleType name="interpretation_default.value">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="copy"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -2817,15 +3394,15 @@
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     
-    <xs:attributeGroup name="rePlex.attlist">
-        <xs:attributeGroup ref="ruleml:style-att.choice"/>
-    </xs:attributeGroup>
-    <xs:attributeGroup name="Tuple.attlist">
-        <xs:attributeGroup ref="ruleml:style-att.choice"/>
-    </xs:attributeGroup>
-    <xs:attributeGroup name="reFun.attlist">
-        <xs:attributeGroup ref="ruleml:type-att.choice"/>
-    </xs:attributeGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
