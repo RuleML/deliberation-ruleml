@@ -24,11 +24,20 @@ Atom.main |= operatorForAtoms-edge.choice, argumentsForAtoms.sequence
 ## in atomic formulas in the deterministic serialization. 
 argumentsForAtoms.sequence |=
   slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence,
-  (((termsForAtoms.nonemptysequence.choice, repo?) | repo),
+   (((( termsForAtoms.nonemptysequence.choice, repo?) | repo)  | tuplesForAtoms.nonemptysequence.choice ),
    slotdepTermsForAtoms.sequence, slotTermsForAtoms.sequence)?,
   resl?
 repo = restOfPositionalArguments-edge.choice
 resl = restOfSlots-edge.choice
+
+## Positional rest arguments in atomic formulas may occur in 
+## any position relative to the slots in relaxed-form serialization. 
+## This pattern cannot be translated accurately into XSD.
+positionalArgumentsForAtoms.sequence |=
+  termsForAtoms.sequence, restOfPositionalArguments-edge.choice?
+
+##
+tuplesForAtoms.nonemptysequence.choice |= (tupdepTerms.nonemptysequence.choice , tupTerms.sequence)  | tupTerms.nonemptysequence.choice 
 
 ## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is required in the deterministic serialization.
@@ -38,9 +47,12 @@ Expr.main |= operatorForExpressions-edge.choice, argumentsForExpressions.sequenc
 ## in the deterministic serialization. 
 argumentsForExpressions.sequence |=
   slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence,
-  (((termsForExpressions.nonemptysequence.choice, repo?) | repo),
+   (((( termsForExpressions.nonemptysequence.choice, repo?) | repo)  | tuplesForExpressions.nonemptysequence.choice ),
    slotdepTermsForExpressions.sequence, slotTermsForExpressions.sequence)?,
   resl?
+
+##
+tuplesForExpressions.nonemptysequence.choice |= (tupdepTerms.nonemptysequence.choice , tupTerms.sequence)  | tupTerms.nonemptysequence.choice 
 
 ## Positional rest arguments follow the ordinary positional arguments
 ## in expressions in the deterministic serialization. 

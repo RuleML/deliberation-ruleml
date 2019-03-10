@@ -141,6 +141,7 @@ tupdepTermsForAtoms.sequence |= empty
 tupTermsForAtoms.sequence |= empty
 tupdepTermsForExpressions.sequence |= empty
 tupTermsForExpressions.sequence |= empty
+tupTerms.sequence |= empty
 # 
 # HEADERS
 TruthValuedConnective.header &= empty
@@ -315,6 +316,8 @@ restOfPositionalArguments-edge.choice |= notAllowed
 restOfSlots-edge.choice |= notAllowed
 positionalArgument-edge.choice |= notAllowed
 slot-edge.choice |= notAllowed
+tupdep-edge.choice |= notAllowed
+tup-edge.choice |= notAllowed
 #
 boundVariables.choice |= notAllowed
 # 
@@ -353,6 +356,8 @@ index-attrib.choice |= notAllowed
 # .nonemptysequence
 termsForAtoms.nonemptysequence.choice |= notAllowed
 termsForExpressions.nonemptysequence.choice |= notAllowed
+tupdepTerms.nonemptysequence.choice |= notAllowed
+tupTerms.nonemptysequence.choice |= notAllowed
 anySimpleType.value |= notAllowed
 duration.value |= notAllowed
 dateTime.value |= notAllowed

@@ -65,7 +65,7 @@ slotsForExpressions.sequence |= slotdepTermsForExpressions.sequence & slotTermsF
 
 ## Dependent tuples are followed by independent tuples
 ## in expressions in the normal-form serialization. 
-tuplesForExpressions.sequence |= tupdepTermsForExpressions.sequence, tupTermsForExpressions.sequence
+tuplesForExpressions.sequence |= tupdepTermsForExpressions.sequence & tupTermsForExpressions.sequence
 
 ## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the relaxed-form serialization, the if and then 
