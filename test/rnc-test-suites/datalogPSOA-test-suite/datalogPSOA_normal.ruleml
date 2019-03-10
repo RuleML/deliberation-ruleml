@@ -8,7 +8,6 @@
   <!-- a syntactic example rulebase for testing the Datalog PSOA RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">
-
       <formula>
         <Implies node="this:#rule1">
           <if>
@@ -207,12 +206,20 @@
                 </Tuple>
               </tup>
               <slotdep>
-                <Ind>a</Ind>
-                <Ind>b</Ind>
+                <Ind>a1</Ind>
+                <Ind>b1</Ind>
+              </slotdep>
+              <slotdep>
+                <Ind>a2</Ind>
+                <Ind>b2</Ind>
               </slotdep>
               <slot>
-                <Ind>d</Ind>
-                <Ind>e</Ind>
+                <Ind>d1</Ind>
+                <Ind>e1</Ind>
+              </slot>
+              <slot>
+                <Ind>d2</Ind>
+                <Ind>e2</Ind>
               </slot>
             </Atom>
           </if>

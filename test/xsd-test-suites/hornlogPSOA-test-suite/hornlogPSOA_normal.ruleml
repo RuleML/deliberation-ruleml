@@ -5,10 +5,9 @@
 
   <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
 
-  <!-- a syntactic example rulebase for testing the Datalog PSOA RuleML sublanguage -->
+  <!-- a syntactic example rulebase for testing the Hornlog PSOA RuleML sublanguage -->
   <act index="1">
     <Assert mapClosure="universal">
-      
       <formula>
         <Implies node="this:#rule1">
           <if>
@@ -19,27 +18,33 @@
               <op>
                 <Rel>g</Rel>
               </op>
-              <arg index="1">
+              <slotdep>
+                <Ind>a1</Ind>
                 <Expr>
                   <op>
                     <Fun>p</Fun>
                   </op>
-                  <arg index="1">
-                    <Ind>s</Ind>
-                  </arg>
                   <slotdep>
-                    <Ind>a</Ind>
+                    <Ind>a2</Ind>
                     <Ind>b</Ind>
                   </slotdep>
                   <slot>
-                    <Ind>d</Ind>
-                    <Ind>e</Ind>
+                    <Ind>d1</Ind>
+                    <Ind>e1</Ind>
                   </slot>
                 </Expr>
-              </arg>
-              <arg index="2">
-                <Ind>u</Ind>
-              </arg>
+              </slotdep>
+              <slot>
+                <Ind>d2</Ind>
+                <Ind>e2</Ind>
+              </slot>
+            </Atom>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>g</Rel>
+              </op>
               <slotdep>
                 <Ind>a</Ind>
                 <Ind>b</Ind>
@@ -47,6 +52,71 @@
               <slot>
                 <Ind>d</Ind>
                 <Ind>e</Ind>
+              </slot>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Implies node="this:#rule1b">
+          <if>
+            <Atom>
+              <oid>
+                <Ind>j1</Ind>
+              </oid>
+              <op>
+                <Rel>g</Rel>
+              </op>
+              <arg index="1">
+                <Ind>u</Ind>
+              </arg>
+              <arg index="2">
+                <Expr>
+                  <op>
+                    <Fun>p</Fun>
+                  </op>
+                  <arg index="1">
+                    <Ind>s</Ind>
+                  </arg>
+                  <arg index="2">
+                    <Ind>t</Ind>
+                  </arg>
+                  <slotdep>
+                    <Ind>a1</Ind>
+                    <Ind>b1</Ind>
+                  </slotdep>
+                  <slotdep>
+                    <Ind>a2</Ind>
+                    <Ind>b2</Ind>
+                  </slotdep>
+                  <slot>
+                    <Ind>d1</Ind>
+                    <Ind>e1</Ind>
+                  </slot>
+                  <slot>
+                    <Ind>d2</Ind>
+                    <Ind>e2</Ind>
+                  </slot>
+                </Expr>
+              </arg>
+              <arg index="3">
+                <Ind>v</Ind>
+              </arg>
+              <slotdep>
+                <Ind>a3</Ind>
+                <Ind>b3</Ind>
+              </slotdep>
+              <slotdep>
+                <Ind>a4</Ind>
+                <Ind>b4</Ind>
+              </slotdep>
+              <slot>
+                <Ind>d3</Ind>
+                <Ind>e3</Ind>
+              </slot>
+              <slot>
+                <Ind>d4</Ind>
+                <Ind>e4</Ind>
               </slot>
             </Atom>
           </if>
@@ -189,22 +259,38 @@
                     </Tuple>
                   </tup>
                   <slotdep>
-                    <Ind>a</Ind>
-                    <Ind>b</Ind>
+                    <Ind>a1</Ind>
+                    <Ind>b1</Ind>
+                  </slotdep>
+                  <slotdep>
+                    <Ind>a2</Ind>
+                    <Ind>b2</Ind>
                   </slotdep>
                   <slot>
-                    <Ind>d</Ind>
-                    <Ind>e</Ind>
+                    <Ind>d1</Ind>
+                    <Ind>e1</Ind>
+                  </slot>
+                  <slot>
+                    <Ind>d2</Ind>
+                    <Ind>e2</Ind>
                   </slot>
                 </Expr>
               </arg>
               <slotdep>
-                <Ind>a</Ind>
-                <Ind>b</Ind>
+                <Ind>a3</Ind>
+                <Ind>b3</Ind>
+              </slotdep>
+              <slotdep>
+                <Ind>a4</Ind>
+                <Ind>b4</Ind>
               </slotdep>
               <slot>
-                <Ind>d</Ind>
-                <Ind>e</Ind>
+                <Ind>d3</Ind>
+                <Ind>e3</Ind>
+              </slot>
+              <slot>
+                <Ind>d4</Ind>
+                <Ind>e4</Ind>
               </slot>
             </Atom>
           </if>
