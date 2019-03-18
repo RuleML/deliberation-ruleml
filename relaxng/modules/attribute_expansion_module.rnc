@@ -65,6 +65,7 @@ reExists.attlist &= style-att.choice?
 #
 reExpr.attlist &= style-att.choice?
 rePlex.attlist &= style-att.choice?
+Tuple.attlist &= style-att.choice?
 reFun.attlist &= type-att.choice?
 reRel.attlist &= type-att.choice?
 # 

@@ -1,16 +1,27 @@
+# Call parameters
+# GET parameter: backbone=x7
+# GET parameter: default=x7
+# GET parameter: termseq=x7
+# GET parameter: lng=x1
+# GET parameter: propo=x3cf
+# GET parameter: implies=x7
+# GET parameter: terms=xef0f
+# GET parameter: quant=x1
+# GET parameter: expr=x0
+# GET parameter: serial=x4c
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x0&serial=x4c" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xef0f&quant=x1&expr=x0&serial=x4c" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, custom-built" ]
 dcterms:description [
     "custom-built main module for a Deliberation RuleML language."
 ]
-dcterms:date [ "2018-07-12T18:31:36+00:00" ]
+dcterms:date [ "2018-09-11T15:52:23-04:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
@@ -18,7 +29,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
 # Base URL = http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php 
 # Complete URL = 
-#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xf0f&quant=x7&expr=x0&serial=x4c
+#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x7&default=x7&termseq=x7&lng=x1&propo=x3cf&implies=x7&terms=xef0f&quant=x1&expr=x0&serial=x4c
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -211,14 +222,6 @@ include "modules/variable_expansion_module.rnc" inherit = ruleml {start |= notAl
 include "modules/closure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 include "modules/mapclosure_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# SLOTTED REST VARIABLES INCLUDED
-#
-include "modules/resl_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# POSITIONAL REST VARIABLES INCLUDED
-#
-include "modules/repo_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # INITIALIZATION MODULES INCLUDED
 #
