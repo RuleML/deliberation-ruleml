@@ -1184,7 +1184,7 @@
                 the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:positionalArgumentsForAtoms.sequence"/>
+            <xs:group minOccurs="0" ref="ruleml:positionalArgumentsForAtoms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="positionalArgumentsForAtoms.sequence">
@@ -1193,7 +1193,7 @@
                 atomic formulas in the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:termsForAtoms.sequence"/>
+            <xs:group minOccurs="0" ref="ruleml:termsForAtoms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="argumentsForExpressions.sequence">
@@ -1970,6 +1970,9 @@
     </xs:attributeGroup>
     
     <xs:attributeGroup name="rePlex.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="Tuple.attlist">
         <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/hornlogPSOA_normal.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/hornlogPSOA_normal.ruleml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <act index="1">
+    <Assert mapClosure="universal">
+      <formula>
+        <Atom>
+          <op><Rel>purchase</Rel></op>
+          <arg index="1"><Ind>John</Ind></arg>
+          <arg index="2"><Ind>Mary</Ind></arg>
+          <arg index="3"><Ind>Fido</Ind></arg>
+        </Atom>
+      </formula>
+      <formula>
+        <Forall>
+          <declare><Var>c</Var></declare>
+          <declare><Var>s</Var></declare>
+          <declare><Var>i</Var></declare>
+          <formula>
+            <Implies>
+              <if>
+                <Atom>
+                  <op><Rel>purchase</Rel></op>
+                  <arg index="1"><Var>c</Var></arg>
+                  <arg index="2"><Var>s</Var></arg>
+                  <arg index="3"><Var>i</Var></arg>
+                </Atom>
+              </if>
+              <then>
+                <Atom>
+                  <op><Rel>liability</Rel></op>
+                  <arg index="1"><Var>c</Var></arg>
+                  <arg index="2"><Var>i</Var></arg>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </formula>
+    </Assert>
+  </act>
+</RuleML>

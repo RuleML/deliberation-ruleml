@@ -1744,6 +1744,19 @@
             <xs:group ref="ruleml:restOfSlots-edge.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="positionalArgumentsForAtoms.sequence">
+        <xs:annotation>
+            <xs:documentation>Positional rest arguments in atomic formulas may occur in  any
+                position relative to the slots in relaxed-form serialization.  This pattern cannot
+                be translated accurately into XSD.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:sequence minOccurs="0">
+                <xs:group ref="ruleml:termsForAtoms.sequence"/>
+                <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
+            </xs:sequence>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="Expr.main">
         <xs:annotation>
             <xs:documentation>The main section of a functional expression contains an operator edge
@@ -2793,7 +2806,7 @@
         <xs:group ref="ruleml:AnyTerm.choice"/>
     </xs:complexType>
     
-    <xs:group name="slotTermsForAtoms.sequence">
+    <xs:group name="slotTerms.sequence">
         <xs:annotation>
             <xs:documentation>In atomic formulas, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
@@ -2801,12 +2814,17 @@
             <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
         </xs:sequence>
     </xs:group>
+    <xs:group name="slotTermsForAtoms.sequence">
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="slotTermsForExpressions.sequence">
         <xs:annotation>
             <xs:documentation>In expressions, zero or more slots are allowed.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group maxOccurs="unbounded" minOccurs="0" ref="ruleml:slot-edge.choice"/>
+            <xs:group minOccurs="0" ref="ruleml:slotTerms.sequence"/>
         </xs:sequence>
     </xs:group>
     
@@ -3947,6 +3965,9 @@
     </xs:attributeGroup>
     
     
+    <xs:attributeGroup name="Tuple.attlist">
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
     
     
     

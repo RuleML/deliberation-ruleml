@@ -24,7 +24,7 @@ Atom.main |= operatorForAtoms-edge.choice & argumentsForAtoms.sequence
 ## Slotted arguments and positional arguments in atomic formulas
 ## may be interleaved in the relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence & slotsForAtoms.sequence
+argumentsForAtoms.sequence |= positionalArgumentsForAtoms.sequence & tuplesForAtoms.sequence & slotsForAtoms.sequence
 
 ## Positional rest arguments in atomic formulas may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
@@ -35,7 +35,11 @@ positionalArgumentsForAtoms.sequence |=
 ## Slotted rest arguments in atomic formulas may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-slotsForAtoms.sequence |= slotTermsForAtoms.sequence & restOfSlots-edge.choice?
+slotsForAtoms.sequence |= slotdepTermsForAtoms.sequence & slotTermsForAtoms.sequence & restOfSlots-edge.choice?
+
+## Dependent tuples are followed by independent tuples
+## in atomic formulas in the normal-form serialization. 
+tuplesForAtoms.sequence |= tupdepTermsForAtoms.sequence & tupTermsForAtoms.sequence
 
 ## The main section of a functional expression contains an operator edge and a collection of argument edges.
 ## Pre-fix operator notation for expressions is optional in the relaxed-form serialization.
@@ -46,7 +50,7 @@ Expr.main |= operatorForExpressions-edge.choice & argumentsForExpressions.sequen
 ## may be interleaved in the relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
 argumentsForExpressions.sequence |=
-  positionalArgumentsForExpressions.sequence & slotsForExpressions.sequence
+  positionalArgumentsForExpressions.sequence & tuplesForExpressions.sequence & slotsForExpressions.sequence
 
 ## Positional rest arguments in expressions may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
@@ -57,7 +61,11 @@ positionalArgumentsForExpressions.sequence |=
 ## Slotted rest arguments in expressions may occur in 
 ## any position relative to the slots in relaxed-form serialization. 
 ## This pattern cannot be translated accurately into XSD.
-slotsForExpressions.sequence |= slotTermsForExpressions.sequence & restOfSlots-edge.choice?
+slotsForExpressions.sequence |= slotdepTermsForExpressions.sequence & slotTermsForExpressions.sequence & restOfSlots-edge.choice?
+
+## Dependent tuples are followed by independent tuples
+## in expressions in the normal-form serialization. 
+tuplesForExpressions.sequence |= tupdepTermsForExpressions.sequence & tupTermsForExpressions.sequence
 
 ## The main section of an implication contains two edges, a premise (body, if) edge and a conclusion (head, then) edge.
 ## In the relaxed-form serialization, the if and then 

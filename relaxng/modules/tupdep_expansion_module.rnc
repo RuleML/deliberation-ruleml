@@ -20,10 +20,12 @@ start |= tupdep.edge.def
 #            * tupdep
 
 ## In atomic formulas, zero or more tupdep are allowed.
-tupdepTermsForAtoms.sequence |= tupdep-edge.choice*
+tupdepTerms.nonemptysequence.choice |= tupdep-edge.choice+
+tupdepTerms.sequence |= tupdepTerms.nonemptysequence.choice?
+tupdepTermsForAtoms.sequence |= tupdepTerms.sequence
 
 ## In expressions, zero or more tupdep are allowed.
-tupdepTermsForExpressions.sequence |= tupdep-edge.choice*
+tupdepTermsForExpressions.sequence |= tupdepTerms.sequence
 
 ## an extension point for specializations of the tupdep tag name.  
 tupdep-edge.choice |= tupdep.edge.def

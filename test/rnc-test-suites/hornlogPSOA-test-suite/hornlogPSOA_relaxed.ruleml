@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/hornlogPSOA_relaxed.rnc" type="application/relax-ng-compact-syntax"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/hornlogPSOA_relaxed.ruleml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+
+  <!-- a syntactic example rulebase for testing the Hornlog PSOA RuleML sublanguage -->
+  <Assert mapClosure="universal">
+    <Implies node="this:#rule1">
+      <Atom>
+        <oid>
+          <Ind>j1</Ind>
+        </oid>
+        <Rel>g</Rel>
+        <slot>
+          <Ind>d2</Ind>
+          <Ind>e2</Ind>
+        </slot>
+        <slotdep>
+          <Ind>a1</Ind>
+          <Expr>
+            <Fun>p</Fun>
+            <slot>
+              <Ind>d1</Ind>
+              <Ind>e1</Ind>
+            </slot>
+            <slotdep>
+              <Ind>a2</Ind>
+              <Ind>b</Ind>
+            </slotdep>
+          </Expr>
+        </slotdep>
+      </Atom>
+      <Atom>
+        <Rel>g</Rel>
+        <slotdep>
+          <Ind>a</Ind>
+          <Ind>b</Ind>
+        </slotdep>
+        <slot>
+          <Ind>d</Ind>
+          <Ind>e</Ind>
+        </slot>
+      </Atom>
+    </Implies>
+    <Implies node="this:#rule1b">
+      <Atom>
+        <oid>
+          <Ind>j1</Ind>
+        </oid>
+        <Rel>g</Rel>
+        <slot>
+          <Ind>d3</Ind>
+          <Ind>e3</Ind>
+        </slot>
+        <slotdep>
+          <Ind>a3</Ind>
+          <Ind>b3</Ind>
+        </slotdep>
+        <Ind>u</Ind>
+        <Expr>
+          <Fun>p</Fun>
+          <slot>
+            <Ind>d1</Ind>
+            <Ind>e1</Ind>
+          </slot>
+          <slotdep>
+            <Ind>a1</Ind>
+            <Ind>b1</Ind>
+          </slotdep>
+          <Ind>s</Ind>
+          <Ind>t</Ind>
+          <slotdep>
+            <Ind>a2</Ind>
+            <Ind>b2</Ind>
+          </slotdep>
+          <slot>
+            <Ind>d2</Ind>
+            <Ind>e2</Ind>
+          </slot>
+        </Expr>
+        <Ind>v</Ind>
+        <slotdep>
+          <Ind>a4</Ind>
+          <Ind>b4</Ind>
+        </slotdep>
+        <slot>
+          <Ind>d4</Ind>
+          <Ind>e4</Ind>
+        </slot>
+      </Atom>
+      <Atom>
+        <Rel>g</Rel>
+        <slotdep>
+          <Ind>a</Ind>
+          <Ind>b</Ind>
+        </slotdep>
+        <slot>
+          <Ind>d</Ind>
+          <Ind>e</Ind>
+        </slot>
+      </Atom>
+    </Implies>
+    <formula>
+      <Implies node="this:#rule2">
+        <if>
+          <Atom>
+            <oid>
+              <Ind>j2</Ind>
+            </oid>
+            <op>
+              <Rel>g</Rel>
+            </op>
+            <Expr>
+              <op>
+                <Fun>p</Fun>
+              </op>
+              <tup>
+                <Tuple>
+                  <Ind>d</Ind>
+                  <Ind>e</Ind>
+                  <Ind>f</Ind>
+                </Tuple>
+              </tup>
+              <tupdep>
+                <Tuple>
+                  <Ind>a</Ind>
+                  <Ind>b</Ind>
+                  <Ind>c</Ind>
+                </Tuple>
+              </tupdep>
+            </Expr>
+          </Atom>
+        </if>
+        <then>
+          <Atom>
+            <op>
+              <Rel>g</Rel>
+            </op>
+            <tupdep>
+              <Tuple>
+                <arg index="1">
+                  <Ind>a</Ind>
+                </arg>
+                <arg index="2">
+                  <Ind>b</Ind>
+                </arg>
+                <arg index="3">
+                  <Ind>c</Ind>
+                </arg>
+              </Tuple>
+            </tupdep>
+            <tup>
+              <Tuple>
+                <arg index="1">
+                  <Ind>d</Ind>
+                </arg>
+                <arg index="2">
+                  <Ind>e</Ind>
+                </arg>
+                <arg index="3">
+                  <Ind>f</Ind>
+                </arg>
+              </Tuple>
+            </tup>
+          </Atom>
+        </then>
+      </Implies>
+    </formula>
+    <formula>
+      <Implies node="this:#rule3">
+        <if>
+          <Atom>
+            <oid>
+              <Ind>j3</Ind>
+            </oid>
+            <op>
+              <Rel>g</Rel>
+            </op>
+            <slot>
+              <Ind>d3</Ind>
+              <Ind>e3</Ind>
+            </slot>
+            <slotdep>
+              <Ind>a3</Ind>
+              <Ind>b3</Ind>
+            </slotdep>
+            <arg index="1">
+              <Expr>
+                <op>
+                  <Fun>p</Fun>
+                </op>
+                <slot>
+                  <Ind>d1</Ind>
+                  <Ind>e1</Ind>
+                </slot>
+                <slotdep>
+                  <Ind>a1</Ind>
+                  <Ind>b1</Ind>
+                </slotdep>
+                <tup>
+                  <Tuple>
+                    <arg index="1">
+                      <Ind>d</Ind>
+                    </arg>
+                    <arg index="2">
+                      <Ind>e</Ind>
+                    </arg>
+                    <arg index="3">
+                      <Ind>f</Ind>
+                    </arg>
+                  </Tuple>
+                </tup>
+                <tupdep>
+                  <Tuple>
+                    <arg index="1">
+                      <Ind>a</Ind>
+                    </arg>
+                    <arg index="2">
+                      <Ind>b</Ind>
+                    </arg>
+                    <arg index="3">
+                      <Ind>c</Ind>
+                    </arg>
+                  </Tuple>
+                </tupdep>
+                <slotdep>
+                  <Ind>a2</Ind>
+                  <Ind>b2</Ind>
+                </slotdep>
+                <slot>
+                  <Ind>d2</Ind>
+                  <Ind>e2</Ind>
+                </slot>
+              </Expr>
+            </arg>
+            <slotdep>
+              <Ind>a4</Ind>
+              <Ind>b4</Ind>
+            </slotdep>
+            <slot>
+              <Ind>d4</Ind>
+              <Ind>e4</Ind>
+            </slot>
+          </Atom>
+        </if>
+        <then>
+          <Atom>
+            <op>
+              <Rel>g</Rel>
+            </op>
+            <tupdep>
+              <Tuple>
+                <arg index="1">
+                  <Ind>a</Ind>
+                </arg>
+                <arg index="2">
+                  <Ind>b</Ind>
+                </arg>
+                <arg index="3">
+                  <Ind>c</Ind>
+                </arg>
+              </Tuple>
+            </tupdep>
+            <tup>
+              <Tuple>
+                <arg index="1">
+                  <Ind>d</Ind>
+                </arg>
+                <arg index="2">
+                  <Ind>e</Ind>
+                </arg>
+                <arg index="3">
+                  <Ind>f</Ind>
+                </arg>
+              </Tuple>
+            </tup>
+            <slotdep>
+              <Ind>a</Ind>
+              <Ind>b</Ind>
+            </slotdep>
+            <slot>
+              <Ind>d</Ind>
+              <Ind>e</Ind>
+            </slot>
+          </Atom>
+        </then>
+      </Implies>
+    </formula>
+  </Assert>
+</RuleML>
