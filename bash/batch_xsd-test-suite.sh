@@ -27,10 +27,11 @@ do
        schemaname=${sfile##*/}
        echo "Schema ${schemaname}"
        sfile="${XSD_HOME}${schemaname}"       
+       echo "Begin JAXB Validation of ${file}" 
        "${BASH_HOME}aux_valxsd.sh" "${sfile}"
        if [[ "$?" -ne "0" ]]; then
-          echo "Schema Validation Failed for ${schemaname}"
-          exit 1
+         echo "Schema Validation Failed for ${schemaname}"
+         exit 1
        fi   
        "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
        exitvalue=$?

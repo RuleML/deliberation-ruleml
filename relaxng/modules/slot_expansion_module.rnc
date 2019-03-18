@@ -20,10 +20,11 @@ start |= slot.edge.def
 #            * @card
 
 ## In atomic formulas, zero or more slots are allowed.
-slotTermsForAtoms.sequence |= slot-edge.choice*
+slotTerms.sequence |= slot-edge.choice*
+slotTermsForAtoms.sequence |= slotTerms.sequence
 
 ## In expressions, zero or more slots are allowed.
-slotTermsForExpressions.sequence |= slot-edge.choice*
+slotTermsForExpressions.sequence |= slotTerms.sequence
 # For the declaration of slotted rest variables, see the slotted rest variable module (resl_module).
 
 ## an extension point for specializations of the slot tag name.  

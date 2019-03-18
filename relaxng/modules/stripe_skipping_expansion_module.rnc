@@ -15,6 +15,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org" ]
 start |= notAllowed
 # This module extends the following RuleML choice patterns:
+#            * act
 #            * arg
 #            * body_Entails
 #            * head_Entails

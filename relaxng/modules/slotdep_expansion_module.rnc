@@ -18,10 +18,11 @@ start |= slotdep.edge.def
 #            * slotdep
 
 ## In atomic formulas, zero or more dependent slots are allowed.
-slotdepTermsForAtoms.sequence |= slotdep-edge.choice*
+slotdepTerms.sequence |= slotdep-edge.choice*
+slotdepTermsForAtoms.sequence |= slotdepTerms.sequence
 
 ## In expressions, zero or more dependent slots are allowed.
-slotdepTermsForExpressions.sequence |= slotdep-edge.choice*
+slotdepTermsForExpressions.sequence |= slotdepTerms.sequence
 
 ## an extension point for specializations of the slotdep tag name.  
 slotdep-edge.choice |= slotdep.edge.def

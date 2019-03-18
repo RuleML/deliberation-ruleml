@@ -48,8 +48,6 @@ start =
   | arg
   | tupdep
   | tup
-  | resl
-  | repo
 RuleML =
   element RuleML {
     (attribute node {
@@ -328,10 +326,9 @@ Atom =
     oid?,
     degree?,
     op,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 Rel =
   element Rel {
@@ -665,10 +662,9 @@ Expr =
     meta*,
     oid?,
     op_2,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 Fun =
   element Fun {
@@ -1020,9 +1016,7 @@ Reify =
        | slot
        | arg
        | tupdep
-       | tup
-       | resl
-       | repo)*
+       | tup)*
   }
 Ind =
   element Ind {
@@ -1107,8 +1101,7 @@ Tuple =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    arg*,
-    repo?
+    arg*
   }
 Var =
   element Var {
@@ -1185,10 +1178,9 @@ Plex =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 formula =
   element formula {
@@ -1709,50 +1701,6 @@ tup =
       }?
     & Tuple
   }
-resl =
-  element resl {
-    attribute ns1:schemaLocation { text }?
-    & attribute xml:id { xsd:NCName }?
-    & attribute key {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & attribute keyref {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & (Var | Plex_2)
-  }
-repo =
-  element repo {
-    attribute ns1:schemaLocation { text }?
-    & attribute xml:id { xsd:NCName }?
-    & attribute key {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & attribute keyref {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & (Var | Plex_3)
-  }
 act =
   element act {
     (attribute index { xsd:positiveInteger }
@@ -1860,85 +1808,4 @@ Or_2 =
     meta*,
     degree?,
     formula_4*
-  }
-Plex_2 =
-  element Plex {
-    (attribute node {
-       xsd:string {
-         pattern =
-           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-         minLength = "1"
-       }
-       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-     }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:id { xsd:NCName }?
-     & attribute key {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute keyref {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute style {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?),
-    meta*,
-    slotdep*,
-    slot*,
-    resl?
-  }
-Plex_3 =
-  element Plex {
-    (attribute node {
-       xsd:string {
-         pattern =
-           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-         minLength = "1"
-       }
-       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-     }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:id { xsd:NCName }?
-     & attribute key {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute keyref {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute style {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?),
-    meta*,
-    arg*,
-    repo?
   }
