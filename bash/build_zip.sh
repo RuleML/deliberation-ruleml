@@ -5,4 +5,4 @@ shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 rm "${MODULE_HOME}"*.zip >> /dev/null 2>&1
-zip -r9 "${MODULE_HOME}RNCModulesDeliberation1.03.zip" "${MODULE_HOME}"*.rnc
+zip -r9 "${MODULE_HOME}RNCModulesDeliberation1.03-psoa.zip" "${MODULE_HOME}"*.rnc
