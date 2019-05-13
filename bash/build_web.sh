@@ -9,7 +9,7 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 # Download RNC and test
 "${BASH_HOME}build_web2rnc.sh"
 if [[ "$?" -ne "0" ]]; then
-     echo "Local Testing of RNC Schemas Failed"
+     echo "Local Testing of Published RNC Schemas Failed"
      exit 1
 fi
 # Generate XSD, and validate

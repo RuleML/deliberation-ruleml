@@ -116,3 +116,22 @@ java -Xmx256m -XX:SoftRefLRUPolicyMSPerMB=10 -cp "$CP" ro.sync.xml.generator.XML
 Note: the above line should be in single line and shouldnt be splitted anywhere, else it gives \r error
 
 II] Soft Links
+
+Validation error caused by soft links (symlinks) from WSL in Oxygen XML Editor
+
+Error description: 
+System ID: C:\Users\rcsb12345\git\deliberation-ruleml\relaxng\drivers4simp\datalog_normal.rnc
+
+Main validation file: C:\Users\rcsb12345\git\deliberation-ruleml\relaxng\drivers4simp\datalog_normal.rnc
+
+Engine name: Jing
+
+Severity: error
+
+Description: FileNotFoundException - C:\Users\rcsb12345\git\deliberation-ruleml\relaxng\drivers4simp\modules\performative_expansion_module.rnc (The file cannot be accessed by the system)
+
+Reference document: README.txt in bash/ describes soft links "$ ln -s ../modules/ modules" in subfolders of relaxng/.
+
+Note: rnc files in any subfolder of relaxng\ which contains drivers(i.e., folders such as drivers\, drivers4xsd\, ...) fail on validation (from within the Windows-based oXygen, while working fine within the WSL-based scripts). This is due to incomplete sharing of files between the WSL and Windows systems (when using symlinks in WSL).
+
+Caution: If user tries to open modules file in any subfolders of relaxng, they get an error message of "Cannot open specified file, the specified file does not exist: C:\Users\xyz_name\git\deliberation-ruleml\relaxng\drivers4simp\modules". The ('passive') file seen by Windows having name "modules" is actually a symlink created (and 'actively' usable) within WSL.

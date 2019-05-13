@@ -4,7 +4,7 @@
 # Passes the first input parameter to the MYNG engine, which generates a driver RNC schema.
 # The driver schema is save at the location specified by the second input parameter.
 
-url="http://deliberation.ruleml.org/1.03/myng-${1}.rnc"
+url="http://deliberation.ruleml.org/1.03-psoa/myng-${1}.rnc"
 echo "${url}"
 #   Download from the MYNG REST interface to the output file using curl
 curl -L "${url}" > "$2"

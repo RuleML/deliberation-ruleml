@@ -3,12 +3,12 @@ deliberation-ruleml
  
  This repository contains:
 * schemas in Relax NG and XSD for Deliberation RuleML Version 1.03 including PSOA features
-* XSLT stylesheets to normalize Deliberation RuleML Version 1.03
-* schemas for the MYNG 1.03 modular design pattern
-* example RuleML 1.03 files
-* PHP scripts for MYNG 1.03
-* NVDL scripts for MYNG 1.03
-* bash scripts for building the RuleML 1.03 release
+* XSLT stylesheets to normalize Deliberation RuleML Version 1.03 (not yet including PSOA features)
+* schemas for the MYNG 1.03 modular design pattern (independent of PSOA features)
+* example Deliberation RuleML 1.03 files including PSOA features
+* PHP scripts for Deliberation MYNG 1.03  including PSOA features
+* NVDL scripts for MYNG 1.03 (not yet including PSOA features)
+* bash scripts for building the Deliberation RuleML 1.03 release including PSOA features
  
 Prerequisites
 -------------
