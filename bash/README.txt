@@ -51,6 +51,8 @@ Procedure:
   - commit the results
   - push to Github
   - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
+5. run build_xsd2doc.sh in order to update the schemadocs.
+  - Before the schemadocs are updated, all changes should have been committed and pushed into the personal fork.
 
 These scripts call incremental build scripts which can be manually activated for partial builds.
 See the top-level build scripts for details.
