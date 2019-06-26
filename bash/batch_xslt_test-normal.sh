@@ -33,7 +33,15 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
        exit 1
    fi   
 
-schemaname2="nafhologeq_normal.rnc"
+  pschemaname="naffologeqPSOA_normal.xsd"
+  pfile="${XSD_HOME}${pschemaname}"       
+  "${BASH_HOME}aux_valxsd.sh" "${pfile}"
+  if [[ "$?" -ne "0" ]]; then
+       echo "Schema Validation Failed for ${pschemaname}"
+       exit 1
+   fi
+   
+  schemaname2="nafhologeq_normal.rnc"
   sfile2="${DRIVER_HOME}${schemaname2}"       
   "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
   if [[ "$?" -ne "0" ]]; then
@@ -68,10 +76,16 @@ do
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "XSD Validation Failed for Normal ${file}"
+    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+          echo "XSD Validation Failed for Normal non-PSOA ${file}"
           exit 1
     fi       
+    "${BASH_HOME}aux_valxsd.sh" "${pfile}" "${file}"
+    exitvalue=$?
+    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+          echo "XSD Validation Failed for Normal PSOA ${file}"
+          exit 1
+    fi
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
