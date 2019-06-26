@@ -64,6 +64,7 @@
       local-name($node)='content' or
       local-name($node)='left' or
       local-name($node)='right' or
+      local-name($node)='slotdep' or
       local-name($node)='slot' or
       local-name($node)='declare' or
       local-name($node)='degree' or
@@ -688,6 +689,7 @@
               local-name(.)!= 'op' and 
               local-name(.)!= 'arg' and 
               local-name(.)!='repo' and 
+              local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
               local-name(.)!='resl']"
         mode="phase-2"/>
@@ -696,6 +698,7 @@
       <xsl:apply-templates select="ruleml:op" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:resl" mode="phase-2"/>
     </xsl:copy>
@@ -763,6 +766,7 @@
               local-name(.)!= 'op' and 
               local-name(.)!= 'arg' and 
               local-name(.)!='repo' and 
+              local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
               local-name(.)!='resl']"
         mode="phase-2"/>
@@ -770,6 +774,7 @@
       <xsl:apply-templates select="ruleml:op" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:resl" mode="phase-2"/>
     </xsl:copy>
@@ -788,11 +793,13 @@
               local-name(.)!= 'oid' and 
               local-name(.)!= 'arg' and 
               local-name(.)!='repo' and 
+              local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
               local-name(.)!='resl']"/>
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:resl" mode="phase-2"/>
     </xsl:copy>
@@ -811,7 +818,7 @@
     <xsl:apply-templates select="$phase-2-output" mode="phase-3"/>
   </xsl:variable>
   <!-- Adds the required index attribute to the arg tag 
-        There are errors with the indexing when the argument is within a slot-->
+        There are errors with the indexing when the argument is within a slotdep or slot-->
   <xsl:template match="ruleml:arg[not(@index)]" mode="phase-3">
     <xsl:variable name="index_value">
       <xsl:value-of select="count(preceding-sibling::ruleml:arg)+1"/>
@@ -865,16 +872,17 @@
   </xsl:variable>
   
   <!-- Sorts by the required index attribute to the arg tag 
-        There are errors with the indexing when the argument is within a slot-->
+        There are errors with the indexing when the argument is within a slotdep or slot-->
   
   <xsl:template match="*[ruleml:arg]" mode="phase-sort">
     <xsl:copy>
       <xsl:apply-templates select="@*"  mode="phase-sort"/>
-      <xsl:apply-templates select="node()[not(self::ruleml:arg or self::ruleml:repo or self::ruleml:slot or self::ruleml:resl)]"  mode="phase-sort"/>
+      <xsl:apply-templates select="node()[not(self::ruleml:arg or self::ruleml:repo or self::ruleml:slotdep or self::ruleml:slot or self::ruleml:resl)]"  mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:arg"  mode="phase-sort">
         <xsl:sort select="@index"  data-type="number"/>                
       </xsl:apply-templates>
       <xsl:apply-templates select="ruleml:repo" mode="phase-sort"/>
+      <xsl:apply-templates select="ruleml:slotdep" mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:resl" mode="phase-sort"/>
     </xsl:copy>  
