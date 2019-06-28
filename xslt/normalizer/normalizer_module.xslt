@@ -503,6 +503,14 @@
       <xsl:with-param name="tag">arg</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
+  <!-- Wraps the naked children of Tuple. -->
+  <xsl:template
+    match="ruleml:Tuple/*[ruleml:isNode(.)]"
+    mode="phase-1">
+    <xsl:call-template name="wrap">
+      <xsl:with-param name="tag">arg</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
   
   <!-- Named template that wraps an element in the element given by the tag parameter. -->
   <xsl:template name="wrap">
@@ -688,6 +696,8 @@
               local-name(.)!= 'degree' and 
               local-name(.)!= 'op' and 
               local-name(.)!= 'arg' and 
+              local-name(.)!='tupdep' and 
+              local-name(.)!='tup' and 
               local-name(.)!='repo' and 
               local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
@@ -697,6 +707,8 @@
       <xsl:apply-templates select="ruleml:degree" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:op" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tupdep" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tup" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
@@ -765,6 +777,8 @@
               local-name(.)!= 'oid' and 
               local-name(.)!= 'op' and 
               local-name(.)!= 'arg' and 
+              local-name(.)!='tupdep' and 
+              local-name(.)!='tup' and 
               local-name(.)!='repo' and 
               local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
@@ -773,6 +787,8 @@
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:op" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tupdep" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tup" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
@@ -792,16 +808,37 @@
               local-name(.)!= 'meta' and 
               local-name(.)!= 'oid' and 
               local-name(.)!= 'arg' and 
+              local-name(.)!='tupdep' and 
+              local-name(.)!='tup' and 
               local-name(.)!='repo' and 
               local-name(.)!='slotdep' and 
               local-name(.)!='slot' and 
               local-name(.)!='resl']"/>
       <xsl:apply-templates select="ruleml:oid" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tupdep" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:tup" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slotdep" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:resl" mode="phase-2"/>
+    </xsl:copy>
+  </xsl:template>
+  <!-- Builds canonically-ordered content of Tuple. -->
+  <xsl:template match="ruleml:Tuple" mode="phase-2">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
+      <xsl:apply-templates select="comment()" mode="phase-2"/>
+      <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
+      <xsl:apply-templates
+        select="*[
+        namespace-uri(.)='http://ruleml.org/spec' and 
+        local-name(.)!= 'meta' and 
+        local-name(.)!= 'arg' and 
+        local-name(.)!='repo']"/>
+      <xsl:apply-templates select="ruleml:arg" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:repo" mode="phase-2"/>
     </xsl:copy>
   </xsl:template>
   <!-- Copies everything else to the phase-2 output. Comments are preserved without escaping.
@@ -877,10 +914,12 @@
   <xsl:template match="*[ruleml:arg]" mode="phase-sort">
     <xsl:copy>
       <xsl:apply-templates select="@*"  mode="phase-sort"/>
-      <xsl:apply-templates select="node()[not(self::ruleml:arg or self::ruleml:repo or self::ruleml:slotdep or self::ruleml:slot or self::ruleml:resl)]"  mode="phase-sort"/>
+      <xsl:apply-templates select="node()[not(self::ruleml:arg or self::ruleml:tupdep or self::ruleml:tup or self::ruleml:repo or self::ruleml:slotdep or self::ruleml:slot or self::ruleml:resl)]"  mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:arg"  mode="phase-sort">
         <xsl:sort select="@index"  data-type="number"/>                
       </xsl:apply-templates>
+      <xsl:apply-templates select="ruleml:tupdep" mode="phase-sort"/>
+      <xsl:apply-templates select="ruleml:tup" mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:repo" mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:slotdep" mode="phase-sort"/>
       <xsl:apply-templates select="ruleml:slot" mode="phase-sort"/>

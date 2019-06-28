@@ -49,6 +49,14 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
        exit 1
    fi   
 
+  pschemaname2="naffologeqPSOA_normal.rnc"
+  pfile2="${DRIVER_HOME}${pschemaname2}"       
+  "${BASH_HOME}aux_valrnc.sh" "${pfile2}"
+  if [[ "$?" -ne "0" ]]; then
+       echo "Schema Validation Failed for ${pschemaname2}"
+       exit 1
+   fi   
+
 # Apply normalization XSLT transforamtions
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to NORMAL_SUITE_HOME
@@ -88,7 +96,13 @@ do
     fi
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+          echo "RNC Validation Failed for Normal ${file}"
+          exit 1
+    fi       
+    "${BASH_HOME}aux_valrnc.sh" "${pfile2}" "${file}"
+    exitvalue=$?
+    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "RNC Validation Failed for Normal ${file}"
           exit 1
     fi       
