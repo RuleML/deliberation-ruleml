@@ -61,7 +61,7 @@ rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
 # transform files in TEST_SUITE_HOME ending in .ruleml
 # output to NORMAL_SUITE_HOME
 # e.g. find "${XSD_TEST_SUITE_HOME}" -name '*.ruleml' -exec  "${BASH_HOME}aux_xslt.sh" {} "${NORMAL_XSLT_HOME}normalizer.xslt" "${NORMAL_SUITE_HOME}${filename}"
-for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml
+for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*/*.ruleml
 do
   filename=$(basename "$f")
   echo "Transforming  ${filename}"
@@ -84,25 +84,25 @@ do
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "XSD Validation Failed for Normal non-PSOA ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valxsd.sh" "${pfile}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "XSD Validation Failed for Normal PSOA ${file}"
           exit 1
     fi
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "RNC Validation Failed for Normal ${file}"
           exit 1
     fi       
     "${BASH_HOME}aux_valrnc.sh" "${pfile2}" "${file}"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ PSOA ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "RNC Validation Failed for Normal ${file}"
           exit 1
     fi       
