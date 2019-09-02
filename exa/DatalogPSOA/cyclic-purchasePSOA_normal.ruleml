@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://deliberation.ruleml.org/1.03-psoa/relaxng/datalogPSOA_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/cyclic-purchasePSOA.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd">
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a tupled example rulebase for testing the PSOA RuleML normalizer -->
+  <ruleml:act xmlns:ruleml="http://ruleml.org/spec" index="1">
+    <Assert mapClosure="universal">
+      <ruleml:formula>
+        <Atom>
+          <!-- purchase(                    -->
+          <ruleml:op><Rel>purchase</Rel></ruleml:op>
+          <tupdep>
+            <!--          +[John Mary Fido]   -->
+            <Tuple>
+              <ruleml:arg index="1"><Ind>John</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>Mary</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>Fido</Ind></ruleml:arg>
+            </Tuple>
+          </tupdep>
+          <tupdep>
+            <!--          +[Pedro Amy Tabby]  -->
+            <Tuple>
+              <ruleml:arg index="1"><Ind>Pedro</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>Amy</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>Tabby</Ind></ruleml:arg>
+            </Tuple>
+          </tupdep>
+          <tupdep>
+            <!--          +[Mary John Coco]   -->
+            <Tuple>
+              <ruleml:arg index="1"><Ind>Mary</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>John</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>Coco</Ind></ruleml:arg>
+            </Tuple>
+          </tupdep>
+          <tupdep>
+            <!--          +[Amy Pedro Tabby]) -->
+            <Tuple>
+              <ruleml:arg index="1"><Ind>Amy</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>Pedro</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>Tabby</Ind></ruleml:arg>
+            </Tuple>
+          </tupdep>
+        </Atom>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Forall>
+          <ruleml:declare>
+            <Var>x</Var>
+          </ruleml:declare>
+          <ruleml:declare>
+            <Var>y</Var>
+          </ruleml:declare>
+          <ruleml:declare>
+            <Var>i</Var>
+          </ruleml:declare>
+          <formula>
+            <Implies>
+              <if>
+                <Atom>
+                  <!-- purchase(             -->
+                  <ruleml:op><Rel>purchase</Rel></ruleml:op>
+                  <tupdep>
+                    <!--          +[?x ?y ?i]  -->
+                    <Tuple>
+                      <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                      <ruleml:arg index="2"><Var>y</Var></ruleml:arg>
+                      <ruleml:arg index="3"><Var>i</Var></ruleml:arg>
+                    </Tuple>
+                  </tupdep>
+                  <tupdep>
+                    <!--          +[?y ?x ?i]) -->
+                    <Tuple>
+                      <ruleml:arg index="1"><Var>y</Var></ruleml:arg>
+                      <ruleml:arg index="2"><Var>x</Var></ruleml:arg>
+                      <ruleml:arg index="3"><Var>i</Var></ruleml:arg>
+                    </Tuple>
+                  </tupdep>
+                </Atom>
+              </if>
+              <then>
+                <Atom>
+                  <!-- cyclic-purchase(             -->
+                  <ruleml:op><Rel>cyclic-purchase</Rel></ruleml:op>
+                  <tupdep>
+                    <!--                 +[?x ?y ?i]) -->
+                    <Tuple>
+                      <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                      <ruleml:arg index="2"><Var>y</Var></ruleml:arg>
+                      <ruleml:arg index="3"><Var>i</Var></ruleml:arg>
+                    </Tuple>
+                  </tupdep>
+                </Atom>
+              </then>
+            </Implies>
+          </formula>
+        </Forall>
+      </ruleml:formula>
+    </Assert>
+  </ruleml:act>
+</RuleML>

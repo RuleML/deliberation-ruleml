@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/relaxng/datalogPSOA_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<!-- Implicit tuple (already in Deliberation RuleML) -->
+<Atom xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd">
+  <Rel>purchase</Rel>  <!-- purchase(John Mary Fido) -->
+  <Ind>John</Ind>
+  <Ind>Mary</Ind>
+  <Ind>Fido</Ind>
+</Atom>

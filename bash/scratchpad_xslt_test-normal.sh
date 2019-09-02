@@ -17,7 +17,7 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 # output to same directory to modified name
 EXA_HOME="${REPO_HOME}exa/"
 DATALOGPSOA_HOME="${EXA_HOME}DatalogPSOA/"
-filename_ne="cyclic-purchasePSOA_bare"
+filename_ne="cyclic-purchasePSOA"
 filename="${filename_ne}.ruleml"
 normal="${filename_ne}_normal.ruleml"
 echo "Transforming  ${filename}"

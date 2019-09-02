@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/relaxng/datalogPSOA_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd">
+  <Assert>
+    <Atom>
+      <oid><Ind>transaction200</Ind></oid>
+      <!-- transaction200#  -->
+      <op><Rel>purchase</Rel></op>                        
+      <!--   purchase(      -->
+      <slotdep><Ind>buyer</Ind><Ind>John</Ind></slotdep>  
+      <!--     buyer+>John  -->
+      <!-- . . . -->
+    </Atom>
+  </Assert>
+</RuleML>
