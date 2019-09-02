@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/relaxng/hornlogPSOA_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/xsd/hornlogPSOA_relaxed.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<Forall xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03-psoa/xsd/hornlogPSOA.xsd">
+  <Var>b</Var>
+  <Var>s</Var>
+  <Var>i</Var>
+  <Var>t</Var>
+  <formula>
+    <Implies>
+      <if>      <!-- ?t#purchase(buyer+>?b seller+>?s item+>?i) -->
+        <Atom>
+          <oid><Var>t</Var></oid>
+          <op><Rel>purchase</Rel></op>
+          <slotdep><Ind>buyer</Ind><Var>b</Var></slotdep>
+          <slotdep><Ind>seller</Ind><Var>s</Var></slotdep>
+          <slotdep><Ind>item</Ind><Var>i</Var></slotdep>
+        </Atom>
+      </if>     
+      <then>    <!-- liabilityID(?t)#liability(bearer+>?b item+>?i) -->
+        <Atom>
+          <oid>
+            <Expr>
+              <op><Fun>liabilityID</Fun></op>
+              <arg index="1"><Var>t</Var></arg>
+            </Expr>
+          </oid>
+          <op><Rel>liability</Rel></op>
+          <slotdep><Ind>bearer</Ind><Var>b</Var></slotdep>
+          <slotdep><Ind>item</Ind><Var>i</Var></slotdep>
+        </Atom>
+      </then>
+    </Implies>
+  </formula>
+</Forall>
