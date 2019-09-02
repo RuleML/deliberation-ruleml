@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/relaxng/datalogPSOA_relaxed.rnc"?>
+<!--<?xml-model href="http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>-->
+<!-- Explicit tuples (added in Deliberation PSOA RuleML) -->
+<Atom xmlns="http://ruleml.org/spec" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec http://deliberation.ruleml.org/1.03-psoa/xsd/datalogPSOA.xsd">
+  <Rel>purchase</Rel>  <!-- purchase(                    -->
+  <tupdep>             <!--          +[John Mary Fido]   -->
+    <Tuple>
+      <Ind>John</Ind>
+      <Ind>Mary</Ind>
+      <Ind>Fido</Ind>
+    </Tuple>
+  </tupdep>
+  <tupdep>             <!--          +[Pedro Amy Tabby]  -->
+    <Tuple>
+      <Ind>Pedro</Ind>
+      <Ind>Amy</Ind>
+      <Ind>Tabby</Ind>
+    </Tuple>
+  </tupdep>
+  <tupdep>             <!--          +[Mary John Coco]   -->
+    <Tuple>
+      <Ind>Mary</Ind>
+      <Ind>John</Ind>
+      <Ind>Coco</Ind>
+    </Tuple>
+  </tupdep>
+  <tupdep>             <!--          +[Amy Pedro Tabby]) -->
+    <Tuple>
+      <Ind>Amy</Ind>
+      <Ind>Pedro</Ind>
+      <Ind>Tabby</Ind>
+    </Tuple>
+  </tupdep>
+</Atom>
