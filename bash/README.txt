@@ -7,6 +7,9 @@ There are two top-level build scripts:
 Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linus on WSL(Windows Sybsystem for Linux)
 For WSL users there is a special section at the end.
 
+Prerequisite:
+1.  Oxygen XML is required to execute the bash scripts that apply test and create artifacts. All developers are expected to execute these scripts before a pull request. Oxygen versions up to 20.1 should work.
+
 Preliminaries:
 0.  If directories <Dir> for 1. don't exist yet, create them with mkdir -p <Dir>
 1.  Create a symbolic links from the relaxng/modules directory to relaxng/drivers/modules. From the repository home directory:
@@ -43,14 +46,14 @@ Procedure:
   - alternately, the script may be run from an external tool from oXygen.
 2. After successful execution of build_myng.sh, 
   - commit the results
-  - push to Github
+  - @@@ push to Github
   - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
 3. run build_web.sh. The script should exit with code 0.
   - This script performs some tests of the RuleML installation on HawkHost, however these tests are not as extensive as those performed by the build_myng.sh script.
 4. After successful execution of build_web.sh, 
   - commit the results
   - push to Github
-  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
+  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server @@@
 5. run build_xsd2doc.sh in order to update the schemadocs.
   - Before the schemadocs are updated, all changes should have been committed and pushed into the personal fork.
 
@@ -68,13 +71,15 @@ The following steps should be followed:
 The script should now be executable.
 
 If you use oXygen for editing your files, "External tools" can be made to facilitate the process of running the scripts.
-Creating an external tool (oXygen v. 19):
+Creating an external tool (oXygen v. 19 or 20):
 1.  Within oXygen, locate "Tools" from the top-bar menu.
 2.  Navigate to Tools->External Tools->Configure
 3.  Click on "New" located at the bottom right of the screen.
 4.  Give the tool a name and a description of your preference.
 5.  Enter "${cfd}" without the quotes as "Working Directory"
-6.  Enter "./${cfne}" without the quotes in the "Command Line" text field.
+6.  
+    6a. (Unix/Linux/Mac) Enter "./${cfne}" without the quotes in the "Command Line" text field.
+    6b. (Windows) Enter 'bash -c "./${cfne}"' without the single quotes in the "Command Line" text field.
 7.  Keep the rest of the defaults.
 
 Now that this is done, you can easily run the bash scripts of the project by following these steps :
