@@ -61,10 +61,3 @@ cp "${RNC_HOME}nafhologeq_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}nafhologeq_norm
 cp "${RNC_HOME}nafhologeq4xsd.rnc" "${RNC4XSD_HOME}nafhologeq.rnc"
 cp "${RNC_HOME}hornlogrepoexpr_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}hornlogrepoexpr_normal.rnc"
 cp "${RNC_HOME}hornlogrepoexpr4xsd.rnc" "${RNC4XSD_HOME}hornlogrepoexpr.rnc"
-
-cp "${RNC_HOME}datalogPSOA_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}datalogPSOA_normal.rnc"
-cp "${RNC_HOME}datalogPSOA4xsd.rnc" "${RNC4XSD_NORMAL_HOME}datalogPSOA.rnc"
-cp "${RNC_HOME}hornlogPSOA_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}hornlogPSOA_normal.rnc"
-cp "${RNC_HOME}hornlogPSOA4xsd.rnc" "${RNC4XSD_NORMAL_HOME}hornlogPSOA.rnc"
-cp "${RNC_HOME}naffologeqPSOA_normal4xsd.rnc" "${RNC4XSD_NORMAL_HOME}naffologeqPSOA_normal.rnc"
-#cp "${RNC_HOME}naffologeqPSOA4xsd.rnc" "${RNC4XSD_NORMAL_HOME}naffologeqPSOA.rnc"
