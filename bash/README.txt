@@ -4,7 +4,7 @@ There are two top-level build scripts:
 * build_myng.sh : this builds the generated RNC and XSD locally and tests it against local test suites
 * build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
 
-Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linus on WSL(Windows Sybsystem for Linux)
+Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linux on WSL (Windows Sybsystem for Linux)
 For WSL users there is a special section at the end.
 
 Prerequisite:
@@ -33,8 +33,8 @@ Preliminaries:
     $ ln -s ../modules/ modules
 
 2.  Ensure that GIT is installed.
-3.  Ensure that JAXB is installed.
-4.  Ensure that PHP is installed.
+3.  Ensure that JAXB is installed (e.g., version 2.3.0).
+4.  Ensure that PHP is installed, including the ctype extension (installed by default on Windows).
 5.  Ensure that curl is installed.
 6.  Ensure that xmllint (in the library: libxml2-utils) is installed.
 
