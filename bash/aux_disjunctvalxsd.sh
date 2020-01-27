@@ -17,9 +17,13 @@ do
     schemafilewoserialization="${XSD_HOME}$line"
     if [[ "$3" == "normal" ]]; then
       schemafile="${schemafilewoserialization}_normal.xsd"
+    elif [[ "$3" == "mixed" ]] || [[ "$#" -eq 2 ]]; then
+      schemafile="${schemafilewoserialization}.xsd"
+    else
+	  echo "Invalid third parameter in call to aux_disjunctvalxsd.sh"
     fi
     echo "Schema file - $schemafile"
-    "${BASH_HOME}aux_valxsd.sh" "${schemafile}" "$2"
+    "${BASH_HOME}aux_valxsd.sh" "${schemafile}" "$2">/dev/null 2>&1
     if [[ "$?" -ne 1 ]]; then
       echo "$?"
       echo "Validation Succeeded"
