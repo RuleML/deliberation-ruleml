@@ -4,11 +4,16 @@ There are two top-level build scripts:
 * build_myng.sh : this builds the generated RNC and XSD locally and tests it against local test suites
 * build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
 
-Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linus on WSL(Windows Sybsystem for Linux)
+Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linux on WSL (Windows Sybsystem for Linux)
 For WSL users there is a special section at the end.
 
-Prerequisite:
+Prerequisites:
 1.  Oxygen XML is required to execute the bash scripts that apply test and create artifacts. All developers are expected to execute these scripts before a pull request. Oxygen versions up to 20.1 should work.
+2.  Ensure that GIT is installed.
+3.  Ensure that JAXB is installed (e.g., version 2.3.0).
+4.  Ensure that PHP is installed, including the ctype extension (installed by default on Windows).
+5.  Ensure that curl is installed.
+6.  Ensure that xmllint (in the library: libxml2-utils) is installed.
 
 Preliminaries:
 0.  If directories <Dir> for 1. don't exist yet, create them with mkdir -p <Dir>
@@ -31,13 +36,6 @@ Preliminaries:
    
     $ cd ../drivers4xsd_min
     $ ln -s ../modules/ modules
-
-2.  Ensure that GIT is installed.
-3.  Ensure that JAXB is installed.
-4.  Ensure that PHP is installed.
-5.  Ensure that curl is installed.
-6.  Ensure that xmllint (in the library: libxml2-utils) is installed.
-
 
 Procedure:
 1. run build_myng.sh. The script should exit with code 0.
