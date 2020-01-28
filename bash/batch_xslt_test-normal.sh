@@ -16,50 +16,35 @@ BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 mkdir -p "${NORMAL_SUITE_HOME}"
 rm "${NORMAL_SUITE_HOME}"* >> /dev/null 2>&1
 
-
-  cschemaname="nafhologeq_compact.xsd"
-  cfile="${XSD_HOME}${cschemaname}"       
-  "${BASH_HOME}aux_valxsd.sh" "${cfile}"
-  if [[ "$?" -ne "0" ]]; then
-       echo "Schema Validation Failed for ${cschemaname}"
-       exit 1
-   fi   
-
-  schemaname="nafhologeq_normal.xsd"
-  sfile="${XSD_HOME}${schemaname}"       
-  "${BASH_HOME}aux_valxsd.sh" "${sfile}"
-  if [[ "$?" -ne "0" ]]; then
-       echo "Schema Validation Failed for ${schemaname}"
-       exit 1
-   fi   
-
-  pschemaname="naffologeqPSOA_normal.xsd"
-  pfile="${XSD_HOME}${pschemaname}"       
-  "${BASH_HOME}aux_valxsd.sh" "${pfile}"
-  if [[ "$?" -ne "0" ]]; then
-       echo "Schema Validation Failed for ${pschemaname}"
-       exit 1
-   fi
+#FIXME POSTPONED until compact serialization is implemented
+cschemaname="nafhologeq_compact.xsd"
+cfile="${XSD_HOME}${cschemaname}"       
+"${BASH_HOME}aux_valxsd.sh" "${cfile}"
+if [[ "$?" -ne "0" ]]; then
+   echo "Schema Validation Failed for ${cschemaname}"
+   exit 1
+fi
    
-  schemaname2="nafhologeq_normal.rnc"
-  sfile2="${DRIVER_HOME}${schemaname2}"       
-  "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
-  if [[ "$?" -ne "0" ]]; then
-       echo "Schema Validation Failed for ${schemaname2}"
-       exit 1
-   fi   
+schemaname2="nafhologeq_normal.rnc"
+sfile2="${DRIVER_HOME}${schemaname2}"       
+"${BASH_HOME}aux_valrnc.sh" "${sfile2}"
+if [[ "$?" -ne "0" ]]; then
+   echo "Schema Validation Failed for ${schemaname2}"
+   exit 1
+fi
 
-  pschemaname2="naffologeqPSOA_normal.rnc"
-  pfile2="${DRIVER_HOME}${pschemaname2}"       
-  "${BASH_HOME}aux_valrnc.sh" "${pfile2}"
-  if [[ "$?" -ne "0" ]]; then
-       echo "Schema Validation Failed for ${pschemaname2}"
-       exit 1
-   fi   
+pschemaname2="naffologeqPSOA_normal.rnc"
+pfile2="${DRIVER_HOME}${pschemaname2}"       
+"${BASH_HOME}aux_valrnc.sh" "${pfile2}"
+if [[ "$?" -ne "0" ]]; then
+   echo "Schema Validation Failed for ${pschemaname2}"
+   exit 1
+fi
 
-# Apply normalization XSLT transforamtions
-# transform files in TEST_SUITE_HOME ending in .ruleml
-# output to NORMAL_SUITE_HOME
+# Apply normalization XSLT transformations
+#   transform files in XSD_TEST_SUITE_HOME etc. ending in .ruleml
+#   output to NORMAL_SUITE_HOME
+#
 # e.g. find "${XSD_TEST_SUITE_HOME}" -name '*.ruleml' -exec  "${BASH_HOME}aux_xslt.sh" {} "${NORMAL_XSLT_HOME}normalizer.xslt" "${NORMAL_SUITE_HOME}${filename}"
 for f in "${XSD_TEST_SUITE_HOME}"*/*.ruleml "${XSD_TEST_SUITE_HOME}"*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*.ruleml "${RNC_TEST_SUITE_HOME}"*/*/*/*.ruleml
 do
@@ -81,19 +66,15 @@ do
     if [[ "${exitvalue}" -ne "1" ]]; then
           echo "XSD Compact Validation Succeeded for Normal ${file}"
           exit 1
-    fi       
-    "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
+    fi
+    #FIXME see https://github.com/RuleML/issues-ruleml/issues/82
+    "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${file}" "normal"   
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "XSD Validation Failed for Normal non-PSOA ${file}"
-          exit 1
-    fi       
-    "${BASH_HOME}aux_valxsd.sh" "${pfile}" "${file}"
-    exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "XSD Validation Failed for Normal PSOA ${file}"
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
+          echo "XSD Validation Failed for Normal ${file}"
           exit 1
     fi
+    
     "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
