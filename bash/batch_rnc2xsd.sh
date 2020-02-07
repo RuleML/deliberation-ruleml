@@ -13,15 +13,15 @@ rm "${XSD_MIN_HOME}"*.xsd >> /dev/null 2>&1
 rm "${XSD_NORMAL_HOME}"*.xsd >> /dev/null 2>&1
 rm "${XSD_NORMAL_MIN_HOME}"*.xsd >> /dev/null 2>&1
 
-# simplify before converting
+# simplify before converting from RNC to XSD
 #simplify=true
 # 
-# don't simplify before converting
-# instead, flatten after converting
+# don't simplify before converting from RNC to XSD
+# instead, flatten after converting from RNC to XSD
 simplify=false
 # applies the script rnc2xsd.sh to all RNC4XSD schemas
 # for debugging, do not remove the temporary RNG
-finish=true
+finish=false
 # for a clean build, remove the temporary RNG
 # finish=true
 #
