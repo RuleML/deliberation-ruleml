@@ -47,7 +47,31 @@
               <Implies node="this:#disclaiming-of-other-persons">
                 <if>
                   <Equal>
-                    <Ind>some constant</Ind>
+                    <Expr>
+                      <op>
+                        <Fun>f</Fun>
+                      </op>
+                        <tupdep>
+                          <Tuple>
+                            <Ind>a</Ind>
+                            <Ind>b</Ind>
+                          </Tuple>
+                        </tupdep>
+                        <tupdep>
+                          <Tuple>
+                            <Ind>a2</Ind>
+                            <Ind>b2</Ind>
+                          </Tuple>
+                        </tupdep>
+                        <slotdep>
+                          <Ind>a1</Ind>
+                          <Ind>b1</Ind>
+                        </slotdep>
+                        <slotdep>
+                          <Ind>a2</Ind>
+                          <Ind>b2</Ind>
+                        </slotdep>
+                    </Expr>
                     <Var>d</Var>
                   </Equal>
                 </if>
@@ -139,7 +163,7 @@
                           <Ind>b2</Ind>
                         </Tuple>
                       </tupdep>
-                    <slotdep>
+                      <slotdep>
                         <Ind>a1</Ind>
                         <Ind>b1</Ind>
                       </slotdep>
