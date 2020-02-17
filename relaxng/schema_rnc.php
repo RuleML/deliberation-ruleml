@@ -88,6 +88,7 @@ $quant = "quant";
 $quant_closure = 0;
 $quant_resl = 1;
 $quant_repo = 2;
+$quant_subclass = 3;
 $bquant = processGETParameter ($quant);
 $quantParam = "x".dechex(bindec($bquant));
 //
@@ -357,6 +358,7 @@ if ($bdefault==0){
   $NeedClosure = $enableClosure;
   $needResl = extractBit($bquant, $quant_resl);
   $enableRepo = extractBit($bquant, $quant_repo);
+  $needSubclass = extractBit($bquant, $quant_subclass);
   
   $enablePlex = extractBit($bexpr, $expr_plex);
   $enableValND = extractBit($bexpr, $expr_val_nondefault);
@@ -846,6 +848,12 @@ if ($bdefault==0){
       echo "#\n# POSITIONAL REST VARIABLES INCLUDED\n";
       echo "#\n".'include "' . $modulesLocation .
           'repo_expansion_module.rnc"'."$end\n";
+    }
+    // Include Subclass
+    if ($needSubclass){
+      echo "#\n# SUBCLASS INCLUDED\n";
+      echo "#\n".'include "' . $modulesLocation .
+          'subclass_expansion_module.rnc"'."$end\n";
     }
   //Step 3E. Include expression-related modules 
     // Include generalized lists
