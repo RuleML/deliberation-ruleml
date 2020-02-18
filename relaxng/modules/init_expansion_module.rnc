@@ -56,6 +56,8 @@ Ind.content |= notAllowed
 oid.content |= notAllowed
 repo.content |= notAllowed
 resl.content |= notAllowed
+sub.content |= notAllowed
+super.content |= notAllowed
 # Nonlinear Interaction of Stripe-skipping and Positional Independence
 body_Implies-ss.content |= notAllowed
 head_Implies-ss.content |= notAllowed
@@ -157,6 +159,7 @@ Implies.header &= empty
 Neg.header &= empty
 Naf.header &= empty
 Or.header &= empty
+Subclass.header &= empty
 # 
 # MAIN
 And.main |= notAllowed
@@ -171,6 +174,7 @@ Entails.main |= notAllowed
 Naf.main |= notAllowed
 Neg.main |= notAllowed
 Or.main |= notAllowed
+Subclass.main |= notAllowed
 # 
 # ATTRIBUTES
 cardinality-att.choice |= notAllowed
@@ -227,6 +231,7 @@ slotdep-datt.choice |= empty
 Data-datt.choice |= empty
 Skolem-datt.choice |= empty
 arg-datt.choice |= notAllowed
+Subclass-datt.choice |= empty
 # 
 # EDGE ATTRIBUTE CHOICE PATTERNS
 formula_Or-datt.choice |= notAllowed
@@ -250,6 +255,9 @@ reslTerm.choice |= notAllowed
 SequenceMarker.choice |= notAllowed
 SlotSequenceMarker.choice |= notAllowed
 anyElement.choice |= notAllowed
+Relation-node.choice |= notAllowed
+subTerm.choice |= notAllowed
+superTerm.choice |= notAllowed
 # 
 # Node renaming and internationalizatio
 And-node.choice |= notAllowed
@@ -292,6 +300,7 @@ Variable-node.choice |= notAllowed
 Reify-node.choice |= notAllowed
 Skolem-node.choice |= notAllowed
 Tuple-node.choice |= notAllowed
+Subclass-node.choice |= notAllowed
 #
 NegationAsFailure-node.notallowed = notAllowed
 # 

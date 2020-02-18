@@ -34,6 +34,8 @@ start |= notAllowed
 #            * declare
 #            * weak
 #            * strong
+#            * sub
+#            * super
 
 # All the RuleML edges below are made collapsible by allowing
 # substitution of their content model for the edge pattern.
@@ -83,6 +85,10 @@ weak-edge.choice |= weak.content
 
 ## Stripe-skipping is allowed for strong negations.
 strong-edge.choice |= strong.content
+
+## Stripe-skipping is allowed for subclasses.
+subSide-edge.choice |= sub.content
+superSide-edge.choice |= super.content
 #
 
 ## Stripe-skipping is allowed for acts.

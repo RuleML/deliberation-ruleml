@@ -11,7 +11,37 @@
   <!-- based on http://deliberation.ruleml.org/1.03-psoa/exa/FOLPlus/naffologeq/naffologeq.ruleml -->
   
   <Assert mapClosure="universal" mapDirection="bidirectional">
-
+    
+    <Subclass>
+      <sub><Rel>TA</Rel></sub>
+      <super><Rel>Student</Rel></super>
+    </Subclass>
+    
+    <Subclass>
+      <sub><Rel>TA</Rel></sub>
+      <super><Rel>Teacher</Rel></super>
+    </Subclass>
+    
+    <Subclass>
+      <sub><Rel>Teacher</Rel></sub>
+      <super><Rel>Scholar</Rel></super>
+    </Subclass>
+    
+    <Subclass>
+      <sub><Rel>Student</Rel></sub>
+      <super><Rel>Scholar</Rel></super>
+    </Subclass>
+    
+    <Subclass>
+      <Rel>horse</Rel>
+      <Rel>animal</Rel>
+    </Subclass>
+    
+    <Subclass>
+      <Rel>duck</Rel>
+      <super><Rel>animal</Rel></super>
+    </Subclass>
+    
     <Forall>
       <Var>d</Var>
       <Equal>
