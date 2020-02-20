@@ -68,8 +68,12 @@ tuplesForExpressions.sequence |= tupdepTermsForExpressions.sequence, tupTermsFor
 ## In the normal-form serialization, the if and then of an implication must occur in canonical order.
 Implies.main |= body_Implies.name.choice, head_Implies.name.choice
 
-## In the normal-form serialization, the if and then of a proof-theoretic entailment must occur canonical order.
+## In the normal-form serialization, the if and then of a proof-theoretic entailment must occur in canonical order.
 Entails.main |= body_Entails.name.choice, head_Entails.name.choice
+
+## In the normal-form serialization, the main section of subclasses contains a pair of edges, 
+## namely a subclass edge, followed by superclass edge.
+Subclass.main |= subSide-edge.choice, superSide-edge.choice
 
 ## In the normal-form serialization, the order of header elements is:
 ## an optional header element sequence as defined in Node.header, followed by optional

@@ -327,6 +327,8 @@ positionalArgument-edge.choice |= notAllowed
 slot-edge.choice |= notAllowed
 tupdep-edge.choice |= notAllowed
 tup-edge.choice |= notAllowed
+subSide-edge.choice |= notAllowed
+superSide-edge.choice |= notAllowed
 #
 boundVariables.choice |= notAllowed
 # 

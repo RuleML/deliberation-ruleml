@@ -78,6 +78,10 @@ Implies.main |= body_Implies.name.choice & head_Implies.name.choice
 ## This pattern can be translated accurately into XSD.
 Entails.main |= body_Entails.name.choice & head_Entails.name.choice
 
+# FIXME: subclass-superclass order temporarely required ("," should be relaxed to "&")
+## The main section of subclasses contains a pair of edges, namely a subclass edge and a superclass edge.
+Subclass.main |= subSide-edge.choice , superSide-edge.choice
+
 ## In the relaxed-form serialization, the header element sequence is:
 ## an optional header element sequence as defined in Node.header, interleaved with optional
 ## object identifier and degree

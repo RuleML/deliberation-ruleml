@@ -39,9 +39,6 @@ Subclass.type.def = (Subclass-datt.choice & reSubclass.attlist), Subclass.header
 Subclass.header &= TruthValuedConnective.header?
 # For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
 
-## The main section of subclasses contains a pair of edges, namely a subclass edge and a superclass edge.
-Subclass.main |= subSide-edge.choice, superSide-edge.choice
-
 ## subclass formulas are syntactic sugar for a particular universal quantification 
 Forall-node.choice |= Subclass-node.choice
 
