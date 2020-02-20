@@ -27,6 +27,8 @@
       local-name($node)='torso' or
       local-name($node)='left' or
       local-name($node)='right' or
+      local-name($node)='sub' or
+      local-name($node)='super' or
       local-name($node)='formula' or
       local-name($node)='declare' or
       local-name($node)='strong' or
