@@ -64,6 +64,8 @@
       local-name($node)='content' or
       local-name($node)='left' or
       local-name($node)='right' or
+      local-name($node)='sub' or
+      local-name($node)='super' or
       local-name($node)='slotdep' or
       local-name($node)='slot' or
       local-name($node)='declare' or
@@ -117,6 +119,7 @@
       local-name($node)='Uniterm' or
       local-name($node)='Atom' or
       local-name($node)='Equal' or
+      local-name($node)='Subclass' or
       local-name($node)='Time[ruleml:isFormulaHolder($nodeParent)]' or
       local-name($node)='Spatial[ruleml:isFormulaHolder($nodeParent)]' or
       local-name($node)='Interval[ruleml:isFormulaHolder($nodeParent)]' or
@@ -343,6 +346,51 @@
       <xsl:otherwise>
         <xsl:call-template name="wrap">
           <xsl:with-param name="tag">right</xsl:with-param>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <!-- Wraps the naked RuleML children of Subclass in the cases where:
+        -the only children of Subclass are <sub>, <super> and <oid> which can appear before <sub> and <super> - does not handle foreign elements in the last or second to last position
+        -if both children are already wrapped then they will be copied unchanged
+        -neither children are wrapped, then the second to last child is wrapped in <sub> and the last child is wrapped <super>
+        -the second to last child is wrapped in <super>, and the last child is not wrapped, then the last child is wrapped in <sub>, in all other cases,
+        the last child is wrapped in <super>
+        -the last child is wrapped in <sub> and the second to last child is not wrapped, then the second to last child is wrapped in <super>,
+        in all other cases, the second to last child is wrapped in <sub>
+        Does not normalize cases where:
+        -there are foreign elements as the last or second to last child
+        -there are foreign elements between the last and second to last child
+       
+    -->
+  <!-- Wraps the second to last RuleML child of Subclass. -->
+  <xsl:template match="ruleml:Subclass/*[last()-1][ruleml:isNode(.)]"
+    mode="phase-1">
+    <xsl:choose>
+      <xsl:when test="local-name(following-sibling::*[1])='sub'">
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">super</xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">sub</xsl:with-param>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <!-- Wraps the last RuleML child of Subclass. -->
+  <xsl:template match="ruleml:Subclass/*[last()][ruleml:isNode(.)]"
+    mode="phase-1">
+    <xsl:choose>
+      <xsl:when test="local-name(preceding-sibling::*[1])='super'">
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">sub</xsl:with-param>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="wrap">
+          <xsl:with-param name="tag">super</xsl:with-param>
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -733,6 +781,26 @@
       <xsl:apply-templates select="ruleml:degree" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:left" mode="phase-2"/>
       <xsl:apply-templates select="ruleml:right" mode="phase-2"/>
+    </xsl:copy>
+  </xsl:template>
+  <!-- Builds canonically-ordered content of Subclass. -->
+  <xsl:template match="ruleml:Subclass" mode="phase-2">
+    <xsl:copy>
+      <xsl:apply-templates select="@*" mode="phase-2"/>
+      <xsl:apply-templates select="comment()" mode="phase-2"/>
+      <xsl:apply-templates select="*[namespace-uri(.)!='http://ruleml.org/spec']" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:meta" mode="phase-2"/>
+      <xsl:apply-templates
+        select="*[
+              namespace-uri(.)='http://ruleml.org/spec' and 
+              local-name(.)!= 'meta' and 
+              local-name(.)!= 'degree' and 
+              local-name(.)!= 'sub' and 
+              local-name(.)!= 'super']"
+        mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:degree" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:sub" mode="phase-2"/>
+      <xsl:apply-templates select="ruleml:super" mode="phase-2"/>
     </xsl:copy>
   </xsl:template>
   <!-- Builds canonically-ordered content of Neg. -->
