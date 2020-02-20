@@ -60,6 +60,7 @@ reImplies.attlist &= style-att.choice?
 reEquivalent.attlist &= style-att.choice?
 reForall.attlist &= style-att.choice?
 reExists.attlist &= style-att.choice?
+reSubclass.attlist &= style-att.choice?
 # 
 # extension of optional attribute groups on Fun and Rel from Deliberation RuleML
 #

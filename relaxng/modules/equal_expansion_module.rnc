@@ -26,7 +26,7 @@ edge.choice |= left.edge.def | right.edge.def
 ## an extension point for specializations of the equation tag name.  
 Equal-node.choice |= Equal.Node.def
 
-## An equational formula..
+## An equational formula.
 ## The children of the equation element are divided into two sections, 
 ## a header section for modifiers, and a main section for the formulas on either side of the equation. 
 Equal.Node.def =

@@ -1,0 +1,74 @@
+namespace dc = "http://purl.org/dc/elements/1.1/"
+namespace dcterms = "http://purl.org/dc/terms/"
+
+dcterms:title [ "RuleML Subclass" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/modules/subclass_expansion_module.rnc" ]
+dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
+dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Tmitsikas" ]
+dc:subject [ "RuleML, subclass, subclassOf, subsumes, subpredicate" ]
+dcterms:description [ "The expansion module for subclass formulas." ]
+dcterms:language [ "en" ]
+dc:rights [
+  'Copyright 2020 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.'
+]
+dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
+dcterms:relation [ "http://deliberation.ruleml.org" ]
+start |= Subclass.Node.def | sub.edge.def | super.edge.def
+Node.choice |= Subclass.Node.def
+edge.choice |= sub.edge.def | super.edge.def
+# This module declares the following RuleML elements and attributes:
+#            * <Subclass>
+#            * <sub>
+#            * <super>
+#             subTerm.choice
+#             superTerm.choice
+
+## an extension point for specializations of the subclass tag name.  
+Subclass-node.choice |= Subclass.Node.def
+
+## A subclass formula.
+## The children of the subclass element are divided into two sections, 
+## a header section for modifiers, and a main section for the terms on either side of the subclass. 
+Subclass.Node.def =
+  
+  ## <Subclass>: a subclass relation between two terms.
+  element Subclass { Subclass.type.def }
+Subclass.type.def = (Subclass-datt.choice & reSubclass.attlist), Subclass.header, Subclass.main
+
+## Subclasses accept the header of truth-valued connectives for enabling the degree of uncertainty.
+Subclass.header &= TruthValuedConnective.header?
+# For the declaration of the TruthValuedConnective header, see the modules ordered_groups_expansion_module and unordered_groups_expansion_module).
+
+## subclass formulas are syntactic sugar for a particular universal quantification 
+Forall-node.choice |= Subclass-node.choice
+
+## an extension point for stripe skipping as well as specializations of the sub tag name in subclasses.  
+subSide-edge.choice |= sub.edge.def
+sub.edge.def =
+  
+  ## <sub>: The subsumed edge of a subclass.
+  element sub { sub.type.def }
+sub.type.def = sub.attlist? & sub.content
+sub.attlist &= commonInit.attlist?
+
+## The subsumed role in a subclass is filled by a term.
+sub.content |= subTerm.choice
+
+## an extension point for stripe skipping as well as specializations of the super tag name in subclasses.  
+superSide-edge.choice |= super.edge.def
+super.edge.def =
+  
+  ## <super>: The supersuming edge of a subclass.
+  element super { super.type.def }
+super.type.def = super.attlist? & super.content
+super.attlist &= commonInit.attlist?
+
+## The supersuming role in a subclass is filled by a term.
+super.content |= superTerm.choice
+
+## terms allowed on the subsumed side of a subclass 
+subTerm.choice |= Relation-node.choice
+
+## terms allowed on the supersuming side of a subclass 
+superTerm.choice |= Relation-node.choice
+reSubclass.attlist &= commonNode.attlist?
