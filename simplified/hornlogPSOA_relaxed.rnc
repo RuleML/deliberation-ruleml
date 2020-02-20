@@ -24,6 +24,7 @@ start =
   | Ind
   | Tuple
   | Var
+  | Subclass
   | Plex
   | formula
   | formula_2
@@ -39,7 +40,6 @@ start =
   | formula_7
   | then_2
   | if_2
-  | degree
   | meta
   | torso
   | oid
@@ -48,6 +48,8 @@ start =
   | arg
   | tupdep
   | tup
+  | sub
+  | super
 RuleML =
   element RuleML {
     (attribute node {
@@ -160,6 +162,7 @@ Assert =
      | Implies
      | Equivalent
      | Forall
+     | Subclass
      | Entails
      | Rulebase)*
   }
@@ -236,6 +239,7 @@ Retract =
      | Implies
      | Equivalent
      | Forall
+     | Subclass
      | Entails
      | Rulebase)*
   }
@@ -334,7 +338,7 @@ Atom =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & oid? & degree?),
+    (meta* & oid?),
     ((op | Rel)
      & (Skolem | Reify | Ind | Data | Var | Expr | Plex | arg)*
      & tupdep*
@@ -426,7 +430,7 @@ And =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (formula_3 | Atom | And_2 | Or_2)*
   }
 Or =
@@ -467,7 +471,7 @@ Or =
            }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (formula_4 | Atom | And_2 | Or_2)*
   }
 Implies =
@@ -537,7 +541,7 @@ Implies =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     ((if & then)
      | (Atom, if)
      | (then, (Atom | And_2 | Or_2))
@@ -581,9 +585,9 @@ Forall =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (declare | Var)+,
-    (formula_5 | Atom | Implies | Equivalent | Forall)
+    (formula_5 | Atom | Implies | Equivalent | Forall | Subclass)
   }
 Exists =
   element Exists {
@@ -621,7 +625,7 @@ Exists =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (declare | Var)+,
     (formula_6 | Atom | And_2 | Or_2 | Exists)
   }
@@ -793,7 +797,7 @@ Rulebase =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    (Atom | Implies | Equivalent | Forall | formula_7)*
+    (Atom | Implies | Equivalent | Forall | Subclass | formula_7)*
   }
 Entails =
   element Entails {
@@ -833,12 +837,16 @@ Entails =
        }?),
     meta*,
     ((if_2 & then_2)
-     | ((Atom | Implies | Equivalent | Forall | Rulebase), if_2)
-     | (then_2, (Atom | Implies | Equivalent | Forall | Rulebase))
-     | ((Atom | Implies | Equivalent | Forall | Rulebase),
-        (Atom | Implies | Equivalent | Forall | Rulebase))
-     | ((Atom | Implies | Equivalent | Forall | Rulebase), then_2)
-     | (if_2, (Atom | Implies | Equivalent | Forall | Rulebase)))
+     | ((Atom | Implies | Equivalent | Forall | Subclass | Rulebase),
+        if_2)
+     | (then_2,
+        (Atom | Implies | Equivalent | Forall | Subclass | Rulebase))
+     | ((Atom | Implies | Equivalent | Forall | Subclass | Rulebase),
+        (Atom | Implies | Equivalent | Forall | Subclass | Rulebase))
+     | ((Atom | Implies | Equivalent | Forall | Subclass | Rulebase),
+        then_2)
+     | (if_2,
+        (Atom | Implies | Equivalent | Forall | Subclass | Rulebase)))
   }
 Equivalent =
   element Equivalent {
@@ -886,7 +894,7 @@ Equivalent =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (Atom | torso),
     (Atom | torso)
   }
@@ -1009,6 +1017,7 @@ Reify =
        | Ind
        | Tuple
        | Var
+       | Subclass
        | Plex
        | formula
        | formula_2
@@ -1024,7 +1033,6 @@ Reify =
        | formula_7
        | then_2
        | if_2
-       | degree
        | meta
        | torso
        | oid
@@ -1032,7 +1040,9 @@ Reify =
        | slot
        | arg
        | tupdep
-       | tup)*
+       | tup
+       | sub
+       | super)*
   }
 Ind =
   element Ind {
@@ -1157,6 +1167,46 @@ Var =
        }?),
     xsd:token
   }
+Subclass =
+  element Subclass {
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:id { xsd:NCName }?
+     & attribute key {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute keyref {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
+    meta*,
+    (Rel | sub),
+    (Rel | super)
+  }
 Plex =
   element Plex {
     (attribute node {
@@ -1220,7 +1270,13 @@ formula =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall | Entails | Rulebase)
+    & (Atom
+       | Implies
+       | Equivalent
+       | Forall
+       | Subclass
+       | Entails
+       | Rulebase)
   }
 formula_2 =
   element formula {
@@ -1398,7 +1454,7 @@ formula_5 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall)
+    & (Atom | Implies | Equivalent | Forall | Subclass)
   }
 formula_6 =
   element formula {
@@ -1464,7 +1520,7 @@ formula_7 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall)
+    & (Atom | Implies | Equivalent | Forall | Subclass)
   }
 then_2 =
   element then {
@@ -1486,7 +1542,7 @@ then_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall | Rulebase)
+    & (Atom | Implies | Equivalent | Forall | Subclass | Rulebase)
   }
 if_2 =
   element if {
@@ -1508,29 +1564,7 @@ if_2 =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall | Rulebase)
-  }
-degree =
-  element degree {
-    attribute ns1:schemaLocation { text }?
-    & attribute xml:id { xsd:NCName }?
-    & attribute key {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & attribute keyref {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & Data
+    & (Atom | Implies | Equivalent | Forall | Subclass | Rulebase)
   }
 meta =
   element meta {
@@ -1552,7 +1586,13 @@ meta =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Atom | Implies | Equivalent | Forall | Entails | Rulebase)
+    & (Atom
+       | Implies
+       | Equivalent
+       | Forall
+       | Subclass
+       | Entails
+       | Rulebase)
   }
 torso =
   element torso {
@@ -1719,6 +1759,50 @@ tup =
       }?
     & Tuple
   }
+sub =
+  element sub {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:id { xsd:NCName }?
+    & attribute key {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & attribute keyref {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & Rel
+  }
+super =
+  element super {
+    attribute ns1:schemaLocation { text }?
+    & attribute xml:id { xsd:NCName }?
+    & attribute key {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & attribute keyref {
+        xsd:string {
+          pattern =
+            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+          minLength = "1"
+        }
+        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+      }?
+    & Rel
+  }
 act =
   element act {
     (attribute index { xsd:positiveInteger }
@@ -1778,7 +1862,7 @@ And_2 =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (formula_3 | Atom | And_2 | Or_2)*
   }
 Or_2 =
@@ -1817,7 +1901,7 @@ Or_2 =
          }
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
-    (meta* & degree?),
+    meta*,
     (formula_4 | Atom | And_2 | Or_2)*
   }
 _1 =

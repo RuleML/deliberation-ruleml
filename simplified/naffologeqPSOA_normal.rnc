@@ -27,6 +27,7 @@ start =
   | Ind
   | Tuple
   | Var
+  | Subclass
   | Plex
   | formula
   | formula_2
@@ -42,7 +43,6 @@ start =
   | formula_7
   | then_2
   | if_2
-  | degree
   | strong
   | weak
   | meta
@@ -55,8 +55,8 @@ start =
   | arg
   | tupdep
   | tup
-  | resl
-  | repo
+  | sub
+  | super
 RuleML =
   element RuleML {
     (attribute node {
@@ -364,12 +364,10 @@ Atom =
        }?),
     meta*,
     oid?,
-    degree?,
     op,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 Rel =
   element Rel {
@@ -487,7 +485,6 @@ And =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     formula_3*
   }
 Or =
@@ -560,7 +557,6 @@ Or =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     formula_4*
   }
 Implies =
@@ -662,7 +658,6 @@ Implies =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     if,
     then
   }
@@ -744,7 +739,6 @@ Forall =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     declare+,
     formula_5
   }
@@ -826,7 +820,6 @@ Exists =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     declare+,
     formula_6
   }
@@ -888,10 +881,9 @@ Expr =
     meta*,
     oid?,
     op_2,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 Fun =
   element Fun {
@@ -1148,7 +1140,6 @@ Neg =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     strong
   }
 Naf =
@@ -1229,7 +1220,6 @@ Naf =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     weak
   }
 Equivalent =
@@ -1310,7 +1300,6 @@ Equivalent =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     torso,
     torso
   }
@@ -1371,7 +1360,6 @@ Equal =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     left,
     right
   }
@@ -1497,6 +1485,7 @@ Reify =
        | Ind
        | Tuple
        | Var
+       | Subclass
        | Plex
        | formula
        | formula_2
@@ -1512,7 +1501,6 @@ Reify =
        | formula_7
        | then_2
        | if_2
-       | degree
        | strong
        | weak
        | meta
@@ -1525,8 +1513,8 @@ Reify =
        | arg
        | tupdep
        | tup
-       | resl
-       | repo)*
+       | sub
+       | super)*
   }
 Ind =
   element Ind {
@@ -1611,8 +1599,7 @@ Tuple =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    arg*,
-    repo?
+    arg*
   }
 Var =
   element Var {
@@ -1652,6 +1639,46 @@ Var =
        }?),
     xsd:token
   }
+Subclass =
+  element Subclass {
+    (attribute node {
+       xsd:string {
+         pattern =
+           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+         minLength = "1"
+       }
+       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+     }?
+     & attribute ns1:schemaLocation { text }?
+     & attribute xml:id { xsd:NCName }?
+     & attribute key {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute keyref {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?
+     & attribute style {
+         xsd:string {
+           pattern =
+             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
+           minLength = "1"
+         }
+         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
+       }?),
+    meta*,
+    sub,
+    super
+  }
 Plex =
   element Plex {
     (attribute node {
@@ -1689,10 +1716,9 @@ Plex =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    ((arg*, repo?) | (tupdep*, tup*)),
+    (arg* | (tupdep*, tup*)),
     slotdep*,
-    slot*,
-    resl?
+    slot*
   }
 formula =
   element formula {
@@ -1722,6 +1748,7 @@ formula =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists
        | Entails
        | Rulebase)
@@ -1755,6 +1782,7 @@ formula_2 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists
        | Entails
        | Rulebase)
@@ -1811,6 +1839,7 @@ formula_3 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 formula_4 =
@@ -1843,6 +1872,7 @@ formula_4 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 then =
@@ -1873,6 +1903,7 @@ then =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 if =
@@ -1904,6 +1935,7 @@ if =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 declare =
@@ -1956,6 +1988,7 @@ formula_5 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 formula_6 =
@@ -1986,6 +2019,7 @@ formula_6 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 op_2 =
@@ -2038,6 +2072,7 @@ formula_7 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 then_2 =
@@ -2068,6 +2103,7 @@ then_2 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists
        | Rulebase)
   }
@@ -2099,30 +2135,9 @@ if_2 =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists
        | Rulebase)
-  }
-degree =
-  element degree {
-    attribute ns1:schemaLocation { text }?
-    & attribute xml:id { xsd:NCName }?
-    & attribute key {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & attribute keyref {
-        xsd:string {
-          pattern =
-            "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-          minLength = "1"
-        }
-        | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-      }?
-    & Data
   }
 strong =
   element strong {
@@ -2152,6 +2167,7 @@ strong =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 weak =
@@ -2182,6 +2198,7 @@ weak =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 meta =
@@ -2212,6 +2229,7 @@ meta =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists
        | Entails
        | Rulebase)
@@ -2244,6 +2262,7 @@ torso =
        | Implies
        | Equivalent
        | Forall
+       | Subclass
        | Exists)
   }
 oid =
@@ -2433,8 +2452,8 @@ tup =
       }?
     & Tuple
   }
-resl =
-  element resl {
+sub =
+  element sub {
     attribute ns1:schemaLocation { text }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
@@ -2453,10 +2472,10 @@ resl =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Var | Plex_2)
+    & Rel
   }
-repo =
-  element repo {
+super =
+  element super {
     attribute ns1:schemaLocation { text }?
     & attribute xml:id { xsd:NCName }?
     & attribute key {
@@ -2475,7 +2494,7 @@ repo =
         }
         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
       }?
-    & (Var | Plex_3)
+    & Rel
   }
 act =
   element act {
@@ -2583,7 +2602,6 @@ And_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     formula_3*
   }
 Or_2 =
@@ -2664,87 +2682,5 @@ Or_2 =
          | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
        }?),
     meta*,
-    degree?,
     formula_4*
-  }
-Plex_2 =
-  element Plex {
-    (attribute node {
-       xsd:string {
-         pattern =
-           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-         minLength = "1"
-       }
-       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-     }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:id { xsd:NCName }?
-     & attribute key {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute keyref {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute style {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?),
-    meta*,
-    slotdep*,
-    slot*,
-    resl?
-  }
-Plex_3 =
-  element Plex {
-    (attribute node {
-       xsd:string {
-         pattern =
-           "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-         minLength = "1"
-       }
-       | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-     }?
-     & attribute ns1:schemaLocation { text }?
-     & attribute xml:id { xsd:NCName }?
-     & attribute key {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute keyref {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?
-     & attribute style {
-         xsd:string {
-           pattern =
-             "(([\i-[:]][\c-[:]]*)?:)(/[^\s/][^\s]*|[^\s/][^\s]*|[^\s]?)"
-           minLength = "1"
-         }
-         | xsd:string { pattern = "[\i-[:]][\c-[:]]+:.+" }
-       }?),
-    meta*,
-    arg*,
-    repo?
   }
