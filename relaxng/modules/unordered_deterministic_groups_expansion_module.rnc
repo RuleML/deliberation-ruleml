@@ -76,6 +76,10 @@ Implies.main |= head_Implies.name.choice , body_Implies.name.choice
 Entails.main |= body_Entails.name.choice , head_Entails.name.choice
 Entails.main |= head_Entails.name.choice , body_Entails.name.choice
 
+# FIXME: subclass-superclass order temporarely required (should follow Implies)
+## The main section of subclasses contains a pair of edges, namely a subclass edge and a superclass edge, in this order.
+Subclass.main |= subSide-edge.choice , superSide-edge.choice
+
 ## In the deterministic serialization, the order of header elements is:
 ## an optional header element sequence as defined in Node.header, followed by optional
 ## object identifier and degree
