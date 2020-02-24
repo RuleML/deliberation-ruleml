@@ -24,7 +24,7 @@ if [[ "$?" -ne "0" ]]; then
    echo "Schema Validation Failed for ${cschemaname}"
    exit 1
 fi
-   
+
 schemaname2="nafhologeq_normal.rnc"
 sfile2="${DRIVER_HOME}${schemaname2}"       
 "${BASH_HOME}aux_valrnc.sh" "${sfile2}"
@@ -67,24 +67,16 @@ do
           echo "XSD Compact Validation Succeeded for Normal ${file}"
           exit 1
     fi
-    #FIXME see https://github.com/RuleML/issues-ruleml/issues/82
     "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${file}" "normal"   
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "XSD Validation Failed for Normal ${file}"
           exit 1
-    fi
-    
-    "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
+    fi  
+    "${BASH_HOME}aux_disjunctvalrnc.sh" "config_max.txt" "${file}" "normal"
     exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ ! "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
+    if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "RNC Validation Failed for Normal ${file}"
           exit 1
-    fi       
-    "${BASH_HOME}aux_valrnc.sh" "${pfile2}" "${file}"
-    exitvalue=$?
-    if [[ ! "${file}" =~ fail ]] && [[ "${file}" =~ (PSOA|Tuple) ]] && [[ "${exitvalue}" -ne "0" ]]; then
-          echo "RNC Validation Failed for Normal ${file}"
-          exit 1
-    fi       
+    fi  
 done

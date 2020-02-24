@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../../relaxng/nafhologeq_relaxed.rnc"?>
+<RuleML xmlns="http://ruleml.org/spec"
+  xmlns:this="http://deliberation.ruleml.org/1.03/test/folplus-test-suite/naffolofeq-anno_normal.ruleml"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]-->
+  <act index="1">
+    <Assert mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <Implies material="yes" direction="bidirectional" mapMaterial="yes"
+          mapDirection="bidirectional" node="this:#rule1">
+          <meta>
+            <Atom node="this:#meta1">
+              <op>
+                <Rel>Author</Rel>
+              </op>
+              <arg index="1">
+                <Ind iri="this:#rule1"/>
+              </arg>
+              <arg index="2">
+                <Data xsi:type="xs:string">Tara Athan</Data>
+              </arg>
+            </Atom>
+          </meta>
+          <meta>
+            <Atom node="this:#meta2">
+              <op>
+                <Rel/>
+              </op>
+              <slot>
+                <Ind>Institution</Ind>
+                <Data xsi:type="xs:string">Athan Services</Data>
+              </slot>
+              <slot>
+                <Ind>Date</Ind>
+                <!--<Data node="#date1" xsi:type="date">2012-03-20-06:00</Data>-->
+                <Data xsi:type="xs:date">2012-03-20-06:00</Data>
+              </slot>
+            </Atom>
+          </meta>
+          <if>
+            <Implies>
+              <Atom>
+                <op>
+                  <Rel>P</Rel>
+                </op>
+              </Atom>
+              <Atom>
+                <Ind>a</Ind>
+                <op>
+                  <Rel>R</Rel>
+                </op>
+              </Atom>
+            </Implies>
+          </if>
+          <then>
+            <Atom>
+              <op>
+                <Rel>Q</Rel>
+              </op>
+            </Atom>
+          </then>
+        </Implies>
+      </formula>
+      <formula>
+        <Atom node="this:#meta3">
+          <op>
+            <Rel iri="http://ruleml.org/Defeasible#Overrides"/>
+          </op>
+          <arg index="1">
+            <Ind iri="this:#rule1"/>
+          </arg>
+          <arg index="2">
+            <Ind iri="this:#rule2"/>
+          </arg>
+        </Atom>
+      </formula>
+      <formula>
+        <Atom node="this:#meta4">
+          <op>
+            <Rel iri="http://ruleml.org/Defeasible#Justification"/>
+          </op>
+          <arg index="1">
+            <Ind iri="this:#meta3"/>
+          </arg>
+          <arg index="2">
+            <Ind iri="urn:legalruleml:lex-superior"/>
+          </arg>
+        </Atom>
+      </formula>
+    </Assert>
+  </act>
+  <act index="2">
+    <Query mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <Atom node="this:?x">
+          <op>
+            <Rel>Author</Rel>
+          </op>
+          <arg index="1">
+            <Var>y</Var>
+          </arg>
+          <arg index="2">
+            <Data xsi:type="xs:string">Tara Athan</Data>
+          </arg>
+        </Atom>
+      </formula>
+    </Query>
+  </act>
+  <act index="3">
+    <Retract mapMaterial="yes" mapDirection="bidirectional">
+      <formula>
+        <Atom>
+          <op>
+            <Rel>P</Rel>
+          </op>
+        </Atom>
+      </formula>
+    </Retract>
+  </act>
+</RuleML>
