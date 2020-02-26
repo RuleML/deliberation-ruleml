@@ -29,6 +29,8 @@ do
     schemafilewoserialization="${DRIVER_HOME}$line"
     if [[ "$3" == "normal" ]]; then
       schemafile="${schemafilewoserialization}_normal.rnc"
+    elif [[ "$3" == "compact" ]]; then
+      schemafile="${schemafilewoserialization}_compact.rnc"
     elif [[ "$3" == "relaxed" ]] || [[ "$#" -eq 2 ]]; then
       schemafile="${schemafilewoserialization}_relaxed.rnc"
     else
