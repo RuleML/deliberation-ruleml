@@ -52,6 +52,18 @@ if [[ "$?" -ne "0" ]]; then
      exit 1
 fi
 
+echo "Case 1 compact"
+instance="ackermann"
+echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
+echo "First parameter (configuration file): config_max.txt"
+echo "Second parameter (instance file): ${COMPACT_SUITE_HOME}${instance}".ruleml
+echo "Third parameter (serialization): compact"
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${COMPACT_SUITE_HOME}${instance}".ruleml "compact"
+if [[ "$?" -ne "0" ]]; then
+     echo "Testing of Disjunct Validation Failed For Case 1 compact"
+     exit 1
+fi
+
 echo " "
 echo "Case 2 normal"
 instance="hologconstper"
@@ -88,6 +100,19 @@ echo "Third parameter (serialization):  absent, defaulting to mixed"
 "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${NORMAL_SUITE_HOME}${instance}".ruleml
 if [[ "$?" -ne "0" ]]; then
      echo "Testing of Disjunct Validation Failed For Case 2 default mixed"
+     exit 1
+fi
+
+echo " "
+echo "Case 2 compact"
+instance="hologconstper"
+echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
+echo "First parameter (configuration file): config_max.txt"
+echo "Second parameter (instance file): ${COMPACT_SUITE_HOME}${instance}".ruleml
+echo "Third parameter (serialization): compact"
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${COMPACT_SUITE_HOME}${instance}".ruleml "compact"
+if [[ "$?" -ne "0" ]]; then
+     echo "Testing of Disjunct Validation Failed For Case 2 compact"
      exit 1
 fi
 
@@ -131,6 +156,19 @@ if [[ "$?" -ne "0" ]]; then
 fi
 
 echo " "
+echo "Case 3 compact"
+instance="hornlogPSOA"
+echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
+echo "First parameter (configuration file): config_max.txt"
+echo "Second parameter (instance file): ${COMPACT_SUITE_HOME}${instance}".ruleml
+echo "Third parameter (serialization): compact"
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${COMPACT_SUITE_HOME}${instance}".ruleml "compact"
+if [[ "$?" -ne "0" ]]; then
+     echo "Testing of Disjunct Validation Failed For Case 3 compact"
+     exit 1
+fi
+
+echo " "
 echo "Case 4a normalized schema"
 echo "Expected outcome: Validation failed against all maximal schemas"
 instance="Hornlog/hornlogeq/ackermann"
@@ -146,27 +184,41 @@ fi
 
 echo " "
 echo "Case 4a mixed schema"
-instance="Hornlog/hornlogeq/ackermann"
+instance="annotation_fail"
 echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
 echo "First parameter (configuration file): config_max.txt"
-echo "Second parameter (instance file): ${XSD_TEST_SUITE_HOME}${instance}".ruleml
+echo "Second parameter (instance file): ${NORMAL_SUITE_HOME}${instance}".ruleml
 echo "Third parameter (serialization): mixed"
-"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${XSD_TEST_SUITE_HOME}${instance}".ruleml "mixed"
-if [[ "$?" -ne "0" ]]; then
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${NORMAL_SUITE_HOME}${instance}".ruleml "mixed"
+if [[ "$?" -ne "1" ]]; then
      echo "Testing of Disjunct Validation Failed For Case 4a mixed"
      exit 1
 fi
 
 echo " "
 echo "Case 4a default mixed schema"
+instance="annotation_fail"
+echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
+echo "First parameter (configuration file): config_max.txt"
+echo "Second parameter (instance file): ${NORMAL_SUITE_HOME}${instance}".ruleml
+echo "Third parameter (serialization): absent, defaulting to mixed"
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${NORMAL_SUITE_HOME}${instance}".ruleml
+if [[ "$?" -ne "1" ]]; then
+     echo "Testing of Disjunct Validation Failed For Case 4a default mixed"
+     exit 1
+fi
+
+echo " "
+echo "Case 4a compact"
+echo "Expected outcome: Validation failed against all maximal schemas"
 instance="Hornlog/hornlogeq/ackermann"
 echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
 echo "First parameter (configuration file): config_max.txt"
 echo "Second parameter (instance file): ${XSD_TEST_SUITE_HOME}${instance}".ruleml
-echo "Third parameter (serialization):  absent, defaulting to mixed"
-"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${XSD_TEST_SUITE_HOME}${instance}".ruleml
-if [[ "$?" -ne "0" ]]; then
-     echo "Testing of Disjunct Validation Failed For Case 4a default mixed"
+echo "Third parameter (serialization): compact"
+"${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${XSD_TEST_SUITE_HOME}${instance}".ruleml "compact"
+if [[ "$?" -ne "1" ]]; then
+     echo "Testing of Disjunct Validation Failed For Case 4a compact"
      exit 1
 fi
 
