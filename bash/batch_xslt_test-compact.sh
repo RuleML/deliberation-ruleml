@@ -57,19 +57,19 @@ for file in "${COMPACT_SUITE_HOME}"*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
-    "${BASH_HOME}aux_valxsd.sh" "${nfile}" "${file}"
+    "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${file}" "normal"   
     exitvalue=$?
     if [[ "${exitvalue}" -ne "1" ]]; then
           echo "Normal Validation Succeeded for Compact ${file}"
           exit 1
     fi       
-    "${BASH_HOME}aux_valxsd.sh" "${sfile}" "${file}"
+    "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${file}" "compact"   
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Compact ${file}"
           exit 1
     fi       
-    "${BASH_HOME}aux_valrnc.sh" "${sfile2}" "${file}"
+    "${BASH_HOME}aux_disjunctvalrnc.sh" "config_max.txt" "${file}" "compact"   
     exitvalue=$?
     if [[ ! "${file}" =~ fail ]] && [[ "${exitvalue}" -ne "0" ]]; then
           echo "Validation Failed for Compact ${file}"

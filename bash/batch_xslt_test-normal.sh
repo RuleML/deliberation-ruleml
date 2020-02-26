@@ -61,7 +61,7 @@ for file in "${NORMAL_SUITE_HOME}"*.ruleml
 do
   filename=$(basename "${file}")
   echo "File ${filename}"
-    "${BASH_HOME}aux_valxsd.sh" "${cfile}" "${file}"
+    "${BASH_HOME}aux_disjunctvalxsd.sh" "config_max.txt" "${file}" "compact"   
     exitvalue=$?
     if [[ "${exitvalue}" -ne "1" ]]; then
           echo "XSD Compact Validation Succeeded for Normal ${file}"
