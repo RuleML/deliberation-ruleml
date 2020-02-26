@@ -17,6 +17,8 @@ do
     schemafilewoserialization="${XSD_HOME}$line"
     if [[ "$3" == "normal" ]]; then
       schemafile="${schemafilewoserialization}_normal.xsd"
+    elif [[ "$3" == "compact" ]]; then
+      schemafile="${schemafilewoserialization}_compact.xsd"
     elif [[ "$3" == "mixed" ]] || [[ "$#" -eq 2 ]]; then
       schemafile="${schemafilewoserialization}.xsd"
     else
