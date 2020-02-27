@@ -99,6 +99,7 @@ include "modules/slotdep_expansion_module.rnc" inherit = ruleml {start |= notAll
 include "modules/stripe_skipping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_ifthen_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/stripe_skipping_op_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
+include "modules/subclass_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_bin_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 include "modules/termseq_un_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
