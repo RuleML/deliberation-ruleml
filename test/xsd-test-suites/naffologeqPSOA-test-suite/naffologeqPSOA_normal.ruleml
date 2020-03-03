@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleML xmlns="http://ruleml.org/spec" xmlns:this="http://example.org/naffologeqPSOA_normal.ruleml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://ruleml.org/spec ../../../xsd/naffologeqPSOA_normal.xsd">
+  <!-- note the addition of the XML Schema namespace because a built-in datatype is used -->
+  <!-- a syntactic example rulebase for testing the Naffologeq PSOA RuleML sublanguage -->
+  <!-- based on http://deliberation.ruleml.org/1.03-psoa/exa/FOLPlus/naffologeq/naffologeq.ruleml -->
+  <ruleml:act xmlns:ruleml="http://ruleml.org/spec" index="1">
+    <Assert mapClosure="universal" mapDirection="bidirectional">
+      <ruleml:formula>
+        <Subclass>
+          <sub>
+            <Rel>TA</Rel>
+          </sub>
+          <super>
+            <Rel>Student</Rel>
+          </super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Subclass>
+          <sub>
+            <Rel>TA</Rel>
+          </sub>
+          <super>
+            <Rel>Teacher</Rel>
+          </super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Subclass>
+          <sub>
+            <Rel>Teacher</Rel>
+          </sub>
+          <super>
+            <Rel>Scholar</Rel>
+          </super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Subclass>
+          <sub>
+            <Rel>Student</Rel>
+          </sub>
+          <super>
+            <Rel>Scholar</Rel>
+          </super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Subclass>
+          <ruleml:sub>
+            <Rel>horse</Rel>
+          </ruleml:sub>
+          <ruleml:super>
+            <Rel>animal</Rel>
+          </ruleml:super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Subclass>
+          <ruleml:sub>
+            <Rel>duck</Rel>
+          </ruleml:sub>
+          <super>
+            <Rel>animal</Rel>
+          </super>
+        </Subclass>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Forall>
+          <ruleml:declare>
+            <Var>d</Var>
+          </ruleml:declare>
+          <ruleml:formula>
+            <Equal>
+              <ruleml:left>
+                <Ind>some constant</Ind>
+              </ruleml:left>
+              <ruleml:right>
+                <Var>d</Var>
+              </ruleml:right>
+            </Equal>
+          </ruleml:formula>
+        </Forall>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Forall>
+          <ruleml:declare>
+            <Var>d</Var>
+          </ruleml:declare>
+          <ruleml:formula>
+            <Implies>
+              <ruleml:if>
+                <Naf>
+                  <ruleml:weak>
+                    <Equal>
+                      <ruleml:left>
+                        <Ind>some constant</Ind>
+                      </ruleml:left>
+                      <ruleml:right>
+                        <Var>d</Var>
+                      </ruleml:right>
+                    </Equal>
+                  </ruleml:weak>
+                </Naf>
+              </ruleml:if>
+              <ruleml:then>
+                <Atom>
+                  <ruleml:op><Rel>own</Rel></ruleml:op>
+                  <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                </Atom>
+              </ruleml:then>
+            </Implies>
+          </ruleml:formula>
+        </Forall>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Forall>
+          <ruleml:declare>
+            <Var>person</Var>
+          </ruleml:declare>
+          <ruleml:declare>
+            <Var>object</Var>
+          </ruleml:declare>
+          <ruleml:formula>
+            <Implies>
+              <if>
+                <Naf mapDirection="bidirectional">
+                  <weak>
+                    <Implies node="this:#disclaiming-of-other-persons">
+                      <if>
+                        <Equal>
+                          <ruleml:left>
+                            <Expr>
+                              <op><Fun>f</Fun></op>
+                              <tupdep>
+                                <Tuple>
+                                  <ruleml:arg index="1"><Ind>a</Ind></ruleml:arg>
+                                  <ruleml:arg index="2"><Ind>b</Ind></ruleml:arg>
+                                </Tuple>
+                              </tupdep>
+                              <tupdep>
+                                <Tuple>
+                                  <ruleml:arg index="1"><Ind>a2</Ind></ruleml:arg>
+                                  <ruleml:arg index="2"><Ind>b2</Ind></ruleml:arg>
+                                </Tuple>
+                              </tupdep>
+                              <slotdep>
+                                <Ind>a1</Ind>
+                                <Ind>b1</Ind>
+                              </slotdep>
+                              <slotdep>
+                                <Ind>a2</Ind>
+                                <Ind>b2</Ind>
+                              </slotdep>
+                            </Expr>
+                          </ruleml:left>
+                          <ruleml:right>
+                            <Var>d</Var>
+                          </ruleml:right>
+                        </Equal>
+                      </if>
+                      <then>
+                        <Equal>
+                          <ruleml:left>
+                            <Ind>some constant</Ind>
+                          </ruleml:left>
+                          <ruleml:right>
+                            <Var>d</Var>
+                          </ruleml:right>
+                        </Equal>
+                      </then>
+                    </Implies>
+                  </weak>
+                </Naf>
+              </if>
+              <then>
+                <Atom>
+                  <ruleml:op><Rel>own</Rel></ruleml:op>
+                  <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                </Atom>
+              </then>
+            </Implies>
+          </ruleml:formula>
+        </Forall>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Equivalent>
+          <torso>
+            <Atom>
+              <ruleml:op><Rel>own</Rel></ruleml:op>
+              <ruleml:arg index="1"><Skolem>test</Skolem></ruleml:arg>
+              <ruleml:arg index="2"><Var>person</Var></ruleml:arg>
+              <ruleml:arg index="3"><Var>object</Var></ruleml:arg>
+            </Atom>
+          </torso>
+          <torso>
+            <Atom>
+              <ruleml:op><Rel>belongs</Rel></ruleml:op>
+              <ruleml:arg index="1"><Var>object</Var></ruleml:arg>
+              <ruleml:arg index="2"><Var>person</Var></ruleml:arg>
+            </Atom>
+          </torso>
+        </Equivalent>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Implies node="this:#claiming-through-disclaimers">
+          <if>
+            <And>
+              <ruleml:formula index="1">
+                <Equal>
+                  <ruleml:left>
+                    <Ind>some constant</Ind>
+                  </ruleml:left>
+                  <ruleml:right>
+                    <Var>d</Var>
+                  </ruleml:right>
+                </Equal>
+              </ruleml:formula>
+              <ruleml:formula index="2">
+                <Naf mapClosure="existential">
+                  <ruleml:weak>
+                    <Exists>
+                      <ruleml:declare>
+                        <Var>merchant</Var>
+                      </ruleml:declare>
+                      <ruleml:formula>
+                        <And>
+                          <ruleml:formula index="1">
+                            <Atom>
+                              <ruleml:op><Rel>buy</Rel></ruleml:op>
+                              <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                              <ruleml:arg index="2"><Var>merchant</Var></ruleml:arg>
+                              <ruleml:arg index="3"><Var>object</Var></ruleml:arg>
+                            </Atom>
+                          </ruleml:formula>
+                          <ruleml:formula index="2">
+                            <Atom>
+                              <ruleml:op><Rel>keep</Rel></ruleml:op>
+                              <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                              <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                            </Atom>
+                          </ruleml:formula>
+                          <ruleml:formula index="3">
+                            <Atom>
+                              <oid>
+                                <Ind>j1</Ind>
+                              </oid>
+                              <ruleml:op><Rel>g</Rel></ruleml:op>
+                              <ruleml:arg index="1"><Ind>u</Ind></ruleml:arg>
+                              <ruleml:arg index="2"><Expr><!-- <slot>
+                        <Ind>d1</Ind>
+                        <Ind>e1</Ind>
+                      </slot>--><!-- <slot>
+                        <Ind>d2</Ind>
+                        <Ind>e2</Ind>
+                      </slot>--><ruleml:op><Fun>p</Fun></ruleml:op><tupdep><Tuple><ruleml:arg index="1"><Ind>a</Ind></ruleml:arg><ruleml:arg index="2"><Ind>b</Ind></ruleml:arg></Tuple></tupdep><tupdep><Tuple><ruleml:arg index="1"><Ind>a2</Ind></ruleml:arg><ruleml:arg index="2"><Ind>b2</Ind></ruleml:arg></Tuple></tupdep><slotdep><Ind>a1</Ind><Ind>b1</Ind></slotdep><slotdep><Ind>a2</Ind><Ind>b2</Ind></slotdep></Expr></ruleml:arg>
+                              <ruleml:arg index="3"><Ind>v</Ind></ruleml:arg>
+                              <slotdep>
+                                <Ind>a3</Ind>
+                                <Ind>b3</Ind>
+                              </slotdep>
+                              <slotdep>
+                                <Ind>a4</Ind>
+                                <Ind>b4</Ind>
+                              </slotdep>
+                              <slot><Ind>d3</Ind><Ind>e3</Ind></slot>
+                              <slot><Ind>d4</Ind><Ind>e4</Ind></slot>
+                            </Atom>
+                          </ruleml:formula>
+                        </And>
+                      </ruleml:formula>
+                    </Exists>
+                  </ruleml:weak>
+                </Naf>
+              </ruleml:formula>
+              <ruleml:formula index="3">
+                <Forall>
+                  <ruleml:declare>
+                    <Var>x</Var>
+                  </ruleml:declare>
+                  <ruleml:formula>
+                    <Implies node="this:#disclaiming-of-other-persons">
+                      <if>
+                        <Atom>
+                          <ruleml:op><Rel>unequal</Rel></ruleml:op>
+                          <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                          <ruleml:arg index="2"><Var>person</Var></ruleml:arg>
+                        </Atom>
+                      </if>
+                      <then>
+                        <Atom>
+                          <ruleml:op><Rel>disclaim</Rel></ruleml:op>
+                          <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                          <ruleml:arg index="2"><Skolem>test</Skolem></ruleml:arg>
+                          <ruleml:arg index="3"><Var>object</Var></ruleml:arg>
+                        </Atom>
+                      </then>
+                    </Implies>
+                  </ruleml:formula>
+                </Forall>
+              </ruleml:formula>
+              <ruleml:formula index="4">
+                <Atom>
+                  <ruleml:op><Rel>keep</Rel></ruleml:op>
+                  <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                </Atom>
+              </ruleml:formula>
+            </And>
+          </if>
+          <then>
+            <Atom>
+              <ruleml:op><Rel>claim</Rel></ruleml:op>
+              <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+              <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+            </Atom>
+          </then>
+        </Implies>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Implies node="this:#claiming-or-relinquishing-through-disclaimers">
+          <if>
+            <Forall>
+              <ruleml:declare>
+                <Var>x</Var>
+              </ruleml:declare>
+              <ruleml:formula>
+                <Implies node="this:#disclaiming-of-other-persons">
+                  <if>
+                    <Atom>
+                      <ruleml:op><Rel>unequal</Rel></ruleml:op>
+                      <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                      <ruleml:arg index="2"><Var>person</Var></ruleml:arg>
+                    </Atom>
+                  </if>
+                  <then>
+                    <Atom>
+                      <ruleml:op><Rel>disclaim</Rel></ruleml:op>
+                      <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                      <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                    </Atom>
+                  </then>
+                </Implies>
+              </ruleml:formula>
+            </Forall>
+          </if>
+          <then>
+            <Or>
+              <ruleml:formula index="1">
+                <Atom>
+                  <ruleml:op><Rel>claim</Rel></ruleml:op>
+                  <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                </Atom>
+              </ruleml:formula>
+              <ruleml:formula index="2">
+                <Atom>
+                  <ruleml:op><Rel>relinquish</Rel></ruleml:op>
+                  <ruleml:arg index="1"><Var>person</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>object</Var></ruleml:arg>
+                </Atom>
+              </ruleml:formula>
+            </Or>
+          </then>
+        </Implies>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Implies>
+          <if>
+            <And>
+              <ruleml:formula index="1">
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <ruleml:arg index="1"><Ind>Jane</Ind></ruleml:arg>
+                  <ruleml:arg index="2"><Ind>Joan</Ind></ruleml:arg>
+                  <ruleml:arg index="3"><Skolem/></ruleml:arg>
+                  <ruleml:arg index="4"><Ind>Jack</Ind></ruleml:arg>
+                  <ruleml:arg index="5"><Var>y</Var></ruleml:arg>
+                  <ruleml:arg index="6"><Ind>Frank</Ind></ruleml:arg>
+                  <ruleml:arg index="7"><Plex><ruleml:arg index="1"><Ind/></ruleml:arg></Plex></ruleml:arg>
+                  <slot><Ind>yar</Ind><Expr><!-- <Plex>
+                  <Var>z</Var>
+                  <slot>
+                    <Ind>yar2</Ind>
+                    <Var>c</Var>
+                  </slot>
+                </Plex>--><op><Fun>constructor</Fun></op></Expr></slot>
+                </Atom>
+              </ruleml:formula>
+            </And>
+          </if>
+          <then>
+            <Or>
+              <ruleml:formula index="1">
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>y</Var></ruleml:arg>
+                  <ruleml:arg index="3"><Ind>Steph</Ind></ruleml:arg>
+                  <slot><Ind>t</Ind><Var>b</Var></slot>
+                </Atom>
+              </ruleml:formula>
+              <ruleml:formula index="2">
+                <Atom>
+                  <op><Rel>friend</Rel></op>
+                  <ruleml:arg index="1"><Var>x</Var></ruleml:arg>
+                  <ruleml:arg index="2"><Var>y</Var></ruleml:arg>
+                  <ruleml:arg index="3"><Ind>Jill</Ind></ruleml:arg>
+                  <slot><Ind>t</Ind><Var>b</Var></slot>
+                </Atom>
+              </ruleml:formula>
+            </Or>
+          </then>
+        </Implies>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Atom>
+          <op><Rel>some relation</Rel></op>
+          <ruleml:arg index="1"><Ind>constant a</Ind></ruleml:arg>
+          <ruleml:arg index="2"><Ind>constant b</Ind></ruleml:arg>
+          <slot><Ind>role_name1</Ind><Ind>role 1</Ind></slot>
+          <slot><Ind>role_name2</Ind><Ind>role 2</Ind></slot>
+        </Atom>
+      </ruleml:formula>
+      <ruleml:formula>
+        <Equal>
+          <ruleml:left>
+            <Expr>
+              <op><Fun per="value">some function</Fun></op>
+              <ruleml:arg index="1"><Ind>arg1</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>arg2</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>arg3</Ind></ruleml:arg>
+            </Expr>
+          </ruleml:left>
+          <ruleml:right>
+            <Expr>
+              <op><Fun per="value">some other function</Fun></op>
+              <ruleml:arg index="1"><Ind>arg4</Ind></ruleml:arg>
+              <ruleml:arg index="2"><Ind>arg5</Ind></ruleml:arg>
+              <ruleml:arg index="3"><Ind>arg6</Ind></ruleml:arg>
+            </Expr>
+          </ruleml:right>
+        </Equal>
+      </ruleml:formula>
+    </Assert>
+  </ruleml:act>
+</RuleML>
