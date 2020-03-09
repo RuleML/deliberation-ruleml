@@ -8,20 +8,20 @@
 # GET parameter: terms=xef3f
 # GET parameter: quant=x9
 # GET parameter: expr=xf
-# GET parameter: serial=x4c
+# GET parameter: serial=x48
 namespace dc = "http://purl.org/dc/elements/1.1/"
 namespace dcterms = "http://purl.org/dc/terms/"
 default namespace ruleml = "http://ruleml.org/spec"
 
 dcterms:title [ "Deliberation RuleML Custom-Built Schema" ]
-dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3f7&implies=x7f&terms=xef3f&quant=x9&expr=xf&serial=x4c" ]
+dcterms:identifier [ "http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3f7&implies=x7f&terms=xef3f&quant=x9&expr=xf&serial=x48" ]
 dcterms:isPartOf [ "http://deliberation.ruleml.org/1.03/spec" ]
 dcterms:creator [ "http://wiki.ruleml.org/index.php/User:Athant" ]
 dc:subject [ "Deliberation RuleML, custom-built" ]
 dcterms:description [
     "custom-built main module for a Deliberation RuleML language."
 ]
-dcterms:date [ "2020-02-20T17:18:19-05:00" ]
+dcterms:date [ "2020-03-03T06:47:46-05:00" ]
 dcterms:language [ "en" ]
 dc:rights [ 'Copyright 2015 RuleML Inc. -- Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]
 dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
@@ -29,7 +29,7 @@ dcterms:rights [ "http://ruleml.org/licensing/RSL1.0-RuleML" ]
 dcterms:relation [ "http://deliberation.ruleml.org/1.03" ]
 # Base URL = http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php 
 # Complete URL = 
-#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3f7&implies=x7f&terms=xef3f&quant=x9&expr=xf&serial=x4c
+#     http://deliberation.ruleml.org/1.03/relaxng/schema_rnc.php?backbone=x3f&default=x7&termseq=x7&lng=x1&propo=x3f7&implies=x7f&terms=xef3f&quant=x9&expr=xf&serial=x48
  start = Node.choice | edge.choice
 #
 # ROOT NODE AND PERFORMATIVES INCLUDED
@@ -90,16 +90,6 @@ include "modules/termseq_poly_expansion_module.rnc" inherit = ruleml {start |= n
 # ORDER MODE - UNORDERED GROUPS DISABLED
 #
 include "modules/ordered_groups_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-# EXPLICIT DATATYPING ENABLED
-#
-include "modules/explicit_datatyping_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-include "modules/explicit_datatyping_value_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-#
-include "modules/explicit_datatyping_annotation_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/dataterm_simple_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
-include "modules/data_simple_content_expansion_module.rnc" inherit = ruleml {start |= notAllowed}
 #
 # xsi:schemaLocation ALLOWED IN RuleML
 #
