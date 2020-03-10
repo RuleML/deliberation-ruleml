@@ -33,10 +33,6 @@
                     <Ind>a</Ind>
                     <Ind>b</Ind>
                   </slotdep>
-                  <slot>
-                    <Ind>d</Ind>
-                    <Ind>e</Ind>
-                  </slot>
                 </Expr>
               </arg>
               <arg index="2">
@@ -97,19 +93,6 @@
                       </arg>
                     </Tuple>
                   </tupdep>
-                  <tup>
-                    <Tuple>
-                      <arg index="1">
-                        <Ind>d</Ind>
-                      </arg>
-                      <arg index="2">
-                        <Ind>e</Ind>
-                      </arg>
-                      <arg index="3">
-                        <Ind>f</Ind>
-                      </arg>
-                    </Tuple>
-                  </tup>
                 </Expr>
               </arg>
             </Atom>
@@ -177,27 +160,10 @@
                       </arg>
                     </Tuple>
                   </tupdep>
-                  <tup>
-                    <Tuple>
-                      <arg index="1">
-                        <Ind>d</Ind>
-                      </arg>
-                      <arg index="2">
-                        <Ind>e</Ind>
-                      </arg>
-                      <arg index="3">
-                        <Ind>f</Ind>
-                      </arg>
-                    </Tuple>
-                  </tup>
                   <slotdep>
                     <Ind>a</Ind>
                     <Ind>b</Ind>
                   </slotdep>
-                  <slot>
-                    <Ind>d</Ind>
-                    <Ind>e</Ind>
-                  </slot>
                 </Expr>
               </arg>
               <slotdep>

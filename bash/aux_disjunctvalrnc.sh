@@ -3,7 +3,7 @@
 #
 # RNC validation with multiple maximal elements
 #
-local DEBUG=false
+DEBUG=false
 if ! BASH_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/"
 then
      echo "BASH_HOME assignment failed"
@@ -37,7 +37,7 @@ do
 	  echo "Invalid third parameter in call to aux_disjunctvalrnc.sh"
     fi
     echo "Schema file - $schemafile"
-    if [[ "$DEBUG" ]]; then
+    if [[ "$DEBUG" == true ]]; then
       "${BASH_HOME}aux_valrnc.sh" "${schemafile}" "$2"
     else
       "${BASH_HOME}aux_valrnc.sh" "${schemafile}" "$2">/dev/null 2>&1

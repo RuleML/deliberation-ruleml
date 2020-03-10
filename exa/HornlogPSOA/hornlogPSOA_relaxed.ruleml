@@ -23,10 +23,6 @@
           <Ind>a1</Ind>
           <Expr>
             <Fun>p</Fun>
-            <slot>
-              <Ind>d1</Ind>
-              <Ind>e1</Ind>
-            </slot>
             <slotdep>
               <Ind>a2</Ind>
               <Ind>b</Ind>
@@ -63,10 +59,6 @@
         <Ind>u</Ind>
         <Expr>
           <Fun>p</Fun>
-          <slot>
-            <Ind>d1</Ind>
-            <Ind>e1</Ind>
-          </slot>
           <slotdep>
             <Ind>a1</Ind>
             <Ind>b1</Ind>
@@ -77,10 +69,6 @@
             <Ind>a2</Ind>
             <Ind>b2</Ind>
           </slotdep>
-          <slot>
-            <Ind>d2</Ind>
-            <Ind>e2</Ind>
-          </slot>
         </Expr>
         <Ind>v</Ind>
         <slotdep>
@@ -118,13 +106,6 @@
               <op>
                 <Fun>p</Fun>
               </op>
-              <tup>
-                <Tuple>
-                  <Ind>d</Ind>
-                  <Ind>e</Ind>
-                  <Ind>f</Ind>
-                </Tuple>
-              </tup>
               <tupdep>
                 <Tuple>
                   <Ind>a</Ind>
@@ -193,27 +174,10 @@
                 <op>
                   <Fun>p</Fun>
                 </op>
-                <slot>
-                  <Ind>d1</Ind>
-                  <Ind>e1</Ind>
-                </slot>
                 <slotdep>
                   <Ind>a1</Ind>
                   <Ind>b1</Ind>
                 </slotdep>
-                <tup>
-                  <Tuple>
-                    <arg index="1">
-                      <Ind>d</Ind>
-                    </arg>
-                    <arg index="2">
-                      <Ind>e</Ind>
-                    </arg>
-                    <arg index="3">
-                      <Ind>f</Ind>
-                    </arg>
-                  </Tuple>
-                </tup>
                 <tupdep>
                   <Tuple>
                     <arg index="1">
@@ -231,10 +195,6 @@
                   <Ind>a2</Ind>
                   <Ind>b2</Ind>
                 </slotdep>
-                <slot>
-                  <Ind>d2</Ind>
-                  <Ind>e2</Ind>
-                </slot>
               </Expr>
             </arg>
             <slotdep>
