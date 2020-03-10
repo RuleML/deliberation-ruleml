@@ -16,6 +16,7 @@ mkdir -p "${TMPDIR}"
 # The second input parameter is the instance file.
 # The third input parameter is a string with the suffix for the serialization ("relaxed", "normal" or "compact").
 # Test Disjunct
+echo "Case 1: instance of both naffolgeqPSOA and nafhologeq"
 echo "Case 1 normal"
 instance="ackermann"
 echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
@@ -65,6 +66,7 @@ if [[ "$?" -ne "0" ]]; then
 fi
 
 echo " "
+echo "Case 2: instance of nafhologeq but not naffologeqPSOA"
 echo "Case 2 normal"
 instance="hologconstper"
 echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
@@ -117,6 +119,7 @@ if [[ "$?" -ne "0" ]]; then
 fi
 
 echo " "
+echo "Case 3: instance of naffologeqPSOA but not nafhologeq"
 echo "Case 3 normal"
 instance="hornlogPSOA"
 echo "Invoke script: ${BASH_HOME}aux_disjunctvalxsd.sh"
@@ -169,6 +172,8 @@ if [[ "$?" -ne "0" ]]; then
 fi
 
 echo " "
+echo "Case 4: test that the aux_disjunctvalxsd script FAILS when the instance is not valid against either maximal schema "
+echo "Case 4a: existing instance that is not normalized "
 echo "Case 4a normalized schema"
 echo "Expected outcome: Validation failed against all maximal schemas"
 instance="Hornlog/hornlogeq/ackermann"
