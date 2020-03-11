@@ -4,10 +4,10 @@
   GET parameter: default=x7
   GET parameter: termseq=x7
   GET parameter: lng=x1
-  GET parameter: propo=x3cf
+  GET parameter: propo=x3c7
   GET parameter: implies=x7
   GET parameter: terms=xef0f
-  GET parameter: quant=x1
+  GET parameter: quant=x9
   GET parameter: expr=x3
   GET parameter: serial=x53
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.03/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
@@ -971,9 +971,10 @@
             <xs:documentation>an extension point to allow alternate names and internationalization
                 of universal quantifiers</xs:documentation>
         </xs:annotation>
-        <xs:sequence>
+        <xs:choice>
             <xs:element ref="ruleml:Forall"/>
-        </xs:sequence>
+            <xs:group ref="ruleml:Subclass-node.choice"/>
+        </xs:choice>
     </xs:group>
     <xs:element name="Forall" type="ruleml:Forall.type.def">
         <xs:annotation>
@@ -1552,6 +1553,17 @@
             </xs:sequence>
         </xs:choice>
     </xs:group>
+    
+    <xs:group name="Subclass.main">
+        <xs:annotation>
+            <xs:documentation>The main section of subclasses contains a pair of edges, namely a
+                subclass edge and a superclass edge, in this order.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:subSide-edge.choice"/>
+            <xs:group ref="ruleml:superSide-edge.choice"/>
+        </xs:sequence>
+    </xs:group>
     <xs:group name="TruthValuedConnective.header">
         <xs:annotation>
             <xs:documentation>In the deterministic serialization, the order of header elements is:
@@ -1559,10 +1571,7 @@
                 object identifier and degree</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:sequence minOccurs="0">
-                <xs:group minOccurs="0" ref="ruleml:Node.header"/>
-                <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
-            </xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="Atom.header">
@@ -1570,7 +1579,6 @@
             <xs:sequence minOccurs="0">
                 <xs:group minOccurs="0" ref="ruleml:Node.header"/>
                 <xs:group minOccurs="0" ref="ruleml:objectIdentifier-edge.choice"/>
-                <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
             </xs:sequence>
         </xs:sequence>
     </xs:group>
@@ -1622,6 +1630,21 @@
         <xs:choice>
             <xs:group ref="ruleml:formula_Rulebase.content"/>
             <xs:group ref="ruleml:formula_Rulebase.edge.def"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="subSide-edge.choice">
+        <xs:annotation>
+            <xs:documentation>Stripe-skipping is allowed for subclasses.</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:group ref="ruleml:sub.content"/>
+            <xs:element ref="ruleml:sub"/>
+        </xs:choice>
+    </xs:group>
+    <xs:group name="superSide-edge.choice">
+        <xs:choice>
+            <xs:group ref="ruleml:super.content"/>
+            <xs:element ref="ruleml:super"/>
         </xs:choice>
     </xs:group>
     
@@ -1897,41 +1920,6 @@
             <xs:group ref="ruleml:EntailsFormula.choice"/>
         </xs:sequence>
     </xs:group>
-    
-    <xs:group name="degree-edge.choice">
-        <xs:sequence>
-            <xs:element ref="ruleml:degree"/>
-        </xs:sequence>
-    </xs:group>
-    <xs:element name="degree" type="ruleml:degree.type.def">
-        <xs:annotation>
-            <xs:documentation>An optional uncertainty value (between 0.0 and 1.0) that may be
-                assigned to formulas. See
-                http://deliberation.ruleml.org/1.03/glossary/#gloss-degree</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:complexType name="degree.type.def">
-        <xs:complexContent>
-            <xs:extension base="ruleml:degree.content">
-                <xs:attributeGroup ref="ruleml:degree.attlist"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:attributeGroup name="degree.attlist">
-        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
-    </xs:attributeGroup>
-    <xs:complexType name="degree.content">
-        <xs:annotation>
-            <xs:documentation>The degree edge element contains a single data
-                term.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:Data_degree-node.choice"/>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="Data_degree-node.choice">
-        <xs:group ref="ruleml:DataTerm.choice"/>
-    </xs:complexType>
     
     <xs:attributeGroup name="commonNode.attlist">
         <xs:attribute name="node" type="ruleml:node.value">
@@ -3089,6 +3077,101 @@
     </xs:simpleType>
     
     
+    
+    <xs:group name="Subclass-node.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for specializations of the subclass tag name.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:Subclass"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="Subclass" type="ruleml:Subclass.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;Subclass&gt;: a subclass relation between two terms.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="Subclass.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Subclass.header"/>
+            <xs:group ref="ruleml:Subclass.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:reSubclass.attlist"/>
+    </xs:complexType>
+    <xs:group name="Subclass.header">
+        <xs:annotation>
+            <xs:documentation>Subclasses accept the header of truth-valued connectives for enabling
+                the degree of uncertainty.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:element name="sub" type="ruleml:sub.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;sub&gt;: The subsumed edge of a subclass.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="sub.type.def">
+        <xs:group ref="ruleml:sub.content"/>
+        <xs:attributeGroup ref="ruleml:sub.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="sub.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:group name="sub.content">
+        <xs:annotation>
+            <xs:documentation>The subsumed role in a subclass is filled by a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:subTerm.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="super" type="ruleml:super.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;super&gt;: The supersuming edge of a subclass.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="super.type.def">
+        <xs:group ref="ruleml:super.content"/>
+        <xs:attributeGroup ref="ruleml:super.attlist"/>
+    </xs:complexType>
+    <xs:attributeGroup name="super.attlist">
+        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:group name="super.content">
+        <xs:annotation>
+            <xs:documentation>The supersuming role in a subclass is filled by a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:superTerm.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="subTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed on the subsumed side of a subclass </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Relation-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="superTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed on the supersuming side of a subclass
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:Relation-node.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:attributeGroup name="reSubclass.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
+    </xs:attributeGroup>
     
     <xs:group name="Plex_Any-node.choice">
         <xs:annotation>
