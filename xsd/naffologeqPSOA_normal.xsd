@@ -4,10 +4,10 @@
   GET parameter: default=x7
   GET parameter: termseq=x7
   GET parameter: lng=x1
-  GET parameter: propo=x3ff
+  GET parameter: propo=x3f7
   GET parameter: implies=x7f
   GET parameter: terms=xef3f
-  GET parameter: quant=x7
+  GET parameter: quant=x9
   GET parameter: expr=xf
   GET parameter: serial=x50
 --><xs:schema xmlns:ruleml="http://ruleml.org/spec" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ruleml.org/spec"><xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2009/01/xml.xsd"/><xs:include schemaLocation="http://deliberation.ruleml.org/1.03/datatypes/SimpleWithAttributes.xsd"/><!-- dc:rights [ 'Copyright 2015 RuleML Inc. - Licensed under the RuleML Specification License, Version 1.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://ruleml.org/licensing/RSL1.0-RuleML. Disclaimer: THIS SPECIFICATION IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES, ..., EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. See the License for the specifics governing permissions and limitations under the License.' ]    
@@ -615,7 +615,7 @@
         </xs:complexContent>
     </xs:complexType>
     <xs:attributeGroup name="formula_And-datt.choice">
-        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="formula_And.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -737,7 +737,7 @@
         </xs:complexContent>
     </xs:complexType>
     <xs:attributeGroup name="formula_Or-datt.choice">
-        <xs:attributeGroup ref="ruleml:index.attrib.def"/>
+        <xs:attributeGroup ref="ruleml:index-attrib.choice"/>
     </xs:attributeGroup>
     <xs:attributeGroup name="formula_Or.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
@@ -1068,9 +1068,10 @@
             <xs:documentation>an extension point to allow alternate names and internationalization
                 of universal quantifiers</xs:documentation>
         </xs:annotation>
-        <xs:sequence>
+        <xs:choice>
             <xs:element ref="ruleml:Forall"/>
-        </xs:sequence>
+            <xs:group ref="ruleml:Subclass-node.choice"/>
+        </xs:choice>
     </xs:group>
     <xs:element name="Forall" type="ruleml:Forall.type.def">
         <xs:annotation>
@@ -1682,10 +1683,7 @@
                 atomic formulas in the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:sequence minOccurs="0">
-                <xs:group ref="ruleml:termsForAtoms.sequence"/>
-                <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
-            </xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForAtoms.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="slotsForAtoms.sequence">
@@ -1696,7 +1694,6 @@
         <xs:sequence>
             <xs:group ref="ruleml:slotdepTermsForAtoms.sequence"/>
             <xs:group ref="ruleml:slotTermsForAtoms.sequence"/>
-            <xs:group minOccurs="0" ref="ruleml:restOfSlots-edge.choice"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="tuplesForAtoms.sequence">
@@ -1741,10 +1738,7 @@
                 expressions in the normal-form serialization. </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:sequence minOccurs="0">
-                <xs:group ref="ruleml:termsForExpressions.sequence"/>
-                <xs:group minOccurs="0" ref="ruleml:restOfPositionalArguments-edge.choice"/>
-            </xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:termsForExpressions.sequence"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="slotsForExpressions.sequence">
@@ -1756,7 +1750,6 @@
             <xs:sequence minOccurs="0">
                 <xs:group ref="ruleml:slotdepTermsForExpressions.sequence"/>
                 <xs:group ref="ruleml:slotTermsForExpressions.sequence"/>
-                <xs:group minOccurs="0" ref="ruleml:restOfSlots-edge.choice"/>
             </xs:sequence>
         </xs:sequence>
     </xs:group>
@@ -1785,11 +1778,22 @@
     <xs:group name="Entails.main">
         <xs:annotation>
             <xs:documentation>In the normal-form serialization, the if and then of a proof-theoretic
-                entailment must occur canonical order.</xs:documentation>
+                entailment must occur in canonical order.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:group ref="ruleml:body_Entails.name.choice"/>
             <xs:group ref="ruleml:head_Entails.name.choice"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:group name="Subclass.main">
+        <xs:annotation>
+            <xs:documentation>In the normal-form serialization, the main section of subclasses
+                contains a pair of edges,  namely a subclass edge, followed by superclass
+                edge.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group ref="ruleml:subSide-edge.choice"/>
+            <xs:group ref="ruleml:superSide-edge.choice"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="TruthValuedConnective.header">
@@ -1799,10 +1803,7 @@
                 object identifier and degree</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:sequence minOccurs="0">
-                <xs:group minOccurs="0" ref="ruleml:Node.header"/>
-                <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
-            </xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:Node.header"/>
         </xs:sequence>
     </xs:group>
     <xs:group name="Atom.header">
@@ -1810,7 +1811,6 @@
             <xs:sequence minOccurs="0">
                 <xs:group minOccurs="0" ref="ruleml:Node.header"/>
                 <xs:group minOccurs="0" ref="ruleml:objectIdentifier-edge.choice"/>
-                <xs:group minOccurs="0" ref="ruleml:degree-edge.choice"/>
             </xs:sequence>
         </xs:sequence>
     </xs:group>
@@ -2098,41 +2098,6 @@
         <xs:complexContent>
             <xs:extension base="ruleml:EntailsFormula.choice"/>
         </xs:complexContent>
-    </xs:complexType>
-    
-    <xs:group name="degree-edge.choice">
-        <xs:sequence>
-            <xs:element ref="ruleml:degree"/>
-        </xs:sequence>
-    </xs:group>
-    <xs:element name="degree" type="ruleml:degree.type.def">
-        <xs:annotation>
-            <xs:documentation>An optional uncertainty value (between 0.0 and 1.0) that may be
-                assigned to formulas. See
-                http://deliberation.ruleml.org/1.03/glossary/#gloss-degree</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:complexType name="degree.type.def">
-        <xs:complexContent>
-            <xs:extension base="ruleml:degree.content">
-                <xs:attributeGroup ref="ruleml:degree.attlist"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:attributeGroup name="degree.attlist">
-        <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
-    </xs:attributeGroup>
-    <xs:complexType name="degree.content">
-        <xs:annotation>
-            <xs:documentation>The degree edge element contains a single data
-                term.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:Data_degree-node.choice"/>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="Data_degree-node.choice">
-        <xs:group ref="ruleml:DataTerm.choice"/>
     </xs:complexType>
     
     <xs:group name="Negation-node.choice">
@@ -3697,116 +3662,123 @@
     
     
     
-    <xs:group name="restOfSlots-edge.choice">
+    <xs:group name="Subclass-node.choice">
         <xs:annotation>
-            <xs:documentation>an extension point for specializations of the slotted rest tag name.
-                Stripe-skipping is not allowed for slotted rest variables.  </xs:documentation>
+            <xs:documentation>an extension point for specializations of the subclass tag name.
+            </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="ruleml:resl"/>
+            <xs:element ref="ruleml:Subclass"/>
         </xs:sequence>
     </xs:group>
-    <xs:element name="resl" type="ruleml:resl.type.def">
+    <xs:element name="Subclass" type="ruleml:Subclass.type.def">
         <xs:annotation>
-            <xs:documentation>A slotted rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.  See
-                http://deliberation.ruleml.org/1.03/glossary/#gloss-resl</xs:documentation>
+            <xs:documentation>&lt;Subclass&gt;: a subclass relation between two terms.</xs:documentation>
         </xs:annotation>
     </xs:element>
-    <xs:complexType name="resl.type.def">
+    <xs:complexType name="Subclass.type.def">
+        <xs:sequence>
+            <xs:group ref="ruleml:Subclass.header"/>
+            <xs:group ref="ruleml:Subclass.main"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="ruleml:reSubclass.attlist"/>
+    </xs:complexType>
+    <xs:group name="Subclass.header">
+        <xs:annotation>
+            <xs:documentation>Subclasses accept the header of truth-valued connectives for enabling
+                the degree of uncertainty.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:group minOccurs="0" ref="ruleml:TruthValuedConnective.header"/>
+        </xs:sequence>
+    </xs:group>
+    
+    <xs:group name="subSide-edge.choice">
+        <xs:annotation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the sub tag name in subclasses.  </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="ruleml:sub"/>
+        </xs:sequence>
+    </xs:group>
+    <xs:element name="sub" type="ruleml:sub.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;sub&gt;: The subsumed edge of a subclass.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="sub.type.def">
         <xs:complexContent>
-            <xs:extension base="ruleml:resl.content">
-                <xs:attributeGroup ref="ruleml:resl.attlist"/>
+            <xs:extension base="ruleml:sub.content">
+                <xs:attributeGroup ref="ruleml:sub.attlist"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:complexType name="resl.content">
-        <xs:annotation>
-            <xs:documentation>The content model of a slotted rest variable is a single
-                term.</xs:documentation>
-        </xs:annotation>
-        <xs:complexContent>
-            <xs:extension base="ruleml:reslTerm.choice"/>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="reslTerm.choice">
-        <xs:annotation>
-            <xs:documentation>terms allowed in slotted rest variables. </xs:documentation>
-        </xs:annotation>
-        <xs:choice>
-            <xs:group ref="ruleml:SlotSequenceMarker.choice"/>
-            <xs:group ref="ruleml:Plex_resl-node.choice"/>
-        </xs:choice>
-    </xs:complexType>
-    
-    <xs:group name="SlotSequenceMarker.choice">
-        <xs:annotation>
-            <xs:documentation>Sequence markers are represented as ordinary
-                variables.</xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:group ref="ruleml:Variable-node.choice"/>
-        </xs:sequence>
-    </xs:group>
-    
-    <xs:attributeGroup name="resl.attlist">
+    <xs:attributeGroup name="sub.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
     </xs:attributeGroup>
-    
-    <xs:group name="restOfPositionalArguments-edge.choice">
+    <xs:complexType name="sub.content">
         <xs:annotation>
-            <xs:documentation>an extension point for specializations of the positional rest tag
-                name.  Stripe-skipping is not allowed for positional rest variables.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:sequence>
-            <xs:element ref="ruleml:repo"/>
-        </xs:sequence>
-    </xs:group>
-    <xs:element name="repo" type="ruleml:repo.type.def">
-        <xs:annotation>
-            <xs:documentation>A positional rest variable used in &lt;Atom&gt;s, &lt;Expr&gt;s and &lt;Plex&gt;s.         See
-                http://www.ruleml.org/0.9/glossary/#gloss-repo</xs:documentation>
-        </xs:annotation>
-    </xs:element>
-    <xs:complexType name="repo.type.def">
-        <xs:complexContent>
-            <xs:extension base="ruleml:repo.content">
-                <xs:attributeGroup ref="ruleml:repo.attlist"/>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
-    <xs:complexType name="repo.content">
-        <xs:annotation>
-            <xs:documentation>The content model of a positional rest variable is a single
+            <xs:documentation>The subsumed role in a subclass is filled by a
                 term.</xs:documentation>
         </xs:annotation>
         <xs:complexContent>
-            <xs:extension base="ruleml:repoTerm.choice"/>
+            <xs:extension base="ruleml:subTerm.choice"/>
         </xs:complexContent>
     </xs:complexType>
-    <xs:complexType name="repoTerm.choice">
+    <xs:group name="superSide-edge.choice">
         <xs:annotation>
-            <xs:documentation>terms allowed in positional rest variables include sequence markers.
-            </xs:documentation>
-        </xs:annotation>
-        <xs:choice>
-            <xs:group ref="ruleml:SequenceMarker.choice"/>
-            <xs:group ref="ruleml:Plex_repo-node.choice"/>
-        </xs:choice>
-    </xs:complexType>
-    
-    <xs:group name="SequenceMarker.choice">
-        <xs:annotation>
-            <xs:documentation>Sequence markers are represented as ordinary
-                variables.</xs:documentation>
+            <xs:documentation>an extension point for stripe skipping as well as specializations of
+                the super tag name in subclasses.  </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:group ref="ruleml:Variable-node.choice"/>
+            <xs:element ref="ruleml:super"/>
         </xs:sequence>
     </xs:group>
-    
-    <xs:attributeGroup name="repo.attlist">
+    <xs:element name="super" type="ruleml:super.type.def">
+        <xs:annotation>
+            <xs:documentation>&lt;super&gt;: The supersuming edge of a subclass.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="super.type.def">
+        <xs:complexContent>
+            <xs:extension base="ruleml:super.content">
+                <xs:attributeGroup ref="ruleml:super.attlist"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="super.attlist">
         <xs:attributeGroup ref="ruleml:commonInit.attlist"/>
+    </xs:attributeGroup>
+    <xs:complexType name="super.content">
+        <xs:annotation>
+            <xs:documentation>The supersuming role in a subclass is filled by a
+                term.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:superTerm.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="subTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed on the subsumed side of a subclass </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:Relation-node.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="superTerm.choice">
+        <xs:annotation>
+            <xs:documentation>terms allowed on the supersuming side of a subclass
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="ruleml:Relation-node.choice"/>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:attributeGroup name="reSubclass.attlist">
+        <xs:attributeGroup ref="ruleml:commonNode.attlist"/>
+        <xs:attributeGroup ref="ruleml:style-att.choice"/>
     </xs:attributeGroup>
     
     <xs:group name="Plex_Any-node.choice">
@@ -4159,8 +4131,6 @@
         <xs:attributeGroup ref="ruleml:operator-interface-ext.attlist"/>
         <xs:attributeGroup ref="ruleml:closure-att.choice"/>
     </xs:attributeGroup>
-    
-    
     
     
     
