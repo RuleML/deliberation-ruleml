@@ -6,7 +6,11 @@ shopt -s nullglob
 BASH_HOME=$( cd "$(dirname "$0")" ; pwd -P )/ ;. "${BASH_HOME}path_config.sh";
 
 mkdir -p "${REPO_HOME}doc/"
-anchor="datalogplus_min_normal"
+
+# FIXME: Create loop for anchors instead of copying code blocks
+
+#anchor="datalogplus_min_normal"
+anchor="datalogPSOA_normal"
 mkdir -p "${REPO_HOME}doc/${anchor}"
 rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
@@ -16,7 +20,8 @@ rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}/img"*.jpg >> /dev/null 2>&1
 "${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
  
-anchor="disdatalogplus_mid_normal"
+#anchor="disdatalogplus_mid_normal"
+anchor="hornlogPSOA_normal"
 mkdir -p "${REPO_HOME}doc/${anchor}"
 rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
@@ -26,7 +31,8 @@ rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}/img"*.jpg >> /dev/null 2>&1
 "${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
 
-anchor="naffologeq_normal"
+#anchor="naffologeq_normal"
+anchor="naffologeqPSOA_normal"
 mkdir -p "${REPO_HOME}doc/${anchor}"
 rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
@@ -36,13 +42,13 @@ rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
 rm "${REPO_HOME}doc/${anchor}/img"*.jpg >> /dev/null 2>&1
 "${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
 
-anchor="nafhologeq_normal"
-mkdir -p "${REPO_HOME}doc/${anchor}"
-rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
-rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
-rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
-rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
-rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
-rm "${REPO_HOME}doc/${anchor}/img"*.jpg >> /dev/null 2>&1
-"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
+#anchor="nafhologeq_normal"
+#mkdir -p "${REPO_HOME}doc/${anchor}"
+#rm "${REPO_HOME}doc/${anchor}"*.html >> /dev/null 2>&1
+#rm "${REPO_HOME}doc/${anchor}"*.css >> /dev/null 2>&1
+#rm "${REPO_HOME}doc/${anchor}/img"*.gif >> /dev/null 2>&1
+#rm "${REPO_HOME}doc/${anchor}/img"*.png >> /dev/null 2>&1
+#rm "${REPO_HOME}doc/${anchor}/img"*.svg >> /dev/null 2>&1
+#rm "${REPO_HOME}doc/${anchor}/img"*.jpg >> /dev/null 2>&1
+#"${DOC_SCRIPT}"  "${XSD_HOME}${anchor}.xsd"  -cfg:"${BASH_HOME}settings/doc.xml"
 
