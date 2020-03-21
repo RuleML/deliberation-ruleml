@@ -1,0 +1,1114 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for </title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript">
+         <!--
+        
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                        //--></script></head>
+   <body>
+      <h2><a id="INDEX">Table of Contents</a></h2>
+      <p><a href="index.indexList.html">Components</a><span> | </span><a href="schHierarchy.html">Resource Hierarchy</a></p>
+      <hr />
+      <div class="toc">
+         <form action="none">
+            <div><span> Group by: <select id="selectTOC" onchange="selectTOCGroupBy(this.options[this.selectedIndex].value, true, 'index.indexList.html', 'index.indexListns.html', 'index.indexListcomp.html');">
+                     <option value="toc_group_by_namespace">Namespace</option>
+                     <option value="toc_group_by_location">Location</option>
+                     <option value="toc_group_by_component_type" selected="selected">Component Type</option></select></span></div>
+         </form>
+         <div class="level1" id="toc_group_by_component_type" style="display:block">
+            <div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Main_schema" type="image" value="-" src="img/btM.gif" onclick="switchState('Main_schema');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Main Schema</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Main_schema" class="componentGroup" style="display:block">
+                                          <div><b><a href="datalogPSOA_normal_xsd_Main_schema_datalogPSOA_normal_xsd.html#datalogPSOA_normal.xsd" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component datalogPSOA_normal.xsd')">datalogPSOA_normal.xsd</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Imported_schema" type="image" value="-" src="img/btM.gif" onclick="switchState('Imported_schema');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Imported Schemas</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Imported_schema" class="componentGroup" style="display:block">
+                                          <div><b><a href="XMLSchema-datatypes_Imported_schema_XMLSchema-datatypes.html#XMLSchema-datatypes" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component XMLSchema-datatypes')">XMLSchema-datatypes</a></b></div>
+                                          <div><b><a href="xml_xsd_Imported_schema_xml_xsd.html#xml.xsd" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml.xsd')">xml.xsd</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Included_schema" type="image" value="-" src="img/btM.gif" onclick="switchState('Included_schema');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Included Schemas</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Included_schema" class="componentGroup" style="display:block">
+                                          <div><b><a href="SimpleWithAttributes_xsd_Included_schema_SimpleWithAttributes_xsd.html#SimpleWithAttributes.xsd" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component SimpleWithAttributes.xsd')">SimpleWithAttributes.xsd</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Element" type="image" value="-" src="img/btM.gif" onclick="switchState('Element');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Elements</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Element" class="componentGroup" style="display:block">
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And-Query_Node_def.html#And-Query.Node.def_And" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And-Query.Node.def/ruleml:And')">ruleml:And-Query.Node.def/ruleml:And</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And_Node_def.html#And.Node.def_And" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And.Node.def/ruleml:And')">ruleml:And.Node.def/ruleml:And</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Assert.html#Assert" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Assert')">ruleml:Assert</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Atom.html#Atom" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom')">ruleml:Atom</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Data.html#Data" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Data')">ruleml:Data</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Entails.html#Entails" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails')">ruleml:Entails</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Equivalent.html#Equivalent" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent')">ruleml:Equivalent</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Exists.html#Exists" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists')">ruleml:Exists</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Forall.html#Forall" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall')">ruleml:Forall</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Implies.html#Implies" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies')">ruleml:Implies</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Ind.html#Ind" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Ind')">ruleml:Ind</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or-Query_Node_def.html#Or-Query.Node.def_Or" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or-Query.Node.def/ruleml:Or')">ruleml:Or-Query.Node.def/ruleml:Or</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or_Node_def.html#Or.Node.def_Or" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or.Node.def/ruleml:Or')">ruleml:Or.Node.def/ruleml:Or</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Query.html#Query" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query')">ruleml:Query</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Reify.html#Reify" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify')">ruleml:Reify</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Rel.html#Rel" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rel')">ruleml:Rel</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Retract.html#Retract" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Retract')">ruleml:Retract</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_RuleML.html#RuleML" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML')">ruleml:RuleML</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Rulebase.html#Rulebase" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase')">ruleml:Rulebase</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Skolem.html#Skolem" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem')">ruleml:Skolem</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Subclass.html#Subclass" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Subclass')">ruleml:Subclass</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Tuple.html#Tuple" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple')">ruleml:Tuple</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_Var.html#Var" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Var')">ruleml:Var</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_act.html#act" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act')">ruleml:act</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_arg.html#arg" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:arg')">ruleml:arg</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Entails_edge_def.html#body_Entails.edge.def_if" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.edge.def/ruleml:if')">ruleml:body_Entails.edge.def/ruleml:if</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Implies_edge_def.html#body_Implies.edge.def_if" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.edge.def/ruleml:if')">ruleml:body_Implies.edge.def/ruleml:if</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_declare.html#declare" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare')">ruleml:declare</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_And_edge_def.html#formula_And.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And.edge.def/ruleml:formula')">ruleml:formula_And.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_AssertRetract_edge_def.html#formula_AssertRetract.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract.edge.def/ruleml:formula')">ruleml:formula_AssertRetract.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Exists_edge_def.html#formula_Exists.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists.edge.def/ruleml:formula')">ruleml:formula_Exists.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Forall_edge_def.html#formula_Forall.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall.edge.def/ruleml:formula')">ruleml:formula_Forall.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Or_edge_def.html#formula_Or.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or.edge.def/ruleml:formula')">ruleml:formula_Or.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Query_edge_def.html#formula_Query.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query.edge.def/ruleml:formula')">ruleml:formula_Query.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Rulebase_edge_def.html#formula_Rulebase.edge.def_formula" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase.edge.def/ruleml:formula')">ruleml:formula_Rulebase.edge.def/ruleml:formula</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Entails_edge_def.html#head_Entails.edge.def_then" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.edge.def/ruleml:then')">ruleml:head_Entails.edge.def/ruleml:then</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Implies_edge_def.html#head_Implies.edge.def_then" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.edge.def/ruleml:then')">ruleml:head_Implies.edge.def/ruleml:then</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_meta.html#meta" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:meta')">ruleml:meta</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_oid.html#oid" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:oid')">ruleml:oid</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_op.html#op" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op')">ruleml:op</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_slot.html#slot" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slot')">ruleml:slot</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_slotdep.html#slotdep" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdep')">ruleml:slotdep</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_sub.html#sub" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:sub')">ruleml:sub</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_super.html#super" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:super')">ruleml:super</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_torso.html#torso" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso')">ruleml:torso</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_tup.html#tup" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tup')">ruleml:tup</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_ruleml_tupdep.html#tupdep" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdep')">ruleml:tupdep</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Complex_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('Complex_Type');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Complex Types</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Complex_Type" class="componentGroup" style="display:block">
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_And-Query_type_def.html#And-Query.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And-Query.type.def')">ruleml:And-Query.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_And_type_def.html#And.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And.type.def')">ruleml:And.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_AndFormula_choice.html#AndFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AndFormula.choice')">ruleml:AndFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Assert_type_def.html#Assert.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Assert.type.def')">ruleml:Assert.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_AssertRetractFormula_choice.html#AssertRetractFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AssertRetractFormula.choice')">ruleml:AssertRetractFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Atom-head-node_choice.html#Atom-head-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom-head-node.choice')">ruleml:Atom-head-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Atom_type_def.html#Atom.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom.type.def')">ruleml:Atom.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_ConclusionFormula_choice.html#ConclusionFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ConclusionFormula.choice')">ruleml:ConclusionFormula.choice</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_ENTITIES.html#ENTITIES" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ENTITIES')">ruleml:ENTITIES</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_ENTITY.html#ENTITY" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ENTITY')">ruleml:ENTITY</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Entails_type_def.html#Entails.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails.type.def')">ruleml:Entails.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_EntailsFormula_choice.html#EntailsFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:EntailsFormula.choice')">ruleml:EntailsFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Equivalent_type_def.html#Equivalent.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent.type.def')">ruleml:Equivalent.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Exists_type_def.html#Exists.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists.type.def')">ruleml:Exists.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_ExistsFormula_choice.html#ExistsFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ExistsFormula.choice')">ruleml:ExistsFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Forall_type_def.html#Forall.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall.type.def')">ruleml:Forall.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_ForallFormula_choice.html#ForallFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:ForallFormula.choice')">ruleml:ForallFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Implies_type_def.html#Implies.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.type.def')">ruleml:Implies.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Ind_type_def.html#Ind.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Ind.type.def')">ruleml:Ind.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NCName.html#NCName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NCName')">ruleml:NCName</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NMTOKEN.html#NMTOKEN" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NMTOKEN')">ruleml:NMTOKEN</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NMTOKENS.html#NMTOKENS" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NMTOKENS')">ruleml:NMTOKENS</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_NOTATION.html#NOTATION" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:NOTATION')">ruleml:NOTATION</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_Name.html#Name" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Name')">ruleml:Name</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Or-Query_type_def.html#Or-Query.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or-Query.type.def')">ruleml:Or-Query.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Or_type_def.html#Or.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or.type.def')">ruleml:Or.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_OrFormula_choice.html#OrFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:OrFormula.choice')">ruleml:OrFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Performative_choice.html#Performative.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Performative.choice')">ruleml:Performative.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_PremiseFormula_choice.html#PremiseFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:PremiseFormula.choice')">ruleml:PremiseFormula.choice</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_QName.html#QName" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:QName')">ruleml:QName</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Query_type_def.html#Query.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query.type.def')">ruleml:Query.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_QueryFormula_choice.html#QueryFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:QueryFormula.choice')">ruleml:QueryFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Rel_type_def.html#Rel.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rel.type.def')">ruleml:Rel.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Relation-node_choice.html#Relation-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Relation-node.choice')">ruleml:Relation-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Retract_type_def.html#Retract.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Retract.type.def')">ruleml:Retract.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_RuleML_type_def.html#RuleML.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML.type.def')">ruleml:RuleML.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Rulebase_type_def.html#Rulebase.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase.type.def')">ruleml:Rulebase.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Skolem_type_def.html#Skolem.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem.type.def')">ruleml:Skolem.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_String.html#String" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:String')">ruleml:String</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Subclass_type_def.html#Subclass.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Subclass.type.def')">ruleml:Subclass.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_Token.html#Token" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Token')">ruleml:Token</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Tuple-node_choice.html#Tuple-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple-node.choice')">ruleml:Tuple-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Tuple_type_def.html#Tuple.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple.type.def')">ruleml:Tuple.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_Var_type_def.html#Var.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Var.type.def')">ruleml:Var.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_act_content.html#act.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act.content')">ruleml:act.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_act_type_def.html#act.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act.type.def')">ruleml:act.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_anySimpleType.html#anySimpleType" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anySimpleType')">ruleml:anySimpleType</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_anyURI.html#anyURI" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anyURI')">ruleml:anyURI</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_arg_content.html#arg.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:arg.content')">ruleml:arg.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_arg_type_def.html#arg.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:arg.type.def')">ruleml:arg.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_base64Binary.html#base64Binary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:base64Binary')">ruleml:base64Binary</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_body_Entails_content.html#body_Entails.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.content')">ruleml:body_Entails.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_body_Entails_type_def.html#body_Entails.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.type.def')">ruleml:body_Entails.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_body_Implies_content.html#body_Implies.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.content')">ruleml:body_Implies.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_body_Implies_type_def.html#body_Implies.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.type.def')">ruleml:body_Implies.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_boolean.html#boolean" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:boolean')">ruleml:boolean</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_byte.html#byte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:byte')">ruleml:byte</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_date.html#date" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:date')">ruleml:date</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_dateTime.html#dateTime" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:dateTime')">ruleml:dateTime</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_decimal.html#decimal" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:decimal')">ruleml:decimal</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_declare_content.html#declare.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare.content')">ruleml:declare.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_declare_type_def.html#declare.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare.type.def')">ruleml:declare.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_double.html#double" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:double')">ruleml:double</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_duration.html#duration" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:duration')">ruleml:duration</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_float.html#float" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:float')">ruleml:float</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_And_content.html#formula_And.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And.content')">ruleml:formula_And.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_And_type_def.html#formula_And.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And.type.def')">ruleml:formula_And.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_AssertRetract_content.html#formula_AssertRetract.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract.content')">ruleml:formula_AssertRetract.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_AssertRetract_type_def.html#formula_AssertRetract.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract.type.def')">ruleml:formula_AssertRetract.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Exists_content.html#formula_Exists.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists.content')">ruleml:formula_Exists.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Exists_type_def.html#formula_Exists.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists.type.def')">ruleml:formula_Exists.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Forall_content.html#formula_Forall.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall.content')">ruleml:formula_Forall.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Forall_type_def.html#formula_Forall.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall.type.def')">ruleml:formula_Forall.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Or_content.html#formula_Or.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or.content')">ruleml:formula_Or.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Or_type_def.html#formula_Or.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or.type.def')">ruleml:formula_Or.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Query_content.html#formula_Query.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query.content')">ruleml:formula_Query.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Query_type_def.html#formula_Query.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query.type.def')">ruleml:formula_Query.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Rulebase_content.html#formula_Rulebase.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase.content')">ruleml:formula_Rulebase.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_formula_Rulebase_type_def.html#formula_Rulebase.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase.type.def')">ruleml:formula_Rulebase.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gDay.html#gDay" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gDay')">ruleml:gDay</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gMonth.html#gMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gMonth')">ruleml:gMonth</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gYear.html#gYear" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gYear')">ruleml:gYear</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_gYearMonth.html#gYearMonth" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:gYearMonth')">ruleml:gYearMonth</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_head_Entails_content.html#head_Entails.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.content')">ruleml:head_Entails.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_head_Entails_type_def.html#head_Entails.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.type.def')">ruleml:head_Entails.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_head_Implies_content.html#head_Implies.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.content')">ruleml:head_Implies.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_head_Implies_type_def.html#head_Implies.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.type.def')">ruleml:head_Implies.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_hexBinary.html#hexBinary" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:hexBinary')">ruleml:hexBinary</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_int.html#int" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:int')">ruleml:int</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_integer.html#integer" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:integer')">ruleml:integer</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_language.html#language" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:language')">ruleml:language</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_long.html#long" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:long')">ruleml:long</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_meta_type_def.html#meta.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:meta.type.def')">ruleml:meta.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_negativeInteger.html#negativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:negativeInteger')">ruleml:negativeInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_nonNegativeInteger.html#nonNegativeInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:nonNegativeInteger')">ruleml:nonNegativeInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_nonPositiveInteger.html#nonPositiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:nonPositiveInteger')">ruleml:nonPositiveInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_normalizedString.html#normalizedString" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:normalizedString')">ruleml:normalizedString</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_oid_content.html#oid.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:oid.content')">ruleml:oid.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_oid_type_def.html#oid.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:oid.type.def')">ruleml:oid.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_op_type_def.html#op.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op.type.def')">ruleml:op.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_op_Atom_content.html#op_Atom.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op_Atom.content')">ruleml:op_Atom.content</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_positiveInteger.html#positiveInteger" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:positiveInteger')">ruleml:positiveInteger</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_short.html#short" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:short')">ruleml:short</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_slot_content.html#slot.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slot.content')">ruleml:slot.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_slot_type_def.html#slot.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slot.type.def')">ruleml:slot.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_slotdep_content.html#slotdep.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdep.content')">ruleml:slotdep.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_slotdep_type_def.html#slotdep.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdep.type.def')">ruleml:slotdep.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_sub_content.html#sub.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:sub.content')">ruleml:sub.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_sub_type_def.html#sub.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:sub.type.def')">ruleml:sub.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_subTerm_choice.html#subTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:subTerm.choice')">ruleml:subTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_super_content.html#super.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:super.content')">ruleml:super.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_super_type_def.html#super.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:super.type.def')">ruleml:super.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_superTerm_choice.html#superTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:superTerm.choice')">ruleml:superTerm.choice</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_time.html#time" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:time')">ruleml:time</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_torso_content.html#torso.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso.content')">ruleml:torso.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_torso_type_def.html#torso.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso.type.def')">ruleml:torso.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_tup_content.html#tup.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tup.content')">ruleml:tup.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_tup_type_def.html#tup.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tup.type.def')">ruleml:tup.type.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_tupdep_content.html#tupdep.content" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdep.content')">ruleml:tupdep.content</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Complex_Type_ruleml_tupdep_type_def.html#tupdep.type.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdep.type.def')">ruleml:tupdep.type.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedByte.html#unsignedByte" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedByte')">ruleml:unsignedByte</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedInt.html#unsignedInt" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedInt')">ruleml:unsignedInt</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Complex_Type_ruleml_unsignedLong.html#unsignedLong" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:unsignedLong')">ruleml:unsignedLong</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Simple_Type" type="image" value="-" src="img/btM.gif" onclick="switchState('Simple_Type');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Simple Types</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Simple_Type" class="componentGroup" style="display:block">
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_ENTITIES.html#http___www.w3.org_2001_XMLSchema-datatypes_ENTITIES" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component ENTITIES')">ENTITIES</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_ENTITY.html#http___www.w3.org_2001_XMLSchema-datatypes_ENTITY" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component ENTITY')">ENTITY</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_ID.html#http___www.w3.org_2001_XMLSchema-datatypes_ID" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component ID')">ID</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_IDREF.html#IDREF" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component IDREF')">IDREF</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_IDREFS.html#IDREFS" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component IDREFS')">IDREFS</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_NCName.html#http___www.w3.org_2001_XMLSchema-datatypes_NCName" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component NCName')">NCName</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_NMTOKEN.html#http___www.w3.org_2001_XMLSchema-datatypes_NMTOKEN" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component NMTOKEN')">NMTOKEN</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_NMTOKENS.html#http___www.w3.org_2001_XMLSchema-datatypes_NMTOKENS" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component NMTOKENS')">NMTOKENS</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_NOTATION.html#http___www.w3.org_2001_XMLSchema-datatypes_NOTATION" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component NOTATION')">NOTATION</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_Name.html#http___www.w3.org_2001_XMLSchema-datatypes_Name" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component Name')">Name</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_QName.html#http___www.w3.org_2001_XMLSchema-datatypes_QName" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component QName')">QName</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_anyURI.html#http___www.w3.org_2001_XMLSchema-datatypes_anyURI" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component anyURI')">anyURI</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_base64Binary.html#http___www.w3.org_2001_XMLSchema-datatypes_base64Binary" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component base64Binary')">base64Binary</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_boolean.html#http___www.w3.org_2001_XMLSchema-datatypes_boolean" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component boolean')">boolean</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_byte.html#http___www.w3.org_2001_XMLSchema-datatypes_byte" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component byte')">byte</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_date.html#http___www.w3.org_2001_XMLSchema-datatypes_date" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component date')">date</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_dateTime.html#http___www.w3.org_2001_XMLSchema-datatypes_dateTime" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component dateTime')">dateTime</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_decimal.html#http___www.w3.org_2001_XMLSchema-datatypes_decimal" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component decimal')">decimal</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_double.html#http___www.w3.org_2001_XMLSchema-datatypes_double" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component double')">double</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_duration.html#http___www.w3.org_2001_XMLSchema-datatypes_duration" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component duration')">duration</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_float.html#http___www.w3.org_2001_XMLSchema-datatypes_float" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component float')">float</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_gDay.html#http___www.w3.org_2001_XMLSchema-datatypes_gDay" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component gDay')">gDay</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_gMonth.html#http___www.w3.org_2001_XMLSchema-datatypes_gMonth" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component gMonth')">gMonth</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_gMonthDay.html#gMonthDay" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component gMonthDay')">gMonthDay</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_gYear.html#http___www.w3.org_2001_XMLSchema-datatypes_gYear" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component gYear')">gYear</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_gYearMonth.html#http___www.w3.org_2001_XMLSchema-datatypes_gYearMonth" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component gYearMonth')">gYearMonth</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_hexBinary.html#http___www.w3.org_2001_XMLSchema-datatypes_hexBinary" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component hexBinary')">hexBinary</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_int.html#http___www.w3.org_2001_XMLSchema-datatypes_int" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component int')">int</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_integer.html#http___www.w3.org_2001_XMLSchema-datatypes_integer" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component integer')">integer</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_language.html#http___www.w3.org_2001_XMLSchema-datatypes_language" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component language')">language</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_long.html#http___www.w3.org_2001_XMLSchema-datatypes_long" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component long')">long</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_negativeInteger.html#http___www.w3.org_2001_XMLSchema-datatypes_negativeInteger" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component negativeInteger')">negativeInteger</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_nonNegativeInteger.html#http___www.w3.org_2001_XMLSchema-datatypes_nonNegativeInteger" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component nonNegativeInteger')">nonNegativeInteger</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_nonPositiveInteger.html#http___www.w3.org_2001_XMLSchema-datatypes_nonPositiveInteger" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component nonPositiveInteger')">nonPositiveInteger</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_normalizedString.html#http___www.w3.org_2001_XMLSchema-datatypes_normalizedString" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component normalizedString')">normalizedString</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_positiveInteger.html#http___www.w3.org_2001_XMLSchema-datatypes_positiveInteger" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component positiveInteger')">positiveInteger</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_AbsIRI_datatype.html#AbsIRI.datatype" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AbsIRI.datatype')">ruleml:AbsIRI.datatype</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_Ind_value.html#Ind.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Ind.value')">ruleml:Ind.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_PrefixedCURIE_datatype.html#PrefixedCURIE.datatype" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:PrefixedCURIE.datatype')">ruleml:PrefixedCURIE.datatype</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_Rel_value.html#Rel.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rel.value')">ruleml:Rel.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_Skolem_value.html#Skolem.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem.value')">ruleml:Skolem.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_Var_value.html#Var.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Var.value')">ruleml:Var.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_cardinality_value.html#cardinality.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:cardinality.value')">ruleml:cardinality.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_closure_value.html#closure.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:closure.value')">ruleml:closure.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_direction_value.html#direction.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction.value')">ruleml:direction.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_direction_default_value.html#direction_default.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction_default.value')">ruleml:direction_default.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_direction_non-default_value.html#direction_non-default.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction_non-default.value')">ruleml:direction_non-default.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_index_value.html#index.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:index.value')">ruleml:index.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_iri_value.html#iri.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:iri.value')">ruleml:iri.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_key_value.html#key.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:key.value')">ruleml:key.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_keyref_value.html#keyref.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:keyref.value')">ruleml:keyref.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_mapClosure_value.html#mapClosure.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapClosure.value')">ruleml:mapClosure.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_mapDirection_value.html#mapDirection.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection.value')">ruleml:mapDirection.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_mapMaterial_value.html#mapMaterial.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial.value')">ruleml:mapMaterial.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_material_value.html#material.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material.value')">ruleml:material.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_material_default_value.html#material_default.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material_default.value')">ruleml:material_default.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_material_non-default_value.html#material_non-default.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material_non-default.value')">ruleml:material_non-default.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_node_value.html#node.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:node.value')">ruleml:node.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_style_value.html#style.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:style.value')">ruleml:style.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_type_value.html#type.value" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type.value')">ruleml:type.value</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Simple_Type_ruleml_weight_datatype.html#weight.datatype" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:weight.datatype')">ruleml:weight.datatype</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_short.html#http___www.w3.org_2001_XMLSchema-datatypes_short" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component short')">short</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_string.html#http___www.w3.org_2001_XMLSchema-datatypes_string" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component string')">string</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_time.html#http___www.w3.org_2001_XMLSchema-datatypes_time" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component time')">time</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_token.html#http___www.w3.org_2001_XMLSchema-datatypes_token" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component token')">token</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_unsignedByte.html#http___www.w3.org_2001_XMLSchema-datatypes_unsignedByte" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component unsignedByte')">unsignedByte</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_unsignedInt.html#http___www.w3.org_2001_XMLSchema-datatypes_unsignedInt" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component unsignedInt')">unsignedInt</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_unsignedLong.html#http___www.w3.org_2001_XMLSchema-datatypes_unsignedLong" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component unsignedLong')">unsignedLong</a></b></div>
+                                          <div><b><a href="XMLSchema-datatypes_Simple_Type_unsignedShort.html#unsignedShort" target="mainFrame" title="http://www.w3.org/2001/XMLSchema-datatypes" onclick="updatePageTitle('Schema documentation for component unsignedShort')">unsignedShort</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Attribute" type="image" value="-" src="img/btM.gif" onclick="switchState('Attribute');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Attributes</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Attribute" class="componentGroup" style="display:block">
+                                          <div><b><a href="xml_xsd_Attribute_xml_base.html#base" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:base')">@xml:base</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_id.html#id" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:id')">@xml:id</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_lang.html#lang" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:lang')">@xml:lang</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_xml_space.html#space" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component @xml:space')">@xml:space</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Resource_attlist.html#Resource.attlist_iri" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:Resource.attlist/@iri')">ruleml:Resource.attlist/@iri</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_card_attrib_def.html#card.attrib.def_card" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:card.attrib.def/@card')">ruleml:card.attrib.def/@card</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_cardinality-att_choice.html#cardinality-att.choice_card" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:cardinality-att.choice/@card')">ruleml:cardinality-att.choice/@card</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_closure-att_choice.html#closure-att.choice_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:closure-att.choice/@closure')">ruleml:closure-att.choice/@closure</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_closure_attrib_def.html#closure.attrib.def_closure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:closure.attrib.def/@closure')">ruleml:closure.attrib.def/@closure</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.html#common_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:common/@node')">ruleml:common/@node</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_commonInit_attlist.html#commonInit.attlist_key" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:commonInit.attlist/@key')">ruleml:commonInit.attlist/@key</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_commonInit_attlist.html#commonInit.attlist_keyref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:commonInit.attlist/@keyref')">ruleml:commonInit.attlist/@keyref</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_commonNode_attlist.html#commonNode.attlist_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:commonNode.attlist/@node')">ruleml:commonNode.attlist/@node</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_direction-att_choice.html#direction-att.choice_direction" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:direction-att.choice/@direction')">ruleml:direction-att.choice/@direction</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_direction_attrib_def.html#direction.attrib.def_direction" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:direction.attrib.def/@direction')">ruleml:direction.attrib.def/@direction</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_index-attrib_choice.html#index-attrib.choice_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:index-attrib.choice/@index')">ruleml:index-attrib.choice/@index</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_index_attrib_def.html#index.attrib.def_index" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:index.attrib.def/@index')">ruleml:index.attrib.def/@index</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_iri_attrib_def.html#iri.attrib.def_iri" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:iri.attrib.def/@iri')">ruleml:iri.attrib.def/@iri</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_key_attrib_def.html#key.attrib.def_key" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:key.attrib.def/@key')">ruleml:key.attrib.def/@key</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_keyref_attrib_def.html#keyref.attrib.def_keyref" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:keyref.attrib.def/@keyref')">ruleml:keyref.attrib.def/@keyref</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapClosure-att_choice.html#mapClosure-att.choice_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapClosure-att.choice/@mapClosure')">ruleml:mapClosure-att.choice/@mapClosure</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapClosure_attrib_def.html#mapClosure.attrib.def_mapClosure" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapClosure.attrib.def/@mapClosure')">ruleml:mapClosure.attrib.def/@mapClosure</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapDirection-att_choice.html#mapDirection-att.choice_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection-att.choice/@mapDirection')">ruleml:mapDirection-att.choice/@mapDirection</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapDirection_attrib_def.html#mapDirection.attrib.def_mapDirection" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection.attrib.def/@mapDirection')">ruleml:mapDirection.attrib.def/@mapDirection</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapMaterial-att_choice.html#mapMaterial-att.choice_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial-att.choice/@mapMaterial')">ruleml:mapMaterial-att.choice/@mapMaterial</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapMaterial_attrib_def.html#mapMaterial.attrib.def_mapMaterial" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial.attrib.def/@mapMaterial')">ruleml:mapMaterial.attrib.def/@mapMaterial</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_material-att_choice.html#material-att.choice_material" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:material-att.choice/@material')">ruleml:material-att.choice/@material</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_material_attrib_def.html#material.attrib.def_material" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:material.attrib.def/@material')">ruleml:material.attrib.def/@material</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_node_attrib_def.html#node.attrib.def_node" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:node.attrib.def/@node')">ruleml:node.attrib.def/@node</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_style-att_choice.html#style-att.choice_style" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:style-att.choice/@style')">ruleml:style-att.choice/@style</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_style_attrib_def.html#style.attrib.def_style" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:style.attrib.def/@style')">ruleml:style.attrib.def/@style</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_type-att_choice.html#type-att.choice_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:type-att.choice/@type')">ruleml:type-att.choice/@type</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_type_attrib_def.html#type.attrib.def_type" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:type.attrib.def/@type')">ruleml:type.attrib.def/@type</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_weight-att_choice.html#weight-att.choice_weight" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:weight-att.choice/@weight')">ruleml:weight-att.choice/@weight</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_weight_attrib_def.html#weight.attrib.def_weight" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for component ruleml:weight.attrib.def/@weight')">ruleml:weight.attrib.def/@weight</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Element_Group" type="image" value="-" src="img/btM.gif" onclick="switchState('Element_Group');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Element Groups</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Element_Group" class="componentGroup" style="display:block">
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And-Query-node_choice.html#And-Query-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And-Query-node.choice')">ruleml:And-Query-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And-Query_Node_def.html#And-Query.Node.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And-Query.Node.def')">ruleml:And-Query.Node.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And-node_choice.html#And-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And-node.choice')">ruleml:And-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And_Node_def.html#And.Node.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And.Node.def')">ruleml:And.Node.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And_header.html#And.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And.header')">ruleml:And.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_And_main.html#And.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:And.main')">ruleml:And.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_AnyTerm_choice.html#AnyTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AnyTerm.choice')">ruleml:AnyTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_AnyThis_def.html#AnyThis.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AnyThis.def')">ruleml:AnyThis.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Assert-node_choice.html#Assert-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Assert-node.choice')">ruleml:Assert-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_AssertRetract-node_choice.html#AssertRetract-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AssertRetract-node.choice')">ruleml:AssertRetract-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_AssertRetract_header.html#AssertRetract.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AssertRetract.header')">ruleml:AssertRetract.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_AssertRetract_main.html#AssertRetract.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AssertRetract.main')">ruleml:AssertRetract.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Atom-node_choice.html#Atom-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom-node.choice')">ruleml:Atom-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Atom_header.html#Atom.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom.header')">ruleml:Atom.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Atom_main.html#Atom.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Atom.main')">ruleml:Atom.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_DataTerm_choice.html#DataTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:DataTerm.choice')">ruleml:DataTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Data_any-node_choice.html#Data_any-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Data_any-node.choice')">ruleml:Data_any-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Entails-node_choice.html#Entails-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails-node.choice')">ruleml:Entails-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Entails_header.html#Entails.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails.header')">ruleml:Entails.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Entails_main.html#Entails.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Entails.main')">ruleml:Entails.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Equivalent-node_choice.html#Equivalent-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent-node.choice')">ruleml:Equivalent-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Equivalent_header.html#Equivalent.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent.header')">ruleml:Equivalent.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Equivalent_main.html#Equivalent.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Equivalent.main')">ruleml:Equivalent.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Exists-node_choice.html#Exists-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists-node.choice')">ruleml:Exists-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Exists_header.html#Exists.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists.header')">ruleml:Exists.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Exists_main.html#Exists.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Exists.main')">ruleml:Exists.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Expr_header.html#Expr.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Expr.header')">ruleml:Expr.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Forall-node_choice.html#Forall-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall-node.choice')">ruleml:Forall-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Forall_header.html#Forall.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall.header')">ruleml:Forall.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Forall_main.html#Forall.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Forall.main')">ruleml:Forall.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Implication-node_choice.html#Implication-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implication-node.choice')">ruleml:Implication-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Implies-node_choice.html#Implies-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies-node.choice')">ruleml:Implies-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Implies_header.html#Implies.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.header')">ruleml:Implies.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Implies_main.html#Implies.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies.main')">ruleml:Implies.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Individual-node_choice.html#Individual-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Individual-node.choice')">ruleml:Individual-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Node_header.html#Node.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Node.header')">ruleml:Node.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or-Query-node_choice.html#Or-Query-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or-Query-node.choice')">ruleml:Or-Query-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or-Query_Node_def.html#Or-Query.Node.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or-Query.Node.def')">ruleml:Or-Query.Node.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or-node_choice.html#Or-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or-node.choice')">ruleml:Or-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or_Node_def.html#Or.Node.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or.Node.def')">ruleml:Or.Node.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or_header.html#Or.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or.header')">ruleml:Or.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Or_main.html#Or.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Or.main')">ruleml:Or.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Query-node_choice.html#Query-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query-node.choice')">ruleml:Query-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Query_header.html#Query.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query.header')">ruleml:Query.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Query_main.html#Query.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Query.main')">ruleml:Query.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Reify-node_choice.html#Reify-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Reify-node.choice')">ruleml:Reify-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Retract-node_choice.html#Retract-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Retract-node.choice')">ruleml:Retract-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_RuleML_header.html#RuleML.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML.header')">ruleml:RuleML.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_RuleML_main.html#RuleML.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RuleML.main')">ruleml:RuleML.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Rulebase-node_choice.html#Rulebase-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase-node.choice')">ruleml:Rulebase-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Rulebase_header.html#Rulebase.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase.header')">ruleml:Rulebase.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Rulebase_main.html#Rulebase.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase.main')">ruleml:Rulebase.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_RulebaseFormula_choice.html#RulebaseFormula.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:RulebaseFormula.choice')">ruleml:RulebaseFormula.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_SimpleConstantTerm_choice.html#SimpleConstantTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:SimpleConstantTerm.choice')">ruleml:SimpleConstantTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_SimpleFormula-node_choice.html#SimpleFormula-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:SimpleFormula-node.choice')">ruleml:SimpleFormula-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_SimpleKeyTerm_choice.html#SimpleKeyTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:SimpleKeyTerm.choice')">ruleml:SimpleKeyTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_SimpleQuantifiableTerm_choice.html#SimpleQuantifiableTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:SimpleQuantifiableTerm.choice')">ruleml:SimpleQuantifiableTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Skolem-node_choice.html#Skolem-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Skolem-node.choice')">ruleml:Skolem-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Subclass-node_choice.html#Subclass-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Subclass-node.choice')">ruleml:Subclass-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Subclass_header.html#Subclass.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Subclass.header')">ruleml:Subclass.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Subclass_main.html#Subclass.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Subclass.main')">ruleml:Subclass.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_TruthValuedConnective_header.html#TruthValuedConnective.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:TruthValuedConnective.header')">ruleml:TruthValuedConnective.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Tuple_header.html#Tuple.header" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple.header')">ruleml:Tuple.header</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Tuple_main.html#Tuple.main" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple.main')">ruleml:Tuple.main</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_Variable-node_choice.html#Variable-node.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Variable-node.choice')">ruleml:Variable-node.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_act-edge_choice.html#act-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act-edge.choice')">ruleml:act-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_anyElement_choice.html#anyElement.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anyElement.choice')">ruleml:anyElement.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_anyElement_def.html#anyElement.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:anyElement.def')">ruleml:anyElement.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_argumentsForAtoms_sequence.html#argumentsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:argumentsForAtoms.sequence')">ruleml:argumentsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_argumentsForExpressions_sequence.html#argumentsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:argumentsForExpressions.sequence')">ruleml:argumentsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Entails_edge_def.html#body_Entails.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.edge.def')">ruleml:body_Entails.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Entails_name_choice.html#body_Entails.name.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.name.choice')">ruleml:body_Entails.name.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Implies_edge_def.html#body_Implies.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.edge.def')">ruleml:body_Implies.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_body_Implies_name_choice.html#body_Implies.name.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.name.choice')">ruleml:body_Implies.name.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_boundVariables_choice.html#boundVariables.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:boundVariables.choice')">ruleml:boundVariables.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_declare-edge_choice.html#declare-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare-edge.choice')">ruleml:declare-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_And-edge_choice.html#formula_And-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-edge.choice')">ruleml:formula_And-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_And_edge_def.html#formula_And.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And.edge.def')">ruleml:formula_And.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_AssertRetract-edge_choice.html#formula_AssertRetract-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract-edge.choice')">ruleml:formula_AssertRetract-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_AssertRetract_edge_def.html#formula_AssertRetract.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract.edge.def')">ruleml:formula_AssertRetract.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Exists-edge_choice.html#formula_Exists-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists-edge.choice')">ruleml:formula_Exists-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Exists_edge_def.html#formula_Exists.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists.edge.def')">ruleml:formula_Exists.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Forall-edge_choice.html#formula_Forall-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall-edge.choice')">ruleml:formula_Forall-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Forall_edge_def.html#formula_Forall.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall.edge.def')">ruleml:formula_Forall.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Or-edge_choice.html#formula_Or-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or-edge.choice')">ruleml:formula_Or-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Or_edge_def.html#formula_Or.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or.edge.def')">ruleml:formula_Or.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Query-edge_choice.html#formula_Query-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query-edge.choice')">ruleml:formula_Query-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Query_edge_def.html#formula_Query.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query.edge.def')">ruleml:formula_Query.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Rulebase-edge_choice.html#formula_Rulebase-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase-edge.choice')">ruleml:formula_Rulebase-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_formula_Rulebase_edge_def.html#formula_Rulebase.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase.edge.def')">ruleml:formula_Rulebase.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Entails_edge_def.html#head_Entails.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.edge.def')">ruleml:head_Entails.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Entails_name_choice.html#head_Entails.name.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.name.choice')">ruleml:head_Entails.name.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Implies_edge_def.html#head_Implies.edge.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.edge.def')">ruleml:head_Implies.edge.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_head_Implies_name_choice.html#head_Implies.name.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.name.choice')">ruleml:head_Implies.name.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_metaKnowledge-edge_choice.html#metaKnowledge-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:metaKnowledge-edge.choice')">ruleml:metaKnowledge-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_objectIdentifier-edge_choice.html#objectIdentifier-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:objectIdentifier-edge.choice')">ruleml:objectIdentifier-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_operatorForAtoms-edge_choice.html#operatorForAtoms-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:operatorForAtoms-edge.choice')">ruleml:operatorForAtoms-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_positionalArgument-edge_choice.html#positionalArgument-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:positionalArgument-edge.choice')">ruleml:positionalArgument-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_positionalArgumentsForAtoms_sequence.html#positionalArgumentsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:positionalArgumentsForAtoms.sequence')">ruleml:positionalArgumentsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_positionalArgumentsForExpressions_sequence.html#positionalArgumentsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:positionalArgumentsForExpressions.sequence')">ruleml:positionalArgumentsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slot-edge_choice.html#slot-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slot-edge.choice')">ruleml:slot-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotFillerTerm_choice.html#slotFillerTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotFillerTerm.choice')">ruleml:slotFillerTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotKeyTerm_choice.html#slotKeyTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotKeyTerm.choice')">ruleml:slotKeyTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotTerms_sequence.html#slotTerms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotTerms.sequence')">ruleml:slotTerms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotTermsForAtoms_sequence.html#slotTermsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotTermsForAtoms.sequence')">ruleml:slotTermsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotTermsForExpressions_sequence.html#slotTermsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotTermsForExpressions.sequence')">ruleml:slotTermsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdep-edge_choice.html#slotdep-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdep-edge.choice')">ruleml:slotdep-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdepFillerTerm_choice.html#slotdepFillerTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdepFillerTerm.choice')">ruleml:slotdepFillerTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdepKeyTerm_choice.html#slotdepKeyTerm.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdepKeyTerm.choice')">ruleml:slotdepKeyTerm.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdepTerms_sequence.html#slotdepTerms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdepTerms.sequence')">ruleml:slotdepTerms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdepTermsForAtoms_sequence.html#slotdepTermsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdepTermsForAtoms.sequence')">ruleml:slotdepTermsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotdepTermsForExpressions_sequence.html#slotdepTermsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotdepTermsForExpressions.sequence')">ruleml:slotdepTermsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotsForAtoms_sequence.html#slotsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotsForAtoms.sequence')">ruleml:slotsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_slotsForExpressions_sequence.html#slotsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:slotsForExpressions.sequence')">ruleml:slotsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_subSide-edge_choice.html#subSide-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:subSide-edge.choice')">ruleml:subSide-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_superSide-edge_choice.html#superSide-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:superSide-edge.choice')">ruleml:superSide-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_termsForAtoms_nonemptysequence_choice.html#termsForAtoms.nonemptysequence.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:termsForAtoms.nonemptysequence.choice')">ruleml:termsForAtoms.nonemptysequence.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_termsForAtoms_sequence.html#termsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:termsForAtoms.sequence')">ruleml:termsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_termsForExpressions_nonemptysequence_choice.html#termsForExpressions.nonemptysequence.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:termsForExpressions.nonemptysequence.choice')">ruleml:termsForExpressions.nonemptysequence.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_termsForExpressions_sequence.html#termsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:termsForExpressions.sequence')">ruleml:termsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_torso-edge_choice.html#torso-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso-edge.choice')">ruleml:torso-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tup-edge_choice.html#tup-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tup-edge.choice')">ruleml:tup-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupTerms_nonemptysequence_choice.html#tupTerms.nonemptysequence.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupTerms.nonemptysequence.choice')">ruleml:tupTerms.nonemptysequence.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupTerms_sequence.html#tupTerms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupTerms.sequence')">ruleml:tupTerms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupTermsForAtoms_sequence.html#tupTermsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupTermsForAtoms.sequence')">ruleml:tupTermsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupTermsForExpressions_sequence.html#tupTermsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupTermsForExpressions.sequence')">ruleml:tupTermsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupdep-edge_choice.html#tupdep-edge.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdep-edge.choice')">ruleml:tupdep-edge.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupdepTerms_nonemptysequence_choice.html#tupdepTerms.nonemptysequence.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdepTerms.nonemptysequence.choice')">ruleml:tupdepTerms.nonemptysequence.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupdepTerms_sequence.html#tupdepTerms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdepTerms.sequence')">ruleml:tupdepTerms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupdepTermsForAtoms_sequence.html#tupdepTermsForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdepTermsForAtoms.sequence')">ruleml:tupdepTermsForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tupdepTermsForExpressions_sequence.html#tupdepTermsForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdepTermsForExpressions.sequence')">ruleml:tupdepTermsForExpressions.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tuplesForAtoms_sequence.html#tuplesForAtoms.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tuplesForAtoms.sequence')">ruleml:tuplesForAtoms.sequence</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Element_Group_ruleml_tuplesForExpressions_sequence.html#tuplesForExpressions.sequence" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tuplesForExpressions.sequence')">ruleml:tuplesForExpressions.sequence</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div class="horizontalLayout">
+                  <table class="rt">
+                     <tr>
+                        <td class="rt_cornerTopLeft"></td>
+                        <td class="rt_lineTop"></td>
+                        <td class="rt_cornerTopRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_lineLeft"></td>
+                        <td class="rt_content">
+                           <table class="componentGroup">
+                              <tbody>
+                                 <tr>
+                                    <td class="componentGroup"><input id="button_Attribute_Group" type="image" value="-" src="img/btM.gif" onclick="switchState('Attribute_Group');" class="control" /></td>
+                                    <td class="componentGroup">
+                                       <div class="componentGroupTitle">Attribute Groups</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="componentGroup"></td>
+                                    <td class="componentGroup">
+                                       <div id="Attribute_Group" class="componentGroup" style="display:block">
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_AssertRetract-datt_choice.html#AssertRetract-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:AssertRetract-datt.choice')">ruleml:AssertRetract-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Implies-datt_choice.html#Implies-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Implies-datt.choice')">ruleml:Implies-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Resource_attlist.html#Resource.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Resource.attlist')">ruleml:Resource.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Rulebase-datt_choice.html#Rulebase-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Rulebase-datt.choice')">ruleml:Rulebase-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Tuple_attlist.html#Tuple.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Tuple.attlist')">ruleml:Tuple.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_Type_attlist.html#Type.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:Type.attlist')">ruleml:Type.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_act-datt_choice.html#act-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:act-datt.choice')">ruleml:act-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_arg-datt_choice.html#arg-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:arg-datt.choice')">ruleml:arg-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_body_Entails_attlist.html#body_Entails.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Entails.attlist')">ruleml:body_Entails.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_body_Implies_attlist.html#body_Implies.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:body_Implies.attlist')">ruleml:body_Implies.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_card_attrib_def.html#card.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:card.attrib.def')">ruleml:card.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_cardinality-att_choice.html#cardinality-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:cardinality-att.choice')">ruleml:cardinality-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_closure-att_choice.html#closure-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:closure-att.choice')">ruleml:closure-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_closure_attrib_def.html#closure.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:closure.attrib.def')">ruleml:closure.attrib.def</a></b></div>
+                                          <div><b><a href="SimpleWithAttributes_xsd_Attribute_Group_ruleml_common.html#common" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:common')">ruleml:common</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_commonInit_attlist.html#commonInit.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:commonInit.attlist')">ruleml:commonInit.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_commonNode_attlist.html#commonNode.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:commonNode.attlist')">ruleml:commonNode.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_declare_attlist.html#declare.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:declare.attlist')">ruleml:declare.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_direction-att-inf_choice.html#direction-att-inf.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction-att-inf.choice')">ruleml:direction-att-inf.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_direction-att_choice.html#direction-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction-att.choice')">ruleml:direction-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_direction_attrib_def.html#direction.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:direction.attrib.def')">ruleml:direction.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula-interface-ext_attlist.html#formula-interface-ext.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula-interface-ext.attlist')">ruleml:formula-interface-ext.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula-interface_attlist.html#formula-interface.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula-interface.attlist')">ruleml:formula-interface.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_And-datt_choice.html#formula_And-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And-datt.choice')">ruleml:formula_And-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_And_attlist.html#formula_And.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_And.attlist')">ruleml:formula_And.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_AssertRetract_attlist.html#formula_AssertRetract.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_AssertRetract.attlist')">ruleml:formula_AssertRetract.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Exists_attlist.html#formula_Exists.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Exists.attlist')">ruleml:formula_Exists.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Forall_attlist.html#formula_Forall.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Forall.attlist')">ruleml:formula_Forall.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Or-datt_choice.html#formula_Or-datt.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or-datt.choice')">ruleml:formula_Or-datt.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Or_attlist.html#formula_Or.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Or.attlist')">ruleml:formula_Or.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Query_attlist.html#formula_Query.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Query.attlist')">ruleml:formula_Query.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_formula_Rulebase_attlist.html#formula_Rulebase.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:formula_Rulebase.attlist')">ruleml:formula_Rulebase.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_generic-Formula_attlist.html#generic-Formula.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:generic-Formula.attlist')">ruleml:generic-Formula.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_generic-Node_attlist.html#generic-Node.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:generic-Node.attlist')">ruleml:generic-Node.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_head_Entails_attlist.html#head_Entails.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Entails.attlist')">ruleml:head_Entails.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_head_Implies_attlist.html#head_Implies.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:head_Implies.attlist')">ruleml:head_Implies.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_index-attrib_choice.html#index-attrib.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:index-attrib.choice')">ruleml:index-attrib.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_index_attrib_def.html#index.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:index.attrib.def')">ruleml:index.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_iri-att_choice.html#iri-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:iri-att.choice')">ruleml:iri-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_iri_attrib_def.html#iri.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:iri.attrib.def')">ruleml:iri.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_key-att_choice.html#key-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:key-att.choice')">ruleml:key-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_key_attrib_def.html#key.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:key.attrib.def')">ruleml:key.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_keyref-att_choice.html#keyref-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:keyref-att.choice')">ruleml:keyref-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_keyref_attrib_def.html#keyref.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:keyref.attrib.def')">ruleml:keyref.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapClosure-att_choice.html#mapClosure-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapClosure-att.choice')">ruleml:mapClosure-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapClosure_attrib_def.html#mapClosure.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapClosure.attrib.def')">ruleml:mapClosure.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapDirection-att-inf_choice.html#mapDirection-att-inf.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection-att-inf.choice')">ruleml:mapDirection-att-inf.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapDirection-att_choice.html#mapDirection-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection-att.choice')">ruleml:mapDirection-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapDirection_attrib_def.html#mapDirection.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapDirection.attrib.def')">ruleml:mapDirection.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapMaterial-att-inf_choice.html#mapMaterial-att-inf.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial-att-inf.choice')">ruleml:mapMaterial-att-inf.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapMaterial-att_choice.html#mapMaterial-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial-att.choice')">ruleml:mapMaterial-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_mapMaterial_attrib_def.html#mapMaterial.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:mapMaterial.attrib.def')">ruleml:mapMaterial.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_material-att-inf_choice.html#material-att-inf.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material-att-inf.choice')">ruleml:material-att-inf.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_material-att_choice.html#material-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material-att.choice')">ruleml:material-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_material_attrib_def.html#material.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:material.attrib.def')">ruleml:material.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_meta_attlist.html#meta.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:meta.attlist')">ruleml:meta.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_node-att_choice.html#node-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:node-att.choice')">ruleml:node-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_node_attrib_def.html#node.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:node.attrib.def')">ruleml:node.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_oid_attlist.html#oid.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:oid.attlist')">ruleml:oid.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_op_Atom_attlist.html#op_Atom.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:op_Atom.attlist')">ruleml:op_Atom.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_operator-interface-ext_attlist.html#operator-interface-ext.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:operator-interface-ext.attlist')">ruleml:operator-interface-ext.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_operator-interface_attlist.html#operator-interface.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:operator-interface.attlist')">ruleml:operator-interface.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reAnd-Query_attlist.html#reAnd-Query.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reAnd-Query.attlist')">ruleml:reAnd-Query.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reAnd_attlist.html#reAnd.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reAnd.attlist')">ruleml:reAnd.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reAssertRetract_attlist.html#reAssertRetract.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reAssertRetract.attlist')">ruleml:reAssertRetract.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reAtom_attlist.html#reAtom.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reAtom.attlist')">ruleml:reAtom.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reEntails_attlist.html#reEntails.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reEntails.attlist')">ruleml:reEntails.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reEqual_attlist.html#reEqual.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reEqual.attlist')">ruleml:reEqual.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reEquivalent_attlist.html#reEquivalent.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reEquivalent.attlist')">ruleml:reEquivalent.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reExists_attlist.html#reExists.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reExists.attlist')">ruleml:reExists.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reExpr_attlist.html#reExpr.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reExpr.attlist')">ruleml:reExpr.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reForall_attlist.html#reForall.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reForall.attlist')">ruleml:reForall.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reFun_attlist.html#reFun.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reFun.attlist')">ruleml:reFun.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reImplies_attlist.html#reImplies.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reImplies.attlist')">ruleml:reImplies.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reInd_attlist.html#reInd.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reInd.attlist')">ruleml:reInd.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reNaf_attlist.html#reNaf.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reNaf.attlist')">ruleml:reNaf.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reNeg_attlist.html#reNeg.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reNeg.attlist')">ruleml:reNeg.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reOr-Query_attlist.html#reOr-Query.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reOr-Query.attlist')">ruleml:reOr-Query.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reOr_attlist.html#reOr.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reOr.attlist')">ruleml:reOr.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_rePlex_attlist.html#rePlex.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:rePlex.attlist')">ruleml:rePlex.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reQuery_attlist.html#reQuery.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reQuery.attlist')">ruleml:reQuery.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reRel_attlist.html#reRel.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reRel.attlist')">ruleml:reRel.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reRuleML_attlist.html#reRuleML.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reRuleML.attlist')">ruleml:reRuleML.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reRulebase_attlist.html#reRulebase.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reRulebase.attlist')">ruleml:reRulebase.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reSkolem_attlist.html#reSkolem.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reSkolem.attlist')">ruleml:reSkolem.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reSubclass_attlist.html#reSubclass.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reSubclass.attlist')">ruleml:reSubclass.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reVar_attlist.html#reVar.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reVar.attlist')">ruleml:reVar.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_react_attlist.html#react.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:react.attlist')">ruleml:react.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_rearg_attlist.html#rearg.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:rearg.attlist')">ruleml:rearg.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reslot_attlist.html#reslot.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reslot.attlist')">ruleml:reslot.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_reslotdep_attlist.html#reslotdep.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:reslotdep.attlist')">ruleml:reslotdep.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_style-att_choice.html#style-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:style-att.choice')">ruleml:style-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_style_attrib_def.html#style.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:style.attrib.def')">ruleml:style.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_sub_attlist.html#sub.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:sub.attlist')">ruleml:sub.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_super_attlist.html#super.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:super.attlist')">ruleml:super.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_torso_attlist.html#torso.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:torso.attlist')">ruleml:torso.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_tup_attlist.html#tup.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tup.attlist')">ruleml:tup.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_tupdep_attlist.html#tupdep.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:tupdep.attlist')">ruleml:tupdep.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_type-att_choice.html#type-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type-att.choice')">ruleml:type-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_type_attrib_def.html#type.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:type.attrib.def')">ruleml:type.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_weight-att_choice.html#weight-att.choice" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:weight-att.choice')">ruleml:weight-att.choice</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_weight_attlist.html#weight.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:weight.attlist')">ruleml:weight.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_weight_attrib_def.html#weight.attrib.def" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:weight.attrib.def')">ruleml:weight.attrib.def</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_xmlbase_attlist.html#xmlbase.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:xmlbase.attlist')">ruleml:xmlbase.attlist</a></b></div>
+                                          <div><b><a href="datalogPSOA_normal_xsd_Attribute_Group_ruleml_xmlid_attlist.html#xmlid.attlist" target="mainFrame" title="http://ruleml.org/spec" onclick="updatePageTitle('Schema documentation for component ruleml:xmlid.attlist')">ruleml:xmlid.attlist</a></b></div>
+                                          <div><b><a href="xml_xsd_Attribute_Group_xml_specialAttrs.html#specialAttrs" target="mainFrame" title="http://www.w3.org/XML/1998/namespace" onclick="updatePageTitle('Schema documentation for component xml:specialAttrs')">xml:specialAttrs</a></b></div>
+                                       </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </td>
+                        <td class="rt_lineRight"></td>
+                     </tr>
+                     <tr>
+                        <td class="rt_cornerBottomLeft"></td>
+                        <td class="rt_lineBottom"></td>
+                        <td class="rt_cornerBottomRight"></td>
+                     </tr>
+                  </table>
+               </div>
+               <div style="clear:left"></div>
+            </div>
+         </div>
+      </div>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.
+         </div>
+      </div>
+   </body>
+</html>
