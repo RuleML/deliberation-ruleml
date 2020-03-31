@@ -2,7 +2,7 @@
 This directory contains build scripts for Deliberation RuleML
 There are two top-level build scripts:
 * build_myng.sh : this builds the generated RNC and XSD locally and tests it against local test suites
-* build_web.sh : (under development) this builds the generated RNC and XSD from the cloud and tests it against cloud-stored test suites. 
+* build_web.sh (under development) : this builds the generated RNC and XSD from the RuleML webserver and tests it against webserver-stored test suites. 
 
 Instructions that follow apply to Unix/Linux/Mac Platforms as well as Linux on WSL (Windows Sybsystem for Linux)
 For WSL users there is a special section at the end.
@@ -44,14 +44,14 @@ Procedure:
   - alternately, the script may be run from an external tool from oXygen.
 2. After successful execution of build_myng.sh, 
   - commit the results
-  - @@@ push to Github
+  - push to Github
   - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
-3. run build_web.sh. The script should exit with code 0.
-  - This script performs some tests of the RuleML installation on HawkHost, however these tests are not as extensive as those performed by the build_myng.sh script.
-4. After successful execution of build_web.sh, 
+3. run build_web.sh (under development). The script should exit with code 0.
+  - This script performs some tests of the RuleML installation on the webserver, however these tests are not as extensive as those performed by the build_myng.sh script.
+4. After successful execution of build_web.sh (under development), 
   - commit the results
   - push to Github
-  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server @@@
+  - wait for synchronization on the RuleML server, or manually update with gitupdate.sh on the server
 5. run build_xsd2doc.sh in order to update the schemadocs.
   - Before the schemadocs are updated, all changes should have been committed and pushed into the personal fork.
 
