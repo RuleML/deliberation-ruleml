@@ -18,27 +18,24 @@ Node.choice |= Tuple.Node.def
 # This module declares the following RuleML elements and attributes:
 #            * <Tuple>
 
-## an extension point for specializations of the generalized list tag name.  
+## an extension point for specializations of the tuple tag name.  
 Tuple-node.choice |= Tuple.Node.def
-## The children of a generalized list (tuple) are divided into two sections, 
-## a header section for modifiers, and a main section for the list arguments. 
+## The children of a tuple are divided into two sections, 
+## a header section for modifiers, and a main section for the tuple arguments. 
 Tuple.Node.def =
   
-  ## A collection of (ordered) arguments (optionally enclosed by <arg>) and/or (unordered) user-defined slots (<slot>), 
-  ## identical to an uninterpreted expression (<Expr in="no">) except not having a user-specified function name (equivalent 
-  ## to having a system-specified constructor 'Tuple'). Rest variables (<repo> and <resl>) are also permitted.
-  ##        See http://deliberation.ruleml.org/1.03/glossary/#gloss-Tuple
-  ## within repo
+  ## A collection of (ordered) arguments (optionally enclosed by <arg>).
+  ## Positional rest variables (<repo>) are also permitted.
   element Tuple { Tuple.type.def }
 Tuple.type.def = Tuple.attlist, Tuple.header, Tuple.main
 
 Tuple.attlist &= commonNode.attlist?
 
-## Generalized lists accept the header pattern common to Nodes.
+## Tuples accept the header pattern common to Nodes.
 Tuple.header &= Node.header?
-# For the declaration of the Node header, see the modules meta_expansion_module).
+# For the declaration of the Node header, see the module meta_expansion_module).
 
-## A generalized list within a positional rest variable contains a positional argument sequence
+## A tuple within a positional rest variable contains a positional argument sequence
 Tuple.main |= positionalArgumentsForAtoms.sequence
 # The pattern for positional argument sequences is arity-dependent,
 # see the arity modules (posseq_bin_module, posseq_module).
