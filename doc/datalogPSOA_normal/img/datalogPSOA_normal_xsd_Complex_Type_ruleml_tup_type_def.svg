@@ -237,9 +237,9 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10px" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="306" xml:space="preserve" y="163"
-      >A collection of (ordered) arguments (optionally enclosed by &amp;lt;arg&amp;gt;) </text
+      >A collection of (ordered) arguments (optionally enclosed by </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="306" xml:space="preserve" y="176"
-      >and/or (unordered) user-defined slots...</text
+      >&amp;lt;arg&amp;gt;). Positional rest variables (&amp;lt;repo&amp;gt;) are...</text
     ></g
     ><g fill="rgb(75,75,75)" font-family="sans-serif" font-size="11px" stroke="rgb(75,75,75)" stroke-linecap="butt" stroke-width="2" text-rendering="optimizeLegibility"
     ><line clip-path="url(#clipPath1)" fill="none" x1="275" x2="278" y1="117" y2="117"
@@ -254,7 +254,7 @@
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10px" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="221" xml:space="preserve" y="213"
-      >an extension point for specializations of the generalized list tag name.</text
+      >an extension point for specializations of the tuple tag name.</text
       ><polygon clip-path="url(#clipPath1)" fill="url(#linearGradient16)" points=" 204 242 205 241 205 240 206 239 207 238 208 237 209 237 210 236 217 236 224 229 231 236 648 236 649 237 650 237 651 238 652 239 653 240 653 241 654 242 654 249 653 250 653 251 652 252 651 253 650 254 649 254 648 255 210 255 209 254 208 254 207 253 206 252 205 251 205 250 204 249" stroke="none"
     /></g
     ><g font-family="sans-serif" font-size="11px" stroke-linecap="butt" text-rendering="optimizeLegibility"

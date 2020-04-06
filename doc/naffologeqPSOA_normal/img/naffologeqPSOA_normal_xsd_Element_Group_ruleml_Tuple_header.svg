@@ -53,7 +53,7 @@
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
-      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient13" spreadMethod="pad" x1="0" x2="0" y1="124" y2="176"
+      ><linearGradient gradientUnits="userSpaceOnUse" id="linearGradient13" spreadMethod="pad" x1="0" x2="0" y1="124" y2="163"
       ><stop offset="0%" stop-color="rgb(249,250,254)" stop-opacity="1"
         /><stop offset="100%" stop-color="rgb(241,242,246)" stop-opacity="1"
       /></linearGradient
@@ -314,18 +314,16 @@
       /><line clip-path="url(#clipPath1)" fill="none" stroke="rgb(75,75,75)" stroke-width="2" x1="141" x2="166" y1="107" y2="107"
     /></g
     ><g fill="url(#linearGradient13)" font-family="sans-serif" font-size="11px" shape-rendering="crispEdges" stroke="url(#linearGradient13)" stroke-linecap="butt" text-rendering="geometricPrecision"
-    ><polygon clip-path="url(#clipPath1)" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 143 131 144 132 145 132 146 133 147 134 148 135 148 136 149 137 149 170 148 171 148 172 147 173 146 174 145 175 144 175 143 176 6 176 5 175 4 175 3 174 2 173 1 172 1 171 0 170" stroke="none"
+    ><polygon clip-path="url(#clipPath1)" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 143 131 144 132 145 132 146 133 147 134 148 135 148 136 149 137 149 157 148 158 148 159 147 160 146 161 145 162 144 162 143 163 6 163 5 162 4 162 3 161 2 160 1 159 1 158 0 157" stroke="none"
     /></g
     ><g font-family="sans-serif" font-size="11px" stroke-linecap="butt" text-rendering="optimizeLegibility"
-    ><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 143 131 144 132 145 132 146 133 147 134 148 135 148 136 149 137 149 170 148 171 148 172 147 173 146 174 145 175 144 175 143 176 6 176 5 175 4 175 3 174 2 173 1 172 1 171 0 170"
+    ><polygon clip-path="url(#clipPath1)" fill="none" points=" 0 137 1 136 1 135 2 134 3 133 4 132 5 132 6 131 13 131 20 124 27 131 143 131 144 132 145 132 146 133 147 134 148 135 148 136 149 137 149 157 148 158 148 159 147 160 146 161 145 162 144 162 143 163 6 163 5 162 4 162 3 161 2 160 1 159 1 158 0 157"
     /></g
     ><g fill="rgb(51,51,51)" font-family="sans-serif" font-size="10px" shape-rendering="crispEdges" stroke="rgb(51,51,51)" stroke-linecap="butt" text-rendering="geometricPrecision"
     ><text clip-path="url(#clipPath1)" stroke="none" x="3" xml:space="preserve" y="145"
-      >Generalized lists accept the </text
+      >Tuples accept the header </text
       ><text clip-path="url(#clipPath1)" stroke="none" x="3" xml:space="preserve" y="158"
-      >header pattern common to </text
-      ><text clip-path="url(#clipPath1)" stroke="none" x="3" xml:space="preserve" y="171"
-      >Nodes.</text
+      >pattern common to Nodes.</text
     ></g
   ></g
 ></svg
