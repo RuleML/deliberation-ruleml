@@ -48,19 +48,27 @@ url="http://deliberation.ruleml.org/1.03-psoa/relaxng/nafhologeq_relaxed.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}nafhologeq_relaxed.rnc"
 
+url="http://deliberation.ruleml.org/1.03-psoa/relaxng/hornlogrepoexpr_normal.rnc"
+echo "${url}"
+curl -L "${url}" > "${DRIVER_HOME}hornlogrepoexpr_normal.rnc"
+
+url="http://deliberation.ruleml.org/1.03-psoa/relaxng/hornlogrepoexpr_relaxed.rnc"
+echo "${url}"
+curl -L "${url}" > "${DRIVER_HOME}hornlogrepoexpr_relaxed.rnc"
+
 url="http://deliberation.ruleml.org/1.03-psoa/relaxng/naffologeqPSOA_compact.rnc"
 echo "${url}"
 curl -L "${url}" > "${DRIVER_HOME}naffologeqPSOA_compact.rnc"
 
-cp "${RNC_HOME}naffologeq_compact.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}naffologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}nafhologeq_compact.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}nafhologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}nafhologeq_normal.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}nafhologeq_relaxed.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}hornlogrepoexpr_normal.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}hornlogrepoexpr_relaxed.rnc" "${DRIVER_HOME}"
-cp "${RNC_HOME}naffologeqPSOA_compact.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}naffologeq_compact.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}naffologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}nafhologeq_compact.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}nafhologeq_ifthen-compact.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}nafhologeq_normal.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}nafhologeq_relaxed.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}hornlogrepoexpr_normal.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}hornlogrepoexpr_relaxed.rnc" "${DRIVER_HOME}"
+# cp "${RNC_HOME}naffologeqPSOA_compact.rnc" "${DRIVER_HOME}"
 
 for file in "${DRIVER_HOME}"*.rnc
 do
